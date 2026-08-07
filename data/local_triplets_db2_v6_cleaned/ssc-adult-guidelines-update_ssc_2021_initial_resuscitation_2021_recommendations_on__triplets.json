@@ -1,0 +1,356 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Sepsis",
+      "snomed": "91302008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Sepsis is a medical emergency requiring immediate treatment and resuscitation.",
+          "citation": "BEST PRACTICE Sepsis [SNOMED: 91302008] and septic shock [SNOMED: 76571007] are medical emergencies [SNOMED: 25876001], and we recommend that treatment and resuscitation [SNOMED: 439569004] begin [SNOMED: 255395001] immediately.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:4e86a97f-6189-49f0-a628-24dc7438c0cf",
+          "rationale": "Sepsis is a medical emergency requiring immediate treatment and resuscitation.",
+          "citation": "BEST PRACTICE Sepsis [SNOMED: 91302008] and septic shock [SNOMED: 76571007] are medical emergencies [SNOMED: 25876001], and we recommend that treatment and resuscitation [SNOMED: 439569004] begin [SNOMED: 255395001] immediately.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f7890123-4567-890a-bcde-f123456789ab",
+          "rationale": "For patients with sepsis, at least 30 mL/kg of intravenous crystalloid fluid should be given within the first 3 hours.",
+          "citation": "* [LOW] For patients with sepsis [SNOMED: 91302008] induced [SNOMED: 16404004] hypoperfusion [SNOMED: 264533003] or septic shock [SNOMED: 76571007] we suggest that at least 30 mL/kg [SNOMED: 396180007] of intravenous (IV [SNOMED: 255560000]) crystalloid fluid should be given [SNOMED: 419582001] within the first 3 hours of resuscitation [SNOMED: 439569004].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:8dc63dc9-7acd-4f11-afcc-30554fbb1081",
+          "rationale": "For adults with sepsis, dynamic measures should be used to guide fluid resuscitation.",
+          "citation": "* [VERY LOW [SNOMED: 260362008]] For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest using dynamic [SNOMED: 229027002] measures to guide fluid resuscitation [SNOMED: 439569004], over physical examination [SNOMED: 5880005], or static [SNOMED: 257390007] parameters alone.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+          "rationale": "For adults with sepsis, resuscitation should be guided to decrease serum lactate in patients with elevated lactate level.",
+          "citation": "* [LOW] For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest guiding resuscitation [SNOMED: 439569004] to decrease serum lactate [SNOMED: 270982000] in patients with elevated lactate level [SNOMED: 425954005], over not using serum lactate [SNOMED: 270982000].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:033121c8-8e86-4d04-8fff-a8008fe5865d",
+          "rationale": "For adults with sepsis, capillary refill time should be used to guide resuscitation as an adjunct.",
+          "citation": "* [LOW] For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest using capillary refill time [SNOMED: 15527001] to guide resuscitation [SNOMED: 439569004] as an adjunct to other measures of perfusion [SNOMED: 88058003].",
+          "citation_paraphrase": "* [LOW] For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest using capillary refill time [SNOMED: 15527001] to guide resuscitation [SNOMED: 439569004] as an adjunct to other measures of perfusion [SNOMED: 88058003].",
+          "citation_verbatim_excerpt": "* [BEST PRACTICE] Sepsis and septic shock are medical emergencies, and we recommend that treatment and resuscitation begin immediately. * [LOW] For patients with sepsis induced hypoperfusion or septic shock we suggest that at least 30 mL/kg of intravenous (IV) crystalloid fluid should be given within the first 3 hours of resuscitation.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Condition",
+      "name": "Medical emergency",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:86598888-5dd7-4f62-a869-dbef80cad904",
+      "@type": "Finding",
+      "name": "Medical emergency",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4e86a97f-6189-49f0-a628-24dc7438c0cf",
+      "@type": "Condition",
+      "name": "Medical emergency",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:182476ca-9c72-42ea-b0d5-ee0fce07e568",
+      "@type": "Finding",
+      "name": "Medical emergency",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:76895f52-9343-4dc7-81c6-349e8884f66d",
+      "@type": "Finding",
+      "name": "Septic shock",
+      "snomed": "76571007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:4e86a97f-6189-49f0-a628-24dc7438c0cf",
+          "rationale": "Septic shock is a medical emergency requiring immediate treatment and resuscitation.",
+          "citation": "BEST PRACTICE Sepsis [SNOMED: 91302008] and septic shock [SNOMED: 76571007] are medical emergencies [SNOMED: 25876001], and we recommend that treatment and resuscitation [SNOMED: 439569004] begin [SNOMED: 255395001] immediately.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f7890123-4567-890a-bcde-f123456789ab",
+          "rationale": "For patients with septic shock, at least 30 mL/kg of intravenous crystalloid fluid should be given within the first 3 hours.",
+          "citation": "* [LOW] For patients with sepsis [SNOMED: 91302008] induced [SNOMED: 16404004] hypoperfusion [SNOMED: 264533003] or septic shock [SNOMED: 76571007] we suggest that at least 30 mL/kg [SNOMED: 396180007] of intravenous (IV [SNOMED: 255560000]) crystalloid fluid should be given [SNOMED: 419582001] within the first 3 hours of resuscitation [SNOMED: 439569004].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:8dc63dc9-7acd-4f11-afcc-30554fbb1081",
+          "rationale": "For adults with septic shock, dynamic measures should be used to guide fluid resuscitation.",
+          "citation": "* [VERY LOW [SNOMED: 260362008]] For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest using dynamic [SNOMED: 229027002] measures to guide fluid resuscitation [SNOMED: 439569004], over physical examination [SNOMED: 5880005], or static [SNOMED: 257390007] parameters alone.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+          "rationale": "For adults with septic shock, resuscitation should be guided to decrease serum lactate in patients with elevated lactate level.",
+          "citation": "* [LOW] For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest guiding resuscitation [SNOMED: 439569004] to decrease serum lactate [SNOMED: 270982000] in patients with elevated lactate level [SNOMED: 425954005], over not using serum lactate [SNOMED: 270982000].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:033121c8-8e86-4d04-8fff-a8008fe5865d",
+          "rationale": "For adults with septic shock, capillary refill time should be used to guide resuscitation as an adjunct.",
+          "citation": "* [LOW] For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest using capillary refill time [SNOMED: 15527001] to guide resuscitation [SNOMED: 439569004] as an adjunct to other measures of perfusion [SNOMED: 88058003].",
+          "citation_paraphrase": "* [LOW] For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest using capillary refill time [SNOMED: 15527001] to guide resuscitation [SNOMED: 439569004] as an adjunct to other measures of perfusion [SNOMED: 88058003].",
+          "citation_verbatim_excerpt": "* [BEST PRACTICE] Sepsis and septic shock are medical emergencies, and we recommend that treatment and resuscitation begin immediately. * [LOW] For patients with sepsis induced hypoperfusion or septic shock we suggest that at least 30 mL/kg of intravenous (IV) crystalloid fluid should be given within the first 3 hours of resuscitation.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:8dc63dc9-7acd-4f11-afcc-30554fbb1081",
+      "@type": "Intervention",
+      "name": "Immediate treatment and resuscitation",
+      "snomed": "439569004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f7890123-4567-890a-bcde-f123456789ab",
+      "@type": "Intervention",
+      "name": "Administer at least 30 mL/kg IV crystalloid fluid within first 3 hours",
+      "snomed": "419582001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quantitative_threshold": {
+        "volume": "30 mL/kg",
+        "time_window": "first 3 hours",
+        "route": "intravenous (IV)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Intervention",
+      "name": "Guide resuscitation to decrease serum lactate",
+      "snomed": "270982000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:033121c8-8e86-4d04-8fff-a8008fe5865d",
+      "@type": "Intervention",
+      "name": "Use capillary refill time to guide resuscitation as adjunct",
+      "snomed": "15527001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f7db6eba-3ed1-443c-b61f-19574433a87c",
+      "@type": "Finding",
+      "name": "Sepsis induced hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+      "@type": "Finding",
+      "name": "Sepsis induced hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d6883fa6-6551-42e0-9c33-4161b6941e4a",
+      "@type": "Finding",
+      "name": "Hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:91d585a0-fdca-451b-97be-bf456101758e",
+      "@type": "Finding",
+      "name": "Hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:69e9476b-bde1-4088-8a80-4aecd1208a99",
+      "@type": "Finding",
+      "name": "Hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3449ccdd-b2ea-4b46-8537-158dfe89f6bc",
+      "@type": "Finding",
+      "name": "Hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8a8629a2-a79a-4704-9e87-bd7b9437e86b",
+      "@type": "Finding",
+      "name": "Hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cb617954-7c5a-4732-8607-314edd98f7cf",
+      "@type": "Condition",
+      "name": "Sepsis induced hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Finding",
+      "name": "Elevated lactate level",
+      "snomed": "425954005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_initial_resuscitation_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INITIAL RESUSCITATION"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:42.000505+00:00",
+    "nodes_before": 27,
+    "nodes_after": 20,
+    "rules_before": 16,
+    "rules_after": 11
+  }
+}

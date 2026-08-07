@@ -1,0 +1,611 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Suspected sepsis",
+      "snomed": "859701000000104",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "For adults with suspected sepsis or septic shock but unconfirmed infection, continuously re-evaluate and search for alternative diagnoses and discontinue empiric antimicrobials if an alternative cause of illness is demonstrated or strongly suspected.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:eef4c721-712e-4d5b-9357-10055183e515",
+      "@type": "Finding",
+      "name": "Septic shock",
+      "snomed": "76571007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c7aa978e-0dd5-45bb-a5fc-aa3c230ac581",
+          "rationale": "For adults with suspected sepsis or septic shock but unconfirmed infection, continuously re-evaluate and search for alternative diagnoses and discontinue empiric antimicrobials if an alternative cause of illness is demonstrated or strongly suspected.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:25c4e351-cfb5-4fcb-b689-bd6ff581da13",
+          "rationale": "For adults with possible septic shock or a high likelihood for sepsis, administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Intervention",
+      "name": "Re-evaluate and search for alternative diagnoses; discontinue empiric antimicrobials if alternative cause found",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c7aa978e-0dd5-45bb-a5fc-aa3c230ac581",
+      "@type": "Intervention",
+      "name": "Re-evaluate and search for alternative diagnoses; discontinue empiric antimicrobials if alternative cause found",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:25c4e351-cfb5-4fcb-b689-bd6ff581da13",
+      "@type": "Medication",
+      "name": "Antimicrobials",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:1fb49813-5732-4dbf-b510-9f24b8bf4ae1",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1fb49813-5732-4dbf-b510-9f24b8bf4ae1",
+      "@type": "Quantitative Threshold",
+      "name": "Time to administration",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:6b5ac46c-a459-49b2-b055-7022f5b89c12",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6b5ac46c-a459-49b2-b055-7022f5b89c12",
+      "@type": "Quantitative Threshold",
+      "name": "Time window for antimicrobial administration",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:9abcdef1-2345-6789-0abc-def123456789",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9abcdef1-2345-6789-0abc-def123456789",
+      "@type": "Quantitative Threshold",
+      "name": "Time window (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:328b446f-34f9-475f-9484-0ec62fe81c84",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:328b446f-34f9-475f-9484-0ec62fe81c84",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:1a2b3c4d-e5f6-7890-1234-567890abcde0",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-7890-1234-567890abcde0",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:b7e145d6-ce05-43eb-8fc1-2b2097e5eace",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b7e145d6-ce05-43eb-8fc1-2b2097e5eace",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:aaa1c9da-9a6d-4f00-bc57-d2713bbb60ab",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:aaa1c9da-9a6d-4f00-bc57-d2713bbb60ab",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:c2d3e4f5-6789-0123-4567-89abcdef0123",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c2d3e4f5-6789-0123-4567-89abcdef0123",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:d3e4f567-8901-2345-6789-0abcdef01234",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d3e4f567-8901-2345-6789-0abcdef01234",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:e4f56789-0123-4567-89ab-cdef01234567",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e4f56789-0123-4567-89ab-cdef01234567",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:eb9129c7-2939-446c-b3b1-29ec53338ecb",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:eb9129c7-2939-446c-b3b1-29ec53338ecb",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:62dad4ea-81c6-4f3e-890c-1233cee566f8",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:62dad4ea-81c6-4f3e-890c-1233cee566f8",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:076507b7-341c-4302-a747-14caba92652e",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:076507b7-341c-4302-a747-14caba92652e",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:3406d939-0d6c-4bcf-a653-b05875010524",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3406d939-0d6c-4bcf-a653-b05875010524",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:86e5588b-eef2-446b-ac51-eb8aa4c2a5fe",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:86e5588b-eef2-446b-ac51-eb8aa4c2a5fe",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:b3b08665-5eab-46b8-8ebd-48c7cad2cef9",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b3b08665-5eab-46b8-8ebd-48c7cad2cef9",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:f2a03df3-d1a7-4b46-9286-3870ab09f2a0",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f2a03df3-d1a7-4b46-9286-3870ab09f2a0",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:91ca223a-0f6a-427d-91ac-f45c20b8a7a3",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:91ca223a-0f6a-427d-91ac-f45c20b8a7a3",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:308b4b4a-f4ec-4572-8000-92d242cb3747",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:308b4b4a-f4ec-4572-8000-92d242cb3747",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:ba95c401-80c5-4d43-8944-51d0b979e9d4",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ba95c401-80c5-4d43-8944-51d0b979e9d4",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:73f55db5-b415-47a6-8761-431c20154cfb",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:73f55db5-b415-47a6-8761-431c20154cfb",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:0a430ae7-bcc7-4977-a1f5-e77c9eef0290",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0a430ae7-bcc7-4977-a1f5-e77c9eef0290",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:f9d6fba5-1a9f-4ee7-87b9-7554947b0c7c",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f9d6fba5-1a9f-4ee7-87b9-7554947b0c7c",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:438bd3bd-b789-483e-b5dd-4a74a006f35f",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:438bd3bd-b789-483e-b5dd-4a74a006f35f",
+      "@type": "Quantitative Threshold",
+      "name": "Time window value (hours)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_1_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 1/2"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:04ca9879-f453-4e7b-b6fa-f2777f299ac7",
+          "rationale": "Administer antimicrobials immediately, ideally within one hour of recognition.",
+          "citation": "SSC guidelines 2021",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:04ca9879-f453-4e7b-b6fa-f2777f299ac7",
+      "@type": "Quantitative Threshold",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:41.855078+00:00",
+    "nodes_before": 31,
+    "nodes_after": 31,
+    "rules_before": 29,
+    "rules_after": 29
+  }
+}

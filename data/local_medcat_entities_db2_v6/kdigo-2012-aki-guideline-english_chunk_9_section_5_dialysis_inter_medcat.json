@@ -1,0 +1,695 @@
+{
+  "chunk_id": "chunk_9",
+  "entities": [
+    {
+      "snomed_cui": "265764009",
+      "preferred_name": "Renal dialysis",
+      "source_value": "Dialysis",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 13,
+        "end": 21
+      }
+    },
+    {
+      "snomed_cui": "225334002",
+      "preferred_name": "Intervention regime",
+      "source_value": "Interventions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 22,
+        "end": 35
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "Treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 40,
+        "end": 49
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 53,
+        "end": 56
+      }
+    },
+    {
+      "snomed_cui": "246512002",
+      "preferred_name": "Timing",
+      "source_value": "Timing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 74,
+        "end": 80
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "changes in",
+      "confidence_score": 0.9516436799170829,
+      "character_boundaries": {
+        "start": 141,
+        "end": 151
+      }
+    },
+    {
+      "snomed_cui": "33463005",
+      "preferred_name": "Liquid substance",
+      "source_value": "fluid",
+      "confidence_score": 0.49315065961973675,
+      "character_boundaries": {
+        "start": 152,
+        "end": 157
+      }
+    },
+    {
+      "snomed_cui": "86355000",
+      "preferred_name": "Electrolyte",
+      "source_value": "electrolyte",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 159,
+        "end": 170
+      }
+    },
+    {
+      "snomed_cui": "34957004",
+      "preferred_name": "Acid",
+      "source_value": "acid",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 176,
+        "end": 180
+      }
+    },
+    {
+      "snomed_cui": "705235004",
+      "preferred_name": "Balance",
+      "source_value": "balance",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 186,
+        "end": 193
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 230,
+        "end": 238
+      }
+    },
+    {
+      "snomed_cui": "263491009",
+      "preferred_name": "Context",
+      "source_value": "context",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 239,
+        "end": 246
+      }
+    },
+    {
+      "snomed_cui": "261904005",
+      "preferred_name": "Laboratory",
+      "source_value": "laboratory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 251,
+        "end": 261
+      }
+    },
+    {
+      "snomed_cui": "30294006",
+      "preferred_name": "With trend",
+      "source_value": "trends",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 262,
+        "end": 268
+      }
+    },
+    {
+      "snomed_cui": "250623007",
+      "preferred_name": "Blood urea measurement",
+      "source_value": "BUN",
+      "confidence_score": 0.3234069591078888,
+      "character_boundaries": {
+        "start": 281,
+        "end": 284
+      }
+    },
+    {
+      "snomed_cui": "15373003",
+      "preferred_name": "Creatinine",
+      "source_value": "creatinine",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 285,
+        "end": 295
+      }
+    },
+    {
+      "snomed_cui": "246510005",
+      "preferred_name": "Threshold",
+      "source_value": "thresholds",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 296,
+        "end": 306
+      }
+    },
+    {
+      "snomed_cui": "410546004",
+      "preferred_name": "Discontinued",
+      "source_value": "Discontinue",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 377,
+        "end": 388
+      }
+    },
+    {
+      "snomed_cui": "255406006",
+      "preferred_name": "Intrinsic",
+      "source_value": "intrinsic",
+      "confidence_score": 0.36780156675396775,
+      "character_boundaries": {
+        "start": 398,
+        "end": 407
+      }
+    },
+    {
+      "snomed_cui": "11953005",
+      "preferred_name": "Renal function",
+      "source_value": "kidney function",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 408,
+        "end": 423
+      }
+    },
+    {
+      "snomed_cui": "74822006",
+      "preferred_name": "Recovering from (contextual qualifier)",
+      "source_value": "recovered",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 428,
+        "end": 437
+      }
+    },
+    {
+      "snomed_cui": "358612008",
+      "preferred_name": "Lengthened",
+      "source_value": "longer",
+      "confidence_score": 0.7041665673251943,
+      "character_boundaries": {
+        "start": 451,
+        "end": 457
+      }
+    },
+    {
+      "snomed_cui": "385433004",
+      "preferred_name": "Consistent with",
+      "source_value": "consistent with",
+      "confidence_score": 0.7482213282002512,
+      "character_boundaries": {
+        "start": 458,
+        "end": 473
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 474,
+        "end": 479
+      }
+    },
+    {
+      "snomed_cui": "372695000",
+      "preferred_name": "Diuretic",
+      "source_value": "diuretics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 527,
+        "end": 536
+      }
+    },
+    {
+      "snomed_cui": "181414000",
+      "preferred_name": "Entire kidney",
+      "source_value": "kidney",
+      "confidence_score": 0.5923709439364595,
+      "character_boundaries": {
+        "start": 548,
+        "end": 554
+      }
+    },
+    {
+      "snomed_cui": "272116003",
+      "preferred_name": "Durations",
+      "source_value": "duration",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 578,
+        "end": 586
+      }
+    },
+    {
+      "snomed_cui": "182764009",
+      "preferred_name": "Anticoagulant therapy",
+      "source_value": "Anticoagulation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 610,
+        "end": 625
+      }
+    },
+    {
+      "snomed_cui": "182764009",
+      "preferred_name": "Anticoagulant therapy",
+      "source_value": "anticoagulation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 638,
+        "end": 653
+      }
+    },
+    {
+      "snomed_cui": "131148009",
+      "preferred_name": "Bleeding",
+      "source_value": "bleeding",
+      "confidence_score": 0.6412760105075545,
+      "character_boundaries": {
+        "start": 666,
+        "end": 674
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 675,
+        "end": 679
+      }
+    },
+    {
+      "snomed_cui": "310243009",
+      "preferred_name": "Nutritional assessment",
+      "source_value": "assessment",
+      "confidence_score": 0.8031052576266997,
+      "character_boundaries": {
+        "start": 692,
+        "end": 702
+      }
+    },
+    {
+      "snomed_cui": "7087005",
+      "preferred_name": "Intermittent",
+      "source_value": "intermittent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 717,
+        "end": 729
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 735,
+        "end": 744
+      }
+    },
+    {
+      "snomed_cui": "373294004",
+      "preferred_name": "Low molecular weight heparin",
+      "source_value": "low-molecular-weight heparin",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 763,
+        "end": 791
+      }
+    },
+    {
+      "snomed_cui": "714749008",
+      "preferred_name": "Continuous renal replacement therapy",
+      "source_value": "CRRT",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 811,
+        "end": 815
+      }
+    },
+    {
+      "snomed_cui": "103306004",
+      "preferred_name": "Contraindication to (contextual qualifier)",
+      "source_value": "contraindications",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 824,
+        "end": 841
+      }
+    },
+    {
+      "snomed_cui": "410674003",
+      "preferred_name": "Regional",
+      "source_value": "regional",
+      "confidence_score": 0.8836508940620688,
+      "character_boundaries": {
+        "start": 851,
+        "end": 859
+      }
+    },
+    {
+      "snomed_cui": "59351004",
+      "preferred_name": "Citrate",
+      "source_value": "citrate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 860,
+        "end": 867
+      }
+    },
+    {
+      "snomed_cui": "182764009",
+      "preferred_name": "Anticoagulant therapy",
+      "source_value": "anticoagulation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 868,
+        "end": 883
+      }
+    },
+    {
+      "snomed_cui": "372877000",
+      "preferred_name": "Heparin",
+      "source_value": "heparin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 896,
+        "end": 903
+      }
+    },
+    {
+      "snomed_cui": "73397007",
+      "preferred_name": "Heparin-induced thrombocytopenia",
+      "source_value": "HIT",
+      "confidence_score": 0.42873720365896334,
+      "character_boundaries": {
+        "start": 920,
+        "end": 923
+      }
+    },
+    {
+      "snomed_cui": "372877000",
+      "preferred_name": "Heparin",
+      "source_value": "heparin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 934,
+        "end": 941
+      }
+    },
+    {
+      "snomed_cui": "734938004",
+      "preferred_name": "Direct thrombin inhibitor",
+      "source_value": "direct thrombin inhibitors",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 950,
+        "end": 976
+      }
+    },
+    {
+      "snomed_cui": "116508003",
+      "preferred_name": "Argatroban",
+      "source_value": "argatroban",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 978,
+        "end": 988
+      }
+    },
+    {
+      "snomed_cui": "763709007",
+      "preferred_name": "Coagulation factor Xa inhibitor",
+      "source_value": "Factor Xa inhibitors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 993,
+        "end": 1013
+      }
+    },
+    {
+      "snomed_cui": "27550009",
+      "preferred_name": "Disorder of blood vessel",
+      "source_value": "Vascular",
+      "confidence_score": 0.5373346414441662,
+      "character_boundaries": {
+        "start": 1037,
+        "end": 1045
+      }
+    },
+    {
+      "snomed_cui": "260507000",
+      "preferred_name": "Access",
+      "source_value": "access",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1046,
+        "end": 1052
+      }
+    },
+    {
+      "snomed_cui": "397849009",
+      "preferred_name": "Dialysis catheter",
+      "source_value": "dialysis catheter",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1098,
+        "end": 1115
+      }
+    },
+    {
+      "snomed_cui": "29092000",
+      "preferred_name": "Venous structure",
+      "source_value": "Vein",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1129,
+        "end": 1133
+      }
+    },
+    {
+      "snomed_cui": "257867005",
+      "preferred_name": "Insertion - action",
+      "source_value": "insertion",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1134,
+        "end": 1143
+      }
+    },
+    {
+      "snomed_cui": "225773000",
+      "preferred_name": "Preferences",
+      "source_value": "preferences",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1144,
+        "end": 1155
+      }
+    },
+    {
+      "snomed_cui": "24028007",
+      "preferred_name": "Right",
+      "source_value": "Right",
+      "confidence_score": 0.7962875594245297,
+      "character_boundaries": {
+        "start": 1161,
+        "end": 1166
+      }
+    },
+    {
+      "snomed_cui": "81170007",
+      "preferred_name": "Second",
+      "source_value": "2nd",
+      "confidence_score": 0.459056888783573,
+      "character_boundaries": {
+        "start": 1176,
+        "end": 1179
+      }
+    },
+    {
+      "snomed_cui": "71341001",
+      "preferred_name": "Bone structure of femur",
+      "source_value": "Femoral",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1180,
+        "end": 1187
+      }
+    },
+    {
+      "snomed_cui": "70905002",
+      "preferred_name": "Third",
+      "source_value": "3rd",
+      "confidence_score": 0.3382630928043543,
+      "character_boundaries": {
+        "start": 1189,
+        "end": 1192
+      }
+    },
+    {
+      "snomed_cui": "7771000",
+      "preferred_name": "Left",
+      "source_value": "Left",
+      "confidence_score": 0.8019484849414953,
+      "character_boundaries": {
+        "start": 1193,
+        "end": 1197
+      }
+    },
+    {
+      "snomed_cui": "303578004",
+      "preferred_name": "Subclavicular approach",
+      "source_value": "Subclavian",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1212,
+        "end": 1222
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1231,
+        "end": 1240
+      }
+    },
+    {
+      "snomed_cui": "61593002",
+      "preferred_name": "Ultrasonic guidance procedure",
+      "source_value": "ultrasound guidance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1241,
+        "end": 1260
+      }
+    },
+    {
+      "snomed_cui": "257867005",
+      "preferred_name": "Insertion - action",
+      "source_value": "insertion",
+      "confidence_score": 0.8494704961841457,
+      "character_boundaries": {
+        "start": 1265,
+        "end": 1274
+      }
+    },
+    {
+      "snomed_cui": "59156000",
+      "preferred_name": "Confirmed by (contextual qualifier)",
+      "source_value": "Confirm",
+      "confidence_score": 0.8420568802950097,
+      "character_boundaries": {
+        "start": 1288,
+        "end": 1295
+      }
+    },
+    {
+      "snomed_cui": "246268007",
+      "preferred_name": "Position",
+      "source_value": "position",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1296,
+        "end": 1304
+      }
+    },
+    {
+      "snomed_cui": "51185008",
+      "preferred_name": "Thoracic structure",
+      "source_value": "chest",
+      "confidence_score": 0.8991195085302615,
+      "character_boundaries": {
+        "start": 1310,
+        "end": 1315
+      }
+    },
+    {
+      "snomed_cui": "168537006",
+      "preferred_name": "Plain X-ray",
+      "source_value": "radiograph",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1316,
+        "end": 1326
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "prior to",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1327,
+        "end": 1335
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1342,
+        "end": 1348
+      }
+    },
+    {
+      "snomed_cui": "260521003",
+      "preferred_name": "Internal",
+      "source_value": "internal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1349,
+        "end": 1357
+      }
+    },
+    {
+      "snomed_cui": "465589004",
+      "preferred_name": "Subclavian catheter",
+      "source_value": "subclavian catheters",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1369,
+        "end": 1389
+      }
+    }
+  ]
+}

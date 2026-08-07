@@ -1,0 +1,945 @@
+{
+  "chunk_id": "universal_protocol_up_01_03_01",
+  "entities": [
+    {
+      "snomed_cui": "398166005",
+      "preferred_name": "Performed",
+      "source_value": "performed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 30,
+        "end": 39
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 51,
+        "end": 60
+      }
+    },
+    {
+      "snomed_cui": "410666004",
+      "preferred_name": "Reason for",
+      "source_value": "Rationale",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 67,
+        "end": 76
+      }
+    },
+    {
+      "snomed_cui": "246099003",
+      "preferred_name": "Purpose",
+      "source_value": "purpose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 102,
+        "end": 109
+      }
+    },
+    {
+      "snomed_cui": "844005",
+      "preferred_name": "Behavior finding",
+      "source_value": "conduct",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 132,
+        "end": 139
+      }
+    },
+    {
+      "snomed_cui": "42796001",
+      "preferred_name": "End-stage",
+      "source_value": "final",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 142,
+        "end": 147
+      }
+    },
+    {
+      "snomed_cui": "1100881000168104",
+      "preferred_name": "Assessment of cognitive function",
+      "source_value": "assessment",
+      "confidence_score": 0.6928811874560793,
+      "character_boundaries": {
+        "start": 148,
+        "end": 158
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 176,
+        "end": 183
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 185,
+        "end": 189
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 195,
+        "end": 204
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 209,
+        "end": 219
+      }
+    },
+    {
+      "snomed_cui": "87017008",
+      "preferred_name": "Focal",
+      "source_value": "focuses",
+      "confidence_score": 0.7059799329394576,
+      "character_boundaries": {
+        "start": 238,
+        "end": 245
+      }
+    },
+    {
+      "snomed_cui": "844005",
+      "preferred_name": "Behavior finding",
+      "source_value": "conduct",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 326,
+        "end": 333
+      }
+    },
+    {
+      "snomed_cui": "399097000",
+      "preferred_name": "Administration of anesthesia",
+      "source_value": "anesthesia for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 354,
+        "end": 368
+      }
+    },
+    {
+      "snomed_cui": "410666004",
+      "preferred_name": "Reason for",
+      "source_value": "reasons",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 377,
+        "end": 384
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 386,
+        "end": 395
+      }
+    },
+    {
+      "snomed_cui": "278112009",
+      "preferred_name": "Involvement",
+      "source_value": "involvement",
+      "confidence_score": 0.31839629867220853,
+      "character_boundaries": {
+        "start": 396,
+        "end": 407
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 415,
+        "end": 422
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 426,
+        "end": 434
+      }
+    },
+    {
+      "snomed_cui": "844005",
+      "preferred_name": "Behavior finding",
+      "source_value": "conduct",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 439,
+        "end": 446
+      }
+    },
+    {
+      "snomed_cui": "399097000",
+      "preferred_name": "Administration of anesthesia",
+      "source_value": "anesthesia",
+      "confidence_score": 0.3095379360537585,
+      "character_boundaries": {
+        "start": 467,
+        "end": 477
+      }
+    },
+    {
+      "snomed_cui": "257733005",
+      "preferred_name": "Activity",
+      "source_value": "activities",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 539,
+        "end": 549
+      }
+    },
+    {
+      "snomed_cui": "385655000",
+      "preferred_name": "Suspended",
+      "source_value": "suspended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 554,
+        "end": 563
+      }
+    },
+    {
+      "snomed_cui": "255590007",
+      "preferred_name": "Extents",
+      "source_value": "extent",
+      "confidence_score": 0.7003862767292307,
+      "character_boundaries": {
+        "start": 571,
+        "end": 577
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 578,
+        "end": 586
+      }
+    },
+    {
+      "snomed_cui": "231113001",
+      "preferred_name": "Tannenbaum electroanalgesia method",
+      "source_value": "team",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 595,
+        "end": 599
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "members",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 600,
+        "end": 607
+      }
+    },
+    {
+      "snomed_cui": "87017008",
+      "preferred_name": "Focal",
+      "source_value": "focus",
+      "confidence_score": 0.5041793726042961,
+      "character_boundaries": {
+        "start": 612,
+        "end": 617
+      }
+    },
+    {
+      "snomed_cui": "55561003",
+      "preferred_name": "Active",
+      "source_value": "active",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 621,
+        "end": 627
+      }
+    },
+    {
+      "snomed_cui": "74996004",
+      "preferred_name": "Confirmation of (contextual qualifier)",
+      "source_value": "confirmation of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 628,
+        "end": 643
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 648,
+        "end": 655
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 657,
+        "end": 661
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 667,
+        "end": 676
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "member of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 692,
+        "end": 701
+      }
+    },
+    {
+      "snomed_cui": "231113001",
+      "preferred_name": "Tannenbaum electroanalgesia method",
+      "source_value": "team",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 706,
+        "end": 710
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "includes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 741,
+        "end": 749
+      }
+    },
+    {
+      "snomed_cui": "55561003",
+      "preferred_name": "Active",
+      "source_value": "active",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 750,
+        "end": 756
+      }
+    },
+    {
+      "snomed_cui": "263536004",
+      "preferred_name": "Communication",
+      "source_value": "communication",
+      "confidence_score": 0.5355758900413755,
+      "character_boundaries": {
+        "start": 757,
+        "end": 770
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "members of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 790,
+        "end": 800
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 805,
+        "end": 814
+      }
+    },
+    {
+      "snomed_cui": "231113001",
+      "preferred_name": "Tannenbaum electroanalgesia method",
+      "source_value": "team",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 815,
+        "end": 819
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 825,
+        "end": 834
+      }
+    },
+    {
+      "snomed_cui": "385652002",
+      "preferred_name": "Started",
+      "source_value": "started",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 842,
+        "end": 849
+      }
+    },
+    {
+      "snomed_cui": "723506003",
+      "preferred_name": "Resolved",
+      "source_value": "resolved",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 886,
+        "end": 894
+      }
+    },
+    {
+      "snomed_cui": "254648000",
+      "preferred_name": "Effective",
+      "source_value": "effective",
+      "confidence_score": 0.7953078001172947,
+      "character_boundaries": {
+        "start": 917,
+        "end": 926
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 972,
+        "end": 980
+      }
+    },
+    {
+      "snomed_cui": "57795002",
+      "preferred_name": "Chemical element",
+      "source_value": "Element",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 987,
+        "end": 994
+      }
+    },
+    {
+      "snomed_cui": "844005",
+      "preferred_name": "Behavior finding",
+      "source_value": "Conduct",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1039,
+        "end": 1046
+      }
+    },
+    {
+      "snomed_cui": "49499008",
+      "preferred_name": "Stat",
+      "source_value": "immediately",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1058,
+        "end": 1069
+      }
+    },
+    {
+      "snomed_cui": "129236007",
+      "preferred_name": "Open approach - access",
+      "source_value": "invasive procedure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1090,
+        "end": 1108
+      }
+    },
+    {
+      "snomed_cui": "34896006",
+      "preferred_name": "Incision",
+      "source_value": "incision",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1123,
+        "end": 1131
+      }
+    },
+    {
+      "snomed_cui": "34801009",
+      "preferred_name": "Ectopic pregnancy",
+      "source_value": "EP",
+      "confidence_score": 0.3078844087958379,
+      "character_boundaries": {
+        "start": 1136,
+        "end": 1138
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1164,
+        "end": 1173
+      }
+    },
+    {
+      "snomed_cui": "900000000000073002",
+      "preferred_name": "Sufficiently defined by necessary conditions definition status",
+      "source_value": "defined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1216,
+        "end": 1223
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1231,
+        "end": 1239
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "member of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1275,
+        "end": 1284
+      }
+    },
+    {
+      "snomed_cui": "231113001",
+      "preferred_name": "Tannenbaum electroanalgesia method",
+      "source_value": "team",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1289,
+        "end": 1293
+      }
+    },
+    {
+      "snomed_cui": "49499008",
+      "preferred_name": "Stat",
+      "source_value": "immediate",
+      "confidence_score": 0.34503687978749953,
+      "character_boundaries": {
+        "start": 1313,
+        "end": 1322
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "members of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1323,
+        "end": 1333
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1338,
+        "end": 1347
+      }
+    },
+    {
+      "snomed_cui": "231113001",
+      "preferred_name": "Tannenbaum electroanalgesia method",
+      "source_value": "team",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1348,
+        "end": 1352
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1354,
+        "end": 1363
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1368,
+        "end": 1378
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1394,
+        "end": 1403
+      }
+    },
+    {
+      "snomed_cui": "399097000",
+      "preferred_name": "Administration of anesthesia",
+      "source_value": "anesthesia",
+      "confidence_score": 0.5137913600935035,
+      "character_boundaries": {
+        "start": 1409,
+        "end": 1419
+      }
+    },
+    {
+      "snomed_cui": "719031000000103",
+      "preferred_name": "Provider",
+      "source_value": "providers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1420,
+        "end": 1429
+      }
+    },
+    {
+      "snomed_cui": "413854007",
+      "preferred_name": "Circulating nurse",
+      "source_value": "circulating nurse",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1435,
+        "end": 1452
+      }
+    },
+    {
+      "snomed_cui": "878786001",
+      "preferred_name": "Operating room technician",
+      "source_value": "operating room technician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1458,
+        "end": 1483
+      }
+    },
+    {
+      "snomed_cui": "55561003",
+      "preferred_name": "Active",
+      "source_value": "active",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1495,
+        "end": 1501
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1548,
+        "end": 1557
+      }
+    },
+    {
+      "snomed_cui": "255395001",
+      "preferred_name": "Origins",
+      "source_value": "beginning",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1567,
+        "end": 1576
+      }
+    },
+    {
+      "snomed_cui": "34801009",
+      "preferred_name": "Ectopic pregnancy",
+      "source_value": "EP",
+      "confidence_score": 0.4021597975438965,
+      "character_boundaries": {
+        "start": 1581,
+        "end": 1583
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1605,
+        "end": 1615
+      }
+    },
+    {
+      "snomed_cui": "398166005",
+      "preferred_name": "Performed",
+      "source_value": "performed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1626,
+        "end": 1635
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1648,
+        "end": 1655
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "person",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1665,
+        "end": 1671
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1687,
+        "end": 1696
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "changes",
+      "confidence_score": 0.4673137039452743,
+      "character_boundaries": {
+        "start": 1697,
+        "end": 1704
+      }
+    },
+    {
+      "snomed_cui": "398166005",
+      "preferred_name": "Performed",
+      "source_value": "perform",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1706,
+        "end": 1713
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1737,
+        "end": 1746
+      }
+    },
+    {
+      "snomed_cui": "231113001",
+      "preferred_name": "Tannenbaum electroanalgesia method",
+      "source_value": "team",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1796,
+        "end": 1800
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "members",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1801,
+        "end": 1808
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1837,
+        "end": 1846
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1858,
+        "end": 1865
+      }
+    },
+    {
+      "snomed_cui": "247889000",
+      "preferred_name": "Sense of identity",
+      "source_value": "identity",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1866,
+        "end": 1874
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1889,
+        "end": 1893
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1900,
+        "end": 1909
+      }
+    },
+    {
+      "snomed_cui": "385643006",
+      "preferred_name": "To be done",
+      "source_value": "to be done",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1910,
+        "end": 1920
+      }
+    },
+    {
+      "snomed_cui": "397966007",
+      "preferred_name": "Documents",
+      "source_value": "Document",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1931,
+        "end": 1939
+      }
+    },
+    {
+      "snomed_cui": "255594003",
+      "preferred_name": "Complete",
+      "source_value": "completion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1944,
+        "end": 1954
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1983,
+        "end": 1991
+      }
+    },
+    {
+      "snomed_cui": "436000",
+      "preferred_name": "Determined by (contextual qualifier)",
+      "source_value": "determines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1992,
+        "end": 2002
+      }
+    },
+    {
+      "snomed_cui": "23745001",
+      "preferred_name": "Documentation procedure",
+      "source_value": "documentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2026,
+        "end": 2039
+      }
+    },
+    {
+      "snomed_cui": "23745001",
+      "preferred_name": "Documentation procedure",
+      "source_value": "Documentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2044,
+        "end": 2057
+      }
+    }
+  ]
+}

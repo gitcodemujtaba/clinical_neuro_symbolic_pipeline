@@ -1,0 +1,1345 @@
+{
+  "chunk_id": "chunk_2",
+  "entities": [
+    {
+      "snomed_cui": "900000000000550004",
+      "preferred_name": "Definition",
+      "source_value": "DEFINITION",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 0,
+        "end": 10
+      }
+    },
+    {
+      "snomed_cui": "900000000000550004",
+      "preferred_name": "Definition",
+      "source_value": "Definition",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 25,
+        "end": 35
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 37,
+        "end": 41
+      }
+    },
+    {
+      "snomed_cui": "116680003",
+      "preferred_name": "Is a",
+      "source_value": "is a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 42,
+        "end": 46
+      }
+    },
+    {
+      "snomed_cui": "19829001",
+      "preferred_name": "Disorder of lung",
+      "source_value": "lung",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 61,
+        "end": 65
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "condition",
+      "confidence_score": 0.6545852435581156,
+      "character_boundaries": {
+        "start": 66,
+        "end": 75
+      }
+    },
+    {
+      "snomed_cui": "90734009",
+      "preferred_name": "Chronic",
+      "source_value": "chronic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 93,
+        "end": 100
+      }
+    },
+    {
+      "snomed_cui": "86290005",
+      "preferred_name": "Respiratory rate",
+      "source_value": "respiratory",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 101,
+        "end": 112
+      }
+    },
+    {
+      "snomed_cui": "267036007",
+      "preferred_name": "Dyspnea",
+      "source_value": "dyspnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 123,
+        "end": 130
+      }
+    },
+    {
+      "snomed_cui": "263731006",
+      "preferred_name": "Coughing",
+      "source_value": "cough",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 132,
+        "end": 137
+      }
+    },
+    {
+      "snomed_cui": "45710003",
+      "preferred_name": "Sputum",
+      "source_value": "sputum",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 139,
+        "end": 145
+      }
+    },
+    {
+      "snomed_cui": "42752001",
+      "preferred_name": "Due to",
+      "source_value": "due to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 179,
+        "end": 185
+      }
+    },
+    {
+      "snomed_cui": "276654001",
+      "preferred_name": "Congenital malformation",
+      "source_value": "abnormalities",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 186,
+        "end": 199
+      }
+    },
+    {
+      "snomed_cui": "89187006",
+      "preferred_name": "Airway structure",
+      "source_value": "airways",
+      "confidence_score": 0.5258299758250994,
+      "character_boundaries": {
+        "start": 207,
+        "end": 214
+      }
+    },
+    {
+      "snomed_cui": "32398004",
+      "preferred_name": "Bronchitis",
+      "source_value": "bronchitis",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 216,
+        "end": 226
+      }
+    },
+    {
+      "snomed_cui": "4120002",
+      "preferred_name": "Bronchiolitis",
+      "source_value": "bronchiolitis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 228,
+        "end": 241
+      }
+    },
+    {
+      "snomed_cui": "49158009",
+      "preferred_name": "Emphysema",
+      "source_value": "emphysema",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 259,
+        "end": 268
+      }
+    },
+    {
+      "snomed_cui": "134198009",
+      "preferred_name": "Etiology",
+      "source_value": "cause",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 275,
+        "end": 280
+      }
+    },
+    {
+      "snomed_cui": "255314001",
+      "preferred_name": "Progressive",
+      "source_value": "progressive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 299,
+        "end": 310
+      }
+    },
+    {
+      "snomed_cui": "4601000",
+      "preferred_name": "Airflow, function",
+      "source_value": "airflow",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 312,
+        "end": 319
+      }
+    },
+    {
+      "snomed_cui": "26036001",
+      "preferred_name": "Obstruction",
+      "source_value": "obstruction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 320,
+        "end": 331
+      }
+    },
+    {
+      "snomed_cui": "134198009",
+      "preferred_name": "Etiology",
+      "source_value": "Causes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 334,
+        "end": 340
+      }
+    },
+    {
+      "snomed_cui": "80943009",
+      "preferred_name": "Risk factor",
+      "source_value": "Risk Factors",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 345,
+        "end": 357
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 359,
+        "end": 363
+      }
+    },
+    {
+      "snomed_cui": "67271001",
+      "preferred_name": "Gene",
+      "source_value": "gene",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 377,
+        "end": 381
+      }
+    },
+    {
+      "snomed_cui": "276339004",
+      "preferred_name": "Environment",
+      "source_value": "environment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 385,
+        "end": 396
+      }
+    },
+    {
+      "snomed_cui": "225598002",
+      "preferred_name": "Interaction with others",
+      "source_value": "interactions",
+      "confidence_score": 0.47437413890918567,
+      "character_boundaries": {
+        "start": 400,
+        "end": 412
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 451,
+        "end": 461
+      }
+    },
+    {
+      "snomed_cui": "321401000000106",
+      "preferred_name": "Genomics",
+      "source_value": "GETomics",
+      "confidence_score": 0.6359275105451659,
+      "character_boundaries": {
+        "start": 463,
+        "end": 471
+      }
+    },
+    {
+      "snomed_cui": "37782003",
+      "preferred_name": "Damage",
+      "source_value": "damage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 482,
+        "end": 488
+      }
+    },
+    {
+      "snomed_cui": "19829001",
+      "preferred_name": "Disorder of lung",
+      "source_value": "lungs",
+      "confidence_score": 0.8196770458643895,
+      "character_boundaries": {
+        "start": 493,
+        "end": 498
+      }
+    },
+    {
+      "snomed_cui": "17621005",
+      "preferred_name": "Normal",
+      "source_value": "normal",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 518,
+        "end": 524
+      }
+    },
+    {
+      "snomed_cui": "129822005",
+      "preferred_name": "Childhood growth AND/OR development finding",
+      "source_value": "development",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 525,
+        "end": 536
+      }
+    },
+    {
+      "snomed_cui": "248280005",
+      "preferred_name": "Aging",
+      "source_value": "aging",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 537,
+        "end": 542
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "processes",
+      "confidence_score": 0.5773861639824319,
+      "character_boundaries": {
+        "start": 543,
+        "end": 552
+      }
+    },
+    {
+      "snomed_cui": "63161005",
+      "preferred_name": "Principal",
+      "source_value": "main",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 558,
+        "end": 562
+      }
+    },
+    {
+      "snomed_cui": "276339004",
+      "preferred_name": "Environment",
+      "source_value": "environmental",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 563,
+        "end": 576
+      }
+    },
+    {
+      "snomed_cui": "24932003",
+      "preferred_name": "Exposure to (contextual qualifier)",
+      "source_value": "exposures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 577,
+        "end": 586
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "leading",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 587,
+        "end": 594
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 598,
+        "end": 602
+      }
+    },
+    {
+      "snomed_cui": "365981007",
+      "preferred_name": "Finding of tobacco smoking behavior",
+      "source_value": "tobacco smoking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 607,
+        "end": 622
+      }
+    },
+    {
+      "snomed_cui": "14910006",
+      "preferred_name": "Inspiration",
+      "source_value": "inhalation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 631,
+        "end": 641
+      }
+    },
+    {
+      "snomed_cui": "75478009",
+      "preferred_name": "Poisoning",
+      "source_value": "toxic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 645,
+        "end": 650
+      }
+    },
+    {
+      "snomed_cui": "413643004",
+      "preferred_name": "Beta-hemolytic Streptococcus, group A",
+      "source_value": "gases",
+      "confidence_score": 0.41990690274829645,
+      "character_boundaries": {
+        "start": 665,
+        "end": 670
+      }
+    },
+    {
+      "snomed_cui": "723901000000103",
+      "preferred_name": "Household",
+      "source_value": "household",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 676,
+        "end": 685
+      }
+    },
+    {
+      "snomed_cui": "724931000000107",
+      "preferred_name": "Outdoor air pollution",
+      "source_value": "outdoor air pollution",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 690,
+        "end": 711
+      }
+    },
+    {
+      "snomed_cui": "276339004",
+      "preferred_name": "Environment",
+      "source_value": "environmental",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 723,
+        "end": 736
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 755,
+        "end": 764
+      }
+    },
+    {
+      "snomed_cui": "263654008",
+      "preferred_name": "Abnormal",
+      "source_value": "abnormal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 765,
+        "end": 773
+      }
+    },
+    {
+      "snomed_cui": "19829001",
+      "preferred_name": "Disorder of lung",
+      "source_value": "lung",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 774,
+        "end": 778
+      }
+    },
+    {
+      "snomed_cui": "129822005",
+      "preferred_name": "Childhood growth AND/OR development finding",
+      "source_value": "development",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 779,
+        "end": 790
+      }
+    },
+    {
+      "snomed_cui": "14355007",
+      "preferred_name": "Accelerated (contextual qualifier)",
+      "source_value": "accelerated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 795,
+        "end": 806
+      }
+    },
+    {
+      "snomed_cui": "19829001",
+      "preferred_name": "Disorder of lung",
+      "source_value": "lung",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 807,
+        "end": 811
+      }
+    },
+    {
+      "snomed_cui": "248280005",
+      "preferred_name": "Aging",
+      "source_value": "aging",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 812,
+        "end": 817
+      }
+    },
+    {
+      "snomed_cui": "439401001",
+      "preferred_name": "Diagnosis",
+      "source_value": "Diagnostic",
+      "confidence_score": 0.8090623673822906,
+      "character_boundaries": {
+        "start": 841,
+        "end": 851
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 881,
+        "end": 889
+      }
+    },
+    {
+      "snomed_cui": "263491009",
+      "preferred_name": "Context",
+      "source_value": "context",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 890,
+        "end": 897
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "presence of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 903,
+        "end": 914
+      }
+    },
+    {
+      "snomed_cui": "35174006",
+      "preferred_name": "Reversible",
+      "source_value": "reversible",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 925,
+        "end": 935
+      }
+    },
+    {
+      "snomed_cui": "4601000",
+      "preferred_name": "Airflow, function",
+      "source_value": "airflow",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 936,
+        "end": 943
+      }
+    },
+    {
+      "snomed_cui": "26036001",
+      "preferred_name": "Obstruction",
+      "source_value": "obstruction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 944,
+        "end": 955
+      }
+    },
+    {
+      "snomed_cui": "50834005",
+      "preferred_name": "Forced vital capacity",
+      "source_value": "FVC",
+      "confidence_score": 0.49973811829673387,
+      "character_boundaries": {
+        "start": 968,
+        "end": 971
+      }
+    },
+    {
+      "snomed_cui": "255273002",
+      "preferred_name": "Post-bronchodilation",
+      "source_value": "post-bronchodilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 978,
+        "end": 998
+      }
+    },
+    {
+      "snomed_cui": "258104002",
+      "preferred_name": "Measured",
+      "source_value": "measured",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1000,
+        "end": 1008
+      }
+    },
+    {
+      "snomed_cui": "127783003",
+      "preferred_name": "Spirometry",
+      "source_value": "spirometry",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1012,
+        "end": 1022
+      }
+    },
+    {
+      "snomed_cui": "59156000",
+      "preferred_name": "Confirmed by (contextual qualifier)",
+      "source_value": "confirms",
+      "confidence_score": 0.749303599700724,
+      "character_boundaries": {
+        "start": 1023,
+        "end": 1031
+      }
+    },
+    {
+      "snomed_cui": "887161000000102",
+      "preferred_name": "Diagnoses",
+      "source_value": "diagnosis",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1036,
+        "end": 1045
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1049,
+        "end": 1053
+      }
+    },
+    {
+      "snomed_cui": "258395000",
+      "preferred_name": "Levels",
+      "source_value": "Levels",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1071,
+        "end": 1077
+      }
+    },
+    {
+      "snomed_cui": "31476009",
+      "preferred_name": "Structure of body of caudate nucleus",
+      "source_value": "body",
+      "confidence_score": 0.5565797936763607,
+      "character_boundaries": {
+        "start": 1110,
+        "end": 1114
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1118,
+        "end": 1122
+      }
+    },
+    {
+      "snomed_cui": "263496004",
+      "preferred_name": "Quality",
+      "source_value": "quality",
+      "confidence_score": 0.797807269962373,
+      "character_boundaries": {
+        "start": 1123,
+        "end": 1130
+      }
+    },
+    {
+      "snomed_cui": "31509003",
+      "preferred_name": "Controlled",
+      "source_value": "controlled",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1156,
+        "end": 1166
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trials",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1167,
+        "end": 1173
+      }
+    },
+    {
+      "snomed_cui": "386134007",
+      "preferred_name": "Significant",
+      "source_value": "significant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1193,
+        "end": 1204
+      }
+    },
+    {
+      "snomed_cui": "246175000",
+      "preferred_name": "Limitation",
+      "source_value": "limitation",
+      "confidence_score": 0.8265383095708541,
+      "character_boundaries": {
+        "start": 1205,
+        "end": 1215
+      }
+    },
+    {
+      "snomed_cui": "255469002",
+      "preferred_name": "Limited",
+      "source_value": "Limited",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1239,
+        "end": 1246
+      }
+    },
+    {
+      "snomed_cui": "123037004",
+      "preferred_name": "Body structure",
+      "source_value": "body",
+      "confidence_score": 0.6001112901452671,
+      "character_boundaries": {
+        "start": 1247,
+        "end": 1251
+      }
+    },
+    {
+      "snomed_cui": "246175000",
+      "preferred_name": "Limitation",
+      "source_value": "limitations",
+      "confidence_score": 0.8197259592271571,
+      "character_boundaries": {
+        "start": 1289,
+        "end": 1300
+      }
+    },
+    {
+      "snomed_cui": "255469002",
+      "preferred_name": "Limited",
+      "source_value": "limited",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1302,
+        "end": 1309
+      }
+    },
+    {
+      "snomed_cui": "410681005",
+      "preferred_name": "Count of entities (property)",
+      "source_value": "numbers",
+      "confidence_score": 0.5627906452227244,
+      "character_boundaries": {
+        "start": 1310,
+        "end": 1317
+      }
+    },
+    {
+      "snomed_cui": "288563008",
+      "preferred_name": "After values",
+      "source_value": "post",
+      "confidence_score": 0.5588634141034441,
+      "character_boundaries": {
+        "start": 1319,
+        "end": 1323
+      }
+    },
+    {
+      "snomed_cui": "272389005",
+      "preferred_name": "Analysis",
+      "source_value": "analyses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1340,
+        "end": 1348
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trials",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1393,
+        "end": 1399
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1417,
+        "end": 1424
+      }
+    },
+    {
+      "snomed_cui": "261586004",
+      "preferred_name": "Groups",
+      "source_value": "Panel",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1440,
+        "end": 1445
+      }
+    },
+    {
+      "snomed_cui": "61254005",
+      "preferred_name": "Judgement",
+      "source_value": "judgment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1456,
+        "end": 1464
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1474,
+        "end": 1482
+      }
+    },
+    {
+      "snomed_cui": "723511000000105",
+      "preferred_name": "Knowledge",
+      "source_value": "knowledge",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1497,
+        "end": 1506
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1543,
+        "end": 1547
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1574,
+        "end": 1578
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1580,
+        "end": 1584
+      }
+    },
+    {
+      "snomed_cui": "30188007",
+      "preferred_name": "Alpha-1-antitrypsin deficiency",
+      "source_value": "Alpha-1 antitrypsin deficiency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1589,
+        "end": 1619
+      }
+    },
+    {
+      "snomed_cui": "30188007",
+      "preferred_name": "Alpha-1-antitrypsin deficiency",
+      "source_value": "AATD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1621,
+        "end": 1625
+      }
+    },
+    {
+      "snomed_cui": "725251000000105",
+      "preferred_name": "Genetics",
+      "source_value": "genetic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1634,
+        "end": 1641
+      }
+    },
+    {
+      "snomed_cui": "40885006",
+      "preferred_name": "Variant",
+      "source_value": "variants",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1642,
+        "end": 1650
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1654,
+        "end": 1658
+      }
+    },
+    {
+      "snomed_cui": "42752001",
+      "preferred_name": "Due to",
+      "source_value": "due to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1659,
+        "end": 1665
+      }
+    },
+    {
+      "snomed_cui": "263654008",
+      "preferred_name": "Abnormal",
+      "source_value": "abnormal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1666,
+        "end": 1674
+      }
+    },
+    {
+      "snomed_cui": "19829001",
+      "preferred_name": "Disorder of lung",
+      "source_value": "lung",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1675,
+        "end": 1679
+      }
+    },
+    {
+      "snomed_cui": "129822005",
+      "preferred_name": "Childhood growth AND/OR development finding",
+      "source_value": "development",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1680,
+        "end": 1691
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1693,
+        "end": 1697
+      }
+    },
+    {
+      "snomed_cui": "264499004",
+      "preferred_name": "Early",
+      "source_value": "Early",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1702,
+        "end": 1707
+      }
+    },
+    {
+      "snomed_cui": "364706004",
+      "preferred_name": "Life event observable",
+      "source_value": "life events",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1708,
+        "end": 1719
+      }
+    },
+    {
+      "snomed_cui": "282020008",
+      "preferred_name": "Premature delivery",
+      "source_value": "premature birth",
+      "confidence_score": 0.776999903846757,
+      "character_boundaries": {
+        "start": 1721,
+        "end": 1736
+      }
+    },
+    {
+      "snomed_cui": "267258002",
+      "preferred_name": "Small for gestational age fetus",
+      "source_value": "low birthweight",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1738,
+        "end": 1753
+      }
+    },
+    {
+      "snomed_cui": "276339004",
+      "preferred_name": "Environment",
+      "source_value": "Environmental",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1757,
+        "end": 1770
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1771,
+        "end": 1775
+      }
+    },
+    {
+      "snomed_cui": "102408007",
+      "preferred_name": "Cigarette smoke",
+      "source_value": "Cigarette smoking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1777,
+        "end": 1794
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1795,
+        "end": 1799
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1801,
+        "end": 1805
+      }
+    },
+    {
+      "snomed_cui": "102420004",
+      "preferred_name": "Exposure to pollution",
+      "source_value": "pollution exposure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1822,
+        "end": 1840
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1841,
+        "end": 1845
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1847,
+        "end": 1851
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1858,
+        "end": 1862
+      }
+    },
+    {
+      "snomed_cui": "42752001",
+      "preferred_name": "Due to",
+      "source_value": "due to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1863,
+        "end": 1869
+      }
+    },
+    {
+      "snomed_cui": "191415002",
+      "preferred_name": "Communicable disease",
+      "source_value": "infections",
+      "confidence_score": 0.8569023531612683,
+      "character_boundaries": {
+        "start": 1870,
+        "end": 1880
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1882,
+        "end": 1886
+      }
+    },
+    {
+      "snomed_cui": "68433009",
+      "preferred_name": "Childhood",
+      "source_value": "Childhood",
+      "confidence_score": 0.8276827325555027,
+      "character_boundaries": {
+        "start": 1891,
+        "end": 1900
+      }
+    },
+    {
+      "snomed_cui": "191415002",
+      "preferred_name": "Communicable disease",
+      "source_value": "infections",
+      "confidence_score": 0.9865965699125842,
+      "character_boundaries": {
+        "start": 1901,
+        "end": 1911
+      }
+    },
+    {
+      "snomed_cui": "700272008",
+      "preferred_name": "Tuberculosis of respiratory system",
+      "source_value": "TB",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1913,
+        "end": 1915
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1916,
+        "end": 1926
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1927,
+        "end": 1931
+      }
+    },
+    {
+      "snomed_cui": "86406008",
+      "preferred_name": "Human immunodeficiency virus infection",
+      "source_value": "HIV",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1933,
+        "end": 1936
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1937,
+        "end": 1947
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1948,
+        "end": 1952
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1956,
+        "end": 1960
+      }
+    },
+    {
+      "snomed_cui": "195967001",
+      "preferred_name": "Asthma",
+      "source_value": "asthma",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1963,
+        "end": 1969
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1971,
+        "end": 1975
+      }
+    },
+    {
+      "snomed_cui": "233678006",
+      "preferred_name": "Childhood asthma",
+      "source_value": "childhood asthma",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1993,
+        "end": 2009
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2013,
+        "end": 2017
+      }
+    },
+    {
+      "snomed_cui": "261665006",
+      "preferred_name": "Unknown",
+      "source_value": "unknown",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2021,
+        "end": 2028
+      }
+    },
+    {
+      "snomed_cui": "134198009",
+      "preferred_name": "Etiology",
+      "source_value": "cause",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2029,
+        "end": 2034
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2036,
+        "end": 2040
+      }
+    }
+  ]
+}

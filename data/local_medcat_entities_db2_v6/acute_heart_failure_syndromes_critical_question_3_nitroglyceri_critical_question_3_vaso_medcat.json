@@ -1,0 +1,4125 @@
+{
+  "chunk_id": "critical_question_3_nitroglycerin",
+  "entities": [
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6,
+        "end": 11
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 12,
+        "end": 20
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presenting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 21,
+        "end": 31
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "emergency department",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 39,
+        "end": 59
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 65,
+        "end": 74
+      }
+    },
+    {
+      "snomed_cui": "56675007",
+      "preferred_name": "Acute heart failure",
+      "source_value": "acute heart failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 75,
+        "end": 94
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "syndrome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 95,
+        "end": 103
+      }
+    },
+    {
+      "snomed_cui": "372787008",
+      "preferred_name": "Vasodilator",
+      "source_value": "vasodilator",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 108,
+        "end": 119
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 120,
+        "end": 127
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "high-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 133,
+        "end": 142
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.6956808506292128,
+      "character_boundaries": {
+        "start": 143,
+        "end": 156
+      }
+    },
+    {
+      "snomed_cui": "413454004",
+      "preferred_name": "Administration",
+      "source_value": "administration",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 157,
+        "end": 171
+      }
+    },
+    {
+      "snomed_cui": "254648000",
+      "preferred_name": "Effective",
+      "source_value": "effective",
+      "confidence_score": 0.7707064704867088,
+      "character_boundaries": {
+        "start": 181,
+        "end": 190
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 191,
+        "end": 198
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "Management",
+      "confidence_score": 0.6858748802937871,
+      "character_boundaries": {
+        "start": 199,
+        "end": 209
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 233,
+        "end": 248
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 255,
+        "end": 264
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 273,
+        "end": 288
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 295,
+        "end": 304
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 313,
+        "end": 328
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "high-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 345,
+        "end": 354
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.8215974946532956,
+      "character_boundaries": {
+        "start": 355,
+        "end": 368
+      }
+    },
+    {
+      "snomed_cui": "254648000",
+      "preferred_name": "Effective",
+      "source_value": "effective",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 383,
+        "end": 392
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 393,
+        "end": 402
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 431,
+        "end": 439
+      }
+    },
+    {
+      "snomed_cui": "56675007",
+      "preferred_name": "Acute heart failure",
+      "source_value": "acute heart failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 445,
+        "end": 464
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "syndrome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 465,
+        "end": 473
+      }
+    },
+    {
+      "snomed_cui": "38341003",
+      "preferred_name": "Hypertensive disorder, systemic arterial",
+      "source_value": "elevated blood pressure",
+      "confidence_score": 0.7680693500538007,
+      "character_boundaries": {
+        "start": 478,
+        "end": 501
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 513,
+        "end": 527
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 568,
+        "end": 583
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 590,
+        "end": 597
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reducing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 627,
+        "end": 635
+      }
+    },
+    {
+      "snomed_cui": "271825005",
+      "preferred_name": "Respiratory distress",
+      "source_value": "respiratory distress",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 636,
+        "end": 656
+      }
+    },
+    {
+      "snomed_cui": "260371004",
+      "preferred_name": "Decreasing",
+      "source_value": "decreasing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 661,
+        "end": 671
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 676,
+        "end": 684
+      }
+    },
+    {
+      "snomed_cui": "112798008",
+      "preferred_name": "Insertion of endotracheal tube",
+      "source_value": "endotracheal intubation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 685,
+        "end": 708
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.9723867002863698,
+      "character_boundaries": {
+        "start": 713,
+        "end": 716
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 717,
+        "end": 726
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 762,
+        "end": 777
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "High-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 779,
+        "end": 788
+      }
+    },
+    {
+      "snomed_cui": "89119000",
+      "preferred_name": "Nitrate salt",
+      "source_value": "nitrates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 789,
+        "end": 797
+      }
+    },
+    {
+      "snomed_cui": "45007003",
+      "preferred_name": "Low blood pressure",
+      "source_value": "hypotension",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 824,
+        "end": 835
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 869,
+        "end": 877
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 879,
+        "end": 884
+      }
+    },
+    {
+      "snomed_cui": "195111005",
+      "preferred_name": "Decompensated cardiac failure",
+      "source_value": "decompensated heart failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 885,
+        "end": 912
+      }
+    },
+    {
+      "snomed_cui": "443343001",
+      "preferred_name": "Acute diastolic heart failure",
+      "source_value": "acute diastolic heart failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 914,
+        "end": 943
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.7270404694126844,
+      "character_boundaries": {
+        "start": 954,
+        "end": 967
+      }
+    },
+    {
+      "snomed_cui": "36576007",
+      "preferred_name": "Infusion",
+      "source_value": "infusions",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 968,
+        "end": 977
+      }
+    },
+    {
+      "snomed_cui": "255532002",
+      "preferred_name": "Up",
+      "source_value": "up to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 981,
+        "end": 986
+      }
+    },
+    {
+      "snomed_cui": "258837002",
+      "preferred_name": "Microgram/minute",
+      "source_value": "mcg/min",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 991,
+        "end": 998
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standard",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1023,
+        "end": 1031
+      }
+    },
+    {
+      "snomed_cui": "258837002",
+      "preferred_name": "Microgram/minute",
+      "source_value": "mcg/min",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1075,
+        "end": 1082
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1086,
+        "end": 1092
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "high dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1097,
+        "end": 1106
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "High dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1112,
+        "end": 1121
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1123,
+        "end": 1136
+      }
+    },
+    {
+      "snomed_cui": "13283801000001100",
+      "preferred_name": "Bolus - method of drug administration",
+      "source_value": "bolus",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1164,
+        "end": 1169
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1170,
+        "end": 1181
+      }
+    },
+    {
+      "snomed_cui": "258685003",
+      "preferred_name": "microgram",
+      "source_value": "mcg",
+      "confidence_score": 0.5949906220993249,
+      "character_boundaries": {
+        "start": 1198,
+        "end": 1201
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.873438164267199,
+      "character_boundaries": {
+        "start": 1215,
+        "end": 1222
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1239,
+        "end": 1248
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1278,
+        "end": 1285
+      }
+    },
+    {
+      "snomed_cui": "56675007",
+      "preferred_name": "Acute heart failure",
+      "source_value": "acute heart failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1287,
+        "end": 1306
+      }
+    },
+    {
+      "snomed_cui": "443254009",
+      "preferred_name": "Acute systolic heart failure",
+      "source_value": "acute systolic heart failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1308,
+        "end": 1336
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergencies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1342,
+        "end": 1353
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1355,
+        "end": 1364
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1366,
+        "end": 1375
+      }
+    },
+    {
+      "snomed_cui": "409971007",
+      "preferred_name": "Emergency medical services",
+      "source_value": "care, emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1376,
+        "end": 1391
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "department, emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1392,
+        "end": 1413
+      }
+    },
+    {
+      "snomed_cui": "263775005",
+      "preferred_name": "Health",
+      "source_value": "health",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1414,
+        "end": 1420
+      }
+    },
+    {
+      "snomed_cui": "224930009",
+      "preferred_name": "Services",
+      "source_value": "service",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1421,
+        "end": 1428
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1430,
+        "end": 1439
+      }
+    },
+    {
+      "snomed_cui": "263775005",
+      "preferred_name": "Health",
+      "source_value": "health",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1440,
+        "end": 1446
+      }
+    },
+    {
+      "snomed_cui": "224930009",
+      "preferred_name": "Services",
+      "source_value": "services",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1447,
+        "end": 1455
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1457,
+        "end": 1466
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "medicine, emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1467,
+        "end": 1486
+      }
+    },
+    {
+      "snomed_cui": "719491000000109",
+      "preferred_name": "Emergency services",
+      "source_value": "emergency service",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1493,
+        "end": 1510
+      }
+    },
+    {
+      "snomed_cui": "719491000000109",
+      "preferred_name": "Emergency services",
+      "source_value": "emergency services",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1512,
+        "end": 1530
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1532,
+        "end": 1541
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "emergency ward",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1553,
+        "end": 1567
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "hospital emergency service",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1608,
+        "end": 1634
+      }
+    },
+    {
+      "snomed_cui": "40885006",
+      "preferred_name": "Variant",
+      "source_value": "variations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1655,
+        "end": 1665
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "Searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1709,
+        "end": 1717
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1718,
+        "end": 1726
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "Study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1811,
+        "end": 1816
+      }
+    },
+    {
+      "snomed_cui": "50606000",
+      "preferred_name": "Genetic selection",
+      "source_value": "Selection",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1817,
+        "end": 1826
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1868,
+        "end": 1878
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1886,
+        "end": 1894
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1918,
+        "end": 1928
+      }
+    },
+    {
+      "snomed_cui": "721241000000109",
+      "preferred_name": "Review",
+      "source_value": "review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1979,
+        "end": 1985
+      }
+    },
+    {
+      "snomed_cui": "246228008",
+      "preferred_name": "Grading",
+      "source_value": "grading",
+      "confidence_score": 0.8555952158494211,
+      "character_boundaries": {
+        "start": 1993,
+        "end": 2000
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class I",
+      "confidence_score": 0.694166263186518,
+      "character_boundaries": {
+        "start": 2032,
+        "end": 2039
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2040,
+        "end": 2047
+      }
+    },
+    {
+      "snomed_cui": "258393007",
+      "preferred_name": "Class 2",
+      "source_value": "Class II",
+      "confidence_score": 0.7888961145021596,
+      "character_boundaries": {
+        "start": 2054,
+        "end": 2062
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2063,
+        "end": 2070
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2078,
+        "end": 2087
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2088,
+        "end": 2093
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2098,
+        "end": 2106
+      }
+    },
+    {
+      "snomed_cui": "181255000",
+      "preferred_name": "Entire appendix",
+      "source_value": "Appendix",
+      "confidence_score": 0.39897910386084046,
+      "character_boundaries": {
+        "start": 2135,
+        "end": 2143
+      }
+    },
+    {
+      "snomed_cui": "723511000000105",
+      "preferred_name": "Knowledge",
+      "source_value": "knowledge",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2152,
+        "end": 2161
+      }
+    },
+    {
+      "snomed_cui": "386585008",
+      "preferred_name": "Functional disorder",
+      "source_value": "pathophysiology",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2169,
+        "end": 2184
+      }
+    },
+    {
+      "snomed_cui": "59381007",
+      "preferred_name": "Evolving",
+      "source_value": "evolved",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2197,
+        "end": 2204
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "years",
+      "confidence_score": 0.8098345008096288,
+      "character_boundaries": {
+        "start": 2214,
+        "end": 2219
+      }
+    },
+    {
+      "snomed_cui": "88952004",
+      "preferred_name": "Thinking, function",
+      "source_value": "thought",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2242,
+        "end": 2249
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "problem",
+      "confidence_score": 0.6343082936664286,
+      "character_boundaries": {
+        "start": 2273,
+        "end": 2280
+      }
+    },
+    {
+      "snomed_cui": "21639008",
+      "preferred_name": "Hypervolemia",
+      "source_value": "volume overload",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2284,
+        "end": 2299
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "cardiac",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2347,
+        "end": 2354
+      }
+    },
+    {
+      "snomed_cui": "386585008",
+      "preferred_name": "Functional disorder",
+      "source_value": "dysfunction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2355,
+        "end": 2366
+      }
+    },
+    {
+      "snomed_cui": "27550009",
+      "preferred_name": "Disorder of blood vessel",
+      "source_value": "vascular",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2378,
+        "end": 2386
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2411,
+        "end": 2419
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presenting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2420,
+        "end": 2430
+      }
+    },
+    {
+      "snomed_cui": "706873003",
+      "preferred_name": "Suffering",
+      "source_value": "suffer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2441,
+        "end": 2447
+      }
+    },
+    {
+      "snomed_cui": "13085001000001100",
+      "preferred_name": "Preload",
+      "source_value": "preload",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2460,
+        "end": 2467
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.891447840079268,
+      "character_boundaries": {
+        "start": 2475,
+        "end": 2484
+      }
+    },
+    {
+      "snomed_cui": "386530009",
+      "preferred_name": "Systemic vascular resistance",
+      "source_value": "systemic vascular resistance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2485,
+        "end": 2513
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2536,
+        "end": 2551
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reduced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2554,
+        "end": 2561
+      }
+    },
+    {
+      "snomed_cui": "82799009",
+      "preferred_name": "Cardiac output",
+      "source_value": "cardiac output",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2562,
+        "end": 2576
+      }
+    },
+    {
+      "snomed_cui": "111973004",
+      "preferred_name": "Systole, function",
+      "source_value": "systolic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2585,
+        "end": 2593
+      }
+    },
+    {
+      "snomed_cui": "3545003",
+      "preferred_name": "Diastolic dysfunction",
+      "source_value": "diastolic dysfunction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2597,
+        "end": 2618
+      }
+    },
+    {
+      "snomed_cui": "372787008",
+      "preferred_name": "Vasodilator",
+      "source_value": "Vasodilators",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2622,
+        "end": 2634
+      }
+    },
+    {
+      "snomed_cui": "13085001000001100",
+      "preferred_name": "Preload",
+      "source_value": "preload",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2646,
+        "end": 2653
+      }
+    },
+    {
+      "snomed_cui": "79409006",
+      "preferred_name": "Resulting in",
+      "source_value": "resulting in",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2669,
+        "end": 2681
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improved",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2682,
+        "end": 2690
+      }
+    },
+    {
+      "snomed_cui": "82799009",
+      "preferred_name": "Cardiac output",
+      "source_value": "cardiac output",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2691,
+        "end": 2705
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reduced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2710,
+        "end": 2717
+      }
+    },
+    {
+      "snomed_cui": "67599009",
+      "preferred_name": "Pulmonary congestion",
+      "source_value": "pulmonary congestion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2718,
+        "end": 2738
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2744,
+        "end": 2750
+      }
+    },
+    {
+      "snomed_cui": "372787008",
+      "preferred_name": "Vasodilator",
+      "source_value": "vasodilators",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2751,
+        "end": 2763
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2783,
+        "end": 2794
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2827,
+        "end": 2836
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.7551188649756753,
+      "character_boundaries": {
+        "start": 2837,
+        "end": 2847
+      }
+    },
+    {
+      "snomed_cui": "900000000000548007",
+      "preferred_name": "Preferred",
+      "source_value": "preferred",
+      "confidence_score": 0.8064947823395121,
+      "character_boundaries": {
+        "start": 2884,
+        "end": 2893
+      }
+    },
+    {
+      "snomed_cui": "372787008",
+      "preferred_name": "Vasodilator",
+      "source_value": "vasodilator",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2894,
+        "end": 2905
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.8992947941982731,
+      "character_boundaries": {
+        "start": 2913,
+        "end": 2923
+      }
+    },
+    {
+      "snomed_cui": "18720000",
+      "preferred_name": "In",
+      "source_value": "part of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2952,
+        "end": 2959
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standard",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2964,
+        "end": 2972
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2973,
+        "end": 2984
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2985,
+        "end": 2995
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3008,
+        "end": 3016
+      }
+    },
+    {
+      "snomed_cui": "2004005",
+      "preferred_name": "Normal blood pressure",
+      "source_value": "normotensive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3025,
+        "end": 3037
+      }
+    },
+    {
+      "snomed_cui": "89119000",
+      "preferred_name": "Nitrate salt",
+      "source_value": "Nitrates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3060,
+        "end": 3068
+      }
+    },
+    {
+      "snomed_cui": "260370003",
+      "preferred_name": "Decrease",
+      "source_value": "decrease",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3069,
+        "end": 3077
+      }
+    },
+    {
+      "snomed_cui": "13085001000001100",
+      "preferred_name": "Preload",
+      "source_value": "preload",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3078,
+        "end": 3085
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3094,
+        "end": 3100
+      }
+    },
+    {
+      "snomed_cui": "260370003",
+      "preferred_name": "Decrease",
+      "source_value": "decrease",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3108,
+        "end": 3116
+      }
+    },
+    {
+      "snomed_cui": "77374008",
+      "preferred_name": "Onset of (contextual qualifier)",
+      "source_value": "onset of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3140,
+        "end": 3148
+      }
+    },
+    {
+      "snomed_cui": "372787008",
+      "preferred_name": "Vasodilator",
+      "source_value": "vasodilatory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3149,
+        "end": 3161
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3162,
+        "end": 3169
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.6962813308700022,
+      "character_boundaries": {
+        "start": 3187,
+        "end": 3194
+      }
+    },
+    {
+      "snomed_cui": "236973005",
+      "preferred_name": "Delivery procedure",
+      "source_value": "delivery",
+      "confidence_score": 0.9227443886937795,
+      "character_boundaries": {
+        "start": 3222,
+        "end": 3230
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.676669332550002,
+      "character_boundaries": {
+        "start": 3260,
+        "end": 3267
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3309,
+        "end": 3319
+      }
+    },
+    {
+      "snomed_cui": "260672003",
+      "preferred_name": "Direction",
+      "source_value": "direction",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3335,
+        "end": 3344
+      }
+    },
+    {
+      "snomed_cui": "89119000",
+      "preferred_name": "Nitrate salt",
+      "source_value": "nitrates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3381,
+        "end": 3389
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3391,
+        "end": 3395
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "prior",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3398,
+        "end": 3403
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3404,
+        "end": 3412
+      }
+    },
+    {
+      "snomed_cui": "86181006",
+      "preferred_name": "Evaluation and management of inpatient",
+      "source_value": "evaluation and management",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3438,
+        "end": 3463
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3467,
+        "end": 3475
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presenting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3476,
+        "end": 3486
+      }
+    },
+    {
+      "snomed_cui": "372787008",
+      "preferred_name": "Vasodilator",
+      "source_value": "vasodilator",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3525,
+        "end": 3536
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3537,
+        "end": 3544
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3582,
+        "end": 3589
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3611,
+        "end": 3619
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3652,
+        "end": 3666
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3672,
+        "end": 3683
+      }
+    },
+    {
+      "snomed_cui": "89119000",
+      "preferred_name": "Nitrate salt",
+      "source_value": "nitrate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3684,
+        "end": 3691
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3692,
+        "end": 3699
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3728,
+        "end": 3736
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3748,
+        "end": 3759
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3772,
+        "end": 3781
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trial",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3782,
+        "end": 3787
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3801,
+        "end": 3808
+      }
+    },
+    {
+      "snomed_cui": "398166005",
+      "preferred_name": "Performed",
+      "source_value": "performed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3823,
+        "end": 3832
+      }
+    },
+    {
+      "snomed_cui": "56116003",
+      "preferred_name": "Patent",
+      "source_value": "open",
+      "confidence_score": 0.5283402380962874,
+      "character_boundaries": {
+        "start": 3849,
+        "end": 3853
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trial",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3860,
+        "end": 3865
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3881,
+        "end": 3887
+      }
+    },
+    {
+      "snomed_cui": "258685003",
+      "preferred_name": "microgram",
+      "source_value": "mcg",
+      "confidence_score": 0.5926951672150739,
+      "character_boundaries": {
+        "start": 3894,
+        "end": 3897
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3898,
+        "end": 3909
+      }
+    },
+    {
+      "snomed_cui": "13283801000001100",
+      "preferred_name": "Bolus - method of drug administration",
+      "source_value": "bolus",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3910,
+        "end": 3915
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3925,
+        "end": 3938
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3952,
+        "end": 3959
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3963,
+        "end": 3971
+      }
+    },
+    {
+      "snomed_cui": "267036007",
+      "preferred_name": "Dyspnea",
+      "source_value": "dyspnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3977,
+        "end": 3984
+      }
+    },
+    {
+      "snomed_cui": "271649006",
+      "preferred_name": "Systolic blood pressure",
+      "source_value": "systolic blood pressure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4000,
+        "end": 4023
+      }
+    },
+    {
+      "snomed_cui": "276138003",
+      "preferred_name": "Greater-than-or-equal symbol >=",
+      "source_value": "greater than or equal to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4028,
+        "end": 4052
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4057,
+        "end": 4062
+      }
+    },
+    {
+      "snomed_cui": "1285244000",
+      "preferred_name": "Mean arterial pressure",
+      "source_value": "mean arterial pressure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4072,
+        "end": 4094
+      }
+    },
+    {
+      "snomed_cui": "276138003",
+      "preferred_name": "Greater-than-or-equal symbol >=",
+      "source_value": "greater than or equal to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4099,
+        "end": 4123
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4128,
+        "end": 4133
+      }
+    },
+    {
+      "snomed_cui": "20646008",
+      "preferred_name": "Intractable",
+      "source_value": "refractory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4147,
+        "end": 4157
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "initial",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4161,
+        "end": 4168
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4169,
+        "end": 4176
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "Initial",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4178,
+        "end": 4185
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4186,
+        "end": 4193
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class I",
+      "confidence_score": 0.8420924316709316,
+      "character_boundaries": {
+        "start": 4207,
+        "end": 4214
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4215,
+        "end": 4230
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "Heart",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4249,
+        "end": 4254
+      }
+    },
+    {
+      "snomed_cui": "263534001",
+      "preferred_name": "Association",
+      "source_value": "Association",
+      "confidence_score": 0.5837656182267736,
+      "character_boundaries": {
+        "start": 4255,
+        "end": 4266
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "Guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4275,
+        "end": 4285
+      }
+    },
+    {
+      "snomed_cui": "86181006",
+      "preferred_name": "Evaluation and management of inpatient",
+      "source_value": "Evaluation and Management",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4294,
+        "end": 4319
+      }
+    },
+    {
+      "snomed_cui": "84114007",
+      "preferred_name": "Heart failure",
+      "source_value": "Heart Failure",
+      "confidence_score": 0.8756018493641591,
+      "character_boundaries": {
+        "start": 4323,
+        "end": 4336
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4339,
+        "end": 4348
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4349,
+        "end": 4353
+      }
+    },
+    {
+      "snomed_cui": "57485005",
+      "preferred_name": "Oxygen therapy",
+      "source_value": "oxygen",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4359,
+        "end": 4365
+      }
+    },
+    {
+      "snomed_cui": "427591007",
+      "preferred_name": "Nonrebreather oxygen mask",
+      "source_value": "nonrebreather mask",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4377,
+        "end": 4395
+      }
+    },
+    {
+      "snomed_cui": "225780003",
+      "preferred_name": "Sublingual",
+      "source_value": "sublingual",
+      "confidence_score": 0.8802455500897363,
+      "character_boundaries": {
+        "start": 4397,
+        "end": 4407
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4408,
+        "end": 4421
+      }
+    },
+    {
+      "snomed_cui": "258685003",
+      "preferred_name": "microgram",
+      "source_value": "mcg",
+      "confidence_score": 0.6799333612661876,
+      "character_boundaries": {
+        "start": 4426,
+        "end": 4429
+      }
+    },
+    {
+      "snomed_cui": "307463009",
+      "preferred_name": "Every five minutes",
+      "source_value": "every 5 minutes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4430,
+        "end": 4445
+      }
+    },
+    {
+      "snomed_cui": "255532002",
+      "preferred_name": "Up",
+      "source_value": "up to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4446,
+        "end": 4451
+      }
+    },
+    {
+      "snomed_cui": "398303009",
+      "preferred_name": "Max",
+      "source_value": "maximum",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4454,
+        "end": 4461
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatments",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4467,
+        "end": 4477
+      }
+    },
+    {
+      "snomed_cui": "387475002",
+      "preferred_name": "Furosemide",
+      "source_value": "furosemide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4483,
+        "end": 4493
+      }
+    },
+    {
+      "snomed_cui": "60886004",
+      "preferred_name": "Morphine sulfate",
+      "source_value": "Morphine sulfate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4523,
+        "end": 4539
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4550,
+        "end": 4561
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4595,
+        "end": 4603
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4614,
+        "end": 4621
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "initial",
+      "confidence_score": 0.8693203076593203,
+      "character_boundaries": {
+        "start": 4633,
+        "end": 4640
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4641,
+        "end": 4648
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4666,
+        "end": 4675
+      }
+    },
+    {
+      "snomed_cui": "397855004",
+      "preferred_name": "Relieves",
+      "source_value": "believed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4676,
+        "end": 4684
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4694,
+        "end": 4701
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4711,
+        "end": 4722
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.535718255276353,
+      "character_boundaries": {
+        "start": 4723,
+        "end": 4736
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4749,
+        "end": 4757
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4763,
+        "end": 4771
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trial",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4779,
+        "end": 4784
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "Trial",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4785,
+        "end": 4790
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4791,
+        "end": 4799
+      }
+    },
+    {
+      "snomed_cui": "14152002",
+      "preferred_name": "Intravenous infusion",
+      "source_value": "intravenous infusion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4812,
+        "end": 4832
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4836,
+        "end": 4849
+      }
+    },
+    {
+      "snomed_cui": "385652002",
+      "preferred_name": "Started",
+      "source_value": "started",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4850,
+        "end": 4857
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4863,
+        "end": 4867
+      }
+    },
+    {
+      "snomed_cui": "258685003",
+      "preferred_name": "microgram",
+      "source_value": "mcg",
+      "confidence_score": 0.6607026045563845,
+      "character_boundaries": {
+        "start": 4882,
+        "end": 4885
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "per minute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4889,
+        "end": 4899
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4905,
+        "end": 4918
+      }
+    },
+    {
+      "snomed_cui": "36576007",
+      "preferred_name": "Infusion",
+      "source_value": "infusion",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4919,
+        "end": 4927
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.6344057371017534,
+      "character_boundaries": {
+        "start": 4932,
+        "end": 4941
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4976,
+        "end": 4985
+      }
+    },
+    {
+      "snomed_cui": "258837002",
+      "preferred_name": "Microgram/minute",
+      "source_value": "mcg/min",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5006,
+        "end": 5013
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5027,
+        "end": 5034
+      }
+    },
+    {
+      "snomed_cui": "398303009",
+      "preferred_name": "Max",
+      "source_value": "maximum",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5040,
+        "end": 5047
+      }
+    },
+    {
+      "snomed_cui": "258837002",
+      "preferred_name": "Microgram/minute",
+      "source_value": "mcg/min",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5055,
+        "end": 5062
+      }
+    },
+    {
+      "snomed_cui": "271649006",
+      "preferred_name": "Systolic blood pressure",
+      "source_value": "systolic blood pressure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5071,
+        "end": 5094
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5109,
+        "end": 5114
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.9293213971051744,
+      "character_boundaries": {
+        "start": 5124,
+        "end": 5133
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5148,
+        "end": 5161
+      }
+    },
+    {
+      "snomed_cui": "410546004",
+      "preferred_name": "Discontinued",
+      "source_value": "discontinued",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5166,
+        "end": 5178
+      }
+    },
+    {
+      "snomed_cui": "75367002",
+      "preferred_name": "Blood pressure",
+      "source_value": "blood pressure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5183,
+        "end": 5197
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5206,
+        "end": 5213
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5219,
+        "end": 5232
+      }
+    },
+    {
+      "snomed_cui": "385654001",
+      "preferred_name": "To be stopped",
+      "source_value": "stopped",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5237,
+        "end": 5244
+      }
+    },
+    {
+      "snomed_cui": "68405009",
+      "preferred_name": "Concurrent",
+      "source_value": "Concurrent with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5246,
+        "end": 5261
+      }
+    },
+    {
+      "snomed_cui": "312009002",
+      "preferred_name": "Cognitive function: initiation",
+      "source_value": "initiation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5266,
+        "end": 5276
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.9889538538535653,
+      "character_boundaries": {
+        "start": 5284,
+        "end": 5297
+      }
+    },
+    {
+      "snomed_cui": "36576007",
+      "preferred_name": "Infusion",
+      "source_value": "infusion",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5298,
+        "end": 5306
+      }
+    },
+    {
+      "snomed_cui": "117007006",
+      "preferred_name": "Titration method",
+      "source_value": "titration",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5311,
+        "end": 5320
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5326,
+        "end": 5334
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "initial",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5347,
+        "end": 5354
+      }
+    },
+    {
+      "snomed_cui": "258685003",
+      "preferred_name": "microgram",
+      "source_value": "mcg",
+      "confidence_score": 0.6255738795175888,
+      "character_boundaries": {
+        "start": 5361,
+        "end": 5364
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5365,
+        "end": 5376
+      }
+    },
+    {
+      "snomed_cui": "13283801000001100",
+      "preferred_name": "Bolus - method of drug administration",
+      "source_value": "bolus",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5377,
+        "end": 5382
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.9854238699420163,
+      "character_boundaries": {
+        "start": 5386,
+        "end": 5399
+      }
+    },
+    {
+      "snomed_cui": "27582007",
+      "preferred_name": "Repeat",
+      "source_value": "repeat",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5405,
+        "end": 5411
+      }
+    },
+    {
+      "snomed_cui": "258685003",
+      "preferred_name": "microgram",
+      "source_value": "mcg",
+      "confidence_score": 0.6399065460052922,
+      "character_boundaries": {
+        "start": 5432,
+        "end": 5435
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5436,
+        "end": 5447
+      }
+    },
+    {
+      "snomed_cui": "13283801000001100",
+      "preferred_name": "Bolus - method of drug administration",
+      "source_value": "boluses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5448,
+        "end": 5455
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.8918601408541766,
+      "character_boundaries": {
+        "start": 5481,
+        "end": 5488
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5523,
+        "end": 5532
+      }
+    },
+    {
+      "snomed_cui": "272117007",
+      "preferred_name": "Time periods",
+      "source_value": "period",
+      "confidence_score": 0.9529068732712818,
+      "character_boundaries": {
+        "start": 5539,
+        "end": 5545
+      }
+    },
+    {
+      "snomed_cui": "255532002",
+      "preferred_name": "Up",
+      "source_value": "up to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5549,
+        "end": 5554
+      }
+    },
+    {
+      "snomed_cui": "259030007",
+      "preferred_name": "per 30 minutes",
+      "source_value": "30 minutes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5555,
+        "end": 5565
+      }
+    },
+    {
+      "snomed_cui": "398303009",
+      "preferred_name": "Max",
+      "source_value": "maximum",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5567,
+        "end": 5574
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5585,
+        "end": 5589
+      }
+    },
+    {
+      "snomed_cui": "255586005",
+      "preferred_name": "Mean",
+      "source_value": "mean",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5605,
+        "end": 5609
+      }
+    },
+    {
+      "snomed_cui": "258755000",
+      "preferred_name": "Percentage of total",
+      "source_value": "total",
+      "confidence_score": 0.7883485321730634,
+      "character_boundaries": {
+        "start": 5610,
+        "end": 5615
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5616,
+        "end": 5620
+      }
+    },
+    {
+      "snomed_cui": "13283801000001100",
+      "preferred_name": "Bolus - method of drug administration",
+      "source_value": "bolus",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5624,
+        "end": 5629
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5630,
+        "end": 5634
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5635,
+        "end": 5648
+      }
+    },
+    {
+      "snomed_cui": "258685003",
+      "preferred_name": "microgram",
+      "source_value": "mcg",
+      "confidence_score": 0.7453093824528688,
+      "character_boundaries": {
+        "start": 5659,
+        "end": 5662
+      }
+    },
+    {
+      "snomed_cui": "258685003",
+      "preferred_name": "microgram",
+      "source_value": "mcg",
+      "confidence_score": 0.6949040868055304,
+      "character_boundaries": {
+        "start": 5671,
+        "end": 5674
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5680,
+        "end": 5688
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "high-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5699,
+        "end": 5708
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5709,
+        "end": 5722
+      }
+    },
+    {
+      "snomed_cui": "30294006",
+      "preferred_name": "With trend",
+      "source_value": "trend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5732,
+        "end": 5737
+      }
+    },
+    {
+      "snomed_cui": "255403003",
+      "preferred_name": "Effectiveness",
+      "source_value": "efficacy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5772,
+        "end": 5780
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reduced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5793,
+        "end": 5800
+      }
+    },
+    {
+      "snomed_cui": "112798008",
+      "preferred_name": "Insertion of endotracheal tube",
+      "source_value": "endotracheal intubations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5801,
+        "end": 5825
+      }
+    },
+    {
+      "snomed_cui": "123033000",
+      "preferred_name": "6 hours",
+      "source_value": "6 hours",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5833,
+        "end": 5840
+      }
+    },
+    {
+      "snomed_cui": "30294006",
+      "preferred_name": "With trend",
+      "source_value": "trend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5913,
+        "end": 5918
+      }
+    },
+    {
+      "snomed_cui": "2603003",
+      "preferred_name": "Secondary",
+      "source_value": "secondary",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5945,
+        "end": 5954
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reduced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5968,
+        "end": 5975
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5976,
+        "end": 5984
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5993,
+        "end": 6001
+      }
+    },
+    {
+      "snomed_cui": "250852008",
+      "preferred_name": "Airway pressure",
+      "source_value": "airway pressure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6002,
+        "end": 6017
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.5899666906644544,
+      "character_boundaries": {
+        "start": 6029,
+        "end": 6031
+      }
+    },
+    {
+      "snomed_cui": "50417007",
+      "preferred_name": "Lower respiratory tract infection",
+      "source_value": "CI",
+      "confidence_score": 0.40068408393655514,
+      "character_boundaries": {
+        "start": 6066,
+        "end": 6068
+      }
+    },
+    {
+      "snomed_cui": "2603003",
+      "preferred_name": "Secondary",
+      "source_value": "secondary",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6113,
+        "end": 6122
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reduced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6135,
+        "end": 6142
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.7861561061408797,
+      "character_boundaries": {
+        "start": 6143,
+        "end": 6146
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admissions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6147,
+        "end": 6157
+      }
+    },
+    {
+      "snomed_cui": "50417007",
+      "preferred_name": "Lower respiratory tract infection",
+      "source_value": "CI",
+      "confidence_score": 0.39452275249841795,
+      "character_boundaries": {
+        "start": 6170,
+        "end": 6172
+      }
+    },
+    {
+      "snomed_cui": "50417007",
+      "preferred_name": "Lower respiratory tract infection",
+      "source_value": "CI",
+      "confidence_score": 0.39466295482214686,
+      "character_boundaries": {
+        "start": 6208,
+        "end": 6210
+      }
+    },
+    {
+      "snomed_cui": "229803000",
+      "preferred_name": "Single episode",
+      "source_value": "single episode",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6232,
+        "end": 6246
+      }
+    },
+    {
+      "snomed_cui": "264931009",
+      "preferred_name": "Symptomatic",
+      "source_value": "symptomatic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6250,
+        "end": 6261
+      }
+    },
+    {
+      "snomed_cui": "45007003",
+      "preferred_name": "Low blood pressure",
+      "source_value": "hypotension",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6262,
+        "end": 6273
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "high-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6290,
+        "end": 6299
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6300,
+        "end": 6313
+      }
+    },
+    {
+      "snomed_cui": "389109008",
+      "preferred_name": "Group",
+      "source_value": "group",
+      "confidence_score": 0.6338571822659557,
+      "character_boundaries": {
+        "start": 6314,
+        "end": 6319
+      }
+    },
+    {
+      "snomed_cui": "397801003",
+      "preferred_name": "Single bolus",
+      "source_value": "single bolus",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6328,
+        "end": 6340
+      }
+    },
+    {
+      "snomed_cui": "723506003",
+      "preferred_name": "Resolved",
+      "source_value": "resolved",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6353,
+        "end": 6361
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6377,
+        "end": 6388
+      }
+    },
+    {
+      "snomed_cui": "13283801000001100",
+      "preferred_name": "Bolus - method of drug administration",
+      "source_value": "bolus",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6389,
+        "end": 6394
+      }
+    },
+    {
+      "snomed_cui": "33463005",
+      "preferred_name": "Liquid substance",
+      "source_value": "fluid",
+      "confidence_score": 0.47903269374581925,
+      "character_boundaries": {
+        "start": 6398,
+        "end": 6403
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6408,
+        "end": 6415
+      }
+    },
+    {
+      "snomed_cui": "389109008",
+      "preferred_name": "Group",
+      "source_value": "group",
+      "confidence_score": 0.6438704915527304,
+      "character_boundaries": {
+        "start": 6426,
+        "end": 6431
+      }
+    },
+    {
+      "snomed_cui": "88694003",
+      "preferred_name": "Immediate",
+      "source_value": "immediate",
+      "confidence_score": 0.5417919794778768,
+      "character_boundaries": {
+        "start": 6442,
+        "end": 6451
+      }
+    },
+    {
+      "snomed_cui": "29303009",
+      "preferred_name": "Electrocardiographic procedure",
+      "source_value": "ECG",
+      "confidence_score": 0.9244808596990313,
+      "character_boundaries": {
+        "start": 6452,
+        "end": 6455
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "changes",
+      "confidence_score": 0.72262317619776,
+      "character_boundaries": {
+        "start": 6456,
+        "end": 6463
+      }
+    },
+    {
+      "snomed_cui": "52674009",
+      "preferred_name": "Ischemia",
+      "source_value": "ischemia",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6467,
+        "end": 6475
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "high-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6489,
+        "end": 6498
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.7045351541150529,
+      "character_boundaries": {
+        "start": 6499,
+        "end": 6512
+      }
+    },
+    {
+      "snomed_cui": "389109008",
+      "preferred_name": "Group",
+      "source_value": "group",
+      "confidence_score": 0.6645143498536447,
+      "character_boundaries": {
+        "start": 6513,
+        "end": 6518
+      }
+    },
+    {
+      "snomed_cui": "389109008",
+      "preferred_name": "Group",
+      "source_value": "group",
+      "confidence_score": 0.6906380933750054,
+      "character_boundaries": {
+        "start": 6543,
+        "end": 6548
+      }
+    },
+    {
+      "snomed_cui": "1199008",
+      "preferred_name": "Neurologic",
+      "source_value": "neurologic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6574,
+        "end": 6584
+      }
+    },
+    {
+      "snomed_cui": "272379006",
+      "preferred_name": "Event",
+      "source_value": "events",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6585,
+        "end": 6591
+      }
+    },
+    {
+      "snomed_cui": "419620001",
+      "preferred_name": "Death",
+      "source_value": "deaths",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6606,
+        "end": 6612
+      }
+    },
+    {
+      "snomed_cui": "116680003",
+      "preferred_name": "Is a",
+      "source_value": "is a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6625,
+        "end": 6629
+      }
+    },
+    {
+      "snomed_cui": "72906007",
+      "preferred_name": "Common",
+      "source_value": "common",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6630,
+        "end": 6636
+      }
+    },
+    {
+      "snomed_cui": "860914002",
+      "preferred_name": "Erectile dysfunction",
+      "source_value": "ED",
+      "confidence_score": 0.37821849224982684,
+      "character_boundaries": {
+        "start": 6637,
+        "end": 6639
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6640,
+        "end": 6652
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6660,
+        "end": 6675
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.9239942863554655,
+      "character_boundaries": {
+        "start": 6676,
+        "end": 6679
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6680,
+        "end": 6689
+      }
+    },
+    {
+      "snomed_cui": "112798008",
+      "preferred_name": "Insertion of endotracheal tube",
+      "source_value": "endotracheal intubation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6694,
+        "end": 6717
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "Guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6719,
+        "end": 6729
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "cardiac",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6787,
+        "end": 6794
+      }
+    },
+    {
+      "snomed_cui": "27550009",
+      "preferred_name": "Disorder of blood vessel",
+      "source_value": "vascular",
+      "confidence_score": 0.8507175838890362,
+      "character_boundaries": {
+        "start": 6799,
+        "end": 6807
+      }
+    },
+    {
+      "snomed_cui": "386585008",
+      "preferred_name": "Functional disorder",
+      "source_value": "dysfunction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6808,
+        "end": 6819
+      }
+    },
+    {
+      "snomed_cui": "386585008",
+      "preferred_name": "Functional disorder",
+      "source_value": "pathophysiology",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6827,
+        "end": 6842
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6856,
+        "end": 6864
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6865,
+        "end": 6880
+      }
+    },
+    {
+      "snomed_cui": "372787008",
+      "preferred_name": "Vasodilator",
+      "source_value": "vasodilator",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6891,
+        "end": 6902
+      }
+    },
+    {
+      "snomed_cui": "416608005",
+      "preferred_name": "Drug therapy",
+      "source_value": "therapy (medication",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6903,
+        "end": 6922
+      }
+    },
+    {
+      "snomed_cui": "41277001",
+      "preferred_name": "Lacking",
+      "source_value": "lacking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6949,
+        "end": 6956
+      }
+    },
+    {
+      "snomed_cui": "50607009",
+      "preferred_name": "Singular",
+      "source_value": "single",
+      "confidence_score": 0.380956995087657,
+      "character_boundaries": {
+        "start": 6962,
+        "end": 6968
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6969,
+        "end": 6978
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6979,
+        "end": 6984
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "high-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7024,
+        "end": 7033
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.6633658855522779,
+      "character_boundaries": {
+        "start": 7034,
+        "end": 7047
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7048,
+        "end": 7055
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7059,
+        "end": 7067
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 7095,
+        "end": 7103
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7120,
+        "end": 7128
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7129,
+        "end": 7137
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7139,
+        "end": 7148
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reduced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7149,
+        "end": 7156
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7157,
+        "end": 7165
+      }
+    },
+    {
+      "snomed_cui": "112798008",
+      "preferred_name": "Insertion of endotracheal tube",
+      "source_value": "endotracheal intubation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7166,
+        "end": 7189
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 7199,
+        "end": 7207
+      }
+    },
+    {
+      "snomed_cui": "250852008",
+      "preferred_name": "Airway pressure",
+      "source_value": "airway pressure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7208,
+        "end": 7223
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.9309427244997085,
+      "character_boundaries": {
+        "start": 7229,
+        "end": 7232
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7233,
+        "end": 7242
+      }
+    },
+    {
+      "snomed_cui": "386134007",
+      "preferred_name": "Significant",
+      "source_value": "significant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7251,
+        "end": 7262
+      }
+    },
+    {
+      "snomed_cui": "281647001",
+      "preferred_name": "Adverse reaction",
+      "source_value": "adverse effects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7263,
+        "end": 7278
+      }
+    },
+    {
+      "snomed_cui": "717141000000103",
+      "preferred_name": "Future",
+      "source_value": "Future",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7279,
+        "end": 7285
+      }
+    },
+    {
+      "snomed_cui": "260864003",
+      "preferred_name": "Frequency",
+      "source_value": "frequency",
+      "confidence_score": 0.5994907729168084,
+      "character_boundaries": {
+        "start": 7304,
+        "end": 7313
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presentations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7322,
+        "end": 7335
+      }
+    },
+    {
+      "snomed_cui": "860914002",
+      "preferred_name": "Erectile dysfunction",
+      "source_value": "ED",
+      "confidence_score": 0.549710912648026,
+      "character_boundaries": {
+        "start": 7343,
+        "end": 7345
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7354,
+        "end": 7364
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7379,
+        "end": 7388
+      }
+    },
+    {
+      "snomed_cui": "255238004",
+      "preferred_name": "Continuous",
+      "source_value": "continues",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7419,
+        "end": 7428
+      }
+    },
+    {
+      "snomed_cui": "223458004",
+      "preferred_name": "Informing",
+      "source_value": "inform",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7432,
+        "end": 7438
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7439,
+        "end": 7449
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7483,
+        "end": 7491
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7497,
+        "end": 7504
+      }
+    },
+    {
+      "snomed_cui": "719341000000105",
+      "preferred_name": "Theory",
+      "source_value": "theory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7516,
+        "end": 7522
+      }
+    },
+    {
+      "snomed_cui": "386585008",
+      "preferred_name": "Functional disorder",
+      "source_value": "pathophysiology",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7537,
+        "end": 7552
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presentations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7578,
+        "end": 7591
+      }
+    },
+    {
+      "snomed_cui": "87017008",
+      "preferred_name": "Focal",
+      "source_value": "focuses",
+      "confidence_score": 0.9512635073719493,
+      "character_boundaries": {
+        "start": 7592,
+        "end": 7599
+      }
+    },
+    {
+      "snomed_cui": "13085001000001100",
+      "preferred_name": "Preload",
+      "source_value": "preload",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7610,
+        "end": 7617
+      }
+    },
+    {
+      "snomed_cui": "27550009",
+      "preferred_name": "Disorder of blood vessel",
+      "source_value": "vascular",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 7622,
+        "end": 7630
+      }
+    },
+    {
+      "snomed_cui": "386585008",
+      "preferred_name": "Functional disorder",
+      "source_value": "dysfunction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7636,
+        "end": 7647
+      }
+    },
+    {
+      "snomed_cui": "251190009",
+      "preferred_name": "Manifestation of",
+      "source_value": "manifesting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7648,
+        "end": 7659
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "Studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7681,
+        "end": 7688
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7704,
+        "end": 7710
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "high-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7711,
+        "end": 7720
+      }
+    },
+    {
+      "snomed_cui": "89119000",
+      "preferred_name": "Nitrate salt",
+      "source_value": "nitrates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7721,
+        "end": 7729
+      }
+    },
+    {
+      "snomed_cui": "395077000",
+      "preferred_name": "Treatment intent",
+      "source_value": "treat",
+      "confidence_score": 0.41285659753052534,
+      "character_boundaries": {
+        "start": 7733,
+        "end": 7738
+      }
+    },
+    {
+      "snomed_cui": "27550009",
+      "preferred_name": "Disorder of blood vessel",
+      "source_value": "vascular",
+      "confidence_score": 0.839108746152641,
+      "character_boundaries": {
+        "start": 7744,
+        "end": 7752
+      }
+    },
+    {
+      "snomed_cui": "386585008",
+      "preferred_name": "Functional disorder",
+      "source_value": "dysfunction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7758,
+        "end": 7769
+      }
+    },
+    {
+      "snomed_cui": "30294006",
+      "preferred_name": "With trend",
+      "source_value": "trend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7799,
+        "end": 7804
+      }
+    },
+    {
+      "snomed_cui": "263768009",
+      "preferred_name": "Greater",
+      "source_value": "larger",
+      "confidence_score": 0.881785158523601,
+      "character_boundaries": {
+        "start": 7814,
+        "end": 7820
+      }
+    },
+    {
+      "snomed_cui": "272100000",
+      "preferred_name": "Magnitudes",
+      "source_value": "magnitude",
+      "confidence_score": 0.8349817715868072,
+      "character_boundaries": {
+        "start": 7821,
+        "end": 7830
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7852,
+        "end": 7859
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7860,
+        "end": 7867
+      }
+    },
+    {
+      "snomed_cui": "255469002",
+      "preferred_name": "Limited",
+      "source_value": "limited",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 7872,
+        "end": 7879
+      }
+    },
+    {
+      "snomed_cui": "255507004",
+      "preferred_name": "Small",
+      "source_value": "small",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7889,
+        "end": 7894
+      }
+    },
+    {
+      "snomed_cui": "410680006",
+      "preferred_name": "Number",
+      "source_value": "numbers",
+      "confidence_score": 0.538872978929131,
+      "character_boundaries": {
+        "start": 7895,
+        "end": 7902
+      }
+    },
+    {
+      "snomed_cui": "56116003",
+      "preferred_name": "Patent",
+      "source_value": "open",
+      "confidence_score": 0.7771674202970159,
+      "character_boundaries": {
+        "start": 7943,
+        "end": 7947
+      }
+    },
+    {
+      "snomed_cui": "263768009",
+      "preferred_name": "Greater",
+      "source_value": "Larger",
+      "confidence_score": 0.5396134278973175,
+      "character_boundaries": {
+        "start": 7963,
+        "end": 7969
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7970,
+        "end": 7977
+      }
+    },
+    {
+      "snomed_cui": "258049002",
+      "preferred_name": "Protocols",
+      "source_value": "protocol",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8018,
+        "end": 8026
+      }
+    },
+    {
+      "snomed_cui": "261829003",
+      "preferred_name": "High dose",
+      "source_value": "high-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8069,
+        "end": 8078
+      }
+    },
+    {
+      "snomed_cui": "89119000",
+      "preferred_name": "Nitrate salt",
+      "source_value": "nitrates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8079,
+        "end": 8087
+      }
+    },
+    {
+      "snomed_cui": "410566008",
+      "preferred_name": "Contrast sensitivity test",
+      "source_value": "fact",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8096,
+        "end": 8100
+      }
+    },
+    {
+      "snomed_cui": "418694008",
+      "preferred_name": "Rapidly",
+      "source_value": "rapid",
+      "confidence_score": 0.5239065637528606,
+      "character_boundaries": {
+        "start": 8110,
+        "end": 8115
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8116,
+        "end": 8124
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8146,
+        "end": 8154
+      }
+    }
+  ]
+}

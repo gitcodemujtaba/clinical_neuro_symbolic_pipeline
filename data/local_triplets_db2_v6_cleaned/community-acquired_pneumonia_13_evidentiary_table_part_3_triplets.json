@@ -1,0 +1,579 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Pleural effusion",
+      "snomed": "60046008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Presence of pleural effusion at presentation is associated with increased likelihood of hospital admission, longer length of stay, and higher mortality.",
+          "citation": "Dean et al25 (2016)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:9a6ae182-fabc-4dfc-96b6-3c1a87258266",
+          "rationale": "Pleural effusion is associated with increased severity of pneumonia, indicated by higher odds ratio for mortality (OR 2.6; 95% CI 2.0 to 3.5).",
+          "citation": "Dean et al25 (2016)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:e8da92de-09fe-4bff-a315-0afc9bb6cf15",
+          "rationale": "Pleural effusion at presentation is associated with increased likelihood of hospital admission, longer length of stay, and higher mortality.",
+          "citation": "Dean et al25 (2016)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fb0ae510-19cd-4893-8f5c-def0ad6ca294",
+      "@type": "Finding",
+      "name": "B-lines on lung ultrasound",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:86f809f2-874e-4d88-9c5e-a52dd9f5773a",
+          "rationale": "B-lines on lung ultrasound indicate acute heart failure syndrome.",
+          "citation": "Yealy et al20 (2005)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:86f809f2-874e-4d88-9c5e-a52dd9f5773a",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0abcdef1-2345-6789-0abc-def123456789",
+      "@type": "Finding",
+      "name": "PSI score >= 4",
+      "snomed": "86967005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:5b72f68a-58ea-4b21-a358-ea2f52980116",
+          "rationale": "PSI score >= 4 is associated with increased risk of readmission to the ED after initial discharge.",
+          "citation": "Julián-Jiménez et al21 (2013)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:77360089-9b9e-4e10-9502-749ae1cb60f7",
+          "rationale": "PSI score >= 5 is associated with increased risk of readmission to the ED after initial discharge.",
+          "citation": "Julián-Jiménez et al21 (2013)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Increased risk of hospital admission, longer length of stay, and higher mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9a6ae182-fabc-4dfc-96b6-3c1a87258266",
+      "@type": "Acuity",
+      "name": "Increased severity",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:751dfb28-d830-40d0-87f4-e02b54a78802",
+      "@type": "Finding",
+      "name": "CURB-65 score >= 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+          "rationale": "CURB-65 score >= 2 is associated with increased risk of 30-day mortality.",
+          "citation": "Lim et al23 (2003)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2b3c4d5e-6f7a-8901-2345-67890abcdef1",
+      "@type": "Finding",
+      "name": "CURB-65 score >= 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1749eb45-1a68-459d-95b8-026a63b02355",
+          "rationale": "CURB-65 score >= 3 is associated with increased risk of 30-day mortality.",
+          "citation": "Lim et al23 (2003)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1749eb45-1a68-459d-95b8-026a63b02355",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:69a22253-1ff6-41fd-8066-343e2429ceea",
+      "@type": "Finding",
+      "name": "A-DROP score >= 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:bfd1f7b8-01d2-4470-a96f-cbec09103195",
+          "rationale": "A-DROP score >= 2 is associated with increased risk of 30-day mortality.",
+          "citation": "Jones et al26 (2014)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:bfd1f7b8-01d2-4470-a96f-cbec09103195",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2da457c8-b036-44b1-a8e7-93fd5c7eb8d6",
+      "@type": "Finding",
+      "name": "eCURB score >= 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:7a890123-4567-890a-bcde-f1234567890a",
+          "rationale": "eCURB score >= 2 is associated with increased risk of 30-day mortality.",
+          "citation": "Jones et al26 (2014)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7a890123-4567-890a-bcde-f1234567890a",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5b72f68a-58ea-4b21-a358-ea2f52980116",
+      "@type": "Acuity",
+      "name": "Increased risk of readmission to the ED after initial discharge",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:77360089-9b9e-4e10-9502-749ae1cb60f7",
+      "@type": "Acuity",
+      "name": "Increased risk of readmission to the ED after initial discharge",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:56ca846d-4c20-4877-8c03-d09bbafd9468",
+      "@type": "Finding",
+      "name": "Inappropriate destination (admission/discharge) based on PSI",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:a77e745b-ab9e-4596-96e9-d7c40c7e3937",
+          "rationale": "Inappropriate destination based on PSI is associated with increased risk of readmission to the ED after initial discharge.",
+          "citation": "Julián-Jiménez et al21 (2013)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a77e745b-ab9e-4596-96e9-d7c40c7e3937",
+      "@type": "Acuity",
+      "name": "Increased risk of readmission to the ED after initial discharge",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e8da92de-09fe-4bff-a315-0afc9bb6cf15",
+      "@type": "Acuity",
+      "name": "Increased likelihood of hospital admission, longer length of stay, and higher mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4693f51a-ded3-46c0-95af-d143b8ed470f",
+      "@type": "Finding",
+      "name": "CURB-65 score >= 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:5153b610-c4a4-48c3-9a69-9e2f76fadd26",
+          "rationale": "CURB-65 score >= 2 is associated with increased risk of 30-day mortality.",
+          "citation": "Jones et al26 (2014)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5153b610-c4a4-48c3-9a69-9e2f76fadd26",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0b6d8d9f-02f3-4507-bf88-449e9ab2cb71",
+      "@type": "Finding",
+      "name": "CURB-65 score >= 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:71268d84-2069-43b3-a48b-30fd569bce29",
+          "rationale": "CURB-65 score >= 3 is associated with increased risk of 30-day mortality.",
+          "citation": "Jones et al26 (2014)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:71268d84-2069-43b3-a48b-30fd569bce29",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5c7240c5-978b-4377-9e6c-5d904f0ba4ea",
+      "@type": "Finding",
+      "name": "eCURB score >= 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:110b7e79-3a6a-4f64-ab3e-b3845f156efd",
+          "rationale": "eCURB score >= 2 is associated with increased risk of 30-day mortality.",
+          "citation": "Jones et al26 (2014)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:110b7e79-3a6a-4f64-ab3e-b3845f156efd",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4d234cc6-84eb-47b8-9e4a-b1027bc260ed",
+      "@type": "Finding",
+      "name": "A-DROP score >= 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:4d179764-e84e-4a31-bd4e-f5fe093504bc",
+          "rationale": "A-DROP score >= 2 is associated with increased risk of 30-day mortality.",
+          "citation": "Jones et al26 (2014)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4d179764-e84e-4a31-bd4e-f5fe093504bc",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e0d78446-5a52-4995-9f41-e5a21c906320",
+      "@type": "Finding",
+      "name": "CURB-65 score >= 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:a8bbe5c5-cdd4-4852-ad2f-a247626a3241",
+          "rationale": "CURB-65 score >= 3 is associated with increased risk of 30-day mortality.",
+          "citation": "Jones et al26 (2014)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a8bbe5c5-cdd4-4852-ad2f-a247626a3241",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3cfd0a8b-9846-4a26-8e21-b517d3f83206",
+      "@type": "Finding",
+      "name": "eCURB score >= 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:eae5d84c-6d14-4a83-9647-9ab3eeeefb05",
+          "rationale": "eCURB score >= 3 is associated with increased risk of 30-day mortality.",
+          "citation": "Jones et al26 (2014)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:eae5d84c-6d14-4a83-9647-9ab3eeeefb05",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b9e5dad9-6589-42e7-9860-151bd9a50731",
+      "@type": "Finding",
+      "name": "A-DROP score >= 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:9bedd94b-eec3-400a-9075-15942b71779e",
+          "rationale": "A-DROP score >= 3 is associated with increased risk of 30-day mortality.",
+          "citation": "Jones et al26 (2014)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9bedd94b-eec3-400a-9075-15942b71779e",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e98be669-f916-4ac8-bc5a-7f43d8951d90",
+      "@type": "Finding",
+      "name": "CURB-65 score >= 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_13_evidentiary_table_part_3.json",
+        "section_title": "Evidentiary Table Part 3 (Yealy et al. to Jones et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1e1804a2-23c9-499e-a54b-f6c96aea872b",
+          "rationale": "CURB-65 score >= 1 is associated with increased risk of 30-day mortality.",
+          "citation": "Lim et al23 (2003)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1e1804a2-23c9-499e-a54b-f6c96aea872b",
+      "@type": "Acuity",
+      "name": "Increased risk of 30-day mortality",
+      "snomed": "",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:35.663903+00:00",
+    "nodes_before": 37,
+    "nodes_after": 35,
+    "rules_before": 19,
+    "rules_after": 19
+  }
+}

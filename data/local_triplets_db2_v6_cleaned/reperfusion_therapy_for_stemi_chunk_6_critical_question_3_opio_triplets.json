@@ -1,0 +1,43 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Opioid use in patients undergoing reperfusion therapy",
+      "snomed": "404642006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_6_critical_question_3_opio.json",
+        "section_title": "Critical Question 3: Opioid Use in Reperfusion Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "RAISES_CONCERN",
+          "target": "urn:uuid:f1e2d3c4-b5a6-9870-fedc-ba9876543210",
+          "rationale": "Opioids may potentially result in less salvageable myocardium if administered to patients having an MI.",
+          "citation": "A retrospective cardiac magnetic resonance study showed that patients who received intravenous morphine displayed larger infarct size, larger extent of microvascular obstruction and less salvageable myocardium compared with those who did not.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f1e2d3c4-b5a6-9870-fedc-ba9876543210",
+      "@type": "Finding",
+      "name": "Less salvageable myocardium",
+      "snomed": "74281007",
+      "icd10": "N/A",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:41.240690+00:00",
+    "nodes_before": 2,
+    "nodes_after": 2,
+    "rules_before": 1,
+    "rules_after": 1
+  }
+}

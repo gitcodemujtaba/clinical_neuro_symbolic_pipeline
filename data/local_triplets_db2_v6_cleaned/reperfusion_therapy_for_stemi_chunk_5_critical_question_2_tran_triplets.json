@@ -1,0 +1,637 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+      "@type": "Finding",
+      "name": "STEMI",
+      "snomed": "401303003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Patients with STEMI should be transferred to a PCI-capable hospital as soon as possible to decrease the incidence of MACE.",
+          "citation": "Level B recommendations.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+      "@type": "Intervention",
+      "name": "Transfer to a PCI center",
+      "snomed": "129347002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1a2b3c4d-e5f6-4789-0abc-def123456789",
+          "rationale": "Transfer to a PCI center is indicated for patients with STEMI to decrease MACE.",
+          "citation": "Level B recommendations.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-4789-0abc-def123456789",
+      "@type": "Condition",
+      "name": "PCI center",
+      "snomed": "415070008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcf-def123456789",
+      "@type": "Finding",
+      "name": "PCI (Percutaneous Coronary Intervention)",
+      "snomed": "415070008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cdef0123-4567-89ab-cdef-0123456789ab",
+      "@type": "Finding",
+      "name": "MACE (Major Adverse Cardiovascular Events)",
+      "snomed": "724781000000108",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1d5b5ab6-14e2-4724-9d99-cf6237f2070d",
+      "@type": "Finding",
+      "name": "Fibrinolytic therapy",
+      "snomed": "426347000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:789012ab-cdef-4567-890a-bcdeffedcba9",
+      "@type": "Finding",
+      "name": "Emergency Medical Services (EMS)",
+      "snomed": "409971007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b1a2c3d4-e6f7-890a-bcde-f567890123ab",
+      "@type": "Finding",
+      "name": "Mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c2d3e4f5-6789-0abc-def1-234567890abc",
+      "@type": "Finding",
+      "name": "MI (Myocardial Infarction)",
+      "snomed": "22298006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:16faddec-6276-4fcf-93c1-f19ee17cb596",
+      "@type": "Finding",
+      "name": "Stroke",
+      "snomed": "230690007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a2f6e5be-b34c-48cf-b942-6ea946cd9f15",
+      "@type": "Finding",
+      "name": "Revascularization",
+      "snomed": "297183000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:671f20d1-b8b8-4434-b12a-e2931e926d93",
+      "@type": "Quantitative Threshold",
+      "name": "Time goal for transfer initiation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+          "rationale": "Transfer should be initiated as soon as possible once STEMI is identified.",
+          "citation": "The goal is to begin transfer from a non-PCI capable hospital once a STEMI is identified with a goal of total time from first medical contact to intervention of less than 120 minutes.",
+          "citation_paraphrase": "The goal is to begin transfer from a non-PCI capable hospital once a STEMI is identified with a goal of total time from first medical contact to intervention of less than 120 minutes.",
+          "citation_verbatim_excerpt": "In adult patients having a STEMI, does transfer to a PCI center decrease the incidence of MACE?**Patient Management Recommendations***Level A recommendations.* None specified.*Level B recommendations.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ],
+      "quantitative_threshold": {
+        "time": "< 120 minutes",
+        "unit": "minutes",
+        "description": "Total time from first medical contact to intervention goal"
+      }
+    },
+    {
+      "@id": "urn:uuid:567890ab-cdef-4321-0fed-cba987654321",
+      "@type": "Quantitative Threshold",
+      "name": "Transfer time feasibility limit",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Transfer is feasible if the time to reach a PCI facility is within 30 minutes of enrollment.",
+          "citation": "Inclusion criteria for this study were that patient transport to a PCI facility was feasible within 30 minutes of enrollment.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quantitative_threshold": {
+        "time": "<= 30 minutes",
+        "unit": "minutes",
+        "description": "Maximum time from enrollment to reach PCI facility for transfer feasibility"
+      }
+    },
+    {
+      "@id": "urn:uuid:77409a61-a05b-4fdd-b34c-d03be874066d",
+      "@type": "Quantitative Threshold",
+      "name": "Distance limit for transfer feasibility",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Transfer is feasible if the distance to the PCI center is less than 120 km.",
+          "citation": "Inclusion criteria for this study were that patient transport to a PCI facility was feasible within 30 minutes of enrollment and the distance to the PCI center was less than 120 km.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quantitative_threshold": {
+        "distance": "<= 120 km",
+        "unit": "km",
+        "description": "Maximum distance from non-PCI hospital to PCI facility for transfer feasibility"
+      }
+    },
+    {
+      "@id": "urn:uuid:1b2c3d4e-f5a6-7890-bcde-f456789012ab",
+      "@type": "Finding",
+      "name": "Non-PCI capable hospital",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f6216d80-4d8f-470b-9a59-7275e862a48a",
+      "@type": "Finding",
+      "name": "Community emergency physician",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e3908847-e16d-462f-a4ae-2f9d7956433d",
+      "@type": "Finding",
+      "name": "Pain onset to randomization time",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4567890a-bcde-fedc-ba98-76543210fedc",
+      "@type": "Finding",
+      "name": "Transfer time",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d0fb5026-df64-4ccf-acef-76979e2fb98c",
+      "@type": "Finding",
+      "name": "D2B (Door to Balloon) time",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Finding",
+      "name": "Symptom onset to randomization time",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:da713d11-ecb6-4ea1-a093-4de907c8968f",
+      "@type": "Finding",
+      "name": "Symptom onset to balloon inflation time",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:67890abc-def1-2345-6789-0abcdef12345",
+      "@type": "Finding",
+      "name": "Time from symptom onset to a PCI capable facility",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:10fe4dcb-a987-6543-210f-edcba9876543",
+      "@type": "Finding",
+      "name": "Time from symptom onset to a PCI capable facility for transferred patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a9876543-210f-edcb-a987-6543fedcba09",
+      "@type": "Finding",
+      "name": "Time from symptom onset to a PCI capable facility for patients who presented directly to a PCI hospital",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f567890a-bcde-f123-4567-890abcdefd12",
+      "@type": "Finding",
+      "name": "Total delay (symptom-to-balloon inflation)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:025012d5-bdad-49fc-97a1-d7fd124e2ed9",
+      "@type": "Finding",
+      "name": "Pain onset to randomization time",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:dcefd1e9-d7d9-4d56-ab02-d38fb9c8b722",
+      "@type": "Finding",
+      "name": "Time from first medical contact to intervention",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a1349adb-a5f6-4568-8a1e-3aa5e03f04e5",
+      "@type": "Finding",
+      "name": "Time from first medical contact to intervention goal",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8054880c-0a13-4ef6-844b-2fa44d741f1d",
+      "@type": "Finding",
+      "name": "Time from symptom onset to randomization time",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ed13ebb5-d0cc-4888-83ee-77c3141fe628",
+      "@type": "Finding",
+      "name": "Time from symptom onset to a PCI capable facility for transferred patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:138e847a-58b8-415d-9705-3dde79279a6e",
+      "@type": "Finding",
+      "name": "Time from symptom onset to a PCI capable facility for patients who presented directly to a PCI hospital",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:def12345-6789-0abc-def1-234567890abd",
+      "@type": "Finding",
+      "name": "Transfer time was 48 minutes (SD 20)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:76c2c507-1f67-4bdf-86d6-af41628cfdab",
+      "@type": "Finding",
+      "name": "D2B once arrived at a PCI capable center was 26 minutes (SD 11)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e334f392-199a-4c16-8559-10ca3d95dc83",
+      "@type": "Finding",
+      "name": "Pain onset to randomization was similar in both groups",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2d075014-dbd1-42d3-bb9f-e121f3ad1e8b",
+      "@type": "Finding",
+      "name": "Transfer time was 48 minutes (SD 20)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c2edd614-91f3-4d3a-843c-9bba745a0579",
+      "@type": "Finding",
+      "name": "D2B once arrived at a PCI capable center was 26 minutes (SD 11)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:50121827-5bd3-4260-82d1-bb9427253549",
+      "@type": "Finding",
+      "name": "Pain onset to randomization was similar in both groups",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a564bde9-3c98-4840-89a4-67033f1e2c80",
+      "@type": "Finding",
+      "name": "Transfer time was 48 minutes (SD 20)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3bd9c1e2-14be-463b-8b58-c2391801b29a",
+      "@type": "Finding",
+      "name": "D2B once arrived at a PCI capable center was 26 minutes (SD 11)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:af47d254-f92a-4dcc-9102-d66cefc627a0",
+      "@type": "Finding",
+      "name": "Pain onset to randomization was similar in both groups",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f3882d00-6ab0-4916-b295-c3243dfc5b42",
+      "@type": "Finding",
+      "name": "Transfer time was 48 minutes (SD 20)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2a4590ce-9812-47b9-9e88-95e9e3338d00",
+      "@type": "Finding",
+      "name": "D2B once arrived at a PCI capable center was 26 minutes (SD 11)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e8b934f3-1b89-4dbd-800d-57af351f1d45",
+      "@type": "Finding",
+      "name": "Pain onset to randomization was similar in both groups",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d5bdd84e-b8b4-4164-a36b-c10c4b08261d",
+      "@type": "Finding",
+      "name": "Transfer time was 48 minutes (SD 20)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9290a343-10da-4105-a464-361f1b808be7",
+      "@type": "Finding",
+      "name": "D2B once arrived at a PCI capable center was 26 minutes (SD 11)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:623ff9d9-4531-4354-bcf6-140710fc92a7",
+      "@type": "Finding",
+      "name": "Pain onset to randomization was similar in both groups",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json",
+        "section_title": "Critical Question 2: Transfer to a PCI Center"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:98581cce-3c6e-46ff-b6a4-3e7ad5a048f2",
+      "@type": "Finding",
+      "name": "Transfer time was 48 minutes (SD 20)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_5_critical_question_2_tran.json"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:41.179351+00:00",
+    "nodes_before": 47,
+    "nodes_after": 47,
+    "rules_before": 5,
+    "rules_after": 5
+  }
+}

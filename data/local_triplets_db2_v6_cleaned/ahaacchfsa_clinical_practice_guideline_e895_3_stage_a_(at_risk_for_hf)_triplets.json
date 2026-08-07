@@ -1,0 +1,475 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Hypertension",
+      "snomed": "38341003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Blood pressure control is recommended in patients with hypertension to prevent symptomatic heart failure.",
+          "citation": "Recommendations for Stage A",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:dbe2682a-97ca-4595-9d5f-bc0b361d69f7",
+      "@type": "Medication",
+      "name": "GDMT for hypertension",
+      "snomed": "38341003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Intervention",
+      "name": "Blood pressure control",
+      "snomed": "31509003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:dbe2682a-97ca-4595-9d5f-bc0b361d69f7",
+          "rationale": "Blood pressure control should be in accordance with GDMT for hypertension.",
+          "citation": "Recommendations for Stage A",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a6a7d25-d7b8-43cf-91b1-ec575615f2f8",
+      "@type": "Finding",
+      "name": "Type 2 diabetes with established CVD or high cardiovascular risk",
+      "snomed": "44054006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:7add364e-b0a5-42bd-8622-f0c649c6eaf0",
+          "rationale": "SGLT2i should be used in patients with type 2 diabetes and established CVD or high cardiovascular risk to prevent hospitalizations for HF.",
+          "citation": "Recommendations for Stage A",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3125da5b-b8a7-4837-8f2a-4810dec9b2f7",
+      "@type": "Finding",
+      "name": "Healthy lifestyle habits",
+      "snomed": "933341000000107",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:9b484d18-2204-49a9-9ac0-e42ff4765186",
+          "rationale": "Healthy lifestyle habits (regular physical activity, maintaining normal weight, healthy diet, smoking cessation) are recommended to reduce future HF risk.",
+          "citation": "Recommendations for Stage A",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:db133d7b-703c-4435-9194-65adb3e84d52",
+      "@type": "Finding",
+      "name": "Natriuretic peptide biomarker screening",
+      "snomed": "722021000000100",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:26493af9-155b-4938-a194-cdbd071ca744",
+          "rationale": "Natriuretic peptide biomarker screening followed by team-based care is useful in patients at risk to prevent LV dysfunction or new-onset HF.",
+          "citation": "Recommendations for Stage A",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c4ba4ce9-8898-4a72-a6e1-0bfe4cc487d8",
+      "@type": "Finding",
+      "name": "Validated multivariable risk scores",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:cfb34214-343b-4a60-9e01-f00f0eda421e",
+          "rationale": "Validated multivariable risk scores can be useful to estimate risk of incident HF.",
+          "citation": "Recommendations for Stage A",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:71d2baa9-e905-443e-85e1-07535a167017",
+      "@type": "Finding",
+      "name": "LVEF ≤40%",
+      "snomed": "250908004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:3fc5fcb1-ea69-422e-bcb2-15af1218d3be",
+          "rationale": "ACEi should be used in patients with LVEF ≤40% to prevent symptomatic HF and reduce mortality.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:66126887-6fe7-4b06-bec6-59e8b3d94193",
+          "rationale": "Beta blockers should be used in patients with LVEF ≤40% to reduce mortality.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:4567890a-bcde-f123-4567-89abcdef1234",
+          "rationale": "In patients with recent MI and LVEF ≤40% intolerant to ACEi, ARBs should be used.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:567890ab-cdef-1234-5678-90abcdef1234",
+          "rationale": "In patients ≥40 days post-MI with LVEF ≤30% and NYHA Class I symptoms on GDMT with expected survival >1 year, an ICD is recommended for primary prevention of SCD.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:67890abc-def1-2345-6789-0abcdef12345",
+          "rationale": "Thiazolidinediones should NOT be used in patients with LVEF <50% as they increase HF hospitalizations.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7fd27cbc-3932-41e1-a537-ded388dd2fc4",
+          "rationale": "Nondihydropyridine CCBs with negative inotropic effects may be harmful in patients with LVEF <50%.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:3fc5fcb1-ea69-422e-bcb2-15af1218d3be",
+          "rationale": "In patients with LVEF ≤40%, ACEi should be used to prevent symptomatic HF and reduce mortality.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:66126887-6fe7-4b06-bec6-59e8b3d94193",
+          "rationale": "In patients with recent/remote MI or ACS and LVEF ≤40%, evidence-based beta blockers should be used to reduce mortality.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:66126887-6fe7-4b06-bec6-59e8b3d94193",
+          "rationale": "In patients with LVEF ≤40%, beta blockers should be used to prevent symptomatic HF.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:66126887-6fe7-4b06-bec6-59e8b3d94193",
+      "@type": "Medication",
+      "name": "Beta blockers",
+      "snomed": "33252009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:67890abc-def1-2345-6789-0abcdef12345",
+      "@type": "Medication",
+      "name": "Thiazolidinediones",
+      "snomed": "372568004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1e2f3a4b-c5d6-7890-fedc-ba9876543210",
+      "@type": "Finding",
+      "name": "Recent or remote MI",
+      "snomed": "57054005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:3fc5fcb1-ea69-422e-bcb2-15af1218d3be",
+          "rationale": "In patients with recent or remote MI, statins should be used to prevent symptomatic HF and adverse cardiovascular events.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:4567890a-bcde-f123-4567-89abcdef1234",
+          "rationale": "In patients with recent MI and LVEF ≤40% intolerant to ACEi, ARBs should be used.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:66126887-6fe7-4b06-bec6-59e8b3d94193",
+          "rationale": "In patients with recent/remote MI or ACS and LVEF ≤40%, evidence-based beta blockers should be used to reduce mortality.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:a9e7db84-56e8-402d-974c-5e626027fb77",
+          "rationale": "In patients with recent or remote MI, statins should be used to prevent symptomatic HF and adverse cardiovascular events.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2f3a4b5c-d678-90fe-dcba-9876543210ef",
+      "@type": "Finding",
+      "name": "ACS",
+      "snomed": "394659003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:3fc5fcb1-ea69-422e-bcb2-15af1218d3be",
+          "rationale": "In patients with recent or remote MI, statins should be used to prevent symptomatic HF and adverse cardiovascular events.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:66126887-6fe7-4b06-bec6-59e8b3d94193",
+          "rationale": "In patients with recent/remote MI or ACS and LVEF ≤40%, evidence-based beta blockers should be used to reduce mortality.",
+          "citation": "Recommendations for Stage B",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3a4b5cde-f678-90fe-ba98-76543210fedc",
+      "@type": "Finding",
+      "name": "Statins",
+      "snomed": "96302009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a9e7db84-56e8-402d-974c-5e626027fb77",
+      "@type": "Medication",
+      "name": "Statins",
+      "snomed": "96302009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7add364e-b0a5-42bd-8622-f0c649c6eaf0",
+      "@type": "Medication",
+      "name": "SGLT2i",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9b484d18-2204-49a9-9ac0-e42ff4765186",
+      "@type": "Intervention",
+      "name": "Healthy lifestyle habits",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:26493af9-155b-4938-a194-cdbd071ca744",
+      "@type": "Intervention",
+      "name": "Team-based care following biomarker screening",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cfb34214-343b-4a60-9e01-f00f0eda421e",
+      "@type": "Condition",
+      "name": "Risk of incident HF",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3fc5fcb1-ea69-422e-bcb2-15af1218d3be",
+      "@type": "Medication",
+      "name": "ACEi",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4567890a-bcde-f123-4567-89abcdef1234",
+      "@type": "Medication",
+      "name": "ARBs",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:567890ab-cdef-1234-5678-90abcdef1234",
+      "@type": "Intervention",
+      "name": "ICD",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7fd27cbc-3932-41e1-a537-ded388dd2fc4",
+      "@type": "Medication",
+      "name": "Nondihydropyridine CCBs with negative inotropic effects",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5cdef123-4567-890a-bcde-f1234567890a",
+      "@type": "Medication",
+      "name": "ACEi",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6def1234-5678-90ab-cdef-1234567890bc",
+      "@type": "Medication",
+      "name": "ARBs",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cf9dcddb-5b27-4017-9dab-47af5b2071d9",
+      "@type": "Intervention",
+      "name": "ICD",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_3_stage_a_(at_risk_for_hf).json",
+        "section_title": "Stage A (At Risk for HF) and Stage B (Pre-HF) Prevention Strategies"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:32.452196+00:00",
+    "nodes_before": 31,
+    "nodes_after": 25,
+    "rules_before": 27,
+    "rules_after": 21
+  }
+}

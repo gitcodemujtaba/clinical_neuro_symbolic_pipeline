@@ -1,0 +1,1015 @@
+{
+  "chunk_id": "chunk_6",
+  "entities": [
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "MANAGEMENT",
+      "confidence_score": 0.8354069953626863,
+      "character_boundaries": {
+        "start": 0,
+        "end": 10
+      }
+    },
+    {
+      "snomed_cui": "900000000000550004",
+      "preferred_name": "Definition",
+      "source_value": "Definition",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 42,
+        "end": 52
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 75,
+        "end": 79
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 86,
+        "end": 91
+      }
+    },
+    {
+      "snomed_cui": "272379006",
+      "preferred_name": "Event",
+      "source_value": "event",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 92,
+        "end": 97
+      }
+    },
+    {
+      "snomed_cui": "230993007",
+      "preferred_name": "Worsening",
+      "source_value": "worsening",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 115,
+        "end": 124
+      }
+    },
+    {
+      "snomed_cui": "267036007",
+      "preferred_name": "Dyspnea",
+      "source_value": "dyspnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 125,
+        "end": 132
+      }
+    },
+    {
+      "snomed_cui": "263731006",
+      "preferred_name": "Coughing",
+      "source_value": "cough",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 140,
+        "end": 145
+      }
+    },
+    {
+      "snomed_cui": "45710003",
+      "preferred_name": "Sputum",
+      "source_value": "sputum",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 150,
+        "end": 156
+      }
+    },
+    {
+      "snomed_cui": "258703001",
+      "preferred_name": "day",
+      "source_value": "days",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 167,
+        "end": 171
+      }
+    },
+    {
+      "snomed_cui": "271823003",
+      "preferred_name": "Tachypnea",
+      "source_value": "tachypnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 194,
+        "end": 203
+      }
+    },
+    {
+      "snomed_cui": "3424008",
+      "preferred_name": "Tachycardia",
+      "source_value": "tachycardia",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 204,
+        "end": 215
+      }
+    },
+    {
+      "snomed_cui": "257552002",
+      "preferred_name": "Inflammation",
+      "source_value": "inflammation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 220,
+        "end": 232
+      }
+    },
+    {
+      "snomed_cui": "246112005",
+      "preferred_name": "Severity",
+      "source_value": "Severity",
+      "confidence_score": 0.8461004878534194,
+      "character_boundaries": {
+        "start": 236,
+        "end": 244
+      }
+    },
+    {
+      "snomed_cui": "278201002",
+      "preferred_name": "Classification",
+      "source_value": "Classification",
+      "confidence_score": 0.7373709724408324,
+      "character_boundaries": {
+        "start": 245,
+        "end": 259
+      }
+    },
+    {
+      "snomed_cui": "255604002",
+      "preferred_name": "Mild",
+      "source_value": "Mild",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 293,
+        "end": 297
+      }
+    },
+    {
+      "snomed_cui": "267036007",
+      "preferred_name": "Dyspnea",
+      "source_value": "Dyspnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 299,
+        "end": 306
+      }
+    },
+    {
+      "snomed_cui": "86290005",
+      "preferred_name": "Respiratory rate",
+      "source_value": "RR",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 316,
+        "end": 318
+      }
+    },
+    {
+      "snomed_cui": "364075005",
+      "preferred_name": "Heart rate",
+      "source_value": "HR",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 325,
+        "end": 327
+      }
+    },
+    {
+      "snomed_cui": "442476006",
+      "preferred_name": "Arterial oxygen saturation",
+      "source_value": "SaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 334,
+        "end": 338
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "Moderate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 351,
+        "end": 359
+      }
+    },
+    {
+      "snomed_cui": "267036007",
+      "preferred_name": "Dyspnea",
+      "source_value": "Dyspnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 376,
+        "end": 383
+      }
+    },
+    {
+      "snomed_cui": "86290005",
+      "preferred_name": "Respiratory rate",
+      "source_value": "RR",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 394,
+        "end": 396
+      }
+    },
+    {
+      "snomed_cui": "364075005",
+      "preferred_name": "Heart rate",
+      "source_value": "HR",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 404,
+        "end": 406
+      }
+    },
+    {
+      "snomed_cui": "442476006",
+      "preferred_name": "Arterial oxygen saturation",
+      "source_value": "SaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 414,
+        "end": 418
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "change",
+      "confidence_score": 0.431900550444977,
+      "character_boundaries": {
+        "start": 428,
+        "end": 434
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 441,
+        "end": 444
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "Severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 461,
+        "end": 467
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "Moderate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 469,
+        "end": 477
+      }
+    },
+    {
+      "snomed_cui": "20401003",
+      "preferred_name": "With",
+      "source_value": "plus",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 487,
+        "end": 491
+      }
+    },
+    {
+      "snomed_cui": "233373009",
+      "preferred_name": "Aortic bifurcation bypass graft",
+      "source_value": "ABG",
+      "confidence_score": 0.5633661961639531,
+      "character_boundaries": {
+        "start": 492,
+        "end": 495
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 504,
+        "end": 509
+      }
+    },
+    {
+      "snomed_cui": "389087006",
+      "preferred_name": "Hypoxemia",
+      "source_value": "hypoxemia",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 510,
+        "end": 519
+      }
+    },
+    {
+      "snomed_cui": "359846004",
+      "preferred_name": "PO>2< measurement",
+      "source_value": "PaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 521,
+        "end": 525
+      }
+    },
+    {
+      "snomed_cui": "29596007",
+      "preferred_name": "Hypercapnia",
+      "source_value": "hypercapnia",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 545,
+        "end": 556
+      }
+    },
+    {
+      "snomed_cui": "51387008",
+      "preferred_name": "Acidosis",
+      "source_value": "acidosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 579,
+        "end": 587
+      }
+    },
+    {
+      "snomed_cui": "257557008",
+      "preferred_name": "Place",
+      "source_value": "Place",
+      "confidence_score": 0.8452017141456828,
+      "character_boundaries": {
+        "start": 603,
+        "end": 608
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "Management",
+      "confidence_score": 0.7608978083535755,
+      "character_boundaries": {
+        "start": 612,
+        "end": 622
+      }
+    },
+    {
+      "snomed_cui": "814161000000106",
+      "preferred_name": "Ambulatory care",
+      "source_value": "Ambulatory care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 637,
+        "end": 652
+      }
+    },
+    {
+      "snomed_cui": "255604002",
+      "preferred_name": "Mild",
+      "source_value": "mild",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 657,
+        "end": 661
+      }
+    },
+    {
+      "snomed_cui": "272379006",
+      "preferred_name": "Event",
+      "source_value": "events",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 662,
+        "end": 668
+      }
+    },
+    {
+      "snomed_cui": "394656005",
+      "preferred_name": "Inpatient care",
+      "source_value": "Hospitalization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 670,
+        "end": 685
+      }
+    },
+    {
+      "snomed_cui": "409622000",
+      "preferred_name": "Respiratory failure",
+      "source_value": "respiratory failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 690,
+        "end": 709
+      }
+    },
+    {
+      "snomed_cui": "72670004",
+      "preferred_name": "Sign",
+      "source_value": "signs",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 710,
+        "end": 715
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 717,
+        "end": 723
+      }
+    },
+    {
+      "snomed_cui": "11403006",
+      "preferred_name": "Financially poor",
+      "source_value": "poor",
+      "confidence_score": 0.48081129731646755,
+      "character_boundaries": {
+        "start": 742,
+        "end": 746
+      }
+    },
+    {
+      "snomed_cui": "304351000000106",
+      "preferred_name": "Home support",
+      "source_value": "home support",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 747,
+        "end": 759
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 761,
+        "end": 764
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 769,
+        "end": 775
+      }
+    },
+    {
+      "snomed_cui": "51387008",
+      "preferred_name": "Acidosis",
+      "source_value": "acidosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 776,
+        "end": 784
+      }
+    },
+    {
+      "snomed_cui": "419284004",
+      "preferred_name": "Altered mental status",
+      "source_value": "altered mental status",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 786,
+        "end": 807
+      }
+    },
+    {
+      "snomed_cui": "1258985005",
+      "preferred_name": "Invasive mechanical ventilation",
+      "source_value": "invasive mechanical ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 809,
+        "end": 840
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 841,
+        "end": 845
+      }
+    },
+    {
+      "snomed_cui": "422773005",
+      "preferred_name": "Hemodynamic instability",
+      "source_value": "hemodynamic instability",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 850,
+        "end": 873
+      }
+    },
+    {
+      "snomed_cui": "416608005",
+      "preferred_name": "Drug therapy",
+      "source_value": "Pharmacological Treatment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 876,
+        "end": 901
+      }
+    },
+    {
+      "snomed_cui": "367450005",
+      "preferred_name": "Short",
+      "source_value": "Short",
+      "confidence_score": 0.31783619241880434,
+      "character_boundaries": {
+        "start": 941,
+        "end": 946
+      }
+    },
+    {
+      "snomed_cui": "372580007",
+      "preferred_name": "Bronchodilator",
+      "source_value": "Bronchodilators",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 954,
+        "end": 969
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "initial",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1003,
+        "end": 1010
+      }
+    },
+    {
+      "snomed_cui": "31099001",
+      "preferred_name": "Systemic",
+      "source_value": "Systemic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1034,
+        "end": 1042
+      }
+    },
+    {
+      "snomed_cui": "79440004",
+      "preferred_name": "Product containing corticosteroid and/or corticosteroid derivative",
+      "source_value": "Corticosteroids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1043,
+        "end": 1058
+      }
+    },
+    {
+      "snomed_cui": "258703001",
+      "preferred_name": "day",
+      "source_value": "days",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1062,
+        "end": 1066
+      }
+    },
+    {
+      "snomed_cui": "272116003",
+      "preferred_name": "Durations",
+      "source_value": "duration",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1067,
+        "end": 1075
+      }
+    },
+    {
+      "snomed_cui": "116602009",
+      "preferred_name": "Prednisone",
+      "source_value": "prednisone",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1083,
+        "end": 1093
+      }
+    },
+    {
+      "snomed_cui": "258835005",
+      "preferred_name": "Milligram/day",
+      "source_value": "mg/day",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1097,
+        "end": 1103
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improves",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1105,
+        "end": 1113
+      }
+    },
+    {
+      "snomed_cui": "44284008",
+      "preferred_name": "Alveolar ventilation (V), function",
+      "source_value": "oxygenation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1120,
+        "end": 1131
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1175,
+        "end": 1186
+      }
+    },
+    {
+      "snomed_cui": "258703001",
+      "preferred_name": "day",
+      "source_value": "days",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1193,
+        "end": 1197
+      }
+    },
+    {
+      "snomed_cui": "42192008",
+      "preferred_name": "Purulent sputum",
+      "source_value": "purulent sputum",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1203,
+        "end": 1218
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "present",
+      "confidence_score": 0.6531291365695324,
+      "character_boundaries": {
+        "start": 1222,
+        "end": 1229
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1237,
+        "end": 1245
+      }
+    },
+    {
+      "snomed_cui": "40617009",
+      "preferred_name": "Artificial ventilation",
+      "source_value": "mechanical ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1256,
+        "end": 1278
+      }
+    },
+    {
+      "snomed_cui": "231821000000109",
+      "preferred_name": "Ventilatory support",
+      "source_value": "Ventilatory Support",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1296,
+        "end": 1315
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "Acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1319,
+        "end": 1324
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "High",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1342,
+        "end": 1346
+      }
+    },
+    {
+      "snomed_cui": "46713006",
+      "preferred_name": "Nasal route",
+      "source_value": "Nasal",
+      "confidence_score": 0.7312875233929428,
+      "character_boundaries": {
+        "start": 1352,
+        "end": 1357
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "Therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1358,
+        "end": 1365
+      }
+    },
+    {
+      "snomed_cui": "709111008",
+      "preferred_name": "Acute hypoxemic respiratory failure",
+      "source_value": "acute hypoxemic respiratory failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1389,
+        "end": 1424
+      }
+    },
+    {
+      "snomed_cui": "40617009",
+      "preferred_name": "Artificial ventilation",
+      "source_value": "Mechanical Ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1453,
+        "end": 1475
+      }
+    },
+    {
+      "snomed_cui": "410535002",
+      "preferred_name": "Indicated",
+      "source_value": "Indicated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1483,
+        "end": 1492
+      }
+    },
+    {
+      "snomed_cui": "12326000",
+      "preferred_name": "Respiratory acidosis",
+      "source_value": "respiratory acidosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1497,
+        "end": 1517
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1552,
+        "end": 1558
+      }
+    },
+    {
+      "snomed_cui": "267036007",
+      "preferred_name": "Dyspnea",
+      "source_value": "dyspnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1559,
+        "end": 1566
+      }
+    },
+    {
+      "snomed_cui": "80449002",
+      "preferred_name": "Muscle fatigue",
+      "source_value": "muscle fatigue",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1572,
+        "end": 1586
+      }
+    },
+    {
+      "snomed_cui": "1258985005",
+      "preferred_name": "Invasive mechanical ventilation",
+      "source_value": "Invasive Mechanical Ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1615,
+        "end": 1646
+      }
+    },
+    {
+      "snomed_cui": "410535002",
+      "preferred_name": "Indicated",
+      "source_value": "Indicated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1648,
+        "end": 1657
+      }
+    },
+    {
+      "snomed_cui": "389087006",
+      "preferred_name": "Hypoxemia",
+      "source_value": "hypoxemia",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1690,
+        "end": 1699
+      }
+    },
+    {
+      "snomed_cui": "51387008",
+      "preferred_name": "Acidosis",
+      "source_value": "acidosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1700,
+        "end": 1708
+      }
+    },
+    {
+      "snomed_cui": "3006004",
+      "preferred_name": "Disturbance of consciousness",
+      "source_value": "impaired consciousness",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1727,
+        "end": 1749
+      }
+    },
+    {
+      "snomed_cui": "410429000",
+      "preferred_name": "Cardiac arrest",
+      "source_value": "cardiac arrest",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1754,
+        "end": 1768
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "Discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1784,
+        "end": 1793
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "Follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1796,
+        "end": 1805
+      }
+    },
+    {
+      "snomed_cui": "721241000000109",
+      "preferred_name": "Review",
+      "source_value": "Review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1823,
+        "end": 1829
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1842,
+        "end": 1849
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1851,
+        "end": 1860
+      }
+    },
+    {
+      "snomed_cui": "424001003",
+      "preferred_name": "Genus Lama",
+      "source_value": "LAMA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1869,
+        "end": 1873
+      }
+    },
+    {
+      "snomed_cui": "119273009",
+      "preferred_name": "Peripheral blood",
+      "source_value": "blood",
+      "confidence_score": 0.5534053989848028,
+      "character_boundaries": {
+        "start": 1881,
+        "end": 1886
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "elevated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1891,
+        "end": 1899
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "Follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1904,
+        "end": 1913
+      }
+    },
+    {
+      "snomed_cui": "259038000",
+      "preferred_name": "per week",
+      "source_value": "weeks",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1925,
+        "end": 1930
+      }
+    },
+    {
+      "snomed_cui": "259038000",
+      "preferred_name": "per week",
+      "source_value": "weeks",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1941,
+        "end": 1946
+      }
+    }
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-4365-9abc-def012345678",
+      "@type": "Finding",
+      "name": "B-lines on lung ultrasound",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f9e0d1c2-b3a4-4576-8fed-cba987654321",
+          "rationale": "Presence of B-lines on lung ultrasound indicates acute heart failure syndrome.",
+          "citation": "A systematic review showed high specificity for B-lines.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f9e0d1c2-b3a4-4576-8fed-cba987654321",
+          "rationale": "B-lines on lung ultrasound indicate acute heart failure syndrome.",
+          "citation": "A systematic review showed high specificity for B-lines.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f9e0d1c2-b3a4-4576-8fed-cba987654321",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0f1a2b3c-4d5e-4799-adef-abcdef789012",
+      "@type": "Finding",
+      "name": "Suspected acute heart failure syndrome",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a7b8c9d0-e1f2-4365-9abc-def012345678",
+          "rationale": "Lung ultrasound is used in patients with suspected acute heart failure syndrome.",
+          "citation": "In adult patients presenting to the emergency department with suspected acute heart failure syndrome...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:e4569362-4962-4f36-8160-c0adad7fcc20",
+      "@type": "Finding",
+      "name": "Acute heart failure syndrome",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5373194c-d5cd-4801-bf7e-cc87cb37ca72",
+      "@type": "Finding",
+      "name": "Suspected acute heart failure syndrome",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a7b8c9d0-e1f2-4365-9abc-def012345678",
+          "rationale": "The context is patients with suspected acute heart failure syndrome.",
+          "citation": "In adult patients presenting to the emergency department with suspected acute heart failure syndrome...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-4789-0abc-def123456789",
+      "@type": "Finding",
+      "name": "Lung ultrasound (LUS)",
+      "snomed": "19829001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Lung ultrasound is used as an imaging modality to diagnose acute heart failure syndrome.",
+          "citation": "Level B recommendations. Use point-of-care lung ultrasound as an imaging modality in conjunction with medical history and physical examination to diagnose acute heart failure syndrome when diagnostic uncertainty exists.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:c2d3e4f5-a6b7-4980-1def-abcdef123456",
+          "rationale": "Lung ultrasound provides greater diagnostic accuracy for acute heart failure syndrome than standard care.",
+          "citation": "Potential Benefit of Implementing the Recommendations: Lung ultrasound provides greater diagnostic accuracy for acute heart failure syndrome than standard care.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Use point-of-care lung ultrasound as an imaging modality.",
+          "citation": "Level B recommendations. Use point-of-care lung ultrasound as an imaging modality in conjunction with medical history and physical examination to diagnose acute heart failure syndrome when diagnostic uncertainty exists.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "The question is about the diagnostic accuracy of point-of-care lung ultrasound.",
+          "citation": "is the diagnostic accuracy of point-of-care lung ultrasound sufficient to direct clinical management?",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2c3d4e5f-b7a8-4091-2def-abcdef123456",
+      "@type": "Finding",
+      "name": "Pulmonary edema",
+      "snomed": "19242006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f9e0d1c2-b3a4-4576-8fed-cba987654321",
+          "rationale": "Lung ultrasound is more accurate than chest x-ray in diagnosing pulmonary edema.",
+          "citation": "LUS does not require an inordinate amount of training or experience to become proficient, and it has been demonstrated to be more accurate than a chest x-ray (CXR) in diagnosing pulmonary edema.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3e4f5a6b-c8d9-4102-3def-abcdef789012",
+      "@type": "Finding",
+      "name": "Chest x-ray (CXR)",
+      "snomed": "399208008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Lung ultrasound is more accurate than chest radiography.",
+          "citation": "LUS does not require an inordinate amount of training or experience to become proficient, and it has been demonstrated to be more accurate than a chest x-ray (CXR) in diagnosing pulmonary edema.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7c8d9e0f-a2b3-4466-7def-abcdef789012",
+      "@type": "Finding",
+      "name": "Diagnostic uncertainty",
+      "snomed": "64957009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Use point-of-care lung ultrasound as an imaging modality in conjunction with medical history and physical examination to diagnose acute heart failure syndrome when diagnostic uncertainty exists.",
+          "citation": "Level B recommendations. Use point-of-care lung ultrasound as an imaging modality in conjunction with medical history and physical examination to diagnose acute heart failure syndrome when diagnostic uncertainty exists.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Use point-of-care lung ultrasound when diagnostic uncertainty exists.",
+          "citation": "Level B recommendations. Use point-of-care lung ultrasound as an imaging modality in conjunction with medical history and physical examination to diagnose acute heart failure syndrome when diagnostic uncertainty exists.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:8d9e0f1a-2b3c-4577-8def-abcdef789012",
+      "@type": "Finding",
+      "name": "Acute dyspnea",
+      "snomed": "267036007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a7b8c9d0-e1f2-4365-9abc-def012345678",
+          "rationale": "Lung ultrasound is used in patients presenting with acute dyspnea.",
+          "citation": "In adult patients presenting to the emergency department with suspected acute heart failure syndrome...",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9e0f1a2b-3c4d-4688-9def-abcdef789012",
+      "@type": "Finding",
+      "name": "Emergency department",
+      "snomed": "225728007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a7b8c9d0-e1f2-4365-9abc-def012345678",
+          "rationale": "Lung ultrasound is used in patients presenting to the emergency department.",
+          "citation": "In adult patients presenting to the emergency department with suspected acute heart failure syndrome...",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a7b8c9d0-e1f2-4365-9abc-def012345678",
+          "rationale": "The context is patients presenting to the emergency department.",
+          "citation": "In adult patients presenting to the emergency department with suspected acute heart failure syndrome...",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a7b8c9d0-e1f2-4365-9abc-def012345678",
+          "rationale": "The context is adult patients.",
+          "citation": "In adult patients presenting to the emergency department with suspected acute heart failure syndrome...",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b1c2d3e4-f5a6-4890-bedf-abcdef789012",
+      "@type": "Finding",
+      "name": "Diagnostic accuracy",
+      "snomed": "439401001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Lung ultrasound has sufficient diagnostic accuracy to direct clinical management.",
+          "citation": "is the diagnostic accuracy of point-of-care lung ultrasound sufficient to direct clinical management?",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "The question is about the diagnostic accuracy of point-of-care lung ultrasound.",
+          "citation": "is the diagnostic accuracy of point-of-care lung ultrasound sufficient to direct clinical management?",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d4e5f6a7-b8c9-4022-defa-abcdef789012",
+      "@type": "Finding",
+      "name": "Medical history",
+      "snomed": "74188005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Use point-of-care lung ultrasound in conjunction with medical history.",
+          "citation": "Level B recommendations. Use point-of-care lung ultrasound as an imaging modality in conjunction with medical history and physical examination to diagnose acute heart failure syndrome when diagnostic uncertainty exists.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e5f6a7b8-c9d0-4133-efab-abcdef789012",
+      "@type": "Finding",
+      "name": "Physical examination",
+      "snomed": "63332003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Use point-of-care lung ultrasound in conjunction with physical examination.",
+          "citation": "Level B recommendations. Use point-of-care lung ultrasound as an imaging modality in conjunction with medical history and physical examination to diagnose acute heart failure syndrome when diagnostic uncertainty exists.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9aadbf1b-97e1-44af-94e8-9f3a26da6e1a",
+      "@type": "Finding",
+      "name": "Bedside echocardiography",
+      "snomed": "40701008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Lung ultrasound is more accurate than bedside echocardiography.",
+          "citation": "Comparatively, in this review, CXR was found to have a sensitivity of 56.9% and a positive LR of 4.8, and B-type natriuretic peptide (BNP) at a cutoff of <100 pg/mL was found to have a pooled sensitivity of 93.5%, a specificity of 52.9%, and a negative LR of 0.2.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+      "@type": "Intervention",
+      "name": "Use point-of-care lung ultrasound",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c2d3e4f5-a6b7-4980-1def-abcdef123456",
+      "@type": "Acuity",
+      "name": "Improved diagnostic accuracy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4f6a7b8c-d9e0-4133-4def-abcdef789012",
+      "@type": "Finding",
+      "name": "Natriuretic peptides (BNP/NT-pro-BNP)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6b7c8d9e-f1a2-4355-6def-abcdef789012",
+      "@type": "Finding",
+      "name": "Diagnostic accuracy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Lung ultrasound provides greater diagnostic accuracy for acute heart failure syndrome than standard care.",
+          "citation": "Potential Benefit of Implementing the Recommendations: Lung ultrasound provides greater diagnostic accuracy for acute heart failure syndrome than standard care.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:cdef0123-4567-89ab-cdef-0123456789ae",
+      "@type": "Finding",
+      "name": "Clinical management",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "The question is about whether the diagnostic accuracy of point-of-care lung ultrasound is sufficient to direct clinical management.",
+          "citation": "is the diagnostic accuracy of point-of-care lung ultrasound sufficient to direct clinical management?",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:eef4580f-d4b7-4ccf-86ed-ed41cb7a416f",
+      "@type": "Finding",
+      "name": "Natriuretic peptides (BNP/NT-pro-BNP)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Lung ultrasound is more accurate than natriuretic peptides.",
+          "citation": "Comparatively, in this review, CXR was found to have a sensitivity of 56.9% and a positive LR of 4.8, and B-type natriuretic peptide (BNP) at a cutoff of <100 pg/mL was found to have a pooled sensitivity of 93.5%, a specificity of 52.9%, and a negative LR of 0.2.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:65a8c959-08ac-496a-bd61-98f300650f62",
+      "@type": "Finding",
+      "name": "Emergency medicine physicians",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_1_lung_ultraso_critical_question_1_diag.json",
+        "section_title": "Critical Question 1: Diagnostic Accuracy of Point-of-Care Lung Ultrasound"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-4012-3abc-def4567890ab",
+          "rationale": "Lung ultrasound can be performed by emergency medicine physicians.",
+          "citation": "LUS does not require an inordinate amount of training or experience to become proficient...",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3456789a-ebcd-ef01-2345-6789aebcdf01",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:31.905840+00:00",
+    "nodes_before": 31,
+    "nodes_after": 23,
+    "rules_before": 25,
+    "rules_after": 25
+  }
+}

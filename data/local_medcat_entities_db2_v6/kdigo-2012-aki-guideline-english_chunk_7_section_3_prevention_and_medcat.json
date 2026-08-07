@@ -1,0 +1,635 @@
+{
+  "chunk_id": "chunk_7",
+  "entities": [
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "Prevention",
+      "confidence_score": 0.9771369508019843,
+      "character_boundaries": {
+        "start": 13,
+        "end": 23
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "Treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 28,
+        "end": 37
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.9634136074065274,
+      "character_boundaries": {
+        "start": 41,
+        "end": 44
+      }
+    },
+    {
+      "snomed_cui": "255238004",
+      "preferred_name": "Continuous",
+      "source_value": "Continued",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 46,
+        "end": 55
+      }
+    },
+    {
+      "snomed_cui": "81286007",
+      "preferred_name": "Growth factor",
+      "source_value": "Growth factor",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 74,
+        "end": 87
+      }
+    },
+    {
+      "snomed_cui": "840091000000103",
+      "preferred_name": "Intervention",
+      "source_value": "intervention",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 88,
+        "end": 100
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 108,
+        "end": 117
+      }
+    },
+    {
+      "snomed_cui": "386948008",
+      "preferred_name": "Filgrastim",
+      "source_value": "recombinant human",
+      "confidence_score": 0.6474966253494461,
+      "character_boundaries": {
+        "start": 128,
+        "end": 145
+      }
+    },
+    {
+      "snomed_cui": "5699003",
+      "preferred_name": "Somatomedin C",
+      "source_value": "IGF-1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 150,
+        "end": 155
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 159,
+        "end": 166
+      }
+    },
+    {
+      "snomed_cui": "395077000",
+      "preferred_name": "Treatment intent",
+      "source_value": "treat",
+      "confidence_score": 0.32372598098524696,
+      "character_boundaries": {
+        "start": 170,
+        "end": 175
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.7052287619147473,
+      "character_boundaries": {
+        "start": 176,
+        "end": 179
+      }
+    },
+    {
+      "snomed_cui": "35431001",
+      "preferred_name": "Adenosine",
+      "source_value": "Adenosine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 203,
+        "end": 212
+      }
+    },
+    {
+      "snomed_cui": "734547000",
+      "preferred_name": "Receptor antagonist",
+      "source_value": "receptor antagonists",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 213,
+        "end": 233
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.8448400036416157,
+      "character_boundaries": {
+        "start": 250,
+        "end": 254
+      }
+    },
+    {
+      "snomed_cui": "372810006",
+      "preferred_name": "Theophylline",
+      "source_value": "theophylline",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 258,
+        "end": 270
+      }
+    },
+    {
+      "snomed_cui": "419582001",
+      "preferred_name": "Give - dosing instruction imperative",
+      "source_value": "given",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 278,
+        "end": 283
+      }
+    },
+    {
+      "snomed_cui": "255407002",
+      "preferred_name": "Neonatal",
+      "source_value": "neonates",
+      "confidence_score": 0.807395176088985,
+      "character_boundaries": {
+        "start": 287,
+        "end": 295
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 301,
+        "end": 307
+      }
+    },
+    {
+      "snomed_cui": "281578009",
+      "preferred_name": "Perinatal asphyxia",
+      "source_value": "perinatal asphyxia",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 308,
+        "end": 326
+      }
+    },
+    {
+      "snomed_cui": "15508007",
+      "preferred_name": "High risk of (contextual qualifier)",
+      "source_value": "high risk of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 330,
+        "end": 342
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 343,
+        "end": 346
+      }
+    },
+    {
+      "snomed_cui": "763805006",
+      "preferred_name": "Aminoglycoside",
+      "source_value": "Aminoglycoside",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 370,
+        "end": 384
+      }
+    },
+    {
+      "snomed_cui": "372643008",
+      "preferred_name": "Amphotericin",
+      "source_value": "amphotericin",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 390,
+        "end": 402
+      }
+    },
+    {
+      "snomed_cui": "262094002",
+      "preferred_name": "Related",
+      "source_value": "related",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 403,
+        "end": 410
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 411,
+        "end": 414
+      }
+    },
+    {
+      "snomed_cui": "763805006",
+      "preferred_name": "Aminoglycoside",
+      "source_value": "aminoglycosides",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 440,
+        "end": 455
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapeutic",
+      "confidence_score": 0.8521345683046047,
+      "character_boundaries": {
+        "start": 493,
+        "end": 504
+      }
+    },
+    {
+      "snomed_cui": "8940901000001109",
+      "preferred_name": "Available",
+      "source_value": "available",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 522,
+        "end": 531
+      }
+    },
+    {
+      "snomed_cui": "738990001",
+      "preferred_name": "Administer",
+      "source_value": "Administer",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 545,
+        "end": 555
+      }
+    },
+    {
+      "snomed_cui": "763805006",
+      "preferred_name": "Aminoglycoside",
+      "source_value": "aminoglycosides",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 556,
+        "end": 571
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "daily",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 584,
+        "end": 589
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 590,
+        "end": 594
+      }
+    },
+    {
+      "snomed_cui": "255204007",
+      "preferred_name": "Multiple",
+      "source_value": "multiple",
+      "confidence_score": 0.6133556381470336,
+      "character_boundaries": {
+        "start": 607,
+        "end": 615
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "daily",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 616,
+        "end": 621
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 631,
+        "end": 639
+      }
+    },
+    {
+      "snomed_cui": "17621005",
+      "preferred_name": "Normal",
+      "source_value": "normal",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 645,
+        "end": 651
+      }
+    },
+    {
+      "snomed_cui": "58158008",
+      "preferred_name": "Stable",
+      "source_value": "stable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 652,
+        "end": 658
+      }
+    },
+    {
+      "snomed_cui": "11953005",
+      "preferred_name": "Renal function",
+      "source_value": "renal function",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 659,
+        "end": 673
+      }
+    },
+    {
+      "snomed_cui": "13288007",
+      "preferred_name": "Monitor, device",
+      "source_value": "Monitor",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 693,
+        "end": 700
+      }
+    },
+    {
+      "snomed_cui": "763805006",
+      "preferred_name": "Aminoglycoside",
+      "source_value": "aminoglycoside",
+      "confidence_score": 0.9173034764586239,
+      "character_boundaries": {
+        "start": 701,
+        "end": 715
+      }
+    },
+    {
+      "snomed_cui": "119273009",
+      "preferred_name": "Peripheral blood",
+      "source_value": "blood",
+      "confidence_score": 0.8318436890408876,
+      "character_boundaries": {
+        "start": 716,
+        "end": 721
+      }
+    },
+    {
+      "snomed_cui": "77703004",
+      "preferred_name": "Amphotericin B",
+      "source_value": "amphotericin B",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 767,
+        "end": 781
+      }
+    },
+    {
+      "snomed_cui": "255333006",
+      "preferred_name": "Conventional",
+      "source_value": "conventional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 787,
+        "end": 799
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 826,
+        "end": 835
+      }
+    },
+    {
+      "snomed_cui": "300903003",
+      "preferred_name": "Azole",
+      "source_value": "azoles",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 836,
+        "end": 842
+      }
+    },
+    {
+      "snomed_cui": "373570003",
+      "preferred_name": "Echinocandin",
+      "source_value": "echinocandins",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 846,
+        "end": 859
+      }
+    },
+    {
+      "snomed_cui": "255333006",
+      "preferred_name": "Conventional",
+      "source_value": "conventional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 865,
+        "end": 877
+      }
+    },
+    {
+      "snomed_cui": "77703004",
+      "preferred_name": "Amphotericin B",
+      "source_value": "amphotericin B",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 878,
+        "end": 892
+      }
+    },
+    {
+      "snomed_cui": "31099001",
+      "preferred_name": "Systemic",
+      "source_value": "systemic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 897,
+        "end": 905
+      }
+    },
+    {
+      "snomed_cui": "3218000",
+      "preferred_name": "Mycosis",
+      "source_value": "mycoses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 906,
+        "end": 913
+      }
+    },
+    {
+      "snomed_cui": "272394005",
+      "preferred_name": "Technique",
+      "source_value": "methods",
+      "confidence_score": 0.5600093431699094,
+      "character_boundaries": {
+        "start": 943,
+        "end": 950
+      }
+    },
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "prevention",
+      "confidence_score": 0.725548887635052,
+      "character_boundaries": {
+        "start": 954,
+        "end": 964
+      }
+    },
+    {
+      "snomed_cui": "44668000",
+      "preferred_name": "Pump, device",
+      "source_value": "pump",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 976,
+        "end": 980
+      }
+    },
+    {
+      "snomed_cui": "232717009",
+      "preferred_name": "Coronary artery bypass grafting",
+      "source_value": "CABG",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 981,
+        "end": 985
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.6414913511049676,
+      "character_boundaries": {
+        "start": 1040,
+        "end": 1043
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1063,
+        "end": 1072
+      }
+    },
+    {
+      "snomed_cui": "26643006",
+      "preferred_name": "Oral route",
+      "source_value": "oral",
+      "confidence_score": 0.8451549303637943,
+      "character_boundaries": {
+        "start": 1083,
+        "end": 1087
+      }
+    },
+    {
+      "snomed_cui": "387440002",
+      "preferred_name": "Acetylcysteine",
+      "source_value": "NAC",
+      "confidence_score": 0.4409719491963488,
+      "character_boundaries": {
+        "start": 1096,
+        "end": 1099
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1103,
+        "end": 1110
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1124,
+        "end": 1127
+      }
+    },
+    {
+      "snomed_cui": "372586001",
+      "preferred_name": "Hypotensive agent",
+      "source_value": "hypotensive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1154,
+        "end": 1165
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1166,
+        "end": 1174
+      }
+    }
+  ]
+}

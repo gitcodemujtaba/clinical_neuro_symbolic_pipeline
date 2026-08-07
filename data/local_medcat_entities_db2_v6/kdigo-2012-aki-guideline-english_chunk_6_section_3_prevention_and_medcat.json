@@ -1,0 +1,705 @@
+{
+  "chunk_id": "chunk_6",
+  "entities": [
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "Prevention",
+      "confidence_score": 0.951939726603126,
+      "character_boundaries": {
+        "start": 13,
+        "end": 23
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "Treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 28,
+        "end": 37
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.887159137854502,
+      "character_boundaries": {
+        "start": 41,
+        "end": 44
+      }
+    },
+    {
+      "snomed_cui": "716777001",
+      "preferred_name": "Hemodynamic monitoring",
+      "source_value": "Hemodynamic monitoring",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 62,
+        "end": 84
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 89,
+        "end": 96
+      }
+    },
+    {
+      "snomed_cui": "16709005",
+      "preferred_name": "Isotonic exercise",
+      "source_value": "isotonic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 108,
+        "end": 116
+      }
+    },
+    {
+      "snomed_cui": "52454007",
+      "preferred_name": "Albumin",
+      "source_value": "albumin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 152,
+        "end": 159
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "volume",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 177,
+        "end": 183
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 197,
+        "end": 205
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 209,
+        "end": 213
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.9793234463457883,
+      "character_boundaries": {
+        "start": 226,
+        "end": 229
+      }
+    },
+    {
+      "snomed_cui": "870406003",
+      "preferred_name": "Vasopressor",
+      "source_value": "vasopressors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 247,
+        "end": 259
+      }
+    },
+    {
+      "snomed_cui": "33463005",
+      "preferred_name": "Liquid substance",
+      "source_value": "fluids",
+      "confidence_score": 0.4919847281609713,
+      "character_boundaries": {
+        "start": 270,
+        "end": 276
+      }
+    },
+    {
+      "snomed_cui": "27942005",
+      "preferred_name": "Shock",
+      "source_value": "shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 290,
+        "end": 295
+      }
+    },
+    {
+      "snomed_cui": "258049002",
+      "preferred_name": "Protocols",
+      "source_value": "protocol",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 313,
+        "end": 321
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.7888486481451706,
+      "character_boundaries": {
+        "start": 340,
+        "end": 350
+      }
+    },
+    {
+      "snomed_cui": "723509005",
+      "preferred_name": "High risk",
+      "source_value": "high-risk",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 368,
+        "end": 377
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 378,
+        "end": 386
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 395,
+        "end": 407
+      }
+    },
+    {
+      "snomed_cui": "700232004",
+      "preferred_name": "General medical service",
+      "source_value": "General",
+      "confidence_score": 0.331626620531629,
+      "character_boundaries": {
+        "start": 431,
+        "end": 438
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.7786034957699348,
+      "character_boundaries": {
+        "start": 450,
+        "end": 460
+      }
+    },
+    {
+      "snomed_cui": "87017008",
+      "preferred_name": "Focal",
+      "source_value": "Focus",
+      "confidence_score": 0.49247981345812075,
+      "character_boundaries": {
+        "start": 461,
+        "end": 466
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "volume",
+      "confidence_score": 0.46425731476025567,
+      "character_boundaries": {
+        "start": 470,
+        "end": 476
+      }
+    },
+    {
+      "snomed_cui": "310243009",
+      "preferred_name": "Nutritional assessment",
+      "source_value": "assessment",
+      "confidence_score": 0.750371012541919,
+      "character_boundaries": {
+        "start": 477,
+        "end": 487
+      }
+    },
+    {
+      "snomed_cui": "14140009",
+      "preferred_name": "Hyperkalemia",
+      "source_value": "hyperkalemia",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 500,
+        "end": 512
+      }
+    },
+    {
+      "snomed_cui": "51387008",
+      "preferred_name": "Acidosis",
+      "source_value": "acidosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 513,
+        "end": 521
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "drug",
+      "confidence_score": 0.612565223196027,
+      "character_boundaries": {
+        "start": 533,
+        "end": 537
+      }
+    },
+    {
+      "snomed_cui": "246106000",
+      "preferred_name": "Control",
+      "source_value": "control",
+      "confidence_score": 0.6977716324999466,
+      "character_boundaries": {
+        "start": 600,
+        "end": 607
+      }
+    },
+    {
+      "snomed_cui": "278906000",
+      "preferred_name": "Nutritional support",
+      "source_value": "nutritional support",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 612,
+        "end": 631
+      }
+    },
+    {
+      "snomed_cui": "72191006",
+      "preferred_name": "Glucose measurement, plasma",
+      "source_value": "plasma glucose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 646,
+        "end": 660
+      }
+    },
+    {
+      "snomed_cui": "258797006",
+      "preferred_name": "Milligram/deciliter",
+      "source_value": "mg/dl",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 669,
+        "end": 674
+      }
+    },
+    {
+      "snomed_cui": "258718000",
+      "preferred_name": "millimole",
+      "source_value": "mmol",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 684,
+        "end": 688
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 710,
+        "end": 718
+      }
+    },
+    {
+      "snomed_cui": "258755000",
+      "preferred_name": "Percentage of total",
+      "source_value": "total",
+      "confidence_score": 0.699426798038853,
+      "character_boundaries": {
+        "start": 740,
+        "end": 745
+      }
+    },
+    {
+      "snomed_cui": "787787004",
+      "preferred_name": "Energy intake",
+      "source_value": "energy intake",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 746,
+        "end": 759
+      }
+    },
+    {
+      "snomed_cui": "258791007",
+      "preferred_name": "kilocalorie",
+      "source_value": "kcal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 769,
+        "end": 773
+      }
+    },
+    {
+      "snomed_cui": "258831001",
+      "preferred_name": "Kilogram/day",
+      "source_value": "kg/d",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 774,
+        "end": 778
+      }
+    },
+    {
+      "snomed_cui": "738990001",
+      "preferred_name": "Administer",
+      "source_value": "Administer",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 792,
+        "end": 802
+      }
+    },
+    {
+      "snomed_cui": "414306004",
+      "preferred_name": "Gram/kilogram/day",
+      "source_value": "g/kg/d",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 811,
+        "end": 817
+      }
+    },
+    {
+      "snomed_cui": "88878007",
+      "preferred_name": "Protein",
+      "source_value": "protein",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 818,
+        "end": 825
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.6438707375866757,
+      "character_boundaries": {
+        "start": 855,
+        "end": 858
+      }
+    },
+    {
+      "snomed_cui": "414306004",
+      "preferred_name": "Gram/kilogram/day",
+      "source_value": "g/kg/d",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 868,
+        "end": 874
+      }
+    },
+    {
+      "snomed_cui": "255532002",
+      "preferred_name": "Up",
+      "source_value": "up to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 887,
+        "end": 892
+      }
+    },
+    {
+      "snomed_cui": "414306004",
+      "preferred_name": "Gram/kilogram/day",
+      "source_value": "g/kg/d",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 897,
+        "end": 903
+      }
+    },
+    {
+      "snomed_cui": "714749008",
+      "preferred_name": "Continuous renal replacement therapy",
+      "source_value": "CRRT",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 907,
+        "end": 911
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 927,
+        "end": 935
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "Use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 959,
+        "end": 965
+      }
+    },
+    {
+      "snomed_cui": "372695000",
+      "preferred_name": "Diuretic",
+      "source_value": "diuretics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 966,
+        "end": 975
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 983,
+        "end": 992
+      }
+    },
+    {
+      "snomed_cui": "372695000",
+      "preferred_name": "Diuretic",
+      "source_value": "diuretics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1003,
+        "end": 1012
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1016,
+        "end": 1023
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1024,
+        "end": 1027
+      }
+    },
+    {
+      "snomed_cui": "372695000",
+      "preferred_name": "Diuretic",
+      "source_value": "diuretics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1059,
+        "end": 1068
+      }
+    },
+    {
+      "snomed_cui": "395077000",
+      "preferred_name": "Treatment intent",
+      "source_value": "treat",
+      "confidence_score": 0.3612553438142177,
+      "character_boundaries": {
+        "start": 1072,
+        "end": 1077
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1078,
+        "end": 1081
+      }
+    },
+    {
+      "snomed_cui": "21639008",
+      "preferred_name": "Hypervolemia",
+      "source_value": "volume overload",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1100,
+        "end": 1115
+      }
+    },
+    {
+      "snomed_cui": "372787008",
+      "preferred_name": "Vasodilator",
+      "source_value": "Vasodilator",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1139,
+        "end": 1150
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1151,
+        "end": 1158
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1166,
+        "end": 1175
+      }
+    },
+    {
+      "snomed_cui": "262459003",
+      "preferred_name": "Low dose",
+      "source_value": "low-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1186,
+        "end": 1194
+      }
+    },
+    {
+      "snomed_cui": "412383006",
+      "preferred_name": "Dopamine",
+      "source_value": "dopamine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1195,
+        "end": 1203
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1207,
+        "end": 1214
+      }
+    },
+    {
+      "snomed_cui": "395077000",
+      "preferred_name": "Treatment intent",
+      "source_value": "treat",
+      "confidence_score": 0.3904110426492688,
+      "character_boundaries": {
+        "start": 1218,
+        "end": 1223
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.8859921081019704,
+      "character_boundaries": {
+        "start": 1224,
+        "end": 1227
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1273,
+        "end": 1280
+      }
+    },
+    {
+      "snomed_cui": "395077000",
+      "preferred_name": "Treatment intent",
+      "source_value": "treat",
+      "confidence_score": 0.3442052040128917,
+      "character_boundaries": {
+        "start": 1284,
+        "end": 1289
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.8848680686251407,
+      "character_boundaries": {
+        "start": 1290,
+        "end": 1293
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1332,
+        "end": 1339
+      }
+    },
+    {
+      "snomed_cui": "395077000",
+      "preferred_name": "Treatment intent",
+      "source_value": "treat",
+      "confidence_score": 0.3320511688428327,
+      "character_boundaries": {
+        "start": 1348,
+        "end": 1353
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.9631468473369315,
+      "character_boundaries": {
+        "start": 1359,
+        "end": 1362
+      }
+    }
+  ]
+}

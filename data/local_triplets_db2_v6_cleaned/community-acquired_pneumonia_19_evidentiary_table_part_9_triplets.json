@@ -1,0 +1,27 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Procalcitonin (PCT) concentration < 0.05 ng/mL",
+      "snomed": "258806002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_19_evidentiary_table_part_9.json",
+        "section_title": "Evidentiary Table Part 9 (Self et al. to Huang et al.)"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:36.511475+00:00",
+    "nodes_before": 1,
+    "nodes_after": 1,
+    "rules_before": 0,
+    "rules_after": 0
+  }
+}

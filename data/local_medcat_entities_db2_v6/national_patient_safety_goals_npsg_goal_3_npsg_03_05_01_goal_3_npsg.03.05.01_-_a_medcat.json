@@ -1,0 +1,795 @@
+{
+  "chunk_id": "npsg_goal_3_npsg_03_05_01",
+  "entities": [
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 43,
+        "end": 50
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 56,
+        "end": 71
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 76,
+        "end": 82
+      }
+    },
+    {
+      "snomed_cui": "182764009",
+      "preferred_name": "Anticoagulant therapy",
+      "source_value": "anticoagulant therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 83,
+        "end": 104
+      }
+    },
+    {
+      "snomed_cui": "385432009",
+      "preferred_name": "Not applicable",
+      "source_value": "does not apply",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 130,
+        "end": 144
+      }
+    },
+    {
+      "snomed_cui": "50811001",
+      "preferred_name": "Routine",
+      "source_value": "routine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 148,
+        "end": 155
+      }
+    },
+    {
+      "snomed_cui": "21243004",
+      "preferred_name": "Term birth of newborn",
+      "source_value": "term",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 182,
+        "end": 186
+      }
+    },
+    {
+      "snomed_cui": "262073000",
+      "preferred_name": "Prophylactic",
+      "source_value": "prophylactic",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 187,
+        "end": 199
+      }
+    },
+    {
+      "snomed_cui": "182764009",
+      "preferred_name": "Anticoagulant therapy",
+      "source_value": "anticoagulation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 200,
+        "end": 215
+      }
+    },
+    {
+      "snomed_cui": "29092000",
+      "preferred_name": "Venous structure",
+      "source_value": "venous",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 239,
+        "end": 245
+      }
+    },
+    {
+      "snomed_cui": "371039008",
+      "preferred_name": "Thromboembolic disorder",
+      "source_value": "thromboembolism",
+      "confidence_score": 0.5990769177752873,
+      "character_boundaries": {
+        "start": 246,
+        "end": 261
+      }
+    },
+    {
+      "snomed_cui": "262094002",
+      "preferred_name": "Related",
+      "source_value": "related",
+      "confidence_score": 0.9607266844441842,
+      "character_boundaries": {
+        "start": 276,
+        "end": 283
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 287,
+        "end": 297
+      }
+    },
+    {
+      "snomed_cui": "394656005",
+      "preferred_name": "Inpatient care",
+      "source_value": "hospitalization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 301,
+        "end": 316
+      }
+    },
+    {
+      "snomed_cui": "410666004",
+      "preferred_name": "Reason for",
+      "source_value": "Rationale",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 324,
+        "end": 333
+      }
+    },
+    {
+      "snomed_cui": "182764009",
+      "preferred_name": "Anticoagulant therapy",
+      "source_value": "Anticoagulation therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 357,
+        "end": 380
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapeutic",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 396,
+        "end": 407
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 408,
+        "end": 417
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "conditions",
+      "confidence_score": 0.5711550066829093,
+      "character_boundaries": {
+        "start": 430,
+        "end": 440
+      }
+    },
+    {
+      "snomed_cui": "72906007",
+      "preferred_name": "Common",
+      "source_value": "common",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 451,
+        "end": 457
+      }
+    },
+    {
+      "snomed_cui": "49436004",
+      "preferred_name": "Atrial fibrillation",
+      "source_value": "atrial fibrillation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 471,
+        "end": 490
+      }
+    },
+    {
+      "snomed_cui": "795002",
+      "preferred_name": "Deep",
+      "source_value": "deep",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 492,
+        "end": 496
+      }
+    },
+    {
+      "snomed_cui": "29092000",
+      "preferred_name": "Venous structure",
+      "source_value": "vein",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 497,
+        "end": 501
+      }
+    },
+    {
+      "snomed_cui": "69357003",
+      "preferred_name": "Pulmonary thrombosis",
+      "source_value": "thrombosis, pulmonary",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 502,
+        "end": 523
+      }
+    },
+    {
+      "snomed_cui": "414086009",
+      "preferred_name": "Embolism",
+      "source_value": "embolism",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 524,
+        "end": 532
+      }
+    },
+    {
+      "snomed_cui": "361158001",
+      "preferred_name": "Prosthetic heart",
+      "source_value": "mechanical heart",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 538,
+        "end": 554
+      }
+    },
+    {
+      "snomed_cui": "706449001",
+      "preferred_name": "Valve",
+      "source_value": "valve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 555,
+        "end": 560
+      }
+    },
+    {
+      "snomed_cui": "827107003",
+      "preferred_name": "Implantation",
+      "source_value": "implant",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 561,
+        "end": 568
+      }
+    },
+    {
+      "snomed_cui": "372862008",
+      "preferred_name": "Anticoagulant",
+      "source_value": "anticoagulant medications",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 608,
+        "end": 633
+      }
+    },
+    {
+      "snomed_cui": "2931005",
+      "preferred_name": "Probable diagnosis (contextual qualifier)",
+      "source_value": "likely",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 643,
+        "end": 649
+      }
+    },
+    {
+      "snomed_cui": "134198009",
+      "preferred_name": "Etiology",
+      "source_value": "cause",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 665,
+        "end": 670
+      }
+    },
+    {
+      "snomed_cui": "42752001",
+      "preferred_name": "Due to",
+      "source_value": "due to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 676,
+        "end": 682
+      }
+    },
+    {
+      "snomed_cui": "103360007",
+      "preferred_name": "Complex",
+      "source_value": "complex",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 683,
+        "end": 690
+      }
+    },
+    {
+      "snomed_cui": "423437008",
+      "preferred_name": "Insufficient",
+      "source_value": "insufficient",
+      "confidence_score": 0.9376484125783234,
+      "character_boundaries": {
+        "start": 699,
+        "end": 711
+      }
+    },
+    {
+      "snomed_cui": "724001000000100",
+      "preferred_name": "Monitoring",
+      "source_value": "monitoring",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 712,
+        "end": 722
+      }
+    },
+    {
+      "snomed_cui": "260380004",
+      "preferred_name": "Inconsistent",
+      "source_value": "inconsistent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 728,
+        "end": 740
+      }
+    },
+    {
+      "snomed_cui": "405078008",
+      "preferred_name": "Compliance behavior",
+      "source_value": "patient compliance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 741,
+        "end": 759
+      }
+    },
+    {
+      "snomed_cui": "57795002",
+      "preferred_name": "Chemical element",
+      "source_value": "Element",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 766,
+        "end": 773
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.9817567950863029,
+      "character_boundaries": {
+        "start": 824,
+        "end": 832
+      }
+    },
+    {
+      "snomed_cui": "277889008",
+      "preferred_name": "Usage",
+      "source_value": "uses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 833,
+        "end": 837
+      }
+    },
+    {
+      "snomed_cui": "9571008",
+      "preferred_name": "Approved",
+      "source_value": "approved",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 838,
+        "end": 846
+      }
+    },
+    {
+      "snomed_cui": "258049002",
+      "preferred_name": "Protocols",
+      "source_value": "protocols",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 847,
+        "end": 856
+      }
+    },
+    {
+      "snomed_cui": "720641000000102",
+      "preferred_name": "Evidence based practice",
+      "source_value": "evidence-based practice",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 861,
+        "end": 884
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 885,
+        "end": 895
+      }
+    },
+    {
+      "snomed_cui": "182764009",
+      "preferred_name": "Anticoagulant therapy",
+      "source_value": "anticoagulation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 912,
+        "end": 927
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.7487301142780836,
+      "character_boundaries": {
+        "start": 932,
+        "end": 942
+      }
+    },
+    {
+      "snomed_cui": "131148009",
+      "preferred_name": "Bleeding",
+      "source_value": "bleeding",
+      "confidence_score": 0.5315410798758601,
+      "character_boundaries": {
+        "start": 946,
+        "end": 954
+      }
+    },
+    {
+      "snomed_cui": "272379006",
+      "preferred_name": "Event",
+      "source_value": "events",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 955,
+        "end": 961
+      }
+    },
+    {
+      "snomed_cui": "262094002",
+      "preferred_name": "Related",
+      "source_value": "related",
+      "confidence_score": 0.8216248946171851,
+      "character_boundaries": {
+        "start": 962,
+        "end": 969
+      }
+    },
+    {
+      "snomed_cui": "372862008",
+      "preferred_name": "Anticoagulant",
+      "source_value": "anticoagulant medication",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 978,
+        "end": 1002
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.5296309927259728,
+      "character_boundaries": {
+        "start": 1007,
+        "end": 1009
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.9675172202549513,
+      "character_boundaries": {
+        "start": 1018,
+        "end": 1026
+      }
+    },
+    {
+      "snomed_cui": "277889008",
+      "preferred_name": "Usage",
+      "source_value": "uses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1027,
+        "end": 1031
+      }
+    },
+    {
+      "snomed_cui": "9571008",
+      "preferred_name": "Approved",
+      "source_value": "approved",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1032,
+        "end": 1040
+      }
+    },
+    {
+      "snomed_cui": "258049002",
+      "preferred_name": "Protocols",
+      "source_value": "protocols",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1041,
+        "end": 1050
+      }
+    },
+    {
+      "snomed_cui": "720641000000102",
+      "preferred_name": "Evidence based practice",
+      "source_value": "evidence-based practice",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1055,
+        "end": 1078
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1079,
+        "end": 1089
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.6645460077344577,
+      "character_boundaries": {
+        "start": 1108,
+        "end": 1118
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1126,
+        "end": 1134
+      }
+    },
+    {
+      "snomed_cui": "26643006",
+      "preferred_name": "Oral route",
+      "source_value": "oral",
+      "confidence_score": 0.46533858766073766,
+      "character_boundaries": {
+        "start": 1138,
+        "end": 1142
+      }
+    },
+    {
+      "snomed_cui": "372862008",
+      "preferred_name": "Anticoagulant",
+      "source_value": "anticoagulants",
+      "confidence_score": 0.9622948479941049,
+      "character_boundaries": {
+        "start": 1143,
+        "end": 1157
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.6138480782645642,
+      "character_boundaries": {
+        "start": 1180,
+        "end": 1190
+      }
+    },
+    {
+      "snomed_cui": "397635003",
+      "preferred_name": "Address",
+      "source_value": "address",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1195,
+        "end": 1202
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1207,
+        "end": 1213
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1223,
+        "end": 1234
+      }
+    },
+    {
+      "snomed_cui": "246512002",
+      "preferred_name": "Timing",
+      "source_value": "timing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1236,
+        "end": 1242
+      }
+    },
+    {
+      "snomed_cui": "372862008",
+      "preferred_name": "Anticoagulant",
+      "source_value": "anticoagulant",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1259,
+        "end": 1272
+      }
+    },
+    {
+      "snomed_cui": "246512002",
+      "preferred_name": "Timing",
+      "source_value": "timing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1278,
+        "end": 1284
+      }
+    },
+    {
+      "snomed_cui": "372862008",
+      "preferred_name": "Anticoagulant",
+      "source_value": "anticoagulant",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1314,
+        "end": 1327
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1343,
+        "end": 1351
+      }
+    },
+    {
+      "snomed_cui": "277889008",
+      "preferred_name": "Usage",
+      "source_value": "uses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1352,
+        "end": 1356
+      }
+    },
+    {
+      "snomed_cui": "26643006",
+      "preferred_name": "Oral route",
+      "source_value": "oral",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1362,
+        "end": 1366
+      }
+    },
+    {
+      "snomed_cui": "604181000001109",
+      "preferred_name": "unit dose",
+      "source_value": "unit-dose",
+      "confidence_score": 0.9341778411605737,
+      "character_boundaries": {
+        "start": 1367,
+        "end": 1376
+      }
+    },
+    {
+      "snomed_cui": "36576007",
+      "preferred_name": "Infusion",
+      "source_value": "infusion",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1419,
+        "end": 1427
+      }
+    },
+    {
+      "snomed_cui": "37284003",
+      "preferred_name": "Bag, device",
+      "source_value": "bags",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1428,
+        "end": 1432
+      }
+    },
+    {
+      "snomed_cui": "8940901000001109",
+      "preferred_name": "Available",
+      "source_value": "available",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1466,
+        "end": 1475
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1498,
+        "end": 1506
+      }
+    },
+    {
+      "snomed_cui": "733020007",
+      "preferred_name": "Syringe",
+      "source_value": "syringe",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1518,
+        "end": 1525
+      }
+    },
+    {
+      "snomed_cui": "160499008",
+      "preferred_name": "Child of",
+      "source_value": "children",
+      "confidence_score": 0.7464372962195993,
+      "character_boundaries": {
+        "start": 1584,
+        "end": 1592
+      }
+    }
+  ]
+}

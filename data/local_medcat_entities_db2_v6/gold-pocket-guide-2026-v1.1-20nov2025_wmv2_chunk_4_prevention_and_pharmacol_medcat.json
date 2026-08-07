@@ -1,0 +1,1045 @@
+{
+  "chunk_id": "chunk_4",
+  "entities": [
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "PREVENTION",
+      "confidence_score": 0.9663175688059056,
+      "character_boundaries": {
+        "start": 0,
+        "end": 10
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "MANAGEMENT",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 15,
+        "end": 25
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 29,
+        "end": 33
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "Goals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 35,
+        "end": 40
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "Treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 45,
+        "end": 54
+      }
+    },
+    {
+      "snomed_cui": "58158008",
+      "preferred_name": "Stable",
+      "source_value": "Stable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 58,
+        "end": 64
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 65,
+        "end": 69
+      }
+    },
+    {
+      "snomed_cui": "397855004",
+      "preferred_name": "Relieves",
+      "source_value": "Relieve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 103,
+        "end": 110
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 121,
+        "end": 128
+      }
+    },
+    {
+      "snomed_cui": "248243004",
+      "preferred_name": "Exercise tolerance",
+      "source_value": "exercise tolerance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 129,
+        "end": 147
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 149,
+        "end": 156
+      }
+    },
+    {
+      "snomed_cui": "406221003",
+      "preferred_name": "Health status",
+      "source_value": "health status",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 157,
+        "end": 170
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "Risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 181,
+        "end": 185
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "Prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 187,
+        "end": 194
+      }
+    },
+    {
+      "snomed_cui": "246453008",
+      "preferred_name": "Course of illness",
+      "source_value": "disease progression",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 195,
+        "end": 214
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 216,
+        "end": 223
+      }
+    },
+    {
+      "snomed_cui": "395077000",
+      "preferred_name": "Treatment intent",
+      "source_value": "treat",
+      "confidence_score": 0.36605178099047847,
+      "character_boundaries": {
+        "start": 228,
+        "end": 233
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 256,
+        "end": 265
+      }
+    },
+    {
+      "snomed_cui": "80943009",
+      "preferred_name": "Risk factor",
+      "source_value": "Risk Factor",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 268,
+        "end": 279
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "Reduction",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 280,
+        "end": 289
+      }
+    },
+    {
+      "snomed_cui": "720401000000103",
+      "preferred_name": "Smoking cessation",
+      "source_value": "Smoking Cessation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 292,
+        "end": 309
+      }
+    },
+    {
+      "snomed_cui": "55561003",
+      "preferred_name": "Active",
+      "source_value": "Active",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 313,
+        "end": 319
+      }
+    },
+    {
+      "snomed_cui": "720401000000103",
+      "preferred_name": "Smoking cessation",
+      "source_value": "smoking cessation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 320,
+        "end": 337
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.9079408358318428,
+      "character_boundaries": {
+        "start": 338,
+        "end": 345
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 354,
+        "end": 358
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 359,
+        "end": 367
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "Assist",
+      "confidence_score": 0.7017532189265199,
+      "character_boundaries": {
+        "start": 429,
+        "end": 435
+      }
+    },
+    {
+      "snomed_cui": "416608005",
+      "preferred_name": "Drug therapy",
+      "source_value": "pharmacotherapies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 460,
+        "end": 477
+      }
+    },
+    {
+      "snomed_cui": "421772003",
+      "preferred_name": "Varenicline",
+      "source_value": "Varenicline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 479,
+        "end": 490
+      }
+    },
+    {
+      "snomed_cui": "387564004",
+      "preferred_name": "Bupropion",
+      "source_value": "bupropion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 492,
+        "end": 501
+      }
+    },
+    {
+      "snomed_cui": "55162003",
+      "preferred_name": "Tooth extraction",
+      "source_value": "SR",
+      "confidence_score": 0.5357301666553465,
+      "character_boundaries": {
+        "start": 502,
+        "end": 504
+      }
+    },
+    {
+      "snomed_cui": "151159008",
+      "preferred_name": "Nicotine replacement therapy",
+      "source_value": "nicotine replacement therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 506,
+        "end": 534
+      }
+    },
+    {
+      "snomed_cui": "419702001",
+      "preferred_name": "Patch - unit of product usage",
+      "source_value": "patch",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 541,
+        "end": 546
+      }
+    },
+    {
+      "snomed_cui": "732997007",
+      "preferred_name": "Inhaler",
+      "source_value": "inhaler",
+      "confidence_score": 0.8322399135422581,
+      "character_boundaries": {
+        "start": 548,
+        "end": 555
+      }
+    },
+    {
+      "snomed_cui": "385157007",
+      "preferred_name": "Conventional release nasal spray",
+      "source_value": "nasal spray",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 564,
+        "end": 575
+      }
+    },
+    {
+      "snomed_cui": "33879002",
+      "preferred_name": "Administration of vaccine to produce active immunity",
+      "source_value": "Vaccinations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 579,
+        "end": 591
+      }
+    },
+    {
+      "snomed_cui": "53281000",
+      "preferred_name": "Annual",
+      "source_value": "Yearly",
+      "confidence_score": 0.3900988227815756,
+      "character_boundaries": {
+        "start": 608,
+        "end": 614
+      }
+    },
+    {
+      "snomed_cui": "9894511000001108",
+      "preferred_name": "Influenza vaccine",
+      "source_value": "influenza vaccine",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 615,
+        "end": 632
+      }
+    },
+    {
+      "snomed_cui": "1156257007",
+      "preferred_name": "Administration of vaccine product against severe acute respiratory syndrome coronavirus 2",
+      "source_value": "COVID-19 vaccination",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 649,
+        "end": 669
+      }
+    },
+    {
+      "snomed_cui": "420227002",
+      "preferred_name": "Recommendation to",
+      "source_value": "guidance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 683,
+        "end": 691
+      }
+    },
+    {
+      "snomed_cui": "9894911000001101",
+      "preferred_name": "Pneumococcal vaccine",
+      "source_value": "Pneumococcal vaccine",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 708,
+        "end": 728
+      }
+    },
+    {
+      "snomed_cui": "55735004",
+      "preferred_name": "Respiratory syncytial virus infection",
+      "source_value": "RSV",
+      "confidence_score": 0.9068675132102408,
+      "character_boundaries": {
+        "start": 761,
+        "end": 764
+      }
+    },
+    {
+      "snomed_cui": "787859002",
+      "preferred_name": "Vaccine product",
+      "source_value": "vaccine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 765,
+        "end": 772
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individuals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 777,
+        "end": 788
+      }
+    },
+    {
+      "snomed_cui": "49808004",
+      "preferred_name": "Old-age",
+      "source_value": "aged",
+      "confidence_score": 0.6949458762147471,
+      "character_boundaries": {
+        "start": 789,
+        "end": 793
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "years",
+      "confidence_score": 0.8011599770591695,
+      "character_boundaries": {
+        "start": 800,
+        "end": 805
+      }
+    },
+    {
+      "snomed_cui": "90734009",
+      "preferred_name": "Chronic",
+      "source_value": "chronic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 818,
+        "end": 825
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "heart",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 826,
+        "end": 831
+      }
+    },
+    {
+      "snomed_cui": "19829001",
+      "preferred_name": "Disorder of lung",
+      "source_value": "lung disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 832,
+        "end": 844
+      }
+    },
+    {
+      "snomed_cui": "27836007",
+      "preferred_name": "Pertussis",
+      "source_value": "pertussis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 867,
+        "end": 876
+      }
+    },
+    {
+      "snomed_cui": "76902006",
+      "preferred_name": "Tetanus",
+      "source_value": "tetanus",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 877,
+        "end": 884
+      }
+    },
+    {
+      "snomed_cui": "4740000",
+      "preferred_name": "Herpes zoster",
+      "source_value": "Zoster",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 901,
+        "end": 907
+      }
+    },
+    {
+      "snomed_cui": "4740000",
+      "preferred_name": "Herpes zoster",
+      "source_value": "shingles",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 909,
+        "end": 917
+      }
+    },
+    {
+      "snomed_cui": "787859002",
+      "preferred_name": "Vaccine product",
+      "source_value": "vaccines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 919,
+        "end": 927
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "Initial",
+      "confidence_score": 0.9345594790811089,
+      "character_boundaries": {
+        "start": 943,
+        "end": 950
+      }
+    },
+    {
+      "snomed_cui": "416608005",
+      "preferred_name": "Drug therapy",
+      "source_value": "Pharmacological Treatment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 951,
+        "end": 976
+      }
+    },
+    {
+      "snomed_cui": "272414007",
+      "preferred_name": "Group A",
+      "source_value": "Group A",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 993,
+        "end": 1000
+      }
+    },
+    {
+      "snomed_cui": "372580007",
+      "preferred_name": "Bronchodilator",
+      "source_value": "bronchodilator",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1004,
+        "end": 1018
+      }
+    },
+    {
+      "snomed_cui": "424001003",
+      "preferred_name": "Genus Lama",
+      "source_value": "LAMA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1033,
+        "end": 1037
+      }
+    },
+    {
+      "snomed_cui": "272415008",
+      "preferred_name": "Group B",
+      "source_value": "Group B",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1042,
+        "end": 1049
+      }
+    },
+    {
+      "snomed_cui": "424001003",
+      "preferred_name": "Genus Lama",
+      "source_value": "LAMA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1058,
+        "end": 1062
+      }
+    },
+    {
+      "snomed_cui": "261589006",
+      "preferred_name": "Group E",
+      "source_value": "Group E",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1066,
+        "end": 1073
+      }
+    },
+    {
+      "snomed_cui": "424001003",
+      "preferred_name": "Genus Lama",
+      "source_value": "LAMA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1082,
+        "end": 1086
+      }
+    },
+    {
+      "snomed_cui": "424001003",
+      "preferred_name": "Genus Lama",
+      "source_value": "LAMA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1104,
+        "end": 1108
+      }
+    },
+    {
+      "snomed_cui": "14793004",
+      "preferred_name": "Eosinophil, segmented",
+      "source_value": "blood eosinophils",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1118,
+        "end": 1135
+      }
+    },
+    {
+      "snomed_cui": "258878000",
+      "preferred_name": "cells/microliter",
+      "source_value": "cells/uL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1143,
+        "end": 1151
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "Follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1155,
+        "end": 1164
+      }
+    },
+    {
+      "snomed_cui": "416608005",
+      "preferred_name": "Drug therapy",
+      "source_value": "Pharmacological Treatment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1165,
+        "end": 1190
+      }
+    },
+    {
+      "snomed_cui": "267036007",
+      "preferred_name": "Dyspnea",
+      "source_value": "Dyspnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1207,
+        "end": 1214
+      }
+    },
+    {
+      "snomed_cui": "424001003",
+      "preferred_name": "Genus Lama",
+      "source_value": "LAMA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1245,
+        "end": 1249
+      }
+    },
+    {
+      "snomed_cui": "424001003",
+      "preferred_name": "Genus Lama",
+      "source_value": "LAMA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1260,
+        "end": 1264
+      }
+    },
+    {
+      "snomed_cui": "303607000",
+      "preferred_name": "Biomedical equipment",
+      "source_value": "device",
+      "confidence_score": 0.612793138813206,
+      "character_boundaries": {
+        "start": 1273,
+        "end": 1279
+      }
+    },
+    {
+      "snomed_cui": "290005005",
+      "preferred_name": "Molecule",
+      "source_value": "molecules",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1280,
+        "end": 1289
+      }
+    },
+    {
+      "snomed_cui": "56183000",
+      "preferred_name": "Pharmacologic",
+      "source_value": "pharmacological",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1325,
+        "end": 1340
+      }
+    },
+    {
+      "snomed_cui": "267036007",
+      "preferred_name": "Dyspnea",
+      "source_value": "dyspnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1349,
+        "end": 1356
+      }
+    },
+    {
+      "snomed_cui": "119273009",
+      "preferred_name": "Peripheral blood",
+      "source_value": "blood",
+      "confidence_score": 0.5183464969543512,
+      "character_boundaries": {
+        "start": 1399,
+        "end": 1404
+      }
+    },
+    {
+      "snomed_cui": "424001003",
+      "preferred_name": "Genus Lama",
+      "source_value": "LAMA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1435,
+        "end": 1439
+      }
+    },
+    {
+      "snomed_cui": "448971002",
+      "preferred_name": "Roflumilast",
+      "source_value": "Roflumilast",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1471,
+        "end": 1482
+      }
+    },
+    {
+      "snomed_cui": "63480004",
+      "preferred_name": "Chronic bronchitis",
+      "source_value": "chronic bronchitis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1500,
+        "end": 1518
+      }
+    },
+    {
+      "snomed_cui": "387531004",
+      "preferred_name": "Azithromycin",
+      "source_value": "Azithromycin",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1523,
+        "end": 1535
+      }
+    },
+    {
+      "snomed_cui": "8517006",
+      "preferred_name": "Ex-smoker",
+      "source_value": "former smokers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1540,
+        "end": 1554
+      }
+    },
+    {
+      "snomed_cui": "119273009",
+      "preferred_name": "Peripheral blood",
+      "source_value": "blood",
+      "confidence_score": 0.839449135280764,
+      "character_boundaries": {
+        "start": 1577,
+        "end": 1582
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1613,
+        "end": 1620
+      }
+    },
+    {
+      "snomed_cui": "424001003",
+      "preferred_name": "Genus Lama",
+      "source_value": "LAMA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1642,
+        "end": 1646
+      }
+    },
+    {
+      "snomed_cui": "12893009",
+      "preferred_name": "Biologic",
+      "source_value": "Biologic",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1658,
+        "end": 1666
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "Therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1667,
+        "end": 1674
+      }
+    },
+    {
+      "snomed_cui": "733487000",
+      "preferred_name": "Dupilumab",
+      "source_value": "Dupilumab",
+      "confidence_score": 0.6379645148604743,
+      "character_boundaries": {
+        "start": 1676,
+        "end": 1685
+      }
+    },
+    {
+      "snomed_cui": "63480004",
+      "preferred_name": "Chronic bronchitis",
+      "source_value": "chronic bronchitis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1690,
+        "end": 1708
+      }
+    },
+    {
+      "snomed_cui": "716046009",
+      "preferred_name": "Mepolizumab",
+      "source_value": "Mepolizumab",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1728,
+        "end": 1739
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1744,
+        "end": 1752
+      }
+    },
+    {
+      "snomed_cui": "20646008",
+      "preferred_name": "Intractable",
+      "source_value": "refractory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1758,
+        "end": 1768
+      }
+    },
+    {
+      "snomed_cui": "76070002",
+      "preferred_name": "Triple",
+      "source_value": "triple",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1786,
+        "end": 1792
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1793,
+        "end": 1800
+      }
+    },
+    {
+      "snomed_cui": "18679011000001101",
+      "preferred_name": "Inhalation",
+      "source_value": "Inhalation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1817,
+        "end": 1827
+      }
+    },
+    {
+      "snomed_cui": "303607000",
+      "preferred_name": "Biomedical equipment",
+      "source_value": "Devices",
+      "confidence_score": 0.6725666222544585,
+      "character_boundaries": {
+        "start": 1828,
+        "end": 1835
+      }
+    },
+    {
+      "snomed_cui": "246501002",
+      "preferred_name": "Technique",
+      "source_value": "technique",
+      "confidence_score": 0.607795199266649,
+      "character_boundaries": {
+        "start": 1867,
+        "end": 1876
+      }
+    },
+    {
+      "snomed_cui": "723051000000101",
+      "preferred_name": "Evaluation",
+      "source_value": "evaluation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1892,
+        "end": 1902
+      }
+    },
+    {
+      "snomed_cui": "33336008",
+      "preferred_name": "Matches, device",
+      "source_value": "Match device",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1919,
+        "end": 1931
+      }
+    },
+    {
+      "snomed_cui": "422059006",
+      "preferred_name": "Metered dose inhaler",
+      "source_value": "MDI",
+      "confidence_score": 0.5828146356347096,
+      "character_boundaries": {
+        "start": 1943,
+        "end": 1946
+      }
+    },
+    {
+      "snomed_cui": "334947002",
+      "preferred_name": "Nebulizer",
+      "source_value": "nebulizer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1953,
+        "end": 1962
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1967,
+        "end": 1974
+      }
+    },
+    {
+      "snomed_cui": "19388002",
+      "preferred_name": "Physical",
+      "source_value": "physical",
+      "confidence_score": 0.5243672875716258,
+      "character_boundaries": {
+        "start": 1999,
+        "end": 2007
+      }
+    },
+    {
+      "snomed_cui": "288361006",
+      "preferred_name": "Ability to perform general manipulative activities",
+      "source_value": "dexterity",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2008,
+        "end": 2017
+      }
+    },
+    {
+      "snomed_cui": "14910006",
+      "preferred_name": "Inspiration",
+      "source_value": "inspiratory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2023,
+        "end": 2034
+      }
+    }
+  ]
+}

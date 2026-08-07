@@ -1,0 +1,83 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a9b8c7d6-e5f4-4321-90ab-cd12ef345678",
+      "@type": "Finding",
+      "name": "ST-Segment Elevation Myocardial Infarction",
+      "snomed": "272118002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_1_clinical_policy_emergenc.json",
+        "section_title": "Clinical Policy: Emergency Department Management of Patients Needing Reperfusion Therapy for Acute ST-Segment Elevation Myocardial Infarction - Title and Committees"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b8c7d6e5-f432-4190-abce-d12e3456789a",
+          "rationale": "Patients with ST-Segment Elevation Myocardial Infarction require reperfusion therapy.",
+          "citation": "Clinical Policy: Emergency Department Management of Patients Needing Reperfusion Therapy for Acute ST-Segment Elevation Myocardial Infarction",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b8c7d6e5-f432-4190-abce-d12e3456789a",
+      "@type": "Intervention",
+      "name": "Reperfusion Therapy",
+      "snomed": "401303003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_1_clinical_policy_emergenc.json",
+        "section_title": "Clinical Policy: Emergency Department Management of Patients Needing Reperfusion Therapy for Acute ST-Segment Elevation Myocardial Infarction - Title and Committees"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0b130435-c89a-4fec-9f41-1bb8acc37a1b",
+      "@type": "Finding",
+      "name": "Emergency Department",
+      "snomed": "225728007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_1_clinical_policy_emergenc.json",
+        "section_title": "Clinical Policy: Emergency Department Management of Patients Needing Reperfusion Therapy for Acute ST-Segment Elevation Myocardial Infarction - Title and Committees"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:74c252cb-0905-4781-b516-7b2c89eeba3c",
+      "@type": "Finding",
+      "name": "Acute Myocardial Infarction",
+      "snomed": "57054005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_1_clinical_policy_emergenc.json",
+        "section_title": "Clinical Policy: Emergency Department Management of Patients Needing Reperfusion Therapy for Acute ST-Segment Elevation Myocardial Infarction - Title and Committees"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:95eeb780-2965-4770-a75f-549b0fc6cfb8",
+      "@type": "Finding",
+      "name": "American College of Emergency Physicians",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_1_clinical_policy_emergenc.json",
+        "section_title": "Clinical Policy: Emergency Department Management of Patients Needing Reperfusion Therapy for Acute ST-Segment Elevation Myocardial Infarction - Title and Committees"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:40.962097+00:00",
+    "nodes_before": 6,
+    "nodes_after": 5,
+    "rules_before": 1,
+    "rules_after": 1
+  }
+}

@@ -1,0 +1,1055 @@
+{
+  "chunk_id": "npsg_goal_1",
+  "entities": [
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "Goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3,
+        "end": 7
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "Improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 10,
+        "end": 17
+      }
+    },
+    {
+      "snomed_cui": "263656005",
+      "preferred_name": "Accurate",
+      "source_value": "accuracy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 22,
+        "end": 30
+      }
+    },
+    {
+      "snomed_cui": "372039005",
+      "preferred_name": "Patient identification",
+      "source_value": "patient identification",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 34,
+        "end": 56
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 94,
+        "end": 101
+      }
+    },
+    {
+      "snomed_cui": "118522005",
+      "preferred_name": "Identifier (property)",
+      "source_value": "identifiers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 102,
+        "end": 113
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 135,
+        "end": 144
+      }
+    },
+    {
+      "snomed_cui": "224930009",
+      "preferred_name": "Services",
+      "source_value": "services",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 150,
+        "end": 158
+      }
+    },
+    {
+      "snomed_cui": "410666004",
+      "preferred_name": "Reason for",
+      "source_value": "Rationale",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 165,
+        "end": 174
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 204,
+        "end": 211
+      }
+    },
+    {
+      "snomed_cui": "371508000",
+      "preferred_name": "Tumor stage",
+      "source_value": "stages",
+      "confidence_score": 0.5792834033170318,
+      "character_boundaries": {
+        "start": 242,
+        "end": 248
+      }
+    },
+    {
+      "snomed_cui": "887161000000102",
+      "preferred_name": "Diagnoses",
+      "source_value": "diagnosis",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 252,
+        "end": 261
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 266,
+        "end": 275
+      }
+    },
+    {
+      "snomed_cui": "361269008",
+      "preferred_name": "Intentional",
+      "source_value": "intent",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 281,
+        "end": 287
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 297,
+        "end": 301
+      }
+    },
+    {
+      "snomed_cui": "26310004",
+      "preferred_name": "Folded structure",
+      "source_value": "fold",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 309,
+        "end": 313
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 347,
+        "end": 357
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "person",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 365,
+        "end": 371
+      }
+    },
+    {
+      "snomed_cui": "224930009",
+      "preferred_name": "Services",
+      "source_value": "service",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 385,
+        "end": 392
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 396,
+        "end": 405
+      }
+    },
+    {
+      "snomed_cui": "361269008",
+      "preferred_name": "Intentional",
+      "source_value": "intended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 409,
+        "end": 417
+      }
+    },
+    {
+      "snomed_cui": "257997001",
+      "preferred_name": "Seconds",
+      "source_value": "second",
+      "confidence_score": 0.31698632027332363,
+      "character_boundaries": {
+        "start": 419,
+        "end": 425
+      }
+    },
+    {
+      "snomed_cui": "33336008",
+      "preferred_name": "Matches, device",
+      "source_value": "match",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 430,
+        "end": 435
+      }
+    },
+    {
+      "snomed_cui": "224930009",
+      "preferred_name": "Services",
+      "source_value": "service",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 440,
+        "end": 447
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 451,
+        "end": 460
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 469,
+        "end": 479
+      }
+    },
+    {
+      "snomed_cui": "900000000000549004",
+      "preferred_name": "Acceptable",
+      "source_value": "Acceptable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 481,
+        "end": 491
+      }
+    },
+    {
+      "snomed_cui": "118522005",
+      "preferred_name": "Identifier (property)",
+      "source_value": "identifiers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 492,
+        "end": 503
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 515,
+        "end": 525
+      }
+    },
+    {
+      "snomed_cui": "396278008",
+      "preferred_name": "Identification number",
+      "source_value": "identification number",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 546,
+        "end": 567
+      }
+    },
+    {
+      "snomed_cui": "734005006",
+      "preferred_name": "Telephone number (property)",
+      "source_value": "telephone number",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 569,
+        "end": 585
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "person",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 596,
+        "end": 602
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 603,
+        "end": 611
+      }
+    },
+    {
+      "snomed_cui": "118522005",
+      "preferred_name": "Identifier (property)",
+      "source_value": "identifier",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 612,
+        "end": 622
+      }
+    },
+    {
+      "snomed_cui": "133933007",
+      "preferred_name": "Newborn",
+      "source_value": "Newborns",
+      "confidence_score": 0.36516838321501566,
+      "character_boundaries": {
+        "start": 625,
+        "end": 633
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 641,
+        "end": 647
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 648,
+        "end": 655
+      }
+    },
+    {
+      "snomed_cui": "42752001",
+      "preferred_name": "Due to",
+      "source_value": "due to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 674,
+        "end": 680
+      }
+    },
+    {
+      "snomed_cui": "88052002",
+      "preferred_name": "Mutism",
+      "source_value": "inability to speak",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 687,
+        "end": 705
+      }
+    },
+    {
+      "snomed_cui": "41277001",
+      "preferred_name": "Lacking",
+      "source_value": "lack",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 710,
+        "end": 714
+      }
+    },
+    {
+      "snomed_cui": "20401003",
+      "preferred_name": "With",
+      "source_value": "In addition to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 744,
+        "end": 758
+      }
+    },
+    {
+      "snomed_cui": "36692007",
+      "preferred_name": "Known",
+      "source_value": "known",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 764,
+        "end": 769
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 809,
+        "end": 816
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 823,
+        "end": 832
+      }
+    },
+    {
+      "snomed_cui": "129007004",
+      "preferred_name": "Feeding",
+      "source_value": "feeding",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 873,
+        "end": 880
+      }
+    },
+    {
+      "snomed_cui": "72705000",
+      "preferred_name": "Mother",
+      "source_value": "mother",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 883,
+        "end": 889
+      }
+    },
+    {
+      "snomed_cui": "226790003",
+      "preferred_name": "Expressed breast milk",
+      "source_value": "expressed breastmilk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 892,
+        "end": 912
+      }
+    },
+    {
+      "snomed_cui": "133933007",
+      "preferred_name": "Newborn",
+      "source_value": "newborn",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 926,
+        "end": 933
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 949,
+        "end": 956
+      }
+    },
+    {
+      "snomed_cui": "33463005",
+      "preferred_name": "Liquid substance",
+      "source_value": "fluids",
+      "confidence_score": 0.47874657841033863,
+      "character_boundaries": {
+        "start": 972,
+        "end": 978
+      }
+    },
+    {
+      "snomed_cui": "264418008",
+      "preferred_name": "Pathogenic organism",
+      "source_value": "pathogens",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 993,
+        "end": 1002
+      }
+    },
+    {
+      "snomed_cui": "133933007",
+      "preferred_name": "Newborn",
+      "source_value": "newborn",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1010,
+        "end": 1017
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identification",
+      "confidence_score": 0.5802581169711831,
+      "character_boundaries": {
+        "start": 1030,
+        "end": 1044
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1084,
+        "end": 1091
+      }
+    },
+    {
+      "snomed_cui": "57795002",
+      "preferred_name": "Chemical element",
+      "source_value": "Element",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1105,
+        "end": 1112
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.3313001721999467,
+      "character_boundaries": {
+        "start": 1152,
+        "end": 1154
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1176,
+        "end": 1183
+      }
+    },
+    {
+      "snomed_cui": "118522005",
+      "preferred_name": "Identifier (property)",
+      "source_value": "identifiers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1184,
+        "end": 1195
+      }
+    },
+    {
+      "snomed_cui": "18629005",
+      "preferred_name": "Administration of drug or medicament",
+      "source_value": "administering medications",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1201,
+        "end": 1226
+      }
+    },
+    {
+      "snomed_cui": "119273009",
+      "preferred_name": "Peripheral blood",
+      "source_value": "blood",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1228,
+        "end": 1233
+      }
+    },
+    {
+      "snomed_cui": "261226001",
+      "preferred_name": "Blood component",
+      "source_value": "blood components",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1238,
+        "end": 1254
+      }
+    },
+    {
+      "snomed_cui": "247968005",
+      "preferred_name": "Compulsive hoarding",
+      "source_value": "collecting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1261,
+        "end": 1271
+      }
+    },
+    {
+      "snomed_cui": "119297000",
+      "preferred_name": "Blood specimen",
+      "source_value": "blood samples",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1272,
+        "end": 1285
+      }
+    },
+    {
+      "snomed_cui": "123038009",
+      "preferred_name": "Specimen",
+      "source_value": "specimens",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1296,
+        "end": 1305
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1310,
+        "end": 1318
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1319,
+        "end": 1326
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatments",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1347,
+        "end": 1357
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1361,
+        "end": 1371
+      }
+    },
+    {
+      "snomed_cui": "225739005",
+      "preferred_name": "Client's room",
+      "source_value": "patient's room",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1377,
+        "end": 1391
+      }
+    },
+    {
+      "snomed_cui": "410681005",
+      "preferred_name": "Count of entities (property)",
+      "source_value": "number",
+      "confidence_score": 0.30211066769461986,
+      "character_boundaries": {
+        "start": 1392,
+        "end": 1398
+      }
+    },
+    {
+      "snomed_cui": "19388002",
+      "preferred_name": "Physical",
+      "source_value": "physical",
+      "confidence_score": 0.3353823020811101,
+      "character_boundaries": {
+        "start": 1402,
+        "end": 1410
+      }
+    },
+    {
+      "snomed_cui": "246267002",
+      "preferred_name": "Location",
+      "source_value": "location",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1411,
+        "end": 1419
+      }
+    },
+    {
+      "snomed_cui": "262009000",
+      "preferred_name": "Not used",
+      "source_value": "not used",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1423,
+        "end": 1431
+      }
+    },
+    {
+      "snomed_cui": "118522005",
+      "preferred_name": "Identifier (property)",
+      "source_value": "identifier",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1438,
+        "end": 1448
+      }
+    },
+    {
+      "snomed_cui": "258673006",
+      "preferred_name": "Millimeter",
+      "source_value": "MM",
+      "confidence_score": 0.46003144627855197,
+      "character_boundaries": {
+        "start": 1460,
+        "end": 1462
+      }
+    },
+    {
+      "snomed_cui": "706437002",
+      "preferred_name": "Container",
+      "source_value": "containers",
+      "confidence_score": 0.554308584967116,
+      "character_boundaries": {
+        "start": 1520,
+        "end": 1530
+      }
+    },
+    {
+      "snomed_cui": "119273009",
+      "preferred_name": "Peripheral blood",
+      "source_value": "blood",
+      "confidence_score": 0.6941319478263286,
+      "character_boundaries": {
+        "start": 1540,
+        "end": 1545
+      }
+    },
+    {
+      "snomed_cui": "123038009",
+      "preferred_name": "Specimen",
+      "source_value": "specimens",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1556,
+        "end": 1565
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "presence of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1573,
+        "end": 1584
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1589,
+        "end": 1596
+      }
+    },
+    {
+      "snomed_cui": "24863003",
+      "preferred_name": "Postprandial",
+      "source_value": "PC",
+      "confidence_score": 0.4264275713395612,
+      "character_boundaries": {
+        "start": 1608,
+        "end": 1610
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.5158293140853587,
+      "character_boundaries": {
+        "start": 1621,
+        "end": 1623
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.5011493668244582,
+      "character_boundaries": {
+        "start": 1631,
+        "end": 1633
+      }
+    },
+    {
+      "snomed_cui": "398282000",
+      "preferred_name": "Method of identification",
+      "source_value": "methods of identification",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1651,
+        "end": 1676
+      }
+    },
+    {
+      "snomed_cui": "133933007",
+      "preferred_name": "Newborn",
+      "source_value": "newborn",
+      "confidence_score": 0.8914178062002656,
+      "character_boundaries": {
+        "start": 1681,
+        "end": 1688
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1689,
+        "end": 1697
+      }
+    },
+    {
+      "snomed_cui": "272394005",
+      "preferred_name": "Technique",
+      "source_value": "methods",
+      "confidence_score": 0.5311976654988043,
+      "character_boundaries": {
+        "start": 1718,
+        "end": 1725
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1729,
+        "end": 1736
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1759,
+        "end": 1766
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1771,
+        "end": 1780
+      }
+    },
+    {
+      "snomed_cui": "27468005",
+      "preferred_name": "Naming",
+      "source_value": "naming",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1793,
+        "end": 1799
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.5456845776218184,
+      "character_boundaries": {
+        "start": 1800,
+        "end": 1807
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1814,
+        "end": 1821
+      }
+    },
+    {
+      "snomed_cui": "72705000",
+      "preferred_name": "Mother",
+      "source_value": "mother",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1832,
+        "end": 1838
+      }
+    },
+    {
+      "snomed_cui": "397678008",
+      "preferred_name": "Surname",
+      "source_value": "last names",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1851,
+        "end": 1861
+      }
+    },
+    {
+      "snomed_cui": "133933007",
+      "preferred_name": "Newborn",
+      "source_value": "newborn",
+      "confidence_score": 0.7967432175147563,
+      "character_boundaries": {
+        "start": 1870,
+        "end": 1877
+      }
+    },
+    {
+      "snomed_cui": "263495000",
+      "preferred_name": "Gender",
+      "source_value": "gender",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1880,
+        "end": 1886
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identification",
+      "confidence_score": 0.510203114688295,
+      "character_boundaries": {
+        "start": 2014,
+        "end": 2028
+      }
+    },
+    {
+      "snomed_cui": "51686005",
+      "preferred_name": "Banding",
+      "source_value": "banding",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2029,
+        "end": 2036
+      }
+    },
+    {
+      "snomed_cui": "116677004",
+      "preferred_name": "Associated topography",
+      "source_value": "body sites",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2061,
+        "end": 2071
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identification",
+      "confidence_score": 0.3413911991865234,
+      "character_boundaries": {
+        "start": 2094,
+        "end": 2108
+      }
+    },
+    {
+      "snomed_cui": "263748003",
+      "preferred_name": "Established",
+      "source_value": "Establish",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2113,
+        "end": 2122
+      }
+    },
+    {
+      "snomed_cui": "263536004",
+      "preferred_name": "Communication",
+      "source_value": "communication",
+      "confidence_score": 0.530164589063528,
+      "character_boundaries": {
+        "start": 2123,
+        "end": 2136
+      }
+    },
+    {
+      "snomed_cui": "86967005",
+      "preferred_name": "Tool, device",
+      "source_value": "tools",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2137,
+        "end": 2142
+      }
+    },
+    {
+      "snomed_cui": "133933007",
+      "preferred_name": "Newborn",
+      "source_value": "newborns",
+      "confidence_score": 0.3372607163908976,
+      "character_boundaries": {
+        "start": 2213,
+        "end": 2221
+      }
+    }
+  ]
+}

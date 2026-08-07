@@ -1,0 +1,965 @@
+{
+  "chunk_id": "npsg_goal_7",
+  "entities": [
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "Goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3,
+        "end": 7
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 21,
+        "end": 28
+      }
+    },
+    {
+      "snomed_cui": "408678008",
+      "preferred_name": "Healthcare associated infectious disease",
+      "source_value": "health care\u2013associated infections",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 29,
+        "end": 62
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 106,
+        "end": 113
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "Centers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 114,
+        "end": 121
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "Disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 126,
+        "end": 133
+      }
+    },
+    {
+      "snomed_cui": "246106000",
+      "preferred_name": "Control",
+      "source_value": "Control",
+      "confidence_score": 0.6440517988792623,
+      "character_boundaries": {
+        "start": 134,
+        "end": 141
+      }
+    },
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "Prevention",
+      "confidence_score": 0.7488457530716239,
+      "character_boundaries": {
+        "start": 146,
+        "end": 156
+      }
+    },
+    {
+      "snomed_cui": "302539009",
+      "preferred_name": "Entire hand",
+      "source_value": "hand",
+      "confidence_score": 0.3108168900671964,
+      "character_boundaries": {
+        "start": 163,
+        "end": 167
+      }
+    },
+    {
+      "snomed_cui": "721571000000101",
+      "preferred_name": "Hygiene",
+      "source_value": "hygiene",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 168,
+        "end": 175
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 176,
+        "end": 186
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 198,
+        "end": 205
+      }
+    },
+    {
+      "snomed_cui": "263775005",
+      "preferred_name": "Health",
+      "source_value": "Health",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 212,
+        "end": 218
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "Organization",
+      "confidence_score": 0.6739359152307088,
+      "character_boundaries": {
+        "start": 219,
+        "end": 231
+      }
+    },
+    {
+      "snomed_cui": "302539009",
+      "preferred_name": "Entire hand",
+      "source_value": "hand",
+      "confidence_score": 0.31739385235957207,
+      "character_boundaries": {
+        "start": 238,
+        "end": 242
+      }
+    },
+    {
+      "snomed_cui": "721571000000101",
+      "preferred_name": "Hygiene",
+      "source_value": "hygiene",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 243,
+        "end": 250
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 251,
+        "end": 261
+      }
+    },
+    {
+      "snomed_cui": "410666004",
+      "preferred_name": "Reason for",
+      "source_value": "Rationale",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 268,
+        "end": 277
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "Centers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 318,
+        "end": 325
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "Disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 330,
+        "end": 337
+      }
+    },
+    {
+      "snomed_cui": "246106000",
+      "preferred_name": "Control",
+      "source_value": "Control",
+      "confidence_score": 0.655864383126581,
+      "character_boundaries": {
+        "start": 338,
+        "end": 345
+      }
+    },
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "Prevention",
+      "confidence_score": 0.8103682833211743,
+      "character_boundaries": {
+        "start": 350,
+        "end": 360
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "year",
+      "confidence_score": 0.7980970071541549,
+      "character_boundaries": {
+        "start": 367,
+        "end": 371
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "people",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 385,
+        "end": 391
+      }
+    },
+    {
+      "snomed_cui": "40733004",
+      "preferred_name": "Infectious disease",
+      "source_value": "infection",
+      "confidence_score": 0.6590562881652501,
+      "character_boundaries": {
+        "start": 403,
+        "end": 412
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 435,
+        "end": 444
+      }
+    },
+    {
+      "snomed_cui": "224930009",
+      "preferred_name": "Services",
+      "source_value": "services",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 450,
+        "end": 458
+      }
+    },
+    {
+      "snomed_cui": "722901000000108",
+      "preferred_name": "Health care",
+      "source_value": "health care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 464,
+        "end": 475
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organization",
+      "confidence_score": 0.6782787966739326,
+      "character_boundaries": {
+        "start": 476,
+        "end": 488
+      }
+    },
+    {
+      "snomed_cui": "408678008",
+      "preferred_name": "Healthcare associated infectious disease",
+      "source_value": "health care\u2013associated infections",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 504,
+        "end": 537
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 551,
+        "end": 558
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "issue",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 566,
+        "end": 571
+      }
+    },
+    {
+      "snomed_cui": "248448006",
+      "preferred_name": "Involved",
+      "source_value": "affecting",
+      "confidence_score": 0.3970768901577806,
+      "character_boundaries": {
+        "start": 572,
+        "end": 581
+      }
+    },
+    {
+      "snomed_cui": "722901000000108",
+      "preferred_name": "Health care",
+      "source_value": "health care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 595,
+        "end": 606
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organizations",
+      "confidence_score": 0.48181222709358024,
+      "character_boundaries": {
+        "start": 607,
+        "end": 620
+      }
+    },
+    {
+      "snomed_cui": "397635003",
+      "preferred_name": "Address",
+      "source_value": "address",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 656,
+        "end": 663
+      }
+    },
+    {
+      "snomed_cui": "385633008",
+      "preferred_name": "Improving",
+      "source_value": "improving",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 675,
+        "end": 684
+      }
+    },
+    {
+      "snomed_cui": "721571000000101",
+      "preferred_name": "Hygiene",
+      "source_value": "hygiene",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 694,
+        "end": 701
+      }
+    },
+    {
+      "snomed_cui": "722901000000108",
+      "preferred_name": "Health care",
+      "source_value": "health care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 705,
+        "end": 716
+      }
+    },
+    {
+      "snomed_cui": "405078008",
+      "preferred_name": "Compliance behavior",
+      "source_value": "Compliance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 724,
+        "end": 734
+      }
+    },
+    {
+      "snomed_cui": "263775005",
+      "preferred_name": "Health",
+      "source_value": "Health",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 750,
+        "end": 756
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "Organization",
+      "confidence_score": 0.6212867149184764,
+      "character_boundaries": {
+        "start": 757,
+        "end": 769
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "Centers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 783,
+        "end": 790
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "Disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 795,
+        "end": 802
+      }
+    },
+    {
+      "snomed_cui": "246106000",
+      "preferred_name": "Control",
+      "source_value": "Control",
+      "confidence_score": 0.6258159189082114,
+      "character_boundaries": {
+        "start": 803,
+        "end": 810
+      }
+    },
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "Prevention",
+      "confidence_score": 0.7791280319177578,
+      "character_boundaries": {
+        "start": 815,
+        "end": 825
+      }
+    },
+    {
+      "snomed_cui": "721571000000101",
+      "preferred_name": "Hygiene",
+      "source_value": "hygiene",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 837,
+        "end": 844
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 845,
+        "end": 855
+      }
+    },
+    {
+      "snomed_cui": "258150004",
+      "preferred_name": "Transmission",
+      "source_value": "transmission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 872,
+        "end": 884
+      }
+    },
+    {
+      "snomed_cui": "36272005",
+      "preferred_name": "Infectious agent",
+      "source_value": "infectious agents",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 888,
+        "end": 905
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 918,
+        "end": 926
+      }
+    },
+    {
+      "snomed_cui": "260371004",
+      "preferred_name": "Decreasing",
+      "source_value": "decreasing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 936,
+        "end": 946
+      }
+    },
+    {
+      "snomed_cui": "724781000000108",
+      "preferred_name": "Incidence",
+      "source_value": "incidence",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 951,
+        "end": 960
+      }
+    },
+    {
+      "snomed_cui": "405078008",
+      "preferred_name": "Compliance behavior",
+      "source_value": "compliance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 980,
+        "end": 990
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1010,
+        "end": 1017
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "Goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1025,
+        "end": 1029
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organization",
+      "confidence_score": 0.570449496447849,
+      "character_boundaries": {
+        "start": 1034,
+        "end": 1046
+      }
+    },
+    {
+      "snomed_cui": "405078008",
+      "preferred_name": "Compliance behavior",
+      "source_value": "compliance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1065,
+        "end": 1075
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1100,
+        "end": 1110
+      }
+    },
+    {
+      "snomed_cui": "302539009",
+      "preferred_name": "Entire hand",
+      "source_value": "hand",
+      "confidence_score": 0.36931822695899813,
+      "character_boundaries": {
+        "start": 1159,
+        "end": 1163
+      }
+    },
+    {
+      "snomed_cui": "721571000000101",
+      "preferred_name": "Hygiene",
+      "source_value": "hygiene",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1164,
+        "end": 1171
+      }
+    },
+    {
+      "snomed_cui": "160497005",
+      "preferred_name": "Fostered",
+      "source_value": "fosters",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1180,
+        "end": 1187
+      }
+    },
+    {
+      "snomed_cui": "722981000000103",
+      "preferred_name": "Culture",
+      "source_value": "culture",
+      "confidence_score": 0.5321286471404709,
+      "character_boundaries": {
+        "start": 1190,
+        "end": 1197
+      }
+    },
+    {
+      "snomed_cui": "302539009",
+      "preferred_name": "Entire hand",
+      "source_value": "hand",
+      "confidence_score": 0.414869459353539,
+      "character_boundaries": {
+        "start": 1201,
+        "end": 1205
+      }
+    },
+    {
+      "snomed_cui": "721571000000101",
+      "preferred_name": "Hygiene",
+      "source_value": "hygiene",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1206,
+        "end": 1213
+      }
+    },
+    {
+      "snomed_cui": "13288007",
+      "preferred_name": "Monitor, device",
+      "source_value": "monitors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1215,
+        "end": 1223
+      }
+    },
+    {
+      "snomed_cui": "405078008",
+      "preferred_name": "Compliance behavior",
+      "source_value": "compliance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1224,
+        "end": 1234
+      }
+    },
+    {
+      "snomed_cui": "57795002",
+      "preferred_name": "Chemical element",
+      "source_value": "Element",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1264,
+        "end": 1271
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.31187616333612,
+      "character_boundaries": {
+        "start": 1311,
+        "end": 1313
+      }
+    },
+    {
+      "snomed_cui": "367409002",
+      "preferred_name": "Followed by",
+      "source_value": "follows",
+      "confidence_score": 0.45359550563571993,
+      "character_boundaries": {
+        "start": 1343,
+        "end": 1350
+      }
+    },
+    {
+      "snomed_cui": "258036007",
+      "preferred_name": "Immunoblotting",
+      "source_value": "IB",
+      "confidence_score": 0.4035787495834874,
+      "character_boundaries": {
+        "start": 1366,
+        "end": 1368
+      }
+    },
+    {
+      "snomed_cui": "23369004",
+      "preferred_name": "Immune complex",
+      "source_value": "IC",
+      "confidence_score": 0.5799926182801994,
+      "character_boundaries": {
+        "start": 1374,
+        "end": 1376
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1391,
+        "end": 1398
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "Centers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1399,
+        "end": 1406
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "Disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1411,
+        "end": 1418
+      }
+    },
+    {
+      "snomed_cui": "246106000",
+      "preferred_name": "Control",
+      "source_value": "Control",
+      "confidence_score": 0.536422878799053,
+      "character_boundaries": {
+        "start": 1419,
+        "end": 1426
+      }
+    },
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "Prevention",
+      "confidence_score": 0.7036041307928753,
+      "character_boundaries": {
+        "start": 1431,
+        "end": 1441
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1459,
+        "end": 1466
+      }
+    },
+    {
+      "snomed_cui": "263775005",
+      "preferred_name": "Health",
+      "source_value": "Health",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1473,
+        "end": 1479
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "Organization",
+      "confidence_score": 0.7242932049821726,
+      "character_boundaries": {
+        "start": 1480,
+        "end": 1492
+      }
+    },
+    {
+      "snomed_cui": "721571000000101",
+      "preferred_name": "Hygiene",
+      "source_value": "hygiene",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1504,
+        "end": 1511
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1512,
+        "end": 1522
+      }
+    },
+    {
+      "snomed_cui": "227708009",
+      "preferred_name": "Ice cream",
+      "source_value": "IC",
+      "confidence_score": 0.3285969514406881,
+      "character_boundaries": {
+        "start": 1534,
+        "end": 1536
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1567,
+        "end": 1572
+      }
+    },
+    {
+      "snomed_cui": "385633008",
+      "preferred_name": "Improving",
+      "source_value": "improving",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1577,
+        "end": 1586
+      }
+    },
+    {
+      "snomed_cui": "405078008",
+      "preferred_name": "Compliance behavior",
+      "source_value": "compliance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1587,
+        "end": 1597
+      }
+    },
+    {
+      "snomed_cui": "302539009",
+      "preferred_name": "Entire hand",
+      "source_value": "hand",
+      "confidence_score": 0.3567766955175018,
+      "character_boundaries": {
+        "start": 1603,
+        "end": 1607
+      }
+    },
+    {
+      "snomed_cui": "721571000000101",
+      "preferred_name": "Hygiene",
+      "source_value": "hygiene",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1608,
+        "end": 1615
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1616,
+        "end": 1626
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "Improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1638,
+        "end": 1645
+      }
+    },
+    {
+      "snomed_cui": "405078008",
+      "preferred_name": "Compliance behavior",
+      "source_value": "compliance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1646,
+        "end": 1656
+      }
+    },
+    {
+      "snomed_cui": "302539009",
+      "preferred_name": "Entire hand",
+      "source_value": "hand",
+      "confidence_score": 0.3438199793760698,
+      "character_boundaries": {
+        "start": 1662,
+        "end": 1666
+      }
+    },
+    {
+      "snomed_cui": "721571000000101",
+      "preferred_name": "Hygiene",
+      "source_value": "hygiene",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1667,
+        "end": 1674
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1675,
+        "end": 1685
+      }
+    },
+    {
+      "snomed_cui": "263748003",
+      "preferred_name": "Established",
+      "source_value": "established",
+      "confidence_score": 0.7430459416808449,
+      "character_boundaries": {
+        "start": 1695,
+        "end": 1706
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1707,
+        "end": 1712
+      }
+    }
+  ]
+}

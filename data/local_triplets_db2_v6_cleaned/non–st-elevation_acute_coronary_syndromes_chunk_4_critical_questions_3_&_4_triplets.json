@@ -1,0 +1,539 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Acute MI excluded",
+      "snomed": "77765009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Exclusion of acute MI is a prerequisite for considering low-risk strategies and follow-up.",
+          "citation": "Critical Question 3 text mentions 'in whom acute MI has been excluded'.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Condition",
+      "name": "Suspected NSTE ACS with acute MI excluded",
+      "snomed": "394659003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c3d4e5f6-7890-1234-5678-90abcdef1234",
+          "rationale": "This condition defines the patient population for Critical Question 3 regarding further diagnostic testing prior to discharge.",
+          "citation": "Critical Question 3: 'In adult patients with suspected NSTE ACS in whom acute MI has been excluded...'",
+          "citation_paraphrase": "Critical Question 3: 'In adult patients with suspected NSTE ACS in whom acute MI has been excluded...'",
+          "citation_verbatim_excerpt": "CRITICAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d4e5f678-9012-3456-7890-abcdef123456",
+      "@type": "Finding",
+      "name": "Further diagnostic testing (provocative, stress test, CT angiography) prior to discharge",
+      "snomed": "439401001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:57444db2-9b3f-4eee-ad8e-be2729a94fdc",
+          "rationale": "Routine use of further diagnostic testing prior to discharge in low-risk patients with excluded MI is not recommended.",
+          "citation": "Critical Question 3 Level B recommendation: 'Do not routinely use further diagnostic testing...prior to discharge in low-risk patients in whom acute MI has been ruled out.'",
+          "citation_paraphrase": "Critical Question 3 Level B recommendation: 'Do not routinely use further diagnostic testing...prior to discharge in low-risk patients in whom acute MI has been ruled out.'",
+          "citation_verbatim_excerpt": "STE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+      "@type": "Intervention",
+      "name": "Arrange follow-up in 1 to 2 weeks",
+      "snomed": "259038000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b9f6406b-bdea-45f2-841b-ddcdf18e0d20",
+          "rationale": "This intervention is recommended for low-risk patients with NSTE ACS and excluded MI.",
+          "citation": "Critical Question 3 Level C recommendation: 'Arrange follow-up in 1 to 2 weeks for low-risk patients in whom MI has been ruled out.'",
+          "citation_paraphrase": "Critical Question 3 Level C recommendation: 'Arrange follow-up in 1 to 2 weeks for low-risk patients in whom MI has been ruled out.'",
+          "citation_verbatim_excerpt": "CAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b9f6406b-bdea-45f2-841b-ddcdf18e0d20",
+      "@type": "Condition",
+      "name": "NSTEMI",
+      "snomed": "401314000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:abcdef12-3456-7890-abcf-1234567890de",
+          "rationale": "This condition defines the patient population for Critical Question 4 regarding immediate antiplatelet therapy.",
+          "citation": "Critical Question 4: 'Should adult patients with acute NSTEMI receive immediate antiplatelet therapy...?'",
+          "citation_paraphrase": "Critical Question 4: 'Should adult patients with acute NSTEMI receive immediate antiplatelet therapy...?'",
+          "citation_verbatim_excerpt": "CRITICAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcf-1234567890de",
+      "@type": "Acuity",
+      "name": "Acute NSTEMI",
+      "snomed": "272118002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6073574d-bd79-41e9-a138-7f552b16bc54",
+          "rationale": "This condition defines the patient population for Critical Question 4 regarding immediate antiplatelet therapy.",
+          "citation": "Critical Question 4: 'Should adult patients with acute NSTEMI receive immediate antiplatelet therapy...?'",
+          "citation_paraphrase": "Critical Question 4: 'Should adult patients with acute NSTEMI receive immediate antiplatelet therapy...?'",
+          "citation_verbatim_excerpt": "CRITICAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d46f87e0-725a-41ec-8770-c189fc48bcad",
+      "@type": "Medication",
+      "name": "Aspirin",
+      "snomed": "387458008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:063d0c6a-fd40-49f1-a9ea-93666215c5ee",
+          "rationale": "Aspirin is standard therapy for ACS.",
+          "citation": "Critical Question 4 text mentions '...in addition to aspirin...'",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0eff52b2-2a2c-43b8-8e7f-219f9bb08a1a",
+      "@type": "Medication",
+      "name": "Clopidogrel",
+      "snomed": "386952008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6073574d-bd79-41e9-a138-7f552b16bc54",
+          "rationale": "Clopidogrel is an example of a P2Y12 inhibitor.",
+          "citation": "Critical Question 4 text mentions '...P2Y12 inhibitors...clopidogrel...'",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0f480b3c-6402-44d6-aec2-829c0f384ae4",
+      "@type": "Medication",
+      "name": "Prasugrel",
+      "snomed": "443129001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:063d0c6a-fd40-49f1-a9ea-93666215c5ee",
+          "rationale": "Prasugrel is an example of a P2Y12 inhibitor.",
+          "citation": "Critical Question 4 text mentions '...P2Y12 inhibitors...prasugrel...'",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9ce0ab5d-bf67-4bd1-a20e-6e87393c3504",
+      "@type": "Medication",
+      "name": "Cardiac catheterization",
+      "snomed": "41976001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:32a73fcb-ca53-4ec0-a094-778f8de71767",
+          "rationale": "Cardiac catheterization is a key procedure in NSTEMI management.",
+          "citation": "Critical Question 4 text mentions '...delayed until cardiac catheterization...'",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a3acacbb-17e5-42d5-aec3-536c8130b6c8",
+      "@type": "Condition",
+      "name": "Increased ischemic risk if misapplied to STEMI patients",
+      "snomed": "255426005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6073574d-bd79-41e9-a138-7f552b16bc54",
+          "rationale": "This is a potential harm associated with deferring additional antiplatelet agents.",
+          "citation": "Critical Question 4 text mentions '...Potential Harm: Increased ischemic risk if misapplied to STEMI patients.'",
+          "citation_paraphrase": "Critical Question 4 text mentions '...Potential Harm: Increased ischemic risk if misapplied to STEMI patients.'",
+          "citation_verbatim_excerpt": "CRITICAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:02404596-7063-4fe7-b264-637304236115",
+      "@type": "Condition",
+      "name": "STEMI",
+      "snomed": "401303003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:063d0c6a-fd40-49f1-a9ea-93666215c5ee",
+      "@type": "Condition",
+      "name": "Increased major bleeding risk",
+      "snomed": "131148009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6073574d-bd79-41e9-a138-7f552b16bc54",
+          "rationale": "This is a potential harm associated with immediate administration of P2Y12 inhibitors or GP IIb/IIIa inhibitors in ED.",
+          "citation": "Critical Question 4 text mentions '...but demonstrate increased major bleeding risks.'",
+          "citation_paraphrase": "Critical Question 4 text mentions '...but demonstrate increased major bleeding risks.'",
+          "citation_verbatim_excerpt": "CRITICAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c3d4e5f6-7890-1234-5678-90abcdef1234",
+      "@type": "Acuity",
+      "name": "Low-risk patients (for Critical Question 3)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:d4e5f678-9012-3456-7890-abcdef123456",
+          "rationale": "Low-risk patients with NSTE ACS and excluded MI should not routinely undergo further diagnostic testing prior to discharge.",
+          "citation": "Critical Question 3 Level B recommendation: 'Do not routinely use further diagnostic testing...prior to discharge in low-risk patients in whom acute MI has been ruled out.'",
+          "citation_paraphrase": "Critical Question 3 Level B recommendation: 'Do not routinely use further diagnostic testing...prior to discharge in low-risk patients in whom acute MI has been ruled out.'",
+          "citation_verbatim_excerpt": "STE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+          "rationale": "Low-risk patients with NSTE ACS and excluded MI should be arranged for follow-up in 1 to 2 weeks if no follow-up is available, consider further testing or observation prior to discharge.",
+          "citation": "Critical Question 3 Level C recommendation: 'Arrange follow-up in 1 to 2 weeks for low-risk patients in whom MI has been ruled out. If no follow-up is available, consider further testing or observation prior to discharge.'",
+          "citation_paraphrase": "Critical Question 3 Level C recommendation: 'Arrange follow-up in 1 to 2 weeks for low-risk patients in whom MI has been ruled out. If no follow-up is available, consider further testing or observation prior to discharge.'",
+          "citation_verbatim_excerpt": "CAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:57444db2-9b3f-4eee-ad8e-be2729a94fdc",
+      "@type": "Intervention",
+      "name": "Consider further testing or observation prior to discharge",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:32a73fcb-ca53-4ec0-a094-778f8de71767",
+          "rationale": "This intervention is considered if follow-up cannot be arranged for low-risk patients with NSTE ACS and excluded MI.",
+          "citation": "Critical Question 3 Level C recommendation: 'If no follow-up is available, consider further testing or observation prior to discharge.'",
+          "citation_paraphrase": "Critical Question 3 Level C recommendation: 'If no follow-up is available, consider further testing or observation prior to discharge.'",
+          "citation_verbatim_excerpt": "CAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:13a0eb3d-2c81-432e-b27f-7d0c5644df6b",
+      "@type": "Medication",
+      "name": "P2Y12 inhibitors (e.g., clopidogrel, prasugrel)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6073574d-bd79-41e9-a138-7f552b16bc54",
+          "rationale": "P2Y12 inhibitors are potential adjunctive antiplatelet therapy for NSTEMI.",
+          "citation": "Critical Question 4 text mentions 'P2Y12 inhibitors...may be given...'",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ac869ea1-71d8-427c-9f32-b7c4546d6f23",
+      "@type": "Medication",
+      "name": "Glycoprotein IIb/IIIa inhibitors",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:063d0c6a-fd40-49f1-a9ea-93666215c5ee",
+          "rationale": "Glycoprotein IIb/IIIa inhibitors are potential adjunctive antiplatelet therapy for NSTEMI.",
+          "citation": "Critical Question 4 text mentions '...and glycoprotein IIb/IIIa inhibitors may be given...'",
+          "citation_paraphrase": "Critical Question 4 text mentions '...and glycoprotein IIb/IIIa inhibitors may be given...'",
+          "citation_verbatim_excerpt": "CRITICAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:164bc167-71ef-4746-994f-518e8b4d84c2",
+      "@type": "Intervention",
+      "name": "Deferring additional antiplatelet agents until cardiac catheterization",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:063d0c6a-fd40-49f1-a9ea-93666215c5ee",
+          "rationale": "Deferring additional antiplatelet agents until cardiac catheterization avoids transition-of-care delays, extra costs, and severe bleeding complications.",
+          "citation": "Critical Question 4 text mentions '...deferring additional antiplatelet agents...avoids transition-of-care delays, extra costs, and severe bleeding complications.'",
+          "citation_paraphrase": "Critical Question 4 text mentions '...deferring additional antiplatelet agents...avoids transition-of-care delays, extra costs, and severe bleeding complications.'",
+          "citation_verbatim_excerpt": "th suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:32a73fcb-ca53-4ec0-a094-778f8de71767",
+      "@type": "Intervention",
+      "name": "Immediate administration of P2Y12 inhibitors or GP IIb/IIIa inhibitors in ED",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:063d0c6a-fd40-49f1-a9ea-93666215c5ee",
+          "rationale": "Trials show no mortality benefit or significant reduction in 30-day MACE with immediate ED administration compared to catheterization-lab initiation, but demonstrate increased major bleeding risks.",
+          "citation": "Critical Question 4 text mentions '...no mortality benefit or significant reduction in 30-day MACE with immediate ED administration compared to catheterization-lab initiation, but demonstrate increased major bleeding risks.'",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6073574d-bd79-41e9-a138-7f552b16bc54",
+      "@type": "Condition",
+      "name": "No mortality benefit or significant reduction in 30-day MACE with immediate ED administration compared to catheterization-lab initiation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:063d0c6a-fd40-49f1-a9ea-93666215c5ee",
+          "rationale": "This is a finding from trials evaluating early vs delayed P2Y12 inhibitors and GP IIb/IIIa inhibitors.",
+          "citation": "Critical Question 4 text mentions '...Trials evaluating early vs delayed P2Y12 inhibitors...show no mortality benefit or significant reduction in 30-day MACE with immediate ED administration compared to catheterization-lab initiation...'",
+          "citation_paraphrase": "Critical Question 4 text mentions '...Trials evaluating early vs delayed P2Y12 inhibitors...show no mortality benefit or significant reduction in 30-day MACE with immediate ED administration compared to catheterization-lab initiation...'",
+          "citation_verbatim_excerpt": "d NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7e22d2ae-916d-4fe5-b64a-823033ca91c8",
+      "@type": "Finding",
+      "name": "No significant reduction in 30-day MACE when routine pre-discharge stress testing or CCTA is added to standard low-risk rule-out evaluations",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "This finding supports the Level B recommendation against routine pre-discharge testing in low-risk patients.",
+          "citation": "Critical Question 3 text mentions '...Randomized and observational data...show no significant reduction in 30-day MACE when routine pre-discharge stress testing or CCTA is added to standard low-risk rule-out evaluations.'",
+          "citation_paraphrase": "Critical Question 3 text mentions '...Randomized and observational data...show no significant reduction in 30-day MACE when routine pre-discharge stress testing or CCTA is added to standard low-risk rule-out evaluations.'",
+          "citation_verbatim_excerpt": "ents with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f0a7d8ca-6c7e-4b92-9624-34b5db450b13",
+      "@type": "Finding",
+      "name": "High false-positive rates on stress testing lead to 5x higher evaluation costs and unnecessary procedures, especially in younger patients (<40 years)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "This finding supports the Level B recommendation against routine pre-discharge testing in low-risk patients.",
+          "citation": "Critical Question 3 text mentions '...High false-positive rates on stress testing lead to 5x higher evaluation costs and unnecessary procedures, especially in younger patients (<40 years).'",
+          "citation_paraphrase": "Critical Question 3 text mentions '...High false-positive rates on stress testing lead to 5x higher evaluation costs and unnecessary procedures, especially in younger patients (<40 years).'",
+          "citation_verbatim_excerpt": "CRITICAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:73f99e3b-f1cf-4db3-bcfc-f65f52a6af55",
+      "@type": "Finding",
+      "name": "Potential Benefit: Reduces costs, ED/hospital length of stay, patient anxiety, and false-positive results.",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "This describes the potential benefits of not performing further diagnostic testing prior to discharge in low-risk patients.",
+          "citation": "Critical Question 3 text mentions 'Potential Benefit: Reduces costs, ED/hospital length of stay, patient anxiety, and false-positive results.'",
+          "citation_paraphrase": "Critical Question 3 text mentions 'Potential Benefit: Reduces costs, ED/hospital length of stay, patient anxiety, and false-positive results.'",
+          "citation_verbatim_excerpt": "CRITICAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:42369178-ebbe-4dd3-9d5f-856111b6f909",
+      "@type": "Finding",
+      "name": "Potential Harm: Potential for missed 30-day MACE without adequate follow-up.",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json",
+        "section_title": "Critical Questions 3 & 4: Diagnostic Testing Prior to Discharge & Immediate Antiplatelet Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "This describes the potential harm of not performing further diagnostic testing prior to discharge in low-risk patients.",
+          "citation": "Critical Question 3 text mentions 'Potential Harm: Potential for missed 30-day MACE without adequate follow-up.'",
+          "citation_paraphrase": "Critical Question 3 text mentions 'Potential Harm: Potential for missed 30-day MACE without adequate follow-up.'",
+          "citation_verbatim_excerpt": "CRITICAL QUESTION 3: In adult patients with suspected NSTE ACS in whom acute MI has been excluded, does further diagnostic testing (eg, provocative, stress test, CT angiography) for ACS prior to discharge reduce 30-day MACE? Level A: None.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6f7a8901-2345-6789-0abc-def012345678",
+      "@type": "Finding",
+      "name": "P2Y12 inhibitors and glycoprotein IIb/IIIa inhibitors may be given in the ED or delayed until cardiac catheterization.",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_4_critical_questions_3_&_4.json"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:40.914299+00:00",
+    "nodes_before": 27,
+    "nodes_after": 25,
+    "rules_before": 26,
+    "rules_after": 24
+  }
+}

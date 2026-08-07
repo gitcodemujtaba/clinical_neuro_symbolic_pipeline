@@ -1,0 +1,3405 @@
+{
+  "chunk_id": "chunk_5",
+  "entities": [
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6,
+        "end": 11
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 12,
+        "end": 20
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 30,
+        "end": 35
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 42,
+        "end": 50
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.8149357609979366,
+      "character_boundaries": {
+        "start": 56,
+        "end": 59
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 60,
+        "end": 66
+      }
+    },
+    {
+      "snomed_cui": "260370003",
+      "preferred_name": "Decrease",
+      "source_value": "decrease",
+      "confidence_score": 0.562258493565889,
+      "character_boundaries": {
+        "start": 67,
+        "end": 75
+      }
+    },
+    {
+      "snomed_cui": "724781000000108",
+      "preferred_name": "Incidence",
+      "source_value": "incidence",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 80,
+        "end": 89
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 100,
+        "end": 107
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "Management",
+      "confidence_score": 0.7918565064190768,
+      "character_boundaries": {
+        "start": 108,
+        "end": 118
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 119,
+        "end": 134
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 145,
+        "end": 160
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 168,
+        "end": 177
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 187,
+        "end": 202
+      }
+    },
+    {
+      "snomed_cui": "260370003",
+      "preferred_name": "Decrease",
+      "source_value": "decrease",
+      "confidence_score": 0.6379802465259778,
+      "character_boundaries": {
+        "start": 208,
+        "end": 216
+      }
+    },
+    {
+      "snomed_cui": "724781000000108",
+      "preferred_name": "Incidence",
+      "source_value": "incidence",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 221,
+        "end": 230
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 240,
+        "end": 248
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 254,
+        "end": 259
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transferred",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 270,
+        "end": 281
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.7857574096277715,
+      "character_boundaries": {
+        "start": 287,
+        "end": 290
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 299,
+        "end": 307
+      }
+    },
+    {
+      "snomed_cui": "709122007",
+      "preferred_name": "As soon as possible",
+      "source_value": "as soon as possible",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 308,
+        "end": 327
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 337,
+        "end": 352
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 360,
+        "end": 369
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 408,
+        "end": 423
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 425,
+        "end": 433
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.4908611854122449,
+      "character_boundaries": {
+        "start": 453,
+        "end": 456
+      }
+    },
+    {
+      "snomed_cui": "3442003",
+      "preferred_name": "Better",
+      "source_value": "better",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 472,
+        "end": 478
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 479,
+        "end": 487
+      }
+    },
+    {
+      "snomed_cui": "260370003",
+      "preferred_name": "Decrease",
+      "source_value": "decrease",
+      "confidence_score": 0.7099328128777109,
+      "character_boundaries": {
+        "start": 495,
+        "end": 503
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 547,
+        "end": 562
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 564,
+        "end": 572
+      }
+    },
+    {
+      "snomed_cui": "5650002",
+      "preferred_name": "Decompensated",
+      "source_value": "decompensate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 577,
+        "end": 589
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.7745108281785555,
+      "character_boundaries": {
+        "start": 606,
+        "end": 609
+      }
+    },
+    {
+      "snomed_cui": "79409006",
+      "preferred_name": "Resulting in",
+      "source_value": "resulting in",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 619,
+        "end": 631
+      }
+    },
+    {
+      "snomed_cui": "11403006",
+      "preferred_name": "Financially poor",
+      "source_value": "poor",
+      "confidence_score": 0.45165793848366953,
+      "character_boundaries": {
+        "start": 632,
+        "end": 636
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 637,
+        "end": 645
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 679,
+        "end": 687
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "ST-elevation myocardial infarction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 689,
+        "end": 723
+      }
+    },
+    {
+      "snomed_cui": "22298006",
+      "preferred_name": "Myocardial infarction",
+      "source_value": "myocardial infarction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 725,
+        "end": 746
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "percutaneous coronary intervention",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 748,
+        "end": 782
+      }
+    },
+    {
+      "snomed_cui": "426347000",
+      "preferred_name": "Thrombolytic therapy",
+      "source_value": "thrombolytic therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 784,
+        "end": 804
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 806,
+        "end": 809
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 810,
+        "end": 816
+      }
+    },
+    {
+      "snomed_cui": "725131000000106",
+      "preferred_name": "Time factor",
+      "source_value": "time factors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 818,
+        "end": 830
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 840,
+        "end": 849
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 851,
+        "end": 860
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 861,
+        "end": 869
+      }
+    },
+    {
+      "snomed_cui": "107724000",
+      "preferred_name": "Patient transfer",
+      "source_value": "patient transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 871,
+        "end": 887
+      }
+    },
+    {
+      "snomed_cui": "724201000000108",
+      "preferred_name": "Survival rate",
+      "source_value": "survival rate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 889,
+        "end": 902
+      }
+    },
+    {
+      "snomed_cui": "724201000000108",
+      "preferred_name": "Survival rate",
+      "source_value": "survival rates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 904,
+        "end": 918
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 920,
+        "end": 924
+      }
+    },
+    {
+      "snomed_cui": "246512002",
+      "preferred_name": "Timing",
+      "source_value": "timing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 926,
+        "end": 932
+      }
+    },
+    {
+      "snomed_cui": "263718001",
+      "preferred_name": "Complication",
+      "source_value": "complications",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 934,
+        "end": 947
+      }
+    },
+    {
+      "snomed_cui": "281647001",
+      "preferred_name": "Adverse reaction",
+      "source_value": "adverse effects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 949,
+        "end": 964
+      }
+    },
+    {
+      "snomed_cui": "840091000000103",
+      "preferred_name": "Intervention",
+      "source_value": "intervention",
+      "confidence_score": 0.7067602782862544,
+      "character_boundaries": {
+        "start": 974,
+        "end": 986
+      }
+    },
+    {
+      "snomed_cui": "409971007",
+      "preferred_name": "Emergency medical services",
+      "source_value": "emergency medical services",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 988,
+        "end": 1014
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1016,
+        "end": 1024
+      }
+    },
+    {
+      "snomed_cui": "40885006",
+      "preferred_name": "Variant",
+      "source_value": "variations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1030,
+        "end": 1040
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "Searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1084,
+        "end": 1092
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1093,
+        "end": 1101
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "Study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1196,
+        "end": 1201
+      }
+    },
+    {
+      "snomed_cui": "50606000",
+      "preferred_name": "Genetic selection",
+      "source_value": "Selection",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1202,
+        "end": 1211
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1243,
+        "end": 1253
+      }
+    },
+    {
+      "snomed_cui": "721241000000109",
+      "preferred_name": "Review",
+      "source_value": "review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1339,
+        "end": 1345
+      }
+    },
+    {
+      "snomed_cui": "258393007",
+      "preferred_name": "Class 2",
+      "source_value": "Class II",
+      "confidence_score": 0.6207617084736583,
+      "character_boundaries": {
+        "start": 1354,
+        "end": 1362
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1369,
+        "end": 1378
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1379,
+        "end": 1384
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1385,
+        "end": 1393
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1449,
+        "end": 1459
+      }
+    },
+    {
+      "snomed_cui": "419582001",
+      "preferred_name": "Give - dosing instruction imperative",
+      "source_value": "Given",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1485,
+        "end": 1490
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.5568658056165342,
+      "character_boundaries": {
+        "start": 1519,
+        "end": 1526
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1542,
+        "end": 1550
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1572,
+        "end": 1579
+      }
+    },
+    {
+      "snomed_cui": "223458004",
+      "preferred_name": "Informing",
+      "source_value": "inform",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1593,
+        "end": 1599
+      }
+    },
+    {
+      "snomed_cui": "42796001",
+      "preferred_name": "End-stage",
+      "source_value": "final",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1604,
+        "end": 1609
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1610,
+        "end": 1624
+      }
+    },
+    {
+      "snomed_cui": "385432009",
+      "preferred_name": "Not applicable",
+      "source_value": "not applicable.",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1688,
+        "end": 1703
+      }
+    },
+    {
+      "snomed_cui": "386134007",
+      "preferred_name": "Significant",
+      "source_value": "significant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1721,
+        "end": 1732
+      }
+    },
+    {
+      "snomed_cui": "9546005",
+      "preferred_name": "Shift",
+      "source_value": "shift",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1742,
+        "end": 1747
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1755,
+        "end": 1764
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "acute coronary syndrome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1768,
+        "end": 1791
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1793,
+        "end": 1796
+      }
+    },
+    {
+      "snomed_cui": "410513005",
+      "preferred_name": "In the past",
+      "source_value": "past",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1819,
+        "end": 1823
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1849,
+        "end": 1858
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1867,
+        "end": 1875
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.9758326329669259,
+      "character_boundaries": {
+        "start": 1876,
+        "end": 1879
+      }
+    },
+    {
+      "snomed_cui": "426347000",
+      "preferred_name": "Thrombolytic therapy",
+      "source_value": "fibrinolytic therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1884,
+        "end": 1904
+      }
+    },
+    {
+      "snomed_cui": "9546005",
+      "preferred_name": "Shift",
+      "source_value": "shifted",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1925,
+        "end": 1932
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1968,
+        "end": 1977
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "centered",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1989,
+        "end": 1997
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2015,
+        "end": 2024
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2028,
+        "end": 2036
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.7040342768627141,
+      "character_boundaries": {
+        "start": 2042,
+        "end": 2045
+      }
+    },
+    {
+      "snomed_cui": "410614008",
+      "preferred_name": "Construction",
+      "source_value": "construction",
+      "confidence_score": 0.7806211129713168,
+      "character_boundaries": {
+        "start": 2054,
+        "end": 2066
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.6396396790929325,
+      "character_boundaries": {
+        "start": 2070,
+        "end": 2077
+      }
+    },
+    {
+      "snomed_cui": "724901000000101",
+      "preferred_name": "Network",
+      "source_value": "networks",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2082,
+        "end": 2090
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2111,
+        "end": 2120
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2135,
+        "end": 2143
+      }
+    },
+    {
+      "snomed_cui": "107733003",
+      "preferred_name": "Introduction procedure",
+      "source_value": "introduction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2149,
+        "end": 2161
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2165,
+        "end": 2170
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reduced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2189,
+        "end": 2196
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2197,
+        "end": 2206
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2255,
+        "end": 2263
+      }
+    },
+    {
+      "snomed_cui": "262118001",
+      "preferred_name": "Rush",
+      "source_value": "rushing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2286,
+        "end": 2293
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.7683668453841828,
+      "character_boundaries": {
+        "start": 2301,
+        "end": 2304
+      }
+    },
+    {
+      "snomed_cui": "385437003",
+      "preferred_name": "Institution",
+      "source_value": "institution",
+      "confidence_score": 0.5621485039980599,
+      "character_boundaries": {
+        "start": 2313,
+        "end": 2324
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "Heart",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2367,
+        "end": 2372
+      }
+    },
+    {
+      "snomed_cui": "263534001",
+      "preferred_name": "Association",
+      "source_value": "Association",
+      "confidence_score": 0.4607217962311668,
+      "character_boundaries": {
+        "start": 2373,
+        "end": 2384
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2385,
+        "end": 2395
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2396,
+        "end": 2405
+      }
+    },
+    {
+      "snomed_cui": "107724000",
+      "preferred_name": "Patient transfer",
+      "source_value": "transfer of patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2406,
+        "end": 2426
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2432,
+        "end": 2437
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.9202527238973387,
+      "character_boundaries": {
+        "start": 2443,
+        "end": 2446
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2447,
+        "end": 2453
+      }
+    },
+    {
+      "snomed_cui": "426347000",
+      "preferred_name": "Thrombolytic therapy",
+      "source_value": "fibrinolytic therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2481,
+        "end": 2501
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2559,
+        "end": 2567
+      }
+    },
+    {
+      "snomed_cui": "45211000",
+      "preferred_name": "Catheterization",
+      "source_value": "catheterization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2582,
+        "end": 2597
+      }
+    },
+    {
+      "snomed_cui": "261904005",
+      "preferred_name": "Laboratory",
+      "source_value": "laboratories",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2598,
+        "end": 2610
+      }
+    },
+    {
+      "snomed_cui": "246512002",
+      "preferred_name": "Timing",
+      "source_value": "timing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2619,
+        "end": 2625
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2626,
+        "end": 2633
+      }
+    },
+    {
+      "snomed_cui": "409971007",
+      "preferred_name": "Emergency medical services",
+      "source_value": "emergency medical services",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2637,
+        "end": 2663
+      }
+    },
+    {
+      "snomed_cui": "50606000",
+      "preferred_name": "Genetic selection",
+      "source_value": "selection",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2665,
+        "end": 2674
+      }
+    },
+    {
+      "snomed_cui": "133928008",
+      "preferred_name": "Community",
+      "source_value": "community",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2761,
+        "end": 2770
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2771,
+        "end": 2780
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2781,
+        "end": 2790
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needs",
+      "confidence_score": 0.8057599094637482,
+      "character_boundaries": {
+        "start": 2795,
+        "end": 2800
+      }
+    },
+    {
+      "snomed_cui": "129005007",
+      "preferred_name": "Transferring",
+      "source_value": "transferring",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2834,
+        "end": 2846
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2849,
+        "end": 2854
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2855,
+        "end": 2862
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.894890146610251,
+      "character_boundaries": {
+        "start": 2885,
+        "end": 2888
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2897,
+        "end": 2905
+      }
+    },
+    {
+      "snomed_cui": "258393007",
+      "preferred_name": "Class 2",
+      "source_value": "Class II",
+      "confidence_score": 0.5838058314319043,
+      "character_boundaries": {
+        "start": 2921,
+        "end": 2929
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2930,
+        "end": 2935
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2972,
+        "end": 2981
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2985,
+        "end": 2990
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2996,
+        "end": 2999
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3006,
+        "end": 3015
+      }
+    },
+    {
+      "snomed_cui": "426347000",
+      "preferred_name": "Thrombolytic therapy",
+      "source_value": "fibrinolytic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3040,
+        "end": 3052
+      }
+    },
+    {
+      "snomed_cui": "413454004",
+      "preferred_name": "Administration",
+      "source_value": "administration",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3053,
+        "end": 3067
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3083,
+        "end": 3092
+      }
+    },
+    {
+      "snomed_cui": "371154000",
+      "preferred_name": "Dependent",
+      "source_value": "dependent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3101,
+        "end": 3110
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3117,
+        "end": 3122
+      }
+    },
+    {
+      "snomed_cui": "159083000",
+      "preferred_name": "WAS A",
+      "source_value": "was a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3123,
+        "end": 3128
+      }
+    },
+    {
+      "snomed_cui": "31509003",
+      "preferred_name": "Controlled",
+      "source_value": "controlled",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3140,
+        "end": 3150
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trial",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3151,
+        "end": 3156
+      }
+    },
+    {
+      "snomed_cui": "223636008",
+      "preferred_name": "Czech republic",
+      "source_value": "Czech Republic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3164,
+        "end": 3178
+      }
+    },
+    {
+      "snomed_cui": "385538006",
+      "preferred_name": "Fibrinolysis",
+      "source_value": "fibrinolysis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3193,
+        "end": 3205
+      }
+    },
+    {
+      "snomed_cui": "225732001",
+      "preferred_name": "Community hospital",
+      "source_value": "community hospital",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3211,
+        "end": 3229
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.8802903314328626,
+      "character_boundaries": {
+        "start": 3245,
+        "end": 3248
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3254,
+        "end": 3262
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3285,
+        "end": 3293
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3299,
+        "end": 3307
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.8226288043235142,
+      "character_boundaries": {
+        "start": 3313,
+        "end": 3316
+      }
+    },
+    {
+      "snomed_cui": "22253000",
+      "preferred_name": "Pain",
+      "source_value": "Pain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3318,
+        "end": 3322
+      }
+    },
+    {
+      "snomed_cui": "77374008",
+      "preferred_name": "Onset of (contextual qualifier)",
+      "source_value": "onset",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3323,
+        "end": 3328
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "groups",
+      "confidence_score": 0.425774989136147,
+      "character_boundaries": {
+        "start": 3366,
+        "end": 3372
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "Transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3374,
+        "end": 3382
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.7220224293195174,
+      "character_boundaries": {
+        "start": 3395,
+        "end": 3402
+      }
+    },
+    {
+      "snomed_cui": "386136009",
+      "preferred_name": "Standard deviation",
+      "source_value": "SD",
+      "confidence_score": 0.5082496428877179,
+      "character_boundaries": {
+        "start": 3404,
+        "end": 3406
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.5935386163217407,
+      "character_boundaries": {
+        "start": 3438,
+        "end": 3441
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3450,
+        "end": 3456
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.5483889109738542,
+      "character_boundaries": {
+        "start": 3464,
+        "end": 3471
+      }
+    },
+    {
+      "snomed_cui": "386136009",
+      "preferred_name": "Standard deviation",
+      "source_value": "SD",
+      "confidence_score": 0.5001166122946127,
+      "character_boundaries": {
+        "start": 3473,
+        "end": 3475
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3509,
+        "end": 3514
+      }
+    },
+    {
+      "snomed_cui": "107724000",
+      "preferred_name": "Patient transfer",
+      "source_value": "patient transport",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3525,
+        "end": 3542
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.7637789430666738,
+      "character_boundaries": {
+        "start": 3548,
+        "end": 3551
+      }
+    },
+    {
+      "snomed_cui": "259030007",
+      "preferred_name": "per 30 minutes",
+      "source_value": "30 minutes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3581,
+        "end": 3591
+      }
+    },
+    {
+      "snomed_cui": "246132006",
+      "preferred_name": "Distance",
+      "source_value": "distance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3614,
+        "end": 3622
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.6412511826840784,
+      "character_boundaries": {
+        "start": 3630,
+        "end": 3633
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3634,
+        "end": 3640
+      }
+    },
+    {
+      "snomed_cui": "276139006",
+      "preferred_name": "Less-than symbol <",
+      "source_value": "less than",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3645,
+        "end": 3654
+      }
+    },
+    {
+      "snomed_cui": "26175008",
+      "preferred_name": "Approximate",
+      "source_value": "approximately",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3663,
+        "end": 3676
+      }
+    },
+    {
+      "snomed_cui": "258678002",
+      "preferred_name": "Mile",
+      "source_value": "miles",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3680,
+        "end": 3685
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3688,
+        "end": 3696
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3697,
+        "end": 3705
+      }
+    },
+    {
+      "snomed_cui": "258104002",
+      "preferred_name": "Measured",
+      "source_value": "measured",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3706,
+        "end": 3714
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.8309227542357341,
+      "character_boundaries": {
+        "start": 3723,
+        "end": 3726
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "year",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3733,
+        "end": 3737
+      }
+    },
+    {
+      "snomed_cui": "419620001",
+      "preferred_name": "Death",
+      "source_value": "death",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3738,
+        "end": 3743
+      }
+    },
+    {
+      "snomed_cui": "22298006",
+      "preferred_name": "Myocardial infarction",
+      "source_value": "MI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3745,
+        "end": 3747
+      }
+    },
+    {
+      "snomed_cui": "230690007",
+      "preferred_name": "Cerebrovascular accident",
+      "source_value": "stroke",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3749,
+        "end": 3755
+      }
+    },
+    {
+      "snomed_cui": "297183000",
+      "preferred_name": "Revascularization - action",
+      "source_value": "revascularization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3761,
+        "end": 3778
+      }
+    },
+    {
+      "snomed_cui": "724781000000108",
+      "preferred_name": "Incidence",
+      "source_value": "incidence",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3784,
+        "end": 3793
+      }
+    },
+    {
+      "snomed_cui": "261122009",
+      "preferred_name": "Lower",
+      "source_value": "lower",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3806,
+        "end": 3811
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3819,
+        "end": 3827
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.8271129557079444,
+      "character_boundaries": {
+        "start": 3832,
+        "end": 3835
+      }
+    },
+    {
+      "snomed_cui": "389109008",
+      "preferred_name": "Group",
+      "source_value": "group",
+      "confidence_score": 0.3107701441765341,
+      "character_boundaries": {
+        "start": 3836,
+        "end": 3841
+      }
+    },
+    {
+      "snomed_cui": "259032004",
+      "preferred_name": "per day",
+      "source_value": "day",
+      "confidence_score": 0.7896356762408805,
+      "character_boundaries": {
+        "start": 3854,
+        "end": 3857
+      }
+    },
+    {
+      "snomed_cui": "426347000",
+      "preferred_name": "Thrombolytic therapy",
+      "source_value": "fibrinolytic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3870,
+        "end": 3882
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "group",
+      "confidence_score": 0.3817355734397446,
+      "character_boundaries": {
+        "start": 3883,
+        "end": 3888
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.40742096016921237,
+      "character_boundaries": {
+        "start": 3907,
+        "end": 3910
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "group",
+      "confidence_score": 0.3730759573062783,
+      "character_boundaries": {
+        "start": 3911,
+        "end": 3916
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needed",
+      "confidence_score": 0.5764248066585519,
+      "character_boundaries": {
+        "start": 3960,
+        "end": 3966
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "year",
+      "confidence_score": 0.5743469121521443,
+      "character_boundaries": {
+        "start": 3986,
+        "end": 3990
+      }
+    },
+    {
+      "snomed_cui": "426347000",
+      "preferred_name": "Thrombolytic therapy",
+      "source_value": "fibrinolytic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4008,
+        "end": 4020
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "group",
+      "confidence_score": 0.3305960931781756,
+      "character_boundaries": {
+        "start": 4021,
+        "end": 4026
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.475019377956447,
+      "character_boundaries": {
+        "start": 4045,
+        "end": 4048
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "group",
+      "confidence_score": 0.3392523998704947,
+      "character_boundaries": {
+        "start": 4049,
+        "end": 4054
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needed",
+      "confidence_score": 0.7536057252655062,
+      "character_boundaries": {
+        "start": 4098,
+        "end": 4104
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4146,
+        "end": 4155
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4156,
+        "end": 4161
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4204,
+        "end": 4212
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4216,
+        "end": 4221
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4222,
+        "end": 4230
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presented",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4235,
+        "end": 4244
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4250,
+        "end": 4253
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4254,
+        "end": 4260
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4268,
+        "end": 4276
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presented",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4281,
+        "end": 4290
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4300,
+        "end": 4303
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4304,
+        "end": 4310
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transferred",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4320,
+        "end": 4331
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4337,
+        "end": 4340
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4349,
+        "end": 4357
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "found",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4362,
+        "end": 4367
+      }
+    },
+    {
+      "snomed_cui": "386134007",
+      "preferred_name": "Significant",
+      "source_value": "significant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4371,
+        "end": 4382
+      }
+    },
+    {
+      "snomed_cui": "258703001",
+      "preferred_name": "day",
+      "source_value": "days",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4408,
+        "end": 4412
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "year",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4419,
+        "end": 4423
+      }
+    },
+    {
+      "snomed_cui": "159083000",
+      "preferred_name": "WAS A",
+      "source_value": "was a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4431,
+        "end": 4436
+      }
+    },
+    {
+      "snomed_cui": "258755000",
+      "preferred_name": "Percentage of total",
+      "source_value": "total",
+      "confidence_score": 0.7617440155012096,
+      "character_boundaries": {
+        "start": 4437,
+        "end": 4442
+      }
+    },
+    {
+      "snomed_cui": "119268003",
+      "preferred_name": "Inflation",
+      "source_value": "inflation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4469,
+        "end": 4478
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.7540284648638331,
+      "character_boundaries": {
+        "start": 4486,
+        "end": 4493
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4505,
+        "end": 4513
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.8103141724770266,
+      "character_boundaries": {
+        "start": 4519,
+        "end": 4522
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4540,
+        "end": 4545
+      }
+    },
+    {
+      "snomed_cui": "77374008",
+      "preferred_name": "Onset of (contextual qualifier)",
+      "source_value": "onset",
+      "confidence_score": 0.8843288655559505,
+      "character_boundaries": {
+        "start": 4576,
+        "end": 4581
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.802242473515161,
+      "character_boundaries": {
+        "start": 4587,
+        "end": 4590
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transferred",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4612,
+        "end": 4623
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4624,
+        "end": 4632
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.3517916516482569,
+      "character_boundaries": {
+        "start": 4652,
+        "end": 4659
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4664,
+        "end": 4672
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presented",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4677,
+        "end": 4686
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.6339780098667913,
+      "character_boundaries": {
+        "start": 4701,
+        "end": 4704
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4705,
+        "end": 4713
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "Volume",
+      "confidence_score": 0.3475529209315741,
+      "character_boundaries": {
+        "start": 4714,
+        "end": 4720
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "Emergency Medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4758,
+        "end": 4776
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "Transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4784,
+        "end": 4792
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.5842765231716573,
+      "character_boundaries": {
+        "start": 4796,
+        "end": 4799
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospitals",
+      "confidence_score": 0.8816655871615275,
+      "character_boundaries": {
+        "start": 4808,
+        "end": 4817
+      }
+    },
+    {
+      "snomed_cui": "358612008",
+      "preferred_name": "Lengthened",
+      "source_value": "long",
+      "confidence_score": 0.5985738012698135,
+      "character_boundaries": {
+        "start": 4856,
+        "end": 4860
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4867,
+        "end": 4874
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.7311973689570899,
+      "character_boundaries": {
+        "start": 4887,
+        "end": 4890
+      }
+    },
+    {
+      "snomed_cui": "426347000",
+      "preferred_name": "Thrombolytic therapy",
+      "source_value": "fibrinolytics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4916,
+        "end": 4929
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4931,
+        "end": 4939
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4955,
+        "end": 4963
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4982,
+        "end": 4985
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4990,
+        "end": 4995
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5001,
+        "end": 5005
+      }
+    },
+    {
+      "snomed_cui": "255395001",
+      "preferred_name": "Origins",
+      "source_value": "begin",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5012,
+        "end": 5017
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5018,
+        "end": 5026
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5038,
+        "end": 5041
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5050,
+        "end": 5058
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5066,
+        "end": 5071
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5075,
+        "end": 5085
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5093,
+        "end": 5097
+      }
+    },
+    {
+      "snomed_cui": "258755000",
+      "preferred_name": "Percentage of total",
+      "source_value": "of total",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5098,
+        "end": 5106
+      }
+    },
+    {
+      "snomed_cui": "74188005",
+      "preferred_name": "Medical",
+      "source_value": "medical",
+      "confidence_score": 0.5170294930322401,
+      "character_boundaries": {
+        "start": 5123,
+        "end": 5130
+      }
+    },
+    {
+      "snomed_cui": "70862002",
+      "preferred_name": "Contact person",
+      "source_value": "contact",
+      "confidence_score": 0.5805206848195631,
+      "character_boundaries": {
+        "start": 5131,
+        "end": 5138
+      }
+    },
+    {
+      "snomed_cui": "840091000000103",
+      "preferred_name": "Intervention",
+      "source_value": "intervention",
+      "confidence_score": 0.6851455898471824,
+      "character_boundaries": {
+        "start": 5142,
+        "end": 5154
+      }
+    },
+    {
+      "snomed_cui": "276139006",
+      "preferred_name": "Less-than symbol <",
+      "source_value": "less than",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5158,
+        "end": 5167
+      }
+    },
+    {
+      "snomed_cui": "286549009",
+      "preferred_name": "per minute",
+      "source_value": "minutes",
+      "confidence_score": 0.41639222609767823,
+      "character_boundaries": {
+        "start": 5172,
+        "end": 5179
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "best",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5205,
+        "end": 5209
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5210,
+        "end": 5218
+      }
+    },
+    {
+      "snomed_cui": "2931005",
+      "preferred_name": "Probable diagnosis (contextual qualifier)",
+      "source_value": "likely",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5224,
+        "end": 5230
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.7700801160381756,
+      "character_boundaries": {
+        "start": 5252,
+        "end": 5259
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5269,
+        "end": 5274
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5278,
+        "end": 5288
+      }
+    },
+    {
+      "snomed_cui": "264499004",
+      "preferred_name": "Early",
+      "source_value": "early",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5289,
+        "end": 5294
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5309,
+        "end": 5317
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.5001417482663696,
+      "character_boundaries": {
+        "start": 5318,
+        "end": 5325
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5334,
+        "end": 5341
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.9820636715392719,
+      "character_boundaries": {
+        "start": 5371,
+        "end": 5374
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5397,
+        "end": 5405
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5418,
+        "end": 5423
+      }
+    },
+    {
+      "snomed_cui": "860914002",
+      "preferred_name": "Erectile dysfunction",
+      "source_value": "ED",
+      "confidence_score": 0.3078254431819828,
+      "character_boundaries": {
+        "start": 5430,
+        "end": 5432
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5433,
+        "end": 5445
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5457,
+        "end": 5460
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5469,
+        "end": 5477
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.46141340432540773,
+      "character_boundaries": {
+        "start": 5479,
+        "end": 5486
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5518,
+        "end": 5526
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5532,
+        "end": 5535
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5569,
+        "end": 5583
+      }
+    },
+    {
+      "snomed_cui": "107724000",
+      "preferred_name": "Patient transfer",
+      "source_value": "transfer patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5590,
+        "end": 5607
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5613,
+        "end": 5618
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.9836169900312384,
+      "character_boundaries": {
+        "start": 5624,
+        "end": 5627
+      }
+    },
+    {
+      "snomed_cui": "260370003",
+      "preferred_name": "Decrease",
+      "source_value": "decrease",
+      "confidence_score": 0.559397492444018,
+      "character_boundaries": {
+        "start": 5648,
+        "end": 5656
+      }
+    },
+    {
+      "snomed_cui": "724781000000108",
+      "preferred_name": "Incidence",
+      "source_value": "incidence",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5661,
+        "end": 5670
+      }
+    },
+    {
+      "snomed_cui": "717141000000103",
+      "preferred_name": "Future",
+      "source_value": "Future",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5681,
+        "end": 5687
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5701,
+        "end": 5708
+      }
+    },
+    {
+      "snomed_cui": "436000",
+      "preferred_name": "Determined by (contextual qualifier)",
+      "source_value": "determine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5718,
+        "end": 5727
+      }
+    },
+    {
+      "snomed_cui": "385673002",
+      "preferred_name": "Interval",
+      "source_value": "interval",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5738,
+        "end": 5746
+      }
+    },
+    {
+      "snomed_cui": "77374008",
+      "preferred_name": "Onset of (contextual qualifier)",
+      "source_value": "onset",
+      "confidence_score": 0.5972956954218709,
+      "character_boundaries": {
+        "start": 5761,
+        "end": 5766
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5797,
+        "end": 5805
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "Current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5817,
+        "end": 5824
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.9364431675791101,
+      "character_boundaries": {
+        "start": 5845,
+        "end": 5852
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5857,
+        "end": 5866
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "best",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5870,
+        "end": 5874
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5911,
+        "end": 5918
+      }
+    },
+    {
+      "snomed_cui": "272146000",
+      "preferred_name": "Uniformities",
+      "source_value": "uniformity",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5931,
+        "end": 5941
+      }
+    },
+    {
+      "snomed_cui": "258104002",
+      "preferred_name": "Measured",
+      "source_value": "measured",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5958,
+        "end": 5966
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5967,
+        "end": 5975
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5983,
+        "end": 5990
+      }
+    },
+    {
+      "snomed_cui": "385436007",
+      "preferred_name": "Population",
+      "source_value": "populations",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5991,
+        "end": 6002
+      }
+    },
+    {
+      "snomed_cui": "129822005",
+      "preferred_name": "Childhood growth AND/OR development finding",
+      "source_value": "development",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6008,
+        "end": 6019
+      }
+    },
+    {
+      "snomed_cui": "900000000000550004",
+      "preferred_name": "Definition",
+      "source_value": "definitions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6045,
+        "end": 6056
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6062,
+        "end": 6070
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6097,
+        "end": 6104
+      }
+    },
+    {
+      "snomed_cui": "721631000000102",
+      "preferred_name": "Meta analysis",
+      "source_value": "meta-analyses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6116,
+        "end": 6129
+      }
+    },
+    {
+      "snomed_cui": "70862002",
+      "preferred_name": "Contact person",
+      "source_value": "contact",
+      "confidence_score": 0.6560246300335824,
+      "character_boundaries": {
+        "start": 6168,
+        "end": 6175
+      }
+    },
+    {
+      "snomed_cui": "255586005",
+      "preferred_name": "Mean",
+      "source_value": "mean",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6176,
+        "end": 6180
+      }
+    },
+    {
+      "snomed_cui": "255586005",
+      "preferred_name": "Mean",
+      "source_value": "mean",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6190,
+        "end": 6194
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6211,
+        "end": 6218
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6242,
+        "end": 6250
+      }
+    },
+    {
+      "snomed_cui": "719031000000103",
+      "preferred_name": "Provider",
+      "source_value": "providers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6251,
+        "end": 6260
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6277,
+        "end": 6285
+      }
+    },
+    {
+      "snomed_cui": "70862002",
+      "preferred_name": "Contact person",
+      "source_value": "contact",
+      "confidence_score": 0.6365618413313511,
+      "character_boundaries": {
+        "start": 6286,
+        "end": 6293
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "point",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6294,
+        "end": 6299
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trials",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6326,
+        "end": 6332
+      }
+    },
+    {
+      "snomed_cui": "724901000000101",
+      "preferred_name": "Network",
+      "source_value": "network",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6364,
+        "end": 6371
+      }
+    },
+    {
+      "snomed_cui": "258049002",
+      "preferred_name": "Protocols",
+      "source_value": "protocols",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6372,
+        "end": 6381
+      }
+    },
+    {
+      "snomed_cui": "223688001",
+      "preferred_name": "United States of America",
+      "source_value": "United States",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6389,
+        "end": 6402
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "best",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6424,
+        "end": 6428
+      }
+    },
+    {
+      "snomed_cui": "717141000000103",
+      "preferred_name": "Future",
+      "source_value": "future",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6441,
+        "end": 6447
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trials",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6460,
+        "end": 6466
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needed",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6467,
+        "end": 6473
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.40688974624053176,
+      "character_boundaries": {
+        "start": 6487,
+        "end": 6491
+      }
+    },
+    {
+      "snomed_cui": "246173007",
+      "preferred_name": "Degree",
+      "source_value": "degree",
+      "confidence_score": 0.6726147930897535,
+      "character_boundaries": {
+        "start": 6492,
+        "end": 6498
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6502,
+        "end": 6510
+      }
+    },
+    {
+      "snomed_cui": "246103008",
+      "preferred_name": "Certainty",
+      "source_value": "certainty",
+      "confidence_score": 0.5369834613404475,
+      "character_boundaries": {
+        "start": 6511,
+        "end": 6520
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6568,
+        "end": 6576
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6590,
+        "end": 6599
+      }
+    },
+    {
+      "snomed_cui": "3442003",
+      "preferred_name": "Better",
+      "source_value": "Better",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6606,
+        "end": 6612
+      }
+    },
+    {
+      "snomed_cui": "105223008",
+      "preferred_name": "Lead measurement",
+      "source_value": "lead",
+      "confidence_score": 0.44254700149146836,
+      "character_boundaries": {
+        "start": 6658,
+        "end": 6662
+      }
+    },
+    {
+      "snomed_cui": "426347000",
+      "preferred_name": "Thrombolytic therapy",
+      "source_value": "fibrinolytic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6666,
+        "end": 6678
+      }
+    },
+    {
+      "snomed_cui": "413454004",
+      "preferred_name": "Administration",
+      "source_value": "administration",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6679,
+        "end": 6693
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.5809557730933856,
+      "character_boundaries": {
+        "start": 6718,
+        "end": 6722
+      }
+    },
+    {
+      "snomed_cui": "426347000",
+      "preferred_name": "Thrombolytic therapy",
+      "source_value": "fibrinolytics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6726,
+        "end": 6739
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6774,
+        "end": 6783
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6784,
+        "end": 6793
+      }
+    }
+  ]
+}

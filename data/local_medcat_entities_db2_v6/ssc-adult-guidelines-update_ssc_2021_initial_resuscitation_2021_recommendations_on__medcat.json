@@ -1,0 +1,485 @@
+{
+  "chunk_id": "ssc_2021_initial_resuscitation",
+  "entities": [
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3,
+        "end": 7
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "Sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 18,
+        "end": 24
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 29,
+        "end": 41
+      }
+    },
+    {
+      "snomed_cui": "74188005",
+      "preferred_name": "Medical",
+      "source_value": "medical",
+      "confidence_score": 0.7306790154643426,
+      "character_boundaries": {
+        "start": 46,
+        "end": 53
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergencies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 54,
+        "end": 65
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 74,
+        "end": 83
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 89,
+        "end": 98
+      }
+    },
+    {
+      "snomed_cui": "439569004",
+      "preferred_name": "Resuscitation",
+      "source_value": "resuscitation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 103,
+        "end": 116
+      }
+    },
+    {
+      "snomed_cui": "255395001",
+      "preferred_name": "Origins",
+      "source_value": "begin",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 117,
+        "end": 122
+      }
+    },
+    {
+      "snomed_cui": "49499008",
+      "preferred_name": "Stat",
+      "source_value": "immediately",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 123,
+        "end": 134
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 148,
+        "end": 156
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 162,
+        "end": 168
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 169,
+        "end": 176
+      }
+    },
+    {
+      "snomed_cui": "264533003",
+      "preferred_name": "Hypoperfusion",
+      "source_value": "hypoperfusion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 177,
+        "end": 190
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 194,
+        "end": 206
+      }
+    },
+    {
+      "snomed_cui": "396180007",
+      "preferred_name": "mL/kg",
+      "source_value": "mL/kg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 235,
+        "end": 240
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous (IV",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 244,
+        "end": 259
+      }
+    },
+    {
+      "snomed_cui": "33463005",
+      "preferred_name": "Liquid substance",
+      "source_value": "fluid",
+      "confidence_score": 0.44778377672731096,
+      "character_boundaries": {
+        "start": 273,
+        "end": 278
+      }
+    },
+    {
+      "snomed_cui": "419582001",
+      "preferred_name": "Give - dosing instruction imperative",
+      "source_value": "given",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 289,
+        "end": 294
+      }
+    },
+    {
+      "snomed_cui": "286551008",
+      "preferred_name": "per hour",
+      "source_value": "hours",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 314,
+        "end": 319
+      }
+    },
+    {
+      "snomed_cui": "439569004",
+      "preferred_name": "Resuscitation",
+      "source_value": "resuscitation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 323,
+        "end": 336
+      }
+    },
+    {
+      "snomed_cui": "260362008",
+      "preferred_name": "Very low",
+      "source_value": "VERY LOW",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 341,
+        "end": 349
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 355,
+        "end": 361
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 367,
+        "end": 373
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 377,
+        "end": 389
+      }
+    },
+    {
+      "snomed_cui": "229027002",
+      "preferred_name": "Dynamic",
+      "source_value": "dynamic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 408,
+        "end": 415
+      }
+    },
+    {
+      "snomed_cui": "367346004",
+      "preferred_name": "Measures",
+      "source_value": "measures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 416,
+        "end": 424
+      }
+    },
+    {
+      "snomed_cui": "33463005",
+      "preferred_name": "Liquid substance",
+      "source_value": "fluid",
+      "confidence_score": 0.46453594022308276,
+      "character_boundaries": {
+        "start": 434,
+        "end": 439
+      }
+    },
+    {
+      "snomed_cui": "439569004",
+      "preferred_name": "Resuscitation",
+      "source_value": "resuscitation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 440,
+        "end": 453
+      }
+    },
+    {
+      "snomed_cui": "5880005",
+      "preferred_name": "Physical examination procedure",
+      "source_value": "physical examination",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 460,
+        "end": 480
+      }
+    },
+    {
+      "snomed_cui": "257390007",
+      "preferred_name": "Static",
+      "source_value": "static",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 485,
+        "end": 491
+      }
+    },
+    {
+      "snomed_cui": "246446004",
+      "preferred_name": "Parameter",
+      "source_value": "parameters",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 492,
+        "end": 502
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 522,
+        "end": 528
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 534,
+        "end": 540
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 544,
+        "end": 556
+      }
+    },
+    {
+      "snomed_cui": "439569004",
+      "preferred_name": "Resuscitation",
+      "source_value": "resuscitation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 577,
+        "end": 590
+      }
+    },
+    {
+      "snomed_cui": "260370003",
+      "preferred_name": "Decrease",
+      "source_value": "decrease",
+      "confidence_score": 0.7686259161887199,
+      "character_boundaries": {
+        "start": 594,
+        "end": 602
+      }
+    },
+    {
+      "snomed_cui": "270982000",
+      "preferred_name": "Serum lactate measurement",
+      "source_value": "serum lactate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 603,
+        "end": 616
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 620,
+        "end": 628
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "elevated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 634,
+        "end": 642
+      }
+    },
+    {
+      "snomed_cui": "425954005",
+      "preferred_name": "D-lactate measurement",
+      "source_value": "lactate level",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 643,
+        "end": 656
+      }
+    },
+    {
+      "snomed_cui": "270982000",
+      "preferred_name": "Serum lactate measurement",
+      "source_value": "serum lactate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 673,
+        "end": 686
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 700,
+        "end": 706
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 712,
+        "end": 724
+      }
+    },
+    {
+      "snomed_cui": "15527001",
+      "preferred_name": "Capillary filling, function",
+      "source_value": "capillary refill time",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 743,
+        "end": 764
+      }
+    },
+    {
+      "snomed_cui": "439569004",
+      "preferred_name": "Resuscitation",
+      "source_value": "resuscitation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 774,
+        "end": 787
+      }
+    },
+    {
+      "snomed_cui": "367346004",
+      "preferred_name": "Measures",
+      "source_value": "measures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 811,
+        "end": 819
+      }
+    },
+    {
+      "snomed_cui": "88058003",
+      "preferred_name": "Perfusion",
+      "source_value": "perfusion",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 823,
+        "end": 832
+      }
+    }
+  ]
+}

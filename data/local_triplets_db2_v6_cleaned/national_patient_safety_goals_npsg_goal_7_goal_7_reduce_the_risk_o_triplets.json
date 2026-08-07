@@ -1,0 +1,149 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Health care–associated infections (HAIs)",
+      "snomed": "408678008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_7_goal_7_reduce_the_risk_o.json",
+        "section_title": "Goal 7: Reduce the risk of health care–associated infections"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "HAIs are a patient safety issue affecting all types of health care organizations.",
+          "citation": "According to the Centers for Disease Control and Prevention, each year, millions of people acquire an infection while receiving care, treatment, and services in a health care organization.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Patient safety issue",
+      "snomed": "55607006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_7_goal_7_reduce_the_risk_o.json",
+        "section_title": "Goal 7: Reduce the risk of health care–associated infections"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a5c9fd3c-3d8d-4c05-bcfb-2d447f8c2d4c",
+      "@type": "Finding",
+      "name": "Hand hygiene guidelines",
+      "snomed": "721571000000101",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_7_goal_7_reduce_the_risk_o.json",
+        "section_title": "Goal 7: Reduce the risk of health care–associated infections"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:d0a4b41e-6835-412a-ae55-ad3eac7acbb0",
+          "rationale": "Compliance with CDC and/or WHO hand hygiene guidelines is required to reduce the risk of HAIs.",
+          "citation": "Comply with either the current Centers for Disease Control and Prevention (CDC) and/or the current World Health Organization (WHO) hand hygiene guidelines.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5d24961b-8bf5-454a-8c2a-1d2136cafe0c",
+      "@type": "Finding",
+      "name": "Compliance with hand hygiene guidelines",
+      "snomed": "405078008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_7_goal_7_reduce_the_risk_o.json",
+        "section_title": "Goal 7: Reduce the risk of health care–associated infections"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+          "rationale": "Organizations should assess their compliance with CDC and/or WHO guidelines through a comprehensive program.",
+          "citation": "To ensure compliance with this National Patient Safety Goal, an organization should assess its compliance with the CDC and/or WHO guidelines through a comprehensive program that provides a hand hygiene policy, fosters a culture of hand hygiene, monitors compliance, and provides feedback.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-1a2b-3c4d5e6f7890",
+          "rationale": "Organizations should set goals for improving compliance with hand hygiene guidelines.",
+          "citation": "Set goals for improving compliance with hand hygiene guidelines.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Organizations should improve compliance with hand hygiene guidelines based on established goals.",
+          "citation": "Improve compliance with hand hygiene guidelines based on established goals.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ee386604-2b30-47ab-a87a-c93e1fb9b8e9",
+      "@type": "Intervention",
+      "name": "Compliance with CDC and/or WHO hand hygiene guidelines",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_7_goal_7_reduce_the_risk_o.json",
+        "section_title": "Goal 7: Reduce the risk of health care–associated infections"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Intervention",
+      "name": "Assess compliance with CDC and/or WHO guidelines through a comprehensive program",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_7_goal_7_reduce_the_risk_o.json",
+        "section_title": "Goal 7: Reduce the risk of health care–associated infections"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1a2b-3c4d5e6f7890",
+      "@type": "Intervention",
+      "name": "Set goals for improving compliance with hand hygiene guidelines",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_7_goal_7_reduce_the_risk_o.json",
+        "section_title": "Goal 7: Reduce the risk of health care–associated infections"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d0a4b41e-6835-412a-ae55-ad3eac7acbb0",
+      "@type": "Intervention",
+      "name": "Improve compliance with hand hygiene guidelines based on established goals",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_7_goal_7_reduce_the_risk_o.json",
+        "section_title": "Goal 7: Reduce the risk of health care–associated infections"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:40.213894+00:00",
+    "nodes_before": 8,
+    "nodes_after": 8,
+    "rules_before": 5,
+    "rules_after": 5
+  }
+}

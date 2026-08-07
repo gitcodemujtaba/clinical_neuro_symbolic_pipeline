@@ -1,0 +1,294 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:f81d4fae-7dec-11d0-a765-f2b971529dd9",
+      "@type": "Finding",
+      "name": "Ischemic cardiomyopathy (≥40 days post-MI)",
+      "snomed": "255426005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a9b1c2d3-e4f5-6789-0abc-def123456789",
+          "rationale": "Indicated in ischemic cardiomyopathy (≥40 days post-MI) with LVEF ≤35% and NYHA II-III symptoms on GDMT, with expected survival >1 year.",
+          "citation": "Section 7.4"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2b3c4d5e-7f8a-11d0-b890-f3a4b5c6d7e8",
+      "@type": "Finding",
+      "name": "LVEF ≤35%",
+      "snomed": "250908004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:3c4d5e6f-8a9b-12c3-d4e5-f67890abcdef",
+          "rationale": "LVEF ≤35% is a criterion for ICD implantation in ischemic cardiomyopathy with NYHA II-III symptoms on GDMT.",
+          "citation": "Section 7.4"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:7a8b9c0d-2e3f-4567-8901-abcdef234567",
+          "rationale": "LVEF ≤35% is a criterion for CABG + GDMT in HFrEF with suitable coronary anatomy.",
+          "citation": "Section 7.4"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "LVEF ≤35% is a criterion for CRT in sinus rhythm, LBBB with QRS ≥150 ms, and NYHA II-IV symptoms on GDMT.",
+          "citation": "Section 7.4"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "LVEF ≤35% is a criterion for CRT in patients with sinus rhythm, LBBB, QRS ≥150 ms, and NYHA II-IV symptoms on GDMT.",
+          "citation": "Section 7.4"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "LVEF ≤35% is a criterion for CRT in patients with non-LBBB, QRS ≥150 ms.",
+          "citation": "Section 7.4"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "LVEF ≤35% is a criterion for CRT in patients with non-LBBB, QRS 120–149 ms.",
+          "citation": "Section 7.4"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4d5e6f7a-9b0c-13d4-e5f6-7890abcdef12",
+      "@type": "Finding",
+      "name": "NYHA II-III symptoms",
+      "snomed": "420816009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:5e6f7a8b-0c1d-2345-e6f7-890abcdef123",
+          "rationale": "NYHA II-III symptoms are a criterion for ICD implantation in ischemic cardiomyopathy with LVEF ≤35% on GDMT.",
+          "citation": "Section 7.4"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "NYHA II-IV symptoms are a criterion for CRT in patients with sinus rhythm, LBBB, QRS ≥150 ms, and LVEF ≤35% on GDMT.",
+          "citation": "Section 7.4"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7a8b9c0d-2e3f-4567-8901-abcdef234567",
+      "@type": "Intervention",
+      "name": "Coronary Artery Bypass Grafting (CABG)",
+      "snomed": "232717009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+      "@type": "Intervention",
+      "name": "Cardiac Resynchronization Therapy (CRT)",
+      "snomed": "870255009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:385245ba-30a1-409a-92f3-2f59c1f8e2be",
+      "@type": "Finding",
+      "name": "Sinus rhythm",
+      "snomed": "251150006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "Sinus rhythm is a criterion for CRT in patients with LBBB, QRS ≥150 ms, LVEF ≤35%, and NYHA II-IV symptoms on GDMT.",
+          "citation": "Section 7.4"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0401a2f4-8c8b-4360-b33a-568a3af42a4a",
+      "@type": "Finding",
+      "name": "LBBB",
+      "snomed": "63467002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "LBBB is a criterion for CRT in patients with QRS ≥150 ms, LVEF ≤35%, and NYHA II-IV symptoms on GDMT.",
+          "citation": "Section 7.4"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "LBBB is a criterion for CRT in patients with QRS ≥150 ms, LVEF ≤35%, and NYHA II-IV symptoms on GDMT.",
+          "citation": "Section 7.4"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "LBBB is a criterion for CRT in patients with QRS 120–149 ms.",
+          "citation": "Section 7.4"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a9b1c2d3-e4f5-6789-0abc-def123456789",
+      "@type": "Condition",
+      "name": "Heart Failure with reduced Ejection Fraction (HFrEF)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-12ab-cdef34567890",
+          "rationale": "Primary prevention ICD is indicated in ischemic cardiomyopathy (≥40 days post-MI) with LVEF ≤35% and NYHA II-III symptoms on GDMT, with expected survival >1 year.",
+          "citation": "Section 7.4"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-12ab-cdef34567890",
+      "@type": "Intervention",
+      "name": "Implantable Cardioverter Defibrillator (ICD)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3c4d5e6f-8a9b-12c3-d4e5-f67890abcdef",
+      "@type": "Condition",
+      "name": "Heart Failure with reduced Ejection Fraction (HFrEF)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5e6f7a8b-0c1d-2345-e6f7-890abcdef123",
+      "@type": "Condition",
+      "name": "Heart Failure with reduced Ejection Fraction (HFrEF)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:53cd5506-d13e-48d8-9d6e-072a4b76bcf8",
+      "@type": "Finding",
+      "name": "QRS ≥150 ms",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "QRS ≥150 ms is a criterion for CRT in patients with sinus rhythm, LBBB, LVEF ≤35%, and NYHA II-IV symptoms on GDMT.",
+          "citation": "Section 7.4"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fc3c6b6a-05d6-4faf-bb66-7dd91e5565a6",
+      "@type": "Finding",
+      "name": "QRS ≥150 ms",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "QRS ≥150 ms is a criterion for CRT in patients with non-LBBB.",
+          "citation": "Section 7.4"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:62e441ac-c2df-4176-83d2-aa0e508e73e1",
+      "@type": "Finding",
+      "name": "QRS ≥150 ms",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_5_devices,_valvular_diseas.json",
+        "section_title": "Devices, Valvular Disease, HFmrEF, HFimpEF, HFpEF, and Cardiac Amyloidosis"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-4a5b-6789-0123-def4567890ab",
+          "rationale": "QRS ≥150 ms is a criterion for CRT in patients with LBBB.",
+          "citation": "Section 7.4"
+        }
+      ]
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:32.565558+00:00",
+    "nodes_before": 34,
+    "nodes_after": 14,
+    "rules_before": 17,
+    "rules_after": 17
+  }
+}

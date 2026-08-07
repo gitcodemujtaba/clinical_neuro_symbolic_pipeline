@@ -1,0 +1,140 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+      "@type": "Finding",
+      "name": "Sepsis",
+      "snomed": "91302008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_long_term_outcomes_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON LONG-TERM OUTCOMES AND GOALS OF CARE 2/2"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b8c9d0e1-f2a4-43b5-c6d7-e8f901234567",
+          "rationale": "Adult survivors of sepsis require assessment and follow-up for physical, cognitive, and emotional problems after hospital discharge.",
+          "citation": "Recommendation based on guidelines for long-term outcomes.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:b8c9d0e1-f2a4-43b5-c6d7-e8f901234567",
+      "@type": "Condition",
+      "name": "Adult survivor of sepsis",
+      "snomed": "91302008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_long_term_outcomes_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON LONG-TERM OUTCOMES AND GOALS OF CARE 2/2"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c9d0e1f2-a4b5-43c6-d7e8-f90123456789",
+          "rationale": "Adult survivors of sepsis require assessment and follow-up for physical, cognitive, and emotional problems after hospital discharge.",
+          "citation": "Recommendation based on guidelines for long-term outcomes.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:d0e1f2a4-b5c6-43d7-e8f9-0123456789ab",
+          "rationale": "Adult survivors of sepsis receiving mechanical ventilation for >48 hours or an ICU stay of >72 hours require referral to a post-hospital rehabilitation programme.",
+          "citation": "Suggestion based on guidelines for long-term outcomes.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:e1f2a4b5-c6d7-43e8-f901-23456789abcd",
+      "@type": "Condition",
+      "name": "Mechanical ventilation for >48 hours",
+      "snomed": "40617009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_long_term_outcomes_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON LONG-TERM OUTCOMES AND GOALS OF CARE 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f2a4b5c6-d7e8-43e9-0123-456789abcdef",
+      "@type": "Condition",
+      "name": "ICU stay of >72 hours",
+      "snomed": "309904001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_long_term_outcomes_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON LONG-TERM OUTCOMES AND GOALS OF CARE 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6a8d39d0-e35b-4182-aea6-8fa636d6c3d2",
+      "@type": "Finding",
+      "name": "Septic shock",
+      "snomed": "76571007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_long_term_outcomes_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON LONG-TERM OUTCOMES AND GOALS OF CARE 2/2"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b8c9d0e1-f2a4-43b5-c6d7-e8f901234567",
+          "rationale": "Adult survivors of septic shock require assessment and follow-up for physical, cognitive, and emotional problems after hospital discharge.",
+          "citation": "Recommendation based on guidelines for long-term outcomes.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c9d0e1f2-a4b5-43c6-d7e8-f90123456789",
+      "@type": "Intervention",
+      "name": "Assessment and follow-up for physical, cognitive, and emotional problems",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_long_term_outcomes_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON LONG-TERM OUTCOMES AND GOALS OF CARE 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d0e1f2a4-b5c6-43d7-e8f9-0123456789ab",
+      "@type": "Intervention",
+      "name": "Referral to a post-hospital rehabilitation programme",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_long_term_outcomes_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON LONG-TERM OUTCOMES AND GOALS OF CARE 2/2"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:e1f2a4b5-c6d7-43e8-f901-23456789abcd",
+          "rationale": "Requires referral if mechanical ventilation > 48 hours or ICU stay > 72 hours.",
+          "citation": "Suggestion based on guidelines for long-term outcomes.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:42.037671+00:00",
+    "nodes_before": 7,
+    "nodes_after": 7,
+    "rules_before": 5,
+    "rules_after": 5
+  }
+}

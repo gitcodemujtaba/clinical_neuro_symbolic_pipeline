@@ -1,0 +1,545 @@
+{
+  "chunk_id": "chunk_10",
+  "entities": [
+    {
+      "snomed_cui": "265764009",
+      "preferred_name": "Renal dialysis",
+      "source_value": "Dialysis",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 13,
+        "end": 21
+      }
+    },
+    {
+      "snomed_cui": "225334002",
+      "preferred_name": "Intervention regime",
+      "source_value": "Interventions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 22,
+        "end": 35
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "Treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 40,
+        "end": 49
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 53,
+        "end": 56
+      }
+    },
+    {
+      "snomed_cui": "255238004",
+      "preferred_name": "Continuous",
+      "source_value": "Continued",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 58,
+        "end": 67
+      }
+    },
+    {
+      "snomed_cui": "414795007",
+      "preferred_name": "Myocardial ischemia",
+      "source_value": "IHD",
+      "confidence_score": 0.3900569013495624,
+      "character_boundaries": {
+        "start": 169,
+        "end": 172
+      }
+    },
+    {
+      "snomed_cui": "714749008",
+      "preferred_name": "Continuous renal replacement therapy",
+      "source_value": "CRRT",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 177,
+        "end": 181
+      }
+    },
+    {
+      "snomed_cui": "255238004",
+      "preferred_name": "Continuous",
+      "source_value": "Continuous",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 228,
+        "end": 238
+      }
+    },
+    {
+      "snomed_cui": "7087005",
+      "preferred_name": "Intermittent",
+      "source_value": "intermittent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 243,
+        "end": 255
+      }
+    },
+    {
+      "snomed_cui": "225423004",
+      "preferred_name": "Complementary therapy",
+      "source_value": "complementary therapies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 264,
+        "end": 287
+      }
+    },
+    {
+      "snomed_cui": "714749008",
+      "preferred_name": "Continuous renal replacement therapy",
+      "source_value": "CRRT",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 304,
+        "end": 308
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standard",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 321,
+        "end": 329
+      }
+    },
+    {
+      "snomed_cui": "414795007",
+      "preferred_name": "Myocardial ischemia",
+      "source_value": "IHD",
+      "confidence_score": 0.42594269921328864,
+      "character_boundaries": {
+        "start": 330,
+        "end": 333
+      }
+    },
+    {
+      "snomed_cui": "263922001",
+      "preferred_name": "Unstable status",
+      "source_value": "unstable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 354,
+        "end": 362
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 363,
+        "end": 371
+      }
+    },
+    {
+      "snomed_cui": "714749008",
+      "preferred_name": "Continuous renal replacement therapy",
+      "source_value": "CRRT",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 393,
+        "end": 397
+      }
+    },
+    {
+      "snomed_cui": "414795007",
+      "preferred_name": "Myocardial ischemia",
+      "source_value": "IHD",
+      "confidence_score": 0.5908865555790701,
+      "character_boundaries": {
+        "start": 410,
+        "end": 413
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 418,
+        "end": 426
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 432,
+        "end": 437
+      }
+    },
+    {
+      "snomed_cui": "81308009",
+      "preferred_name": "Disorder of brain",
+      "source_value": "brain injury",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 438,
+        "end": 450
+      }
+    },
+    {
+      "snomed_cui": "271719001",
+      "preferred_name": "Raised intracranial pressure",
+      "source_value": "increased intracranial pressure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 454,
+        "end": 485
+      }
+    },
+    {
+      "snomed_cui": "8537005",
+      "preferred_name": "Solution",
+      "source_value": "solutions",
+      "confidence_score": 0.39528389389342733,
+      "character_boundaries": {
+        "start": 516,
+        "end": 525
+      }
+    },
+    {
+      "snomed_cui": "68615006",
+      "preferred_name": "Bicarbonate",
+      "source_value": "bicarbonate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 541,
+        "end": 552
+      }
+    },
+    {
+      "snomed_cui": "83036002",
+      "preferred_name": "Lactate",
+      "source_value": "lactate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 565,
+        "end": 572
+      }
+    },
+    {
+      "snomed_cui": "116178008",
+      "preferred_name": "Dialysis fluid",
+      "source_value": "dialysate",
+      "confidence_score": 0.5870969298192181,
+      "character_boundaries": {
+        "start": 586,
+        "end": 595
+      }
+    },
+    {
+      "snomed_cui": "373188003",
+      "preferred_name": "Replacement procedure",
+      "source_value": "replacement",
+      "confidence_score": 0.4999368300809862,
+      "character_boundaries": {
+        "start": 596,
+        "end": 607
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 627,
+        "end": 636
+      }
+    },
+    {
+      "snomed_cui": "68615006",
+      "preferred_name": "Bicarbonate",
+      "source_value": "bicarbonate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 637,
+        "end": 648
+      }
+    },
+    {
+      "snomed_cui": "27942005",
+      "preferred_name": "Shock",
+      "source_value": "circulatory shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 652,
+        "end": 669
+      }
+    },
+    {
+      "snomed_cui": "68615006",
+      "preferred_name": "Bicarbonate",
+      "source_value": "bicarbonate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 691,
+        "end": 702
+      }
+    },
+    {
+      "snomed_cui": "59927004",
+      "preferred_name": "Hepatic failure",
+      "source_value": "liver failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 706,
+        "end": 719
+      }
+    },
+    {
+      "snomed_cui": "190882007",
+      "preferred_name": "Lactic acidemia",
+      "source_value": "lactic acidemia",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 727,
+        "end": 742
+      }
+    },
+    {
+      "snomed_cui": "33463005",
+      "preferred_name": "Liquid substance",
+      "source_value": "fluids",
+      "confidence_score": 0.564993211957727,
+      "character_boundaries": {
+        "start": 763,
+        "end": 769
+      }
+    },
+    {
+      "snomed_cui": "231448004",
+      "preferred_name": "Age-associated memory impairment",
+      "source_value": "AAMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 782,
+        "end": 786
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standards",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 787,
+        "end": 796
+      }
+    },
+    {
+      "snomed_cui": "409822003",
+      "preferred_name": "Domain Bacteria",
+      "source_value": "bacteria",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 801,
+        "end": 809
+      }
+    },
+    {
+      "snomed_cui": "18127008",
+      "preferred_name": "Bacterial endotoxin",
+      "source_value": "endotoxins",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 810,
+        "end": 820
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "Dose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 844,
+        "end": 848
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 873,
+        "end": 877
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 935,
+        "end": 939
+      }
+    },
+    {
+      "snomed_cui": "70232002",
+      "preferred_name": "Frequent",
+      "source_value": "frequently",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 940,
+        "end": 950
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 964,
+        "end": 973
+      }
+    },
+    {
+      "snomed_cui": "251868007",
+      "preferred_name": "kt/V",
+      "source_value": "Kt/V",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 987,
+        "end": 991
+      }
+    },
+    {
+      "snomed_cui": "259038000",
+      "preferred_name": "per week",
+      "source_value": "per week",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 999,
+        "end": 1007
+      }
+    },
+    {
+      "snomed_cui": "7087005",
+      "preferred_name": "Intermittent",
+      "source_value": "intermittent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1012,
+        "end": 1024
+      }
+    },
+    {
+      "snomed_cui": "288467006",
+      "preferred_name": "Extended",
+      "source_value": "extended",
+      "confidence_score": 0.6671186986262938,
+      "character_boundaries": {
+        "start": 1028,
+        "end": 1036
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1054,
+        "end": 1063
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "volume",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1087,
+        "end": 1093
+      }
+    },
+    {
+      "snomed_cui": "414739003",
+      "preferred_name": "Milliliter/kilogram/hour",
+      "source_value": "ml/kg/h",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1103,
+        "end": 1110
+      }
+    },
+    {
+      "snomed_cui": "714749008",
+      "preferred_name": "Continuous renal replacement therapy",
+      "source_value": "CRRT",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1115,
+        "end": 1119
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.6337422392126448,
+      "character_boundaries": {
+        "start": 1123,
+        "end": 1126
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1145,
+        "end": 1151
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "volume",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1172,
+        "end": 1178
+      }
+    },
+    {
+      "snomed_cui": "414739003",
+      "preferred_name": "Milliliter/kilogram/hour",
+      "source_value": "ml/kg/h",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1192,
+        "end": 1199
+      }
+    }
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-789012abcdef",
+      "@type": "Finding",
+      "name": "Time sensitive presentation",
+      "snomed": "12565001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1efa02a9-8cc7-4bed-b9e5-53aeea629995",
+      "@type": "Finding",
+      "name": "Respiratory distress",
+      "snomed": "271825005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c9d0e1f2-a8b7-46c3-8def-1234567890cd",
+      "@type": "Finding",
+      "name": "Tachypnea",
+      "snomed": "271823003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d0e1f2a3-b7c8-46c9-8def-1234567890ef",
+      "@type": "Finding",
+      "name": "Tachycardia",
+      "snomed": "3424008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e1f2a3b7-c8d9-46ca-8def-1234567890fa",
+      "@type": "Finding",
+      "name": "Tripoding",
+      "snomed": "183147006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f2a3b7c8-d9e0-46cb-8def-1234567890fb",
+      "@type": "Finding",
+      "name": "Speaking in short, 2-to-3-word sentences",
+      "snomed": "87335007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a3b7c8d9-e0f1-46cc-8def-1234567890fc",
+      "@type": "Finding",
+      "name": "Audible stridor",
+      "snomed": "70407001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b7c8d9e0-f1a2-46cd-8def-1234567890fd",
+      "@type": "Finding",
+      "name": "Wheezing",
+      "snomed": "56018004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c8d9e0f1-a2b3-46ce-8def-1234567890fe",
+      "@type": "Finding",
+      "name": "Congestion",
+      "snomed": "85804007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d9e0f1a2-b3c4-46cf-8def-1234567890ff",
+      "@type": "Finding",
+      "name": "Grunting",
+      "snomed": "62085005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e0f1a2b3-c4d5-46d0-8def-123456789100",
+      "@type": "Finding",
+      "name": "Belly breathing",
+      "snomed": "29823001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f1a2b3c4-d5e6-46d1-8def-123456789101",
+      "@type": "Finding",
+      "name": "Retractions",
+      "snomed": "14910006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a2b3c4d5-e6f7-46d2-8def-123456789102",
+      "@type": "Finding",
+      "name": "Chest pain",
+      "snomed": "29857009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1a2b3c4d-e6f7-46d2-8def-123456789103",
+          "rationale": "Chest pain can be a symptom of acute coronary syndromes (ACS).",
+          "citation": "Text mentions chest pain accounts for 5–10% of US emergency department visits and presentation of ACS is not always symptom specific.",
+          "citation_paraphrase": "Text mentions chest pain accounts for 5–10% of US emergency department visits and presentation of ACS is not always symptom specific.",
+          "citation_verbatim_excerpt": "This presentation is extremely time sensitive.Respiratory ConcernsThe high-risk patient is one who is currently ventilating and oxygenating adequately but is in respiratory distress and has the potential to rapidly deteriorate.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:9a2b3c4d-e6f7-46d2-8def-123456789104",
+          "rationale": "Patients with chest pain who are physiologically unstable and require immediate interventions such as intubation or hemodynamic support should be triaged as ESI level 1.",
+          "citation": "Text states: Patients with chest pain who are physiologically unstable and require immediate lifesaving intervention, such as intubation... meet level-1 criteria.",
+          "citation_paraphrase": "Text states: Patients with chest pain who are physiologically unstable and require immediate lifesaving intervention, such as intubation... meet level-1 criteria.",
+          "citation_verbatim_excerpt": "This presentation is extremely time sensitive.Respiratory ConcernsThe high-risk patient is one who is currently ventilating and oxygenating adequately but is in respiratory distress and has the potential to rapidly deteriorate.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:0b3c4d5e-f7a8-46d3-8def-123456789105",
+          "rationale": "An ECG within 10 minutes for patients with concerns of chest pain may be helpful in determining acuity. If the ECG is abnormal, patients would be assigned level 2.",
+          "citation": "Text states: An ECG within 10 minutes for patients with concerns of chest pain may also be helpful in determining acuity. If the ECG is abnormal, patients would be assigned level 2.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e6f7-46d2-8def-123456789103",
+      "@type": "Condition",
+      "name": "Acute coronary syndromes (ACS)",
+      "snomed": "394659003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2b3c4d5e-f7a8-46d3-8def-123456789106",
+      "@type": "Finding",
+      "name": "Hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3c4d5e6f-7a89-46d4-8def-123456789107",
+      "@type": "Finding",
+      "name": "Bleeding",
+      "snomed": "131148009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4d5e6f7a-8901-46d5-8def-123456789108",
+      "@type": "Finding",
+      "name": "Abdominal pain",
+      "snomed": "21522001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5e6f7a89-0123-46d6-8def-123456789109",
+      "@type": "Finding",
+      "name": "Vascular issue",
+      "snomed": "27550009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6f7a8901-2345-46d7-8def-12345678910a",
+      "@type": "Finding",
+      "name": "Genitourinary issue",
+      "snomed": "21514008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7a890123-4567-46d8-8def-12345678910b",
+      "@type": "Finding",
+      "name": "Infectious issue",
+      "snomed": "191415002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8a88016e-f946-44b7-8ba0-aefe700a6b3a",
+      "@type": "Finding",
+      "name": "Cardiac issue",
+      "snomed": "80891009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:37de9fa9-532a-4aa3-8475-ddeb49bec8b8",
+      "@type": "Finding",
+      "name": "Gastrointestinal issue",
+      "snomed": "386618008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:bd6132b0-be39-4ef4-be00-74987918be0a",
+      "@type": "Finding",
+      "name": "Trauma",
+      "snomed": "417746004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:98b41b44-b080-4184-9206-77e750c7c637",
+      "@type": "Finding",
+      "name": "Penetrating trauma",
+      "snomed": "53568006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:eeaeeb65-79a2-4850-9753-728024c828fa",
+      "@type": "Finding",
+      "name": "Blunt trauma",
+      "snomed": "428247006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2a94d29b-6612-47c6-9d95-802627b53689",
+      "@type": "Finding",
+      "name": "Testicular torsion",
+      "snomed": "81996005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9a03bbaa-1de4-44b9-b5d1-e47d9097b3d3",
+      "@type": "Finding",
+      "name": "Ovarian torsion",
+      "snomed": "13595002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b4e02bcd-111f-40e5-9ea7-a74da8ce1953",
+      "@type": "Finding",
+      "name": "Ectopic pregnancy",
+      "snomed": "34801009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fbe7a42c-51dc-46dc-bca5-3dc7977645b2",
+      "@type": "Finding",
+      "name": "Severe flank pain",
+      "snomed": "247355005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9f0f342c-494a-4217-9878-5e38f3fc48b3",
+      "@type": "Finding",
+      "name": "Pneumonia",
+      "snomed": "233604007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9a3ee1df-64f8-4928-b9d7-fffcf4fc9672",
+      "@type": "Finding",
+      "name": "Button battery ingestion",
+      "snomed": "311939007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a819f08e-71e8-4408-afd3-96387c4e4984",
+      "@type": "Finding",
+      "name": "Earth magnet ingestion",
+      "snomed": "44396004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ecb24a30-82a4-4733-add6-c67ff12b4a16",
+      "@type": "Finding",
+      "name": "Severe pain",
+      "snomed": "76948002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:856c6ef4-bc47-4baa-adce-fa88b72a6fea",
+      "@type": "Finding",
+      "name": "Compartment syndrome",
+      "snomed": "111245009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4d5d8be2-8797-40f3-a757-5ba5cf992882",
+      "@type": "Finding",
+      "name": "Partial amputation",
+      "snomed": "255609007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:72f5a9ef-072b-4aa9-93a6-663eb2b75ae9",
+      "@type": "Finding",
+      "name": "Complete amputation",
+      "snomed": "9668001000001102",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0e7f2042-52db-4dab-8a7a-c9074675f7f7",
+      "@type": "Finding",
+      "name": "Fracture",
+      "snomed": "72704001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e99143ab-d124-4bb7-9fe8-a118a9666212",
+      "@type": "Finding",
+      "name": "Pelvic fracture",
+      "snomed": "816991004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d822c459-0ffe-4d5a-8125-a758748fef92",
+      "@type": "Finding",
+      "name": "Femur fracture",
+      "snomed": "71341001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9a2b3c4d-e6f7-46d2-8def-123456789104",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0b3c4d5e-f7a8-46d3-8def-123456789105",
+      "@type": "Acuity",
+      "name": "ESI Level 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part2.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 2/2]"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:37.787200+00:00",
+    "nodes_before": 41,
+    "nodes_after": 41,
+    "rules_before": 3,
+    "rules_after": 3
+  }
+}

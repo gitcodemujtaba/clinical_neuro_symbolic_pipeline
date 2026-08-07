@@ -1,0 +1,476 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+      "@type": "Finding",
+      "name": "Recombinant human (rh)IGF-1",
+      "snomed": "5699003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b8c9d0e1-f2a4-43a5-b6c7-d8e9f0123456",
+          "rationale": "Recommends NOT using rhIGF-1 to prevent or treat AKI.",
+          "citation": "Chapter 3.6.1: Recommend NOT using recombinant human (rh)IGF-1 [SNOMED: 5699003] to prevent or treat AKI (1B).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c1d2e3f4-a5b6-47c8-90de-f1a2b3c4d5e6",
+      "@type": "Medication",
+      "name": "Theophylline",
+      "snomed": "372810006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:d2e3f4a5-b6c7-47c8-90ef-12a3b4c5d6e7",
+          "rationale": "A single dose of theophylline may be given in neonates with severe perinatal asphyxia at high risk of AKI.",
+          "citation": "Chapter 3.7.1: A single dose [SNOMED: 408102007] of theophylline [SNOMED: 372810006] may be given [SNOMED: 419582001] in neonates [SNOMED: 255407002] with severe [SNOMED: 24484000] perinatal asphyxia [SNOMED: 281578009] at high risk of AKI [SNOMED: 14669001] (2B).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e5f6a7b8-c9d0-41e2-a3b4-c5d6e7f8a901",
+      "@type": "Medication",
+      "name": "Aminoglycosides",
+      "snomed": "763805006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f6a7b8c9-d0e1-42e3-a4b5-c6d7e8f9a012",
+          "rationale": "Suggest NOT using aminoglycosides unless no suitable, less nephrotoxic therapeutic alternatives are available.",
+          "citation": "Chapter 3.8.1: Suggest NOT using aminoglycosides [SNOMED: 763805006] unless no suitable, less nephrotoxic therapeutic alternatives are available (2A).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a1b2c3d4-e5f6-4890-b1c2-d3e4f567890a",
+          "rationale": "Administer aminoglycosides as a single daily dose rather than multiple daily doses in patients with normal stable renal function.",
+          "citation": "Chapter 3.8.2: Administer [SNOMED: 738990001] aminoglycosides [SNOMED: 763805006] as a single daily dose [SNOMED: 408102007] rather than multiple daily doses in patients with normal stable [SNOMED: 58158008] renal function [SNOMED: 11953005] (2B).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f6a7-4901-a2b3-c4d5e6f7890b",
+          "rationale": "Monitor aminoglycoside blood levels.",
+          "citation": "Chapter 3.8.3/3.8.4: Monitor [SNOMED: 13288007] aminoglycoside [SNOMED: 763805006] blood [SNOMED: 119273009] levels.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1c2d3e4f-5a6b-490c-8de7-f6a7b8c9d0e1",
+      "@type": "Medication",
+      "name": "Lipid formulations of amphotericin B",
+      "snomed": "77703004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:d3e4f5a6-b7c8-490d-9ef8-e7f6a7b8c9d0",
+          "rationale": "Suggest using lipid formulations of amphotericin B over conventional formulations.",
+          "citation": "Chapter 3.8.6: Suggest lipid formulations of amphotericin B [SNOMED: 77703004] over conventional [SNOMED: 255333006] formulations (2A).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:857c3437-320a-4262-86ae-7707e6da247b",
+      "@type": "Condition",
+      "name": "Lipid formulations of amphotericin B",
+      "snomed": "77703004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e4f5a6b7-c8d9-420e-b1f2-a3c4d5e6f789",
+      "@type": "Medication",
+      "name": "Azoles",
+      "snomed": "300903003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:f5a6b7c8-d9e0-431f-a2b3-c4d5e6f7890c",
+          "rationale": "Recommend azoles or echinocandins over conventional amphotericin B for systemic mycoses.",
+          "citation": "Chapter 3.8.7: Recommend azoles [SNOMED: 300903003] or echinocandins [SNOMED: 373570003] over conventional [SNOMED: 255333006] amphotericin B [SNOMED: 77703004] for systemic [SNOMED: 31099001] mycoses [SNOMED: 3218000] (1A).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:9e079d5a-d15b-4c24-afab-7c64370a44d3",
+      "@type": "Condition",
+      "name": "Azoles",
+      "snomed": "300903003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-4789-01ab-c2d3e4f56789",
+      "@type": "Medication",
+      "name": "Echinocandins",
+      "snomed": "373570003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cb4c3b38-4de8-4cd2-bd8d-ccfe6e582979",
+      "@type": "Condition",
+      "name": "Echinocandins",
+      "snomed": "373570003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2b3c4d5e-f6a7-4890-1cd2-e3f4a5b6c7d8",
+      "@type": "Intervention",
+      "name": "Off-pump CABG",
+      "snomed": "44668000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:d4e5f6a7-b8c9-490e-2ab3-c5d6e7f89012",
+          "rationale": "Off-pump CABG should not be selected solely to reduce perioperative AKI.",
+          "citation": "Chapter 3.9.1: Off-pump [SNOMED: 44668000] CABG [SNOMED: 232717009] should not be selected solely to reduce perioperative AKI (2C).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:68e48eb1-4df5-4092-a6ff-d6bec8c9459f",
+      "@type": "Condition",
+      "name": "Acute Kidney Injury (AKI)",
+      "snomed": "14669001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Condition",
+      "name": "Perinatal asphyxia",
+      "snomed": "281578009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Normal stable renal function",
+      "snomed": "11953005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a2f0fb8f-0e41-4c1f-9667-e33192d8e50a",
+      "@type": "Condition",
+      "name": "Systemic mycoses",
+      "snomed": "3218000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:313d5e42-839d-4a11-8750-34e133990b72",
+      "@type": "Condition",
+      "name": "Critically ill hypotensive patients",
+      "snomed": "372586001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:43210fed-cb98-7654-3210-fedcba987654",
+      "@type": "Condition",
+      "name": "Severe AKI",
+      "snomed": "24484000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:543210fe-dcba-9876-5432-10fedcba9876",
+      "@type": "Condition",
+      "name": "Neonates",
+      "snomed": "255407002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6543210f-edcb-a987-6543-210fedcba987",
+      "@type": "Condition",
+      "name": "Normal stable renal function",
+      "snomed": "58158008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:850663de-7720-4607-8419-e38b76255827",
+      "@type": "Condition",
+      "name": "Conventional amphotericin B formulations",
+      "snomed": "255333006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b8c9d0e1-f2a4-43a5-b6c7-d8e9f0123456",
+      "@type": "Intervention",
+      "name": "Not using rhIGF-1 for prevention or treatment of AKI",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d2e3f4a5-b6c7-47c8-90ef-12a3b4c5d6e7",
+      "@type": "Medication",
+      "name": "Single dose of theophylline in neonates with severe perinatal asphyxia at high risk of AKI",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f6a7b8c9-d0e1-42e3-a4b5-c6d7e8f9a012",
+      "@type": "Intervention",
+      "name": "Not using aminoglycosides unless alternatives unavailable",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-4890-b1c2-d3e4f567890a",
+      "@type": "Intervention",
+      "name": "Administering aminoglycosides as a single daily dose in patients with normal stable renal function",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f6a7-4901-a2b3-c4d5e6f7890b",
+      "@type": "Intervention",
+      "name": "Monitoring aminoglycoside blood levels",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d3e4f5a6-b7c8-490d-9ef8-e7f6a7b8c9d0",
+      "@type": "Medication",
+      "name": "Lipid formulations of amphotericin B over conventional formulations",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f5a6b7c8-d9e0-431f-a2b3-c4d5e6f7890c",
+      "@type": "Medication",
+      "name": "Azoles or echinocandins over conventional amphotericin B for systemic mycoses",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d4e5f6a7-b8c9-490e-2ab3-c5d6e7f89012",
+      "@type": "Intervention",
+      "name": "Not selecting off-pump CABG solely to reduce perioperative AKI",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e6f7a8b9-c0d1-432e-9fab-01c2d3e4f567",
+      "@type": "Medication",
+      "name": "Oral NAC",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f7a8b9c0-d1e2-443f-abce-12d3e4f5678a",
+          "rationale": "Recommend NOT using oral NAC to prevent postsurgical AKI.",
+          "citation": "Chapter 3.9.2/3.9.3: Recommend NOT using oral [SNOMED: 26643006] or i.v. NAC to prevent postsurgical AKI [SNOMED: 14669001] (1A) or in critically ill hypotensive [SNOMED: 372586001] patients (2D).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f7a8b9c0-d1e2-443f-abce-12d3e4f5678a",
+      "@type": "Intervention",
+      "name": "Not using oral NAC to prevent postsurgical AKI",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a8b9c0d1-e2f3-4546-bcde-f7a8b9c0d1e2",
+      "@type": "Medication",
+      "name": "i.v. NAC",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b9c0d1e2-f345-4657-def8-a7b9c0d1e2f3",
+          "rationale": "Recommend NOT using i.v. NAC to prevent postsurgical AKI or in critically ill hypotensive patients.",
+          "citation": "Chapter 3.9.2/3.9.3: Recommend NOT using oral [SNOMED: 26643006] or i.v. NAC to prevent postsurgical AKI [SNOMED: 14669001] (1A) or in critically ill hypotensive [SNOMED: 372586001] patients (2D).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b9c0d1e2-f345-4657-def8-a7b9c0d1e2f3",
+      "@type": "Intervention",
+      "name": "Not using i.v. NAC to prevent postsurgical AKI or in critically ill hypotensive patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_7_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Growth Factors, Nephrotoxic Agents, and Surgery"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2ef55708-1823-46fc-a123-8111d504387c",
+      "@type": "Condition",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.277776+00:00",
+    "nodes_before": 36,
+    "nodes_after": 32,
+    "rules_before": 10,
+    "rules_after": 10
+  }
+}

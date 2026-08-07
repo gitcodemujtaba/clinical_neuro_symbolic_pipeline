@@ -1,0 +1,549 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Pneumonia Severity Index (PSI)",
+      "snomed": "406529000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "PSI is a tool to predict mortality in patients with CAP.",
+          "citation": "The PSI classifies patients into 1 of 5 risk classes with substantially different rates of predicted 30-day mortality.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f67a-9012-3456-7890abcdef12",
+      "@type": "Finding",
+      "name": "Age >= 65 years",
+      "snomed": "424144002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:04fdba6c-927d-4dc7-8395-b1383bc958c5",
+          "rationale": "Age >= 65 years is a criterion in the CURB-65 score.",
+          "citation": "Table 1a. Mortality prediction aids (Criteria). CURB-65 Specific Criteria: Age ≥ 65 y, CURB-65 Points: 1",
+          "citation_paraphrase": "Table 1a. Mortality prediction aids (Criteria). CURB-65 Specific Criteria: Age ≥ 65 y, CURB-65 Points: 1",
+          "citation_verbatim_excerpt": "Clinical Decision Aids for Mortality in CAP We identified 7 clinical decision aids that had supporting literature of sufficient methodological rigor for inclusion in this clinical policy evaluation.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:db681834-eac2-4c33-8d46-a8dbf1b7bbda",
+      "@type": "Finding",
+      "name": "Respiratory rate >= 30 breaths/min",
+      "snomed": "258984001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:04fdba6c-927d-4dc7-8395-b1383bc958c5",
+          "rationale": "Respiratory rate >= 30 breaths/min is a criterion in the CURB-65 score.",
+          "citation": "Table 1a. Mortality prediction aids (Criteria). CURB-65 Specific Criteria: Respiratory rate ≥ 30 breaths/min, CURB-65 Points: 1",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:13dbe723-ed8f-44d9-8eb7-1074db50ff9b",
+      "@type": "Finding",
+      "name": "Systolic Blood Pressure < 90 mmHg or Diastolic Blood Pressure <= 60 mmHg",
+      "snomed": "75367002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:04fdba6c-927d-4dc7-8395-b1383bc958c5",
+          "rationale": "Systolic Blood Pressure < 90 mmHg or Diastolic Blood Pressure <= 60 mmHg is a criterion in the CURB-65 score.",
+          "citation": "Table 1a. Mortality prediction aids (Criteria). CURB-65 Specific Criteria: SBP <90 mm Hg or DBP ≤ 60 mm Hg, CURB-65 Points: 1",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Acuity",
+      "name": "Mortality Prediction Tool for CAP",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3fad49b2-141f-4a62-8c75-ca708d67f2be",
+      "@type": "Finding",
+      "name": "CURB-65 Criteria",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:3abeb2b9-ec53-40bd-aa98-d68c238ad344",
+          "rationale": "CURB-65 is a tool to predict mortality in patients with CAP.",
+          "citation": "The CURB-65 score is directly associated with mortality.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3abeb2b9-ec53-40bd-aa98-d68c238ad344",
+      "@type": "Acuity",
+      "name": "Mortality Prediction Tool for CAP",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4b1bf66b-1e3b-4ae7-a0b8-2ec6a2376eb7",
+      "@type": "Condition",
+      "name": "PSI Risk Class I",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:a2ac3a60-80f0-4fc0-a497-2e99609271ca",
+          "rationale": "Patients in PSI Risk Class I have very low 30-day mortality rates (0% to 0.4%).",
+          "citation": "Patients in risk classes I and II have very low 30-day mortality rates (0% to 0.4% and 0.4% to 1.0%, respectively).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a2ac3a60-80f0-4fc0-a497-2e99609271ca",
+      "@type": "Acuity",
+      "name": "Low Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2b3c4d5e-f67a-9012-3456-7890abcdef12",
+      "@type": "Condition",
+      "name": "PSI Risk Class II",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c4a6b9dc-ec45-46bf-a461-1c842e577349",
+          "rationale": "Patients in PSI Risk Class II have very low 30-day mortality rates (0.4% to 1.0%).",
+          "citation": "Patients in risk classes I and II have very low 30-day mortality rates (0% to 0.4% and 0.4% to 1.0%, respectively).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c4a6b9dc-ec45-46bf-a461-1c842e577349",
+      "@type": "Acuity",
+      "name": "Low Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:355fef62-67d1-4eac-a75d-c4e4ee56ea2a",
+      "@type": "Condition",
+      "name": "PSI Risk Class III",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:ae0e1113-a492-4391-8794-4b6b3890a359",
+          "rationale": "Patients in PSI Risk Class III have higher 30-day mortality rates (0.9% to 3.8%).",
+          "citation": "Patients in risk class III have higher 30-day mortality (0.9% to 3.8%).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ae0e1113-a492-4391-8794-4b6b3890a359",
+      "@type": "Acuity",
+      "name": "Moderate Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4d5e6f7a-9012-3456-7890-abcdef123456",
+      "@type": "Condition",
+      "name": "PSI Risk Class IV",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:b0af6190-19e3-4d9a-98c8-9db0ca623fbd",
+          "rationale": "Patients in PSI Risk Class IV have higher 30-day mortality rates (6.0% to 11.4%).",
+          "citation": "Patients in risk classes IV and V (30-day mortality of 6.0% to 11.4% and 16.8% to 38.3%, respectively) are typically admitted for inpatient care.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b0af6190-19e3-4d9a-98c8-9db0ca623fbd",
+      "@type": "Acuity",
+      "name": "High Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5e6f7a90-1234-5678-90ab-cdef12345678",
+      "@type": "Condition",
+      "name": "PSI Risk Class V",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:49b8e674-8bac-41bd-82d6-484fc6e4425b",
+          "rationale": "Patients in PSI Risk Class V have very high 30-day mortality rates (16.8% to 38.3%).",
+          "citation": "Patients in risk classes IV and V (30-day mortality of 6.0% to 11.4% and 16.8% to 38.3%, respectively) are typically admitted for inpatient care.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:49b8e674-8bac-41bd-82d6-484fc6e4425b",
+      "@type": "Acuity",
+      "name": "Very High Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0354eaca-3c76-4ad3-b571-562bcf2285f7",
+      "@type": "Condition",
+      "name": "CURB-65 Score 0",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:e43a6dd7-2852-4d5c-b723-c91f556e8e1d",
+          "rationale": "Patients with CURB-65 score 0 have very low 30-day mortality rates (0% to 0.7%).",
+          "citation": "Based on 5 patient cohorts from 4 studies, patients with scores of 0 and 1 were found to have very low 30-day mortality rates (0% to 0.7% and 0% to 3%, respectively).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e43a6dd7-2852-4d5c-b723-c91f556e8e1d",
+      "@type": "Acuity",
+      "name": "Low Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7a901234-5678-90ab-cdef-1234567890cd",
+      "@type": "Condition",
+      "name": "CURB-65 Score 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:98fa9934-6cdc-47b7-9732-b40eb0d57907",
+          "rationale": "Patients with CURB-65 score 1 have very low 30-day mortality rates (0% to 3%).",
+          "citation": "Based on 5 patient cohorts from 4 studies, patients with scores of 0 and 1 were found to have very low 30-day mortality rates (0% to 0.7% and 0% to 3%, respectively).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:98fa9934-6cdc-47b7-9732-b40eb0d57907",
+      "@type": "Acuity",
+      "name": "Low Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:890abcdf-1234-5678-90ab-cdef12345678",
+      "@type": "Condition",
+      "name": "CURB-65 Score 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:7da9e167-eab8-46bf-99ce-9d23da62a2dc",
+          "rationale": "Patients with CURB-65 score 2 have higher 30-day mortality rates (5.9% to 9.2%).",
+          "citation": "Patients with a CURB-65 score of 2 have higher 30-day mortality rates (5.9% to 9.2%).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7da9e167-eab8-46bf-99ce-9d23da62a2dc",
+      "@type": "Acuity",
+      "name": "Moderate Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:743f10a2-99dc-4c6e-b077-8582d59490c7",
+      "@type": "Condition",
+      "name": "CURB-65 Score 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:e65ea112-5438-4d35-95cc-f029532344b4",
+          "rationale": "Patients with CURB-65 score 3 have substantially higher 30-day mortality rates (13% to 21.4%).",
+          "citation": "Patients with scores of 3, 4, or 5 have substantially higher 30-day mortality (13% to 21.4%, 17% to 41.9%, and 14% to 60%, respectively).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e65ea112-5438-4d35-95cc-f029532344b4",
+      "@type": "Acuity",
+      "name": "High Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c2257a76-4dce-44f8-bd14-53aa82c2d9a8",
+      "@type": "Condition",
+      "name": "CURB-65 Score 4",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:03f74635-d9ff-45d0-86b3-ad2302b454a6",
+          "rationale": "Patients with CURB-65 score 4 have substantially higher 30-day mortality rates (17% to 41.9%).",
+          "citation": "Patients with scores of 3, 4, or 5 have substantially higher 30-day mortality (13% to 21.4%, 17% to 41.9%, and 14% to 60%, respectively).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:03f74635-d9ff-45d0-86b3-ad2302b454a6",
+      "@type": "Acuity",
+      "name": "Very High Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5530c4ba-5151-4cf9-946a-60d452f05ab5",
+      "@type": "Condition",
+      "name": "CURB-65 Score 5",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c3288e0a-25e8-4394-9e8d-6e8e6fc4906b",
+          "rationale": "Patients with CURB-65 score 5 have very high 30-day mortality rates (14% to 60%).",
+          "citation": "Patients with scores of 3, 4, or 5 have substantially higher 30-day mortality (13% to 21.4%, 17% to 41.9%, and 14% to 60%, respectively).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c3288e0a-25e8-4394-9e8d-6e8e6fc4906b",
+      "@type": "Acuity",
+      "name": "Very High Mortality Risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:04fdba6c-927d-4dc7-8395-b1383bc958c5",
+      "@type": "Condition",
+      "name": "CURB-65 Criteria",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cdef1234-5678-90ab-cdef-1234567890ef",
+      "@type": "Finding",
+      "name": "Confusion",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:04fdba6c-927d-4dc7-8395-b1383bc958c5",
+          "rationale": "Confusion is a criterion in the CURB-65 score.",
+          "citation": "Table 1a. Mortality prediction aids (Criteria). CURB-65 Specific Criteria: Confusion, CURB-65 Points: 1",
+          "citation_paraphrase": "Table 1a. Mortality prediction aids (Criteria). CURB-65 Specific Criteria: Confusion, CURB-65 Points: 1",
+          "citation_verbatim_excerpt": "Clinical Decision Aids for Mortality in CAP We identified 7 clinical decision aids that had supporting literature of sufficient methodological rigor for inclusion in this clinical policy evaluation.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:def12345-6789-0abc-def1-234567890cef",
+      "@type": "Finding",
+      "name": "Urea > 7 mmol/L",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_04_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for Mortality in CAP (PSI and CURB-65)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:04fdba6c-927d-4dc7-8395-b1383bc958c5",
+          "rationale": "Urea > 7 mmol/L is a criterion in the CURB-65 score.",
+          "citation": "Table 1a. Mortality prediction aids (Criteria). CURB-65 Specific Criteria: Urea >7 mmol/L, CURB-65 Points: 1",
+          "citation_paraphrase": "Table 1a. Mortality prediction aids (Criteria). CURB-65 Specific Criteria: Urea >7 mmol/L, CURB-65 Points: 1",
+          "citation_verbatim_excerpt": "Clinical Decision Aids for Mortality in CAP We identified 7 clinical decision aids that had supporting literature of sufficient methodological rigor for inclusion in this clinical policy evaluation.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:33.175160+00:00",
+    "nodes_before": 33,
+    "nodes_after": 32,
+    "rules_before": 19,
+    "rules_after": 18
+  }
+}

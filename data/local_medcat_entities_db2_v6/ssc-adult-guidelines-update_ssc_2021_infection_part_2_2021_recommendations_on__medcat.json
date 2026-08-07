@@ -1,0 +1,745 @@
+{
+  "chunk_id": "ssc_2021_infection_part_2",
+  "entities": [
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3,
+        "end": 7
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 22,
+        "end": 28
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 34,
+        "end": 40
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 44,
+        "end": 56
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 61,
+        "end": 70
+      }
+    },
+    {
+      "snomed_cui": "385645004",
+      "preferred_name": "Accepted",
+      "source_value": "accepted",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 127,
+        "end": 135
+      }
+    },
+    {
+      "snomed_cui": "71192002",
+      "preferred_name": "Peritoneal dialysis",
+      "source_value": "PD",
+      "confidence_score": 0.4764663071166874,
+      "character_boundaries": {
+        "start": 172,
+        "end": 174
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 191,
+        "end": 199
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "drug",
+      "confidence_score": 0.619150023675249,
+      "character_boundaries": {
+        "start": 200,
+        "end": 204
+      }
+    },
+    {
+      "snomed_cui": "118598001",
+      "preferred_name": "Property",
+      "source_value": "properties",
+      "confidence_score": 0.9101654894861776,
+      "character_boundaries": {
+        "start": 205,
+        "end": 215
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 220,
+        "end": 224
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 239,
+        "end": 245
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 251,
+        "end": 257
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 261,
+        "end": 273
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 278,
+        "end": 287
+      }
+    },
+    {
+      "snomed_cui": "418694008",
+      "preferred_name": "Rapidly",
+      "source_value": "rapidly",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 288,
+        "end": 295
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 323,
+        "end": 331
+      }
+    },
+    {
+      "snomed_cui": "36298004",
+      "preferred_name": "Anatomic",
+      "source_value": "anatomical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 332,
+        "end": 342
+      }
+    },
+    {
+      "snomed_cui": "887161000000102",
+      "preferred_name": "Diagnoses",
+      "source_value": "diagnosis",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 343,
+        "end": 352
+      }
+    },
+    {
+      "snomed_cui": "191415002",
+      "preferred_name": "Communicable disease",
+      "source_value": "infection",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 356,
+        "end": 365
+      }
+    },
+    {
+      "snomed_cui": "260753009",
+      "preferred_name": "Source",
+      "source_value": "source",
+      "confidence_score": 0.5970761468929487,
+      "character_boundaries": {
+        "start": 389,
+        "end": 395
+      }
+    },
+    {
+      "snomed_cui": "246106000",
+      "preferred_name": "Control",
+      "source_value": "control",
+      "confidence_score": 0.5579334484093845,
+      "character_boundaries": {
+        "start": 396,
+        "end": 403
+      }
+    },
+    {
+      "snomed_cui": "260753009",
+      "preferred_name": "Source",
+      "source_value": "source",
+      "confidence_score": 0.505935458917862,
+      "character_boundaries": {
+        "start": 434,
+        "end": 440
+      }
+    },
+    {
+      "snomed_cui": "246106000",
+      "preferred_name": "Control",
+      "source_value": "control",
+      "confidence_score": 0.5371296350276881,
+      "character_boundaries": {
+        "start": 441,
+        "end": 448
+      }
+    },
+    {
+      "snomed_cui": "840091000000103",
+      "preferred_name": "Intervention",
+      "source_value": "intervention",
+      "confidence_score": 0.9547762378897404,
+      "character_boundaries": {
+        "start": 449,
+        "end": 461
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 514,
+        "end": 518
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 533,
+        "end": 539
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 545,
+        "end": 551
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 555,
+        "end": 567
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 572,
+        "end": 581
+      }
+    },
+    {
+      "snomed_cui": "118292001",
+      "preferred_name": "Removal",
+      "source_value": "removal",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 589,
+        "end": 596
+      }
+    },
+    {
+      "snomed_cui": "261101003",
+      "preferred_name": "Intravascular",
+      "source_value": "intravascular",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 600,
+        "end": 613
+      }
+    },
+    {
+      "snomed_cui": "260507000",
+      "preferred_name": "Access",
+      "source_value": "access",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 614,
+        "end": 620
+      }
+    },
+    {
+      "snomed_cui": "303607000",
+      "preferred_name": "Biomedical equipment",
+      "source_value": "devices",
+      "confidence_score": 0.5324614704905108,
+      "character_boundaries": {
+        "start": 621,
+        "end": 628
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 640,
+        "end": 648
+      }
+    },
+    {
+      "snomed_cui": "260753009",
+      "preferred_name": "Source",
+      "source_value": "source",
+      "confidence_score": 0.6046040975504109,
+      "character_boundaries": {
+        "start": 649,
+        "end": 655
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 659,
+        "end": 665
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 669,
+        "end": 681
+      }
+    },
+    {
+      "snomed_cui": "27550009",
+      "preferred_name": "Disorder of blood vessel",
+      "source_value": "vascular",
+      "confidence_score": 0.7864039966995766,
+      "character_boundaries": {
+        "start": 694,
+        "end": 702
+      }
+    },
+    {
+      "snomed_cui": "260507000",
+      "preferred_name": "Access",
+      "source_value": "access",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 703,
+        "end": 709
+      }
+    },
+    {
+      "snomed_cui": "263748003",
+      "preferred_name": "Established",
+      "source_value": "established",
+      "confidence_score": 0.8289678633964305,
+      "character_boundaries": {
+        "start": 719,
+        "end": 730
+      }
+    },
+    {
+      "snomed_cui": "260362008",
+      "preferred_name": "Very low",
+      "source_value": "VERY LOW",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 735,
+        "end": 743
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 749,
+        "end": 755
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 761,
+        "end": 767
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 771,
+        "end": 783
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "daily",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 796,
+        "end": 801
+      }
+    },
+    {
+      "snomed_cui": "310243009",
+      "preferred_name": "Nutritional assessment",
+      "source_value": "assessment",
+      "confidence_score": 0.768049869108934,
+      "character_boundaries": {
+        "start": 802,
+        "end": 812
+      }
+    },
+    {
+      "snomed_cui": "261010008",
+      "preferred_name": "Fixed",
+      "source_value": "fixed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 860,
+        "end": 865
+      }
+    },
+    {
+      "snomed_cui": "261773006",
+      "preferred_name": "Duration of therapy",
+      "source_value": "durations of therapy",
+      "confidence_score": 0.7942741810041974,
+      "character_boundaries": {
+        "start": 866,
+        "end": 886
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "daily",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 895,
+        "end": 900
+      }
+    },
+    {
+      "snomed_cui": "260362008",
+      "preferred_name": "Very low",
+      "source_value": "VERY LOW",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 936,
+        "end": 944
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 950,
+        "end": 956
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "initial",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 965,
+        "end": 972
+      }
+    },
+    {
+      "snomed_cui": "887161000000102",
+      "preferred_name": "Diagnoses",
+      "source_value": "diagnosis",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 973,
+        "end": 982
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 986,
+        "end": 992
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 996,
+        "end": 1008
+      }
+    },
+    {
+      "snomed_cui": "88323005",
+      "preferred_name": "Adequate",
+      "source_value": "adequate",
+      "confidence_score": 0.7820172061414004,
+      "character_boundaries": {
+        "start": 1013,
+        "end": 1021
+      }
+    },
+    {
+      "snomed_cui": "260753009",
+      "preferred_name": "Source",
+      "source_value": "source",
+      "confidence_score": 0.6463237149343234,
+      "character_boundaries": {
+        "start": 1022,
+        "end": 1028
+      }
+    },
+    {
+      "snomed_cui": "246106000",
+      "preferred_name": "Control",
+      "source_value": "control",
+      "confidence_score": 0.6357780746196519,
+      "character_boundaries": {
+        "start": 1029,
+        "end": 1036
+      }
+    },
+    {
+      "snomed_cui": "272116003",
+      "preferred_name": "Durations",
+      "source_value": "duration",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1075,
+        "end": 1083
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1101,
+        "end": 1108
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1122,
+        "end": 1128
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "initial",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1137,
+        "end": 1144
+      }
+    },
+    {
+      "snomed_cui": "887161000000102",
+      "preferred_name": "Diagnoses",
+      "source_value": "diagnosis",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1145,
+        "end": 1154
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1158,
+        "end": 1164
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1168,
+        "end": 1180
+      }
+    },
+    {
+      "snomed_cui": "88323005",
+      "preferred_name": "Adequate",
+      "source_value": "adequate",
+      "confidence_score": 0.6946264386370625,
+      "character_boundaries": {
+        "start": 1185,
+        "end": 1193
+      }
+    },
+    {
+      "snomed_cui": "260753009",
+      "preferred_name": "Source",
+      "source_value": "source",
+      "confidence_score": 0.5515699225297384,
+      "character_boundaries": {
+        "start": 1194,
+        "end": 1200
+      }
+    },
+    {
+      "snomed_cui": "246106000",
+      "preferred_name": "Control",
+      "source_value": "control",
+      "confidence_score": 0.5715425959102594,
+      "character_boundaries": {
+        "start": 1201,
+        "end": 1208
+      }
+    },
+    {
+      "snomed_cui": "261773006",
+      "preferred_name": "Duration of therapy",
+      "source_value": "duration of therapy",
+      "confidence_score": 0.834853259826472,
+      "character_boundaries": {
+        "start": 1223,
+        "end": 1242
+      }
+    },
+    {
+      "snomed_cui": "418752001",
+      "preferred_name": "Procalcitonin",
+      "source_value": "procalcitonin",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1272,
+        "end": 1285
+      }
+    },
+    {
+      "snomed_cui": "386053000",
+      "preferred_name": "Evaluation procedure",
+      "source_value": "clinical evaluation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1290,
+        "end": 1309
+      }
+    },
+    {
+      "snomed_cui": "410546004",
+      "preferred_name": "Discontinued",
+      "source_value": "discontinue",
+      "confidence_score": 0.46936770530815547,
+      "character_boundaries": {
+        "start": 1328,
+        "end": 1339
+      }
+    },
+    {
+      "snomed_cui": "386053000",
+      "preferred_name": "Evaluation procedure",
+      "source_value": "clinical evaluation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1360,
+        "end": 1379
+      }
+    }
+  ]
+}

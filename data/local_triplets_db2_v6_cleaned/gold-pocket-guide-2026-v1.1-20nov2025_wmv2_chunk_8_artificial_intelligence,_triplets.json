@@ -1,0 +1,526 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "B-lines on lung ultrasound",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "B-lines on lung ultrasound indicate acute heart failure syndrome",
+          "citation": "A systematic review showed high specificity for B-lines.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1656a4de-9df7-487a-9573-a5e754808b43",
+          "rationale": "Recent Emergency Admissions are part of the COPD Follow-Up Checklist evaluating Baseline Symptoms.",
+          "citation": "COPD Follow-Up Checklist (Appendix 2)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4f443793-dc58-4c93-b251-b24396c736ad",
+      "@type": "Finding",
+      "name": "Sputum production",
+      "snomed": "45710003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1656a4de-9df7-487a-9573-a5e754808b43",
+          "rationale": "Sputum production is part of the COPD Follow-Up Checklist evaluating Baseline Symptoms.",
+          "citation": "COPD Follow-Up Checklist (Appendix 2)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:799c0223-94bd-4cd3-ac50-bd4ecabc11fd",
+      "@type": "Finding",
+      "name": "CAAT score",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1656a4de-9df7-487a-9573-a5e754808b43",
+          "rationale": "CAAT score is part of the COPD Follow-Up Checklist evaluating Baseline Symptoms.",
+          "citation": "COPD Follow-Up Checklist (Appendix 2)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4e3f2c1b-8a76-5d09-fedc-ba9876543210",
+      "@type": "Finding",
+      "name": "Airborne Virus symptoms",
+      "snomed": "34014006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1656a4de-9df7-487a-9573-a5e754808b43",
+          "rationale": "Airborne Virus symptoms are part of the COPD Follow-Up Checklist evaluating Baseline Symptoms.",
+          "citation": "COPD Follow-Up Checklist (Appendix 2)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1e0f9a6b-7c85-4321-0fed-cbafedcb9876",
+      "@type": "Finding",
+      "name": "Recent Hospital Admissions",
+      "snomed": "32485007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1656a4de-9df7-487a-9573-a5e754808b43",
+          "rationale": "Recent Hospital Admissions are part of the COPD Follow-Up Checklist evaluating Baseline Symptoms.",
+          "citation": "COPD Follow-Up Checklist (Appendix 2)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0f9a6b7c-8543-210f-edcb-afedcb987654",
+      "@type": "Finding",
+      "name": "Self-Management Behaviors",
+      "snomed": "844005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1656a4de-9df7-487a-9573-a5e754808b43",
+          "rationale": "Self-Management Behaviors are part of the COPD Follow-Up Checklist evaluating Baseline Symptoms.",
+          "citation": "COPD Follow-Up Checklist (Appendix 2)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f9a6b7c8-5432-10fe-dcba-fedcba987654",
+      "@type": "Finding",
+      "name": "Main Clinical Issues",
+      "snomed": "63161005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1656a4de-9df7-487a-9573-a5e754808b43",
+          "rationale": "Main Clinical Issues are part of the COPD Follow-Up Checklist evaluating Baseline Symptoms.",
+          "citation": "COPD Follow-Up Checklist (Appendix 2)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c3d4e5f6-7890-1234-5678-90abcdef1234",
+      "@type": "Medication",
+      "name": "LABA+LAMA",
+      "snomed": "424001003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:d4e5f678-9012-3456-7890-abcdef123456",
+          "rationale": "Regular LABA+LAMA is preferred for symptom and exacerbation reduction in COPD (Evidence A).",
+          "citation": "Appendix Maintenance Medication Summary (Figures A3.1 - A3.4)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+      "@type": "Medication",
+      "name": "Inhaled Corticosteroids (ICS)",
+      "snomed": "79440004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:f7890123-4567-890a-bcde-f1234567890a",
+          "rationale": "ICS added to LABA+LAMA in patients with frequent exacerbations and/or blood eosinophils >= 300 cells/uL (Evidence A).",
+          "citation": "Appendix Maintenance Medication Summary (Figures A3.1 - A3.4)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:75ca8219-fa81-4f98-afb3-aa3a0494d8f8",
+      "@type": "Medication",
+      "name": "PDE4 Inhibitors (Roflumilast)",
+      "snomed": "714682003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:0eefa9e9-8d82-4011-beff-0413e9671d74",
+          "rationale": "Roflumilast reduces exacerbations in chronic bronchitis with FEV1 < 50% (Evidence A).",
+          "citation": "Appendix Maintenance Medication Summary (Figures A3.1 - A3.4)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:76bd96cc-148f-4843-8093-6a1f3ae9abb0",
+      "@type": "Medication",
+      "name": "Macrolides (Azithromycin)",
+      "snomed": "428787002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:5109f04c-87d9-4ceb-af46-c8a5d3e0f1e7",
+          "rationale": "Long-term azithromycin reduces exacerbations in former smokers (Evidence A/B).",
+          "citation": "Appendix Maintenance Medication Summary (Figures A3.1 - A3.4)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:bd09a36f-2247-49b4-83f6-ff42edb9534c",
+      "@type": "Medication",
+      "name": "Alpha-1 Antitrypsin augmentation",
+      "snomed": "15454001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:456809c2-aa8a-47b9-a696-aa68bda164d2",
+          "rationale": "For emphysema progression (Evidence B).",
+          "citation": "Appendix Maintenance Medication Summary (Figures A3.1 - A3.4)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0eefa9e9-8d82-4011-beff-0413e9671d74",
+      "@type": "Medication",
+      "name": "Low-dose opioids",
+      "snomed": "404642006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:c9b70d98-a340-428e-8a5d-e4a5d07e25cd",
+          "rationale": "For severe refractory dyspnea (Evidence B).",
+          "citation": "Appendix Maintenance Medication Summary (Figures A3.1 - A3.4)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7184bb23-1b0c-41d8-8b80-0668d6203c4c",
+      "@type": "Finding",
+      "name": "mMRC score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1656a4de-9df7-487a-9573-a5e754808b43",
+          "rationale": "mMRC score is part of the COPD Follow-Up Checklist evaluating Baseline Symptoms.",
+          "citation": "COPD Follow-Up Checklist (Appendix 2)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:89f29d86-2941-4e72-b971-f9705b832110",
+      "@type": "Condition",
+      "name": "COPD Baseline Symptoms Evaluation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3c2d1e0f-7a6b-9854-3210-fedcba987654",
+      "@type": "Finding",
+      "name": "Written Action Plan status",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1656a4de-9df7-487a-9573-a5e754808b43",
+          "rationale": "Written Action Plan status is part of the COPD Follow-Up Checklist evaluating Baseline Symptoms.",
+          "citation": "COPD Follow-Up Checklist (Appendix 2)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-3456-7890-abcdef123456",
+      "@type": "Medication",
+      "name": "SABA/SAMA",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Inhaled SABAs/SAMAs are used for quick relief in COPD.",
+          "citation": "Appendix Maintenance Medication Summary (Figures A3.1 - A3.4)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Condition",
+      "name": "COPD Symptom Relief",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d4e5f678-9012-3456-7890-abcdef123456",
+      "@type": "Condition",
+      "name": "COPD Symptom and Exacerbation Reduction",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f7890123-4567-890a-bcde-f1234567890a",
+      "@type": "Condition",
+      "name": "Frequent COPD Exacerbations and/or Eosinophilia",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d85d6e88-8ea4-4f04-b255-785d934a1b5d",
+      "@type": "Condition",
+      "name": "Chronic Bronchitis with FEV1 < 50%",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7836f08b-b937-45da-8768-190e0a82b70f",
+      "@type": "Medication",
+      "name": "PDE3/4 Inhibitor (Ensifentrine)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:dc74d62f-2925-4878-8204-683e61aad6ce",
+          "rationale": "Ensifentrine improves lung function and symptoms (Evidence A).",
+          "citation": "Appendix Maintenance Medication Summary (Figures A3.1 - A3.4)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:dc74d62f-2925-4878-8204-683e61aad6ce",
+      "@type": "Condition",
+      "name": "COPD Symptoms and Lung Function Improvement",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5109f04c-87d9-4ceb-af46-c8a5d3e0f1e7",
+      "@type": "Condition",
+      "name": "Former Smokers with COPD Exacerbations",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3f4d4698-2096-4c43-96f9-bcef6a7c772b",
+      "@type": "Medication",
+      "name": "Biologics (Dupilumab, Mepolizumab)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:035614a4-d492-4246-b33f-00f469f7e984",
+          "rationale": "Dupilumab and Mepolizumab reduce exacerbations in severe eosinophilic COPD (Evidence A).",
+          "citation": "Appendix Maintenance Medication Summary (Figures A3.1 - A3.4)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:035614a4-d492-4246-b33f-00f469f7e984",
+      "@type": "Condition",
+      "name": "Severe Eosinophilic COPD",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1656a4de-9df7-487a-9573-a5e754808b43",
+      "@type": "Condition",
+      "name": "COPD Follow-Up Checklist Evaluation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:456809c2-aa8a-47b9-a696-aa68bda164d2",
+      "@type": "Condition",
+      "name": "Emphysema Progression",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c9b70d98-a340-428e-8a5d-e4a5d07e25cd",
+      "@type": "Condition",
+      "name": "Severe Refractory Dyspnea",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_8_artificial_intelligence,.json",
+        "section_title": "Artificial Intelligence, Follow-up Checklist, and Appendix Maintenance Tables"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.018466+00:00",
+    "nodes_before": 31,
+    "nodes_after": 30,
+    "rules_before": 19,
+    "rules_after": 19
+  }
+}

@@ -1,0 +1,592 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Vital Signs",
+      "snomed": "61746007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Abnormal vital signs can indicate patient instability and necessitate reassessment to a higher acuity level.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:742e356c-22c1-496a-ba27-f882cd5e2a90",
+      "@type": "Condition",
+      "name": "Increased Respiratory Rate",
+      "snomed": "271823003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Increased respiratory rate is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4623e589-f8fb-4d68-8fd3-d53fba92233f",
+      "@type": "Condition",
+      "name": "Increased Heart Rate",
+      "snomed": "364075005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Increased heart rate is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c8f533f3-ceef-4b92-a200-a60f9447725d",
+      "@type": "Condition",
+      "name": "Low Oxygen Saturation (< 92%)",
+      "snomed": "431314004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Low oxygen saturation is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Acuity",
+      "name": "ESI Level 2 or Higher",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d274f2c7-0891-4286-944e-8e75f5bc591a",
+      "@type": "Finding",
+      "name": "Age < 1 month, HR > 190 bpm",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate for neonates is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0bb80904-9c46-4d0c-a442-be41a1f1a4a9",
+      "@type": "Finding",
+      "name": "Age 1–12 months, HR > 180 bpm",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate for infants is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ff5a9082-a9a9-4f15-b319-5b1000a63765",
+      "@type": "Finding",
+      "name": "Age 1–3 years, HR > 140 bpm",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate for toddlers is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ab6ab353-4f29-4026-847c-bdf0c6fce4d9",
+      "@type": "Finding",
+      "name": "Age 3–5 years, HR > 120 bpm",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate for preschoolers is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d26cc223-7f44-4453-9f78-c2a0c2d70020",
+      "@type": "Finding",
+      "name": "Age 5–12 years, HR > 120 bpm",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate for school-aged children is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:14351573-79c5-41e5-8cde-bcab7f5cf58c",
+      "@type": "Finding",
+      "name": "Age 12–18 years, HR > 100 bpm",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate for adolescents is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4f465e40-4884-4ab7-882b-d48061ab11ab",
+      "@type": "Finding",
+      "name": "Age > 18 years, HR > 100 bpm",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate for adults is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a2b3c4d5-f7e8-9012-3456-7890abcdef12",
+      "@type": "Finding",
+      "name": "Age < 1 month, RR > 60 breaths/min",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High respiratory rate for neonates is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6fbb3f61-602b-4d0f-a93d-aeb94821f843",
+      "@type": "Finding",
+      "name": "Age 1–12 months, RR > 55 breaths/min",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High respiratory rate for infants is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:83149dc9-ac31-4d8d-9960-86aa3925bed2",
+      "@type": "Finding",
+      "name": "Age 1–3 years, RR > 40 breaths/min",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High respiratory rate for toddlers is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3cd10f73-da2c-4ccc-94c8-b95208e261dc",
+      "@type": "Finding",
+      "name": "Age 3–5 years, RR > 35 breaths/min",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High respiratory rate for preschoolers is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9fe1b12d-dff3-437b-af02-2d251219fbd3",
+      "@type": "Finding",
+      "name": "Age 5–12 years, RR > 30 breaths/min",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High respiratory rate for school-aged children is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:792a2ec6-a8a5-436b-a8e6-14317f9ac539",
+      "@type": "Finding",
+      "name": "Age 12–18 years, RR > 20 breaths/min",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High respiratory rate for adolescents is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:be26a559-0e47-42b5-a786-4eff7ca79fe2",
+      "@type": "Finding",
+      "name": "Age > 18 years, RR > 20 breaths/min",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High respiratory rate for adults is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ab953d1c-0fee-4189-bc70-b339303281bd",
+      "@type": "Finding",
+      "name": "SpO2 < 92%",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Low oxygen saturation is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a6e5842f-a642-463f-8402-ea374608934b",
+      "@type": "Finding",
+      "name": "Temperature > 38°C (100.4°F) in infant < 90 days old",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Fever in young infants is a red flag for serious illness.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6f68723a-cad8-4fc1-8293-4d804fd49881",
+      "@type": "Finding",
+      "name": "Temperature < 36°C (96.8°F) in any age child",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Hypothermia in children is concerning for sepsis.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:10feb5e6-a797-4ffe-8a9e-871944547b41",
+      "@type": "Finding",
+      "name": "Temperature > 38.5 °C (101.3°F) or < 36°C (96.8°F) in child > 3 months old",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Abnormal temperature in older children is a red flag.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4318f1cf-f465-44f0-8f99-df2ce9202b8a",
+      "@type": "Finding",
+      "name": "Heart Rate > 190 bpm in infant < 1 month",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Very high heart rate in neonates is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2fb9c5b0-781c-4ac6-9a43-c20c2d9e8702",
+      "@type": "Finding",
+      "name": "Heart Rate > 180 bpm in infant 1–12 months",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Very high heart rate in infants is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:aa78b967-2528-42b8-b1a1-8f185973c6d5",
+      "@type": "Finding",
+      "name": "Heart Rate > 140 bpm in toddler 1–3 years",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate in toddlers is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:59195729-10ee-4c5d-856f-e94f725e0425",
+      "@type": "Finding",
+      "name": "Heart Rate > 120 bpm in preschooler 3–5 years",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate in preschoolers is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:53e6b094-3ace-451d-ab20-d2d8807225f9",
+      "@type": "Finding",
+      "name": "Heart Rate > 120 bpm in school age child 5–12 years",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate in school age children is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0fc7734d-9cdc-4e4d-8265-d7f8571372f7",
+      "@type": "Finding",
+      "name": "Heart Rate > 100 bpm in adolescent 12–18 years",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_6_decision_point_d_chapter_6_–_decision_poi.json",
+        "section_title": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High heart rate in adolescents is a sign of potential instability.",
+          "citation": "CHAPTER 6 – Decision Point D: High-Risk Vital Signs?",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e52e3e1e-a86b-43aa-b95f-5870c531d235",
+      "@type": "Finding",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:38.593467+00:00",
+    "nodes_before": 30,
+    "nodes_after": 30,
+    "rules_before": 28,
+    "rules_after": 28
+  }
+}

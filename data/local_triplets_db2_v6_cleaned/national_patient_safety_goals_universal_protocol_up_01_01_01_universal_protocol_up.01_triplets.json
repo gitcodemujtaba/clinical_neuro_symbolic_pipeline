@@ -1,0 +1,108 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Preprocedure verification process",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_01_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.01.01 - Preprocedure Verification"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "The Universal Protocol requires a preprocedure verification process to ensure the correct procedure, patient, and site.",
+          "citation": "UP.01.01.01 - Conduct a preprocedure verification process.",
+          "citation_paraphrase": "UP.01.01.01 - Conduct a preprocedure verification process.",
+          "citation_verbatim_excerpt": "### Introduction to the Universal Protocol for Preventing Wrong Site, Wrong Procedure, and Wrong Person Surgery™ The Universal Protocol applies to all surgical and nonsurgical invasive procedures.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Intervention",
+      "name": "Implement a preprocedure process to verify the correct procedure, for the correct patient, at the correct site",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_01_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.01.01 - Preprocedure Verification"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:61628a93-d26c-46e6-9349-770b305c6ab5",
+          "rationale": "The preprocedure verification process involves checking relevant documents and information.",
+          "citation": "UP.01.01.01 EP 1 - Implement a preprocedure process to verify the correct procedure, for the correct patient, at the correct site.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+          "rationale": "The preprocedure verification process involves verifying the availability of required items using a standardized list.",
+          "citation": "UP.01.01.01 EP 2 - Identify the items that must be available for the procedure and use a standardized list to verify their availability.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:61628a93-d26c-46e6-9349-770b305c6ab5",
+      "@type": "Intervention",
+      "name": "Verify relevant documents and information are available prior to the start of the procedure, correctly identified, labeled, and matched to patient identifiers.",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_01_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.01.01 - Preprocedure Verification"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Intervention",
+      "name": "Verify availability of required items using a standardized list.",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_01_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.01.01 - Preprocedure Verification"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f197183e-0c9f-4542-984b-df6eb3ae665f",
+          "rationale": "The standardized list should include items like history and physical, consent form, nursing assessment, preanesthesia assessment, labeled diagnostic results (radiology images/scans, pathology/biopsy reports), required blood products, implants, devices, and special equipment.",
+          "citation": "UP.01.01.01 EP 2 - Identify the items that must be available for the procedure and use a standardized list to verify their availability. At a minimum, these items include...",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f197183e-0c9f-4542-984b-df6eb3ae665f",
+      "@type": "Intervention",
+      "name": "Verify availability of standardized list items (e.g., history and physical, consent form, nursing assessment, preanesthesia assessment, labeled diagnostic results, required blood products, implants, devices, special equipment).",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_01_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.01.01 - Preprocedure Verification"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:40.291558+00:00",
+    "nodes_before": 5,
+    "nodes_after": 5,
+    "rules_before": 4,
+    "rules_after": 4
+  }
+}

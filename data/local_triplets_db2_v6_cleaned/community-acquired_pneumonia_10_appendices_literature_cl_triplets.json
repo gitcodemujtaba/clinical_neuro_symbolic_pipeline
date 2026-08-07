@@ -1,0 +1,575 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:2b3c4d5e-f67a-4890-b123-456789abcdef",
+      "@type": "Finding",
+      "name": "Number Needed to Treat (NNT)",
+      "snomed": "56136002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:3c4d5e6f-a7b8-4012-3abc-def456789012",
+          "rationale": "Number needed to treat (NNT): number of patients who need to be treated to achieve 1 additional good outcome; NNT=1/absolute risk reduction, where absolute risk reduction is the risk difference between 2 event rates (ie, experimental and control groups).",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4f5e6d7c-b9a0-4123-efab-cdef09876543",
+      "@type": "Finding",
+      "name": "Absolute Risk Reduction (ARR)",
+      "snomed": "260400001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:5e6d7c8b-a0f9-4234-fabc-def098765432",
+          "rationale": "Absolute risk reduction is the risk difference between 2 event rates (ie, experimental and control groups).",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a3b4c5d6-e7f8-9012-def0-1234567890ab",
+      "@type": "Finding",
+      "name": "Articles identified through database searching",
+      "snomed": "722111000000107",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b4c5d6e7-f8a9-0123-def0-1234567890ab",
+      "@type": "Finding",
+      "name": "Articles screened",
+      "snomed": "722021000000100",
+      "icd10": "N/A",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+      "@type": "Finding",
+      "name": "Likelihood Ratio Positive (+)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f9e0d1c2-b3a4-4567-89ab-cdef01234567",
+          "rationale": "LR (+): 1.0, Does not change pretest probability.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:3e5d59bb-49ac-460d-aea3-a0d08ecb9b17",
+          "rationale": "LR (+): 5, Minimally changes pretest probability.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:98b7a6f5-c4d3-4e21-0fed-cba987654321",
+          "rationale": "LR (+): 10, May be diagnostic if the result is concordant with pretest probability.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:c5d4e3f2-a1b0-4987-6543-21fedcba9876",
+          "rationale": "LR (+): 20, Usually diagnostic.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b6a5c4d3-e2f1-4876-5432-1abcde98f765",
+          "rationale": "LR (+): 100, Almost always diagnostic even in the setting of low or high pretest probability.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f9e0d1c2-b3a4-4567-89ab-cdef01234567",
+      "@type": "Acuity",
+      "name": "Does not change pretest probability",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3e5d59bb-49ac-460d-aea3-a0d08ecb9b17",
+      "@type": "Acuity",
+      "name": "Minimally changes pretest probability",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:98b7a6f5-c4d3-4e21-0fed-cba987654321",
+      "@type": "Acuity",
+      "name": "May be diagnostic if the result is concordant with pretest probability",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c5d4e3f2-a1b0-4987-6543-21fedcba9876",
+      "@type": "Acuity",
+      "name": "Usually diagnostic",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b6a5c4d3-e2f1-4876-5432-1abcde98f765",
+      "@type": "Acuity",
+      "name": "Almost always diagnostic even in the setting of low or high pretest probability",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d4e5f6a7-b8c9-4012-3abc-def456789012",
+      "@type": "Finding",
+      "name": "Likelihood Ratio Negative (-)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:db2e0cc5-6068-4cf8-9298-9ead8870265e",
+          "rationale": "LR (-): 1.0, Does not change pretest probability.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "LR (-): 0.5, Minimally changes pretest probability.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e71ef7c9-0891-4abe-b649-423206ab83ae",
+          "rationale": "LR (-): 0.1, May be diagnostic if the result is concordant with pretest probability.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+          "rationale": "LR (-): 0.05, Usually diagnostic.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-1a2b-3c4d5e6f7890",
+          "rationale": "LR (-): 0.01, Almost always diagnostic even in the setting of low or high pretest probability.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix C.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:db2e0cc5-6068-4cf8-9298-9ead8870265e",
+      "@type": "Acuity",
+      "name": "Does not change pretest probability",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Acuity",
+      "name": "Minimally changes pretest probability",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e71ef7c9-0891-4abe-b649-423206ab83ae",
+      "@type": "Acuity",
+      "name": "May be diagnostic if the result is concordant with pretest probability",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Acuity",
+      "name": "Usually diagnostic",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1a2b-3c4d5e6f7890",
+      "@type": "Acuity",
+      "name": "Almost always diagnostic even in the setting of low or high pretest probability",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3c4d5e6f-a7b8-4012-3abc-def456789012",
+      "@type": "Finding",
+      "name": "Definition of Number Needed to Treat (NNT)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5e6d7c8b-a0f9-4234-fabc-def098765432",
+      "@type": "Finding",
+      "name": "Definition of Absolute Risk Reduction (ARR)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6d7e8f9a-c0b1-4324-bcde-f01234567890",
+      "@type": "Finding",
+      "name": "Study Design Classification 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:7e8f9a0b-c1d2-4567-89ab-cdef01234567",
+          "rationale": "Therapy: Randomized, controlled trial or meta-analysis of randomized trials; Diagnosis: Prospective cohort using a criterion standard or meta-analysis of prospective studies; Prognosis: Population prospective cohort or meta-analysis of prospective studies.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix A.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7e8f9a0b-c1d2-4567-89ab-cdef01234567",
+      "@type": "Finding",
+      "name": "Definition of Study Design Classification 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8f9a0b1c-d2e3-4678-9abc-def012345678",
+      "@type": "Finding",
+      "name": "Study Design Classification 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9a0b1c2d-e3f4-5678-9abc-def012345678",
+          "rationale": "Therapy: Nonrandomized trial; Diagnosis: Retrospective observational or meta-analysis of prospective studies; Prognosis: Retrospective cohort.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix A.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9a0b1c2d-e3f4-5678-9abc-def012345678",
+      "@type": "Finding",
+      "name": "Definition of Study Design Classification 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3f89d080-94db-4cd6-b72b-fda959dba625",
+      "@type": "Finding",
+      "name": "Study Design Classification 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e6c1d9d8-e78f-4361-8a66-2a8cf78dec9e",
+          "rationale": "Therapy: Case series; Diagnosis: Case series; Prognosis: Case series.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix A.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e6c1d9d8-e78f-4361-8a66-2a8cf78dec9e",
+      "@type": "Finding",
+      "name": "Definition of Study Design Classification 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c2d3e4f5-a6b7-8901-bcde-f01234567890",
+      "@type": "Finding",
+      "name": "Evidence Downgrading Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:d3e4f5a6-b7c8-9012-bcde-f01234567890",
+          "rationale": "Downgrading: None, Design/Class 1: I, Design/Class 2: II, Design/Class 3: III.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix B.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d3e4f5a6-b7c8-9012-bcde-f01234567890",
+      "@type": "Finding",
+      "name": "Definition of Evidence Downgrading Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e4f5a6b7-c8d9-0123-defb-cde012345678",
+      "@type": "Finding",
+      "name": "Evidence Downgrading Level 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f5a6b7c8-d9e0-1234-defb-cde012345678",
+          "rationale": "Downgrading: 1 level, Design/Class 1: II, Design/Class 2: III, Design/Class 3: X.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix B.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f5a6b7c8-d9e0-1234-defb-cde012345678",
+      "@type": "Finding",
+      "name": "Definition of Evidence Downgrading Level 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f6a7b8c9-e0d1-2345-bcde-f01234567890",
+      "@type": "Finding",
+      "name": "Evidence Downgrading Level 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a7b8c9d0-e1f2-3456-bcde-f01234567890",
+          "rationale": "Downgrading: 2 levels, Design/Class 1: III, Design/Class 2: X, Design/Class 3: X.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix B.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-3456-bcde-f01234567890",
+      "@type": "Finding",
+      "name": "Definition of Evidence Downgrading Level 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b8c9d0e1-f2a3-4567-bcde-f01234567890",
+      "@type": "Finding",
+      "name": "Evidence Downgrading Fatally Flawed",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:c9d0e1f2-a3b4-5678-bcde-f01234567890",
+          "rationale": "Downgrading: Fatally flawed, Design/Class 1: X, Design/Class 2: X, Design/Class 3: X.",
+          "citation": "community-acquired_pneumonia_10_appendices_literature_cl.json Appendix B.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c9d0e1f2-a3b4-5678-bcde-f01234567890",
+      "@type": "Finding",
+      "name": "Definition of Evidence Downgrading Fatally Flawed",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d0e1f2a3-b4c5-6789-def0-1234567890ab",
+      "@type": "Finding",
+      "name": "PRISMA Flow Diagram - Critical Question 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e1f2a3b4-c5d6-7890-def0-1234567890ab",
+      "@type": "Finding",
+      "name": "PRISMA Flow Diagram - Critical Question 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f2a3b4c5-d6e7-8901-def0-1234567890ab",
+      "@type": "Finding",
+      "name": "PRISMA Flow Diagram - Critical Question 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_10_appendices_literature_cl.json",
+        "section_title": "Appendices: Literature Classification, Evidence Downgrading, Likelihood Ratios, and PRISMA Flow Diagrams"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:35.369985+00:00",
+    "nodes_before": 35,
+    "nodes_after": 35,
+    "rules_before": 19,
+    "rules_after": 19
+  }
+}

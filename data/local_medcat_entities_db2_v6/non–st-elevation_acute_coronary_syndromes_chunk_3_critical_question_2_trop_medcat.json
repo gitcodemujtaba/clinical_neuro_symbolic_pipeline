@@ -1,0 +1,1295 @@
+{
+  "chunk_id": "chunk_3",
+  "entities": [
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 24,
+        "end": 29
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 30,
+        "end": 38
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 44,
+        "end": 53
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 54,
+        "end": 59
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 65,
+        "end": 68
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 74,
+        "end": 82
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 83,
+        "end": 90
+      }
+    },
+    {
+      "snomed_cui": "286551008",
+      "preferred_name": "per hour",
+      "source_value": "hours",
+      "confidence_score": 0.8720450633526271,
+      "character_boundaries": {
+        "start": 100,
+        "end": 105
+      }
+    },
+    {
+      "snomed_cui": "860914002",
+      "preferred_name": "Erectile dysfunction",
+      "source_value": "ED",
+      "confidence_score": 0.37971838956516835,
+      "character_boundaries": {
+        "start": 109,
+        "end": 111
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 112,
+        "end": 124
+      }
+    },
+    {
+      "snomed_cui": "259032004",
+      "preferred_name": "per day",
+      "source_value": "day",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 161,
+        "end": 164
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 179,
+        "end": 194
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 201,
+        "end": 210
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 220,
+        "end": 235
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 242,
+        "end": 251
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 261,
+        "end": 276
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 285,
+        "end": 290
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 291,
+        "end": 299
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 305,
+        "end": 314
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 315,
+        "end": 320
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 326,
+        "end": 329
+      }
+    },
+    {
+      "snomed_cui": "255333006",
+      "preferred_name": "Conventional",
+      "source_value": "conventional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 331,
+        "end": 343
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 344,
+        "end": 352
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 353,
+        "end": 360
+      }
+    },
+    {
+      "snomed_cui": "286551008",
+      "preferred_name": "per hour",
+      "source_value": "hours",
+      "confidence_score": 0.8902275199843979,
+      "character_boundaries": {
+        "start": 372,
+        "end": 377
+      }
+    },
+    {
+      "snomed_cui": "723505004",
+      "preferred_name": "Low risk",
+      "source_value": "low-risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 384,
+        "end": 392
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.9057760325374411,
+      "character_boundaries": {
+        "start": 393,
+        "end": 396
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 397,
+        "end": 405
+      }
+    },
+    {
+      "snomed_cui": "900000000000073002",
+      "preferred_name": "Sufficiently defined by necessary conditions definition status",
+      "source_value": "defined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 407,
+        "end": 414
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "HEART",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 418,
+        "end": 423
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 424,
+        "end": 429
+      }
+    },
+    {
+      "snomed_cui": "900000000000549004",
+      "preferred_name": "Acceptable",
+      "source_value": "acceptable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 453,
+        "end": 463
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 479,
+        "end": 482
+      }
+    },
+    {
+      "snomed_cui": "50607009",
+      "preferred_name": "Singular",
+      "source_value": "single",
+      "confidence_score": 0.36382030614324906,
+      "character_boundaries": {
+        "start": 495,
+        "end": 501
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 502,
+        "end": 506
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 507,
+        "end": 518
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 519,
+        "end": 527
+      }
+    },
+    {
+      "snomed_cui": "260385009",
+      "preferred_name": "Negative",
+      "source_value": "negative",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 589,
+        "end": 597
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 605,
+        "end": 609
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 610,
+        "end": 621
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 622,
+        "end": 630
+      }
+    },
+    {
+      "snomed_cui": "123030002",
+      "preferred_name": "2 hours",
+      "source_value": "2 hours",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 647,
+        "end": 654
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 699,
+        "end": 704
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 705,
+        "end": 713
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 719,
+        "end": 728
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 729,
+        "end": 734
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 740,
+        "end": 743
+      }
+    },
+    {
+      "snomed_cui": "723505004",
+      "preferred_name": "Low risk",
+      "source_value": "low risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 769,
+        "end": 777
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 807,
+        "end": 814
+      }
+    },
+    {
+      "snomed_cui": "29303009",
+      "preferred_name": "Electrocardiographic procedure",
+      "source_value": "ECG",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 829,
+        "end": 832
+      }
+    },
+    {
+      "snomed_cui": "260385009",
+      "preferred_name": "Negative",
+      "source_value": "negative",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 844,
+        "end": 852
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 860,
+        "end": 864
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 865,
+        "end": 876
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 877,
+        "end": 885
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 886,
+        "end": 893
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 910,
+        "end": 922
+      }
+    },
+    {
+      "snomed_cui": "123030002",
+      "preferred_name": "2 hours",
+      "source_value": "2 hours",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 930,
+        "end": 937
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 967,
+        "end": 970
+      }
+    },
+    {
+      "snomed_cui": "14355007",
+      "preferred_name": "Accelerated (contextual qualifier)",
+      "source_value": "accelerated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 992,
+        "end": 1003
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1004,
+        "end": 1013
+      }
+    },
+    {
+      "snomed_cui": "14355007",
+      "preferred_name": "Accelerated (contextual qualifier)",
+      "source_value": "Accelerated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1054,
+        "end": 1065
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1066,
+        "end": 1073
+      }
+    },
+    {
+      "snomed_cui": "258049002",
+      "preferred_name": "Protocols",
+      "source_value": "protocols",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1074,
+        "end": 1083
+      }
+    },
+    {
+      "snomed_cui": "260370003",
+      "preferred_name": "Decrease",
+      "source_value": "decrease",
+      "confidence_score": 0.858632368323553,
+      "character_boundaries": {
+        "start": 1084,
+        "end": 1092
+      }
+    },
+    {
+      "snomed_cui": "394656005",
+      "preferred_name": "Inpatient care",
+      "source_value": "hospitalizations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1133,
+        "end": 1149
+      }
+    },
+    {
+      "snomed_cui": "105223008",
+      "preferred_name": "Lead measurement",
+      "source_value": "lead",
+      "confidence_score": 0.538071668609795,
+      "character_boundaries": {
+        "start": 1187,
+        "end": 1191
+      }
+    },
+    {
+      "snomed_cui": "90213003",
+      "preferred_name": "False positive",
+      "source_value": "false-positive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1195,
+        "end": 1209
+      }
+    },
+    {
+      "snomed_cui": "715861000000104",
+      "preferred_name": "Test result",
+      "source_value": "test results",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1210,
+        "end": 1222
+      }
+    },
+    {
+      "snomed_cui": "103365002",
+      "preferred_name": "Downstream",
+      "source_value": "downstream",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1239,
+        "end": 1249
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1250,
+        "end": 1257
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1258,
+        "end": 1267
+      }
+    },
+    {
+      "snomed_cui": "103356009",
+      "preferred_name": "Uncommon",
+      "source_value": "rare",
+      "confidence_score": 0.61013505072042,
+      "character_boundaries": {
+        "start": 1269,
+        "end": 1273
+      }
+    },
+    {
+      "snomed_cui": "719881000000105",
+      "preferred_name": "Literature review",
+      "source_value": "Literature Review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1293,
+        "end": 1310
+      }
+    },
+    {
+      "snomed_cui": "255333006",
+      "preferred_name": "Conventional",
+      "source_value": "Conventional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1312,
+        "end": 1324
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "Troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1325,
+        "end": 1333
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "HEART",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1339,
+        "end": 1344
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "HEART",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1354,
+        "end": 1359
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.9740068186562142,
+      "character_boundaries": {
+        "start": 1360,
+        "end": 1365
+      }
+    },
+    {
+      "snomed_cui": "20401003",
+      "preferred_name": "With",
+      "source_value": "plus",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1370,
+        "end": 1374
+      }
+    },
+    {
+      "snomed_cui": "286551008",
+      "preferred_name": "per hour",
+      "source_value": "hour",
+      "confidence_score": 0.9748124955089124,
+      "character_boundaries": {
+        "start": 1384,
+        "end": 1388
+      }
+    },
+    {
+      "snomed_cui": "255333006",
+      "preferred_name": "Conventional",
+      "source_value": "conventional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1389,
+        "end": 1401
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1402,
+        "end": 1410
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1411,
+        "end": 1418
+      }
+    },
+    {
+      "snomed_cui": "259032004",
+      "preferred_name": "per day",
+      "source_value": "day",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1443,
+        "end": 1446
+      }
+    },
+    {
+      "snomed_cui": "61931000000101",
+      "preferred_name": "Eating and Drinking Ability Classification System",
+      "source_value": "EDACS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1463,
+        "end": 1468
+      }
+    },
+    {
+      "snomed_cui": "258049002",
+      "preferred_name": "Protocols",
+      "source_value": "protocol",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1469,
+        "end": 1477
+      }
+    },
+    {
+      "snomed_cui": "123030002",
+      "preferred_name": "2 hours",
+      "source_value": "2 hours",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1487,
+        "end": 1494
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1507,
+        "end": 1518
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "High",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1540,
+        "end": 1544
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "Sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1545,
+        "end": 1556
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "Troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1557,
+        "end": 1565
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "Aid",
+      "confidence_score": 0.780768912387749,
+      "character_boundaries": {
+        "start": 1580,
+        "end": 1583
+      }
+    },
+    {
+      "snomed_cui": "4452006",
+      "preferred_name": "Adaptation, function",
+      "source_value": "ADAPT",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1585,
+        "end": 1590
+      }
+    },
+    {
+      "snomed_cui": "1290002002",
+      "preferred_name": "Alberta Stroke Program Early CT score",
+      "source_value": "ASPECT",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1595,
+        "end": 1601
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trials",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1602,
+        "end": 1608
+      }
+    },
+    {
+      "snomed_cui": "123030002",
+      "preferred_name": "2 hours",
+      "source_value": "2-hour",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1629,
+        "end": 1635
+      }
+    },
+    {
+      "snomed_cui": "29303009",
+      "preferred_name": "Electrocardiographic procedure",
+      "source_value": "ECG",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1670,
+        "end": 1673
+      }
+    },
+    {
+      "snomed_cui": "260385009",
+      "preferred_name": "Negative",
+      "source_value": "negative",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1679,
+        "end": 1687
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1688,
+        "end": 1692
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1693,
+        "end": 1704
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1705,
+        "end": 1713
+      }
+    },
+    {
+      "snomed_cui": "123030002",
+      "preferred_name": "2 hours",
+      "source_value": "2 hours",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1723,
+        "end": 1730
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1744,
+        "end": 1755
+      }
+    },
+    {
+      "snomed_cui": "259032004",
+      "preferred_name": "per day",
+      "source_value": "day",
+      "confidence_score": 0.9884232023646718,
+      "character_boundaries": {
+        "start": 1763,
+        "end": 1766
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "Troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1780,
+        "end": 1788
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "High",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1791,
+        "end": 1795
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "Sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1796,
+        "end": 1807
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "Troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1808,
+        "end": 1816
+      }
+    },
+    {
+      "snomed_cui": "255333006",
+      "preferred_name": "Conventional",
+      "source_value": "conventional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1827,
+        "end": 1839
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1840,
+        "end": 1848
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "HEART",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1854,
+        "end": 1859
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.9474173904329273,
+      "character_boundaries": {
+        "start": 1860,
+        "end": 1865
+      }
+    },
+    {
+      "snomed_cui": "286551008",
+      "preferred_name": "per hour",
+      "source_value": "hour",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1910,
+        "end": 1914
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1915,
+        "end": 1923
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improves",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1924,
+        "end": 1932
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1950,
+        "end": 1954
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1955,
+        "end": 1966
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1967,
+        "end": 1975
+      }
+    },
+    {
+      "snomed_cui": "255469002",
+      "preferred_name": "Limited",
+      "source_value": "limit",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1986,
+        "end": 1991
+      }
+    },
+    {
+      "snomed_cui": "89780004",
+      "preferred_name": "Combined",
+      "source_value": "combined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2015,
+        "end": 2023
+      }
+    },
+    {
+      "snomed_cui": "29303009",
+      "preferred_name": "Electrocardiographic procedure",
+      "source_value": "ECG",
+      "confidence_score": 0.898833768255242,
+      "character_boundaries": {
+        "start": 2041,
+        "end": 2044
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2075,
+        "end": 2078
+      }
+    },
+    {
+      "snomed_cui": "22298006",
+      "preferred_name": "Myocardial infarction",
+      "source_value": "MI",
+      "confidence_score": 0.8310257715802374,
+      "character_boundaries": {
+        "start": 2084,
+        "end": 2086
+      }
+    },
+    {
+      "snomed_cui": "7147002",
+      "preferred_name": "New",
+      "source_value": "Novel",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2088,
+        "end": 2093
+      }
+    },
+    {
+      "snomed_cui": "286551008",
+      "preferred_name": "per hour",
+      "source_value": "hour",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2098,
+        "end": 2102
+      }
+    },
+    {
+      "snomed_cui": "123030002",
+      "preferred_name": "2 hours",
+      "source_value": "2-hour",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2109,
+        "end": 2115
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2133,
+        "end": 2137
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2138,
+        "end": 2149
+      }
+    },
+    {
+      "snomed_cui": "102680009",
+      "preferred_name": "Troponin",
+      "source_value": "troponin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2150,
+        "end": 2158
+      }
+    }
+  ]
+}

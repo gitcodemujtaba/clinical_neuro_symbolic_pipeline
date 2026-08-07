@@ -1,0 +1,321 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Patient condition changes before placed from waiting area",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:13afb65f-d265-4960-bd39-6737c93dbfcd",
+          "rationale": "Change in patient condition before placement from waiting area warrants increasing acuity.",
+          "citation": "If and when is it appropriate for a nurse to change an ESI level? The only change that should be made is to increase acuity, because now this may be the highest priority patient.",
+          "citation_paraphrase": "If and when is it appropriate for a nurse to change an ESI level? The only change that should be made is to increase acuity, because now this may be the highest priority patient.",
+          "citation_verbatim_excerpt": "iate for a nurse to change an ESI level?The purpose of ESI is to identify patients at risk of decompensation, assign acuity, and predict resources at the initial encounter.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Acuity",
+      "name": "Increased Acuity",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5e046697-5c91-45a8-a9e7-05d38c76c76a",
+      "@type": "Finding",
+      "name": "Patient seen by a physician or advanced practice provider",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6812be66-8ed6-4a5b-8baf-7e455b758083",
+          "rationale": "ESI level should not be changed after the patient has been seen by a physician or advanced practice provider.",
+          "citation": "Can the ESI level be changed after the patient has seen a physician or advanced practice provider? ... Therefore, it is not appropriate to change the ESI once a patient has been seen by a physician or advanced practice provider.",
+          "citation_paraphrase": "Can the ESI level be changed after the patient has seen a physician or advanced practice provider? ... Therefore, it is not appropriate to change the ESI once a patient has been seen by a physician or advanced practice provider.",
+          "citation_verbatim_excerpt": "vel?The purpose of ESI is to identify patients at risk of decompensation, assign acuity, and predict resources at the initial encounter. Therefore, once initial data are collected and a clinical judgment is",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6812be66-8ed6-4a5b-8baf-7e455b758083",
+      "@type": "Condition",
+      "name": "ESI level should not be changed",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Finding",
+      "name": "Patient is in extremis",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-12ab-34cd567890ef",
+          "rationale": "If the patient is in extremis, an ESI level may be assigned prior to assessment including a full set of vital signs.",
+          "citation": "Can a preliminary ESI level be assigned prior to assessment? ... Unless the patient is in extremis, an assessment including a full set of vital signs should be made before assigning an ESI level.",
+          "citation_paraphrase": "Can a preliminary ESI level be assigned prior to assessment? ... Unless the patient is in extremis, an assessment including a full set of vital signs should be made before assigning an ESI level.",
+          "citation_verbatim_excerpt": "priate for a nurse to change an ESI level?The purpose of ESI is to identify patients at risk of decompensation, assign acuity, and predict resources at the initial encounter.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-12ab-34cd567890ef",
+      "@type": "Acuity",
+      "name": "Preliminary ESI level assignment possible without full assessment",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2b3c4d5e-6f7a-8901-2345-67890abcdef1",
+      "@type": "Finding",
+      "name": "Patient is triaged by a nurse",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:becc8732-1cb2-4254-819d-37af23d0aadb",
+          "rationale": "Triage is generally a nursing function.",
+          "citation": "Can physicians and APPs triage and assign ESI levels? Triage is generally a nursing function.",
+          "citation_paraphrase": "Can physicians and APPs triage and assign ESI levels? Triage is generally a nursing function.",
+          "citation_verbatim_excerpt": "If and when is it appropriate for a nurse to change an ESI level?The purpose of ESI is to identify patients at risk of decompensation, assign acuity, and predict resources at the initial encounter.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:becc8732-1cb2-4254-819d-37af23d0aadb",
+      "@type": "Condition",
+      "name": "Triage is a nursing function",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:eeee60af-5332-487f-9a53-0a1b7959d3aa",
+      "@type": "Finding",
+      "name": "Physicians, physician assistants, and advanced practice RNs appropriately trained in ESI use can assess patients at initial encounter and assign ESI level.",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:ababfe05-d529-4296-aa65-9a3bf1d54779",
+          "rationale": "Certain providers can assign ESI levels.",
+          "citation": "Can physicians and APPs triage and assign ESI levels? Physicians, physician assistants, and advanced practice RNs, if they are appropriately trained in the use of ESI, can assess patients at the initial encounter and assign an ESI level.",
+          "citation_paraphrase": "Can physicians and APPs triage and assign ESI levels? Physicians, physician assistants, and advanced practice RNs, if they are appropriately trained in the use of ESI, can assess patients at the initial encounter and assign an ESI level.",
+          "citation_verbatim_excerpt": "s it appropriate for a nurse to change an ESI level?The purpose of ESI is to identify patients at risk of decompensation, assign acuity, and predict resources at the initial encounter. Therefore, once initial data are collected and a clinical judgment is rendered in the form of an ESI assignment, that ESI level should not be changed, unless the patient condition changes before they are placed from the waiting area.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ababfe05-d529-4296-aa65-9a3bf1d54779",
+      "@type": "Condition",
+      "name": "Certain providers can assign ESI levels",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:dce8f568-d9b3-408d-af52-7fccfb436922",
+      "@type": "Finding",
+      "name": "Patient has been triaged by a nurse",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:7a890123-4567-890a-bcde-f1234567890c",
+          "rationale": "It is not appropriate for a physician or advanced practice provider to assign a second ESI after the patient has been triaged by a nurse.",
+          "citation": "Can physicians and APPs triage and assign ESI levels? ... It is not appropriate for a physician or advanced practice provider to assign a second ESI after the patient has been triaged by a nurse.",
+          "citation_paraphrase": "Can physicians and APPs triage and assign ESI levels? ... It is not appropriate for a physician or advanced practice provider to assign a second ESI after the patient has been triaged by a nurse.",
+          "citation_verbatim_excerpt": "t appropriate for a nurse to change an ESI level?The purpose of ESI is to identify patients at risk of decompensation, assign acuity, and predict resources at the initial encounter.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7a890123-4567-890a-bcde-f1234567890c",
+      "@type": "Condition",
+      "name": "Physician/APP should not assign second ESI after nurse triage",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6b457092-3255-4238-a94c-db21b5b02967",
+      "@type": "Finding",
+      "name": "Assignment of an ESI level requires a history of present illness, brief focused assessment, and vital signs.",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:3cc24f40-eae1-4e12-98ff-b8c625a3654b",
+          "rationale": "ESI assignment requires specific clinical data.",
+          "citation": "Can a preliminary ESI level be assigned prior to assessment? The assignment of an ESI level is the result of a clinical decision-making process that requires a history of present illness, brief focused assessment, and vital signs.",
+          "citation_paraphrase": "Can a preliminary ESI level be assigned prior to assessment? The assignment of an ESI level is the result of a clinical decision-making process that requires a history of present illness, brief focused assessment, and vital signs.",
+          "citation_verbatim_excerpt": "ropriate for a nurse to change an ESI level?The purpose of ESI is to identify patients at risk of decompensation, assign acuity, and predict resources at the initial encounter. Therefore, once initial data are collected and a clinical judgment is re",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3cc24f40-eae1-4e12-98ff-b8c625a3654b",
+      "@type": "Intervention",
+      "name": "History of present illness, brief focused assessment, and vital signs required for ESI assignment",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ff917cbd-ce25-4c46-9324-c312486daf61",
+      "@type": "Finding",
+      "name": "Patient is not in extremis",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:fe761e8d-ba7b-43e7-af41-24721e401172",
+          "rationale": "If the patient is not in extremis, a full assessment including vital signs should be made before assigning an ESI level.",
+          "citation": "Can a preliminary ESI level be assigned prior to assessment? ... Unless the patient is in extremis, an assessment including a full set of vital signs should be made before assigning an ESI level.",
+          "citation_paraphrase": "Can a preliminary ESI level be assigned prior to assessment? ... Unless the patient is in extremis, an assessment including a full set of vital signs should be made before assigning an ESI level.",
+          "citation_verbatim_excerpt": "priate for a nurse to change an ESI level?The purpose of ESI is to identify patients at risk of decompensation, assign acuity, and predict resources at the initial encounter.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fe761e8d-ba7b-43e7-af41-24721e401172",
+      "@type": "Intervention",
+      "name": "Full assessment including vital signs required before ESI assignment (if not in extremis)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b63b870d-2c54-43d7-8957-ced49dbc182d",
+      "@type": "Finding",
+      "name": "ESI is not intended as an ongoing measurement of patient acuity.",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:13afb65f-d265-4960-bd39-6737c93dbfcd",
+          "rationale": "ESI should not be used for average acuity tracking, staffing, or billing.",
+          "citation": "Can ESI levels be used for other purposes such as average acuity tracking, staffing, or billing? ... ESI is not intended as an ongoing measurement of patient acuity. Therefore, it is not appropriate to change the ESI once a patient has been seen by a physician or advanced practice provider.",
+          "citation_paraphrase": "Can ESI levels be used for other purposes such as average acuity tracking, staffing, or billing? ... ESI is not intended as an ongoing measurement of patient acuity. Therefore, it is not appropriate to change the ESI once a patient has been seen by a physician or advanced practice provider.",
+          "citation_verbatim_excerpt": "level?The purpose of ESI is to identify patients at risk of decompensation, assign acuity, and predict resources at the initial encounter. Therefore, once initial data are collected and a clinical judgment is rendered in the form of an ESI assignment, that ESI level should not be changed, unless the patient condition changes before they are placed from the waiting area.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:13afb65f-d265-4960-bd39-6737c93dbfcd",
+      "@type": "Condition",
+      "name": "ESI should not be used for average acuity tracking, staffing, or billing.",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_a_faqs_appendix_a_–_frequently_.json",
+        "section_title": "APPENDIX A – Frequently Asked Questions"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:36.728008+00:00",
+    "nodes_before": 18,
+    "nodes_after": 18,
+    "rules_before": 9,
+    "rules_after": 9
+  }
+}

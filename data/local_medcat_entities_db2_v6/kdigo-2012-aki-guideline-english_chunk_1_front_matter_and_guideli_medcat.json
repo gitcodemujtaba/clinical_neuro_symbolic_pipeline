@@ -1,0 +1,755 @@
+{
+  "chunk_id": "chunk_1",
+  "entities": [
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "VOLUME",
+      "confidence_score": 0.6872150781346309,
+      "character_boundaries": {
+        "start": 0,
+        "end": 6
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "ISSUE",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 11,
+        "end": 16
+      }
+    },
+    {
+      "snomed_cui": "1169358003",
+      "preferred_name": "Multinucleated neurons, anhydramnios, renal dysplasia, cerebellar hypoplasia, hydranencephaly syndrome",
+      "source_value": "MARCH",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 21,
+        "end": 26
+      }
+    },
+    {
+      "snomed_cui": "17373004",
+      "preferred_name": "Both kidneys",
+      "source_value": "kidney",
+      "confidence_score": 0.38255525836054893,
+      "character_boundaries": {
+        "start": 43,
+        "end": 49
+      }
+    },
+    {
+      "snomed_cui": "394589003",
+      "preferred_name": "Nephrology",
+      "source_value": "NEPHROLOGY",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 117,
+        "end": 127
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 137,
+        "end": 145
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "Guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 155,
+        "end": 164
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "Acute Kidney Injury",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 169,
+        "end": 188
+      }
+    },
+    {
+      "snomed_cui": "276824008",
+      "preferred_name": "Contents",
+      "source_value": "contents",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 197,
+        "end": 205
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "VOL",
+      "confidence_score": 0.5960696897439965,
+      "character_boundaries": {
+        "start": 221,
+        "end": 224
+      }
+    },
+    {
+      "snomed_cui": "373453009",
+      "preferred_name": "Nutritional supplement",
+      "source_value": "SUPPLEMENT",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 229,
+        "end": 239
+      }
+    },
+    {
+      "snomed_cui": "1169358003",
+      "preferred_name": "Multinucleated neurons, anhydramnios, renal dysplasia, cerebellar hypoplasia, hydranencephaly syndrome",
+      "source_value": "MARCH",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 244,
+        "end": 249
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 264,
+        "end": 272
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "Guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 282,
+        "end": 291
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "Acute Kidney Injury",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 296,
+        "end": 315
+      }
+    },
+    {
+      "snomed_cui": "86407004",
+      "preferred_name": "Table, device",
+      "source_value": "Tables",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 322,
+        "end": 328
+      }
+    },
+    {
+      "snomed_cui": "261041009",
+      "preferred_name": "Working, function",
+      "source_value": "Work",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 352,
+        "end": 356
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "Group",
+      "confidence_score": 0.6185627082438843,
+      "character_boundaries": {
+        "start": 357,
+        "end": 362
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "Members",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 388,
+        "end": 395
+      }
+    },
+    {
+      "snomed_cui": "398223008",
+      "preferred_name": "Abbreviation",
+      "source_value": "Abbreviations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 415,
+        "end": 428
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 477,
+        "end": 491
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "USE OF",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 524,
+        "end": 530
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "CLINICAL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 535,
+        "end": 543
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "GUIDELINE",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 553,
+        "end": 562
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 568,
+        "end": 576
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "Guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 586,
+        "end": 595
+      }
+    },
+    {
+      "snomed_cui": "397966007",
+      "preferred_name": "Documents",
+      "source_value": "document",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 596,
+        "end": 604
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "best",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 623,
+        "end": 627
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 628,
+        "end": 639
+      }
+    },
+    {
+      "snomed_cui": "8940901000001109",
+      "preferred_name": "Available",
+      "source_value": "available",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 640,
+        "end": 649
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 697,
+        "end": 708
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "assist",
+      "confidence_score": 0.963683520604529,
+      "character_boundaries": {
+        "start": 713,
+        "end": 719
+      }
+    },
+    {
+      "snomed_cui": "247583006",
+      "preferred_name": "Decision making",
+      "source_value": "decision-making",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 720,
+        "end": 735
+      }
+    },
+    {
+      "snomed_cui": "361390002",
+      "preferred_name": "Unintentional",
+      "source_value": "not intended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 743,
+        "end": 755
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standard",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 768,
+        "end": 776
+      }
+    },
+    {
+      "snomed_cui": "118630004",
+      "preferred_name": "Division",
+      "source_value": "SECTION",
+      "confidence_score": 0.43769300301489555,
+      "character_boundaries": {
+        "start": 789,
+        "end": 796
+      }
+    },
+    {
+      "snomed_cui": "33138000",
+      "preferred_name": "Structure of substantia gelatinosa of posterior horn of spinal cord",
+      "source_value": "II",
+      "confidence_score": 0.36209256488372854,
+      "character_boundaries": {
+        "start": 797,
+        "end": 799
+      }
+    },
+    {
+      "snomed_cui": "90708001",
+      "preferred_name": "Kidney disease",
+      "source_value": "Kidney Disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 812,
+        "end": 826
+      }
+    },
+    {
+      "snomed_cui": "385633008",
+      "preferred_name": "Improving",
+      "source_value": "Improving",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 828,
+        "end": 837
+      }
+    },
+    {
+      "snomed_cui": "60132005",
+      "preferred_name": "Generalized",
+      "source_value": "Global",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 838,
+        "end": 844
+      }
+    },
+    {
+      "snomed_cui": "19487008",
+      "preferred_name": "Exertion, function",
+      "source_value": "effort",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 874,
+        "end": 880
+      }
+    },
+    {
+      "snomed_cui": "81742003",
+      "preferred_name": "Perception function",
+      "source_value": "perceived",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 915,
+        "end": 924
+      }
+    },
+    {
+      "snomed_cui": "15863006",
+      "preferred_name": "Conflict",
+      "source_value": "conflicts",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 925,
+        "end": 934
+      }
+    },
+    {
+      "snomed_cui": "225469004",
+      "preferred_name": "Interested",
+      "source_value": "interest",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 938,
+        "end": 946
+      }
+    },
+    {
+      "snomed_cui": "261041009",
+      "preferred_name": "Working, function",
+      "source_value": "Work",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 953,
+        "end": 957
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "Group",
+      "confidence_score": 0.4897313662671419,
+      "character_boundaries": {
+        "start": 958,
+        "end": 963
+      }
+    },
+    {
+      "snomed_cui": "261041009",
+      "preferred_name": "Working, function",
+      "source_value": "WORK",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 975,
+        "end": 979
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "GROUP",
+      "confidence_score": 0.3897795180469299,
+      "character_boundaries": {
+        "start": 980,
+        "end": 985
+      }
+    },
+    {
+      "snomed_cui": "706699008",
+      "preferred_name": "Chair",
+      "source_value": "CHAIRS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 989,
+        "end": 995
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1083,
+        "end": 1091
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "Guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1101,
+        "end": 1110
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "Acute Kidney Injury",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1115,
+        "end": 1134
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1136,
+        "end": 1139
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "assist",
+      "confidence_score": 0.9419394874641491,
+      "character_boundaries": {
+        "start": 1149,
+        "end": 1155
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1181,
+        "end": 1187
+      }
+    },
+    {
+      "snomed_cui": "138198004",
+      "preferred_name": "Child at increased risk of adverse outcome",
+      "source_value": "children at risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1192,
+        "end": 1208
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1221,
+        "end": 1224
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1226,
+        "end": 1235
+      }
+    },
+    {
+      "snomed_cui": "368951000119105",
+      "preferred_name": "Acute kidney injury caused by contrast agent",
+      "source_value": "contrast-induced acute kidney injury",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1236,
+        "end": 1272
+      }
+    },
+    {
+      "snomed_cui": "432504007",
+      "preferred_name": "Cerebral infarction",
+      "source_value": "CI",
+      "confidence_score": 0.8327014842492044,
+      "character_boundaries": {
+        "start": 1274,
+        "end": 1276
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1277,
+        "end": 1280
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1287,
+        "end": 1296
+      }
+    },
+    {
+      "snomed_cui": "42504009",
+      "preferred_name": "Containing",
+      "source_value": "contains",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1297,
+        "end": 1305
+      }
+    },
+    {
+      "snomed_cui": "900000000000550004",
+      "preferred_name": "Definition",
+      "source_value": "definition",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1318,
+        "end": 1328
+      }
+    },
+    {
+      "snomed_cui": "225338004",
+      "preferred_name": "Risk assessment",
+      "source_value": "risk assessment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1330,
+        "end": 1345
+      }
+    },
+    {
+      "snomed_cui": "723051000000101",
+      "preferred_name": "Evaluation",
+      "source_value": "evaluation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1347,
+        "end": 1357
+      }
+    },
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "prevention",
+      "confidence_score": 0.9236268545464202,
+      "character_boundaries": {
+        "start": 1359,
+        "end": 1369
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1375,
+        "end": 1384
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1410,
+        "end": 1414
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1421,
+        "end": 1428
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1429,
+        "end": 1436
+      }
+    },
+    {
+      "snomed_cui": "66216009",
+      "preferred_name": "Understanding, function",
+      "source_value": "understand",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1480,
+        "end": 1490
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1516,
+        "end": 1523
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "system",
+      "confidence_score": 0.7364255383372043,
+      "character_boundaries": {
+        "start": 1552,
+        "end": 1558
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1596,
+        "end": 1611
+      }
+    }
+  ]
+}

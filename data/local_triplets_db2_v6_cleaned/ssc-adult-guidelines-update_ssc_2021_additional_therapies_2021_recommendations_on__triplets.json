@@ -1,0 +1,403 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a6-b5c7-89def0123456",
+      "@type": "Condition",
+      "name": "Septic shock",
+      "snomed": "76571007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:f8e9d7c6-b5a4-49d3-a2b1-0fedcba98765",
+          "rationale": "For adults with septic shock and an ongoing requirement for vasopressor therapy, IV corticosteroids are suggested.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:3994160c-55d6-46e2-bb2d-8c5d06e6a641",
+          "rationale": "For adults with sepsis or septic shock, a restrictive transfusion strategy is recommended.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:728cbbf6-1fc7-4003-a731-35a92d85bbce",
+          "rationale": "For adults with sepsis or septic shock, pharmacologic VTE prophylaxis is recommended unless contraindicated.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:ea6744df-3d31-465f-9b64-9ebc7ab46f17",
+          "rationale": "For adults with sepsis or septic shock, low molecular weight heparin is recommended over unfractionated heparin for VTE prophylaxis.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a688bb82-2f31-4363-acd1-9f6d66ce4797",
+          "rationale": "For adults with sepsis or septic shock and AKI, either continuous or intermittent renal replacement therapy is suggested.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+          "rationale": "For adults with sepsis or septic shock, initiating insulin therapy is recommended at a glucose level of >= 180mg/dL (10mmol/L).",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b73356a9-2ac1-4642-ad40-c57d4a4cba84",
+          "rationale": "For adults with sepsis or septic shock and AKI, with no definitive indications for renal replacement therapy, using renal replacement therapy is suggested against.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:728cbbf6-1fc7-4003-a731-35a92d85bbce",
+          "rationale": "For adults with sepsis or septic shock, mechanical VTE prophylaxis in addition to pharmacological prophylaxis is suggested against.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:3994160c-55d6-46e2-bb2d-8c5d06e6a641",
+          "rationale": "For adults with sepsis or septic shock, early initiation (within 72 hours) of enteral nutrition is suggested for patients who can be fed enterally.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:ea6744df-3d31-465f-9b64-9ebc7ab46f17",
+          "rationale": "For adults with sepsis or septic shock, using stress ulcer prophylaxis is suggested for those with risk factors for GI bleeding.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a688bb82-2f31-4363-acd1-9f6d66ce4797",
+          "rationale": "For adults with sepsis or septic shock, using sodium bicarbonate therapy is suggested for severe metabolic acidemia (pH <= 7.2) and AKI (AKIN score 2 or 3).",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+          "rationale": "For adults with sepsis or septic shock, using sodium bicarbonate therapy is suggested against to improve hemodynamics or reduce vasopressor requirements in hypoperfusion-induced lactic acidemia.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b73356a9-2ac1-4642-ad40-c57d4a4cba84",
+          "rationale": "For adults with sepsis or septic shock, using IV vitamin C is suggested against.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:728cbbf6-1fc7-4003-a731-35a92d85bbce",
+          "rationale": "For adults with sepsis or septic shock, using polymyxin B hemoperfusion is suggested against.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:ea6744df-3d31-465f-9b64-9ebc7ab46f17",
+          "rationale": "For adults with sepsis or septic shock, using other blood purification techniques is not recommended due to insufficient evidence.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a688bb82-2f31-4363-acd1-9f6d66ce4797",
+          "rationale": "For adults with sepsis or septic shock, using intravenous immunoglobulins is suggested against.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f8e9d7c6-b5a4-49d3-a2b1-0fedcba98765",
+      "@type": "Medication",
+      "name": "IV corticosteroids",
+      "snomed": "79440004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3994160c-55d6-46e2-bb2d-8c5d06e6a641",
+      "@type": "Intervention",
+      "name": "Restrictive transfusion strategy",
+      "snomed": "5447007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ea6744df-3d31-465f-9b64-9ebc7ab46f17",
+      "@type": "Intervention",
+      "name": "Low molecular weight heparin for VTE prophylaxis",
+      "snomed": "373294004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a688bb82-2f31-4363-acd1-9f6d66ce4797",
+      "@type": "Intervention",
+      "name": "Renal replacement therapy",
+      "snomed": "714749008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Intervention",
+      "name": "Insulin therapy",
+      "snomed": "67866001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:53b3a4b8-dcd2-45e6-9d5d-baeafe6e1009",
+      "@type": "Intervention",
+      "name": "Mechanical VTE prophylaxis (suggested against)",
+      "snomed": "261018001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fcc50cd0-b276-43eb-8ce0-b573e9d50ca0",
+      "@type": "Intervention",
+      "name": "Stress ulcer prophylaxis",
+      "snomed": "360271000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:35119783-2982-4bc2-a0d6-4206326ecf90",
+      "@type": "Intervention",
+      "name": "Sodium bicarbonate therapy (suggested against)",
+      "snomed": "387319002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b73356a9-2ac1-4642-ad40-c57d4a4cba84",
+      "@type": "Intervention",
+      "name": "IV vitamin C (suggested against)",
+      "snomed": "46123006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:440492c6-ab27-4f56-a9a7-eba92cca1e46",
+      "@type": "Intervention",
+      "name": "Polymyxin B hemoperfusion (suggested against)",
+      "snomed": "372824005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e47d89dd-66f9-4661-b4a8-75e79804a5fe",
+      "@type": "Intervention",
+      "name": "Intravenous immunoglobulins (suggested against)",
+      "snomed": "997001000000108",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:49e558ec-f2bb-43d1-807c-463232231a8e",
+      "@type": "Intervention",
+      "name": "Enteral nutrition (suggested)",
+      "snomed": "229912004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:734a2f85-cf5c-47ee-844a-cf27dffcfafd",
+      "@type": "Condition",
+      "name": "Sepsis",
+      "snomed": "91302008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:3994160c-55d6-46e2-bb2d-8c5d06e6a641",
+          "rationale": "For adults with sepsis or septic shock, a restrictive transfusion strategy is recommended.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:728cbbf6-1fc7-4003-a731-35a92d85bbce",
+          "rationale": "For adults with sepsis or septic shock, pharmacologic VTE prophylaxis is recommended unless contraindicated.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:ea6744df-3d31-465f-9b64-9ebc7ab46f17",
+          "rationale": "For adults with sepsis or septic shock, low molecular weight heparin is recommended over unfractionated heparin for VTE prophylaxis.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a688bb82-2f31-4363-acd1-9f6d66ce4797",
+          "rationale": "For adults with sepsis or septic shock and AKI, either continuous or intermittent renal replacement therapy is suggested.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+          "rationale": "For adults with sepsis or septic shock, initiating insulin therapy is recommended at a glucose level of >= 180mg/dL (10mmol/L).",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b73356a9-2ac1-4642-ad40-c57d4a4cba84",
+          "rationale": "For adults with sepsis or septic shock, using IV vitamin C is suggested against.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:728cbbf6-1fc7-4003-a731-35a92d85bbce",
+          "rationale": "For adults with sepsis or septic shock, using polymyxin B hemoperfusion is suggested against.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:ea6744df-3d31-465f-9b64-9ebc7ab46f17",
+          "rationale": "For adults with sepsis or septic shock, using other blood purification techniques is not recommended due to insufficient evidence.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a688bb82-2f31-4363-acd1-9f6d66ce4797",
+          "rationale": "For adults with sepsis or septic shock, using intravenous immunoglobulins is suggested against.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:ea6744df-3d31-465f-9b64-9ebc7ab46f17",
+          "rationale": "For adults with sepsis or septic shock, using stress ulcer prophylaxis is suggested for those with risk factors for GI bleeding.",
+          "citation": "Guideline recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Intervention",
+      "name": "Pharmacologic VTE prophylaxis",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:33914e00-b966-4adc-9c2b-0a86bde2f09d",
+      "@type": "Intervention",
+      "name": "Other blood purification techniques (not recommended)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:728cbbf6-1fc7-4003-a731-35a92d85bbce",
+      "@type": "Intervention",
+      "name": "Pharmacologic VTE prophylaxis",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_additional_therapies_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON ADDITIONAL THERAPIES"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:41.640980+00:00",
+    "nodes_before": 26,
+    "nodes_after": 17,
+    "rules_before": 37,
+    "rules_after": 26
+  }
+}

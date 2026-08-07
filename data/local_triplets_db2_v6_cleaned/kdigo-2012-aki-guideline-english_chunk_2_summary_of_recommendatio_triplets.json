@@ -1,0 +1,491 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+      "@type": "Finding",
+      "name": "Increase in SCr by ≥0.3 mg/dl",
+      "snomed": "258797006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "This is one of the criteria for defining AKI.",
+          "citation": "2.1.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+      "@type": "Condition",
+      "name": "Acute Kidney Injury (AKI)",
+      "snomed": "14669001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "DEFINED_BY",
+          "target": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+          "rationale": "Increase in SCr by ≥0.3 mg/dl is a criterion for AKI definition.",
+          "citation": "2.1.1"
+        },
+        {
+          "predicate": "DEFINED_BY",
+          "target": "urn:uuid:b8c9d0e1-f2a3-46b5-c7d8-e9f012345678",
+          "rationale": "Increase in SCr to ≥1.5 times baseline is a criterion for AKI definition.",
+          "citation": "2.1.1"
+        },
+        {
+          "predicate": "DEFINED_BY",
+          "target": "urn:uuid:c9d0e1f2-a3b4-47c5-d8e9-f01234567890",
+          "rationale": "Urine volume <0.5 ml/kg/h for 6 hours is a criterion for AKI definition.",
+          "citation": "2.1.1"
+        },
+        {
+          "predicate": "IS_STRATIFIED_BY",
+          "target": "urn:uuid:d0e1f2a3-b4c5-48d9-e0f1-234567890abc",
+          "rationale": "Patients should be stratified for risk of AKI.",
+          "citation": "2.2.1"
+        },
+        {
+          "predicate": "REQUIRES_EVALUATION",
+          "target": "urn:uuid:008541e4-eac3-41b8-8df9-1853e6ce5876",
+          "rationale": "Patients with AKI should be evaluated promptly to determine the cause.",
+          "citation": "2.3.1"
+        },
+        {
+          "predicate": "REQUIRES_EVALUATION",
+          "target": "urn:uuid:fab81390-2d2e-4b8e-89aa-2b3b05ee09e5",
+          "rationale": "Patients with AKI should be evaluated 3 months after for resolution, new onset, or worsening of pre-existing CKD.",
+          "citation": "2.3.4"
+        },
+        {
+          "predicate": "REQUIRES_MANAGEMENT",
+          "target": "urn:uuid:52617877-7910-496b-a21a-48ae0a0ac1af",
+          "rationale": "Isotonic crystalloids should be used rather than colloids for volume expansion in patients at risk for or with AKI.",
+          "citation": "3.1.1"
+        },
+        {
+          "predicate": "REQUIRES_MANAGEMENT",
+          "target": "urn:uuid:660a87a7-f5b1-48b2-86b5-db23a3fc5cc2",
+          "rationale": "Vasopressors should be used with fluids in patients with vasomotor shock with or at risk for AKI.",
+          "citation": "3.1.2"
+        },
+        {
+          "predicate": "REQUIRES_MANAGEMENT",
+          "target": "urn:uuid:3c4d5e6f-789a-40b1-2345-67890abcdef3",
+          "rationale": "Plasma glucose should be targeted 110–149 mg/dl in critically ill patients.",
+          "citation": "3.3.1"
+        },
+        {
+          "predicate": "REQUIRES_MANAGEMENT",
+          "target": "urn:uuid:157def22-41c2-43e0-9e8a-7904008a4508",
+          "rationale": "Diuretics should not be used to prevent AKI.",
+          "citation": "3.4.1"
+        },
+        {
+          "predicate": "REQUIRES_MANAGEMENT",
+          "target": "urn:uuid:0733a59f-e043-4257-8377-d26c72787178",
+          "rationale": "Low-dose dopamine should not be used to prevent or treat AKI.",
+          "citation": "3.5.1"
+        },
+        {
+          "predicate": "REQUIRES_MANAGEMENT",
+          "target": "urn:uuid:70f116d4-cd52-4139-b9a7-70b34dba5c57",
+          "rationale": "Aminoglycosides should not be used unless no suitable, less nephrotoxic alternatives exist.",
+          "citation": "3.8.1"
+        },
+        {
+          "predicate": "REQUIRES_MANAGEMENT",
+          "target": "urn:uuid:4cbd58a6-e068-437d-ac98-0f45ac5c73a1",
+          "rationale": "AKI should be defined and staged after administration of intravascular contrast media as per Recommendations 2.1.1–2.1.2.",
+          "citation": "4.1"
+        },
+        {
+          "predicate": "REQUIRES_MANAGEMENT",
+          "target": "urn:uuid:05fd2086-2782-42a6-adfc-859545c6e130",
+          "rationale": "Risk for CI-AKI should be assessed and screened for pre-existing impairment of kidney function.",
+          "citation": "4.2.1"
+        },
+        {
+          "predicate": "REQUIRES_MANAGEMENT",
+          "target": "urn:uuid:f7387a1e-9e87-4e51-9dce-e5edde93328c",
+          "rationale": "Iso-osmolar or low-osmolar contrast media should be used rather than high-osmolar contrast media.",
+          "citation": "4.3.2"
+        },
+        {
+          "predicate": "REQUIRES_MANAGEMENT",
+          "target": "urn:uuid:ace571d8-1afc-4fef-acce-714ac5bbd0c7",
+          "rationale": "i.v. volume expansion with isotonic sodium chloride or sodium bicarbonate should be recommended.",
+          "citation": "4.4.1"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:d996fe90-cd79-4450-98cb-2f46d4fa5f34",
+          "rationale": "RRT should be initiated emergently when life-threatening changes in fluid, electrolyte, and acid-base balance exist.",
+          "citation": "5.1.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b8c9d0e1-f2a3-46b5-c7d8-e9f012345678",
+      "@type": "Finding",
+      "name": "Increase in SCr to ≥1.5 times baseline",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "This is one of the criteria for defining AKI.",
+          "citation": "2.1.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c9d0e1f2-a3b4-47c5-d8e9-f01234567890",
+      "@type": "Finding",
+      "name": "Urine volume <0.5 ml/kg/h for 6 hours",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "This is one of the criteria for defining AKI.",
+          "citation": "2.1.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d0e1f2a3-b4c5-48d9-e0f1-234567890abc",
+      "@type": "Acuity",
+      "name": "Risk stratification for AKI",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Patients should be stratified for risk of AKI.",
+          "citation": "2.2.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:008541e4-eac3-41b8-8df9-1853e6ce5876",
+      "@type": "Intervention",
+      "name": "Evaluate patients with AKI promptly to determine the cause",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Patients with AKI should be evaluated promptly to determine the cause.",
+          "citation": "2.3.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fab81390-2d2e-4b8e-89aa-2b3b05ee09e5",
+      "@type": "Intervention",
+      "name": "Evaluate patients 3 months after AKI for resolution, new onset, or worsening of pre-existing CKD",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Patients with AKI should be evaluated 3 months after for resolution, new onset, or worsening of pre-existing CKD.",
+          "citation": "2.3.4"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:52617877-7910-496b-a21a-48ae0a0ac1af",
+      "@type": "Medication",
+      "name": "Isotonic crystalloids",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "RECOMMENDED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Isotonic crystalloids should be used rather than colloids for volume expansion in patients at risk for or with AKI.",
+          "citation": "3.1.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:660a87a7-f5b1-48b2-86b5-db23a3fc5cc2",
+      "@type": "Medication",
+      "name": "Vasopressors",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "RECOMMENDED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Vasopressors should be used in conjunction with fluids in patients with vasomotor shock with or at risk for AKI.",
+          "citation": "3.1.2"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3c4d5e6f-789a-40b1-2345-67890abcdef3",
+      "@type": "Medication",
+      "name": "Plasma glucose target 110–149 mg/dl",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "RECOMMENDED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Plasma glucose should be targeted 110–149 mg/dl in critically ill patients.",
+          "citation": "3.3.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:157def22-41c2-43e0-9e8a-7904008a4508",
+      "@type": "Medication",
+      "name": "Diuretics",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "NOT_RECOMMENDED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Diuretics should not be used to prevent AKI.",
+          "citation": "3.4.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0733a59f-e043-4257-8377-d26c72787178",
+      "@type": "Medication",
+      "name": "Low-dose dopamine",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "NOT_RECOMMENDED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Low-dose dopamine should not be used to prevent or treat AKI.",
+          "citation": "3.5.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:70f116d4-cd52-4139-b9a7-70b34dba5c57",
+      "@type": "Medication",
+      "name": "Aminoglycosides",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "NOT_RECOMMENDED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Aminoglycosides should not be used unless no suitable, less nephrotoxic alternatives exist.",
+          "citation": "3.8.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4cbd58a6-e068-437d-ac98-0f45ac5c73a1",
+      "@type": "Intervention",
+      "name": "i.v. volume expansion with isotonic sodium chloride or sodium bicarbonate",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "RECOMMENDED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "i.v. volume expansion with isotonic sodium chloride or sodium bicarbonate should be recommended.",
+          "citation": "4.4.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:05fd2086-2782-42a6-adfc-859545c6e130",
+      "@type": "Medication",
+      "name": "Iso-osmolar or low-osmolar contrast media",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "RECOMMENDED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Iso-osmolar or low-osmolar contrast media should be used rather than high-osmolar contrast media.",
+          "citation": "4.3.2"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f7387a1e-9e87-4e51-9dce-e5edde93328c",
+      "@type": "Intervention",
+      "name": "Regional citrate anticoagulation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "SUGGESTED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "Regional citrate anticoagulation should be suggested rather than heparin in patients without contraindications for CRRT.",
+          "citation": "5.3.2.2"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ace571d8-1afc-4fef-acce-714ac5bbd0c7",
+      "@type": "Intervention",
+      "name": "CRRT rather than standard intermittent RRT for hemodynamically unstable patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "SUGGESTED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "CRRT should be suggested rather than standard intermittent RRT for hemodynamically unstable patients.",
+          "citation": "5.6.2"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d996fe90-cd79-4450-98cb-2f46d4fa5f34",
+      "@type": "Intervention",
+      "name": "Initiate RRT emergently when life-threatening changes in fluid, electrolyte, and acid-base balance exist",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "RRT should be initiated emergently when life-threatening changes in fluid, electrolyte, and acid-base balance exist.",
+          "citation": "5.1.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b4db846f-92b2-4f67-9d78-ddbdb2053ac4",
+      "@type": "Intervention",
+      "name": "Kt/V of 3.9 per week when using intermittent or extended RRT in AKI",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "RECOMMENDED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "A Kt/V of 3.9 per week should be recommended when using intermittent or extended RRT in AKI.",
+          "citation": "5.8.3"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:85782cba-2c41-4a48-810d-890cc9dd2f81",
+      "@type": "Intervention",
+      "name": "Effluent volume of 20–25 ml/kg/h for CRRT in AKI",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_2_summary_of_recommendatio.json",
+        "section_title": "Summary of Recommendation Statements"
+      },
+      "rules": [
+        {
+          "predicate": "RECOMMENDED_FOR",
+          "target": "urn:uuid:f6e7d8c9-b0a1-45d6-c7e8-f90123456789",
+          "rationale": "An effluent volume of 20–25 ml/kg/h should be recommended for CRRT in AKI.",
+          "citation": "5.8.4"
+        }
+      ]
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.089050+00:00",
+    "nodes_before": 21,
+    "nodes_after": 20,
+    "rules_before": 36,
+    "rules_after": 36
+  }
+}

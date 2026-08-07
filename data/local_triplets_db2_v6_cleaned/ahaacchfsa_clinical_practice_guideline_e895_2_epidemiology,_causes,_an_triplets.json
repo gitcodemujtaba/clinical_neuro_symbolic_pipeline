@@ -1,0 +1,511 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-4789-9abc-def012345678",
+      "@type": "Finding",
+      "name": "Vital signs",
+      "snomed": "61746007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f7e8d9c0-b1a2-4356-7890-fedcba987654",
+          "rationale": "Vital signs should be evaluated at every encounter.",
+          "citation": "History & Physical: Vital signs [...] should be evaluated at every encounter.",
+          "citation_paraphrase": "History & Physical: Vital signs [...] should be evaluated at every encounter.",
+          "citation_verbatim_excerpt": "EPIDEMIOLOGY AND CAUSES OF HF HF affects millions in the US, with increasing hospitalizations and age-adjusted death rates observed in recent years.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-490a-bcde-1234567890ab",
+      "@type": "Finding",
+      "name": "Clinical congestion (JVD, orthopnea, bendopnea, edema)",
+      "snomed": "85804007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c3d4e5f6-7890-4abc-de12-34567890abcf",
+          "rationale": "Clinical congestion should be evaluated at every encounter.",
+          "citation": "History & Physical: Vital signs and clinical congestion (JVD, orthopnea [SNOMED: 62744007], bendopnea [SNOMED: 1217110005], edema [SNOMED: 267038008]) should be evaluated at every encounter.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a6f944e8-abf9-4237-8985-53f500095360",
+      "@type": "Finding",
+      "name": "Chest X-ray",
+      "snomed": "399208008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:30d11a4d-cfee-4cc2-9753-7e714e875a70",
+          "rationale": "Chest X-ray is recommended at initial evaluation.",
+          "citation": "Imaging: Chest X-ray [SNOMED: 399208008] and Transthoracic Echocardiography [SNOMED: 40701008] (TTE) are recommended at initial evaluation (Class 1).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a7fb871-0f13-4e39-80ed-99e27e450359",
+      "@type": "Finding",
+      "name": "Transthoracic Echocardiography (TTE)",
+      "snomed": "40701008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:eb8bd78e-677b-4196-a9ae-992c6f03e289",
+          "rationale": "Transthoracic Echocardiography (TTE) is recommended at initial evaluation.",
+          "citation": "Imaging: Chest X-ray [SNOMED: 399208008] and Transthoracic Echocardiography [SNOMED: 40701008] (TTE) are recommended at initial evaluation (Class 1).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b9f07be8-7088-42e0-b0dc-b7066946dc24",
+      "@type": "Finding",
+      "name": "LVEF assessment",
+      "snomed": "250908004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:027b568b-b1a3-4e68-b5c2-50cabfd0edf7",
+          "rationale": "Repeat LVEF assessment is recommended when clinical status changes significantly or to determine device candidacy.",
+          "citation": "Repeat [SNOMED: 27582007] LVEF [SNOMED: 250908004]/remodeling assessment [SNOMED: 386053000] is recommended when clinical status [SNOMED: 263493007] changes significantly or to determine device candidacy (Class 1).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c69c1e52-ca88-4570-9cb4-932dae85fd91",
+      "@type": "Finding",
+      "name": "Validated multivariable risk scores (e.g., Seattle Heart Failure Model, MAGGIC)",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:fb8c7c57-018d-4f30-95ce-fea41794fdba",
+          "rationale": "Validated multivariable risk scores are useful to estimate mortality risk.",
+          "citation": "Valid validated multivariable risk scores [SNOMED: 278061009] (e.g., Seattle Heart Failure Model, MAGGIC) are useful to estimate [SNOMED: 414135002] mortality [SNOMED: 409651001] risk (Class 2a).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2f33d1ed-d976-4378-865d-702a0dc490bc",
+      "@type": "Finding",
+      "name": "Family history for suspected genetic cardiomyopathies",
+      "snomed": "887111000000104",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a2445c20-70ac-4864-b47a-6bf7943ec78c",
+          "rationale": "Obtain a 3-generation family history for suspected genetic cardiomyopathies.",
+          "citation": "History & Physical: [...] obtain [SNOMED: 398092000] a 3-generation family history [SNOMED: 887111000000104] for suspected genetic [SNOMED: 725251000000105] cardiomyopathies [SNOMED: 85898001].",
+          "citation_paraphrase": "History & Physical: [...] obtain [SNOMED: 398092000] a 3-generation family history [SNOMED: 887111000000104] for suspected genetic [SNOMED: 725251000000105] cardiomyopathies [SNOMED: 85898001].",
+          "citation_verbatim_excerpt": "EPIDEMIOLOGY AND CAUSES OF HF HF affects millions in the US, with increasing hospitalizations and age-adjusted death rates observed in recent years.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:bde1d2bf-a9e2-4367-85aa-1df7d60c893f",
+      "@type": "Finding",
+      "name": "Ischemic heart disease",
+      "snomed": "255426005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b19287a6-d5e2-4c1f-a968-bd3a3cf38227",
+      "@type": "Finding",
+      "name": "Hypertension",
+      "snomed": "64715009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1773e011-a323-4a64-9dd6-73641c60f285",
+      "@type": "Finding",
+      "name": "Valvular heart disease",
+      "snomed": "368009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3798a251-7d8c-414d-a886-8847549cc5e6",
+      "@type": "Finding",
+      "name": "Familial cardiomyopathies",
+      "snomed": "255401001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d99de23a-c67f-45d6-8de8-fd94c0b74c71",
+      "@type": "Finding",
+      "name": "Genetic cardiomyopathies",
+      "snomed": "725251000000105",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:40a5e197-d3bb-421e-b95e-52d53bce643f",
+      "@type": "Finding",
+      "name": "Cardiac amyloidosis",
+      "snomed": "16573007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8c835f49-28c1-4d54-bc88-a37095c2f25b",
+      "@type": "Finding",
+      "name": "Cardiotoxicity (e.g., chemotherapy, cocaine, alcohol)",
+      "snomed": "863954001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:502b6b23-50ce-44d6-a6fe-4f6fe7010eb2",
+      "@type": "Finding",
+      "name": "Myocarditis",
+      "snomed": "50920009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:21989ad4-874b-4494-b39e-abd157f4aa1c",
+      "@type": "Finding",
+      "name": "Peripartum cardiomyopathy",
+      "snomed": "16253001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:169dccfc-633e-4f8c-b8cc-6ac100079fb1",
+      "@type": "Finding",
+      "name": "Metabolic/endocrine disorders",
+      "snomed": "362969004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a6206108-972e-436a-ae82-35e40a1f4f51",
+      "@type": "Finding",
+      "name": "Nonischemic cardiomyopathy",
+      "snomed": "85898001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:feaabf7c-3354-4cd6-a5f4-06f6ee4b98c0",
+      "@type": "Finding",
+      "name": "Genetic counseling",
+      "snomed": "79841006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:3e9cc3d4-89b9-4325-8a2e-4c18b8e6c9c1",
+          "rationale": "Genetic counseling and testing are reasonable in selected patients with nonischemic cardiomyopathy.",
+          "citation": "Genetic [SNOMED: 725251000000105] Evaluation: In selected patients with nonischemic cardiomyopathy [SNOMED: 85898001], genetic counseling [SNOMED: 79841006] and testing are reasonable (Class 2a).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:038e1c78-3585-4e0f-823a-4175b1543934",
+      "@type": "Finding",
+      "name": "First-degree relatives of patients with genetic cardiomyopathies",
+      "snomed": "264500008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7794267f-5003-4012-aec6-9abe1471a46b",
+          "rationale": "First-degree relatives of patients with genetic cardiomyopathies should undergo screening and counseling.",
+          "citation": "Genetic [SNOMED: 725251000000105] Evaluation: First-degree [SNOMED: 264500008] relatives of patients with genetic [SNOMED: 725251000000105] cardiomyopathies [SNOMED: 85898001] should undergo screening [SNOMED: 722021000000100] and counseling [SNOMED: 409063005] (Class 1).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f7e8d9c0-b1a2-4356-7890-fedcba987654",
+      "@type": "Intervention",
+      "name": "Evaluation of vital signs",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c3d4e5f6-7890-4abc-de12-34567890abcf",
+      "@type": "Intervention",
+      "name": "Evaluation of clinical congestion",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d4e5f678-90ab-4cde-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "BNP or NT-proBNP measurement",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:5d894bdd-fb7e-43c1-80a1-af4ecb2f55b3",
+          "rationale": "Measurement of BNP or NT-proBNP is Class 1 recommended to establish diagnosis/exclusion of HF in dyspneic patients, and for risk stratification.",
+          "citation": "Biomarkers: Measurement [SNOMED: 272391002] of BNP or NT-proBNP is Class 1 recommended to establish diagnosis [SNOMED: 887161000000102]/exclusion of HF [SNOMED: 84114007] in dyspneic patients, and for risk stratification in chronic [SNOMED: 90734009] or hospitalized [SNOMED: 184091000] HF [SNOMED: 84114007].",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5d894bdd-fb7e-43c1-80a1-af4ecb2f55b3",
+      "@type": "Intervention",
+      "name": "Measurement of BNP or NT-proBNP",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:30d11a4d-cfee-4cc2-9753-7e714e875a70",
+      "@type": "Intervention",
+      "name": "Chest X-ray evaluation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:eb8bd78e-677b-4196-a9ae-992c6f03e289",
+      "@type": "Intervention",
+      "name": "Transthoracic Echocardiography (TTE) evaluation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:027b568b-b1a3-4e68-b5c2-50cabfd0edf7",
+      "@type": "Intervention",
+      "name": "LVEF assessment",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fb8c7c57-018d-4f30-95ce-fea41794fdba",
+      "@type": "Intervention",
+      "name": "Calculation and interpretation of risk scores",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a2445c20-70ac-4864-b47a-6bf7943ec78c",
+      "@type": "Intervention",
+      "name": "Obtain 3-generation family history",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:88ea6f04-9376-4504-95ed-fd8838f5b69d",
+      "@type": "Finding",
+      "name": "Initial Diagnostics (ECG, CBC, Urinalysis, Electrolytes, BUN, Creatinine, Glucose, Lipids, LFTs, Iron studies, TSH)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:8d1fad14-7dd2-41d2-857a-ea87785d1417",
+          "rationale": "Perform initial diagnostic tests.",
+          "citation": "Initial Diagnostics: 12-lead ECG [SNOMED: 268400002], CBC, urinalysis [SNOMED: 27171005], serum [SNOMED: 67922002] electrolytes [SNOMED: 86355000], BUN, creatinine [SNOMED: 15373003], glucose [SNOMED: 67079006], lipids, LFTs [SNOMED: 26958001], iron [SNOMED: 3829006] studies (ferritin [SNOMED: 489004], TSAT), and TSH [SNOMED: 61167004].",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:8d1fad14-7dd2-41d2-857a-ea87785d1417",
+      "@type": "Intervention",
+      "name": "Perform initial diagnostic tests",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3e9cc3d4-89b9-4325-8a2e-4c18b8e6c9c1",
+      "@type": "Intervention",
+      "name": "Genetic counseling and testing",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7794267f-5003-4012-aec6-9abe1471a46b",
+      "@type": "Intervention",
+      "name": "Screening and counseling for first-degree relatives",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_2_epidemiology,_causes,_an.json",
+        "section_title": "Epidemiology, Causes, and Initial and Serial Evaluation of HF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a2f2a12f-867b-4c0f-88be-564e4bb29014",
+      "@type": "Finding",
+      "name": "CMR, Cardiac CT, or Radionuclide imaging",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:32.407363+00:00",
+    "nodes_before": 37,
+    "nodes_after": 34,
+    "rules_before": 11,
+    "rules_after": 11
+  }
+}

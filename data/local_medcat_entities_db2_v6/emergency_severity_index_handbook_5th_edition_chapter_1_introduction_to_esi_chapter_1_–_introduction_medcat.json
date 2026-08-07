@@ -1,0 +1,2935 @@
+{
+  "chunk_id": "chapter_1_introduction_to_esi",
+  "entities": [
+    {
+      "snomed_cui": "276140008",
+      "preferred_name": "Greater-than symbol >",
+      "source_value": "more than",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 20,
+        "end": 29
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "emergency departments",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 52,
+        "end": 73
+      }
+    },
+    {
+      "snomed_cui": "223688001",
+      "preferred_name": "United States of America",
+      "source_value": "United States",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 87,
+        "end": 100
+      }
+    },
+    {
+      "snomed_cui": "223688001",
+      "preferred_name": "United States of America",
+      "source_value": "U.S.",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 102,
+        "end": 106
+      }
+    },
+    {
+      "snomed_cui": "263775005",
+      "preferred_name": "Health",
+      "source_value": "Health",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 121,
+        "end": 127
+      }
+    },
+    {
+      "snomed_cui": "310134006",
+      "preferred_name": "Social services",
+      "source_value": "Human Services",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 132,
+        "end": 146
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 173,
+        "end": 180
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 200,
+        "end": 212
+      }
+    },
+    {
+      "snomed_cui": "116680003",
+      "preferred_name": "Is a",
+      "source_value": "is a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 213,
+        "end": 217
+      }
+    },
+    {
+      "snomed_cui": "3321411000001104",
+      "preferred_name": "piece",
+      "source_value": "piece",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 226,
+        "end": 231
+      }
+    },
+    {
+      "snomed_cui": "254648000",
+      "preferred_name": "Effective",
+      "source_value": "effective",
+      "confidence_score": 0.4410590257139082,
+      "character_boundaries": {
+        "start": 235,
+        "end": 244
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "emergency department",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 254,
+        "end": 274
+      }
+    },
+    {
+      "snomed_cui": "263656005",
+      "preferred_name": "Accurate",
+      "source_value": "Accurate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 281,
+        "end": 289
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 290,
+        "end": 296
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 305,
+        "end": 312
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 327,
+        "end": 336
+      }
+    },
+    {
+      "snomed_cui": "246099003",
+      "preferred_name": "Purpose",
+      "source_value": "purpose",
+      "confidence_score": 0.8436163100223468,
+      "character_boundaries": {
+        "start": 342,
+        "end": 349
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 353,
+        "end": 359
+      }
+    },
+    {
+      "snomed_cui": "418694008",
+      "preferred_name": "Rapidly",
+      "source_value": "rapidly",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 366,
+        "end": 373
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 379,
+        "end": 387
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presenting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 388,
+        "end": 398
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "emergency department",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 403,
+        "end": 423
+      }
+    },
+    {
+      "snomed_cui": "49499008",
+      "preferred_name": "Stat",
+      "source_value": "immediate",
+      "confidence_score": 0.33036795970645677,
+      "character_boundaries": {
+        "start": 465,
+        "end": 474
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need",
+      "confidence_score": 0.9841757673486888,
+      "character_boundaries": {
+        "start": 475,
+        "end": 479
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "presents",
+      "confidence_score": 0.33211845217634933,
+      "character_boundaries": {
+        "start": 502,
+        "end": 510
+      }
+    },
+    {
+      "snomed_cui": "18669006",
+      "preferred_name": "Evidence of (contextual qualifier)",
+      "source_value": "evidence for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 511,
+        "end": 523
+      }
+    },
+    {
+      "snomed_cui": "1099991000000104",
+      "preferred_name": "Utilities",
+      "source_value": "utility",
+      "confidence_score": 0.7694795788543609,
+      "character_boundaries": {
+        "start": 528,
+        "end": 535
+      }
+    },
+    {
+      "snomed_cui": "713010006",
+      "preferred_name": "Emergency Severity Index",
+      "source_value": "Emergency Severity Index",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 543,
+        "end": 567
+      }
+    },
+    {
+      "snomed_cui": "277737005",
+      "preferred_name": "Level 5",
+      "source_value": "5-level",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 590,
+        "end": 597
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 598,
+        "end": 604
+      }
+    },
+    {
+      "snomed_cui": "86967005",
+      "preferred_name": "Tool, device",
+      "source_value": "tool",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 605,
+        "end": 609
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "Triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 629,
+        "end": 635
+      }
+    },
+    {
+      "snomed_cui": "223688001",
+      "preferred_name": "United States of America",
+      "source_value": "U.S.",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 650,
+        "end": 654
+      }
+    },
+    {
+      "snomed_cui": "12351004",
+      "preferred_name": "Crowding of teeth",
+      "source_value": "Crowding",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 654,
+        "end": 662
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "emergency departments",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 666,
+        "end": 687
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "problem",
+      "confidence_score": 0.5323139495065295,
+      "character_boundaries": {
+        "start": 707,
+        "end": 714
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "years",
+      "confidence_score": 0.7663595499469575,
+      "character_boundaries": {
+        "start": 724,
+        "end": 729
+      }
+    },
+    {
+      "snomed_cui": "79409006",
+      "preferred_name": "Resulting in",
+      "source_value": "resulting in",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 737,
+        "end": 749
+      }
+    },
+    {
+      "snomed_cui": "358612008",
+      "preferred_name": "Lengthened",
+      "source_value": "long",
+      "confidence_score": 0.6146020265371676,
+      "character_boundaries": {
+        "start": 750,
+        "end": 754
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 770,
+        "end": 778
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 784,
+        "end": 790
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 806,
+        "end": 812
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "system",
+      "confidence_score": 0.5245858220690569,
+      "character_boundaries": {
+        "start": 813,
+        "end": 819
+      }
+    },
+    {
+      "snomed_cui": "263707001",
+      "preferred_name": "Clear",
+      "source_value": "clear",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 825,
+        "end": 830
+      }
+    },
+    {
+      "snomed_cui": "410619003",
+      "preferred_name": "Application",
+      "source_value": "application",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 831,
+        "end": 842
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 883,
+        "end": 890
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "Triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 897,
+        "end": 903
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.8889964389529161,
+      "character_boundaries": {
+        "start": 952,
+        "end": 959
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 960,
+        "end": 968
+      }
+    },
+    {
+      "snomed_cui": "257733005",
+      "preferred_name": "Activity",
+      "source_value": "activities",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 991,
+        "end": 1001
+      }
+    },
+    {
+      "snomed_cui": "225419007",
+      "preferred_name": "Surveillance",
+      "source_value": "surveillance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1006,
+        "end": 1018
+      }
+    },
+    {
+      "snomed_cui": "224864007",
+      "preferred_name": "College",
+      "source_value": "College",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1130,
+        "end": 1137
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1141,
+        "end": 1150
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "Physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1151,
+        "end": 1161
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1163,
+        "end": 1167
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1177,
+        "end": 1186
+      }
+    },
+    {
+      "snomed_cui": "106292003",
+      "preferred_name": "Professional nurse",
+      "source_value": "Nurses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1187,
+        "end": 1193
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1227,
+        "end": 1235
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1236,
+        "end": 1242
+      }
+    },
+    {
+      "snomed_cui": "6493001",
+      "preferred_name": "Recent",
+      "source_value": "recently",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1327,
+        "end": 1335
+      }
+    },
+    {
+      "snomed_cui": "398070004",
+      "preferred_name": "State",
+      "source_value": "states",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1353,
+        "end": 1359
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "currently",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1391,
+        "end": 1400
+      }
+    },
+    {
+      "snomed_cui": "8940901000001109",
+      "preferred_name": "Available",
+      "source_value": "available",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1401,
+        "end": 1410
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1421,
+        "end": 1425
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.8346971352497828,
+      "character_boundaries": {
+        "start": 1434,
+        "end": 1441
+      }
+    },
+    {
+      "snomed_cui": "105430000",
+      "preferred_name": "Adoption, life event",
+      "source_value": "adoption",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1446,
+        "end": 1454
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1485,
+        "end": 1491
+      }
+    },
+    {
+      "snomed_cui": "271767006",
+      "preferred_name": "Peeling of skin",
+      "source_value": "scale",
+      "confidence_score": 0.35163221428903685,
+      "character_boundaries": {
+        "start": 1492,
+        "end": 1497
+      }
+    },
+    {
+      "snomed_cui": "713010006",
+      "preferred_name": "Emergency Severity Index",
+      "source_value": "Emergency Severity Index",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1510,
+        "end": 1534
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1543,
+        "end": 1547
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "Following",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1561,
+        "end": 1570
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "initial",
+      "confidence_score": 0.6344330166633492,
+      "character_boundaries": {
+        "start": 1575,
+        "end": 1582
+      }
+    },
+    {
+      "snomed_cui": "105430000",
+      "preferred_name": "Adoption, life event",
+      "source_value": "adoption",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1583,
+        "end": 1591
+      }
+    },
+    {
+      "snomed_cui": "277735002",
+      "preferred_name": "Level 3",
+      "source_value": "3-level",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1642,
+        "end": 1649
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1650,
+        "end": 1656
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.4622887128562614,
+      "character_boundaries": {
+        "start": 1657,
+        "end": 1664
+      }
+    },
+    {
+      "snomed_cui": "1250004",
+      "preferred_name": "Decreased",
+      "source_value": "decreased",
+      "confidence_score": 0.441909046526027,
+      "character_boundaries": {
+        "start": 1665,
+        "end": 1674
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1712,
+        "end": 1718
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "system",
+      "confidence_score": 0.556152454229161,
+      "character_boundaries": {
+        "start": 1719,
+        "end": 1725
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.43329269246455515,
+      "character_boundaries": {
+        "start": 1726,
+        "end": 1735
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "Currently",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1773,
+        "end": 1782
+      }
+    },
+    {
+      "snomed_cui": "223688001",
+      "preferred_name": "United States of America",
+      "source_value": "U.S.",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1791,
+        "end": 1795
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1835,
+        "end": 1841
+      }
+    },
+    {
+      "snomed_cui": "271767006",
+      "preferred_name": "Peeling of skin",
+      "source_value": "scales",
+      "confidence_score": 0.5998032208319977,
+      "character_boundaries": {
+        "start": 1842,
+        "end": 1848
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "Triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1880,
+        "end": 1886
+      }
+    },
+    {
+      "snomed_cui": "271767006",
+      "preferred_name": "Peeling of skin",
+      "source_value": "Scale",
+      "confidence_score": 0.6080892897653671,
+      "character_boundaries": {
+        "start": 1887,
+        "end": 1892
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "Triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1913,
+        "end": 1919
+      }
+    },
+    {
+      "snomed_cui": "271767006",
+      "preferred_name": "Peeling of skin",
+      "source_value": "Scale",
+      "confidence_score": 0.46264389246279924,
+      "character_boundaries": {
+        "start": 1931,
+        "end": 1936
+      }
+    },
+    {
+      "snomed_cui": "713009001",
+      "preferred_name": "Manchester Triage System",
+      "source_value": "Manchester Triage System",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1953,
+        "end": 1977
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1997,
+        "end": 2003
+      }
+    },
+    {
+      "snomed_cui": "436000",
+      "preferred_name": "Determined by (contextual qualifier)",
+      "source_value": "determine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2016,
+        "end": 2025
+      }
+    },
+    {
+      "snomed_cui": "358612008",
+      "preferred_name": "Lengthened",
+      "source_value": "long",
+      "confidence_score": 0.39128286609111385,
+      "character_boundaries": {
+        "start": 2030,
+        "end": 2034
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2039,
+        "end": 2046
+      }
+    },
+    {
+      "snomed_cui": "263707001",
+      "preferred_name": "Clear",
+      "source_value": "Clear",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2076,
+        "end": 2081
+      }
+    },
+    {
+      "snomed_cui": "900000000000550004",
+      "preferred_name": "Definition",
+      "source_value": "definitions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2082,
+        "end": 2093
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2105,
+        "end": 2114
+      }
+    },
+    {
+      "snomed_cui": "723051000000101",
+      "preferred_name": "Evaluation",
+      "source_value": "evaluation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2115,
+        "end": 2125
+      }
+    },
+    {
+      "snomed_cui": "263786007",
+      "preferred_name": "Integral",
+      "source_value": "integral",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2133,
+        "end": 2141
+      }
+    },
+    {
+      "snomed_cui": "18720000",
+      "preferred_name": "In",
+      "source_value": "part of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2142,
+        "end": 2149
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.6285484084775405,
+      "character_boundaries": {
+        "start": 2186,
+        "end": 2191
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.3022555667846758,
+      "character_boundaries": {
+        "start": 2216,
+        "end": 2219
+      }
+    },
+    {
+      "snomed_cui": "717896003",
+      "preferred_name": "Does not",
+      "source_value": "does not",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2244,
+        "end": 2252
+      }
+    },
+    {
+      "snomed_cui": "385673002",
+      "preferred_name": "Interval",
+      "source_value": "intervals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2274,
+        "end": 2283
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2287,
+        "end": 2296
+      }
+    },
+    {
+      "snomed_cui": "723051000000101",
+      "preferred_name": "Evaluation",
+      "source_value": "evaluation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2297,
+        "end": 2307
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2327,
+        "end": 2336
+      }
+    },
+    {
+      "snomed_cui": "246112005",
+      "preferred_name": "Severity",
+      "source_value": "Severity",
+      "confidence_score": 0.38997243317475827,
+      "character_boundaries": {
+        "start": 2337,
+        "end": 2345
+      }
+    },
+    {
+      "snomed_cui": "116680003",
+      "preferred_name": "Is a",
+      "source_value": "is a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2359,
+        "end": 2363
+      }
+    },
+    {
+      "snomed_cui": "277737005",
+      "preferred_name": "Level 5",
+      "source_value": "5-level",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2364,
+        "end": 2371
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2372,
+        "end": 2378
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2408,
+        "end": 2418
+      }
+    },
+    {
+      "snomed_cui": "223688001",
+      "preferred_name": "United States of America",
+      "source_value": "U.S.",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2456,
+        "end": 2460
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2562,
+        "end": 2568
+      }
+    },
+    {
+      "snomed_cui": "367346004",
+      "preferred_name": "Measures",
+      "source_value": "measure",
+      "confidence_score": 0.7080010448270182,
+      "character_boundaries": {
+        "start": 2580,
+        "end": 2587
+      }
+    },
+    {
+      "snomed_cui": "58158008",
+      "preferred_name": "Stable",
+      "source_value": "stability",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2603,
+        "end": 2612
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2617,
+        "end": 2621
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2645,
+        "end": 2653
+      }
+    },
+    {
+      "snomed_cui": "58158008",
+      "preferred_name": "Stable",
+      "source_value": "stable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2671,
+        "end": 2677
+      }
+    },
+    {
+      "snomed_cui": "9647001000001108",
+      "preferred_name": "Resource",
+      "source_value": "resources",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2693,
+        "end": 2702
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2725,
+        "end": 2732
+      }
+    },
+    {
+      "snomed_cui": "42796001",
+      "preferred_name": "End-stage",
+      "source_value": "final",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2738,
+        "end": 2743
+      }
+    },
+    {
+      "snomed_cui": "726711005",
+      "preferred_name": "Disposition",
+      "source_value": "disposition",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2744,
+        "end": 2755
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2757,
+        "end": 2766
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2768,
+        "end": 2777
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2782,
+        "end": 2790
+      }
+    },
+    {
+      "snomed_cui": "263933003",
+      "preferred_name": "Well differentiated",
+      "source_value": "differentiate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2811,
+        "end": 2824
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2825,
+        "end": 2832
+      }
+    },
+    {
+      "snomed_cui": "397909002",
+      "preferred_name": "Retained",
+      "source_value": "retains",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2849,
+        "end": 2856
+      }
+    },
+    {
+      "snomed_cui": "263901007",
+      "preferred_name": "Traditional",
+      "source_value": "traditional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2861,
+        "end": 2872
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "initially",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2887,
+        "end": 2896
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2908,
+        "end": 2915
+      }
+    },
+    {
+      "snomed_cui": "103391001",
+      "preferred_name": "Urgent",
+      "source_value": "urgency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2916,
+        "end": 2923
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2951,
+        "end": 2958
+      }
+    },
+    {
+      "snomed_cui": "24028007",
+      "preferred_name": "Right",
+      "source_value": "right",
+      "confidence_score": 0.7971430890326595,
+      "character_boundaries": {
+        "start": 2982,
+        "end": 2987
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2988,
+        "end": 2995
+      }
+    },
+    {
+      "snomed_cui": "264746006",
+      "preferred_name": "To the right",
+      "source_value": "to the right",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2996,
+        "end": 3008
+      }
+    },
+    {
+      "snomed_cui": "9647001000001108",
+      "preferred_name": "Resource",
+      "source_value": "resources",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3009,
+        "end": 3018
+      }
+    },
+    {
+      "snomed_cui": "24028007",
+      "preferred_name": "Right",
+      "source_value": "right",
+      "confidence_score": 0.8464059151601342,
+      "character_boundaries": {
+        "start": 3026,
+        "end": 3031
+      }
+    },
+    {
+      "snomed_cui": "257557008",
+      "preferred_name": "Place",
+      "source_value": "place",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3032,
+        "end": 3037
+      }
+    },
+    {
+      "snomed_cui": "24028007",
+      "preferred_name": "Right",
+      "source_value": "right",
+      "confidence_score": 0.7792169653793616,
+      "character_boundaries": {
+        "start": 3046,
+        "end": 3051
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3073,
+        "end": 3082
+      }
+    },
+    {
+      "snomed_cui": "246112005",
+      "preferred_name": "Severity",
+      "source_value": "Severity",
+      "confidence_score": 0.5045029435696246,
+      "character_boundaries": {
+        "start": 3083,
+        "end": 3091
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studied",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3114,
+        "end": 3121
+      }
+    },
+    {
+      "snomed_cui": "223688001",
+      "preferred_name": "United States of America",
+      "source_value": "United States",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3143,
+        "end": 3156
+      }
+    },
+    {
+      "snomed_cui": "223369002",
+      "preferred_name": "Country",
+      "source_value": "countries",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3171,
+        "end": 3180
+      }
+    },
+    {
+      "snomed_cui": "61909002",
+      "preferred_name": "Language, function",
+      "source_value": "languages",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3185,
+        "end": 3194
+      }
+    },
+    {
+      "snomed_cui": "720431000000109",
+      "preferred_name": "Age group",
+      "source_value": "age groups",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3207,
+        "end": 3217
+      }
+    },
+    {
+      "snomed_cui": "224650005",
+      "preferred_name": "Mill",
+      "source_value": "Mills",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3416,
+        "end": 3421
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3495,
+        "end": 3499
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.806191829590733,
+      "character_boundaries": {
+        "start": 3500,
+        "end": 3507
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3512,
+        "end": 3518
+      }
+    },
+    {
+      "snomed_cui": "409073007",
+      "preferred_name": "Education",
+      "source_value": "education",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3524,
+        "end": 3533
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needed",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3537,
+        "end": 3543
+      }
+    },
+    {
+      "snomed_cui": "410619003",
+      "preferred_name": "Application",
+      "source_value": "application",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3566,
+        "end": 3577
+      }
+    },
+    {
+      "snomed_cui": "419205000",
+      "preferred_name": "Percentage index",
+      "source_value": "index",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3604,
+        "end": 3609
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "Studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3611,
+        "end": 3618
+      }
+    },
+    {
+      "snomed_cui": "410619003",
+      "preferred_name": "Application",
+      "source_value": "application",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3626,
+        "end": 3637
+      }
+    },
+    {
+      "snomed_cui": "263656005",
+      "preferred_name": "Accurate",
+      "source_value": "accuracy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3661,
+        "end": 3669
+      }
+    },
+    {
+      "snomed_cui": "419582001",
+      "preferred_name": "Give - dosing instruction imperative",
+      "source_value": "Given",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3733,
+        "end": 3738
+      }
+    },
+    {
+      "snomed_cui": "263656005",
+      "preferred_name": "Accurate",
+      "source_value": "accuracy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3747,
+        "end": 3755
+      }
+    },
+    {
+      "snomed_cui": "69998004",
+      "preferred_name": "Learning, function",
+      "source_value": "learning",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3762,
+        "end": 3770
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3889,
+        "end": 3897
+      }
+    },
+    {
+      "snomed_cui": "223688001",
+      "preferred_name": "United States of America",
+      "source_value": "U.S.",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3901,
+        "end": 3905
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triaged",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3914,
+        "end": 3921
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "system",
+      "confidence_score": 0.6191453896161715,
+      "character_boundaries": {
+        "start": 3951,
+        "end": 3957
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3980,
+        "end": 3986
+      }
+    },
+    {
+      "snomed_cui": "271767006",
+      "preferred_name": "Peeling of skin",
+      "source_value": "scale",
+      "confidence_score": 0.36426572857141964,
+      "character_boundaries": {
+        "start": 3987,
+        "end": 3992
+      }
+    },
+    {
+      "snomed_cui": "223688001",
+      "preferred_name": "United States of America",
+      "source_value": "United States",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4000,
+        "end": 4013
+      }
+    },
+    {
+      "snomed_cui": "105430000",
+      "preferred_name": "Adoption, life event",
+      "source_value": "adoption",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4023,
+        "end": 4031
+      }
+    },
+    {
+      "snomed_cui": "106333009",
+      "preferred_name": "Manager",
+      "source_value": "managers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4118,
+        "end": 4126
+      }
+    },
+    {
+      "snomed_cui": "769038007",
+      "preferred_name": "Researcher",
+      "source_value": "researchers",
+      "confidence_score": 0.8576237431890895,
+      "character_boundaries": {
+        "start": 4132,
+        "end": 4143
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "sites",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4153,
+        "end": 4158
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4164,
+        "end": 4174
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4199,
+        "end": 4205
+      }
+    },
+    {
+      "snomed_cui": "255333006",
+      "preferred_name": "Conventional",
+      "source_value": "conventional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4211,
+        "end": 4223
+      }
+    },
+    {
+      "snomed_cui": "277735002",
+      "preferred_name": "Level 3",
+      "source_value": "3-level",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4224,
+        "end": 4231
+      }
+    },
+    {
+      "snomed_cui": "271767006",
+      "preferred_name": "Peeling of skin",
+      "source_value": "scales",
+      "confidence_score": 0.5049027586249547,
+      "character_boundaries": {
+        "start": 4232,
+        "end": 4238
+      }
+    },
+    {
+      "snomed_cui": "277737005",
+      "preferred_name": "Level 5",
+      "source_value": "5-level",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4263,
+        "end": 4270
+      }
+    },
+    {
+      "snomed_cui": "271767006",
+      "preferred_name": "Peeling of skin",
+      "source_value": "scale",
+      "confidence_score": 0.39658130060430996,
+      "character_boundaries": {
+        "start": 4278,
+        "end": 4283
+      }
+    },
+    {
+      "snomed_cui": "418694008",
+      "preferred_name": "Rapidly",
+      "source_value": "rapid",
+      "confidence_score": 0.7462436501619782,
+      "character_boundaries": {
+        "start": 4291,
+        "end": 4296
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identification",
+      "confidence_score": 0.677030485916482,
+      "character_boundaries": {
+        "start": 4297,
+        "end": 4311
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4315,
+        "end": 4323
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4328,
+        "end": 4332
+      }
+    },
+    {
+      "snomed_cui": "88694003",
+      "preferred_name": "Immediate",
+      "source_value": "immediate",
+      "confidence_score": 0.3736316088777792,
+      "character_boundaries": {
+        "start": 4333,
+        "end": 4342
+      }
+    },
+    {
+      "snomed_cui": "840091000000103",
+      "preferred_name": "Intervention",
+      "source_value": "interventions",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4343,
+        "end": 4356
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4361,
+        "end": 4370
+      }
+    },
+    {
+      "snomed_cui": "87017008",
+      "preferred_name": "Focal",
+      "source_value": "focus",
+      "confidence_score": 0.5117334288042786,
+      "character_boundaries": {
+        "start": 4376,
+        "end": 4381
+      }
+    },
+    {
+      "snomed_cui": "277737005",
+      "preferred_name": "Level 5",
+      "source_value": "5-level",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4385,
+        "end": 4392
+      }
+    },
+    {
+      "snomed_cui": "271767006",
+      "preferred_name": "Peeling of skin",
+      "source_value": "scales",
+      "confidence_score": 0.362804264107272,
+      "character_boundaries": {
+        "start": 4400,
+        "end": 4406
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identification",
+      "confidence_score": 0.7981594372252578,
+      "character_boundaries": {
+        "start": 4413,
+        "end": 4427
+      }
+    },
+    {
+      "snomed_cui": "263922001",
+      "preferred_name": "Unstable status",
+      "source_value": "unstable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4431,
+        "end": 4439
+      }
+    },
+    {
+      "snomed_cui": "723509005",
+      "preferred_name": "High risk",
+      "source_value": "high-risk",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4444,
+        "end": 4453
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4454,
+        "end": 4461
+      }
+    },
+    {
+      "snomed_cui": "418694008",
+      "preferred_name": "Rapidly",
+      "source_value": "quick",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4477,
+        "end": 4482
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4494,
+        "end": 4502
+      }
+    },
+    {
+      "snomed_cui": "9647001000001108",
+      "preferred_name": "Resource",
+      "source_value": "resources",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4533,
+        "end": 4542
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4547,
+        "end": 4553
+      }
+    },
+    {
+      "snomed_cui": "116680003",
+      "preferred_name": "Is a",
+      "source_value": "is a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4554,
+        "end": 4558
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4569,
+        "end": 4577
+      }
+    },
+    {
+      "snomed_cui": "61254005",
+      "preferred_name": "Judgement",
+      "source_value": "judgment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4578,
+        "end": 4586
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "assists",
+      "confidence_score": 0.7194412199647326,
+      "character_boundaries": {
+        "start": 4592,
+        "end": 4599
+      }
+    },
+    {
+      "snomed_cui": "418694008",
+      "preferred_name": "Rapidly",
+      "source_value": "rapid",
+      "confidence_score": 0.3982032066368427,
+      "character_boundaries": {
+        "start": 4607,
+        "end": 4612
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "groups",
+      "confidence_score": 0.8279322095136787,
+      "character_boundaries": {
+        "start": 4631,
+        "end": 4637
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "groups",
+      "confidence_score": 0.7306258543169111,
+      "character_boundaries": {
+        "start": 4648,
+        "end": 4654
+      }
+    },
+    {
+      "snomed_cui": "225436004",
+      "preferred_name": "Reflecting",
+      "source_value": "reflect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4655,
+        "end": 4662
+      }
+    },
+    {
+      "snomed_cui": "1360005",
+      "preferred_name": "Physiologic",
+      "source_value": "physiological",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4700,
+        "end": 4713
+      }
+    },
+    {
+      "snomed_cui": "60224009",
+      "preferred_name": "Psychologic",
+      "source_value": "psychological",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4718,
+        "end": 4731
+      }
+    },
+    {
+      "snomed_cui": "58158008",
+      "preferred_name": "Stable",
+      "source_value": "stability",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4732,
+        "end": 4741
+      }
+    },
+    {
+      "snomed_cui": "1100881000168104",
+      "preferred_name": "Assessment of cognitive function",
+      "source_value": "assessment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4755,
+        "end": 4765
+      }
+    },
+    {
+      "snomed_cui": "61746007",
+      "preferred_name": "Taking patient vital signs",
+      "source_value": "vital signs",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4769,
+        "end": 4780
+      }
+    },
+    {
+      "snomed_cui": "9647001000001108",
+      "preferred_name": "Resource",
+      "source_value": "resource",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4795,
+        "end": 4803
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needs",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4804,
+        "end": 4809
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "Use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4811,
+        "end": 4817
+      }
+    },
+    {
+      "snomed_cui": "418694008",
+      "preferred_name": "Rapidly",
+      "source_value": "rapid",
+      "confidence_score": 0.7144067329802246,
+      "character_boundaries": {
+        "start": 4835,
+        "end": 4840
+      }
+    },
+    {
+      "snomed_cui": "105223008",
+      "preferred_name": "Lead measurement",
+      "source_value": "lead",
+      "confidence_score": 0.5134332485299495,
+      "character_boundaries": {
+        "start": 4853,
+        "end": 4857
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improved",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4861,
+        "end": 4869
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4878,
+        "end": 4886
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4923,
+        "end": 4931
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4938,
+        "end": 4948
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4995,
+        "end": 5002
+      }
+    },
+    {
+      "snomed_cui": "223458004",
+      "preferred_name": "Informing",
+      "source_value": "inform",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5034,
+        "end": 5040
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needs",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5050,
+        "end": 5055
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5063,
+        "end": 5070
+      }
+    },
+    {
+      "snomed_cui": "261074009",
+      "preferred_name": "External",
+      "source_value": "outside",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5094,
+        "end": 5101
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5165,
+        "end": 5173
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5177,
+        "end": 5186
+      }
+    },
+    {
+      "snomed_cui": "42798000",
+      "preferred_name": "Area",
+      "source_value": "areas",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5187,
+        "end": 5192
+      }
+    },
+    {
+      "snomed_cui": "261074009",
+      "preferred_name": "External",
+      "source_value": "outside",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5193,
+        "end": 5200
+      }
+    },
+    {
+      "snomed_cui": "63161005",
+      "preferred_name": "Principal",
+      "source_value": "main",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5205,
+        "end": 5209
+      }
+    },
+    {
+      "snomed_cui": "106292003",
+      "preferred_name": "Professional nurse",
+      "source_value": "Nurses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5221,
+        "end": 5227
+      }
+    },
+    {
+      "snomed_cui": "733985002",
+      "preferred_name": "Reported",
+      "source_value": "reported",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5247,
+        "end": 5255
+      }
+    },
+    {
+      "snomed_cui": "86967005",
+      "preferred_name": "Tool, device",
+      "source_value": "tool",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5260,
+        "end": 5264
+      }
+    },
+    {
+      "snomed_cui": "263536004",
+      "preferred_name": "Communication",
+      "source_value": "communication",
+      "confidence_score": 0.6137014972407481,
+      "character_boundaries": {
+        "start": 5277,
+        "end": 5290
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5294,
+        "end": 5301
+      }
+    },
+    {
+      "snomed_cui": "277735002",
+      "preferred_name": "Level 3",
+      "source_value": "3-level",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5342,
+        "end": 5349
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5350,
+        "end": 5356
+      }
+    },
+    {
+      "snomed_cui": "224538006",
+      "preferred_name": "Triage nurse",
+      "source_value": "triage nurse",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5403,
+        "end": 5415
+      }
+    },
+    {
+      "snomed_cui": "224573008",
+      "preferred_name": "Charge nurse",
+      "source_value": "charge nurse",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5429,
+        "end": 5441
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need",
+      "confidence_score": 0.801657414112838,
+      "character_boundaries": {
+        "start": 5446,
+        "end": 5450
+      }
+    },
+    {
+      "snomed_cui": "277733009",
+      "preferred_name": "Level 1",
+      "source_value": "level-1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5463,
+        "end": 5470
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5471,
+        "end": 5478
+      }
+    },
+    {
+      "snomed_cui": "72906007",
+      "preferred_name": "Common",
+      "source_value": "common",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5498,
+        "end": 5504
+      }
+    },
+    {
+      "snomed_cui": "61909002",
+      "preferred_name": "Language, function",
+      "source_value": "language",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5505,
+        "end": 5513
+      }
+    },
+    {
+      "snomed_cui": "224573008",
+      "preferred_name": "Charge nurse",
+      "source_value": "charge nurse",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5519,
+        "end": 5531
+      }
+    },
+    {
+      "snomed_cui": "66216009",
+      "preferred_name": "Understanding, function",
+      "source_value": "understands",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5532,
+        "end": 5543
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5553,
+        "end": 5560
+      }
+    },
+    {
+      "snomed_cui": "263922001",
+      "preferred_name": "Unstable status",
+      "source_value": "unstable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5564,
+        "end": 5572
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5611,
+        "end": 5618
+      }
+    },
+    {
+      "snomed_cui": "260905004",
+      "preferred_name": "Condition",
+      "source_value": "condition",
+      "confidence_score": 0.48510311940905493,
+      "character_boundaries": {
+        "start": 5621,
+        "end": 5630
+      }
+    },
+    {
+      "snomed_cui": "224538006",
+      "preferred_name": "Triage nurse",
+      "source_value": "triage nurse",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5638,
+        "end": 5650
+      }
+    },
+    {
+      "snomed_cui": "66216009",
+      "preferred_name": "Understanding, function",
+      "source_value": "Understanding",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5652,
+        "end": 5665
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5666,
+        "end": 5673
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5731,
+        "end": 5739
+      }
+    },
+    {
+      "snomed_cui": "413383002",
+      "preferred_name": "Ability to make decisions",
+      "source_value": "ability to make decisions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5762,
+        "end": 5787
+      }
+    },
+    {
+      "snomed_cui": "9647001000001108",
+      "preferred_name": "Resource",
+      "source_value": "resources",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5824,
+        "end": 5833
+      }
+    },
+    {
+      "snomed_cui": "254648000",
+      "preferred_name": "Effective",
+      "source_value": "effective",
+      "confidence_score": 0.7250184497045395,
+      "character_boundaries": {
+        "start": 5905,
+        "end": 5914
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5915,
+        "end": 5921
+      }
+    },
+    {
+      "snomed_cui": "86967005",
+      "preferred_name": "Tool, device",
+      "source_value": "tool",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5922,
+        "end": 5926
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6007,
+        "end": 6015
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.7521649176912741,
+      "character_boundaries": {
+        "start": 6016,
+        "end": 6020
+      }
+    },
+    {
+      "snomed_cui": "263496004",
+      "preferred_name": "Quality",
+      "source_value": "quality",
+      "confidence_score": 0.7638220681725044,
+      "character_boundaries": {
+        "start": 6021,
+        "end": 6028
+      }
+    },
+    {
+      "snomed_cui": "409073007",
+      "preferred_name": "Education",
+      "source_value": "education",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6029,
+        "end": 6038
+      }
+    },
+    {
+      "snomed_cui": "721963009",
+      "preferred_name": "Order",
+      "source_value": "order",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6053,
+        "end": 6058
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6062,
+        "end": 6068
+      }
+    },
+    {
+      "snomed_cui": "418694008",
+      "preferred_name": "Rapidly",
+      "source_value": "rapid",
+      "confidence_score": 0.9099969214018604,
+      "character_boundaries": {
+        "start": 6111,
+        "end": 6116
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identification",
+      "confidence_score": 0.5348835970038572,
+      "character_boundaries": {
+        "start": 6117,
+        "end": 6131
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6135,
+        "end": 6143
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6144,
+        "end": 6151
+      }
+    },
+    {
+      "snomed_cui": "49499008",
+      "preferred_name": "Stat",
+      "source_value": "immediate",
+      "confidence_score": 0.43587713644399695,
+      "character_boundaries": {
+        "start": 6152,
+        "end": 6161
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6162,
+        "end": 6171
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improved",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6173,
+        "end": 6181
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6182,
+        "end": 6189
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6196,
+        "end": 6207
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needs",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6228,
+        "end": 6233
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improved",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6239,
+        "end": 6247
+      }
+    },
+    {
+      "snomed_cui": "263536004",
+      "preferred_name": "Communication",
+      "source_value": "communication",
+      "confidence_score": 0.6026157115781088,
+      "character_boundaries": {
+        "start": 6248,
+        "end": 6261
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6348,
+        "end": 6354
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "emergency department",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6370,
+        "end": 6390
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "Emergency Medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6409,
+        "end": 6427
+      }
+    },
+    {
+      "snomed_cui": "224864007",
+      "preferred_name": "College",
+      "source_value": "College",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6506,
+        "end": 6513
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6517,
+        "end": 6526
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "Physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6527,
+        "end": 6537
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "Triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6559,
+        "end": 6565
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "acep",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6620,
+        "end": 6624
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6669,
+        "end": 6675
+      }
+    },
+    {
+      "snomed_cui": "271767006",
+      "preferred_name": "Peeling of skin",
+      "source_value": "scale",
+      "confidence_score": 0.4596264054340151,
+      "character_boundaries": {
+        "start": 6676,
+        "end": 6681
+      }
+    },
+    {
+      "snomed_cui": "33554006",
+      "preferred_name": "Pollachius virens",
+      "source_value": "Pollock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6743,
+        "end": 6750
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.306193582958445,
+      "character_boundaries": {
+        "start": 6789,
+        "end": 6796
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6808,
+        "end": 6812
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standards",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6842,
+        "end": 6851
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "emergency medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6855,
+        "end": 6873
+      }
+    },
+    {
+      "snomed_cui": "722321000000103",
+      "preferred_name": "Information technology",
+      "source_value": "information technology",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6874,
+        "end": 6896
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "Emergency Medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6907,
+        "end": 6925
+      }
+    }
+  ]
+}

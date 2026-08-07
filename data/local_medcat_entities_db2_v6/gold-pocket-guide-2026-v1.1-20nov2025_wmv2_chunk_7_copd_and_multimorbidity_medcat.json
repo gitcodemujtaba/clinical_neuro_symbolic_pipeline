@@ -1,0 +1,955 @@
+{
+  "chunk_id": "chunk_7",
+  "entities": [
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 0,
+        "end": 4
+      }
+    },
+    {
+      "snomed_cui": "70232002",
+      "preferred_name": "Frequent",
+      "source_value": "frequently",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 61,
+        "end": 71
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 75,
+        "end": 79
+      }
+    },
+    {
+      "snomed_cui": "9698801000001106",
+      "preferred_name": "Impact",
+      "source_value": "impacts",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 98,
+        "end": 105
+      }
+    },
+    {
+      "snomed_cui": "406221003",
+      "preferred_name": "Health status",
+      "source_value": "health status",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 106,
+        "end": 119
+      }
+    },
+    {
+      "snomed_cui": "394656005",
+      "preferred_name": "Inpatient care",
+      "source_value": "hospitalizations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 121,
+        "end": 137
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 143,
+        "end": 152
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standards",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 231,
+        "end": 240
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 255,
+        "end": 259
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "Person",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 280,
+        "end": 286
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "Centered",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 287,
+        "end": 295
+      }
+    },
+    {
+      "snomed_cui": "103379005",
+      "preferred_name": "Procedural approach",
+      "source_value": "Approach",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 296,
+        "end": 304
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 339,
+        "end": 344
+      }
+    },
+    {
+      "snomed_cui": "722021000000100",
+      "preferred_name": "Screening",
+      "source_value": "screening",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 346,
+        "end": 355
+      }
+    },
+    {
+      "snomed_cui": "231504006",
+      "preferred_name": "Mixed anxiety and depressive disorder",
+      "source_value": "depression, anxiety",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 360,
+        "end": 379
+      }
+    },
+    {
+      "snomed_cui": "386806002",
+      "preferred_name": "Impaired cognition",
+      "source_value": "cognitive impairment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 381,
+        "end": 401
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "Medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 407,
+        "end": 418
+      }
+    },
+    {
+      "snomed_cui": "129846003",
+      "preferred_name": "Polypharmacy",
+      "source_value": "Polypharmacy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 420,
+        "end": 432
+      }
+    },
+    {
+      "snomed_cui": "721241000000109",
+      "preferred_name": "Review",
+      "source_value": "review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 433,
+        "end": 439
+      }
+    },
+    {
+      "snomed_cui": "397943006",
+      "preferred_name": "Planned",
+      "source_value": "plan",
+      "confidence_score": 0.7177727649989208,
+      "character_boundaries": {
+        "start": 446,
+        "end": 450
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.5783284651008732,
+      "character_boundaries": {
+        "start": 452,
+        "end": 456
+      }
+    },
+    {
+      "snomed_cui": "410617001",
+      "preferred_name": "Adjustment",
+      "source_value": "adjustments",
+      "confidence_score": 0.9301240654116387,
+      "character_boundaries": {
+        "start": 457,
+        "end": 468
+      }
+    },
+    {
+      "snomed_cui": "363803005",
+      "preferred_name": "Mobility",
+      "source_value": "Mobility",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 474,
+        "end": 482
+      }
+    },
+    {
+      "snomed_cui": "78933003",
+      "preferred_name": "Balanced",
+      "source_value": "Balance",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 484,
+        "end": 491
+      }
+    },
+    {
+      "snomed_cui": "68130003",
+      "preferred_name": "Physical activity",
+      "source_value": "physical activity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 493,
+        "end": 510
+      }
+    },
+    {
+      "snomed_cui": "256235009",
+      "preferred_name": "Exercise",
+      "source_value": "exercise",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 512,
+        "end": 520
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "Identification",
+      "confidence_score": 0.7386529081835147,
+      "character_boundaries": {
+        "start": 548,
+        "end": 562
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.685517354738275,
+      "character_boundaries": {
+        "start": 567,
+        "end": 577
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "conditions",
+      "confidence_score": 0.5806322086662665,
+      "character_boundaries": {
+        "start": 593,
+        "end": 603
+      }
+    },
+    {
+      "snomed_cui": "113257007",
+      "preferred_name": "Structure of cardiovascular system",
+      "source_value": "Cardiovascular",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 641,
+        "end": 655
+      }
+    },
+    {
+      "snomed_cui": "721231000000100",
+      "preferred_name": "Cluster",
+      "source_value": "Cluster",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 656,
+        "end": 663
+      }
+    },
+    {
+      "snomed_cui": "38341003",
+      "preferred_name": "Hypertensive disorder, systemic arterial",
+      "source_value": "Systemic hypertension",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 665,
+        "end": 686
+      }
+    },
+    {
+      "snomed_cui": "414795007",
+      "preferred_name": "Myocardial ischemia",
+      "source_value": "ischemic heart disease",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 688,
+        "end": 710
+      }
+    },
+    {
+      "snomed_cui": "84114007",
+      "preferred_name": "Heart failure",
+      "source_value": "heart failure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 712,
+        "end": 725
+      }
+    },
+    {
+      "snomed_cui": "49436004",
+      "preferred_name": "Atrial fibrillation",
+      "source_value": "atrial fibrillation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 727,
+        "end": 746
+      }
+    },
+    {
+      "snomed_cui": "70995007",
+      "preferred_name": "Pulmonary hypertension",
+      "source_value": "pulmonary hypertension",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 748,
+        "end": 770
+      }
+    },
+    {
+      "snomed_cui": "721231000000100",
+      "preferred_name": "Cluster",
+      "source_value": "Cluster",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 781,
+        "end": 788
+      }
+    },
+    {
+      "snomed_cui": "231504006",
+      "preferred_name": "Mixed anxiety and depressive disorder",
+      "source_value": "Depression, anxiety",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 790,
+        "end": 809
+      }
+    },
+    {
+      "snomed_cui": "386806002",
+      "preferred_name": "Impaired cognition",
+      "source_value": "cognitive decline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 811,
+        "end": 828
+      }
+    },
+    {
+      "snomed_cui": "86290005",
+      "preferred_name": "Respiratory rate",
+      "source_value": "Respiratory",
+      "confidence_score": 0.7540088119858575,
+      "character_boundaries": {
+        "start": 832,
+        "end": 843
+      }
+    },
+    {
+      "snomed_cui": "721231000000100",
+      "preferred_name": "Cluster",
+      "source_value": "Cluster",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 844,
+        "end": 851
+      }
+    },
+    {
+      "snomed_cui": "363358000",
+      "preferred_name": "Malignant neoplasm of lung",
+      "source_value": "Lung cancer",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 853,
+        "end": 864
+      }
+    },
+    {
+      "snomed_cui": "12295008",
+      "preferred_name": "Bronchiectasis",
+      "source_value": "bronchiectasis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 866,
+        "end": 880
+      }
+    },
+    {
+      "snomed_cui": "195967001",
+      "preferred_name": "Asthma",
+      "source_value": "asthma",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 882,
+        "end": 888
+      }
+    },
+    {
+      "snomed_cui": "258158006",
+      "preferred_name": "Sleep, function",
+      "source_value": "sleep",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 890,
+        "end": 895
+      }
+    },
+    {
+      "snomed_cui": "78064003",
+      "preferred_name": "Respiratory function",
+      "source_value": "breathing",
+      "confidence_score": 0.862119515556239,
+      "character_boundaries": {
+        "start": 907,
+        "end": 916
+      }
+    },
+    {
+      "snomed_cui": "78275009",
+      "preferred_name": "Obstructive sleep apnea syndrome",
+      "source_value": "OSA",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 918,
+        "end": 921
+      }
+    },
+    {
+      "snomed_cui": "721231000000100",
+      "preferred_name": "Cluster",
+      "source_value": "Cluster",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 936,
+        "end": 943
+      }
+    },
+    {
+      "snomed_cui": "73211009",
+      "preferred_name": "Diabetes mellitus",
+      "source_value": "Diabetes",
+      "confidence_score": 0.5820574946324907,
+      "character_boundaries": {
+        "start": 945,
+        "end": 953
+      }
+    },
+    {
+      "snomed_cui": "442191002",
+      "preferred_name": "Steatohepatitis",
+      "source_value": "fatty liver",
+      "confidence_score": 0.8984262496412541,
+      "character_boundaries": {
+        "start": 955,
+        "end": 966
+      }
+    },
+    {
+      "snomed_cui": "414916001",
+      "preferred_name": "Obesity",
+      "source_value": "obesity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 968,
+        "end": 975
+      }
+    },
+    {
+      "snomed_cui": "235595009",
+      "preferred_name": "Gastroesophageal reflux disease",
+      "source_value": "GERD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 977,
+        "end": 981
+      }
+    },
+    {
+      "snomed_cui": "255204007",
+      "preferred_name": "Multiple",
+      "source_value": "Multiple",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 985,
+        "end": 993
+      }
+    },
+    {
+      "snomed_cui": "85756007",
+      "preferred_name": "Body tissue structure",
+      "source_value": "Tissue",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1008,
+        "end": 1014
+      }
+    },
+    {
+      "snomed_cui": "64859006",
+      "preferred_name": "Osteoporosis",
+      "source_value": "Osteoporosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1023,
+        "end": 1035
+      }
+    },
+    {
+      "snomed_cui": "772791006",
+      "preferred_name": "Sarcopenia",
+      "source_value": "sarcopenia",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1037,
+        "end": 1047
+      }
+    },
+    {
+      "snomed_cui": "271737000",
+      "preferred_name": "Anemia",
+      "source_value": "anemia",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1049,
+        "end": 1055
+      }
+    },
+    {
+      "snomed_cui": "49158009",
+      "preferred_name": "Emphysema",
+      "source_value": "emphysema",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1057,
+        "end": 1066
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "Specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1069,
+        "end": 1077
+      }
+    },
+    {
+      "snomed_cui": "420227002",
+      "preferred_name": "Recommendation to",
+      "source_value": "Guidance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1088,
+        "end": 1096
+      }
+    },
+    {
+      "snomed_cui": "70995007",
+      "preferred_name": "Pulmonary hypertension",
+      "source_value": "Pulmonary Hypertension",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1100,
+        "end": 1122
+      }
+    },
+    {
+      "snomed_cui": "417662000",
+      "preferred_name": "History of clinical finding in subject",
+      "source_value": "PH",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1124,
+        "end": 1126
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1127,
+        "end": 1131
+      }
+    },
+    {
+      "snomed_cui": "258366009",
+      "preferred_name": "Group 1",
+      "source_value": "Group 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1152,
+        "end": 1159
+      }
+    },
+    {
+      "snomed_cui": "697898008",
+      "preferred_name": "Idiopathic pulmonary arterial hypertension",
+      "source_value": "PAH",
+      "confidence_score": 0.5756799850320216,
+      "character_boundaries": {
+        "start": 1160,
+        "end": 1163
+      }
+    },
+    {
+      "snomed_cui": "233947005",
+      "preferred_name": "Thromboembolic pulmonary hypertension",
+      "source_value": "CTEPH",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1167,
+        "end": 1172
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1185,
+        "end": 1195
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1197,
+        "end": 1203
+      }
+    },
+    {
+      "snomed_cui": "258374005",
+      "preferred_name": "Group 3",
+      "source_value": "Group 3",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1204,
+        "end": 1211
+      }
+    },
+    {
+      "snomed_cui": "440379008",
+      "preferred_name": "Referral to",
+      "source_value": "referral to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1224,
+        "end": 1235
+      }
+    },
+    {
+      "snomed_cui": "67995009",
+      "preferred_name": "Special",
+      "source_value": "specialized",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1236,
+        "end": 1247
+      }
+    },
+    {
+      "snomed_cui": "58008004",
+      "preferred_name": "Peliosis hepatis",
+      "source_value": "PH",
+      "confidence_score": 0.38808148642129897,
+      "character_boundaries": {
+        "start": 1248,
+        "end": 1250
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "centers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1251,
+        "end": 1258
+      }
+    },
+    {
+      "snomed_cui": "275981009",
+      "preferred_name": "Screening for malignant neoplasm of lung",
+      "source_value": "Lung Cancer Screening",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1262,
+        "end": 1283
+      }
+    },
+    {
+      "snomed_cui": "53281000",
+      "preferred_name": "Annual",
+      "source_value": "Annual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1298,
+        "end": 1304
+      }
+    },
+    {
+      "snomed_cui": "262459003",
+      "preferred_name": "Low dose",
+      "source_value": "low-dose",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1305,
+        "end": 1313
+      }
+    },
+    {
+      "snomed_cui": "77477000",
+      "preferred_name": "Computed tomography",
+      "source_value": "CT",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1314,
+        "end": 1316
+      }
+    },
+    {
+      "snomed_cui": "713548006",
+      "preferred_name": "Low dose computed tomography of thorax",
+      "source_value": "LDCT",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1318,
+        "end": 1322
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1324,
+        "end": 1335
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1340,
+        "end": 1344
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1345,
+        "end": 1353
+      }
+    },
+    {
+      "snomed_cui": "315609007",
+      "preferred_name": "Pack years",
+      "source_value": "pack-year",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1365,
+        "end": 1374
+      }
+    },
+    {
+      "snomed_cui": "77176002",
+      "preferred_name": "Smoker",
+      "source_value": "smoking",
+      "confidence_score": 0.9121132944105075,
+      "character_boundaries": {
+        "start": 1375,
+        "end": 1382
+      }
+    },
+    {
+      "snomed_cui": "717121000000105",
+      "preferred_name": "History",
+      "source_value": "history",
+      "confidence_score": 0.8227908658335973,
+      "character_boundaries": {
+        "start": 1383,
+        "end": 1390
+      }
+    },
+    {
+      "snomed_cui": "49808004",
+      "preferred_name": "Old-age",
+      "source_value": "aged",
+      "confidence_score": 0.6915214243933643,
+      "character_boundaries": {
+        "start": 1391,
+        "end": 1395
+      }
+    },
+    {
+      "snomed_cui": "1354479004",
+      "preferred_name": "Complementary",
+      "source_value": "Complementary",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1404,
+        "end": 1417
+      }
+    },
+    {
+      "snomed_cui": "723051000000101",
+      "preferred_name": "Evaluation",
+      "source_value": "Evaluation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1418,
+        "end": 1428
+      }
+    },
+    {
+      "snomed_cui": "17854005",
+      "preferred_name": "Regular",
+      "source_value": "regular",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1469,
+        "end": 1476
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1477,
+        "end": 1486
+      }
+    },
+    {
+      "snomed_cui": "722021000000100",
+      "preferred_name": "Screening",
+      "source_value": "screening",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1487,
+        "end": 1496
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1497,
+        "end": 1506
+      }
+    },
+    {
+      "snomed_cui": "29303009",
+      "preferred_name": "Electrocardiographic procedure",
+      "source_value": "ECG",
+      "confidence_score": 0.9742439679741065,
+      "character_boundaries": {
+        "start": 1507,
+        "end": 1510
+      }
+    },
+    {
+      "snomed_cui": "241686001",
+      "preferred_name": "Dual energy X-ray absorptiometry",
+      "source_value": "DXA",
+      "confidence_score": 0.399819960592399,
+      "character_boundaries": {
+        "start": 1535,
+        "end": 1538
+      }
+    },
+    {
+      "snomed_cui": "373205008",
+      "preferred_name": "Nuclear medicine imaging procedure",
+      "source_value": "scan",
+      "confidence_score": 0.6478114332616136,
+      "character_boundaries": {
+        "start": 1539,
+        "end": 1543
+      }
+    },
+    {
+      "snomed_cui": "41465008",
+      "preferred_name": "Glutamate decarboxylase",
+      "source_value": "GAD",
+      "confidence_score": 0.44660763769040457,
+      "character_boundaries": {
+        "start": 1551,
+        "end": 1554
+      }
+    }
+  ]
+}

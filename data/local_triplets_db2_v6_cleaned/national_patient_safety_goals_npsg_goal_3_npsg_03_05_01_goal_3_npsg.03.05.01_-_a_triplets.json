@@ -1,0 +1,143 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Anticoagulant therapy",
+      "snomed": "182764009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_05_01_goal_3_npsg.03.05.01_-_a.json",
+        "section_title": "Goal 3: NPSG.03.05.01 - Anticoagulant Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f7e8d9c0-b1a2-4356-9def-fedcba987654",
+          "rationale": "Anticoagulation therapy can cause harm due to complex dosing, insufficient monitoring, and inconsistent patient compliance.",
+          "citation": "NPSG.03.05.01 rationale.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f7e8d9c0-b1a2-4356-9def-fedcba987654",
+      "@type": "Condition",
+      "name": "Risk of harm associated with anticoagulant therapy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_05_01_goal_3_npsg.03.05.01_-_a.json",
+        "section_title": "Goal 3: NPSG.03.05.01 - Anticoagulant Therapy"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:da9d9fe9-e915-4fc3-9eef-2bffae3b670c",
+      "@type": "Intervention",
+      "name": "Use approved protocols and evidence-based guidelines for reversal of anticoagulation and management of bleeding events",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_05_01_goal_3_npsg.03.05.01_-_a.json",
+        "section_title": "Goal 3: NPSG.03.05.01 - Anticoagulant Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c3acfe6d-dcbf-4925-bab3-8920065ef8f5",
+          "rationale": "Element of Performance 2 requires the hospital to use approved protocols and evidence-based practice guidelines for reversal of anticoagulation and management of bleeding events related to each anticoagulant medication.",
+          "citation": "NPSG.03.05.01 EP 2.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c3acfe6d-dcbf-4925-bab3-8920065ef8f5",
+      "@type": "Condition",
+      "name": "Bleeding events related to anticoagulant medication",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_05_01_goal_3_npsg.03.05.01_-_a.json",
+        "section_title": "Goal 3: NPSG.03.05.01 - Anticoagulant Therapy"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Intervention",
+      "name": "Use approved protocols and evidence-based practice guidelines for perioperative management of all patients on oral anticoagulants",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_05_01_goal_3_npsg.03.05.01_-_a.json",
+        "section_title": "Goal 3: NPSG.03.05.01 - Anticoagulant Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Element of Performance 3 requires the hospital to use approved protocols and evidence-based practice guidelines for perioperative management of all patients on oral anticoagulants.",
+          "citation": "NPSG.03.05.01 EP 3.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Perioperative management of patients on oral anticoagulants",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_05_01_goal_3_npsg.03.05.01_-_a.json",
+        "section_title": "Goal 3: NPSG.03.05.01 - Anticoagulant Therapy"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9d5ffd12-e769-4c13-8e90-aacd066cfad0",
+      "@type": "Intervention",
+      "name": "Use only oral unit-dose products, prefilled syringes, or premixed infusion bags when available",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_05_01_goal_3_npsg.03.05.01_-_a.json",
+        "section_title": "Goal 3: NPSG.03.05.01 - Anticoagulant Therapy"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:5a6edb61-a0dc-4afa-a103-a1c56a2c37f2",
+          "rationale": "Element of Performance 7 requires the hospital to use only oral unit-dose products, prefilled syringes, or premixed infusion bags when these types of products are available.",
+          "citation": "NPSG.03.05.01 EP 7.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5a6edb61-a0dc-4afa-a103-a1c56a2c37f2",
+      "@type": "Medication",
+      "name": "Oral unit-dose products, prefilled syringes, or premixed infusion bags for anticoagulants",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_05_01_goal_3_npsg.03.05.01_-_a.json",
+        "section_title": "Goal 3: NPSG.03.05.01 - Anticoagulant Therapy"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.745715+00:00",
+    "nodes_before": 8,
+    "nodes_after": 8,
+    "rules_before": 4,
+    "rules_after": 4
+  }
+}

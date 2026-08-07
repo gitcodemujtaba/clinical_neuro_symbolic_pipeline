@@ -1,0 +1,1235 @@
+{
+  "chunk_id": "chunk_4",
+  "entities": [
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 24,
+        "end": 29
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 30,
+        "end": 38
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 44,
+        "end": 53
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 59,
+        "end": 62
+      }
+    },
+    {
+      "snomed_cui": "57054005",
+      "preferred_name": "Acute myocardial infarction",
+      "source_value": "acute MI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 71,
+        "end": 79
+      }
+    },
+    {
+      "snomed_cui": "77765009",
+      "preferred_name": "Exclude",
+      "source_value": "excluded",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 89,
+        "end": 97
+      }
+    },
+    {
+      "snomed_cui": "439401001",
+      "preferred_name": "Diagnosis",
+      "source_value": "diagnostic",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 112,
+        "end": 122
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 123,
+        "end": 130
+      }
+    },
+    {
+      "snomed_cui": "165079009",
+      "preferred_name": "Exercise tolerance test",
+      "source_value": "stress test",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 149,
+        "end": 160
+      }
+    },
+    {
+      "snomed_cui": "418272005",
+      "preferred_name": "Computed tomography angiography with contrast",
+      "source_value": "CT angiography",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 162,
+        "end": 176
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.906730151548029,
+      "character_boundaries": {
+        "start": 182,
+        "end": 185
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "prior to",
+      "confidence_score": 0.9060622205854241,
+      "character_boundaries": {
+        "start": 186,
+        "end": 194
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 195,
+        "end": 204
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 215,
+        "end": 218
+      }
+    },
+    {
+      "snomed_cui": "439401001",
+      "preferred_name": "Diagnosis",
+      "source_value": "diagnostic",
+      "confidence_score": 0.6749405872296694,
+      "character_boundaries": {
+        "start": 278,
+        "end": 288
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 289,
+        "end": 296
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "coronary",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 298,
+        "end": 306
+      }
+    },
+    {
+      "snomed_cui": "418272005",
+      "preferred_name": "Computed tomography angiography with contrast",
+      "source_value": "CT angiography",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 307,
+        "end": 321
+      }
+    },
+    {
+      "snomed_cui": "165079009",
+      "preferred_name": "Exercise tolerance test",
+      "source_value": "stress testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 323,
+        "end": 337
+      }
+    },
+    {
+      "snomed_cui": "251053005",
+      "preferred_name": "Myocardial perfusion",
+      "source_value": "myocardial perfusion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 339,
+        "end": 359
+      }
+    },
+    {
+      "snomed_cui": "363679005",
+      "preferred_name": "Imaging",
+      "source_value": "imaging",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 360,
+        "end": 367
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "prior to",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 369,
+        "end": 377
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 378,
+        "end": 387
+      }
+    },
+    {
+      "snomed_cui": "723505004",
+      "preferred_name": "Low risk",
+      "source_value": "low-risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 391,
+        "end": 399
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 400,
+        "end": 408
+      }
+    },
+    {
+      "snomed_cui": "57054005",
+      "preferred_name": "Acute myocardial infarction",
+      "source_value": "acute MI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 417,
+        "end": 425
+      }
+    },
+    {
+      "snomed_cui": "260385009",
+      "preferred_name": "Negative",
+      "source_value": "ruled out",
+      "confidence_score": 0.5000366883093197,
+      "character_boundaries": {
+        "start": 435,
+        "end": 444
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 458,
+        "end": 461
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 485,
+        "end": 494
+      }
+    },
+    {
+      "snomed_cui": "259038000",
+      "preferred_name": "per week",
+      "source_value": "weeks",
+      "confidence_score": 0.9750532138841437,
+      "character_boundaries": {
+        "start": 505,
+        "end": 510
+      }
+    },
+    {
+      "snomed_cui": "723505004",
+      "preferred_name": "Low risk",
+      "source_value": "low-risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 515,
+        "end": 523
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 524,
+        "end": 532
+      }
+    },
+    {
+      "snomed_cui": "22298006",
+      "preferred_name": "Myocardial infarction",
+      "source_value": "MI",
+      "confidence_score": 0.7180678067050492,
+      "character_boundaries": {
+        "start": 541,
+        "end": 543
+      }
+    },
+    {
+      "snomed_cui": "260385009",
+      "preferred_name": "Negative",
+      "source_value": "ruled out",
+      "confidence_score": 0.4420824120045528,
+      "character_boundaries": {
+        "start": 553,
+        "end": 562
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 570,
+        "end": 579
+      }
+    },
+    {
+      "snomed_cui": "8940901000001109",
+      "preferred_name": "Available",
+      "source_value": "available",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 583,
+        "end": 592
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 611,
+        "end": 618
+      }
+    },
+    {
+      "snomed_cui": "1102421000000108",
+      "preferred_name": "Observations",
+      "source_value": "observation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 622,
+        "end": 633
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "prior to",
+      "confidence_score": 0.6766942236576787,
+      "character_boundaries": {
+        "start": 634,
+        "end": 642
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 643,
+        "end": 652
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 664,
+        "end": 678
+      }
+    },
+    {
+      "snomed_cui": "720561000000100",
+      "preferred_name": "Cost",
+      "source_value": "costs",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 708,
+        "end": 713
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 718,
+        "end": 726
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 743,
+        "end": 750
+      }
+    },
+    {
+      "snomed_cui": "48694002",
+      "preferred_name": "Anxiety",
+      "source_value": "anxiety",
+      "confidence_score": 0.511965971347825,
+      "character_boundaries": {
+        "start": 751,
+        "end": 758
+      }
+    },
+    {
+      "snomed_cui": "90213003",
+      "preferred_name": "False positive",
+      "source_value": "false-positive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 764,
+        "end": 778
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.7448131489238934,
+      "character_boundaries": {
+        "start": 828,
+        "end": 831
+      }
+    },
+    {
+      "snomed_cui": "88323005",
+      "preferred_name": "Adequate",
+      "source_value": "adequate",
+      "confidence_score": 0.48148194120776655,
+      "character_boundaries": {
+        "start": 845,
+        "end": 853
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 854,
+        "end": 863
+      }
+    },
+    {
+      "snomed_cui": "719881000000105",
+      "preferred_name": "Literature review",
+      "source_value": "Literature Review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 865,
+        "end": 882
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 913,
+        "end": 917
+      }
+    },
+    {
+      "snomed_cui": "386134007",
+      "preferred_name": "Significant",
+      "source_value": "significant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 965,
+        "end": 976
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reduction",
+      "confidence_score": 0.6967037275750829,
+      "character_boundaries": {
+        "start": 977,
+        "end": 986
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.7810345407987207,
+      "character_boundaries": {
+        "start": 993,
+        "end": 996
+      }
+    },
+    {
+      "snomed_cui": "50811001",
+      "preferred_name": "Routine",
+      "source_value": "routine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1007,
+        "end": 1014
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "pre",
+      "confidence_score": 0.6939813960338224,
+      "character_boundaries": {
+        "start": 1015,
+        "end": 1018
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1019,
+        "end": 1028
+      }
+    },
+    {
+      "snomed_cui": "165079009",
+      "preferred_name": "Exercise tolerance test",
+      "source_value": "stress testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1029,
+        "end": 1043
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standard",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1064,
+        "end": 1072
+      }
+    },
+    {
+      "snomed_cui": "723505004",
+      "preferred_name": "Low risk",
+      "source_value": "low-risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1073,
+        "end": 1081
+      }
+    },
+    {
+      "snomed_cui": "77765009",
+      "preferred_name": "Exclude",
+      "source_value": "rule-out",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1082,
+        "end": 1090
+      }
+    },
+    {
+      "snomed_cui": "723051000000101",
+      "preferred_name": "Evaluation",
+      "source_value": "evaluations",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1091,
+        "end": 1102
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "High",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1104,
+        "end": 1108
+      }
+    },
+    {
+      "snomed_cui": "90213003",
+      "preferred_name": "False positive",
+      "source_value": "false-positive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1109,
+        "end": 1123
+      }
+    },
+    {
+      "snomed_cui": "165079009",
+      "preferred_name": "Exercise tolerance test",
+      "source_value": "stress testing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1133,
+        "end": 1147
+      }
+    },
+    {
+      "snomed_cui": "105223008",
+      "preferred_name": "Lead measurement",
+      "source_value": "lead",
+      "confidence_score": 0.500551191387872,
+      "character_boundaries": {
+        "start": 1148,
+        "end": 1152
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1159,
+        "end": 1165
+      }
+    },
+    {
+      "snomed_cui": "723051000000101",
+      "preferred_name": "Evaluation",
+      "source_value": "evaluation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1166,
+        "end": 1176
+      }
+    },
+    {
+      "snomed_cui": "720561000000100",
+      "preferred_name": "Cost",
+      "source_value": "costs",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1177,
+        "end": 1182
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1199,
+        "end": 1209
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1233,
+        "end": 1241
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "years",
+      "confidence_score": 0.5370771303721982,
+      "character_boundaries": {
+        "start": 1247,
+        "end": 1252
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1283,
+        "end": 1288
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1289,
+        "end": 1297
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1303,
+        "end": 1308
+      }
+    },
+    {
+      "snomed_cui": "401314000",
+      "preferred_name": "Acute non-ST segment elevation myocardial infarction",
+      "source_value": "NSTEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1309,
+        "end": 1315
+      }
+    },
+    {
+      "snomed_cui": "88694003",
+      "preferred_name": "Immediate",
+      "source_value": "immediate",
+      "confidence_score": 0.4956162566457314,
+      "character_boundaries": {
+        "start": 1324,
+        "end": 1333
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1347,
+        "end": 1354
+      }
+    },
+    {
+      "snomed_cui": "20401003",
+      "preferred_name": "With",
+      "source_value": "in addition to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1355,
+        "end": 1369
+      }
+    },
+    {
+      "snomed_cui": "387458008",
+      "preferred_name": "Aspirin",
+      "source_value": "aspirin",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1370,
+        "end": 1377
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1391,
+        "end": 1394
+      }
+    },
+    {
+      "snomed_cui": "59804006",
+      "preferred_name": "Glycoprotein",
+      "source_value": "glycoprotein",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1461,
+        "end": 1473
+      }
+    },
+    {
+      "snomed_cui": "1222802001",
+      "preferred_name": "American Joint Committee on Cancer stage IIIA",
+      "source_value": "IIIa",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1478,
+        "end": 1482
+      }
+    },
+    {
+      "snomed_cui": "419582001",
+      "preferred_name": "Give - dosing instruction imperative",
+      "source_value": "given",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1501,
+        "end": 1506
+      }
+    },
+    {
+      "snomed_cui": "860914002",
+      "preferred_name": "Erectile dysfunction",
+      "source_value": "ED",
+      "confidence_score": 0.5253631180426515,
+      "character_boundaries": {
+        "start": 1514,
+        "end": 1516
+      }
+    },
+    {
+      "snomed_cui": "41976001",
+      "preferred_name": "Cardiac catheterization",
+      "source_value": "cardiac catheterization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1534,
+        "end": 1557
+      }
+    },
+    {
+      "snomed_cui": "260872001",
+      "preferred_name": "Agent",
+      "source_value": "agents",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1612,
+        "end": 1618
+      }
+    },
+    {
+      "snomed_cui": "1861000124105",
+      "preferred_name": "Transition of care",
+      "source_value": "transition-of-care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1626,
+        "end": 1644
+      }
+    },
+    {
+      "snomed_cui": "720561000000100",
+      "preferred_name": "Cost",
+      "source_value": "costs",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1659,
+        "end": 1664
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1670,
+        "end": 1676
+      }
+    },
+    {
+      "snomed_cui": "131148009",
+      "preferred_name": "Bleeding",
+      "source_value": "bleeding",
+      "confidence_score": 0.7343599357168862,
+      "character_boundaries": {
+        "start": 1677,
+        "end": 1685
+      }
+    },
+    {
+      "snomed_cui": "263718001",
+      "preferred_name": "Complication",
+      "source_value": "complications",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1686,
+        "end": 1699
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "Increased",
+      "confidence_score": 0.6604860213163282,
+      "character_boundaries": {
+        "start": 1717,
+        "end": 1726
+      }
+    },
+    {
+      "snomed_cui": "255426005",
+      "preferred_name": "Ischemic",
+      "source_value": "ischemic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1727,
+        "end": 1735
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1736,
+        "end": 1740
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1758,
+        "end": 1763
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1764,
+        "end": 1772
+      }
+    },
+    {
+      "snomed_cui": "719881000000105",
+      "preferred_name": "Literature review",
+      "source_value": "Literature Review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1774,
+        "end": 1791
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "Trials",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1793,
+        "end": 1799
+      }
+    },
+    {
+      "snomed_cui": "264499004",
+      "preferred_name": "Early",
+      "source_value": "early",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1811,
+        "end": 1816
+      }
+    },
+    {
+      "snomed_cui": "443129001",
+      "preferred_name": "Prasugrel",
+      "source_value": "prasugrel",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1856,
+        "end": 1865
+      }
+    },
+    {
+      "snomed_cui": "386952008",
+      "preferred_name": "Clopidogrel",
+      "source_value": "clopidogrel",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1874,
+        "end": 1885
+      }
+    },
+    {
+      "snomed_cui": "103114004",
+      "preferred_name": "Lymphocyte antigen CD41",
+      "source_value": "GP IIb",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1891,
+        "end": 1897
+      }
+    },
+    {
+      "snomed_cui": "1222802001",
+      "preferred_name": "American Joint Committee on Cancer stage IIIA",
+      "source_value": "IIIa",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1898,
+        "end": 1902
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "IV",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1921,
+        "end": 1923
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.6780388223521467,
+      "character_boundaries": {
+        "start": 1924,
+        "end": 1927
+      }
+    },
+    {
+      "snomed_cui": "246512002",
+      "preferred_name": "Timing",
+      "source_value": "Timing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1936,
+        "end": 1942
+      }
+    },
+    {
+      "snomed_cui": "264499004",
+      "preferred_name": "Early",
+      "source_value": "EARLY",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1944,
+        "end": 1949
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.8232639089786724,
+      "character_boundaries": {
+        "start": 1950,
+        "end": 1953
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1963,
+        "end": 1972
+      }
+    },
+    {
+      "snomed_cui": "386134007",
+      "preferred_name": "Significant",
+      "source_value": "significant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1984,
+        "end": 1995
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reduction",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1996,
+        "end": 2005
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2012,
+        "end": 2015
+      }
+    },
+    {
+      "snomed_cui": "88694003",
+      "preferred_name": "Immediate",
+      "source_value": "immediate",
+      "confidence_score": 0.551949496119013,
+      "character_boundaries": {
+        "start": 2026,
+        "end": 2035
+      }
+    },
+    {
+      "snomed_cui": "860914002",
+      "preferred_name": "Erectile dysfunction",
+      "source_value": "ED",
+      "confidence_score": 0.505062603488434,
+      "character_boundaries": {
+        "start": 2036,
+        "end": 2038
+      }
+    },
+    {
+      "snomed_cui": "413454004",
+      "preferred_name": "Administration",
+      "source_value": "administration",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2039,
+        "end": 2053
+      }
+    },
+    {
+      "snomed_cui": "45211000",
+      "preferred_name": "Catheterization",
+      "source_value": "catheterization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2066,
+        "end": 2081
+      }
+    },
+    {
+      "snomed_cui": "261904005",
+      "preferred_name": "Laboratory",
+      "source_value": "lab",
+      "confidence_score": 0.30014660689770356,
+      "character_boundaries": {
+        "start": 2082,
+        "end": 2085
+      }
+    },
+    {
+      "snomed_cui": "312009002",
+      "preferred_name": "Cognitive function: initiation",
+      "source_value": "initiation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2086,
+        "end": 2096
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.8848267880373497,
+      "character_boundaries": {
+        "start": 2114,
+        "end": 2123
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2124,
+        "end": 2129
+      }
+    },
+    {
+      "snomed_cui": "131148009",
+      "preferred_name": "Bleeding",
+      "source_value": "bleeding",
+      "confidence_score": 0.848298039239647,
+      "character_boundaries": {
+        "start": 2130,
+        "end": 2138
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risks",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2139,
+        "end": 2144
+      }
+    }
+  ]
+}

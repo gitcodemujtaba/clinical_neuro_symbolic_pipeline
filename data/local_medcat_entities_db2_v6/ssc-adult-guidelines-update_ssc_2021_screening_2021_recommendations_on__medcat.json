@@ -1,0 +1,345 @@
+{
+  "chunk_id": "ssc_2021_screening",
+  "entities": [
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospitals",
+      "confidence_score": 0.7426730020314019,
+      "character_boundaries": {
+        "start": 6,
+        "end": 15
+      }
+    },
+    {
+      "snomed_cui": "263775005",
+      "preferred_name": "Health",
+      "source_value": "health",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 20,
+        "end": 26
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.96682919264564,
+      "character_boundaries": {
+        "start": 27,
+        "end": 34
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 39,
+        "end": 48
+      }
+    },
+    {
+      "snomed_cui": "720311000000105",
+      "preferred_name": "Programme",
+      "source_value": "programme",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 81,
+        "end": 90
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 95,
+        "end": 101
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 103,
+        "end": 112
+      }
+    },
+    {
+      "snomed_cui": "870441004",
+      "preferred_name": "Screening for sepsis",
+      "source_value": "sepsis screening",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 113,
+        "end": 129
+      }
+    },
+    {
+      "snomed_cui": "723509005",
+      "preferred_name": "High risk",
+      "source_value": "high-risk",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 147,
+        "end": 156
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 157,
+        "end": 165
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standard",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 170,
+        "end": 178
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 189,
+        "end": 199
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 204,
+        "end": 213
+      }
+    },
+    {
+      "snomed_cui": "722021000000100",
+      "preferred_name": "Screening",
+      "source_value": "Screening",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 215,
+        "end": 224
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "MODERATE",
+      "confidence_score": 0.7300764851941621,
+      "character_boundaries": {
+        "start": 226,
+        "end": 234
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "Standard",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 237,
+        "end": 245
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 256,
+        "end": 266
+      }
+    },
+    {
+      "snomed_cui": "260362008",
+      "preferred_name": "Very low",
+      "source_value": "VERY LOW",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 268,
+        "end": 276
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "MODERATE",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 283,
+        "end": 291
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 296,
+        "end": 305
+      }
+    },
+    {
+      "snomed_cui": "238150007",
+      "preferred_name": "Sepsis syndrome",
+      "source_value": "SIRS",
+      "confidence_score": 0.582361107043964,
+      "character_boundaries": {
+        "start": 338,
+        "end": 342
+      }
+    },
+    {
+      "snomed_cui": "1287358002",
+      "preferred_name": "National Early Warning Score",
+      "source_value": "NEWS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 344,
+        "end": 348
+      }
+    },
+    {
+      "snomed_cui": "50607009",
+      "preferred_name": "Singular",
+      "source_value": "single",
+      "confidence_score": 0.372016339117606,
+      "character_boundaries": {
+        "start": 363,
+        "end": 369
+      }
+    },
+    {
+      "snomed_cui": "722021000000100",
+      "preferred_name": "Screening",
+      "source_value": "screening",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 370,
+        "end": 379
+      }
+    },
+    {
+      "snomed_cui": "86967005",
+      "preferred_name": "Tool, device",
+      "source_value": "tool",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 380,
+        "end": 384
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 389,
+        "end": 395
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 399,
+        "end": 411
+      }
+    },
+    {
+      "snomed_cui": "260362008",
+      "preferred_name": "Very low",
+      "source_value": "VERY LOW",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 416,
+        "end": 424
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 430,
+        "end": 436
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 437,
+        "end": 446
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 457,
+        "end": 463
+      }
+    },
+    {
+      "snomed_cui": "258104002",
+      "preferred_name": "Measured",
+      "source_value": "measuring",
+      "confidence_score": 0.5274133457121417,
+      "character_boundaries": {
+        "start": 476,
+        "end": 485
+      }
+    },
+    {
+      "snomed_cui": "119273009",
+      "preferred_name": "Peripheral blood",
+      "source_value": "blood",
+      "confidence_score": 0.8801406267300703,
+      "character_boundaries": {
+        "start": 486,
+        "end": 491
+      }
+    },
+    {
+      "snomed_cui": "83036002",
+      "preferred_name": "Lactate",
+      "source_value": "lactate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 492,
+        "end": 499
+      }
+    }
+  ]
+}

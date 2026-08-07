@@ -1,0 +1,1845 @@
+{
+  "chunk_id": "npsg_goal_15",
+  "entities": [
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "Goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3,
+        "end": 7
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 15,
+        "end": 23
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risks",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 42,
+        "end": 47
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 64,
+        "end": 71
+      }
+    },
+    {
+      "snomed_cui": "385436007",
+      "preferred_name": "Population",
+      "source_value": "population",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 72,
+        "end": 82
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 114,
+        "end": 130
+      }
+    },
+    {
+      "snomed_cui": "82982002",
+      "preferred_name": "Cardiac electrophysiologic stimulation and recording study",
+      "source_value": "EPs",
+      "confidence_score": 0.3717617450434874,
+      "character_boundaries": {
+        "start": 139,
+        "end": 142
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 156,
+        "end": 164
+      }
+    },
+    {
+      "snomed_cui": "62480006",
+      "preferred_name": "Psychiatric hospital",
+      "source_value": "psychiatric hospitals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 168,
+        "end": 189
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 193,
+        "end": 201
+      }
+    },
+    {
+      "snomed_cui": "69845001",
+      "preferred_name": "Received therapy or drug for (contextual qualifier)",
+      "source_value": "treated for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 221,
+        "end": 232
+      }
+    },
+    {
+      "snomed_cui": "844005",
+      "preferred_name": "Behavior finding",
+      "source_value": "behavioral",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 233,
+        "end": 243
+      }
+    },
+    {
+      "snomed_cui": "263775005",
+      "preferred_name": "Health",
+      "source_value": "health",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 244,
+        "end": 250
+      }
+    },
+    {
+      "snomed_cui": "260905004",
+      "preferred_name": "Condition",
+      "source_value": "conditions",
+      "confidence_score": 0.5014831232514805,
+      "character_boundaries": {
+        "start": 251,
+        "end": 261
+      }
+    },
+    {
+      "snomed_cui": "410666004",
+      "preferred_name": "Reason for",
+      "source_value": "reason for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 279,
+        "end": 289
+      }
+    },
+    {
+      "snomed_cui": "20401003",
+      "preferred_name": "With",
+      "source_value": "addition",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 299,
+        "end": 307
+      }
+    },
+    {
+      "snomed_cui": "82982002",
+      "preferred_name": "Cardiac electrophysiologic stimulation and recording study",
+      "source_value": "EPs",
+      "confidence_score": 0.3803524742708124,
+      "character_boundaries": {
+        "start": 309,
+        "end": 312
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 330,
+        "end": 338
+      }
+    },
+    {
+      "snomed_cui": "6471006",
+      "preferred_name": "Suicidal thoughts",
+      "source_value": "suicidal ideation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 351,
+        "end": 368
+      }
+    },
+    {
+      "snomed_cui": "288524001",
+      "preferred_name": "Courses",
+      "source_value": "course",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 380,
+        "end": 386
+      }
+    },
+    {
+      "snomed_cui": "410666004",
+      "preferred_name": "Reason for",
+      "source_value": "Rationale",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 401,
+        "end": 410
+      }
+    },
+    {
+      "snomed_cui": "44301001",
+      "preferred_name": "Suicide",
+      "source_value": "Suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 434,
+        "end": 441
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 447,
+        "end": 454
+      }
+    },
+    {
+      "snomed_cui": "42700002",
+      "preferred_name": "Round shape",
+      "source_value": "round",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 475,
+        "end": 480
+      }
+    },
+    {
+      "snomed_cui": "116680003",
+      "preferred_name": "Is a",
+      "source_value": "is a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 504,
+        "end": 508
+      }
+    },
+    {
+      "snomed_cui": "70232002",
+      "preferred_name": "Frequent",
+      "source_value": "frequently",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 509,
+        "end": 519
+      }
+    },
+    {
+      "snomed_cui": "733985002",
+      "preferred_name": "Reported",
+      "source_value": "reported",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 520,
+        "end": 528
+      }
+    },
+    {
+      "snomed_cui": "272379006",
+      "preferred_name": "Event",
+      "source_value": "event",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 546,
+        "end": 551
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "Identification",
+      "confidence_score": 0.49111157211729356,
+      "character_boundaries": {
+        "start": 553,
+        "end": 567
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individuals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 571,
+        "end": 582
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "at risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 583,
+        "end": 602
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 630,
+        "end": 639
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 640,
+        "end": 649
+      }
+    },
+    {
+      "snomed_cui": "722901000000108",
+      "preferred_name": "Health care",
+      "source_value": "health care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 657,
+        "end": 668
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organization",
+      "confidence_score": 0.6030589746791086,
+      "character_boundaries": {
+        "start": 669,
+        "end": 681
+      }
+    },
+    {
+      "snomed_cui": "398298007",
+      "preferred_name": "Step",
+      "source_value": "step",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 698,
+        "end": 702
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 726,
+        "end": 730
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individuals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 731,
+        "end": 742
+      }
+    },
+    {
+      "snomed_cui": "57795002",
+      "preferred_name": "Chemical element",
+      "source_value": "Element",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 749,
+        "end": 756
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.5659583845041322,
+      "character_boundaries": {
+        "start": 796,
+        "end": 798
+      }
+    },
+    {
+      "snomed_cui": "62480006",
+      "preferred_name": "Psychiatric hospital",
+      "source_value": "psychiatric hospitals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 807,
+        "end": 828
+      }
+    },
+    {
+      "snomed_cui": "27296002",
+      "preferred_name": "Psychiatric",
+      "source_value": "psychiatric",
+      "confidence_score": 0.7396393167044577,
+      "character_boundaries": {
+        "start": 833,
+        "end": 844
+      }
+    },
+    {
+      "snomed_cui": "34271000087101",
+      "preferred_name": "General hospital",
+      "source_value": "general hospitals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 854,
+        "end": 871
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 877,
+        "end": 885
+      }
+    },
+    {
+      "snomed_cui": "844005",
+      "preferred_name": "Behavior finding",
+      "source_value": "conducts",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 886,
+        "end": 894
+      }
+    },
+    {
+      "snomed_cui": "787251000000108",
+      "preferred_name": "Environmental risk assessment",
+      "source_value": "environmental risk assessment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 898,
+        "end": 927
+      }
+    },
+    {
+      "snomed_cui": "224777007",
+      "preferred_name": "Physical environment",
+      "source_value": "physical environment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 960,
+        "end": 980
+      }
+    },
+    {
+      "snomed_cui": "82313006",
+      "preferred_name": "Suicide attempt",
+      "source_value": "attempt suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1003,
+        "end": 1018
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1024,
+        "end": 1032
+      }
+    },
+    {
+      "snomed_cui": "419652001",
+      "preferred_name": "Take - dosing instruction imperative",
+      "source_value": "takes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1033,
+        "end": 1038
+      }
+    },
+    {
+      "snomed_cui": "717331000000105",
+      "preferred_name": "Actions",
+      "source_value": "action",
+      "confidence_score": 0.35687014228299485,
+      "character_boundaries": {
+        "start": 1049,
+        "end": 1055
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1072,
+        "end": 1076
+      }
+    },
+    {
+      "snomed_cui": "118292001",
+      "preferred_name": "Removal",
+      "source_value": "removal",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1094,
+        "end": 1101
+      }
+    },
+    {
+      "snomed_cui": "122502001",
+      "preferred_name": "Anchoring procedure",
+      "source_value": "anchor",
+      "confidence_score": 0.7670518508998667,
+      "character_boundaries": {
+        "start": 1105,
+        "end": 1111
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "points",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1112,
+        "end": 1118
+      }
+    },
+    {
+      "snomed_cui": "278253005",
+      "preferred_name": "Hinge",
+      "source_value": "hinges",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1125,
+        "end": 1131
+      }
+    },
+    {
+      "snomed_cui": "260883005",
+      "preferred_name": "Hook",
+      "source_value": "hooks",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1137,
+        "end": 1142
+      }
+    },
+    {
+      "snomed_cui": "34271000087101",
+      "preferred_name": "General hospital",
+      "source_value": "general hospitals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1203,
+        "end": 1220
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organization",
+      "confidence_score": 0.5793382328710458,
+      "character_boundaries": {
+        "start": 1226,
+        "end": 1238
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1250,
+        "end": 1260
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1277,
+        "end": 1284
+      }
+    },
+    {
+      "snomed_cui": "44301001",
+      "preferred_name": "Suicide",
+      "source_value": "suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1285,
+        "end": 1292
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1297,
+        "end": 1305
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.5455171728675396,
+      "character_boundaries": {
+        "start": 1309,
+        "end": 1313
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1314,
+        "end": 1330
+      }
+    },
+    {
+      "snomed_cui": "724001000000100",
+      "preferred_name": "Monitoring",
+      "source_value": "monitoring",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1351,
+        "end": 1361
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1392,
+        "end": 1396
+      }
+    },
+    {
+      "snomed_cui": "248062006",
+      "preferred_name": "Self-injurious behavior",
+      "source_value": "self-harm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1401,
+        "end": 1410
+      }
+    },
+    {
+      "snomed_cui": "248448006",
+      "preferred_name": "Involved",
+      "source_value": "affecting",
+      "confidence_score": 0.4603468239607715,
+      "character_boundaries": {
+        "start": 1452,
+        "end": 1461
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1466,
+        "end": 1473
+      }
+    },
+    {
+      "snomed_cui": "781087000",
+      "preferred_name": "Medical care",
+      "source_value": "medical care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1476,
+        "end": 1488
+      }
+    },
+    {
+      "snomed_cui": "68369002",
+      "preferred_name": "Brought on by",
+      "source_value": "brought",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1508,
+        "end": 1515
+      }
+    },
+    {
+      "snomed_cui": "384762007",
+      "preferred_name": "Transportation procedure",
+      "source_value": "transportation procedures",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1556,
+        "end": 1581
+      }
+    },
+    {
+      "snomed_cui": "56469005",
+      "preferred_name": "Moving a patient",
+      "source_value": "moving patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1587,
+        "end": 1602
+      }
+    },
+    {
+      "snomed_cui": "18720000",
+      "preferred_name": "In",
+      "source_value": "parts of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1612,
+        "end": 1620
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1625,
+        "end": 1633
+      }
+    },
+    {
+      "snomed_cui": "34271000087101",
+      "preferred_name": "General hospital",
+      "source_value": "general hospitals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1666,
+        "end": 1683
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need",
+      "confidence_score": 0.8898184290941976,
+      "character_boundaries": {
+        "start": 1691,
+        "end": 1695
+      }
+    },
+    {
+      "snomed_cui": "59432006",
+      "preferred_name": "Ligature, device",
+      "source_value": "ligature",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1702,
+        "end": 1710
+      }
+    },
+    {
+      "snomed_cui": "30714006",
+      "preferred_name": "Resistant",
+      "source_value": "resistant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1711,
+        "end": 1720
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1777,
+        "end": 1785
+      }
+    },
+    {
+      "snomed_cui": "42798000",
+      "preferred_name": "Area",
+      "source_value": "areas",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1786,
+        "end": 1791
+      }
+    },
+    {
+      "snomed_cui": "248062006",
+      "preferred_name": "Self-injurious behavior",
+      "source_value": "self-harm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1835,
+        "end": 1844
+      }
+    },
+    {
+      "snomed_cui": "127485006",
+      "preferred_name": "Removes",
+      "source_value": "remove",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1849,
+        "end": 1855
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1876,
+        "end": 1884
+      }
+    },
+    {
+      "snomed_cui": "42798000",
+      "preferred_name": "Area",
+      "source_value": "area",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1895,
+        "end": 1899
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1909,
+        "end": 1916
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1930,
+        "end": 1940
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.7969212253681337,
+      "character_boundaries": {
+        "start": 1944,
+        "end": 1948
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1949,
+        "end": 1965
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1972,
+        "end": 1983
+      }
+    },
+    {
+      "snomed_cui": "118629009",
+      "preferred_name": "Functional training",
+      "source_value": "training",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2000,
+        "end": 2008
+      }
+    },
+    {
+      "snomed_cui": "13288007",
+      "preferred_name": "Monitor, device",
+      "source_value": "monitor",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2019,
+        "end": 2026
+      }
+    },
+    {
+      "snomed_cui": "723509005",
+      "preferred_name": "High risk",
+      "source_value": "high-risk",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2027,
+        "end": 2036
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2037,
+        "end": 2045
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "help",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2085,
+        "end": 2089
+      }
+    },
+    {
+      "snomed_cui": "246137000",
+      "preferred_name": "Equipment",
+      "source_value": "equipment",
+      "confidence_score": 0.7644145728308638,
+      "character_boundaries": {
+        "start": 2111,
+        "end": 2120
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2144,
+        "end": 2152
+      }
+    },
+    {
+      "snomed_cui": "23745001",
+      "preferred_name": "Documentation procedure",
+      "source_value": "Documentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2158,
+        "end": 2171
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.6565275745301467,
+      "character_boundaries": {
+        "start": 2188,
+        "end": 2190
+      }
+    },
+    {
+      "snomed_cui": "15886004",
+      "preferred_name": "Screening for cancer",
+      "source_value": "Screen",
+      "confidence_score": 0.50570213944639,
+      "character_boundaries": {
+        "start": 2195,
+        "end": 2201
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2206,
+        "end": 2214
+      }
+    },
+    {
+      "snomed_cui": "6471006",
+      "preferred_name": "Suicidal thoughts",
+      "source_value": "suicidal ideation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2219,
+        "end": 2236
+      }
+    },
+    {
+      "snomed_cui": "69845001",
+      "preferred_name": "Received therapy or drug for (contextual qualifier)",
+      "source_value": "treated for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2264,
+        "end": 2275
+      }
+    },
+    {
+      "snomed_cui": "844005",
+      "preferred_name": "Behavior finding",
+      "source_value": "behavioral",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2276,
+        "end": 2286
+      }
+    },
+    {
+      "snomed_cui": "263775005",
+      "preferred_name": "Health",
+      "source_value": "health",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2287,
+        "end": 2293
+      }
+    },
+    {
+      "snomed_cui": "260905004",
+      "preferred_name": "Condition",
+      "source_value": "conditions",
+      "confidence_score": 0.4913923817686303,
+      "character_boundaries": {
+        "start": 2294,
+        "end": 2304
+      }
+    },
+    {
+      "snomed_cui": "410666004",
+      "preferred_name": "Reason for",
+      "source_value": "reason for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2322,
+        "end": 2332
+      }
+    },
+    {
+      "snomed_cui": "722021000000100",
+      "preferred_name": "Screening",
+      "source_value": "screening",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2356,
+        "end": 2365
+      }
+    },
+    {
+      "snomed_cui": "86967005",
+      "preferred_name": "Tool, device",
+      "source_value": "tool",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2366,
+        "end": 2370
+      }
+    },
+    {
+      "snomed_cui": "722021000000100",
+      "preferred_name": "Screening",
+      "source_value": "screening",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2409,
+        "end": 2418
+      }
+    },
+    {
+      "snomed_cui": "6471006",
+      "preferred_name": "Suicidal thoughts",
+      "source_value": "suicidal ideation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2423,
+        "end": 2440
+      }
+    },
+    {
+      "snomed_cui": "86967005",
+      "preferred_name": "Tool, device",
+      "source_value": "tool",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2459,
+        "end": 2463
+      }
+    },
+    {
+      "snomed_cui": "424144002",
+      "preferred_name": "Current chronological age",
+      "source_value": "age",
+      "confidence_score": 0.683087581263468,
+      "character_boundaries": {
+        "start": 2476,
+        "end": 2479
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.5894784264008804,
+      "character_boundaries": {
+        "start": 2497,
+        "end": 2499
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.5973144596417171,
+      "character_boundaries": {
+        "start": 2526,
+        "end": 2533
+      }
+    },
+    {
+      "snomed_cui": "844005",
+      "preferred_name": "Behavior finding",
+      "source_value": "conduct",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2537,
+        "end": 2544
+      }
+    },
+    {
+      "snomed_cui": "44301001",
+      "preferred_name": "Suicide",
+      "source_value": "suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2547,
+        "end": 2554
+      }
+    },
+    {
+      "snomed_cui": "1100881000168104",
+      "preferred_name": "Assessment of cognitive function",
+      "source_value": "assessment",
+      "confidence_score": 0.97760113996084,
+      "character_boundaries": {
+        "start": 2555,
+        "end": 2565
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2569,
+        "end": 2577
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2596,
+        "end": 2608
+      }
+    },
+    {
+      "snomed_cui": "6471006",
+      "preferred_name": "Suicidal thoughts",
+      "source_value": "suicidal ideation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2609,
+        "end": 2626
+      }
+    },
+    {
+      "snomed_cui": "1100881000168104",
+      "preferred_name": "Assessment of cognitive function",
+      "source_value": "assessment",
+      "confidence_score": 0.883718093622267,
+      "character_boundaries": {
+        "start": 2632,
+        "end": 2642
+      }
+    },
+    {
+      "snomed_cui": "6471006",
+      "preferred_name": "Suicidal thoughts",
+      "source_value": "suicidal ideation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2663,
+        "end": 2680
+      }
+    },
+    {
+      "snomed_cui": "397943006",
+      "preferred_name": "Planned",
+      "source_value": "plan",
+      "confidence_score": 0.4074969434824436,
+      "character_boundaries": {
+        "start": 2682,
+        "end": 2686
+      }
+    },
+    {
+      "snomed_cui": "304594002",
+      "preferred_name": "Suicidal intent",
+      "source_value": "intent, suicidal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2688,
+        "end": 2704
+      }
+    },
+    {
+      "snomed_cui": "248062006",
+      "preferred_name": "Self-injurious behavior",
+      "source_value": "self-harm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2708,
+        "end": 2717
+      }
+    },
+    {
+      "snomed_cui": "844005",
+      "preferred_name": "Behavior finding",
+      "source_value": "behaviors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2718,
+        "end": 2727
+      }
+    },
+    {
+      "snomed_cui": "80943009",
+      "preferred_name": "Risk factor",
+      "source_value": "risk factors",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2729,
+        "end": 2741
+      }
+    },
+    {
+      "snomed_cui": "82982002",
+      "preferred_name": "Cardiac electrophysiologic stimulation and recording study",
+      "source_value": "EPs",
+      "confidence_score": 0.36496644199562966,
+      "character_boundaries": {
+        "start": 2774,
+        "end": 2777
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2815,
+        "end": 2821
+      }
+    },
+    {
+      "snomed_cui": "125681006",
+      "preferred_name": "Single person",
+      "source_value": "single",
+      "confidence_score": 0.357668563801686,
+      "character_boundaries": {
+        "start": 2824,
+        "end": 2830
+      }
+    },
+    {
+      "snomed_cui": "415178003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.4840454155499524,
+      "character_boundaries": {
+        "start": 2831,
+        "end": 2838
+      }
+    },
+    {
+      "snomed_cui": "57134006",
+      "preferred_name": "Instrument, device",
+      "source_value": "instrument",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2842,
+        "end": 2852
+      }
+    },
+    {
+      "snomed_cui": "79970003",
+      "preferred_name": "Simultaneous",
+      "source_value": "simultaneously",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2858,
+        "end": 2872
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2881,
+        "end": 2889
+      }
+    },
+    {
+      "snomed_cui": "6471006",
+      "preferred_name": "Suicidal thoughts",
+      "source_value": "suicidal ideation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2894,
+        "end": 2911
+      }
+    },
+    {
+      "snomed_cui": "246112005",
+      "preferred_name": "Severity",
+      "source_value": "severity",
+      "confidence_score": 0.4472543159618978,
+      "character_boundaries": {
+        "start": 2929,
+        "end": 2937
+      }
+    },
+    {
+      "snomed_cui": "6471006",
+      "preferred_name": "Suicidal thoughts",
+      "source_value": "suicidal ideation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2941,
+        "end": 2958
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.6861347725704021,
+      "character_boundaries": {
+        "start": 2963,
+        "end": 2965
+      }
+    },
+    {
+      "snomed_cui": "397966007",
+      "preferred_name": "Documents",
+      "source_value": "Document",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2970,
+        "end": 2978
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2979,
+        "end": 2987
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3006,
+        "end": 3022
+      }
+    },
+    {
+      "snomed_cui": "397943006",
+      "preferred_name": "Planned",
+      "source_value": "plan",
+      "confidence_score": 0.6611423190488144,
+      "character_boundaries": {
+        "start": 3031,
+        "end": 3035
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3052,
+        "end": 3068
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.5518426361300643,
+      "character_boundaries": {
+        "start": 3073,
+        "end": 3075
+      }
+    },
+    {
+      "snomed_cui": "367409002",
+      "preferred_name": "Followed by",
+      "source_value": "Follow",
+      "confidence_score": 0.8137908095491527,
+      "character_boundaries": {
+        "start": 3080,
+        "end": 3086
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3108,
+        "end": 3118
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3142,
+        "end": 3150
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3151,
+        "end": 3161
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "at risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3165,
+        "end": 3184
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3213,
+        "end": 3220
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3225,
+        "end": 3234
+      }
+    },
+    {
+      "snomed_cui": "118629009",
+      "preferred_name": "Functional training",
+      "source_value": "Training",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3238,
+        "end": 3246
+      }
+    },
+    {
+      "snomed_cui": "32082000",
+      "preferred_name": "Competence",
+      "source_value": "competence",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3251,
+        "end": 3261
+      }
+    },
+    {
+      "snomed_cui": "1100881000168104",
+      "preferred_name": "Assessment of cognitive function",
+      "source_value": "assessment",
+      "confidence_score": 0.8036459159558165,
+      "character_boundaries": {
+        "start": 3262,
+        "end": 3272
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3295,
+        "end": 3303
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "at risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3304,
+        "end": 3323
+      }
+    },
+    {
+      "snomed_cui": "182777000",
+      "preferred_name": "Monitoring of patient",
+      "source_value": "Monitoring patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3356,
+        "end": 3375
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.6423986769561536,
+      "character_boundaries": {
+        "start": 3387,
+        "end": 3391
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3392,
+        "end": 3408
+      }
+    },
+    {
+      "snomed_cui": "23745001",
+      "preferred_name": "Documentation procedure",
+      "source_value": "Documentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3412,
+        "end": 3425
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.3201143951159175,
+      "character_boundaries": {
+        "start": 3442,
+        "end": 3444
+      }
+    },
+    {
+      "snomed_cui": "367409002",
+      "preferred_name": "Followed by",
+      "source_value": "Follow",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3449,
+        "end": 3455
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3477,
+        "end": 3487
+      }
+    },
+    {
+      "snomed_cui": "409063005",
+      "preferred_name": "Counseling",
+      "source_value": "counseling",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3492,
+        "end": 3502
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3507,
+        "end": 3516
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3525,
+        "end": 3534
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3539,
+        "end": 3547
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3548,
+        "end": 3558
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "at risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3562,
+        "end": 3581
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.41771662446634217,
+      "character_boundaries": {
+        "start": 3586,
+        "end": 3588
+      }
+    },
+    {
+      "snomed_cui": "13288007",
+      "preferred_name": "Monitor, device",
+      "source_value": "Monitor",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3593,
+        "end": 3600
+      }
+    },
+    {
+      "snomed_cui": "255403003",
+      "preferred_name": "Effectiveness",
+      "source_value": "effectiveness",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3620,
+        "end": 3633
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3650,
+        "end": 3660
+      }
+    },
+    {
+      "snomed_cui": "722021000000100",
+      "preferred_name": "Screening",
+      "source_value": "screening",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3665,
+        "end": 3674
+      }
+    },
+    {
+      "snomed_cui": "1100881000168104",
+      "preferred_name": "Assessment of cognitive function",
+      "source_value": "assessment",
+      "confidence_score": 0.804083020817912,
+      "character_boundaries": {
+        "start": 3676,
+        "end": 3686
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.7490443714234397,
+      "character_boundaries": {
+        "start": 3692,
+        "end": 3702
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3706,
+        "end": 3714
+      }
+    },
+    {
+      "snomed_cui": "225444004",
+      "preferred_name": "At increased risk for suicide",
+      "source_value": "at risk for suicide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3715,
+        "end": 3734
+      }
+    },
+    {
+      "snomed_cui": "717331000000105",
+      "preferred_name": "Actions",
+      "source_value": "action",
+      "confidence_score": 0.7958559391565628,
+      "character_boundaries": {
+        "start": 3744,
+        "end": 3750
+      }
+    },
+    {
+      "snomed_cui": "420449005",
+      "preferred_name": "As needed for",
+      "source_value": "as needed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3751,
+        "end": 3760
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3764,
+        "end": 3771
+      }
+    },
+    {
+      "snomed_cui": "405078008",
+      "preferred_name": "Compliance behavior",
+      "source_value": "compliance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3772,
+        "end": 3782
+      }
+    }
+  ]
+}

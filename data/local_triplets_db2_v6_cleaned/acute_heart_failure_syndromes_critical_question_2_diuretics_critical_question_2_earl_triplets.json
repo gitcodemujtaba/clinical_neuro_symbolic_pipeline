@@ -1,0 +1,128 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a6-b5c7-89def0123456",
+      "@type": "Finding",
+      "name": "Suspected acute heart failure syndrome",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_2_diuretics_critical_question_2_earl.json",
+        "section_title": "Critical Question 2: Early Administration of Diuretics"
+      },
+      "rules": [
+        {
+          "predicate": "PRESENTS_WITH",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1f023456789a",
+          "rationale": "Patients presenting to the emergency department with suspected acute heart failure syndrome are the target population for early diuretic administration.",
+          "citation": "In adult patients presenting to the emergency department [SNOMED: 225728007] with suspected acute heart failure [SNOMED: 56675007] syndrome...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1f023456789a",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_2_diuretics_critical_question_2_earl.json",
+        "section_title": "Critical Question 2: Early Administration of Diuretics"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:c1d2e3f4-a5b6-49d0-87ef-234567890abc",
+          "rationale": "Early administration of diuretics is being considered for patients with AHFS.",
+          "citation": "In adult patients presenting to the emergency department [SNOMED: 225728007] with suspected acute heart failure [SNOMED: 56675007] syndrome, is early administration of diuretics [SNOMED: 858961000000107] safe and effective?",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_CONFIRMATION",
+          "target": "urn:uuid:b3c4d5e6-f7a8-42e9-91ba-def012345678",
+          "rationale": "Diuretics should only be administered after confirming the diagnosis of acute heart failure syndrome with volume overload.",
+          "citation": "Physicians should be confident in the diagnosis [SNOMED: 887161000000102] of acute heart failure [SNOMED: 56675007] syndrome with volume overload [SNOMED: 21639008] in a patient before the administration of diuretics [SNOMED: 858961000000107].",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:567890ab-cdef-41a2-b3c4-d5e6f7890123",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_2_diuretics_critical_question_2_earl.json",
+        "section_title": "Critical Question 2: Early Administration of Diuretics"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c1d2e3f4-a5b6-49d0-87ef-234567890abc",
+      "@type": "Medication",
+      "name": "Diuretics",
+      "snomed": "858961000000107",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_2_diuretics_critical_question_2_earl.json",
+        "section_title": "Critical Question 2: Early Administration of Diuretics"
+      },
+      "rules": [
+        {
+          "predicate": "ADMINISTERED_FOR",
+          "target": "urn:uuid:567890ab-cdef-41a2-b3c4-d5e6f7890123",
+          "rationale": "Diuretics are used to treat acute heart failure syndrome.",
+          "citation": "The use of loop diuretics [SNOMED: 372691009] in the management of acute heart failure [SNOMED: 56675007] induces [SNOMED: 16404004] an increase in sodium [SNOMED: 39972003] and water excretion by the kidney [SNOMED: 17373004], thus reducing [SNOMED: 260400001] preload [SNOMED: 13085001000001100] on the heart [SNOMED: 80891009].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "CONTRAINDICATED_IF",
+          "target": "urn:uuid:d4e5f678-a9b0-4cde-98ba-fedc01234567",
+          "rationale": "Diuretics should not be given if the patient does not have acute heart failure syndrome or volume overload.",
+          "citation": "Potential Harm of Implementing the Recommendations: Giving diuretics [SNOMED: 372695000] too early to a patient who is ultimately proven [SNOMED: 277025001] not to have the diagnosis [SNOMED: 887161000000102] of acute heart failure [SNOMED: 56675007] syndrome or when the patient is not experiencing volume overload [SNOMED: 21639008] as a cause [SNOMED: 134198009] of their acute heart failure [SNOMED: 56675007] syndrome could be harmful.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b3c4d5e6-f7a8-42e9-91ba-def012345678",
+      "@type": "Finding",
+      "name": "Volume overload",
+      "snomed": "21639008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_2_diuretics_critical_question_2_earl.json",
+        "section_title": "Critical Question 2: Early Administration of Diuretics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d4e5f678-a9b0-4cde-98ba-fedc01234567",
+      "@type": "Condition",
+      "name": "Absence of volume overload or alternative diagnosis",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_2_diuretics_critical_question_2_earl.json",
+        "section_title": "Critical Question 2: Early Administration of Diuretics"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:32.019229+00:00",
+    "nodes_before": 6,
+    "nodes_after": 6,
+    "rules_before": 5,
+    "rules_after": 5
+  }
+}

@@ -1,0 +1,1585 @@
+{
+  "chunk_id": "universal_protocol_up_01_02_01",
+  "entities": [
+    {
+      "snomed_cui": "107733003",
+      "preferred_name": "Introduction procedure",
+      "source_value": "Introduction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4,
+        "end": 16
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 39,
+        "end": 43
+      }
+    },
+    {
+      "snomed_cui": "257556004",
+      "preferred_name": "Surgery",
+      "source_value": "surgery",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 44,
+        "end": 51
+      }
+    },
+    {
+      "snomed_cui": "255238004",
+      "preferred_name": "Continuous",
+      "source_value": "ongoing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 86,
+        "end": 93
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "problem",
+      "confidence_score": 0.516292181223617,
+      "character_boundaries": {
+        "start": 94,
+        "end": 101
+      }
+    },
+    {
+      "snomed_cui": "722901000000108",
+      "preferred_name": "Health care",
+      "source_value": "health care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 105,
+        "end": 116
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 134,
+        "end": 141
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "Marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 150,
+        "end": 157
+      }
+    },
+    {
+      "snomed_cui": "363704007",
+      "preferred_name": "Procedure site",
+      "source_value": "procedure site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 162,
+        "end": 176
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 199,
+        "end": 207
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 209,
+        "end": 216
+      }
+    },
+    {
+      "snomed_cui": "385433004",
+      "preferred_name": "Consistent with",
+      "source_value": "consistent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 243,
+        "end": 253
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 254,
+        "end": 261
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.5217236822733246,
+      "character_boundaries": {
+        "start": 262,
+        "end": 269
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.9446502204760552,
+      "character_boundaries": {
+        "start": 293,
+        "end": 301
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "Site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 303,
+        "end": 307
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 308,
+        "end": 315
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 327,
+        "end": 334
+      }
+    },
+    {
+      "snomed_cui": "276140008",
+      "preferred_name": "Greater-than symbol >",
+      "source_value": "more than",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 356,
+        "end": 365
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 370,
+        "end": 378
+      }
+    },
+    {
+      "snomed_cui": "246267002",
+      "preferred_name": "Location",
+      "source_value": "location",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 379,
+        "end": 387
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 394,
+        "end": 403
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 414,
+        "end": 421
+      }
+    },
+    {
+      "snomed_cui": "66019005",
+      "preferred_name": "Limb structure",
+      "source_value": "limbs",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 432,
+        "end": 437
+      }
+    },
+    {
+      "snomed_cui": "7569003",
+      "preferred_name": "Finger structure",
+      "source_value": "fingers",
+      "confidence_score": 0.8112150809826325,
+      "character_boundaries": {
+        "start": 439,
+        "end": 446
+      }
+    },
+    {
+      "snomed_cui": "29707007",
+      "preferred_name": "Toe structure",
+      "source_value": "toes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 451,
+        "end": 455
+      }
+    },
+    {
+      "snomed_cui": "52988006",
+      "preferred_name": "Lesion",
+      "source_value": "lesions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 457,
+        "end": 464
+      }
+    },
+    {
+      "snomed_cui": "44300000",
+      "preferred_name": "Entire vertebral column",
+      "source_value": "spine",
+      "confidence_score": 0.6779997015288288,
+      "character_boundaries": {
+        "start": 479,
+        "end": 484
+      }
+    },
+    {
+      "snomed_cui": "51440002",
+      "preferred_name": "Right and left",
+      "source_value": "bilateral",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 513,
+        "end": 522
+      }
+    },
+    {
+      "snomed_cui": "75573002",
+      "preferred_name": "Palatine tonsillar structure",
+      "source_value": "tonsils",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 555,
+        "end": 562
+      }
+    },
+    {
+      "snomed_cui": "83238006",
+      "preferred_name": "Both ovaries",
+      "source_value": "ovaries",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 566,
+        "end": 573
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 579,
+        "end": 583
+      }
+    },
+    {
+      "snomed_cui": "717896003",
+      "preferred_name": "Does not",
+      "source_value": "does not",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 584,
+        "end": 592
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 593,
+        "end": 597
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marked",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 604,
+        "end": 610
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "Mark",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 629,
+        "end": 633
+      }
+    },
+    {
+      "snomed_cui": "363704007",
+      "preferred_name": "Procedure site",
+      "source_value": "procedure site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 638,
+        "end": 652
+      }
+    },
+    {
+      "snomed_cui": "57795002",
+      "preferred_name": "Chemical element",
+      "source_value": "Element",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 659,
+        "end": 666
+      }
+    },
+    {
+      "snomed_cui": "34801009",
+      "preferred_name": "Ectopic pregnancy",
+      "source_value": "EP",
+      "confidence_score": 0.3849953699631137,
+      "character_boundaries": {
+        "start": 704,
+        "end": 706
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 726,
+        "end": 736
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 750,
+        "end": 757
+      }
+    },
+    {
+      "snomed_cui": "34896006",
+      "preferred_name": "Incision",
+      "source_value": "incision",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 765,
+        "end": 773
+      }
+    },
+    {
+      "snomed_cui": "386141001",
+      "preferred_name": "Insertion site",
+      "source_value": "insertion site",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 777,
+        "end": 791
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "sites",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 807,
+        "end": 812
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marked",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 817,
+        "end": 823
+      }
+    },
+    {
+      "snomed_cui": "276140008",
+      "preferred_name": "Greater-than symbol >",
+      "source_value": "more than",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 838,
+        "end": 847
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.9867110984909759,
+      "character_boundaries": {
+        "start": 852,
+        "end": 860
+      }
+    },
+    {
+      "snomed_cui": "246267002",
+      "preferred_name": "Location",
+      "source_value": "location",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 861,
+        "end": 869
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 878,
+        "end": 887
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 912,
+        "end": 921
+      }
+    },
+    {
+      "snomed_cui": "246267002",
+      "preferred_name": "Location",
+      "source_value": "location",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 937,
+        "end": 945
+      }
+    },
+    {
+      "snomed_cui": "4065008",
+      "preferred_name": "Affect function",
+      "source_value": "affect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 963,
+        "end": 969
+      }
+    },
+    {
+      "snomed_cui": "723601000000107",
+      "preferred_name": "Quality",
+      "source_value": "quality",
+      "confidence_score": 0.636918677616754,
+      "character_boundaries": {
+        "start": 970,
+        "end": 977
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1007,
+        "end": 1017
+      }
+    },
+    {
+      "snomed_cui": "20401003",
+      "preferred_name": "With",
+      "source_value": "in addition to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1019,
+        "end": 1033
+      }
+    },
+    {
+      "snomed_cui": "262068006",
+      "preferred_name": "Preoperative",
+      "source_value": "preoperative",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1034,
+        "end": 1046
+      }
+    },
+    {
+      "snomed_cui": "39937001",
+      "preferred_name": "Skin structure",
+      "source_value": "skin",
+      "confidence_score": 0.6642834011957052,
+      "character_boundaries": {
+        "start": 1047,
+        "end": 1051
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1052,
+        "end": 1059
+      }
+    },
+    {
+      "snomed_cui": "60132005",
+      "preferred_name": "Generalized",
+      "source_value": "general",
+      "confidence_score": 0.6089497675650639,
+      "character_boundaries": {
+        "start": 1067,
+        "end": 1074
+      }
+    },
+    {
+      "snomed_cui": "410673009",
+      "preferred_name": "Region",
+      "source_value": "region",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1082,
+        "end": 1088
+      }
+    },
+    {
+      "snomed_cui": "67995009",
+      "preferred_name": "Special",
+      "source_value": "special",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1090,
+        "end": 1097
+      }
+    },
+    {
+      "snomed_cui": "277671009",
+      "preferred_name": "Intraoperative",
+      "source_value": "intraoperative",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1098,
+        "end": 1112
+      }
+    },
+    {
+      "snomed_cui": "278395004",
+      "preferred_name": "Imaging technique",
+      "source_value": "imaging techniques",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1113,
+        "end": 1131
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1161,
+        "end": 1168
+      }
+    },
+    {
+      "snomed_cui": "263276005",
+      "preferred_name": "Vertebral level",
+      "source_value": "vertebral level",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1179,
+        "end": 1194
+      }
+    },
+    {
+      "snomed_cui": "34801009",
+      "preferred_name": "Ectopic pregnancy",
+      "source_value": "EP",
+      "confidence_score": 0.5437566669880809,
+      "character_boundaries": {
+        "start": 1199,
+        "end": 1201
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "Mark",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1206,
+        "end": 1210
+      }
+    },
+    {
+      "snomed_cui": "363704007",
+      "preferred_name": "Procedure site",
+      "source_value": "procedure site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1215,
+        "end": 1229
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1241,
+        "end": 1250
+      }
+    },
+    {
+      "snomed_cui": "398166005",
+      "preferred_name": "Performed",
+      "source_value": "performed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1254,
+        "end": 1263
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1272,
+        "end": 1280
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1291,
+        "end": 1298
+      }
+    },
+    {
+      "snomed_cui": "248448006",
+      "preferred_name": "Involved",
+      "source_value": "involved",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1299,
+        "end": 1307
+      }
+    },
+    {
+      "snomed_cui": "34801009",
+      "preferred_name": "Ectopic pregnancy",
+      "source_value": "EP",
+      "confidence_score": 0.4246760089006716,
+      "character_boundaries": {
+        "start": 1312,
+        "end": 1314
+      }
+    },
+    {
+      "snomed_cui": "363704007",
+      "preferred_name": "Procedure site",
+      "source_value": "procedure site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1323,
+        "end": 1337
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marked",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1341,
+        "end": 1347
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1413,
+        "end": 1422
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "present",
+      "confidence_score": 0.36917601360675323,
+      "character_boundaries": {
+        "start": 1435,
+        "end": 1442
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1452,
+        "end": 1461
+      }
+    },
+    {
+      "snomed_cui": "398166005",
+      "preferred_name": "Performed",
+      "source_value": "performed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1465,
+        "end": 1474
+      }
+    },
+    {
+      "snomed_cui": "255469002",
+      "preferred_name": "Limited",
+      "source_value": "limited",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1479,
+        "end": 1486
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1541,
+        "end": 1545
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1546,
+        "end": 1553
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1560,
+        "end": 1570
+      }
+    },
+    {
+      "snomed_cui": "958006",
+      "preferred_name": "Trachinotus falcatus",
+      "source_value": "permitted",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1578,
+        "end": 1587
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organization",
+      "confidence_score": 0.5637364124597165,
+      "character_boundaries": {
+        "start": 1595,
+        "end": 1607
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1630,
+        "end": 1639
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.9845184058913774,
+      "character_boundaries": {
+        "start": 1652,
+        "end": 1661
+      }
+    },
+    {
+      "snomed_cui": "720991000000102",
+      "preferred_name": "Qualification",
+      "source_value": "qualifications",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1662,
+        "end": 1676
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1683,
+        "end": 1693
+      }
+    },
+    {
+      "snomed_cui": "74188005",
+      "preferred_name": "Medical",
+      "source_value": "medical",
+      "confidence_score": 0.45197424353047044,
+      "character_boundaries": {
+        "start": 1699,
+        "end": 1706
+      }
+    },
+    {
+      "snomed_cui": "228115009",
+      "preferred_name": "Education provision",
+      "source_value": "education program",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1720,
+        "end": 1737
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1806,
+        "end": 1815
+      }
+    },
+    {
+      "snomed_cui": "36692007",
+      "preferred_name": "Known",
+      "source_value": "familiar",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1824,
+        "end": 1832
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1842,
+        "end": 1849
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1884,
+        "end": 1893
+      }
+    },
+    {
+      "snomed_cui": "398166005",
+      "preferred_name": "Performed",
+      "source_value": "performed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1897,
+        "end": 1906
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1920,
+        "end": 1930
+      }
+    },
+    {
+      "snomed_cui": "398166005",
+      "preferred_name": "Performed",
+      "source_value": "performs",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1935,
+        "end": 1943
+      }
+    },
+    {
+      "snomed_cui": "71388002",
+      "preferred_name": "Procedure",
+      "source_value": "procedure",
+      "confidence_score": 0.7728146819664494,
+      "character_boundaries": {
+        "start": 2058,
+        "end": 2067
+      }
+    },
+    {
+      "snomed_cui": "86005002",
+      "preferred_name": "Advanced",
+      "source_value": "advanced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2081,
+        "end": 2089
+      }
+    },
+    {
+      "snomed_cui": "224535009",
+      "preferred_name": "Registered nurse",
+      "source_value": "registered nurse",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2099,
+        "end": 2115
+      }
+    },
+    {
+      "snomed_cui": "449161006",
+      "preferred_name": "Physician assistant",
+      "source_value": "physician assistant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2126,
+        "end": 2145
+      }
+    },
+    {
+      "snomed_cui": "36692007",
+      "preferred_name": "Known",
+      "source_value": "familiar",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2160,
+        "end": 2168
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2178,
+        "end": 2185
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2220,
+        "end": 2229
+      }
+    },
+    {
+      "snomed_cui": "398166005",
+      "preferred_name": "Performed",
+      "source_value": "performed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2233,
+        "end": 2242
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2255,
+        "end": 2263
+      }
+    },
+    {
+      "snomed_cui": "255469002",
+      "preferred_name": "Limited",
+      "source_value": "limited",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2285,
+        "end": 2292
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2325,
+        "end": 2329
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2330,
+        "end": 2337
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2361,
+        "end": 2371
+      }
+    },
+    {
+      "snomed_cui": "229057006",
+      "preferred_name": "Meetings",
+      "source_value": "meeting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2372,
+        "end": 2379
+      }
+    },
+    {
+      "snomed_cui": "720991000000102",
+      "preferred_name": "Qualification",
+      "source_value": "qualifications",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2386,
+        "end": 2400
+      }
+    },
+    {
+      "snomed_cui": "272394005",
+      "preferred_name": "Technique",
+      "source_value": "method",
+      "confidence_score": 0.814820053736389,
+      "character_boundaries": {
+        "start": 2416,
+        "end": 2422
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2426,
+        "end": 2433
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2438,
+        "end": 2442
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "mark",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2459,
+        "end": 2463
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2519,
+        "end": 2527
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "mark",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2540,
+        "end": 2544
+      }
+    },
+    {
+      "snomed_cui": "277752003",
+      "preferred_name": "1/3 meter",
+      "source_value": "near",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2559,
+        "end": 2563
+      }
+    },
+    {
+      "snomed_cui": "363704007",
+      "preferred_name": "Procedure site",
+      "source_value": "procedure site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2568,
+        "end": 2582
+      }
+    },
+    {
+      "snomed_cui": "6934004",
+      "preferred_name": "Permanent",
+      "source_value": "permanent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2603,
+        "end": 2612
+      }
+    },
+    {
+      "snomed_cui": "24054004",
+      "preferred_name": "Visible",
+      "source_value": "visible",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2619,
+        "end": 2626
+      }
+    },
+    {
+      "snomed_cui": "225136007",
+      "preferred_name": "Skin preparation",
+      "source_value": "skin preparation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2633,
+        "end": 2649
+      }
+    },
+    {
+      "snomed_cui": "8170008",
+      "preferred_name": "Adhesive, device",
+      "source_value": "Adhesive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2663,
+        "end": 2671
+      }
+    },
+    {
+      "snomed_cui": "706484002",
+      "preferred_name": "Body reference point marker",
+      "source_value": "markers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2672,
+        "end": 2679
+      }
+    },
+    {
+      "snomed_cui": "57999000",
+      "preferred_name": "Structure of sole of foot",
+      "source_value": "sole",
+      "confidence_score": 0.8668930416167824,
+      "character_boundaries": {
+        "start": 2692,
+        "end": 2696
+      }
+    },
+    {
+      "snomed_cui": "255586005",
+      "preferred_name": "Mean",
+      "source_value": "means",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2697,
+        "end": 2702
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2706,
+        "end": 2713
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2718,
+        "end": 2722
+      }
+    },
+    {
+      "snomed_cui": "34801009",
+      "preferred_name": "Ectopic pregnancy",
+      "source_value": "EP",
+      "confidence_score": 0.3066179873595703,
+      "character_boundaries": {
+        "start": 2727,
+        "end": 2729
+      }
+    },
+    {
+      "snomed_cui": "415178003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.4297516535303919,
+      "character_boundaries": {
+        "start": 2757,
+        "end": 2764
+      }
+    },
+    {
+      "snomed_cui": "257557008",
+      "preferred_name": "Place",
+      "source_value": "place",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2771,
+        "end": 2776
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2781,
+        "end": 2789
+      }
+    },
+    {
+      "snomed_cui": "285100003",
+      "preferred_name": "Refuse site",
+      "source_value": "refuse site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2794,
+        "end": 2805
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "marking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2806,
+        "end": 2813
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "mark",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2885,
+        "end": 2889
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2894,
+        "end": 2898
+      }
+    },
+    {
+      "snomed_cui": "414781009",
+      "preferred_name": "Mucous membrane structure",
+      "source_value": "mucosal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2913,
+        "end": 2920
+      }
+    },
+    {
+      "snomed_cui": "410678000",
+      "preferred_name": "Surface",
+      "source_value": "surfaces",
+      "confidence_score": 0.5285112145242014,
+      "character_boundaries": {
+        "start": 2921,
+        "end": 2929
+      }
+    },
+    {
+      "snomed_cui": "38864007",
+      "preferred_name": "Perineal structure",
+      "source_value": "perineum",
+      "confidence_score": 0.7480135034573445,
+      "character_boundaries": {
+        "start": 2933,
+        "end": 2941
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "processes",
+      "confidence_score": 0.44035833155499365,
+      "character_boundaries": {
+        "start": 3005,
+        "end": 3014
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3015,
+        "end": 3022
+      }
+    },
+    {
+      "snomed_cui": "255605001",
+      "preferred_name": "Minimal",
+      "source_value": "Minimal",
+      "confidence_score": 0.8690756772706072,
+      "character_boundaries": {
+        "start": 3026,
+        "end": 3033
+      }
+    },
+    {
+      "snomed_cui": "260507000",
+      "preferred_name": "Access",
+      "source_value": "access",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3034,
+        "end": 3040
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3041,
+        "end": 3051
+      }
+    },
+    {
+      "snomed_cui": "260521003",
+      "preferred_name": "Internal",
+      "source_value": "internal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3075,
+        "end": 3083
+      }
+    },
+    {
+      "snomed_cui": "9191501000001101",
+      "preferred_name": "Percutaneous",
+      "source_value": "percutaneous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3099,
+        "end": 3111
+      }
+    },
+    {
+      "snomed_cui": "510009",
+      "preferred_name": "Natural",
+      "source_value": "natural",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3125,
+        "end": 3132
+      }
+    },
+    {
+      "snomed_cui": "264114003",
+      "preferred_name": "Ostium",
+      "source_value": "orifice",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3133,
+        "end": 3140
+      }
+    },
+    {
+      "snomed_cui": "38199008",
+      "preferred_name": "Tooth structure",
+      "source_value": "Teeth",
+      "confidence_score": 0.6544517512867741,
+      "character_boundaries": {
+        "start": 3143,
+        "end": 3148
+      }
+    },
+    {
+      "snomed_cui": "395507008",
+      "preferred_name": "Premature infant",
+      "source_value": "Premature infants",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3151,
+        "end": 3168
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "mark",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3183,
+        "end": 3187
+      }
+    },
+    {
+      "snomed_cui": "134198009",
+      "preferred_name": "Etiology",
+      "source_value": "cause",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3192,
+        "end": 3197
+      }
+    },
+    {
+      "snomed_cui": "6934004",
+      "preferred_name": "Permanent",
+      "source_value": "permanent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3200,
+        "end": 3209
+      }
+    },
+    {
+      "snomed_cui": "341000119102",
+      "preferred_name": "Tattoo of skin",
+      "source_value": "tattoo",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3210,
+        "end": 3216
+      }
+    },
+    {
+      "snomed_cui": "23745001",
+      "preferred_name": "Documentation procedure",
+      "source_value": "Documentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3220,
+        "end": 3233
+      }
+    }
+  ]
+}

@@ -1,0 +1,1455 @@
+{
+  "chunk_id": "npsg_goal_6",
+  "entities": [
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "Goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3,
+        "end": 7
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 17,
+        "end": 24
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 30,
+        "end": 45
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 46,
+        "end": 54
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 55,
+        "end": 60
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.7396600368450689,
+      "character_boundaries": {
+        "start": 61,
+        "end": 68
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "Improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 89,
+        "end": 96
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 111,
+        "end": 119
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 120,
+        "end": 125
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.6373618253405818,
+      "character_boundaries": {
+        "start": 126,
+        "end": 133
+      }
+    },
+    {
+      "snomed_cui": "410666004",
+      "preferred_name": "Reason for",
+      "source_value": "Rationale",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 140,
+        "end": 149
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 173,
+        "end": 181
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 182,
+        "end": 187
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.8036366745876318,
+      "character_boundaries": {
+        "start": 188,
+        "end": 195
+      }
+    },
+    {
+      "snomed_cui": "361269008",
+      "preferred_name": "Intentional",
+      "source_value": "intended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 200,
+        "end": 208
+      }
+    },
+    {
+      "snomed_cui": "248234008",
+      "preferred_name": "Mentally alert",
+      "source_value": "alert",
+      "confidence_score": 0.551640048736841,
+      "character_boundaries": {
+        "start": 212,
+        "end": 217
+      }
+    },
+    {
+      "snomed_cui": "133932002",
+      "preferred_name": "Caregiver",
+      "source_value": "caregivers",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 218,
+        "end": 228
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 242,
+        "end": 249
+      }
+    },
+    {
+      "snomed_cui": "717711000000103",
+      "preferred_name": "Problems",
+      "source_value": "problems",
+      "confidence_score": 0.6954327359331564,
+      "character_boundaries": {
+        "start": 250,
+        "end": 258
+      }
+    },
+    {
+      "snomed_cui": "119270007",
+      "preferred_name": "Management procedure",
+      "source_value": "managed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 289,
+        "end": 296
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 318,
+        "end": 325
+      }
+    },
+    {
+      "snomed_cui": "116680003",
+      "preferred_name": "Is a",
+      "source_value": "is a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 339,
+        "end": 343
+      }
+    },
+    {
+      "snomed_cui": "3988004",
+      "preferred_name": "Multifaceted",
+      "source_value": "multifaceted",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 344,
+        "end": 356
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "problem",
+      "confidence_score": 0.6560896451744268,
+      "character_boundaries": {
+        "start": 357,
+        "end": 364
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 386,
+        "end": 396
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 397,
+        "end": 402
+      }
+    },
+    {
+      "snomed_cui": "52925006",
+      "preferred_name": "Difficult",
+      "source_value": "difficult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 415,
+        "end": 424
+      }
+    },
+    {
+      "snomed_cui": "260373001",
+      "preferred_name": "Detected",
+      "source_value": "detect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 428,
+        "end": 434
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 459,
+        "end": 466
+      }
+    },
+    {
+      "snomed_cui": "42798000",
+      "preferred_name": "Area",
+      "source_value": "areas",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 472,
+        "end": 477
+      }
+    },
+    {
+      "snomed_cui": "260396001",
+      "preferred_name": "Numerous",
+      "source_value": "numerous",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 483,
+        "end": 491
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 492,
+        "end": 497
+      }
+    },
+    {
+      "snomed_cui": "42752001",
+      "preferred_name": "Due to",
+      "source_value": "resulting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 514,
+        "end": 523
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 544,
+        "end": 555
+      }
+    },
+    {
+      "snomed_cui": "134198009",
+      "preferred_name": "Etiology",
+      "source_value": "cause",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 587,
+        "end": 592
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 616,
+        "end": 621
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "issues",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 658,
+        "end": 664
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 665,
+        "end": 680
+      }
+    },
+    {
+      "snomed_cui": "254648000",
+      "preferred_name": "Effective",
+      "source_value": "effective",
+      "confidence_score": 0.5542976339200375,
+      "character_boundaries": {
+        "start": 681,
+        "end": 690
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 691,
+        "end": 699
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 700,
+        "end": 705
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "system",
+      "confidence_score": 0.708309795242328,
+      "character_boundaries": {
+        "start": 706,
+        "end": 712
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.3564767940169095,
+      "character_boundaries": {
+        "start": 713,
+        "end": 723
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 724,
+        "end": 731
+      }
+    },
+    {
+      "snomed_cui": "303607000",
+      "preferred_name": "Biomedical equipment",
+      "source_value": "devices",
+      "confidence_score": 0.6550759670780351,
+      "character_boundaries": {
+        "start": 741,
+        "end": 748
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarms",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 754,
+        "end": 760
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 820,
+        "end": 825
+      }
+    },
+    {
+      "snomed_cui": "255469002",
+      "preferred_name": "Limited",
+      "source_value": "limits",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 826,
+        "end": 832
+      }
+    },
+    {
+      "snomed_cui": "134223000",
+      "preferred_name": "Narrow",
+      "source_value": "narrow",
+      "confidence_score": 0.7037769273696998,
+      "character_boundaries": {
+        "start": 846,
+        "end": 852
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "issues",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 860,
+        "end": 866
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospitals",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 886,
+        "end": 895
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 940,
+        "end": 948
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "issue",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1011,
+        "end": 1016
+      }
+    },
+    {
+      "snomed_cui": "73548004",
+      "preferred_name": "Universal",
+      "source_value": "Universal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1018,
+        "end": 1027
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1053,
+        "end": 1063
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1091,
+        "end": 1099
+      }
+    },
+    {
+      "snomed_cui": "66216009",
+      "preferred_name": "Understanding, function",
+      "source_value": "understand",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1103,
+        "end": 1113
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "systematic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1149,
+        "end": 1159
+      }
+    },
+    {
+      "snomed_cui": "162258009",
+      "preferred_name": "No incoordination",
+      "source_value": "coordinated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1161,
+        "end": 1172
+      }
+    },
+    {
+      "snomed_cui": "103379005",
+      "preferred_name": "Procedural approach",
+      "source_value": "approach",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1173,
+        "end": 1181
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1185,
+        "end": 1193
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1194,
+        "end": 1199
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "system",
+      "confidence_score": 0.4865816767768101,
+      "character_boundaries": {
+        "start": 1200,
+        "end": 1206
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.5469559588073982,
+      "character_boundaries": {
+        "start": 1207,
+        "end": 1217
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1255,
+        "end": 1260
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "system",
+      "confidence_score": 0.5473082854201885,
+      "character_boundaries": {
+        "start": 1261,
+        "end": 1267
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.5696726697697344,
+      "character_boundaries": {
+        "start": 1268,
+        "end": 1278
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1346,
+        "end": 1354
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1355,
+        "end": 1363
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "groups",
+      "confidence_score": 0.695419909688838,
+      "character_boundaries": {
+        "start": 1371,
+        "end": 1377
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1381,
+        "end": 1389
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1394,
+        "end": 1404
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1405,
+        "end": 1413
+      }
+    },
+    {
+      "snomed_cui": "119270007",
+      "preferred_name": "Management procedure",
+      "source_value": "managing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1436,
+        "end": 1444
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1445,
+        "end": 1453
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1454,
+        "end": 1459
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.38494926756278636,
+      "character_boundaries": {
+        "start": 1460,
+        "end": 1467
+      }
+    },
+    {
+      "snomed_cui": "255589003",
+      "preferred_name": "Direct",
+      "source_value": "direct",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1487,
+        "end": 1493
+      }
+    },
+    {
+      "snomed_cui": "272151006",
+      "preferred_name": "Relationships",
+      "source_value": "relationship",
+      "confidence_score": 0.632829123286741,
+      "character_boundaries": {
+        "start": 1494,
+        "end": 1506
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1510,
+        "end": 1517
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1544,
+        "end": 1555
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1559,
+        "end": 1564
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "found",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1579,
+        "end": 1584
+      }
+    },
+    {
+      "snomed_cui": "231448004",
+      "preferred_name": "Age-associated memory impairment",
+      "source_value": "AAMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1592,
+        "end": 1596
+      }
+    },
+    {
+      "snomed_cui": "57795002",
+      "preferred_name": "Chemical element",
+      "source_value": "Element",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1611,
+        "end": 1618
+      }
+    },
+    {
+      "snomed_cui": "263748003",
+      "preferred_name": "Established",
+      "source_value": "establish",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1673,
+        "end": 1682
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1683,
+        "end": 1688
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.7472782487371331,
+      "character_boundaries": {
+        "start": 1708,
+        "end": 1716
+      }
+    },
+    {
+      "snomed_cui": "272125009",
+      "preferred_name": "Priorities",
+      "source_value": "priority",
+      "confidence_score": 0.603942580345536,
+      "character_boundaries": {
+        "start": 1717,
+        "end": 1725
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1765,
+        "end": 1770
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1802,
+        "end": 1811
+      }
+    },
+    {
+      "snomed_cui": "74188005",
+      "preferred_name": "Medical",
+      "source_value": "medical",
+      "confidence_score": 0.6009675224557851,
+      "character_boundaries": {
+        "start": 1830,
+        "end": 1837
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1848,
+        "end": 1856
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "Risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1871,
+        "end": 1875
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1879,
+        "end": 1887
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1895,
+        "end": 1900
+      }
+    },
+    {
+      "snomed_cui": "410543007",
+      "preferred_name": "Did not attend",
+      "source_value": "not attended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1911,
+        "end": 1923
+      }
+    },
+    {
+      "snomed_cui": "386585008",
+      "preferred_name": "Functional disorder",
+      "source_value": "malfunctions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1936,
+        "end": 1948
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1959,
+        "end": 1967
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1968,
+        "end": 1973
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needed",
+      "confidence_score": 0.9892277799617721,
+      "character_boundaries": {
+        "start": 1986,
+        "end": 1992
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2024,
+        "end": 2029
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2040,
+        "end": 2045
+      }
+    },
+    {
+      "snomed_cui": "84229001",
+      "preferred_name": "Fatigue",
+      "source_value": "fatigue",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2046,
+        "end": 2053
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2070,
+        "end": 2077
+      }
+    },
+    {
+      "snomed_cui": "260521003",
+      "preferred_name": "Internal",
+      "source_value": "internal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2092,
+        "end": 2100
+      }
+    },
+    {
+      "snomed_cui": "717121000000105",
+      "preferred_name": "History",
+      "source_value": "history",
+      "confidence_score": 0.5113220927600942,
+      "character_boundaries": {
+        "start": 2110,
+        "end": 2117
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "best",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2130,
+        "end": 2134
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2149,
+        "end": 2159
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2171,
+        "end": 2182
+      }
+    },
+    {
+      "snomed_cui": "119270007",
+      "preferred_name": "Management procedure",
+      "source_value": "managing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2186,
+        "end": 2194
+      }
+    },
+    {
+      "snomed_cui": "303607000",
+      "preferred_name": "Biomedical equipment",
+      "source_value": "medical equipment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2195,
+        "end": 2212
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risks",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2213,
+        "end": 2218
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "Standard",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2229,
+        "end": 2237
+      }
+    },
+    {
+      "snomed_cui": "263748003",
+      "preferred_name": "Established",
+      "source_value": "Establish",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2261,
+        "end": 2270
+      }
+    },
+    {
+      "snomed_cui": "887171000000109",
+      "preferred_name": "Procedures",
+      "source_value": "procedures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2284,
+        "end": 2294
+      }
+    },
+    {
+      "snomed_cui": "119270007",
+      "preferred_name": "Management procedure",
+      "source_value": "managing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2299,
+        "end": 2307
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarms",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2312,
+        "end": 2318
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2319,
+        "end": 2329
+      }
+    },
+    {
+      "snomed_cui": "397635003",
+      "preferred_name": "Address",
+      "source_value": "address",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2364,
+        "end": 2371
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.9384831480437709,
+      "character_boundaries": {
+        "start": 2376,
+        "end": 2385
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2425,
+        "end": 2430
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2446,
+        "end": 2451
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2483,
+        "end": 2488
+      }
+    },
+    {
+      "snomed_cui": "246446004",
+      "preferred_name": "Parameter",
+      "source_value": "parameters",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2489,
+        "end": 2499
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "changed",
+      "confidence_score": 0.5769809778495594,
+      "character_boundaries": {
+        "start": 2507,
+        "end": 2514
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organization",
+      "confidence_score": 0.6937313455675184,
+      "character_boundaries": {
+        "start": 2528,
+        "end": 2540
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2566,
+        "end": 2571
+      }
+    },
+    {
+      "snomed_cui": "246446004",
+      "preferred_name": "Parameter",
+      "source_value": "parameters",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2572,
+        "end": 2582
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organization",
+      "confidence_score": 0.7109353483325068,
+      "character_boundaries": {
+        "start": 2596,
+        "end": 2608
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "change",
+      "confidence_score": 0.4755704135722139,
+      "character_boundaries": {
+        "start": 2630,
+        "end": 2636
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2637,
+        "end": 2642
+      }
+    },
+    {
+      "snomed_cui": "246446004",
+      "preferred_name": "Parameter",
+      "source_value": "parameters",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2643,
+        "end": 2653
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organization",
+      "confidence_score": 0.6865682606678105,
+      "character_boundaries": {
+        "start": 2667,
+        "end": 2679
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2705,
+        "end": 2710
+      }
+    },
+    {
+      "snomed_cui": "246446004",
+      "preferred_name": "Parameter",
+      "source_value": "parameters",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2711,
+        "end": 2721
+      }
+    },
+    {
+      "snomed_cui": "724001000000100",
+      "preferred_name": "Monitoring",
+      "source_value": "Monitoring",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2733,
+        "end": 2743
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2762,
+        "end": 2767
+      }
+    },
+    {
+      "snomed_cui": "360160009",
+      "preferred_name": "Checking - action",
+      "source_value": "Checking",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2778,
+        "end": 2786
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2787,
+        "end": 2797
+      }
+    },
+    {
+      "snomed_cui": "39869006",
+      "preferred_name": "Alarm, device",
+      "source_value": "alarm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2798,
+        "end": 2803
+      }
+    },
+    {
+      "snomed_cui": "263656005",
+      "preferred_name": "Accurate",
+      "source_value": "accurate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2816,
+        "end": 2824
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2882,
+        "end": 2893
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "Standard",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2904,
+        "end": 2912
+      }
+    },
+    {
+      "snomed_cui": "23745001",
+      "preferred_name": "Documentation procedure",
+      "source_value": "Documentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2929,
+        "end": 2942
+      }
+    }
+  ]
+}

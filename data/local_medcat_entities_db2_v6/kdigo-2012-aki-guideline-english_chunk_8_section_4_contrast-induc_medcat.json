@@ -1,0 +1,985 @@
+{
+  "chunk_id": "chunk_8",
+  "entities": [
+    {
+      "snomed_cui": "118630004",
+      "preferred_name": "Division",
+      "source_value": "Section",
+      "confidence_score": 0.3753951268762817,
+      "character_boundaries": {
+        "start": 2,
+        "end": 9
+      }
+    },
+    {
+      "snomed_cui": "385420005",
+      "preferred_name": "Contrast media",
+      "source_value": "Contrast",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 13,
+        "end": 21
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 22,
+        "end": 29
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 30,
+        "end": 33
+      }
+    },
+    {
+      "snomed_cui": "900000000000550004",
+      "preferred_name": "Definition",
+      "source_value": "Definition",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 51,
+        "end": 61
+      }
+    },
+    {
+      "snomed_cui": "724581000000101",
+      "preferred_name": "Epidemiology",
+      "source_value": "epidemiology",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 63,
+        "end": 75
+      }
+    },
+    {
+      "snomed_cui": "20481000",
+      "preferred_name": "Determination of prognosis",
+      "source_value": "prognosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 81,
+        "end": 90
+      }
+    },
+    {
+      "snomed_cui": "371508000",
+      "preferred_name": "Tumor stage",
+      "source_value": "stage",
+      "confidence_score": 0.6996786953558615,
+      "character_boundaries": {
+        "start": 102,
+        "end": 107
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.5952045094667582,
+      "character_boundaries": {
+        "start": 108,
+        "end": 110
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 111,
+        "end": 114
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 121,
+        "end": 136
+      }
+    },
+    {
+      "snomed_cui": "134198009",
+      "preferred_name": "Etiology",
+      "source_value": "etiologies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 169,
+        "end": 179
+      }
+    },
+    {
+      "snomed_cui": "11953005",
+      "preferred_name": "Renal function",
+      "source_value": "kidney function",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 185,
+        "end": 200
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "changes",
+      "confidence_score": 0.7373988043242148,
+      "character_boundaries": {
+        "start": 201,
+        "end": 208
+      }
+    },
+    {
+      "snomed_cui": "288563008",
+      "preferred_name": "After values",
+      "source_value": "post",
+      "confidence_score": 0.46492336762189257,
+      "character_boundaries": {
+        "start": 209,
+        "end": 213
+      }
+    },
+    {
+      "snomed_cui": "385420005",
+      "preferred_name": "Contrast media",
+      "source_value": "contrast",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 214,
+        "end": 222
+      }
+    },
+    {
+      "snomed_cui": "432504007",
+      "preferred_name": "Cerebral infarction",
+      "source_value": "CI",
+      "confidence_score": 0.6317679140015874,
+      "character_boundaries": {
+        "start": 224,
+        "end": 226
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 227,
+        "end": 230
+      }
+    },
+    {
+      "snomed_cui": "260366006",
+      "preferred_name": "Increase",
+      "source_value": "increases",
+      "confidence_score": 0.6231288059435135,
+      "character_boundaries": {
+        "start": 231,
+        "end": 240
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 241,
+        "end": 250
+      }
+    },
+    {
+      "snomed_cui": "255224006",
+      "preferred_name": "Prolonged",
+      "source_value": "prolonged",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 252,
+        "end": 261
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 262,
+        "end": 270
+      }
+    },
+    {
+      "snomed_cui": "358612008",
+      "preferred_name": "Lengthened",
+      "source_value": "long",
+      "confidence_score": 0.7572291592511138,
+      "character_boundaries": {
+        "start": 281,
+        "end": 285
+      }
+    },
+    {
+      "snomed_cui": "21243004",
+      "preferred_name": "Term birth of newborn",
+      "source_value": "term",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 286,
+        "end": 290
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 291,
+        "end": 298
+      }
+    },
+    {
+      "snomed_cui": "709044004",
+      "preferred_name": "Chronic kidney disease",
+      "source_value": "CKD",
+      "confidence_score": 0.43591483770342476,
+      "character_boundaries": {
+        "start": 299,
+        "end": 302
+      }
+    },
+    {
+      "snomed_cui": "1100881000168104",
+      "preferred_name": "Assessment of cognitive function",
+      "source_value": "Assessment",
+      "confidence_score": 0.8594707095921097,
+      "character_boundaries": {
+        "start": 321,
+        "end": 331
+      }
+    },
+    {
+      "snomed_cui": "385436007",
+      "preferred_name": "Population",
+      "source_value": "population",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 335,
+        "end": 345
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 349,
+        "end": 353
+      }
+    },
+    {
+      "snomed_cui": "15886004",
+      "preferred_name": "Screening for cancer",
+      "source_value": "Screen",
+      "confidence_score": 0.652389188875141,
+      "character_boundaries": {
+        "start": 361,
+        "end": 367
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 372,
+        "end": 380
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "pre",
+      "confidence_score": 0.853691577019689,
+      "character_boundaries": {
+        "start": 385,
+        "end": 388
+      }
+    },
+    {
+      "snomed_cui": "17373004",
+      "preferred_name": "Both kidneys",
+      "source_value": "kidney",
+      "confidence_score": 0.7519760051830928,
+      "character_boundaries": {
+        "start": 398,
+        "end": 404
+      }
+    },
+    {
+      "snomed_cui": "40226000",
+      "preferred_name": "Impairment",
+      "source_value": "impairment",
+      "confidence_score": 0.6150574590939837,
+      "character_boundaries": {
+        "start": 405,
+        "end": 415
+      }
+    },
+    {
+      "snomed_cui": "86960007",
+      "preferred_name": "Epidermal growth factor receptor",
+      "source_value": "eGFR",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 417,
+        "end": 421
+      }
+    },
+    {
+      "snomed_cui": "258859000",
+      "preferred_name": "Milliliter/minute",
+      "source_value": "ml/min",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 426,
+        "end": 432
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "prior to",
+      "confidence_score": 0.82943695265736,
+      "character_boundaries": {
+        "start": 441,
+        "end": 449
+      }
+    },
+    {
+      "snomed_cui": "261101003",
+      "preferred_name": "Intravascular",
+      "source_value": "intravascular",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 450,
+        "end": 463
+      }
+    },
+    {
+      "snomed_cui": "385420005",
+      "preferred_name": "Contrast media",
+      "source_value": "contrast",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 474,
+        "end": 482
+      }
+    },
+    {
+      "snomed_cui": "413454004",
+      "preferred_name": "Administration",
+      "source_value": "administration",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 483,
+        "end": 497
+      }
+    },
+    {
+      "snomed_cui": "385420005",
+      "preferred_name": "Contrast media",
+      "source_value": "contrast",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 531,
+        "end": 539
+      }
+    },
+    {
+      "snomed_cui": "360037004",
+      "preferred_name": "Imaging - action",
+      "source_value": "imaging methods",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 540,
+        "end": 555
+      }
+    },
+    {
+      "snomed_cui": "723509005",
+      "preferred_name": "High risk",
+      "source_value": "high-risk",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 559,
+        "end": 568
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 569,
+        "end": 577
+      }
+    },
+    {
+      "snomed_cui": "27582007",
+      "preferred_name": "Repeat",
+      "source_value": "repeat",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 585,
+        "end": 591
+      }
+    },
+    {
+      "snomed_cui": "58281002",
+      "preferred_name": "Gadolinium",
+      "source_value": "gadolinium",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 592,
+        "end": 602
+      }
+    },
+    {
+      "snomed_cui": "24932003",
+      "preferred_name": "Exposure to (contextual qualifier)",
+      "source_value": "exposure",
+      "confidence_score": 0.9844818303754893,
+      "character_boundaries": {
+        "start": 603,
+        "end": 611
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 615,
+        "end": 621
+      }
+    },
+    {
+      "snomed_cui": "709044004",
+      "preferred_name": "Chronic kidney disease",
+      "source_value": "CKD",
+      "confidence_score": 0.5643149168361814,
+      "character_boundaries": {
+        "start": 622,
+        "end": 625
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 626,
+        "end": 629
+      }
+    },
+    {
+      "snomed_cui": "42752001",
+      "preferred_name": "Due to",
+      "source_value": "due to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 630,
+        "end": 636
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 637,
+        "end": 644
+      }
+    },
+    {
+      "snomed_cui": "424114000",
+      "preferred_name": "Nephrogenic systemic fibrosis",
+      "source_value": "Nephrogenic Systemic Fibrosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 645,
+        "end": 674
+      }
+    },
+    {
+      "snomed_cui": "424114000",
+      "preferred_name": "Nephrogenic systemic fibrosis",
+      "source_value": "NSF",
+      "confidence_score": 0.7470947670763632,
+      "character_boundaries": {
+        "start": 676,
+        "end": 679
+      }
+    },
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "prevention",
+      "confidence_score": 0.9265990704520473,
+      "character_boundaries": {
+        "start": 718,
+        "end": 728
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 762,
+        "end": 770
+      }
+    },
+    {
+      "snomed_cui": "385420005",
+      "preferred_name": "Contrast media",
+      "source_value": "contrast medium",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 771,
+        "end": 786
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.6394328917494638,
+      "character_boundaries": {
+        "start": 787,
+        "end": 791
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 795,
+        "end": 803
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 807,
+        "end": 811
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 820,
+        "end": 829
+      }
+    },
+    {
+      "snomed_cui": "258866004",
+      "preferred_name": "Osmole/liter",
+      "source_value": "osmolar",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 834,
+        "end": 841
+      }
+    },
+    {
+      "snomed_cui": "258866004",
+      "preferred_name": "Osmole/liter",
+      "source_value": "osmolar",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 849,
+        "end": 856
+      }
+    },
+    {
+      "snomed_cui": "426722004",
+      "preferred_name": "Iodinated contrast media",
+      "source_value": "iodinated contrast media",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 857,
+        "end": 881
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 894,
+        "end": 898
+      }
+    },
+    {
+      "snomed_cui": "258866004",
+      "preferred_name": "Osmole/liter",
+      "source_value": "osmolar",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 899,
+        "end": 906
+      }
+    },
+    {
+      "snomed_cui": "260872001",
+      "preferred_name": "Agent",
+      "source_value": "agents",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 907,
+        "end": 913
+      }
+    },
+    {
+      "snomed_cui": "56183000",
+      "preferred_name": "Pharmacologic",
+      "source_value": "Pharmacological",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 937,
+        "end": 952
+      }
+    },
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "prevention",
+      "confidence_score": 0.7616171760010844,
+      "character_boundaries": {
+        "start": 953,
+        "end": 963
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 982,
+        "end": 991
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "volume",
+      "confidence_score": 0.9369622910138578,
+      "character_boundaries": {
+        "start": 997,
+        "end": 1003
+      }
+    },
+    {
+      "snomed_cui": "70379000",
+      "preferred_name": "Product containing sodium chloride",
+      "source_value": "isotonic sodium chloride",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1019,
+        "end": 1043
+      }
+    },
+    {
+      "snomed_cui": "387319002",
+      "preferred_name": "Sodium bicarbonate",
+      "source_value": "sodium bicarbonate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1047,
+        "end": 1065
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1079,
+        "end": 1088
+      }
+    },
+    {
+      "snomed_cui": "1351680009",
+      "preferred_name": "Oral fluid",
+      "source_value": "oral fluids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1099,
+        "end": 1110
+      }
+    },
+    {
+      "snomed_cui": "723509005",
+      "preferred_name": "High risk",
+      "source_value": "high-risk",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1120,
+        "end": 1129
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1130,
+        "end": 1138
+      }
+    },
+    {
+      "snomed_cui": "26643006",
+      "preferred_name": "Oral route",
+      "source_value": "oral",
+      "confidence_score": 0.9563186713361326,
+      "character_boundaries": {
+        "start": 1160,
+        "end": 1164
+      }
+    },
+    {
+      "snomed_cui": "387440002",
+      "preferred_name": "Acetylcysteine",
+      "source_value": "NAC",
+      "confidence_score": 0.4789495090486693,
+      "character_boundaries": {
+        "start": 1165,
+        "end": 1168
+      }
+    },
+    {
+      "snomed_cui": "372810006",
+      "preferred_name": "Theophylline",
+      "source_value": "theophylline",
+      "confidence_score": 0.7161831145997097,
+      "character_boundaries": {
+        "start": 1232,
+        "end": 1244
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1248,
+        "end": 1255
+      }
+    },
+    {
+      "snomed_cui": "50417007",
+      "preferred_name": "Lower respiratory tract infection",
+      "source_value": "CI",
+      "confidence_score": 0.3326825690234544,
+      "character_boundaries": {
+        "start": 1256,
+        "end": 1258
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.6972745456129553,
+      "character_boundaries": {
+        "start": 1259,
+        "end": 1262
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1276,
+        "end": 1285
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1310,
+        "end": 1317
+      }
+    },
+    {
+      "snomed_cui": "50417007",
+      "preferred_name": "Lower respiratory tract infection",
+      "source_value": "CI",
+      "confidence_score": 0.3464512093642217,
+      "character_boundaries": {
+        "start": 1318,
+        "end": 1320
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.8791217644270396,
+      "character_boundaries": {
+        "start": 1321,
+        "end": 1324
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "Effects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1348,
+        "end": 1355
+      }
+    },
+    {
+      "snomed_cui": "302497006",
+      "preferred_name": "Hemodialysis",
+      "source_value": "hemodialysis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1359,
+        "end": 1371
+      }
+    },
+    {
+      "snomed_cui": "233581009",
+      "preferred_name": "Hemofiltration",
+      "source_value": "hemofiltration",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1375,
+        "end": 1389
+      }
+    },
+    {
+      "snomed_cui": "262073000",
+      "preferred_name": "Prophylactic",
+      "source_value": "prophylactic",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1415,
+        "end": 1427
+      }
+    },
+    {
+      "snomed_cui": "414795007",
+      "preferred_name": "Myocardial ischemia",
+      "source_value": "IHD",
+      "confidence_score": 0.39865860785062535,
+      "character_boundaries": {
+        "start": 1428,
+        "end": 1431
+      }
+    },
+    {
+      "snomed_cui": "84114007",
+      "preferred_name": "Heart failure",
+      "source_value": "HF",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1435,
+        "end": 1437
+      }
+    },
+    {
+      "snomed_cui": "385420005",
+      "preferred_name": "Contrast media",
+      "source_value": "contrast",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1442,
+        "end": 1450
+      }
+    },
+    {
+      "snomed_cui": "118292001",
+      "preferred_name": "Removal",
+      "source_value": "removal",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1451,
+        "end": 1458
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1462,
+        "end": 1469
+      }
+    },
+    {
+      "snomed_cui": "432504007",
+      "preferred_name": "Cerebral infarction",
+      "source_value": "CI",
+      "confidence_score": 0.5637312425115457,
+      "character_boundaries": {
+        "start": 1470,
+        "end": 1472
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1473,
+        "end": 1476
+      }
+    }
+  ]
+}

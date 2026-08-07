@@ -1,0 +1,1605 @@
+{
+  "chunk_id": "e895_6",
+  "entities": [
+    {
+      "snomed_cui": "272406001",
+      "preferred_name": "Stage D",
+      "source_value": "STAGE D",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6,
+        "end": 13
+      }
+    },
+    {
+      "snomed_cui": "86005002",
+      "preferred_name": "Advanced",
+      "source_value": "ADVANCED",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 15,
+        "end": 23
+      }
+    },
+    {
+      "snomed_cui": "84114007",
+      "preferred_name": "Heart failure",
+      "source_value": "HF",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 25,
+        "end": 27
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 28,
+        "end": 36
+      }
+    },
+    {
+      "snomed_cui": "20646008",
+      "preferred_name": "Intractable",
+      "source_value": "refractory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 42,
+        "end": 52
+      }
+    },
+    {
+      "snomed_cui": "420816009",
+      "preferred_name": "New York Heart Association Classification",
+      "source_value": "NYHA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 53,
+        "end": 57
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 58,
+        "end": 67
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "IV",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 68,
+        "end": 70
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 111,
+        "end": 121
+      }
+    },
+    {
+      "snomed_cui": "264499004",
+      "preferred_name": "Early",
+      "source_value": "early",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 122,
+        "end": 127
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "NEED",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 148,
+        "end": 152
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "HELP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 153,
+        "end": 157
+      }
+    },
+    {
+      "snomed_cui": "342711000000106",
+      "preferred_name": "Referred to",
+      "source_value": "referred to",
+      "confidence_score": 0.7141225713456609,
+      "character_boundaries": {
+        "start": 163,
+        "end": 174
+      }
+    },
+    {
+      "snomed_cui": "86005002",
+      "preferred_name": "Advanced",
+      "source_value": "advanced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 178,
+        "end": 186
+      }
+    },
+    {
+      "snomed_cui": "84114007",
+      "preferred_name": "Heart failure",
+      "source_value": "HF",
+      "confidence_score": 0.6422434101537257,
+      "character_boundaries": {
+        "start": 187,
+        "end": 189
+      }
+    },
+    {
+      "snomed_cui": "394733009",
+      "preferred_name": "Medical specialty",
+      "source_value": "specialty",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 190,
+        "end": 199
+      }
+    },
+    {
+      "snomed_cui": "231113001",
+      "preferred_name": "Tannenbaum electroanalgesia method",
+      "source_value": "team",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 200,
+        "end": 204
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 206,
+        "end": 213
+      }
+    },
+    {
+      "snomed_cui": "86005002",
+      "preferred_name": "Advanced",
+      "source_value": "Advanced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 221,
+        "end": 229
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "Therapies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 230,
+        "end": 239
+      }
+    },
+    {
+      "snomed_cui": "255238004",
+      "preferred_name": "Continuous",
+      "source_value": "Continuous",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 242,
+        "end": 252
+      }
+    },
+    {
+      "snomed_cui": "373213009",
+      "preferred_name": "Inotropic agent",
+      "source_value": "Inotropic Support",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 253,
+        "end": 270
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 293,
+        "end": 300
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 305,
+        "end": 313
+      }
+    },
+    {
+      "snomed_cui": "232957001",
+      "preferred_name": "Cardiac support procedure",
+      "source_value": "MCS",
+      "confidence_score": 0.5871065214143409,
+      "character_boundaries": {
+        "start": 323,
+        "end": 326
+      }
+    },
+    {
+      "snomed_cui": "263903005",
+      "preferred_name": "Transplant",
+      "source_value": "transplant",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 330,
+        "end": 340
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.5054596930454895,
+      "character_boundaries": {
+        "start": 342,
+        "end": 347
+      }
+    },
+    {
+      "snomed_cui": "103735009",
+      "preferred_name": "Palliative care",
+      "source_value": "palliative therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 374,
+        "end": 392
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 407,
+        "end": 415
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.6457417524152658,
+      "character_boundaries": {
+        "start": 417,
+        "end": 422
+      }
+    },
+    {
+      "snomed_cui": "50811001",
+      "preferred_name": "Routine",
+      "source_value": "Routine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 428,
+        "end": 435
+      }
+    },
+    {
+      "snomed_cui": "358612008",
+      "preferred_name": "Lengthened",
+      "source_value": "long",
+      "confidence_score": 0.47251106264597736,
+      "character_boundaries": {
+        "start": 436,
+        "end": 440
+      }
+    },
+    {
+      "snomed_cui": "21243004",
+      "preferred_name": "Term birth of newborn",
+      "source_value": "term",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 441,
+        "end": 445
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class 3",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 462,
+        "end": 469
+      }
+    },
+    {
+      "snomed_cui": "232957001",
+      "preferred_name": "Cardiac support procedure",
+      "source_value": "Mechanical Circulatory Support",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 488,
+        "end": 518
+      }
+    },
+    {
+      "snomed_cui": "360066001",
+      "preferred_name": "Left ventricular assist device",
+      "source_value": "LVAD",
+      "confidence_score": 0.4213056671237825,
+      "character_boundaries": {
+        "start": 520,
+        "end": 524
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 527,
+        "end": 538
+      }
+    },
+    {
+      "snomed_cui": "86005002",
+      "preferred_name": "Advanced",
+      "source_value": "advanced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 550,
+        "end": 558
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 565,
+        "end": 573
+      }
+    },
+    {
+      "snomed_cui": "371154000",
+      "preferred_name": "Dependent",
+      "source_value": "dependent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 574,
+        "end": 583
+      }
+    },
+    {
+      "snomed_cui": "373213009",
+      "preferred_name": "Inotropic agent",
+      "source_value": "inotropes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 587,
+        "end": 596
+      }
+    },
+    {
+      "snomed_cui": "14803004",
+      "preferred_name": "Transitory",
+      "source_value": "temporary",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 600,
+        "end": 609
+      }
+    },
+    {
+      "snomed_cui": "232957001",
+      "preferred_name": "Cardiac support procedure",
+      "source_value": "MCS",
+      "confidence_score": 0.7328363381991787,
+      "character_boundaries": {
+        "start": 610,
+        "end": 613
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 615,
+        "end": 622
+      }
+    },
+    {
+      "snomed_cui": "20646008",
+      "preferred_name": "Intractable",
+      "source_value": "refractory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 639,
+        "end": 649
+      }
+    },
+    {
+      "snomed_cui": "420816009",
+      "preferred_name": "New York Heart Association Classification",
+      "source_value": "NYHA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 650,
+        "end": 654
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "IV",
+      "confidence_score": 0.9415748733924063,
+      "character_boundaries": {
+        "start": 655,
+        "end": 657
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.67056741165582,
+      "character_boundaries": {
+        "start": 668,
+        "end": 673
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 681,
+        "end": 688
+      }
+    },
+    {
+      "snomed_cui": "32413006",
+      "preferred_name": "Transplantation of heart",
+      "source_value": "Cardiac Transplantation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 709,
+        "end": 732
+      }
+    },
+    {
+      "snomed_cui": "410535002",
+      "preferred_name": "Indicated",
+      "source_value": "Indicated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 734,
+        "end": 743
+      }
+    },
+    {
+      "snomed_cui": "86005002",
+      "preferred_name": "Advanced",
+      "source_value": "advanced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 756,
+        "end": 764
+      }
+    },
+    {
+      "snomed_cui": "84114007",
+      "preferred_name": "Heart failure",
+      "source_value": "HF",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 765,
+        "end": 767
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 768,
+        "end": 776
+      }
+    },
+    {
+      "snomed_cui": "20646008",
+      "preferred_name": "Intractable",
+      "source_value": "refractory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 777,
+        "end": 787
+      }
+    },
+    {
+      "snomed_cui": "303607000",
+      "preferred_name": "Biomedical equipment",
+      "source_value": "medical/device",
+      "confidence_score": 0.5985165167280961,
+      "character_boundaries": {
+        "start": 791,
+        "end": 805
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 806,
+        "end": 813
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 815,
+        "end": 822
+      }
+    },
+    {
+      "snomed_cui": "235856003",
+      "preferred_name": "Disorder of liver",
+      "source_value": "LD",
+      "confidence_score": 0.3961692578744152,
+      "character_boundaries": {
+        "start": 830,
+        "end": 832
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "PATIENTS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 842,
+        "end": 850
+      }
+    },
+    {
+      "snomed_cui": "184091000",
+      "preferred_name": "Patient in hospital",
+      "source_value": "HOSPITALIZED",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 851,
+        "end": 863
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "ACUTE",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 869,
+        "end": 874
+      }
+    },
+    {
+      "snomed_cui": "5650002",
+      "preferred_name": "Decompensated",
+      "source_value": "DECOMPENSATED",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 875,
+        "end": 888
+      }
+    },
+    {
+      "snomed_cui": "84114007",
+      "preferred_name": "Heart failure",
+      "source_value": "HF",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 889,
+        "end": 891
+      }
+    },
+    {
+      "snomed_cui": "5880005",
+      "preferred_name": "Physical examination procedure",
+      "source_value": "Assessment",
+      "confidence_score": 0.8606626863881308,
+      "character_boundaries": {
+        "start": 908,
+        "end": 918
+      }
+    },
+    {
+      "snomed_cui": "225390008",
+      "preferred_name": "Triage",
+      "source_value": "Triage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 958,
+        "end": 964
+      }
+    },
+    {
+      "snomed_cui": "5880005",
+      "preferred_name": "Physical examination procedure",
+      "source_value": "Assessment",
+      "confidence_score": 0.8452553957096238,
+      "character_boundaries": {
+        "start": 967,
+        "end": 977
+      }
+    },
+    {
+      "snomed_cui": "246112005",
+      "preferred_name": "Severity",
+      "source_value": "severity",
+      "confidence_score": 0.6123196424605076,
+      "character_boundaries": {
+        "start": 986,
+        "end": 994
+      }
+    },
+    {
+      "snomed_cui": "85804007",
+      "preferred_name": "Congestion",
+      "source_value": "congestion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 998,
+        "end": 1008
+      }
+    },
+    {
+      "snomed_cui": "88058003",
+      "preferred_name": "Perfusion",
+      "source_value": "perfusion",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1013,
+        "end": 1022
+      }
+    },
+    {
+      "snomed_cui": "410658008",
+      "preferred_name": "Provoked by",
+      "source_value": "precipitating factors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1033,
+        "end": 1054
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1056,
+        "end": 1059
+      }
+    },
+    {
+      "snomed_cui": "191415002",
+      "preferred_name": "Communicable disease",
+      "source_value": "infection",
+      "confidence_score": 0.8820422576956112,
+      "character_boundaries": {
+        "start": 1061,
+        "end": 1070
+      }
+    },
+    {
+      "snomed_cui": "698247007",
+      "preferred_name": "Cardiac arrhythmia",
+      "source_value": "arrhythmia",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1072,
+        "end": 1082
+      }
+    },
+    {
+      "snomed_cui": "129834002",
+      "preferred_name": "Noncompliance with medication regimen",
+      "source_value": "medication nonadherence",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1084,
+        "end": 1107
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "initial",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1120,
+        "end": 1127
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1128,
+        "end": 1135
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1137,
+        "end": 1144
+      }
+    },
+    {
+      "snomed_cui": "312009002",
+      "preferred_name": "Cognitive function: initiation",
+      "source_value": "Initiation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1166,
+        "end": 1176
+      }
+    },
+    {
+      "snomed_cui": "255238004",
+      "preferred_name": "Continuous",
+      "source_value": "continued",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1205,
+        "end": 1214
+      }
+    },
+    {
+      "snomed_cui": "394656005",
+      "preferred_name": "Inpatient care",
+      "source_value": "hospitalization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1236,
+        "end": 1251
+      }
+    },
+    {
+      "snomed_cui": "410536001",
+      "preferred_name": "Contraindicated",
+      "source_value": "contraindicated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1259,
+        "end": 1274
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1276,
+        "end": 1283
+      }
+    },
+    {
+      "snomed_cui": "288563008",
+      "preferred_name": "After values",
+      "source_value": "post",
+      "confidence_score": 0.3424532610372921,
+      "character_boundaries": {
+        "start": 1311,
+        "end": 1315
+      }
+    },
+    {
+      "snomed_cui": "58158008",
+      "preferred_name": "Stable",
+      "source_value": "stability",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1316,
+        "end": 1325
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1333,
+        "end": 1342
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1344,
+        "end": 1351
+      }
+    },
+    {
+      "snomed_cui": "14803004",
+      "preferred_name": "Transitory",
+      "source_value": "Transient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1354,
+        "end": 1363
+      }
+    },
+    {
+      "snomed_cui": "255604002",
+      "preferred_name": "Mild",
+      "source_value": "mild",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1364,
+        "end": 1368
+      }
+    },
+    {
+      "snomed_cui": "11953005",
+      "preferred_name": "Renal function",
+      "source_value": "renal function",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1369,
+        "end": 1383
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "changes",
+      "confidence_score": 0.8358844932361484,
+      "character_boundaries": {
+        "start": 1384,
+        "end": 1391
+      }
+    },
+    {
+      "snomed_cui": "84387000",
+      "preferred_name": "Asymptomatic",
+      "source_value": "asymptomatic",
+      "confidence_score": 0.8652589324827571,
+      "character_boundaries": {
+        "start": 1395,
+        "end": 1407
+      }
+    },
+    {
+      "snomed_cui": "271649006",
+      "preferred_name": "Systolic blood pressure",
+      "source_value": "SBP",
+      "confidence_score": 0.7445919932462282,
+      "character_boundaries": {
+        "start": 1412,
+        "end": 1415
+      }
+    },
+    {
+      "snomed_cui": "410658008",
+      "preferred_name": "Provoked by",
+      "source_value": "trigger",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1427,
+        "end": 1434
+      }
+    },
+    {
+      "snomed_cui": "50811001",
+      "preferred_name": "Routine",
+      "source_value": "routine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1435,
+        "end": 1442
+      }
+    },
+    {
+      "snomed_cui": "410546004",
+      "preferred_name": "Discontinued",
+      "source_value": "discontinuation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1448,
+        "end": 1463
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1465,
+        "end": 1472
+      }
+    },
+    {
+      "snomed_cui": "372695000",
+      "preferred_name": "Diuretic",
+      "source_value": "Diuretics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1477,
+        "end": 1486
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1495,
+        "end": 1506
+      }
+    },
+    {
+      "snomed_cui": "372691009",
+      "preferred_name": "Loop diuretic",
+      "source_value": "loop diuretics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1507,
+        "end": 1521
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1526,
+        "end": 1537
+      }
+    },
+    {
+      "snomed_cui": "21639008",
+      "preferred_name": "Hypervolemia",
+      "source_value": "fluid overload",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1542,
+        "end": 1556
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1558,
+        "end": 1565
+      }
+    },
+    {
+      "snomed_cui": "59351004",
+      "preferred_name": "Citrate",
+      "source_value": "Titrate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1568,
+        "end": 1575
+      }
+    },
+    {
+      "snomed_cui": "9668001000001102",
+      "preferred_name": "Complete",
+      "source_value": "complete",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1587,
+        "end": 1595
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "prior to",
+      "confidence_score": 0.7387608100860997,
+      "character_boundaries": {
+        "start": 1609,
+        "end": 1617
+      }
+    },
+    {
+      "snomed_cui": "75823008",
+      "preferred_name": "Discharge",
+      "source_value": "discharge",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1618,
+        "end": 1627
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1629,
+        "end": 1636
+      }
+    },
+    {
+      "snomed_cui": "103370009",
+      "preferred_name": "With intensity",
+      "source_value": "Intensify",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1639,
+        "end": 1648
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1654,
+        "end": 1660
+      }
+    },
+    {
+      "snomed_cui": "228166004",
+      "preferred_name": "Combinations",
+      "source_value": "combination",
+      "confidence_score": 0.8056825038264899,
+      "character_boundaries": {
+        "start": 1670,
+        "end": 1681
+      }
+    },
+    {
+      "snomed_cui": "162182005",
+      "preferred_name": "Diuresis",
+      "source_value": "diuresis",
+      "confidence_score": 0.7750627365871714,
+      "character_boundaries": {
+        "start": 1682,
+        "end": 1690
+      }
+    },
+    {
+      "snomed_cui": "860766002",
+      "preferred_name": "Thiazide",
+      "source_value": "thiazides",
+      "confidence_score": 0.6893076809882146,
+      "character_boundaries": {
+        "start": 1698,
+        "end": 1707
+      }
+    },
+    {
+      "snomed_cui": "71978007",
+      "preferred_name": "Inadequate",
+      "source_value": "inadequate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1724,
+        "end": 1734
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.6738372586319356,
+      "character_boundaries": {
+        "start": 1736,
+        "end": 1741
+      }
+    },
+    {
+      "snomed_cui": "91081006",
+      "preferred_name": "Vasodilatation",
+      "source_value": "Vasodilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1763,
+        "end": 1775
+      }
+    },
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "Prophylaxis",
+      "confidence_score": 0.7461919113765914,
+      "character_boundaries": {
+        "start": 1781,
+        "end": 1792
+      }
+    },
+    {
+      "snomed_cui": "27942005",
+      "preferred_name": "Shock",
+      "source_value": "Shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1794,
+        "end": 1799
+      }
+    },
+    {
+      "snomed_cui": "738984000",
+      "preferred_name": "Parenteral",
+      "source_value": "Parenteral",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1824,
+        "end": 1834
+      }
+    },
+    {
+      "snomed_cui": "372787008",
+      "preferred_name": "Vasodilator",
+      "source_value": "Vasodilators",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1835,
+        "end": 1847
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "IV",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1849,
+        "end": 1851
+      }
+    },
+    {
+      "snomed_cui": "71759000",
+      "preferred_name": "Product containing glyceryl trinitrate",
+      "source_value": "nitroglycerin",
+      "confidence_score": 0.5425221748019413,
+      "character_boundaries": {
+        "start": 1852,
+        "end": 1865
+      }
+    },
+    {
+      "snomed_cui": "372860000",
+      "preferred_name": "Nitroprusside",
+      "source_value": "nitroprusside",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1869,
+        "end": 1882
+      }
+    },
+    {
+      "snomed_cui": "427067006",
+      "preferred_name": "Immunologic adjuvant",
+      "source_value": "adjuvant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1904,
+        "end": 1912
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1913,
+        "end": 1920
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1934,
+        "end": 1942
+      }
+    },
+    {
+      "snomed_cui": "45007003",
+      "preferred_name": "Low blood pressure",
+      "source_value": "hypotension",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1951,
+        "end": 1962
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.58827206988624,
+      "character_boundaries": {
+        "start": 1964,
+        "end": 1969
+      }
+    },
+    {
+      "snomed_cui": "360271000",
+      "preferred_name": "Prophylaxis - procedure intent",
+      "source_value": "Prophylaxis",
+      "confidence_score": 0.8063732996068028,
+      "character_boundaries": {
+        "start": 1981,
+        "end": 1992
+      }
+    },
+    {
+      "snomed_cui": "29092000",
+      "preferred_name": "Venous structure",
+      "source_value": "Venous",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1994,
+        "end": 2000
+      }
+    },
+    {
+      "snomed_cui": "421728001",
+      "preferred_name": "Administration of prophylactic anticoagulant",
+      "source_value": "thromboembolism prophylaxis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2001,
+        "end": 2028
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2032,
+        "end": 2043
+      }
+    },
+    {
+      "snomed_cui": "394656005",
+      "preferred_name": "Inpatient care",
+      "source_value": "hospitalization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2051,
+        "end": 2066
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2068,
+        "end": 2075
+      }
+    },
+    {
+      "snomed_cui": "89138009",
+      "preferred_name": "Cardiogenic shock",
+      "source_value": "Cardiogenic Shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2080,
+        "end": 2097
+      }
+    },
+    {
+      "snomed_cui": "373213009",
+      "preferred_name": "Inotropic agent",
+      "source_value": "Inotropic support",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2099,
+        "end": 2116
+      }
+    },
+    {
+      "snomed_cui": "410535002",
+      "preferred_name": "Indicated",
+      "source_value": "indicated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2120,
+        "end": 2129
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2131,
+        "end": 2138
+      }
+    },
+    {
+      "snomed_cui": "14803004",
+      "preferred_name": "Transitory",
+      "source_value": "Temporary",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2141,
+        "end": 2150
+      }
+    },
+    {
+      "snomed_cui": "232957001",
+      "preferred_name": "Cardiac support procedure",
+      "source_value": "MCS",
+      "confidence_score": 0.7770358405706925,
+      "character_boundaries": {
+        "start": 2151,
+        "end": 2154
+      }
+    },
+    {
+      "snomed_cui": "20646008",
+      "preferred_name": "Intractable",
+      "source_value": "refractory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2173,
+        "end": 2183
+      }
+    },
+    {
+      "snomed_cui": "264533003",
+      "preferred_name": "Hypoperfusion",
+      "source_value": "hypoperfusion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2194,
+        "end": 2207
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.606628222984308,
+      "character_boundaries": {
+        "start": 2209,
+        "end": 2214
+      }
+    },
+    {
+      "snomed_cui": "27942005",
+      "preferred_name": "Shock",
+      "source_value": "shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2238,
+        "end": 2243
+      }
+    },
+    {
+      "snomed_cui": "231113001",
+      "preferred_name": "Tannenbaum electroanalgesia method",
+      "source_value": "team",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2244,
+        "end": 2248
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.6573683311917335,
+      "character_boundaries": {
+        "start": 2249,
+        "end": 2259
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.566821341903832,
+      "character_boundaries": {
+        "start": 2275,
+        "end": 2280
+      }
+    },
+    {
+      "snomed_cui": "417747008",
+      "preferred_name": "Pulmonary artery flotation catheter",
+      "source_value": "PA catheter",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2286,
+        "end": 2297
+      }
+    },
+    {
+      "snomed_cui": "257867005",
+      "preferred_name": "Insertion - action",
+      "source_value": "placement",
+      "confidence_score": 0.41989747562745017,
+      "character_boundaries": {
+        "start": 2298,
+        "end": 2307
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.4958795160392583,
+      "character_boundaries": {
+        "start": 2327,
+        "end": 2332
+      }
+    },
+    {
+      "snomed_cui": "84114007",
+      "preferred_name": "Heart failure",
+      "source_value": "HF",
+      "confidence_score": 0.7660336294993872,
+      "character_boundaries": {
+        "start": 2379,
+        "end": 2381
+      }
+    },
+    {
+      "snomed_cui": "401173007",
+      "preferred_name": "Disease management program",
+      "source_value": "disease management programs",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2382,
+        "end": 2409
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2411,
+        "end": 2418
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2424,
+        "end": 2431
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "centered",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2432,
+        "end": 2440
+      }
+    },
+    {
+      "snomed_cui": "371754007",
+      "preferred_name": "Discharge planning",
+      "source_value": "discharge planning",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2441,
+        "end": 2459
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2461,
+        "end": 2468
+      }
+    },
+    {
+      "snomed_cui": "264499004",
+      "preferred_name": "Early",
+      "source_value": "Early",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2497,
+        "end": 2502
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2517,
+        "end": 2526
+      }
+    },
+    {
+      "snomed_cui": "258703001",
+      "preferred_name": "day",
+      "source_value": "days",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2536,
+        "end": 2540
+      }
+    }
+  ]
+}

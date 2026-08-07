@@ -1,0 +1,528 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+      "@type": "Finding",
+      "name": "Pneumonia Severity Index (PSI) score",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:58010a02-3ce7-44b0-a3b9-1d16f2fa9bbc",
+          "rationale": "PSI score is used to stratify patients into risk classes for community-acquired pneumonia.",
+          "citation": "Fine et al10 (1997), Armour et al12 (2003), Capelastegui et al14 (2006)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:02c4d5e6-f7a8-41b3-92c4-d5e6f7890abc",
+      "@type": "Condition",
+      "name": "Successful outcome",
+      "snomed": "385669000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8b3c4d5e-6f7a-4890-b123-456789abcdef",
+      "@type": "Finding",
+      "name": "Mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b5c4d6e7-f8a9-40b2-a1c3-d4e5f67890ab",
+          "rationale": "Mortality is the outcome measured in Fine et al study for PSI Class I.",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:03b5d132-9e4b-4c6c-8ade-3c7fe9e3f9b3",
+          "rationale": "Mortality is the outcome measured in Fine et al study for PSI Class II.",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:295fffec-b2f7-4768-a7c2-2694045e72f1",
+          "rationale": "Mortality is the outcome measured in Fine et al study for PSI Class III.",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a5a9ff3a-88f7-4644-88d7-e32db676c96d",
+          "rationale": "Mortality is the outcome measured in Fine et al study for PSI Class IV.",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:48f331b2-4052-4d35-a5d2-9cc1da450e55",
+          "rationale": "Mortality is the outcome measured in Fine et al study for PSI Class V.",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-40ab-91cd-23e4f56789de",
+          "rationale": "Mortality is the outcome measured in Armour et al study for PSI Class II.",
+          "citation": "Armour et al12 (2003)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:45c47685-bbe8-4595-9a35-9b297cc6f639",
+          "rationale": "Mortality is the outcome measured in Armour et al study for PSI Class III.",
+          "citation": "Armour et al12 (2003)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:5ca4553d-bd43-4c21-9b65-86c2fddb93a2",
+          "rationale": "Mortality is the outcome measured in Armour et al study for PSI Class IV.",
+          "citation": "Armour et al12 (2003)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1b96f420-5848-4bfd-a318-7f3f1c555673",
+          "rationale": "Mortality is the outcome measured in Capelastegui et al study.",
+          "citation": "Capelastegui et al14 (2006)",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:1b96f420-5848-4bfd-a318-7f3f1c555673",
+      "@type": "Condition",
+      "name": "30-day mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f6e7d8c9-b0a1-45f6-92b3-c4d5e6f78901",
+      "@type": "Acuity",
+      "name": "Pneumonia Severity Index (PSI) Risk Classes",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b5c4d6e7-f8a9-40b2-a1c3-d4e5f67890ab",
+          "rationale": "PSI Class I indicates low mortality risk (0.1% to 0.4%).",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:03b5d132-9e4b-4c6c-8ade-3c7fe9e3f9b3",
+          "rationale": "PSI Class II indicates low mortality risk (0.6% to 0.7%).",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:295fffec-b2f7-4768-a7c2-2694045e72f1",
+          "rationale": "PSI Class III indicates low mortality risk (0.9% to 2.8%).",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a5a9ff3a-88f7-4644-88d7-e32db676c96d",
+          "rationale": "PSI Class IV indicates moderate mortality risk (8.2% to 12.5%).",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:48f331b2-4052-4d35-a5d2-9cc1da450e55",
+          "rationale": "PSI Class V indicates high mortality risk (27.0% to 31.1%).",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-40ab-91cd-23e4f56789de",
+          "rationale": "PSI score is used to stratify patients into risk classes in the Carratalà et al study.",
+          "citation": "Carratalà et al11 (2005)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:45c47685-bbe8-4595-9a35-9b297cc6f639",
+          "rationale": "PSI score has high discriminatory power to predict 30-day mortality in the Capelastegui et al study (AUC 0.89).",
+          "citation": "Capelastegui et al14 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b5c4d6e7-f8a9-40b2-a1c3-d4e5f67890ab",
+      "@type": "Condition",
+      "name": "PSI Class I",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:03b5d132-9e4b-4c6c-8ade-3c7fe9e3f9b3",
+      "@type": "Condition",
+      "name": "PSI Class II",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:295fffec-b2f7-4768-a7c2-2694045e72f1",
+      "@type": "Condition",
+      "name": "PSI Class III",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a5a9ff3a-88f7-4644-88d7-e32db676c96d",
+      "@type": "Condition",
+      "name": "PSI Class IV",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:48f331b2-4052-4d35-a5d2-9cc1da450e55",
+      "@type": "Condition",
+      "name": "PSI Class V",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-40ab-91cd-23e4f56789de",
+      "@type": "Condition",
+      "name": "PSI Class I, II, III",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:02c4d5e6-f7a8-41b3-92c4-d5e6f7890abc",
+          "rationale": "Patients in PSI risk classes I, II, and III had a successful outcome in the Carratalà et al study.",
+          "citation": "Carratalà et al11 (2005)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:45c47685-bbe8-4595-9a35-9b297cc6f639",
+      "@type": "Condition",
+      "name": "PSI Class IV, V",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:5ca4553d-bd43-4c21-9b65-86c2fddb93a2",
+          "rationale": "Patients in PSI risk classes IV and V had a lower successful outcome in the Carratalà et al study.",
+          "citation": "Carratalà et al11 (2005)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c3d4e5f6-a7b8-41bc-93cd-e5f6d7890adf",
+      "@type": "Condition",
+      "name": "Unsuccessful outcome",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5ca4553d-bd43-4c21-9b65-86c2fddb93a2",
+      "@type": "Condition",
+      "name": "Unsuccessful outcome",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3f69640c-8860-4f7c-a288-88c5dd4f8af7",
+      "@type": "Finding",
+      "name": "Class of Evidence",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Class of Evidence for Fine et al study is III for Q1.",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:58010a02-3ce7-44b0-a3b9-1d16f2fa9bbc",
+          "rationale": "Class of Evidence for Carratalà et al study is II for Q1.",
+          "citation": "Carratalà et al11 (2005)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9190973d-d34d-404a-9c89-e023f0ff9ef2",
+          "rationale": "Class of Evidence for Armour et al study is III for Q1.",
+          "citation": "Armour et al12 (2003)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Class of Evidence for Aujesky et al study is III for Q1.",
+          "citation": "Aujesky et al13 (2005)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:58010a02-3ce7-44b0-a3b9-1d16f2fa9bbc",
+          "rationale": "Class of Evidence for Capelastegui et al study is III for Q1.",
+          "citation": "Capelastegui et al14 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:58010a02-3ce7-44b0-a3b9-1d16f2fa9bbc",
+      "@type": "Finding",
+      "name": "Study Design",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Study Design for Fine et al study is Hybrid retrospective and prospective observational.",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Study Design for Armour et al study is Multicenter prospective observational study.",
+          "citation": "Armour et al12 (2003)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Study Design for Capelastegui et al study is Single-center prospective cohort study.",
+          "citation": "Capelastegui et al14 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2a7fd955-f853-458c-b77d-b22d7d2878e1",
+      "@type": "Finding",
+      "name": "Setting",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Setting for Fine et al study is adult inpatients with CAP.",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:58010a02-3ce7-44b0-a3b9-1d16f2fa9bbc",
+          "rationale": "Setting for Carratalà et al study is 2 tertiary care hospitals in Barcelona, Spain.",
+          "citation": "Carratalà et al11 (2005)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Setting for Armour et al study is Multicenter primary care practice clinics or emergency departments in Georgia and Virginia, US.",
+          "citation": "Armour et al12 (2003)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:58010a02-3ce7-44b0-a3b9-1d16f2fa9bbc",
+          "rationale": "Setting for Aujesky et al study is 32 EDs in Pennsylvania and Connecticut, US.",
+          "citation": "Aujesky et al13 (2005)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Setting for Capelastegui et al study is public 400-bed teaching hospital in Northern Spain.",
+          "citation": "Capelastegui et al14 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9190973d-d34d-404a-9c89-e023f0ff9ef2",
+      "@type": "Finding",
+      "name": "Outcome Measures",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Outcome measure for Fine et al study is 30-day mortality.",
+          "citation": "Fine et al10 (1997)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:58010a02-3ce7-44b0-a3b9-1d16f2fa9bbc",
+          "rationale": "Outcome measure for Carratalà et al study is percentage of patients with an overall successful outcome.",
+          "citation": "Carratalà et al11 (2005)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Outcome measure for Armour et al study is 30-day mortality.",
+          "citation": "Armour et al12 (2003)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:58010a02-3ce7-44b0-a3b9-1d16f2fa9bbc",
+          "rationale": "Outcome measure for Aujesky et al study is all-cause mortality within 30 days.",
+          "citation": "Aujesky et al13 (2005)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+          "rationale": "Outcome measure for Capelastegui et al study is 30-day mortality.",
+          "citation": "Capelastegui et al14 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:23a967b0-a25a-432b-bb2f-a9514b7a59ac",
+      "@type": "Finding",
+      "name": "Methods",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_11_evidentiary_table_part_1.json",
+        "section_title": "Evidentiary Table Part 1 (Fine et al. to Capelastegui et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:58010a02-3ce7-44b0-a3b9-1d16f2fa9bbc",
+          "rationale": "Methods for Carratalà et al study is Enrolled patients >18 y with diagnosis CAP; excluded if immunosuppressed; patients with CAP were stratified into risk classes by PSI scores.",
+          "citation": "Carratalà et al11 (2005)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:58010a02-3ce7-44b0-a3b9-1d16f2fa9bbc",
+          "rationale": "Methods for Aujesky et al study is Eligibility: patients 18 y or older, clinical diagnosis of PNA, and a new radiographic pulmonary infiltrate; excluded if considered to have HAP, immunosuppression or comorbid conditions that distinguished them diagnostically or therapeutically from PNA.",
+          "citation": "Aujesky et al13 (2005)",
+          "citation_type": "verbatim"
+        }
+      ]
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:35.516074+00:00",
+    "nodes_before": 20,
+    "nodes_after": 19,
+    "rules_before": 44,
+    "rules_after": 39
+  }
+}

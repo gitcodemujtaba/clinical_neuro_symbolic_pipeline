@@ -1,0 +1,561 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1234-abcdef012345",
+      "@type": "Medication",
+      "name": "Medication",
+      "snomed": "410942007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+          "rationale": "Medications must be labeled according to NPSG.03.04.01.",
+          "citation": "NPSG.03.04.01, EP 1, EP 2, EP 3, EP 4, EP 5",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Unlabeled medication or solution container",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Unlabeled medication containers can lead to medication errors.",
+          "citation": "NPSG.03.04.01 Rationale",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Risk of medication error due to unlabeled container",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:2f3befa2-a5a0-42ac-967a-3104e082336a",
+          "rationale": "To prevent medication errors, all medications and solutions must be labeled.",
+          "citation": "NPSG.03.04.01"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2f3befa2-a5a0-42ac-967a-3104e082336a",
+      "@type": "Intervention",
+      "name": "Labeling of medications and solutions",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+          "rationale": "Labeling must occur when medication or solution is transferred from original packaging.",
+          "citation": "NPSG.03.04.01 EP 2",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+          "rationale": "Labeling must occur for medications and solutions not immediately administered.",
+          "citation": "NPSG.03.04.01 EP 1",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+          "rationale": "Labeling must occur in perioperative and other procedural settings.",
+          "citation": "NPSG.03.04.01 EP 1, EP 2",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:28f5da73-7bdc-4b55-a73d-2173313a1867",
+      "@type": "Intervention",
+      "name": "Labeling requirements for medications and solutions",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Labels must include medication/solution name, strength, amount (if not apparent), diluent name and volume (if not apparent), and expiration date/time.",
+          "citation": "NPSG.03.04.01 EP 3",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Labels must be verified verbally and visually by two individuals if the preparer is not the administrator.",
+          "citation": "NPSG.03.04.01 EP 4",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Labeling should occur as soon as medication/solution is prepared, unless immediately administered.",
+          "citation": "NPSG.03.04.01 EP 5",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Intervention",
+      "name": "Specific labeling requirements and verification",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0f34cfd4-6161-4b60-bc3a-4993ee3ff9b9",
+      "@type": "Intervention",
+      "name": "Labeling of medications and solutions",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Specific labeling requirements include name, strength, amount, diluent, expiration.",
+          "citation": "NPSG.03.04.01 EP 3",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Verification by two individuals is required under certain conditions.",
+          "citation": "NPSG.03.04.01 EP 4",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Labeling should occur as soon as prepared, unless immediately administered.",
+          "citation": "NPSG.03.04.01 EP 5",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f1685db4-5629-4455-8b4c-2c9109a4f21c",
+      "@type": "Intervention",
+      "name": "Specific labeling requirements and verification",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7a9f24aa-aea3-4dd3-a518-5bd56284d38d",
+      "@type": "Finding",
+      "name": "Medication container",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+          "rationale": "Medication containers must be labeled according to NPSG.03.04.01.",
+          "citation": "NPSG.03.04.01, EP 1, EP 2, EP 3, EP 4, EP 5",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3afc3013-2511-4672-a66f-16ce2548a29b",
+      "@type": "Intervention",
+      "name": "Labeling of medications and solutions",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Specific labeling requirements include name, strength, amount, diluent, expiration.",
+          "citation": "NPSG.03.04.01 EP 3",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Verification by two individuals is required under certain conditions.",
+          "citation": "NPSG.03.04.01 EP 4",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Labeling should occur as soon as prepared, unless immediately administered.",
+          "citation": "NPSG.03.04.01 EP 5",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:743057a0-a303-425c-800d-95a4e10f9363",
+      "@type": "Intervention",
+      "name": "Specific labeling requirements and verification",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7f28fb88-be6f-4ca8-876c-a39ce793ff86",
+      "@type": "Finding",
+      "name": "Medication prepared or obtained",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+          "rationale": "If medication is prepared or obtained, it may need to be labeled.",
+          "citation": "NPSG.03.04.01 EP 5 Note",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e82575c7-b88e-495e-a1fe-cf90c437f3e9",
+      "@type": "Intervention",
+      "name": "Labeling of medications and solutions",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Specific labeling requirements include name, strength, amount, diluent, expiration.",
+          "citation": "NPSG.03.04.01 EP 3",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Verification by two individuals is required under certain conditions.",
+          "citation": "NPSG.03.04.01 EP 4",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Labeling should occur as soon as prepared, unless immediately administered.",
+          "citation": "NPSG.03.04.01 EP 5",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3fa41d4a-313a-4b48-b7e6-e09941508647",
+      "@type": "Intervention",
+      "name": "Specific labeling requirements and verification",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:24680cba-fed1-3579-8def-0123456789ab",
+      "@type": "Finding",
+      "name": "Medication transferred from original packaging",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+          "rationale": "If medication is transferred to another container, it must be labeled.",
+          "citation": "NPSG.03.04.01 EP 2",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2e895e9-1f26-4170-a41e-c42a08a1c3a2",
+      "@type": "Intervention",
+      "name": "Labeling of medications and solutions",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Specific labeling requirements include name, strength, amount, diluent, expiration.",
+          "citation": "NPSG.03.04.01 EP 3",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Verification by two individuals is required under certain conditions.",
+          "citation": "NPSG.03.04.01 EP 4",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Labeling should occur as soon as prepared, unless immediately administered.",
+          "citation": "NPSG.03.04.01 EP 5",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5803b2e5-ca17-47e8-a1c3-8501e4c4f848",
+      "@type": "Intervention",
+      "name": "Specific labeling requirements and verification",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7f8e9d0c-b1a2-3456-7890-abcdef123456",
+      "@type": "Finding",
+      "name": "Medication prepared",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+          "rationale": "If medication is prepared, it must be labeled unless immediately administered.",
+          "citation": "NPSG.03.04.01 EP 5 Note",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a1693dda-bf8f-4dec-86fa-2dda11bb724b",
+      "@type": "Intervention",
+      "name": "Labeling of medications and solutions",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Specific labeling requirements include name, strength, amount, diluent, expiration.",
+          "citation": "NPSG.03.04.01 EP 3",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Verification by two individuals is required under certain conditions.",
+          "citation": "NPSG.03.04.01 EP 4",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Labeling should occur as soon as prepared, unless immediately administered.",
+          "citation": "NPSG.03.04.01 EP 5",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:39bfbc27-43f6-4a8e-8ee0-60fed3c291a7",
+      "@type": "Intervention",
+      "name": "Specific labeling requirements and verification",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7b8c9d0e-f1a2-3579-8def-0123456789ba",
+      "@type": "Finding",
+      "name": "Medication obtained",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+          "rationale": "If medication is obtained, it may need to be labeled.",
+          "citation": "NPSG.03.04.01 EP 5 Note",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:746856ec-e815-4589-896e-9e78b762c9df",
+      "@type": "Intervention",
+      "name": "Labeling of medications and solutions",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Specific labeling requirements include name, strength, amount, diluent, expiration.",
+          "citation": "NPSG.03.04.01 EP 3",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Verification by two individuals is required under certain conditions.",
+          "citation": "NPSG.03.04.01 EP 4",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+          "rationale": "Labeling should occur as soon as prepared, unless immediately administered.",
+          "citation": "NPSG.03.04.01 EP 5",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7e72cd52-6a87-4568-8110-30dce1888ed0",
+      "@type": "Intervention",
+      "name": "Specific labeling requirements and verification",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1b2c3d4e-f5a6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Medication administered immediately",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json",
+        "section_title": "Goal 3: NPSG.03.04.01 - Labeling Medications"
+      },
+      "rules": [
+        {
+          "predicate": "EXCEPTIONS",
+          "target": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+          "rationale": "Immediately administered medications may not require labeling.",
+          "citation": "NPSG.03.04.01 EP 1 Note, EP 5 Note",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:dfe1d92b-8ffd-45d2-8a1f-7111d7875d02",
+      "@type": "Intervention",
+      "name": "Labeling of medications and solutions",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_04_01_goal_3_npsg.03.04.01_-_l.json"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.690217+00:00",
+    "nodes_before": 25,
+    "nodes_after": 25,
+    "rules_before": 33,
+    "rules_after": 33
+  }
+}

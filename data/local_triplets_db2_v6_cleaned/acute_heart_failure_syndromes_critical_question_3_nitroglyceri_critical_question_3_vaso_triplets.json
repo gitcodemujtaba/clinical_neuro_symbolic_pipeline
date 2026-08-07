@@ -1,0 +1,496 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f7e8d9c0-b1a2-4356-9def-fedcba987654",
+          "rationale": "Patients presenting with suspected acute heart failure syndrome are candidates for vasodilator therapy.",
+          "citation": "Section 3, first sentence.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:f7e8d9c0-b1a2-4356-9def-fedcba987654",
+      "@type": "Condition",
+      "name": "Suspected acute heart failure syndrome",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5f298382-706c-45da-93c5-036f1004e5a0",
+      "@type": "Medication",
+      "name": "High-dose nitroglycerin",
+      "snomed": "36576007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "High-dose nitroglycerin is considered a safe and effective treatment option for patients with acute heart failure syndrome and elevated blood pressure.",
+          "citation": "Section 3, Level C recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_DOSAGE",
+          "target": "urn:uuid:1aea352d-ca9c-41bd-897f-0c47d99bab76",
+          "rationale": "High dose nitroglycerin can be administered as an infusion starting at 0.3 to 0.5 mcg/kg per minute, increased in increments of 20 mcg/min every 1 to 3 minutes.",
+          "citation": "Section 3, Levy et al study description.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "REQUIRES_DOSAGE",
+          "target": "urn:uuid:1aea352d-ca9c-41bd-897f-0c47d99bab76",
+          "rationale": "High dose nitroglycerin can be administered as bolus intravenous dosing of 2,000 mcg every 3 to 5 minutes.",
+          "citation": "Section 3, Levy et al study description.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:1aea352d-ca9c-41bd-897f-0c47d99bab76",
+          "rationale": "Bolus dosing of nitroglycerin is 2,000 mcg every 3 to 5 minutes.",
+          "citation": "Section 3, Levy et al study description.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:1aea352d-ca9c-41bd-897f-0c47d99bab76",
+          "rationale": "Infusion dose starts at 0.3 to 0.5 mcg/kg per minute, increased in increments of 20 mcg/min every 1 to 3 minutes.",
+          "citation": "Section 3, Levy et al study description.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:5eef9134-9593-4d10-ad1e-ee4841b1d7bd",
+          "rationale": "If systolic blood pressure falls below 90 mm Hg, further increased dosage of nitroglycerin should be discontinued.",
+          "citation": "Section 3, Levy et al study description.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:1aea352d-ca9c-41bd-897f-0c47d99bab76",
+          "rationale": "Maximum potential bolus dose of nitroglycerin is 20 mg (20,000 mcg).",
+          "citation": "Section 3, Levy et al study description.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:1aea352d-ca9c-41bd-897f-0c47d99bab76",
+          "rationale": "Maximum infusion dose of nitroglycerin is 400 mcg/min.",
+          "citation": "Section 3, Levy et al study description.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0a756868-62cd-46e8-90cc-70cbb0c3c0aa",
+      "@type": "Condition",
+      "name": "Elevated blood pressure",
+      "snomed": "38341003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_CONDITION",
+          "target": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66",
+          "rationale": "High-dose nitroglycerin is indicated in patients with acute heart failure syndrome who also have elevated blood pressure.",
+          "citation": "Section 3, Level C recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:9daf0a73-c52c-4ff8-a7fe-c9675623ab72",
+      "@type": "Finding",
+      "name": "Elevated blood pressure",
+      "snomed": "38341003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_CONDITION",
+          "target": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66",
+          "rationale": "High-dose nitroglycerin is indicated in patients with acute heart failure syndrome who also have elevated blood pressure.",
+          "citation": "Section 3, Level C recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:1aea352d-ca9c-41bd-897f-0c47d99bab76",
+      "@type": "Quantitative Threshold",
+      "name": "Nitroglycerin infusion starting dose",
+      "snomed": "258837002",
+      "icd10": "N/A",
+      "quantitative_threshold": {
+        "value": "0.3 to 0.5 mcg/kg per minute",
+        "unit": "mcg/kg/min"
+      },
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5eef9134-9593-4d10-ad1e-ee4841b1d7bd",
+      "@type": "Quantitative Threshold",
+      "name": "Systolic blood pressure threshold for discontinuing nitroglycerin",
+      "snomed": "271649006",
+      "icd10": "N/A",
+      "quantitative_threshold": {
+        "value": "90",
+        "unit": "mm Hg",
+        "comparison": "<"
+      },
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:03639f47-b115-4523-9096-ff82567733a3",
+      "@type": "Finding",
+      "name": "Systolic blood pressure greater than or equal to 160 mm Hg",
+      "snomed": "271649006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:eb44b010-183e-4400-816e-e9688614535e",
+      "@type": "Finding",
+      "name": "Systolic blood pressure less than 90 mm Hg",
+      "snomed": "271649006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66",
+          "rationale": "Systolic blood pressure falling below 90 mm Hg during high-dose nitroglycerin infusion indicates hypotension and requires discontinuation of the drug.",
+          "citation": "Section 3, Levy et al study description.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:84a5aa5a-2a26-4a10-a35e-089517f8aa3f",
+      "@type": "Acuity",
+      "name": "Acute decompensated heart failure",
+      "snomed": "195111005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "IS_A",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Acute decompensated heart failure is a specific type of acute heart failure syndrome.",
+          "citation": "Section 3, Key words/phrases.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e96baaeb-1c78-4a9c-94cb-659a8b8399e4",
+      "@type": "Medication",
+      "name": "Furosemide",
+      "snomed": "387475002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:68be7c91-d0b7-4606-9a58-5af375f1f598",
+      "@type": "Medication",
+      "name": "Morphine sulfate",
+      "snomed": "60886004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-abcd-ef1234567890",
+      "@type": "Medication",
+      "name": "High-flow oxygen",
+      "snomed": "57485005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:23dcddd1-48fb-415d-9216-5b4e834b901d",
+      "@type": "Finding",
+      "name": "Respiratory distress",
+      "snomed": "271825005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "POTENTIAL_BENEFIT",
+          "target": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66",
+          "rationale": "High-dose nitroglycerin therapy has the potential benefit of reducing respiratory distress.",
+          "citation": "Section 3, Potential Benefit of Implementing the Recommendations.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f89503bd-04a0-4140-af0e-46cb5eb78093",
+      "@type": "Intervention",
+      "name": "Endotracheal intubation",
+      "snomed": "112798008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "POTENTIAL_BENEFIT",
+          "target": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66",
+          "rationale": "High-dose nitroglycerin therapy has the potential benefit of decreasing the need for endotracheal intubation.",
+          "citation": "Section 3, Potential Benefit of Implementing the Recommendations.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:e2bca6f9-71f5-458c-8983-d177ad207fc9",
+      "@type": "Finding",
+      "name": "Reduced endotracheal intubations",
+      "snomed": "112798008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "POTENTIAL_BENEFIT",
+          "target": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66",
+          "rationale": "High-dose nitroglycerin therapy showed a trend toward reduced endotracheal intubations.",
+          "citation": "Section 3, Levy et al study results.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:0eae176b-f7d0-4227-b689-9bc181a1269f",
+      "@type": "Intervention",
+      "name": "ICU admission",
+      "snomed": "32485007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "POTENTIAL_BENEFIT",
+          "target": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66",
+          "rationale": "High-dose nitroglycerin therapy has the potential benefit of decreasing ICU admission.",
+          "citation": "Section 3, Potential Benefit of Implementing the Recommendations.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5e6f7a89-0123-4567-890a-bcdef1234567",
+      "@type": "Finding",
+      "name": "Hypotension",
+      "snomed": "45007003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "POTENTIAL_HARM",
+          "target": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66",
+          "rationale": "High-dose nitrates could potentially produce hypotension.",
+          "citation": "Section 3, Potential Harm of Implementing the Recommendations.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:120e7b1e-8876-427f-a412-c29e4e6b88cb",
+      "@type": "Finding",
+      "name": "B-lines on lung ultrasound",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b4d6b19e-5499-4635-a2ef-f262fe225326",
+      "@type": "Finding",
+      "name": "Pulmonary congestion",
+      "snomed": "67599009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "POTENTIAL_BENEFIT",
+          "target": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66",
+          "rationale": "Vasodilators can reduce preload and afterload, resulting in improved cardiac output and reduced pulmonary congestion.",
+          "citation": "Section 3, paragraph starting 'Vasodilators...'",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ee5affb6-e658-418a-8431-e880297bdeaf",
+      "@type": "Finding",
+      "name": "Mean arterial pressure greater than or equal to 120 mm Hg",
+      "snomed": "1285244000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:11701f7a-a753-4e60-8195-6927166c3dd3",
+      "@type": "Finding",
+      "name": "Refractory to initial therapy",
+      "snomed": "20646008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4d999bc1-e2d4-49d7-86e3-c51e9150372e",
+      "@type": "Finding",
+      "name": "Dyspnea",
+      "snomed": "267036007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b8e4fcce-7730-4cb7-ace2-f35702060233",
+      "@type": "Finding",
+      "name": "Reduced need for bilevel positive airway pressure",
+      "snomed": "250852008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": [
+        {
+          "predicate": "POTENTIAL_BENEFIT",
+          "target": "urn:uuid:905976b2-ffc2-4cad-98a1-0fc43669bb66"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6f7a8901-2345-6789-0abc-def123456789",
+      "@type": "Medication",
+      "name": "ACE inhibitors",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso.json",
+        "section_title": "Critical Question 3: Vasodilator Therapy with High-Dose Nitroglycerin"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:32.161173+00:00",
+    "nodes_before": 33,
+    "nodes_after": 26,
+    "rules_before": 20,
+    "rules_after": 20
+  }
+}

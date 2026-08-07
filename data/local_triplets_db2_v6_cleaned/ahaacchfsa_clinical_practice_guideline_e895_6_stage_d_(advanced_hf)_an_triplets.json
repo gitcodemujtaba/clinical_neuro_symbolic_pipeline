@@ -1,0 +1,603 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-4365-b7a8-c9d0e1f23456",
+      "@type": "Condition",
+      "name": "Advanced Heart Failure (Stage D)",
+      "snomed": "272406001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8d152292-13e2-499d-bd17-8c263d5260d4",
+      "@type": "Medication",
+      "name": "Continuous Inotropic Support",
+      "snomed": "373213009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Continuous inotropic support is reasonable as bridge therapy for patients awaiting MCS or transplant.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 8. Advanced Therapies.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Continuous inotropic support may be considered as palliative therapy in ineligible patients.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 8. Advanced Therapies.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:934587a3-a07d-4207-b502-f89b231f2e76",
+      "@type": "Intervention",
+      "name": "Inotropic support",
+      "snomed": "373213009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:9ce4805d-733b-4fbf-8ff4-0488f7d26b73",
+          "rationale": "Inotropic support is indicated in cardiogenic shock.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Cardiogenic Shock.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1a2b-3c4d5e6f7890",
+      "@type": "Medication",
+      "name": "Durable Mechanical Circulatory Support (LVAD)",
+      "snomed": "232957001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:de342719-f4c4-4110-aa35-580b69d177c0",
+          "rationale": "Durable LVAD is recommended for select advanced HFrEF patients dependent on inotropes or temporary MCS.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 8. Advanced Therapies.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:de342719-f4c4-4110-aa35-580b69d177c0",
+          "rationale": "Durable LVAD is recommended for select advanced HFrEF patients with refractory NYHA IV symptoms.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 8. Advanced Therapies.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:c094e1de-b965-4205-a52e-84340f87062e",
+      "@type": "Intervention",
+      "name": "Temporary MCS",
+      "snomed": "232957001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:bf2e424a-1161-449a-9aa7-f940b00302bb",
+          "rationale": "Temporary MCS is reasonable for refractory end-organ hypoperfusion.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Cardiogenic Shock.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Medication",
+      "name": "Cardiac Transplantation",
+      "snomed": "32413006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:1234abcd-5678-90ef-1234-abcdef567890",
+          "rationale": "Cardiac transplantation is indicated in eligible advanced HF patients refractory to medical/device therapy.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 8. Advanced Therapies.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d7833d7b-9e26-4f7d-88fc-fb51db47fd27",
+      "@type": "Finding",
+      "name": "Congestion",
+      "snomed": "85804007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:de342719-f4c4-4110-aa35-580b69d177c0",
+          "rationale": "Assess severity of congestion and perfusion.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Assessment.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:77cb9450-b50e-465b-a5ee-f952d827e106",
+      "@type": "Finding",
+      "name": "Perfusion",
+      "snomed": "88058003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:de342719-f4c4-4110-aa35-580b69d177c0",
+          "rationale": "Assess severity of congestion and perfusion.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Assessment.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:36d23523-06c9-42cd-9236-ba8d3cb757aa",
+      "@type": "Medication",
+      "name": "Loop Diuretics",
+      "snomed": "372691009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:c299ea98-80eb-4199-8dc7-6e42ebd2b890",
+          "rationale": "Prompt intravenous loop diuretics are recommended for fluid overload.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Decongestion.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e2502deb-ac73-49a8-9831-f629d9c78ffe",
+      "@type": "Intervention",
+      "name": "VTE Prophylaxis",
+      "snomed": "421728001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:8e0a1324-06fe-45ad-9bf9-099795148b96",
+          "rationale": "Venous thromboembolism prophylaxis is recommended during hospitalization.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. VTE Prophylaxis.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c299ea98-80eb-4199-8dc7-6e42ebd2b890",
+      "@type": "Intervention",
+      "name": "PA catheter placement",
+      "snomed": "417747008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:4164f7d0-63f4-4cbe-ba0f-222355d63702",
+          "rationale": "PA catheter placement may be considered.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Cardiogenic Shock.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:809b6021-850a-4210-a746-a8fad8800c3c",
+      "@type": "Intervention",
+      "name": "Multidisciplinary HF disease management programs",
+      "snomed": "401173007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:3594eaa2-1fb3-48a4-80f9-8a85f24c8322",
+          "rationale": "Multidisciplinary HF disease management programs reduce rehospitalizations.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Transitions of Care.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:aaa44e60-26f8-400b-a2e3-fda03db10253",
+      "@type": "Intervention",
+      "name": "Patient-centered discharge planning",
+      "snomed": "371754007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:6b5d1ec6-215d-42d6-91bd-9846f00b4026",
+          "rationale": "Patient-centered discharge planning reduces rehospitalizations.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Transitions of Care.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4b9f1e2a-7c3d-4086-a5b2-9d1e7f3a8b6c",
+      "@type": "Finding",
+      "name": "Refractory NYHA Class III-IV symptoms despite optimal GDMT",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a7b8c9d0-e1f2-4365-b7a8-c9d0e1f23456",
+          "rationale": "Patients with refractory NYHA Class III-IV symptoms despite optimal GDMT should be identified early and referred to an advanced HF specialty team.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 8.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Intervention",
+      "name": "Bridge therapy for MCS or transplant",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8ebc9e21-10bf-4d67-ae71-3c1eaf24ca45",
+      "@type": "Intervention",
+      "name": "Improve survival and QOL in advanced HFrEF",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1234abcd-5678-90ef-1234-abcdef567890",
+      "@type": "Intervention",
+      "name": "Indicated in eligible advanced HF patients refractory to medical/device therapy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:de342719-f4c4-4110-aa35-580b69d177c0",
+      "@type": "Acuity",
+      "name": "Severity of congestion and perfusion assessment",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:dbd9b56a-a846-482a-998b-a4ed4c7e04c0",
+      "@type": "Finding",
+      "name": "Precipitating factors (ACS, infection, arrhythmia, medication nonadherence)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:de342719-f4c4-4110-aa35-580b69d177c0",
+          "rationale": "Identify precipitating factors.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Assessment.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:19fb6fe6-527b-4985-af9c-29486a0a1165",
+      "@type": "Medication",
+      "name": "GDMT (Guideline Directed Medical Therapy)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:bf2e424a-1161-449a-9aa7-f940b00302bb",
+          "rationale": "Preexisting GDMT should be continued and optimized during hospitalization unless contraindicated.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. GDMT Optimization.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:bf2e424a-1161-449a-9aa7-f940b00302bb",
+          "rationale": "GDMT should be initiated post-stability before discharge.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. GDMT Optimization.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7e24ea6b-2428-4304-bb04-421ac0fa54fb",
+      "@type": "Intervention",
+      "name": "Continue/Optimize GDMT during hospitalization and initiate post-stability",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:832fdee3-e094-4974-a4c8-6b8b98b48b5a",
+      "@type": "Intervention",
+      "name": "Administer intravenous loop diuretics for fluid overload",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1c61a975-d86c-47fb-a837-74f70579b192",
+      "@type": "Medication",
+      "name": "Parenteral Vasodilators (Nitroglycerin, Nitroprusside)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:809b6021-850a-4210-a746-a8fad8800c3c",
+          "rationale": "IV nitroglycerin or nitroprusside may be considered as adjuvant therapy in congested patients without hypotension.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Vasodilation.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:dd14008e-db4a-4ed8-94f8-52b86257de44",
+      "@type": "Intervention",
+      "name": "Administer IV vasodilators (Nitroglycerin, Nitroprusside) as adjuvant therapy in congested patients without hypotension",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8e0a1324-06fe-45ad-9bf9-099795148b96",
+      "@type": "Intervention",
+      "name": "Administer VTE prophylaxis during hospitalization",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9ce4805d-733b-4fbf-8ff4-0488f7d26b73",
+      "@type": "Intervention",
+      "name": "Administer inotropic support for cardiogenic shock",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:bf2e424a-1161-449a-9aa7-f940b00302bb",
+      "@type": "Intervention",
+      "name": "Administer temporary MCS for refractory end-organ hypoperfusion",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2b78777b-cac1-4b65-b33e-52301bf5b21a",
+      "@type": "Intervention",
+      "name": "Multidisciplinary shock team management",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:ee37ba13-d2b5-48ec-a43f-15cfcaa3d5c7",
+          "rationale": "Multidisciplinary shock team management is reasonable.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Cardiogenic Shock.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ee37ba13-d2b5-48ec-a43f-15cfcaa3d5c7",
+      "@type": "Intervention",
+      "name": "Implement multidisciplinary shock team management",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4164f7d0-63f4-4cbe-ba0f-222355d63702",
+      "@type": "Intervention",
+      "name": "Consider PA catheter placement in cardiogenic shock",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3594eaa2-1fb3-48a4-80f9-8a85f24c8322",
+      "@type": "Intervention",
+      "name": "Implement multidisciplinary HF disease management programs to reduce rehospitalizations",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6b5d1ec6-215d-42d6-91bd-9846f00b4026",
+      "@type": "Intervention",
+      "name": "Implement patient-centered discharge planning to reduce rehospitalizations",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3e73c1b5-c59f-40ea-a566-b799c0013109",
+      "@type": "Intervention",
+      "name": "Early postdischarge follow-up within 7 days",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:016a80b5-a500-454c-bfa3-8c68edca70cd",
+          "rationale": "Early postdischarge follow-up within 7 days is reasonable.",
+          "citation": "AHA/ACC/HFSA Guideline, Section 9. Transitions of Care.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:016a80b5-a500-454c-bfa3-8c68edca70cd",
+      "@type": "Intervention",
+      "name": "Schedule early postdischarge follow-up within 7 days",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json",
+        "section_title": "Stage D (Advanced HF) and Acute Decompensated HF Hospitalization"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e44427c8-cb52-4ec8-af7d-922d5bad6038",
+      "@type": "Finding",
+      "name": "NYHA Class III-IV symptoms",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_6_stage_d_(advanced_hf)_an.json"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:32.613861+00:00",
+    "nodes_before": 35,
+    "nodes_after": 35,
+    "rules_before": 21,
+    "rules_after": 21
+  }
+}

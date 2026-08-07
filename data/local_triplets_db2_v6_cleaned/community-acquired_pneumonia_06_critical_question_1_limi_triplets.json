@@ -1,0 +1,558 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "B-lines on lung ultrasound",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "B-lines on lung ultrasound indicate acute heart failure syndrome",
+          "citation": "A systematic review showed high specificity for B-lines.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3c4d5e6f-7a8b-9012-3456-7890abcdef12",
+      "@type": "Finding",
+      "name": "REA-ICU score",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:0fedcba9-8765-4321-0fed-cba987654321",
+          "rationale": "An REA-ICU score of 4 points or more indicates a low negative LR for ICU need.",
+          "citation": "Labarère et al study suggested that patients without an REA-ICU score of 4 points or more had a low negative LR of 0.2 (95% CI 0.1 to 0.5).",
+          "citation_paraphrase": "Labarère et al study suggested that patients without an REA-ICU score of 4 points or more had a low negative LR of 0.2 (95% CI 0.1 to 0.5).",
+          "citation_verbatim_excerpt": "In other circumstances, emergency physicians may want to identify patients who are the least likely to need ICU care.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "PSI is a well-validated aid that can predict short-term mortality in patients with CAP.",
+          "citation": "Text states that PSI and CURB-65 are both well-validated aids that can predict short-term mortality in patients with CAP.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "CURB-65 is a well-validated aid that can predict short-term mortality in patients with CAP.",
+          "citation": "Text states that PSI and CURB-65 are both well-validated aids that can predict short-term mortality in patients with CAP.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9b8a7c6d-5e4f-3210-9b8a-7c6d5e4f3210",
+      "@type": "Finding",
+      "name": "Midregional pro-adrenomedullin (MR-proADM)",
+      "snomed": "312250003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:5a6b7c8d-4e3f-2109-8a6b-7c8d5e4f3210",
+          "rationale": "MR-proADM levels correlate well with PSI score and predict mortality/ICU admission, similar to PSI/CURB-65.",
+          "citation": "Multiple Class III studies showed correlation with PSI and prognostic value for mortality/ICU admission comparable to PSI/CURB-65.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "MR-proADM levels correlate well with PSI score and predict mortality/ICU admission.",
+          "citation": "Multiple Class III studies showed correlation with PSI and prognostic value for mortality/ICU admission comparable to PSI/CURB-65.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7c8d9e0f-6a5b-4321-fedc-ba9876543210",
+      "@type": "Finding",
+      "name": "Procalcitonin (PCT)",
+      "snomed": "418752001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:5a6b7c8d-4e3f-2109-8a6b-7c8d5e4f3210",
+          "rationale": "PCT appears to have some prognostic value for mortality in CAP, albeit less than MR-proADM.",
+          "citation": "Multiple Class III studies showed correlation with PSI and prognostic value for mortality comparable to PSI/CURB-65.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "PCT appears to have some prognostic value for mortality in CAP.",
+          "citation": "Multiple Class III studies showed correlation with PSI and prognostic value for mortality comparable to PSI/CURB-65.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6ee75de4-199a-4d47-a0c1-3b4e7883cff6",
+      "@type": "Finding",
+      "name": "Predicted low mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6b7c8d9e-0f1a-2345-6789-abcdef012345",
+          "rationale": "Patients with low predicted mortality may still warrant hospital admission due to broader medical/psychosocial factors.",
+          "citation": "Text states that patients with low predicted mortality may nonetheless warrant hospital admission.",
+          "citation_paraphrase": "Text states that patients with low predicted mortality may nonetheless warrant hospital admission.",
+          "citation_verbatim_excerpt": "In other circumstances, emergency physicians may want to identify patients who are the least likely to need ICU care.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:8f9e0d1c-2b3a-4567-90ab-cdef12345678",
+      "@type": "Condition",
+      "name": "Immunocompromised state",
+      "snomed": "370391006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-3a4b-5678-90ab-cdef12345678",
+          "rationale": "Clinical decision aids have not been validated for immunocompromised patients.",
+          "citation": "Text states that these aids have not been validated and should not be used for patients who are immunocompromised.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ba7a86e9-8909-4887-9ab8-7c419b64526b",
+      "@type": "Condition",
+      "name": "Recently discharged from hospital",
+      "snomed": "58000006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-3a4b-5678-90ab-cdef12345678",
+          "rationale": "Clinical decision aids have not been validated for recently discharged patients.",
+          "citation": "Text states that these aids should not be used for patients who were recently discharged from the hospital.",
+          "citation_paraphrase": "Text states that these aids should not be used for patients who were recently discharged from the hospital.",
+          "citation_verbatim_excerpt": "ces, emergency physicians may want to identify patients who are the least likely to need ICU care.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b3c4d5e6-f789-0123-4567-89abcdef0123",
+      "@type": "Condition",
+      "name": "Inability to receive oral antibiotics",
+      "snomed": "371151008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-3a4b-5678-90ab-cdef12345678",
+          "rationale": "Inability to receive oral antibiotics is a contraindication for outpatient treatment.",
+          "citation": "Text states that patients may not be appropriate for outpatient treatment if they are unable to receive oral antibiotics.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:135790ab-cdef-2468-0135-790abcdef135",
+      "@type": "Finding",
+      "name": "C-reactive protein (CRP)",
+      "snomed": "61425002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "PCT appears to have some prognostic value for mortality in CAP.",
+          "citation": "Multiple Class III studies showed correlation with PSI and prognostic value for mortality comparable to PSI/CURB-65.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:eda73578-b721-4cb8-a0ea-fd105dc84aad",
+      "@type": "Finding",
+      "name": "Lactate measurement",
+      "snomed": "3926003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Lactate measurement added to CURB-65 score may offer additional prognostic value.",
+          "citation": "Chen and Li study suggested this approach could offer additional prognostic value.",
+          "citation_paraphrase": "Chen and Li study suggested this approach could offer additional prognostic value.",
+          "citation_verbatim_excerpt": "In other circumstances, emergency physicians may want to identify patients who are the least likely to need ICU care.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:adb8c784-dca1-400f-9b4d-8410c04a4fbc",
+      "@type": "Finding",
+      "name": "Arterial blood gases",
+      "snomed": "4635002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "PSI requires data from arterial blood gases, which are not routinely conducted in the ED.",
+          "citation": "Text states that PSI requires data from a greater number of tests, including some not routinely conducted in the ED (ie, arterial blood gases).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7e8f9a0b-c3d4-5678-90ab-cdef12345678",
+      "@type": "Finding",
+      "name": "Emergency physician clinical judgment",
+      "snomed": "61254005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Clinical decision aids should be used in conjunction with physician clinical judgment.",
+          "citation": "Text states that this limitation reinforces the importance of using these aids in conjunction with physician clinical judgment.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:8f0a1b2c-d3e4-5678-90ab-cdef12345678",
+      "@type": "Finding",
+      "name": "Patient disposition",
+      "snomed": "107726003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f6e3b190-113e-4502-9e04-4403772fbf5e",
+      "@type": "Finding",
+      "name": "SCAP (Severity Criteria for Pneumonia)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:4ff5589a-e45b-4ae5-a9b5-32242586dd1b",
+          "rationale": "SCAP aids can identify patients least likely to need ICU care.",
+          "citation": "Marti et al study found SCAP had a negative LR of 0.13 (95% CI 0.06 to 0.26).",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4ff5589a-e45b-4ae5-a9b5-32242586dd1b",
+      "@type": "Acuity",
+      "name": "Low risk for ICU care",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Finding",
+      "name": "SMART-COP (Severity Markers for Assessment and Rapid Triage of Community-Acquired Pneumonia)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:4ff5589a-e45b-4ae5-a9b5-32242586dd1b",
+          "rationale": "SMART-COP aids can identify patients least likely to need ICU care.",
+          "citation": "Marti et al study found SMART-COP had a negative LR of 0.15 (95% CI 0.03 to 0.91).",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:94ea6d69-3ca2-4e7c-92ab-833524a54dfa",
+      "@type": "Finding",
+      "name": "PSI (Pneumonia Severity Index)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:4ff5589a-e45b-4ae5-a9b5-32242586dd1b",
+          "rationale": "PSI aids can identify patients least likely to need ICU care.",
+          "citation": "Marti et al study found PSI had a negative LR of 0.53 (95% CI 0.46 to 0.60).",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-abcd-ef1234567890",
+      "@type": "Finding",
+      "name": "CURB-65 (Confusion, Urea > 7 mmol/L, Respiratory rate ≥ 30 breaths/min, Blood pressure < 90 mmHg systolic or ≤ 60 mmHg diastolic, Age ≥ 65 years)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:4ff5589a-e45b-4ae5-a9b5-32242586dd1b",
+          "rationale": "CURB-65 aids can identify patients least likely to need ICU care.",
+          "citation": "Marti et al study found CURB-65 had a negative LR of 0.64 (95% CI 0.51 to 0.79).",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0fedcba9-8765-4321-0fed-cba987654321",
+      "@type": "Acuity",
+      "name": "Low likelihood of needing ICU care based on REA-ICU score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5a6b7c8d-4e3f-2109-8a6b-7c8d5e4f3210",
+      "@type": "Acuity",
+      "name": "Prognostic indicator for mortality/ICU admission (similar to PSI/CURB-65)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e53a90b6-0ada-41a4-9b62-6c06502ea340",
+      "@type": "Finding",
+      "name": "2007 IDSA/ATS minor criteria",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "The 2007 IDSA/ATS minor criteria may add to physician clinical judgment for identifying patients most likely to need ICU care.",
+          "citation": "Text suggests these criteria offer high positive LRs and diagnostic ORs for prediction of ICU admission.",
+          "citation_paraphrase": "Text suggests these criteria offer high positive LRs and diagnostic ORs for prediction of ICU admission.",
+          "citation_verbatim_excerpt": "tances, emergency physicians may want to identify patients who are the least likely to need ICU care.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6b7c8d9e-0f1a-2345-6789-abcdef012345",
+      "@type": "Condition",
+      "name": "Potential need for hospital admission despite low predicted mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9c0d1e2f-3a4b-5678-90ab-cdef12345678",
+      "@type": "Condition",
+      "name": "Contraindication for outpatient treatment based on clinical decision aids",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c4d5e6f7-8901-2345-6789-abcdef012345",
+      "@type": "Condition",
+      "name": "Significant psychosocial comorbidities (psychiatric disease, homelessness)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-3a4b-5678-90ab-cdef12345678",
+          "rationale": "Significant psychosocial comorbidities are a contraindication for outpatient treatment.",
+          "citation": "Text states that patients may not be appropriate for outpatient treatment if they have significant psychosocial comorbidities such as psychiatric disease or homelessness.",
+          "citation_paraphrase": "Text states that patients may not be appropriate for outpatient treatment if they have significant psychosocial comorbidities such as psychiatric disease or homelessness.",
+          "citation_verbatim_excerpt": "physicians may want to identify patients who are the least likely to need ICU care. In the same 2012 study, Marti et al42 also found that the positive LRs for the SCAP (positive LR 1.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d5e6f789-0123-4567-89ab-cdef01234567",
+      "@type": "Condition",
+      "name": "Severe nausea or vomiting",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9c0d1e2f-3a4b-5678-90ab-cdef12345678",
+          "rationale": "Severe nausea or vomiting is a contraindication for outpatient treatment.",
+          "citation": "Text states that patients may not be appropriate for outpatient treatment if they are unable to receive oral antibiotics (eg, due to severe nausea or vomiting).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:33d2db7b-b341-4927-9173-9ab9995a9b0d",
+      "@type": "Condition",
+      "name": "Contraindication for outpatient treatment",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:da3f30f7-9325-4a6b-83e5-9fc9b043ec4e",
+      "@type": "Finding",
+      "name": "2007 IDSA/ATS minor criteria",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_06_critical_question_1_limi.json",
+        "section_title": "Critical Question 1: Limitations, Biomarkers, and Summary"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "The 2007 IDSA/ATS minor criteria offer high positive LRs and diagnostic ORs for prediction of ICU admission.",
+          "citation": "Text suggests these criteria offer high positive LRs and diagnostic ORs for prediction of ICU admission.",
+          "citation_paraphrase": "Text suggests these criteria offer high positive LRs and diagnostic ORs for prediction of ICU admission.",
+          "citation_verbatim_excerpt": "tances, emergency physicians may want to identify patients who are the least likely to need ICU care.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:34.691615+00:00",
+    "nodes_before": 32,
+    "nodes_after": 28,
+    "rules_before": 25,
+    "rules_after": 25
+  }
+}

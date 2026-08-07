@@ -1,0 +1,3095 @@
+{
+  "chunk_id": "02",
+  "entities": [
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 17,
+        "end": 25
+      }
+    },
+    {
+      "snomed_cui": "721811000000109",
+      "preferred_name": "Systematic review",
+      "source_value": "systematic review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 47,
+        "end": 64
+      }
+    },
+    {
+      "snomed_cui": "272389005",
+      "preferred_name": "Analysis",
+      "source_value": "analysis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 79,
+        "end": 87
+      }
+    },
+    {
+      "snomed_cui": "74188005",
+      "preferred_name": "Medical",
+      "source_value": "medical",
+      "confidence_score": 0.44074896714012907,
+      "character_boundaries": {
+        "start": 95,
+        "end": 102
+      }
+    },
+    {
+      "snomed_cui": "229057006",
+      "preferred_name": "Meetings",
+      "source_value": "meeting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 114,
+        "end": 121
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "Searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 146,
+        "end": 154
+      }
+    },
+    {
+      "snomed_cui": "424969001",
+      "preferred_name": "Genus Scopus",
+      "source_value": "Scopus",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 186,
+        "end": 192
+      }
+    },
+    {
+      "snomed_cui": "722111000000107",
+      "preferred_name": "Database",
+      "source_value": "Database",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 235,
+        "end": 243
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Systematic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 247,
+        "end": 257
+      }
+    },
+    {
+      "snomed_cui": "398166005",
+      "preferred_name": "Performed",
+      "source_value": "performed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 271,
+        "end": 280
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 286,
+        "end": 294
+      }
+    },
+    {
+      "snomed_cui": "255469002",
+      "preferred_name": "Limited",
+      "source_value": "limited",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 300,
+        "end": 307
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 311,
+        "end": 318
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 322,
+        "end": 327
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "Specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 357,
+        "end": 365
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "years",
+      "confidence_score": 0.4104738384884695,
+      "character_boundaries": {
+        "start": 385,
+        "end": 390
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 403,
+        "end": 411
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 422,
+        "end": 430
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 436,
+        "end": 441
+      }
+    },
+    {
+      "snomed_cui": "50606000",
+      "preferred_name": "Genetic selection",
+      "source_value": "selection",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 442,
+        "end": 451
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 456,
+        "end": 466
+      }
+    },
+    {
+      "snomed_cui": "20401003",
+      "preferred_name": "With",
+      "source_value": "addition",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 500,
+        "end": 508
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 555,
+        "end": 563
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 564,
+        "end": 571
+      }
+    },
+    {
+      "snomed_cui": "6493001",
+      "preferred_name": "Recent",
+      "source_value": "recent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 581,
+        "end": 587
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 597,
+        "end": 607
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "members",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 621,
+        "end": 628
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 648,
+        "end": 656
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "Emergency Medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 671,
+        "end": 689
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "Volume",
+      "confidence_score": 0.4288499244323509,
+      "character_boundaries": {
+        "start": 690,
+        "end": 696
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 722,
+        "end": 730
+      }
+    },
+    {
+      "snomed_cui": "116680003",
+      "preferred_name": "Is a",
+      "source_value": "is a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 750,
+        "end": 754
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 770,
+        "end": 774
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 775,
+        "end": 783
+      }
+    },
+    {
+      "snomed_cui": "129822005",
+      "preferred_name": "Childhood growth AND/OR development finding",
+      "source_value": "development",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 791,
+        "end": 802
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.4138744819625362,
+      "character_boundaries": {
+        "start": 803,
+        "end": 810
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 812,
+        "end": 821
+      }
+    },
+    {
+      "snomed_cui": "260521003",
+      "preferred_name": "Internal",
+      "source_value": "internal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 822,
+        "end": 830
+      }
+    },
+    {
+      "snomed_cui": "261074009",
+      "preferred_name": "External",
+      "source_value": "external",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 835,
+        "end": 843
+      }
+    },
+    {
+      "snomed_cui": "721241000000109",
+      "preferred_name": "Review",
+      "source_value": "review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 844,
+        "end": 850
+      }
+    },
+    {
+      "snomed_cui": "8941001000001100",
+      "preferred_name": "Not available",
+      "source_value": "not available",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 913,
+        "end": 926
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 941,
+        "end": 949
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "members",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 969,
+        "end": 976
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1011,
+        "end": 1025
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1041,
+        "end": 1055
+      }
+    },
+    {
+      "snomed_cui": "260521003",
+      "preferred_name": "Internal",
+      "source_value": "Internal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1058,
+        "end": 1066
+      }
+    },
+    {
+      "snomed_cui": "261074009",
+      "preferred_name": "External",
+      "source_value": "external",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1071,
+        "end": 1079
+      }
+    },
+    {
+      "snomed_cui": "721241000000109",
+      "preferred_name": "Review",
+      "source_value": "review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1080,
+        "end": 1086
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1115,
+        "end": 1124
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1125,
+        "end": 1135
+      }
+    },
+    {
+      "snomed_cui": "734293001",
+      "preferred_name": "Clinical pharmacist",
+      "source_value": "clinical pharmacists",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1137,
+        "end": 1157
+      }
+    },
+    {
+      "snomed_cui": "309395003",
+      "preferred_name": "Hospital specialist",
+      "source_value": "specialists",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1159,
+        "end": 1170
+      }
+    },
+    {
+      "snomed_cui": "419192003",
+      "preferred_name": "Internal medicine",
+      "source_value": "internal medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1174,
+        "end": 1191
+      }
+    },
+    {
+      "snomed_cui": "191415002",
+      "preferred_name": "Communicable disease",
+      "source_value": "Infectious Diseases",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1228,
+        "end": 1247
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1268,
+        "end": 1272
+      }
+    },
+    {
+      "snomed_cui": "74188005",
+      "preferred_name": "Medical",
+      "source_value": "Medical",
+      "confidence_score": 0.5522525212089638,
+      "character_boundaries": {
+        "start": 1275,
+        "end": 1282
+      }
+    },
+    {
+      "snomed_cui": "398165009",
+      "preferred_name": "Legal",
+      "source_value": "Legal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1283,
+        "end": 1288
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1304,
+        "end": 1308
+      }
+    },
+    {
+      "snomed_cui": "723601000000107",
+      "preferred_name": "Quality",
+      "source_value": "Quality",
+      "confidence_score": 0.3619587059610387,
+      "character_boundaries": {
+        "start": 1311,
+        "end": 1318
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1323,
+        "end": 1330
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.9259519009266381,
+      "character_boundaries": {
+        "start": 1384,
+        "end": 1387
+      }
+    },
+    {
+      "snomed_cui": "272117007",
+      "preferred_name": "Time periods",
+      "source_value": "period",
+      "confidence_score": 0.9666289682599901,
+      "character_boundaries": {
+        "start": 1401,
+        "end": 1407
+      }
+    },
+    {
+      "snomed_cui": "272117007",
+      "preferred_name": "Time periods",
+      "source_value": "period",
+      "confidence_score": 0.8366089643727646,
+      "character_boundaries": {
+        "start": 1437,
+        "end": 1443
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1465,
+        "end": 1469
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "members",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1470,
+        "end": 1477
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1520,
+        "end": 1524
+      }
+    },
+    {
+      "snomed_cui": "10546003",
+      "preferred_name": "Site",
+      "source_value": "site",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1529,
+        "end": 1533
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1563,
+        "end": 1572
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1647,
+        "end": 1655
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1709,
+        "end": 1717
+      }
+    },
+    {
+      "snomed_cui": "272129003",
+      "preferred_name": "Revisions",
+      "source_value": "revision",
+      "confidence_score": 0.6096529611574374,
+      "character_boundaries": {
+        "start": 1745,
+        "end": 1753
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "years",
+      "confidence_score": 0.3435934604375114,
+      "character_boundaries": {
+        "start": 1762,
+        "end": 1767
+      }
+    },
+    {
+      "snomed_cui": "721241000000109",
+      "preferred_name": "Review",
+      "source_value": "reviews",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1786,
+        "end": 1793
+      }
+    },
+    {
+      "snomed_cui": "725121000000109",
+      "preferred_name": "Technology",
+      "source_value": "technology",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1813,
+        "end": 1823
+      }
+    },
+    {
+      "snomed_cui": "276339004",
+      "preferred_name": "Environment",
+      "source_value": "environment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1854,
+        "end": 1865
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "changes",
+      "confidence_score": 0.3354734719294603,
+      "character_boundaries": {
+        "start": 1866,
+        "end": 1873
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1889,
+        "end": 1893
+      }
+    },
+    {
+      "snomed_cui": "723831000000100",
+      "preferred_name": "Funding",
+      "source_value": "funding",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1902,
+        "end": 1909
+      }
+    },
+    {
+      "snomed_cui": "260753009",
+      "preferred_name": "Source",
+      "source_value": "source",
+      "confidence_score": 0.3416121824798138,
+      "character_boundaries": {
+        "start": 1910,
+        "end": 1916
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1926,
+        "end": 1934
+      }
+    },
+    {
+      "snomed_cui": "386053000",
+      "preferred_name": "Evaluation procedure",
+      "source_value": "Assessment",
+      "confidence_score": 0.8365704914088563,
+      "character_boundaries": {
+        "start": 1943,
+        "end": 1953
+      }
+    },
+    {
+      "snomed_cui": "258391009",
+      "preferred_name": "Classes",
+      "source_value": "Classes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1957,
+        "end": 1964
+      }
+    },
+    {
+      "snomed_cui": "261420005",
+      "preferred_name": "Preliminary",
+      "source_value": "preliminary",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2032,
+        "end": 2043
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.6703108106175404,
+      "character_boundaries": {
+        "start": 2044,
+        "end": 2049
+      }
+    },
+    {
+      "snomed_cui": "18669006",
+      "preferred_name": "Evidence of (contextual qualifier)",
+      "source_value": "Evidence for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2053,
+        "end": 2065
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2111,
+        "end": 2119
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.7018523027100887,
+      "character_boundaries": {
+        "start": 2128,
+        "end": 2133
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2218,
+        "end": 2223
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "subsequent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2235,
+        "end": 2245
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "classes",
+      "confidence_score": 0.6411353807609654,
+      "character_boundaries": {
+        "start": 2253,
+        "end": 2260
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2319,
+        "end": 2324
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapeutic",
+      "confidence_score": 0.6983095916272137,
+      "character_boundaries": {
+        "start": 2337,
+        "end": 2348
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2376,
+        "end": 2383
+      }
+    },
+    {
+      "snomed_cui": "721631000000102",
+      "preferred_name": "Meta analysis",
+      "source_value": "meta-analyses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2388,
+        "end": 2401
+      }
+    },
+    {
+      "snomed_cui": "181255000",
+      "preferred_name": "Entire appendix",
+      "source_value": "Appendix",
+      "confidence_score": 0.5193604442173269,
+      "character_boundaries": {
+        "start": 2403,
+        "end": 2411
+      }
+    },
+    {
+      "snomed_cui": "255506008",
+      "preferred_name": "Dimensions",
+      "source_value": "dimensions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2444,
+        "end": 2454
+      }
+    },
+    {
+      "snomed_cui": "262094002",
+      "preferred_name": "Related",
+      "source_value": "related",
+      "confidence_score": 0.8587132140221333,
+      "character_boundaries": {
+        "start": 2455,
+        "end": 2462
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2470,
+        "end": 2475
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "processes",
+      "confidence_score": 0.5426906897622943,
+      "character_boundaries": {
+        "start": 2525,
+        "end": 2534
+      }
+    },
+    {
+      "snomed_cui": "257768005",
+      "preferred_name": "Binding - action",
+      "source_value": "blinding",
+      "confidence_score": 0.43599112849027816,
+      "character_boundaries": {
+        "start": 2536,
+        "end": 2544
+      }
+    },
+    {
+      "snomed_cui": "272394005",
+      "preferred_name": "Technique",
+      "source_value": "methods",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2570,
+        "end": 2577
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2581,
+        "end": 2585
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2598,
+        "end": 2605
+      }
+    },
+    {
+      "snomed_cui": "367346004",
+      "preferred_name": "Measures",
+      "source_value": "measures",
+      "confidence_score": 0.9257217961574347,
+      "character_boundaries": {
+        "start": 2606,
+        "end": 2614
+      }
+    },
+    {
+      "snomed_cui": "386053000",
+      "preferred_name": "Evaluation procedure",
+      "source_value": "assessment",
+      "confidence_score": 0.7547880626983174,
+      "character_boundaries": {
+        "start": 2625,
+        "end": 2635
+      }
+    },
+    {
+      "snomed_cui": "50606000",
+      "preferred_name": "Genetic selection",
+      "source_value": "selection",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2637,
+        "end": 2646
+      }
+    },
+    {
+      "snomed_cui": "123038009",
+      "preferred_name": "Specimen",
+      "source_value": "sample",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2677,
+        "end": 2683
+      }
+    },
+    {
+      "snomed_cui": "246115007",
+      "preferred_name": "Size",
+      "source_value": "size",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2684,
+        "end": 2688
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2708,
+        "end": 2712
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.39702347989210873,
+      "character_boundaries": {
+        "start": 2713,
+        "end": 2723
+      }
+    },
+    {
+      "snomed_cui": "272389005",
+      "preferred_name": "Analysis",
+      "source_value": "analyses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2725,
+        "end": 2733
+      }
+    },
+    {
+      "snomed_cui": "15863006",
+      "preferred_name": "Conflict",
+      "source_value": "conflicts",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2778,
+        "end": 2787
+      }
+    },
+    {
+      "snomed_cui": "225469004",
+      "preferred_name": "Interested",
+      "source_value": "interest",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2791,
+        "end": 2799
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.5403879826494762,
+      "character_boundaries": {
+        "start": 2823,
+        "end": 2830
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2845,
+        "end": 2850
+      }
+    },
+    {
+      "snomed_cui": "263496004",
+      "preferred_name": "Quality",
+      "source_value": "quality",
+      "confidence_score": 0.6406492299009533,
+      "character_boundaries": {
+        "start": 2876,
+        "end": 2883
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.9725404668493569,
+      "character_boundaries": {
+        "start": 2949,
+        "end": 2954
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.6530393454716853,
+      "character_boundaries": {
+        "start": 2990,
+        "end": 2997
+      }
+    },
+    {
+      "snomed_cui": "248448006",
+      "preferred_name": "Involved",
+      "source_value": "involving",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2998,
+        "end": 3007
+      }
+    },
+    {
+      "snomed_cui": "223482009",
+      "preferred_name": "Discussion",
+      "source_value": "discussion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3008,
+        "end": 3018
+      }
+    },
+    {
+      "snomed_cui": "19535007",
+      "preferred_name": "Original",
+      "source_value": "original",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3028,
+        "end": 3036
+      }
+    },
+    {
+      "snomed_cui": "397635003",
+      "preferred_name": "Address",
+      "source_value": "address",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3118,
+        "end": 3125
+      }
+    },
+    {
+      "snomed_cui": "19535007",
+      "preferred_name": "Original",
+      "source_value": "original",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3145,
+        "end": 3153
+      }
+    },
+    {
+      "snomed_cui": "246228008",
+      "preferred_name": "Grading",
+      "source_value": "grading",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3154,
+        "end": 3161
+      }
+    },
+    {
+      "snomed_cui": "79409006",
+      "preferred_name": "Resulting in",
+      "source_value": "resulting in",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3163,
+        "end": 3175
+      }
+    },
+    {
+      "snomed_cui": "42796001",
+      "preferred_name": "End-stage",
+      "source_value": "final",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3178,
+        "end": 3183
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.7798384120033404,
+      "character_boundaries": {
+        "start": 3184,
+        "end": 3189
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class I",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3218,
+        "end": 3225
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.7323324129704307,
+      "character_boundaries": {
+        "start": 3227,
+        "end": 3232
+      }
+    },
+    {
+      "snomed_cui": "258393007",
+      "preferred_name": "Class 2",
+      "source_value": "II, Class",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3233,
+        "end": 3242
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.7965345964043005,
+      "character_boundaries": {
+        "start": 3251,
+        "end": 3256
+      }
+    },
+    {
+      "snomed_cui": "181255000",
+      "preferred_name": "Entire appendix",
+      "source_value": "Appendix",
+      "confidence_score": 0.4334248895361739,
+      "character_boundaries": {
+        "start": 3261,
+        "end": 3269
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3283,
+        "end": 3293
+      }
+    },
+    {
+      "snomed_cui": "399166001",
+      "preferred_name": "Fatal",
+      "source_value": "fatal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3299,
+        "end": 3304
+      }
+    },
+    {
+      "snomed_cui": "385432009",
+      "preferred_name": "Not applicable",
+      "source_value": "applicable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3346,
+        "end": 3356
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3393,
+        "end": 3398
+      }
+    },
+    {
+      "snomed_cui": "262009000",
+      "preferred_name": "Not used",
+      "source_value": "not used",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3433,
+        "end": 3441
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3457,
+        "end": 3472
+      }
+    },
+    {
+      "snomed_cui": "276824008",
+      "preferred_name": "Contents",
+      "source_value": "content",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3499,
+        "end": 3506
+      }
+    },
+    {
+      "snomed_cui": "223458004",
+      "preferred_name": "Informing",
+      "source_value": "inform",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3579,
+        "end": 3585
+      }
+    },
+    {
+      "snomed_cui": "2667000",
+      "preferred_name": "Absent",
+      "source_value": "absence of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3610,
+        "end": 3620
+      }
+    },
+    {
+      "snomed_cui": "246228008",
+      "preferred_name": "Grading",
+      "source_value": "Grading",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3638,
+        "end": 3645
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3675,
+        "end": 3683
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.9040989840590274,
+      "character_boundaries": {
+        "start": 3714,
+        "end": 3719
+      }
+    },
+    {
+      "snomed_cui": "18669006",
+      "preferred_name": "Evidence of (contextual qualifier)",
+      "source_value": "Evidence for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3723,
+        "end": 3735
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3744,
+        "end": 3749
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3835,
+        "end": 3843
+      }
+    },
+    {
+      "snomed_cui": "50607009",
+      "preferred_name": "Singular",
+      "source_value": "single",
+      "confidence_score": 0.3935562614024602,
+      "character_boundaries": {
+        "start": 3850,
+        "end": 3856
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.8738290125484149,
+      "character_boundaries": {
+        "start": 3888,
+        "end": 3893
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3969,
+        "end": 3977
+      }
+    },
+    {
+      "snomed_cui": "258391009",
+      "preferred_name": "Classes",
+      "source_value": "Classes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3978,
+        "end": 3985
+      }
+    },
+    {
+      "snomed_cui": "246228008",
+      "preferred_name": "Grading",
+      "source_value": "grading",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3998,
+        "end": 4005
+      }
+    },
+    {
+      "snomed_cui": "18720000",
+      "preferred_name": "In",
+      "source_value": "found in",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4013,
+        "end": 4021
+      }
+    },
+    {
+      "snomed_cui": "86407004",
+      "preferred_name": "Table, device",
+      "source_value": "Table",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4038,
+        "end": 4043
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4044,
+        "end": 4052
+      }
+    },
+    {
+      "snomed_cui": "112211004",
+      "preferred_name": "Genetic translation",
+      "source_value": "Translation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4080,
+        "end": 4091
+      }
+    },
+    {
+      "snomed_cui": "258391009",
+      "preferred_name": "Classes",
+      "source_value": "Classes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4095,
+        "end": 4102
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4118,
+        "end": 4132
+      }
+    },
+    {
+      "snomed_cui": "258395000",
+      "preferred_name": "Levels",
+      "source_value": "Levels",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4133,
+        "end": 4139
+      }
+    },
+    {
+      "snomed_cui": "246228008",
+      "preferred_name": "Grading",
+      "source_value": "grading",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4174,
+        "end": 4181
+      }
+    },
+    {
+      "snomed_cui": "86407004",
+      "preferred_name": "Table, device",
+      "source_value": "Table",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4226,
+        "end": 4231
+      }
+    },
+    {
+      "snomed_cui": "119561005",
+      "preferred_name": "Grafting procedure",
+      "source_value": "drafted",
+      "confidence_score": 0.4001581125903476,
+      "character_boundaries": {
+        "start": 4251,
+        "end": 4258
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4263,
+        "end": 4278
+      }
+    },
+    {
+      "snomed_cui": "900000000000466004",
+      "preferred_name": "Text",
+      "source_value": "text",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4298,
+        "end": 4302
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4339,
+        "end": 4348
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4349,
+        "end": 4359
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4369,
+        "end": 4384
+      }
+    },
+    {
+      "snomed_cui": "385645004",
+      "preferred_name": "Accepted",
+      "source_value": "accepted",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4396,
+        "end": 4404
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4420,
+        "end": 4427
+      }
+    },
+    {
+      "snomed_cui": "225436004",
+      "preferred_name": "Reflecting",
+      "source_value": "reflect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4438,
+        "end": 4445
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.6823547224182689,
+      "character_boundaries": {
+        "start": 4448,
+        "end": 4452
+      }
+    },
+    {
+      "snomed_cui": "246173007",
+      "preferred_name": "Degree",
+      "source_value": "degree",
+      "confidence_score": 0.6559500902101061,
+      "character_boundaries": {
+        "start": 4453,
+        "end": 4459
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4463,
+        "end": 4471
+      }
+    },
+    {
+      "snomed_cui": "255544004",
+      "preferred_name": "Certainties",
+      "source_value": "certainty",
+      "confidence_score": 0.7382085221678252,
+      "character_boundaries": {
+        "start": 4472,
+        "end": 4481
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4520,
+        "end": 4525
+      }
+    },
+    {
+      "snomed_cui": "255204007",
+      "preferred_name": "Multiple",
+      "source_value": "multiple",
+      "confidence_score": 0.8479731572169773,
+      "character_boundaries": {
+        "start": 4543,
+        "end": 4551
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4552,
+        "end": 4557
+      }
+    },
+    {
+      "snomed_cui": "33138000",
+      "preferred_name": "Structure of substantia gelatinosa of posterior horn of spinal cord",
+      "source_value": "II",
+      "confidence_score": 0.6114189647493168,
+      "character_boundaries": {
+        "start": 4570,
+        "end": 4572
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4573,
+        "end": 4580
+      }
+    },
+    {
+      "snomed_cui": "385433004",
+      "preferred_name": "Consistent with",
+      "source_value": "consistent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4595,
+        "end": 4605
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4606,
+        "end": 4613
+      }
+    },
+    {
+      "snomed_cui": "414135002",
+      "preferred_name": "Estimated",
+      "source_value": "estimates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4617,
+        "end": 4626
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4637,
+        "end": 4652
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4654,
+        "end": 4669
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4674,
+        "end": 4681
+      }
+    },
+    {
+      "snomed_cui": "609432006",
+      "preferred_name": "Concept model range",
+      "source_value": "range",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4730,
+        "end": 4735
+      }
+    },
+    {
+      "snomed_cui": "225436004",
+      "preferred_name": "Reflecting",
+      "source_value": "reflect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4755,
+        "end": 4762
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "moderate",
+      "confidence_score": 0.915480734246906,
+      "character_boundaries": {
+        "start": 4763,
+        "end": 4771
+      }
+    },
+    {
+      "snomed_cui": "255544004",
+      "preferred_name": "Certainties",
+      "source_value": "certainty",
+      "confidence_score": 0.7639639419045964,
+      "character_boundaries": {
+        "start": 4783,
+        "end": 4792
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4831,
+        "end": 4836
+      }
+    },
+    {
+      "snomed_cui": "33138000",
+      "preferred_name": "Structure of substantia gelatinosa of posterior horn of spinal cord",
+      "source_value": "II",
+      "confidence_score": 0.6468022297374909,
+      "character_boundaries": {
+        "start": 4849,
+        "end": 4851
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4852,
+        "end": 4859
+      }
+    },
+    {
+      "snomed_cui": "255204007",
+      "preferred_name": "Multiple",
+      "source_value": "multiple",
+      "confidence_score": 0.8301330247508932,
+      "character_boundaries": {
+        "start": 4863,
+        "end": 4871
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4872,
+        "end": 4877
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4894,
+        "end": 4901
+      }
+    },
+    {
+      "snomed_cui": "385433004",
+      "preferred_name": "Consistent with",
+      "source_value": "consistent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4916,
+        "end": 4926
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4927,
+        "end": 4934
+      }
+    },
+    {
+      "snomed_cui": "414135002",
+      "preferred_name": "Estimated",
+      "source_value": "estimates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4938,
+        "end": 4947
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4958,
+        "end": 4973
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4975,
+        "end": 4990
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4995,
+        "end": 5002
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5040,
+        "end": 5045
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5062,
+        "end": 5069
+      }
+    },
+    {
+      "snomed_cui": "2667000",
+      "preferred_name": "Absent",
+      "source_value": "absence of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5081,
+        "end": 5091
+      }
+    },
+    {
+      "snomed_cui": "88323005",
+      "preferred_name": "Adequate",
+      "source_value": "adequate",
+      "confidence_score": 0.6231888341402934,
+      "character_boundaries": {
+        "start": 5092,
+        "end": 5100
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5179,
+        "end": 5194
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5263,
+        "end": 5277
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5283,
+        "end": 5298
+      }
+    },
+    {
+      "snomed_cui": "11798007",
+      "preferred_name": "Anabolism, function",
+      "source_value": "synthesis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5312,
+        "end": 5321
+      }
+    },
+    {
+      "snomed_cui": "261560009",
+      "preferred_name": "Revision procedure",
+      "source_value": "revised",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5345,
+        "end": 5352
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5360,
+        "end": 5368
+      }
+    },
+    {
+      "snomed_cui": "263491009",
+      "preferred_name": "Context",
+      "source_value": "context",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5434,
+        "end": 5441
+      }
+    },
+    {
+      "snomed_cui": "17162000",
+      "preferred_name": "Certain",
+      "source_value": "certain",
+      "confidence_score": 0.7652004789251898,
+      "character_boundaries": {
+        "start": 5475,
+        "end": 5482
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5510,
+        "end": 5525
+      }
+    },
+    {
+      "snomed_cui": "27177009",
+      "preferred_name": "Steam",
+      "source_value": "stemming",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5526,
+        "end": 5534
+      }
+    },
+    {
+      "snomed_cui": "123037004",
+      "preferred_name": "Body structure",
+      "source_value": "body",
+      "confidence_score": 0.5394616246371665,
+      "character_boundaries": {
+        "start": 5542,
+        "end": 5546
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "highly",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5582,
+        "end": 5588
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5596,
+        "end": 5606
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5607,
+        "end": 5614
+      }
+    },
+    {
+      "snomed_cui": "246191002",
+      "preferred_name": "Consistency",
+      "source_value": "consistency",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5656,
+        "end": 5667
+      }
+    },
+    {
+      "snomed_cui": "64957009",
+      "preferred_name": "Uncertain",
+      "source_value": "uncertainty",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5680,
+        "end": 5691
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5698,
+        "end": 5704
+      }
+    },
+    {
+      "snomed_cui": "272100000",
+      "preferred_name": "Magnitudes",
+      "source_value": "magnitude",
+      "confidence_score": 0.62109365581485,
+      "character_boundaries": {
+        "start": 5705,
+        "end": 5714
+      }
+    },
+    {
+      "snomed_cui": "278211009",
+      "preferred_name": "Printed material",
+      "source_value": "publication",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5720,
+        "end": 5731
+      }
+    },
+    {
+      "snomed_cui": "105223008",
+      "preferred_name": "Lead measurement",
+      "source_value": "lead",
+      "confidence_score": 0.5591079960110494,
+      "character_boundaries": {
+        "start": 5758,
+        "end": 5762
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5783,
+        "end": 5798
+      }
+    },
+    {
+      "snomed_cui": "371930009",
+      "preferred_name": "Possible",
+      "source_value": "possible",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5805,
+        "end": 5813
+      }
+    },
+    {
+      "snomed_cui": "427161009",
+      "preferred_name": "Oriented to place",
+      "source_value": "oriented",
+      "confidence_score": 0.5440727702782204,
+      "character_boundaries": {
+        "start": 5826,
+        "end": 5834
+      }
+    },
+    {
+      "snomed_cui": "118586006",
+      "preferred_name": "Ratio (property)",
+      "source_value": "ratios",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5862,
+        "end": 5868
+      }
+    },
+    {
+      "snomed_cui": "410681005",
+      "preferred_name": "Count of entities (property)",
+      "source_value": "number",
+      "confidence_score": 0.3078476369410031,
+      "character_boundaries": {
+        "start": 5876,
+        "end": 5882
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needed",
+      "confidence_score": 0.7071691634941915,
+      "character_boundaries": {
+        "start": 5883,
+        "end": 5889
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "Volume",
+      "confidence_score": 0.5048809740207202,
+      "character_boundaries": {
+        "start": 5904,
+        "end": 5910
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "Emergency Medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5946,
+        "end": 5964
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5968,
+        "end": 5976
+      }
+    },
+    {
+      "snomed_cui": "246105001",
+      "preferred_name": "Presentation",
+      "source_value": "presented",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5984,
+        "end": 5993
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "help",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5997,
+        "end": 6001
+      }
+    },
+    {
+      "snomed_cui": "66216009",
+      "preferred_name": "Understanding, function",
+      "source_value": "understand",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6020,
+        "end": 6030
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6069,
+        "end": 6079
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6080,
+        "end": 6087
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "assist",
+      "confidence_score": 0.9784663854095393,
+      "character_boundaries": {
+        "start": 6098,
+        "end": 6104
+      }
+    },
+    {
+      "snomed_cui": "420227002",
+      "preferred_name": "Recommendation to",
+      "source_value": "recommendations to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6135,
+        "end": 6153
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6159,
+        "end": 6167
+      }
+    },
+    {
+      "snomed_cui": "410616005",
+      "preferred_name": "Adjustment",
+      "source_value": "adjustment",
+      "confidence_score": 0.5457578358795223,
+      "character_boundaries": {
+        "start": 6179,
+        "end": 6189
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6207,
+        "end": 6215
+      }
+    },
+    {
+      "snomed_cui": "12565001",
+      "preferred_name": "Extreme",
+      "source_value": "extremes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6223,
+        "end": 6231
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6235,
+        "end": 6239
+      }
+    },
+    {
+      "snomed_cui": "361390002",
+      "preferred_name": "Unintentional",
+      "source_value": "not intended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6269,
+        "end": 6281
+      }
+    },
+    {
+      "snomed_cui": "9668001000001102",
+      "preferred_name": "Complete",
+      "source_value": "complete",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6290,
+        "end": 6298
+      }
+    },
+    {
+      "snomed_cui": "86181006",
+      "preferred_name": "Evaluation and management of inpatient",
+      "source_value": "evaluation and management",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6313,
+        "end": 6338
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6342,
+        "end": 6347
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6348,
+        "end": 6356
+      }
+    },
+    {
+      "snomed_cui": "87017008",
+      "preferred_name": "Focal",
+      "source_value": "focused",
+      "confidence_score": 0.5104251212846393,
+      "character_boundaries": {
+        "start": 6379,
+        "end": 6386
+      }
+    },
+    {
+      "snomed_cui": "5880005",
+      "preferred_name": "Physical examination procedure",
+      "source_value": "examination",
+      "confidence_score": 0.8058183124413398,
+      "character_boundaries": {
+        "start": 6387,
+        "end": 6398
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "issues",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6411,
+        "end": 6417
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6456,
+        "end": 6463
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "emergency medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6476,
+        "end": 6494
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6541,
+        "end": 6556
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6621,
+        "end": 6625
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6633,
+        "end": 6641
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6690,
+        "end": 6704
+      }
+    },
+    {
+      "snomed_cui": "74188005",
+      "preferred_name": "Medical",
+      "source_value": "medical",
+      "confidence_score": 0.6150688819208057,
+      "character_boundaries": {
+        "start": 6714,
+        "end": 6721
+      }
+    },
+    {
+      "snomed_cui": "723601000000107",
+      "preferred_name": "Quality",
+      "source_value": "quality",
+      "confidence_score": 0.43136907610726366,
+      "character_boundaries": {
+        "start": 6749,
+        "end": 6756
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6757,
+        "end": 6768
+      }
+    },
+    {
+      "snomed_cui": "74188005",
+      "preferred_name": "Medical",
+      "source_value": "medical",
+      "confidence_score": 0.6493038722826922,
+      "character_boundaries": {
+        "start": 6809,
+        "end": 6816
+      }
+    },
+    {
+      "snomed_cui": "717896003",
+      "preferred_name": "Does not",
+      "source_value": "does not",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6828,
+        "end": 6836
+      }
+    },
+    {
+      "snomed_cui": "42504009",
+      "preferred_name": "Containing",
+      "source_value": "contain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6837,
+        "end": 6844
+      }
+    },
+    {
+      "snomed_cui": "88323005",
+      "preferred_name": "Adequate",
+      "source_value": "adequate",
+      "confidence_score": 0.30249615087361414,
+      "character_boundaries": {
+        "start": 6845,
+        "end": 6853
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6864,
+        "end": 6868
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "members of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6904,
+        "end": 6914
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6919,
+        "end": 6927
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6993,
+        "end": 7002
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7003,
+        "end": 7013
+      }
+    },
+    {
+      "snomed_cui": "410566008",
+      "preferred_name": "Contrast sensitivity test",
+      "source_value": "fact",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7022,
+        "end": 7026
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7033,
+        "end": 7041
+      }
+    },
+    {
+      "snomed_cui": "361390002",
+      "preferred_name": "Unintentional",
+      "source_value": "not intended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7052,
+        "end": 7064
+      }
+    },
+    {
+      "snomed_cui": "398165009",
+      "preferred_name": "Legal",
+      "source_value": "legal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7080,
+        "end": 7085
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standard",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7086,
+        "end": 7094
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7107,
+        "end": 7116
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7117,
+        "end": 7127
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7129,
+        "end": 7144
+      }
+    },
+    {
+      "snomed_cui": "410527000",
+      "preferred_name": "Offered",
+      "source_value": "offered",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7145,
+        "end": 7152
+      }
+    },
+    {
+      "snomed_cui": "361390002",
+      "preferred_name": "Unintentional",
+      "source_value": "not intended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7172,
+        "end": 7184
+      }
+    },
+    {
+      "snomed_cui": "439401001",
+      "preferred_name": "Diagnosis",
+      "source_value": "diagnostic",
+      "confidence_score": 0.47695470698937087,
+      "character_boundaries": {
+        "start": 7207,
+        "end": 7217
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.46284824652474005,
+      "character_boundaries": {
+        "start": 7221,
+        "end": 7231
+      }
+    },
+    {
+      "snomed_cui": "8940901000001109",
+      "preferred_name": "Available",
+      "source_value": "available",
+      "confidence_score": 0.8443834067424065,
+      "character_boundaries": {
+        "start": 7240,
+        "end": 7249
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7257,
+        "end": 7266
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7267,
+        "end": 7276
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7278,
+        "end": 7282
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7316,
+        "end": 7326
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7327,
+        "end": 7336
+      }
+    },
+    {
+      "snomed_cui": "61254005",
+      "preferred_name": "Judgement",
+      "source_value": "judgment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7339,
+        "end": 7347
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7352,
+        "end": 7359
+      }
+    },
+    {
+      "snomed_cui": "225773000",
+      "preferred_name": "Preferences",
+      "source_value": "preferences",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7360,
+        "end": 7371
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7378,
+        "end": 7387
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7397,
+        "end": 7405
+      }
+    },
+    {
+      "snomed_cui": "74188005",
+      "preferred_name": "Medical",
+      "source_value": "medical",
+      "confidence_score": 0.3394709085318759,
+      "character_boundaries": {
+        "start": 7427,
+        "end": 7434
+      }
+    },
+    {
+      "snomed_cui": "410618006",
+      "preferred_name": "Application",
+      "source_value": "Application",
+      "confidence_score": 0.8399862370544271,
+      "character_boundaries": {
+        "start": 7521,
+        "end": 7532
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7539,
+        "end": 7548
+      }
+    },
+    {
+      "snomed_cui": "361269008",
+      "preferred_name": "Intentional",
+      "source_value": "intended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7552,
+        "end": 7560
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7565,
+        "end": 7575
+      }
+    },
+    {
+      "snomed_cui": "261041009",
+      "preferred_name": "Working, function",
+      "source_value": "working",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7576,
+        "end": 7583
+      }
+    },
+    {
+      "snomed_cui": "395077000",
+      "preferred_name": "Treatment intent",
+      "source_value": "treat",
+      "confidence_score": 0.30013817516681224,
+      "character_boundaries": {
+        "start": 7608,
+        "end": 7613
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7644,
+        "end": 7653
+      }
+    },
+    {
+      "snomed_cui": "361269008",
+      "preferred_name": "Intentional",
+      "source_value": "intended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7657,
+        "end": 7665
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7670,
+        "end": 7675
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7679,
+        "end": 7687
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7723,
+        "end": 7732
+      }
+    },
+    {
+      "snomed_cui": "361390002",
+      "preferred_name": "Unintentional",
+      "source_value": "not intended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7736,
+        "end": 7748
+      }
+    },
+    {
+      "snomed_cui": "77386006",
+      "preferred_name": "Pregnancy",
+      "source_value": "pregnant patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7766,
+        "end": 7783
+      }
+    }
+  ]
+}

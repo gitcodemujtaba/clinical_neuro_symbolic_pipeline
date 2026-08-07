@@ -1,0 +1,2995 @@
+{
+  "chunk_id": "chunk_6",
+  "entities": [
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6,
+        "end": 11
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 12,
+        "end": 20
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 44,
+        "end": 51
+      }
+    },
+    {
+      "snomed_cui": "404642006",
+      "preferred_name": "Substance with opioid receptor agonist mechanism of action",
+      "source_value": "opioids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 60,
+        "end": 67
+      }
+    },
+    {
+      "snomed_cui": "116699007",
+      "preferred_name": "Prevents",
+      "source_value": "prevent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 82,
+        "end": 89
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 98,
+        "end": 106
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 109,
+        "end": 116
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "Management",
+      "confidence_score": 0.7706213317155498,
+      "character_boundaries": {
+        "start": 117,
+        "end": 127
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 128,
+        "end": 143
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 154,
+        "end": 169
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 177,
+        "end": 186
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 196,
+        "end": 211
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 219,
+        "end": 228
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 238,
+        "end": 253
+      }
+    },
+    {
+      "snomed_cui": "263748003",
+      "preferred_name": "Established",
+      "source_value": "established",
+      "confidence_score": 0.6595738106942313,
+      "character_boundaries": {
+        "start": 284,
+        "end": 295
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 297,
+        "end": 305
+      }
+    },
+    {
+      "snomed_cui": "61254005",
+      "preferred_name": "Judgement",
+      "source_value": "judgment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 306,
+        "end": 314
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 373,
+        "end": 381
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 385,
+        "end": 393
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 417,
+        "end": 424
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 463,
+        "end": 478
+      }
+    },
+    {
+      "snomed_cui": "404642006",
+      "preferred_name": "Substance with opioid receptor agonist mechanism of action",
+      "source_value": "Opioids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 480,
+        "end": 487
+      }
+    },
+    {
+      "snomed_cui": "410527000",
+      "preferred_name": "Offered",
+      "source_value": "offer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 488,
+        "end": 493
+      }
+    },
+    {
+      "snomed_cui": "224978009",
+      "preferred_name": "Feeling relief",
+      "source_value": "relief",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 494,
+        "end": 500
+      }
+    },
+    {
+      "snomed_cui": "29857009",
+      "preferred_name": "Chest pain",
+      "source_value": "chest pain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 504,
+        "end": 514
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 515,
+        "end": 523
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reducing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 527,
+        "end": 535
+      }
+    },
+    {
+      "snomed_cui": "247347003",
+      "preferred_name": "Discomfort",
+      "source_value": "discomfort",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 536,
+        "end": 546
+      }
+    },
+    {
+      "snomed_cui": "15166001",
+      "preferred_name": "Relaxed",
+      "source_value": "relax",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 564,
+        "end": 569
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "highly",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 579,
+        "end": 585
+      }
+    },
+    {
+      "snomed_cui": "74188005",
+      "preferred_name": "Medical",
+      "source_value": "medical",
+      "confidence_score": 0.7396784246539597,
+      "character_boundaries": {
+        "start": 596,
+        "end": 603
+      }
+    },
+    {
+      "snomed_cui": "272379006",
+      "preferred_name": "Event",
+      "source_value": "event",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 604,
+        "end": 609
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "Recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 645,
+        "end": 660
+      }
+    },
+    {
+      "snomed_cui": "404642006",
+      "preferred_name": "Substance with opioid receptor agonist mechanism of action",
+      "source_value": "Opioids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 662,
+        "end": 669
+      }
+    },
+    {
+      "snomed_cui": "74281007",
+      "preferred_name": "Myocardium structure",
+      "source_value": "myocardium",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 713,
+        "end": 723
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 743,
+        "end": 751
+      }
+    },
+    {
+      "snomed_cui": "22298006",
+      "preferred_name": "Myocardial infarction",
+      "source_value": "MI",
+      "confidence_score": 0.6245693263309804,
+      "character_boundaries": {
+        "start": 762,
+        "end": 764
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 798,
+        "end": 806
+      }
+    },
+    {
+      "snomed_cui": "404642006",
+      "preferred_name": "Substance with opioid receptor agonist mechanism of action",
+      "source_value": "opioids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 808,
+        "end": 815
+      }
+    },
+    {
+      "snomed_cui": "360204007",
+      "preferred_name": "Product containing opioid receptor agonist",
+      "source_value": "opiates",
+      "confidence_score": 0.8870517783864205,
+      "character_boundaries": {
+        "start": 817,
+        "end": 824
+      }
+    },
+    {
+      "snomed_cui": "373265006",
+      "preferred_name": "Analgesic",
+      "source_value": "analgesics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 826,
+        "end": 836
+      }
+    },
+    {
+      "snomed_cui": "373492002",
+      "preferred_name": "Fentanyl",
+      "source_value": "fentanyl",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 838,
+        "end": 846
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 848,
+        "end": 856
+      }
+    },
+    {
+      "snomed_cui": "44508008",
+      "preferred_name": "Hydromorphone",
+      "source_value": "hydromorphone",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 858,
+        "end": 871
+      }
+    },
+    {
+      "snomed_cui": "79899007",
+      "preferred_name": "Drug interaction",
+      "source_value": "drug interactions",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 873,
+        "end": 890
+      }
+    },
+    {
+      "snomed_cui": "71395006",
+      "preferred_name": "Age factor",
+      "source_value": "age factors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 892,
+        "end": 903
+      }
+    },
+    {
+      "snomed_cui": "35431001",
+      "preferred_name": "Adenosine",
+      "source_value": "adenosine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 905,
+        "end": 914
+      }
+    },
+    {
+      "snomed_cui": "428714003",
+      "preferred_name": "Piperazine",
+      "source_value": "piperazines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 916,
+        "end": 927
+      }
+    },
+    {
+      "snomed_cui": "16378004",
+      "preferred_name": "Platelet",
+      "source_value": "platelet",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 929,
+        "end": 937
+      }
+    },
+    {
+      "snomed_cui": "47286004",
+      "preferred_name": "Aggregation",
+      "source_value": "aggregation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 938,
+        "end": 949
+      }
+    },
+    {
+      "snomed_cui": "12878005",
+      "preferred_name": "Thiophene",
+      "source_value": "thiophenes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 951,
+        "end": 961
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "acute coronary syndrome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 963,
+        "end": 986
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 988,
+        "end": 997
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 998,
+        "end": 1003
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "coronary",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1004,
+        "end": 1012
+      }
+    },
+    {
+      "snomed_cui": "22298006",
+      "preferred_name": "Myocardial infarction",
+      "source_value": "syndrome, myocardial infarction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1013,
+        "end": 1044
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1058,
+        "end": 1065
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "percutaneous coronary intervention",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1067,
+        "end": 1101
+      }
+    },
+    {
+      "snomed_cui": "418285008",
+      "preferred_name": "Percutaneous transluminal angioplasty of blood vessel using imaging guidance with contrast",
+      "source_value": "angioplasty",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1103,
+        "end": 1114
+      }
+    },
+    {
+      "snomed_cui": "51308000",
+      "preferred_name": "Thrombolysis, function",
+      "source_value": "thrombolytics",
+      "confidence_score": 0.9008614808113695,
+      "character_boundaries": {
+        "start": 1116,
+        "end": 1129
+      }
+    },
+    {
+      "snomed_cui": "426347000",
+      "preferred_name": "Thrombolytic therapy",
+      "source_value": "fibrinolytics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1131,
+        "end": 1144
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1152,
+        "end": 1156
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1167,
+        "end": 1176
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1177,
+        "end": 1184
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1186,
+        "end": 1193
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1194,
+        "end": 1198
+      }
+    },
+    {
+      "snomed_cui": "40885006",
+      "preferred_name": "Variant",
+      "source_value": "variations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1204,
+        "end": 1214
+      }
+    },
+    {
+      "snomed_cui": "228166004",
+      "preferred_name": "Combinations",
+      "source_value": "combinations",
+      "confidence_score": 0.4955232907923611,
+      "character_boundaries": {
+        "start": 1219,
+        "end": 1231
+      }
+    },
+    {
+      "snomed_cui": "82737009",
+      "preferred_name": "Bathymaster signatus",
+      "source_value": "Searches",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1258,
+        "end": 1266
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1267,
+        "end": 1275
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "Study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1370,
+        "end": 1375
+      }
+    },
+    {
+      "snomed_cui": "50606000",
+      "preferred_name": "Genetic selection",
+      "source_value": "Selection",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1376,
+        "end": 1385
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1413,
+        "end": 1423
+      }
+    },
+    {
+      "snomed_cui": "721241000000109",
+      "preferred_name": "Review",
+      "source_value": "review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1503,
+        "end": 1509
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1518,
+        "end": 1527
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1528,
+        "end": 1533
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1534,
+        "end": 1542
+      }
+    },
+    {
+      "snomed_cui": "2667000",
+      "preferred_name": "Absent",
+      "source_value": "absence of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1577,
+        "end": 1587
+      }
+    },
+    {
+      "snomed_cui": "717121000000105",
+      "preferred_name": "History",
+      "source_value": "history of",
+      "confidence_score": 0.5810443514517483,
+      "character_boundaries": {
+        "start": 1590,
+        "end": 1600
+      }
+    },
+    {
+      "snomed_cui": "421961002",
+      "preferred_name": "Hypersensitivity reaction",
+      "source_value": "hypersensitivity",
+      "confidence_score": 0.5915092421820245,
+      "character_boundaries": {
+        "start": 1601,
+        "end": 1617
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1629,
+        "end": 1635
+      }
+    },
+    {
+      "snomed_cui": "404642006",
+      "preferred_name": "Substance with opioid receptor agonist mechanism of action",
+      "source_value": "opioids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1636,
+        "end": 1643
+      }
+    },
+    {
+      "snomed_cui": "301459008",
+      "preferred_name": "Hemodynamically stable",
+      "source_value": "hemodynamically stable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1682,
+        "end": 1704
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1705,
+        "end": 1713
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1719,
+        "end": 1728
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.8613641494143618,
+      "character_boundaries": {
+        "start": 1729,
+        "end": 1732
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1767,
+        "end": 1774
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1775,
+        "end": 1785
+      }
+    },
+    {
+      "snomed_cui": "224864007",
+      "preferred_name": "College",
+      "source_value": "College",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1804,
+        "end": 1811
+      }
+    },
+    {
+      "snomed_cui": "394579002",
+      "preferred_name": "Cardiology",
+      "source_value": "Cardiology",
+      "confidence_score": 0.8080559719489642,
+      "character_boundaries": {
+        "start": 1815,
+        "end": 1825
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "Heart",
+      "confidence_score": 0.9574818912813154,
+      "character_boundaries": {
+        "start": 1835,
+        "end": 1840
+      }
+    },
+    {
+      "snomed_cui": "263534001",
+      "preferred_name": "Association",
+      "source_value": "Association",
+      "confidence_score": 0.4005929818294147,
+      "character_boundaries": {
+        "start": 1841,
+        "end": 1852
+      }
+    },
+    {
+      "snomed_cui": "394579002",
+      "preferred_name": "Cardiology",
+      "source_value": "Cardiology",
+      "confidence_score": 0.8456415919670397,
+      "character_boundaries": {
+        "start": 1889,
+        "end": 1899
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1913,
+        "end": 1922
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1923,
+        "end": 1934
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1935,
+        "end": 1943
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "drug",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1951,
+        "end": 1955
+      }
+    },
+    {
+      "snomed_cui": "397855004",
+      "preferred_name": "Relieves",
+      "source_value": "relieve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1969,
+        "end": 1976
+      }
+    },
+    {
+      "snomed_cui": "22253000",
+      "preferred_name": "Pain",
+      "source_value": "pain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1977,
+        "end": 1981
+      }
+    },
+    {
+      "snomed_cui": "48694002",
+      "preferred_name": "Anxiety",
+      "source_value": "anxiety",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1986,
+        "end": 1993
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2015,
+        "end": 2021
+      }
+    },
+    {
+      "snomed_cui": "372665008",
+      "preferred_name": "Non-steroidal anti-inflammatory agent",
+      "source_value": "nonsteroidal anti-inflammatory drugs (NSAIDs",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2022,
+        "end": 2066
+      }
+    },
+    {
+      "snomed_cui": "3710008",
+      "preferred_name": "Prostaglandin synthase",
+      "source_value": "cyclo-oxygenase (COX",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2072,
+        "end": 2092
+      }
+    },
+    {
+      "snomed_cui": "42752001",
+      "preferred_name": "Due to",
+      "source_value": "due to",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2107,
+        "end": 2113
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.7757230183378054,
+      "character_boundaries": {
+        "start": 2114,
+        "end": 2123
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2124,
+        "end": 2128
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2138,
+        "end": 2153
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2167,
+        "end": 2175
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2181,
+        "end": 2186
+      }
+    },
+    {
+      "snomed_cui": "76388001",
+      "preferred_name": "ST segment elevation",
+      "source_value": "ST-segment elevation",
+      "confidence_score": 0.8508288389981639,
+      "character_boundaries": {
+        "start": 2195,
+        "end": 2215
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2216,
+        "end": 2219
+      }
+    },
+    {
+      "snomed_cui": "224864007",
+      "preferred_name": "College",
+      "source_value": "College",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2234,
+        "end": 2241
+      }
+    },
+    {
+      "snomed_cui": "394579002",
+      "preferred_name": "Cardiology",
+      "source_value": "Cardiology",
+      "confidence_score": 0.9255648844715947,
+      "character_boundaries": {
+        "start": 2245,
+        "end": 2255
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "Heart",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2265,
+        "end": 2270
+      }
+    },
+    {
+      "snomed_cui": "263534001",
+      "preferred_name": "Association",
+      "source_value": "Association",
+      "confidence_score": 0.5711625571328671,
+      "character_boundaries": {
+        "start": 2271,
+        "end": 2282
+      }
+    },
+    {
+      "snomed_cui": "6493001",
+      "preferred_name": "Recent",
+      "source_value": "recently",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2283,
+        "end": 2291
+      }
+    },
+    {
+      "snomed_cui": "260400001",
+      "preferred_name": "Reduced",
+      "source_value": "reduced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2292,
+        "end": 2299
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2313,
+        "end": 2327
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2332,
+        "end": 2340
+      }
+    },
+    {
+      "snomed_cui": "413454004",
+      "preferred_name": "Administration",
+      "source_value": "administration",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2341,
+        "end": 2355
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2363,
+        "end": 2368
+      }
+    },
+    {
+      "snomed_cui": "29857009",
+      "preferred_name": "Chest pain",
+      "source_value": "chest pain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2369,
+        "end": 2379
+      }
+    },
+    {
+      "snomed_cui": "25106000",
+      "preferred_name": "Impending infarction",
+      "source_value": "unstable angina",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2384,
+        "end": 2399
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2400,
+        "end": 2408
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.8329631856567179,
+      "character_boundaries": {
+        "start": 2414,
+        "end": 2419
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2424,
+        "end": 2438
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "cardiac",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2483,
+        "end": 2490
+      }
+    },
+    {
+      "snomed_cui": "312250003",
+      "preferred_name": "Magnetic resonance imaging - action",
+      "source_value": "magnetic resonance study",
+      "confidence_score": 0.6675394859325892,
+      "character_boundaries": {
+        "start": 2491,
+        "end": 2515
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2519,
+        "end": 2524
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2525,
+        "end": 2533
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2548,
+        "end": 2551
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2564,
+        "end": 2572
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2586,
+        "end": 2597
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2598,
+        "end": 2606
+      }
+    },
+    {
+      "snomed_cui": "263768009",
+      "preferred_name": "Greater",
+      "source_value": "larger",
+      "confidence_score": 0.9730561487707551,
+      "character_boundaries": {
+        "start": 2617,
+        "end": 2623
+      }
+    },
+    {
+      "snomed_cui": "55641003",
+      "preferred_name": "Infarct",
+      "source_value": "infarct",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2624,
+        "end": 2631
+      }
+    },
+    {
+      "snomed_cui": "246115007",
+      "preferred_name": "Size",
+      "source_value": "size",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2632,
+        "end": 2636
+      }
+    },
+    {
+      "snomed_cui": "263768009",
+      "preferred_name": "Greater",
+      "source_value": "larger",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2638,
+        "end": 2644
+      }
+    },
+    {
+      "snomed_cui": "66211004",
+      "preferred_name": "Extending",
+      "source_value": "extent of",
+      "confidence_score": 0.9468957120702748,
+      "character_boundaries": {
+        "start": 2645,
+        "end": 2654
+      }
+    },
+    {
+      "snomed_cui": "263809005",
+      "preferred_name": "Microvascular",
+      "source_value": "microvascular",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2655,
+        "end": 2668
+      }
+    },
+    {
+      "snomed_cui": "26036001",
+      "preferred_name": "Obstruction",
+      "source_value": "obstruction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2669,
+        "end": 2680
+      }
+    },
+    {
+      "snomed_cui": "74281007",
+      "preferred_name": "Myocardium structure",
+      "source_value": "myocardium",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2702,
+        "end": 2712
+      }
+    },
+    {
+      "snomed_cui": "50811001",
+      "preferred_name": "Routine",
+      "source_value": "routine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2788,
+        "end": 2795
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2796,
+        "end": 2802
+      }
+    },
+    {
+      "snomed_cui": "404642006",
+      "preferred_name": "Substance with opioid receptor agonist mechanism of action",
+      "source_value": "opioids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2803,
+        "end": 2810
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2815,
+        "end": 2823
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.5370930907896907,
+      "character_boundaries": {
+        "start": 2829,
+        "end": 2832
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2864,
+        "end": 2871
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2883,
+        "end": 2890
+      }
+    },
+    {
+      "snomed_cui": "261089000",
+      "preferred_name": "Inferior",
+      "source_value": "sub",
+      "confidence_score": 0.5592987563193906,
+      "character_boundaries": {
+        "start": 2959,
+        "end": 2962
+      }
+    },
+    {
+      "snomed_cui": "261089000",
+      "preferred_name": "Inferior",
+      "source_value": "sub",
+      "confidence_score": 0.5758048166678772,
+      "character_boundaries": {
+        "start": 2967,
+        "end": 2970
+      }
+    },
+    {
+      "snomed_cui": "116647005",
+      "preferred_name": "Receptor",
+      "source_value": "receptor",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2972,
+        "end": 2980
+      }
+    },
+    {
+      "snomed_cui": "443129001",
+      "preferred_name": "Prasugrel",
+      "source_value": "prasugrel",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3001,
+        "end": 3010
+      }
+    },
+    {
+      "snomed_cui": "698805004",
+      "preferred_name": "Ticagrelor",
+      "source_value": "ticagrelor",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3015,
+        "end": 3025
+      }
+    },
+    {
+      "snomed_cui": "6493001",
+      "preferred_name": "Recent",
+      "source_value": "recent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3043,
+        "end": 3049
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3064,
+        "end": 3069
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3117,
+        "end": 3122
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "Emergency Medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3170,
+        "end": 3188
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "Volume",
+      "confidence_score": 0.6948045842619456,
+      "character_boundaries": {
+        "start": 3190,
+        "end": 3196
+      }
+    },
+    {
+      "snomed_cui": "257733005",
+      "preferred_name": "Activity",
+      "source_value": "activity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3240,
+        "end": 3248
+      }
+    },
+    {
+      "snomed_cui": "261089000",
+      "preferred_name": "Inferior",
+      "source_value": "sub",
+      "confidence_score": 0.8089573251059201,
+      "character_boundaries": {
+        "start": 3256,
+        "end": 3259
+      }
+    },
+    {
+      "snomed_cui": "261089000",
+      "preferred_name": "Inferior",
+      "source_value": "sub",
+      "confidence_score": 0.7205899038600178,
+      "character_boundaries": {
+        "start": 3264,
+        "end": 3267
+      }
+    },
+    {
+      "snomed_cui": "116647005",
+      "preferred_name": "Receptor",
+      "source_value": "receptor",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3269,
+        "end": 3277
+      }
+    },
+    {
+      "snomed_cui": "767279008",
+      "preferred_name": "Metabolite",
+      "source_value": "metabolites",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3299,
+        "end": 3310
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3314,
+        "end": 3322
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3333,
+        "end": 3341
+      }
+    },
+    {
+      "snomed_cui": "260379002",
+      "preferred_name": "Impaired",
+      "source_value": "Impaired",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3375,
+        "end": 3383
+      }
+    },
+    {
+      "snomed_cui": "38597004",
+      "preferred_name": "Intestinal absorption, function",
+      "source_value": "gastrointestinal absorption",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3384,
+        "end": 3411
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3419,
+        "end": 3428
+      }
+    },
+    {
+      "snomed_cui": "134198009",
+      "preferred_name": "Etiology",
+      "source_value": "cause",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3429,
+        "end": 3434
+      }
+    },
+    {
+      "snomed_cui": "278109006",
+      "preferred_name": "Mechanism",
+      "source_value": "mechanism",
+      "confidence_score": 0.7001443978845202,
+      "character_boundaries": {
+        "start": 3453,
+        "end": 3462
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3466,
+        "end": 3474
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3477,
+        "end": 3483
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3518,
+        "end": 3525
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.895341669886736,
+      "character_boundaries": {
+        "start": 3557,
+        "end": 3562
+      }
+    },
+    {
+      "snomed_cui": "1293102003",
+      "preferred_name": "Grade 10",
+      "source_value": "grade \u201cX",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3575,
+        "end": 3583
+      }
+    },
+    {
+      "snomed_cui": "397635003",
+      "preferred_name": "Address",
+      "source_value": "address",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3647,
+        "end": 3654
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3659,
+        "end": 3667
+      }
+    },
+    {
+      "snomed_cui": "263901007",
+      "preferred_name": "Traditional",
+      "source_value": "traditional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3681,
+        "end": 3692
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.7790262023155626,
+      "character_boundaries": {
+        "start": 3693,
+        "end": 3700
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3705,
+        "end": 3711
+      }
+    },
+    {
+      "snomed_cui": "404642006",
+      "preferred_name": "Substance with opioid receptor agonist mechanism of action",
+      "source_value": "opioids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3712,
+        "end": 3719
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3723,
+        "end": 3731
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.5437271528171803,
+      "character_boundaries": {
+        "start": 3737,
+        "end": 3740
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3764,
+        "end": 3771
+      }
+    },
+    {
+      "snomed_cui": "6493001",
+      "preferred_name": "Recent",
+      "source_value": "recent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3795,
+        "end": 3801
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "years",
+      "confidence_score": 0.8083244767069708,
+      "character_boundaries": {
+        "start": 3802,
+        "end": 3807
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3814,
+        "end": 3821
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3838,
+        "end": 3846
+      }
+    },
+    {
+      "snomed_cui": "385436007",
+      "preferred_name": "Population",
+      "source_value": "population",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3879,
+        "end": 3889
+      }
+    },
+    {
+      "snomed_cui": "419582001",
+      "preferred_name": "Give - dosing instruction imperative",
+      "source_value": "given",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3891,
+        "end": 3896
+      }
+    },
+    {
+      "snomed_cui": "29857009",
+      "preferred_name": "Chest pain",
+      "source_value": "chest pain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3940,
+        "end": 3950
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3951,
+        "end": 3959
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3991,
+        "end": 3998
+      }
+    },
+    {
+      "snomed_cui": "50811001",
+      "preferred_name": "Routine",
+      "source_value": "routine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4004,
+        "end": 4011
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4012,
+        "end": 4018
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4019,
+        "end": 4027
+      }
+    },
+    {
+      "snomed_cui": "395077000",
+      "preferred_name": "Treatment intent",
+      "source_value": "treat",
+      "confidence_score": 0.5414502573496537,
+      "character_boundaries": {
+        "start": 4031,
+        "end": 4036
+      }
+    },
+    {
+      "snomed_cui": "29857009",
+      "preferred_name": "Chest pain",
+      "source_value": "chest pain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4037,
+        "end": 4047
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "Initial",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4079,
+        "end": 4086
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4118,
+        "end": 4125
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4129,
+        "end": 4137
+      }
+    },
+    {
+      "snomed_cui": "260399008",
+      "preferred_name": "Raised",
+      "source_value": "raised",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4143,
+        "end": 4149
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "as a result of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4150,
+        "end": 4164
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4174,
+        "end": 4178
+      }
+    },
+    {
+      "snomed_cui": "263857004",
+      "preferred_name": "Revealed",
+      "source_value": "revealing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4179,
+        "end": 4188
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4189,
+        "end": 4195
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4213,
+        "end": 4221
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4222,
+        "end": 4230
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4238,
+        "end": 4243
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4244,
+        "end": 4247
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4248,
+        "end": 4256
+      }
+    },
+    {
+      "snomed_cui": "28995006",
+      "preferred_name": "Treated with",
+      "source_value": "treated with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4257,
+        "end": 4269
+      }
+    },
+    {
+      "snomed_cui": "386952008",
+      "preferred_name": "Clopidogrel",
+      "source_value": "clopidogrel",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4270,
+        "end": 4281
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4295,
+        "end": 4306
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4307,
+        "end": 4315
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4368,
+        "end": 4373
+      }
+    },
+    {
+      "snomed_cui": "272394005",
+      "preferred_name": "Technique",
+      "source_value": "method",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4383,
+        "end": 4389
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4395,
+        "end": 4401
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4402,
+        "end": 4410
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4415,
+        "end": 4430
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.8608833639022138,
+      "character_boundaries": {
+        "start": 4431,
+        "end": 4440
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4452,
+        "end": 4461
+      }
+    },
+    {
+      "snomed_cui": "118586006",
+      "preferred_name": "Ratio (property)",
+      "source_value": "ratio",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4468,
+        "end": 4473
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.6463711521224602,
+      "character_boundaries": {
+        "start": 4483,
+        "end": 4485
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.5968732785068367,
+      "character_boundaries": {
+        "start": 4507,
+        "end": 4516
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4517,
+        "end": 4524
+      }
+    },
+    {
+      "snomed_cui": "419620001",
+      "preferred_name": "Death",
+      "source_value": "death",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4525,
+        "end": 4530
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4534,
+        "end": 4542
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4564,
+        "end": 4568
+      }
+    },
+    {
+      "snomed_cui": "389109008",
+      "preferred_name": "Group",
+      "source_value": "groups",
+      "confidence_score": 0.6202285238007463,
+      "character_boundaries": {
+        "start": 4569,
+        "end": 4575
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4581,
+        "end": 4586
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4616,
+        "end": 4625
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4649,
+        "end": 4653
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapeutic",
+      "confidence_score": 0.9462422633529106,
+      "character_boundaries": {
+        "start": 4666,
+        "end": 4677
+      }
+    },
+    {
+      "snomed_cui": "263901007",
+      "preferred_name": "Traditional",
+      "source_value": "traditional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4705,
+        "end": 4716
+      }
+    },
+    {
+      "snomed_cui": "724421000000103",
+      "preferred_name": "Belief",
+      "source_value": "beliefs",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4717,
+        "end": 4724
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4728,
+        "end": 4736
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4750,
+        "end": 4757
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4766,
+        "end": 4771
+      }
+    },
+    {
+      "snomed_cui": "394659003",
+      "preferred_name": "Acute coronary syndrome",
+      "source_value": "ACS",
+      "confidence_score": 0.7959562080771088,
+      "character_boundaries": {
+        "start": 4772,
+        "end": 4775
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4776,
+        "end": 4784
+      }
+    },
+    {
+      "snomed_cui": "6493001",
+      "preferred_name": "Recent",
+      "source_value": "recently",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4796,
+        "end": 4804
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4805,
+        "end": 4815
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4834,
+        "end": 4841
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4847,
+        "end": 4855
+      }
+    },
+    {
+      "snomed_cui": "263491009",
+      "preferred_name": "Context",
+      "source_value": "context",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4871,
+        "end": 4878
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4894,
+        "end": 4901
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4914,
+        "end": 4924
+      }
+    },
+    {
+      "snomed_cui": "312012004",
+      "preferred_name": "Cognitive function: awareness",
+      "source_value": "aware",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4935,
+        "end": 4940
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4961,
+        "end": 4970
+      }
+    },
+    {
+      "snomed_cui": "66216009",
+      "preferred_name": "Understanding, function",
+      "source_value": "understand",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4983,
+        "end": 4993
+      }
+    },
+    {
+      "snomed_cui": "41277001",
+      "preferred_name": "Lacking",
+      "source_value": "lack",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4998,
+        "end": 5002
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5018,
+        "end": 5027
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5047,
+        "end": 5053
+      }
+    },
+    {
+      "snomed_cui": "360204007",
+      "preferred_name": "Product containing opioid receptor agonist",
+      "source_value": "opiates",
+      "confidence_score": 0.4714405124696922,
+      "character_boundaries": {
+        "start": 5054,
+        "end": 5061
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "STEMI",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5065,
+        "end": 5070
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5071,
+        "end": 5079
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "Physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5081,
+        "end": 5091
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5150,
+        "end": 5154
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "helps",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5155,
+        "end": 5160
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5182,
+        "end": 5196
+      }
+    },
+    {
+      "snomed_cui": "717141000000103",
+      "preferred_name": "Future",
+      "source_value": "Future",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5199,
+        "end": 5205
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trials",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5247,
+        "end": 5253
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needed",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5258,
+        "end": 5264
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.9647139624793892,
+      "character_boundaries": {
+        "start": 5268,
+        "end": 5275
+      }
+    },
+    {
+      "snomed_cui": "260385009",
+      "preferred_name": "Negative",
+      "source_value": "negative",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5311,
+        "end": 5319
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5320,
+        "end": 5328
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5329,
+        "end": 5335
+      }
+    },
+    {
+      "snomed_cui": "404642006",
+      "preferred_name": "Substance with opioid receptor agonist mechanism of action",
+      "source_value": "opioids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5339,
+        "end": 5346
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5350,
+        "end": 5357
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5358,
+        "end": 5366
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5371,
+        "end": 5379
+      }
+    },
+    {
+      "snomed_cui": "297183000",
+      "preferred_name": "Revascularization - action",
+      "source_value": "revascularization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5391,
+        "end": 5408
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5424,
+        "end": 5430
+      }
+    },
+    {
+      "snomed_cui": "257544000",
+      "preferred_name": "Mechanisms",
+      "source_value": "mechanism",
+      "confidence_score": 0.5311261674765299,
+      "character_boundaries": {
+        "start": 5464,
+        "end": 5473
+      }
+    },
+    {
+      "snomed_cui": "404204005",
+      "preferred_name": "Drug interaction with drug",
+      "source_value": "interaction",
+      "confidence_score": 0.5797611251305808,
+      "character_boundaries": {
+        "start": 5481,
+        "end": 5492
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5510,
+        "end": 5515
+      }
+    },
+    {
+      "snomed_cui": "373529000",
+      "preferred_name": "Morphine",
+      "source_value": "morphine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5545,
+        "end": 5553
+      }
+    },
+    {
+      "snomed_cui": "404642006",
+      "preferred_name": "Substance with opioid receptor agonist mechanism of action",
+      "source_value": "opioids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5571,
+        "end": 5578
+      }
+    },
+    {
+      "snomed_cui": "253861007",
+      "preferred_name": "Effect",
+      "source_value": "effect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5630,
+        "end": 5636
+      }
+    },
+    {
+      "snomed_cui": "262094002",
+      "preferred_name": "Related",
+      "source_value": "related",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5647,
+        "end": 5654
+      }
+    },
+    {
+      "snomed_cui": "38597004",
+      "preferred_name": "Intestinal absorption, function",
+      "source_value": "gastrointestinal absorption",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5658,
+        "end": 5685
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "intravenous",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5692,
+        "end": 5703
+      }
+    },
+    {
+      "snomed_cui": "261089000",
+      "preferred_name": "Inferior",
+      "source_value": "sub",
+      "confidence_score": 0.35498842985292123,
+      "character_boundaries": {
+        "start": 5724,
+        "end": 5727
+      }
+    },
+    {
+      "snomed_cui": "26643006",
+      "preferred_name": "Oral route",
+      "source_value": "oral routes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5776,
+        "end": 5787
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5792,
+        "end": 5800
+      }
+    },
+    {
+      "snomed_cui": "404642006",
+      "preferred_name": "Substance with opioid receptor agonist mechanism of action",
+      "source_value": "opioids",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5823,
+        "end": 5830
+      }
+    },
+    {
+      "snomed_cui": "76948002",
+      "preferred_name": "Severe pain",
+      "source_value": "severe pain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5850,
+        "end": 5861
+      }
+    },
+    {
+      "snomed_cui": "255238004",
+      "preferred_name": "Continuous",
+      "source_value": "ongoing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5876,
+        "end": 5883
+      }
+    },
+    {
+      "snomed_cui": "22253000",
+      "preferred_name": "Pain",
+      "source_value": "pain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5884,
+        "end": 5888
+      }
+    },
+    {
+      "snomed_cui": "358612008",
+      "preferred_name": "Lengthened",
+      "source_value": "long",
+      "confidence_score": 0.7504933333393891,
+      "character_boundaries": {
+        "start": 5905,
+        "end": 5909
+      }
+    },
+    {
+      "snomed_cui": "420008001",
+      "preferred_name": "Travel",
+      "source_value": "travel",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5910,
+        "end": 5916
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.8821223334234503,
+      "character_boundaries": {
+        "start": 5932,
+        "end": 5935
+      }
+    },
+    {
+      "snomed_cui": "415070008",
+      "preferred_name": "Percutaneous transluminal coronary intervention using imaging guidance with contrast",
+      "source_value": "PCI",
+      "confidence_score": 0.899573050023674,
+      "character_boundaries": {
+        "start": 5939,
+        "end": 5942
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "centers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5943,
+        "end": 5950
+      }
+    },
+    {
+      "snomed_cui": "272151006",
+      "preferred_name": "Relationships",
+      "source_value": "relationships",
+      "confidence_score": 0.648867182758402,
+      "character_boundaries": {
+        "start": 5972,
+        "end": 5985
+      }
+    },
+    {
+      "snomed_cui": "272151006",
+      "preferred_name": "Relationships",
+      "source_value": "relationships",
+      "confidence_score": 0.6836250249152199,
+      "character_boundaries": {
+        "start": 6019,
+        "end": 6032
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "members",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6063,
+        "end": 6070
+      }
+    }
+  ]
+}

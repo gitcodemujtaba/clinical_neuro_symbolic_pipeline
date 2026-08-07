@@ -1,0 +1,105 @@
+{
+  "chunk_id": "ssc_2021_mean_arterial_pressure",
+  "entities": [
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "MODERATE",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3,
+        "end": 11
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 17,
+        "end": 23
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 29,
+        "end": 41
+      }
+    },
+    {
+      "snomed_cui": "870406003",
+      "preferred_name": "Vasopressor",
+      "source_value": "vasopressors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 45,
+        "end": 57
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 62,
+        "end": 71
+      }
+    },
+    {
+      "snomed_cui": "884001",
+      "preferred_name": "Initial",
+      "source_value": "initial",
+      "confidence_score": 0.97681507123823,
+      "character_boundaries": {
+        "start": 75,
+        "end": 82
+      }
+    },
+    {
+      "snomed_cui": "1285244000",
+      "preferred_name": "Mean arterial pressure",
+      "source_value": "mean arterial pressure (MAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 90,
+        "end": 117
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 125,
+        "end": 130
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 136,
+        "end": 142
+      }
+    },
+    {
+      "snomed_cui": "900000000000505001",
+      "preferred_name": "Map target",
+      "source_value": "MAP targets",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 143,
+        "end": 154
+      }
+    }
+  ]
+}

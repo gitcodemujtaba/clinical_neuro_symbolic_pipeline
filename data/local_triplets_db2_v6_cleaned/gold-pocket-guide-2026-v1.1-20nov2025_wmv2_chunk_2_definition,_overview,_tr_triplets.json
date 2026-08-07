@@ -1,0 +1,567 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "COPD",
+      "snomed": "13645005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": [
+        {
+          "predicate": "IS_A",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "COPD is a heterogeneous lung condition.",
+          "citation": "Definition section.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "HAS_CRITERION",
+          "target": "urn:uuid:419c498a-b399-4b00-8005-6195f4387200",
+          "rationale": "Diagnosis confirmed by non-fully reversible airflow obstruction (FEV1/FVC < 0.7 post-bronchodilation) measured by spirometry.",
+          "citation": "Diagnostic Criteria section.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "HAS_ETIOLOGY",
+          "target": "urn:uuid:ce65513a-4414-4008-93f3-a72701fcd04e",
+          "rationale": "COPD can be genetically determined (Alpha-1 antitrypsin deficiency, other genetic variants).",
+          "citation": "Proposed Taxonomy (Etiotypes) for COPD section.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "HAS_ETIOLOGY",
+          "target": "urn:uuid:eb3fc19b-4c3c-4fe5-b02f-45fc133914c6",
+          "rationale": "COPD can be due to abnormal lung development (Early life events, premature birth, low birthweight).",
+          "citation": "Proposed Taxonomy (Etiotypes) for COPD section.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "HAS_ETIOLOGY",
+          "target": "urn:uuid:eb061db5-4fab-47dd-ab1e-5f5d4135781c",
+          "rationale": "COPD can be environmental (Cigarette smoking, Biomass and pollution exposure).",
+          "citation": "Proposed Taxonomy (Etiotypes) for COPD section.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "HAS_ETIOLOGY",
+          "target": "urn:uuid:9355a9e2-21fb-4426-9fb3-420d16aff66c",
+          "rationale": "COPD can be due to infections (Childhood infections, TB-associated COPD, HIV-associated COPD).",
+          "citation": "Proposed Taxonomy (Etiotypes) for COPD section.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "HAS_ETIOLOGY",
+          "target": "urn:uuid:5941e069-f5db-441d-9d9c-3d9cf4bb2ccf",
+          "rationale": "COPD can be associated with asthma (particularly childhood asthma).",
+          "citation": "Proposed Taxonomy (Etiotypes) for COPD section.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "HAS_ETIOLOGY",
+          "target": "urn:uuid:5546545d-7810-497d-a718-e4adb0ff454b",
+          "rationale": "COPD can be of unknown cause.",
+          "citation": "Proposed Taxonomy (Etiotypes) for COPD section.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "HAS_CRITERION",
+          "target": "urn:uuid:9bb07b93-2059-47de-bc80-fc59824b36a2",
+          "rationale": "COPD is characterized by chronic respiratory symptoms (dyspnea, cough, sputum production and/or exacerbations).",
+          "citation": "Definition section.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "HAS_CRITERION",
+          "target": "urn:uuid:95ae0924-c0bf-4588-8749-fdffe9a349c1",
+          "rationale": "COPD causes persistent, often progressive airflow obstruction.",
+          "citation": "Definition section.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "HAS_CRITERION",
+          "target": "urn:uuid:ae3b808e-3bdc-4add-91f7-55a9c913efaa",
+          "rationale": "COPD results from gene-environment interactions.",
+          "citation": "Causes and Risk Factors section.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "HAS_CRITERION",
+          "target": "urn:uuid:886593f3-4062-430f-8c91-a3f7b35a6855",
+          "rationale": "Main environmental exposures leading to COPD are tobacco smoking and inhalation of toxic particles/gases from pollution.",
+          "citation": "Causes and Risk Factors section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Condition",
+      "name": "Lung condition",
+      "snomed": "19829001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:419c498a-b399-4b00-8005-6195f4387200",
+      "@type": "Finding",
+      "name": "Non-fully reversible airflow obstruction",
+      "snomed": "26036001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": [
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:ce65513a-4414-4008-93f3-a72701fcd04e",
+          "rationale": "FEV1/FVC < 0.7 post-bronchodilation confirms COPD diagnosis.",
+          "citation": "Diagnostic Criteria section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:886593f3-4062-430f-8c91-a3f7b35a6855",
+      "@type": "Finding",
+      "name": "Tobacco smoking",
+      "snomed": "365981007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:88a9cdf9-de48-4946-8027-96795a9110f9",
+      "@type": "Finding",
+      "name": "Alpha-1 antitrypsin deficiency (AATD)",
+      "snomed": "30188007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:47cb4953-d5aa-4d6f-9d71-c328e1c72f74",
+      "@type": "Finding",
+      "name": "Abnormal lung development",
+      "snomed": "129822005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ff1a9972-34c5-4813-bffe-5ab6bf2a6f47",
+      "@type": "Finding",
+      "name": "Accelerated lung aging",
+      "snomed": "248280005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a456981a-d169-41be-bd67-44b6c200d5f5",
+      "@type": "Finding",
+      "name": "Early life events",
+      "snomed": "364706004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:072db2c5-7a44-4935-ac99-9de506574515",
+      "@type": "Finding",
+      "name": "Premature birth",
+      "snomed": "282020008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3e404df6-24c1-4579-bede-8a76c4ac9966",
+      "@type": "Finding",
+      "name": "Low birthweight",
+      "snomed": "267258002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:30303221-e911-4cfc-b4a0-4ee2ea9170a7",
+      "@type": "Finding",
+      "name": "Cigarette smoking COPD",
+      "snomed": "102408007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e8cf4a60-f299-4586-8879-b8d815709bc1",
+      "@type": "Finding",
+      "name": "Biomass and pollution exposure COPD",
+      "snomed": "102420004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6a77d847-6e8c-458a-b52b-12b06cd1cbcc",
+      "@type": "Finding",
+      "name": "Childhood infections",
+      "snomed": "68433009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a1546161-71bb-4b8b-b4a2-84d4ef459a08",
+      "@type": "Finding",
+      "name": "TB-associated COPD",
+      "snomed": "700272008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:91c403ee-97fb-4c65-8c73-c1de5db47f00",
+      "@type": "Finding",
+      "name": "HIV-associated COPD",
+      "snomed": "86406008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2d1d2581-7e47-49ce-be16-bc19ab6f4870",
+      "@type": "Finding",
+      "name": "Childhood asthma",
+      "snomed": "233678006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6002e3c2-e57a-45ba-8484-9ddcea73fb10",
+      "@type": "Finding",
+      "name": "Genetic variants",
+      "snomed": "40885006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cb2c0d9e-9ff2-43ec-9b0f-fe4c23dd96f7",
+      "@type": "Finding",
+      "name": "Dyspnea",
+      "snomed": "267036007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:784e188a-0661-4e2f-ab42-a036e33f17c3",
+      "@type": "Finding",
+      "name": "Sputum production",
+      "snomed": "45710003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:67e9cad7-40ab-4ec3-aded-f5150c69950d",
+      "@type": "Finding",
+      "name": "Bronchitis",
+      "snomed": "32398004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:737bbfa8-93b5-4f06-9dfb-e663c5bd9015",
+      "@type": "Finding",
+      "name": "Bronchiolitis",
+      "snomed": "4120002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5b94ad11-27b2-4cb3-8aaa-81677e4e47cb",
+      "@type": "Finding",
+      "name": "Emphysema",
+      "snomed": "49158009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:53271b65-023b-42e9-8a2d-1d043b1961a6",
+      "@type": "Finding",
+      "name": "Spirometry",
+      "snomed": "127783003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1713c317-5c5d-4456-b737-5780050ef396",
+      "@type": "Finding",
+      "name": "FEV1/FVC < 0.7 post-bronchodilation",
+      "snomed": "255273002",
+      "icd10": "N/A",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ce65513a-4414-4008-93f3-a72701fcd04e",
+      "@type": "Acuity",
+      "name": "FEV1/FVC < 0.7 post-bronchodilation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "quantitative_threshold": {
+        "type": "ratio",
+        "value": 0.7,
+        "comparator": "<",
+        "test": "FEV1/FVC",
+        "time_window": "post-bronchodilation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:eb3fc19b-4c3c-4fe5-b02f-45fc133914c6",
+      "@type": "Condition",
+      "name": "Genetically determined COPD",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:eb061db5-4fab-47dd-ab1e-5f5d4135781c",
+      "@type": "Condition",
+      "name": "COPD due to abnormal lung development",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9355a9e2-21fb-4426-9fb3-420d16aff66c",
+      "@type": "Condition",
+      "name": "Environmental COPD",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5941e069-f5db-441d-9d9c-3d9cf4bb2ccf",
+      "@type": "Condition",
+      "name": "COPD due to infections",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5546545d-7810-497d-a718-e4adb0ff454b",
+      "@type": "Condition",
+      "name": "COPD of unknown cause",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9bb07b93-2059-47de-bc80-fc59824b36a2",
+      "@type": "Finding",
+      "name": "Chronic respiratory symptoms (dyspnea, cough, sputum production and/or exacerbations)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:95ae0924-c0bf-4588-8749-fdffe9a349c1",
+      "@type": "Finding",
+      "name": "Abnormalities of the airways (bronchitis, bronchiolitis) and/or alveoli (emphysema)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ae3b808e-3bdc-4add-91f7-55a9c913efaa",
+      "@type": "Finding",
+      "name": "Persistent, often progressive airflow obstruction",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d5c621ff-1893-4086-b386-2c4f6c1e3ef9",
+      "@type": "Finding",
+      "name": "Inhalation of toxic particles and gases from household and outdoor air pollution",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b5eab176-aa04-4414-a17b-83001a971a73",
+      "@type": "Finding",
+      "name": "Gene-environment interactions",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7a752d43-be7c-4908-9252-5b8100f832a5",
+      "@type": "Finding",
+      "name": "Cough",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9a909cad-0335-4b8e-946b-20d5c33def1e",
+      "@type": "Finding",
+      "name": "Exacerbations",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9bc9f67f-afa8-46c6-84f3-9abf064ec132",
+      "@type": "Finding",
+      "name": "Inhalation of toxic particles and gases from household and outdoor air pollution",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr.json",
+        "section_title": "Definition, Overview, Trajectories, and Etiotypes"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:38.648707+00:00",
+    "nodes_before": 40,
+    "nodes_after": 38,
+    "rules_before": 13,
+    "rules_after": 13
+  }
+}

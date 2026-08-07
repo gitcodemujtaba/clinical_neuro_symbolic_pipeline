@@ -1,0 +1,3835 @@
+{
+  "chunk_id": "17",
+  "entities": [
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.7437103428568406,
+      "character_boundaries": {
+        "start": 29,
+        "end": 34
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "Study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 70,
+        "end": 75
+      }
+    },
+    {
+      "snomed_cui": "719581000000108",
+      "preferred_name": "Cohort study",
+      "source_value": "cohort study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 96,
+        "end": 108
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 136,
+        "end": 142
+      }
+    },
+    {
+      "snomed_cui": "223642007",
+      "preferred_name": "Switzerland",
+      "source_value": "Switzerland",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 156,
+        "end": 167
+      }
+    },
+    {
+      "snomed_cui": "272394005",
+      "preferred_name": "Technique",
+      "source_value": "Methods",
+      "confidence_score": 0.8823844786251756,
+      "character_boundaries": {
+        "start": 206,
+        "end": 213
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "Outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 216,
+        "end": 223
+      }
+    },
+    {
+      "snomed_cui": "367346004",
+      "preferred_name": "Measures",
+      "source_value": "Measures",
+      "confidence_score": 0.45672950456707256,
+      "character_boundaries": {
+        "start": 224,
+        "end": 232
+      }
+    },
+    {
+      "snomed_cui": "63161005",
+      "preferred_name": "Principal",
+      "source_value": "Primary",
+      "confidence_score": 0.3970727555716385,
+      "character_boundaries": {
+        "start": 234,
+        "end": 241
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 242,
+        "end": 247
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "objective",
+      "confidence_score": 0.3710172791496788,
+      "character_boundaries": {
+        "start": 248,
+        "end": 257
+      }
+    },
+    {
+      "snomed_cui": "436000",
+      "preferred_name": "Determined by (contextual qualifier)",
+      "source_value": "determine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 265,
+        "end": 274
+      }
+    },
+    {
+      "snomed_cui": "103335007",
+      "preferred_name": "Duration",
+      "source_value": "duration",
+      "confidence_score": 0.8043931377472465,
+      "character_boundaries": {
+        "start": 286,
+        "end": 294
+      }
+    },
+    {
+      "snomed_cui": "118582008",
+      "preferred_name": "Percent (property)",
+      "source_value": "PCT",
+      "confidence_score": 0.5414453707033404,
+      "character_boundaries": {
+        "start": 304,
+        "end": 307
+      }
+    },
+    {
+      "snomed_cui": "420227002",
+      "preferred_name": "Recommendation to",
+      "source_value": "guidance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 308,
+        "end": 316
+      }
+    },
+    {
+      "snomed_cui": "2603003",
+      "preferred_name": "Secondary",
+      "source_value": "secondary",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 320,
+        "end": 329
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 330,
+        "end": 337
+      }
+    },
+    {
+      "snomed_cui": "386053000",
+      "preferred_name": "Evaluation procedure",
+      "source_value": "assessment",
+      "confidence_score": 0.8841286922504302,
+      "character_boundaries": {
+        "start": 342,
+        "end": 352
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 398,
+        "end": 406
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 418,
+        "end": 427
+      }
+    },
+    {
+      "snomed_cui": "77765009",
+      "preferred_name": "Exclude",
+      "source_value": "excluded",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 442,
+        "end": 450
+      }
+    },
+    {
+      "snomed_cui": "190905008",
+      "preferred_name": "Cystic fibrosis",
+      "source_value": "cystic fibrosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 452,
+        "end": 467
+      }
+    },
+    {
+      "snomed_cui": "55561003",
+      "preferred_name": "Active",
+      "source_value": "active",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 469,
+        "end": 475
+      }
+    },
+    {
+      "snomed_cui": "700272008",
+      "preferred_name": "Tuberculosis of respiratory system",
+      "source_value": "pulmonary TB",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 476,
+        "end": 488
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severely",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 503,
+        "end": 511
+      }
+    },
+    {
+      "snomed_cui": "370391006",
+      "preferred_name": "Patient immunosuppressed",
+      "source_value": "immunocompromised",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 512,
+        "end": 529
+      }
+    },
+    {
+      "snomed_cui": "118582008",
+      "preferred_name": "Percent (property)",
+      "source_value": "PCT",
+      "confidence_score": 0.7124189261828526,
+      "character_boundaries": {
+        "start": 531,
+        "end": 534
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.842519738313598,
+      "character_boundaries": {
+        "start": 536,
+        "end": 539
+      }
+    },
+    {
+      "snomed_cui": "767002",
+      "preferred_name": "White blood cell count",
+      "source_value": "leukocyte count",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 548,
+        "end": 563
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 565,
+        "end": 573
+      }
+    },
+    {
+      "snomed_cui": "255372005",
+      "preferred_name": "Variable",
+      "source_value": "variables",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 574,
+        "end": 583
+      }
+    },
+    {
+      "snomed_cui": "258104002",
+      "preferred_name": "Measured",
+      "source_value": "measured",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 602,
+        "end": 610
+      }
+    },
+    {
+      "snomed_cui": "258104002",
+      "preferred_name": "Measured",
+      "source_value": "measured",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 631,
+        "end": 639
+      }
+    },
+    {
+      "snomed_cui": "414464004",
+      "preferred_name": "Immunoassay method",
+      "source_value": "immunoassay",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 651,
+        "end": 662
+      }
+    },
+    {
+      "snomed_cui": "385049006",
+      "preferred_name": "Capsule",
+      "source_value": "CAP",
+      "confidence_score": 0.3416218905417231,
+      "character_boundaries": {
+        "start": 664,
+        "end": 667
+      }
+    },
+    {
+      "snomed_cui": "900000000000073002",
+      "preferred_name": "Sufficiently defined by necessary conditions definition status",
+      "source_value": "defined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 668,
+        "end": 675
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "presence of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 679,
+        "end": 690
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 708,
+        "end": 717
+      }
+    },
+    {
+      "snomed_cui": "263731006",
+      "preferred_name": "Coughing",
+      "source_value": "cough",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 719,
+        "end": 724
+      }
+    },
+    {
+      "snomed_cui": "45710003",
+      "preferred_name": "Sputum",
+      "source_value": "sputum",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 726,
+        "end": 732
+      }
+    },
+    {
+      "snomed_cui": "267036007",
+      "preferred_name": "Dyspnea",
+      "source_value": "dyspnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 745,
+        "end": 752
+      }
+    },
+    {
+      "snomed_cui": "703421000",
+      "preferred_name": "Temperature",
+      "source_value": "temperature",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 754,
+        "end": 765
+      }
+    },
+    {
+      "snomed_cui": "767002",
+      "preferred_name": "White blood cell count",
+      "source_value": "WBC",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 794,
+        "end": 797
+      }
+    },
+    {
+      "snomed_cui": "47351003",
+      "preferred_name": "Infiltration",
+      "source_value": "infiltrate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 823,
+        "end": 833
+      }
+    },
+    {
+      "snomed_cui": "399208008",
+      "preferred_name": "Plain X-ray of chest",
+      "source_value": "CXR",
+      "confidence_score": 0.3539530839188576,
+      "character_boundaries": {
+        "start": 837,
+        "end": 840
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 842,
+        "end": 850
+      }
+    },
+    {
+      "snomed_cui": "367409002",
+      "preferred_name": "Followed by",
+      "source_value": "followed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 856,
+        "end": 864
+      }
+    },
+    {
+      "snomed_cui": "19535007",
+      "preferred_name": "Original",
+      "source_value": "original",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 892,
+        "end": 900
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 901,
+        "end": 906
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.8163029089338646,
+      "character_boundaries": {
+        "start": 912,
+        "end": 917
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 918,
+        "end": 925
+      }
+    },
+    {
+      "snomed_cui": "367346004",
+      "preferred_name": "Measures",
+      "source_value": "measures",
+      "confidence_score": 0.9823499842963549,
+      "character_boundaries": {
+        "start": 926,
+        "end": 934
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.3036474512325687,
+      "character_boundaries": {
+        "start": 940,
+        "end": 943
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 986,
+        "end": 992
+      }
+    },
+    {
+      "snomed_cui": "52642002",
+      "preferred_name": "Peptide",
+      "source_value": "peptide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1012,
+        "end": 1019
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1027,
+        "end": 1031
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1070,
+        "end": 1078
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1089,
+        "end": 1097
+      }
+    },
+    {
+      "snomed_cui": "255604002",
+      "preferred_name": "Mild",
+      "source_value": "mild",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1103,
+        "end": 1107
+      }
+    },
+    {
+      "snomed_cui": "385049006",
+      "preferred_name": "Capsule",
+      "source_value": "CAP",
+      "confidence_score": 0.46154213415827483,
+      "character_boundaries": {
+        "start": 1108,
+        "end": 1111
+      }
+    },
+    {
+      "snomed_cui": "900000000000073002",
+      "preferred_name": "Sufficiently defined by necessary conditions definition status",
+      "source_value": "defined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1112,
+        "end": 1119
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.3699671498452225,
+      "character_boundaries": {
+        "start": 1123,
+        "end": 1126
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "class I",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1127,
+        "end": 1134
+      }
+    },
+    {
+      "snomed_cui": "33138000",
+      "preferred_name": "Structure of substantia gelatinosa of posterior horn of spinal cord",
+      "source_value": "II",
+      "confidence_score": 0.5955831333353869,
+      "character_boundaries": {
+        "start": 1136,
+        "end": 1138
+      }
+    },
+    {
+      "snomed_cui": "261122009",
+      "preferred_name": "Lower",
+      "source_value": "lower",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1165,
+        "end": 1170
+      }
+    },
+    {
+      "snomed_cui": "52642002",
+      "preferred_name": "Peptide",
+      "source_value": "peptide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1190,
+        "end": 1197
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1219,
+        "end": 1227
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1233,
+        "end": 1239
+      }
+    },
+    {
+      "snomed_cui": "385049006",
+      "preferred_name": "Capsule",
+      "source_value": "CAP",
+      "confidence_score": 0.6594688252844149,
+      "character_boundaries": {
+        "start": 1240,
+        "end": 1243
+      }
+    },
+    {
+      "snomed_cui": "900000000000073002",
+      "preferred_name": "Sufficiently defined by necessary conditions definition status",
+      "source_value": "defined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1244,
+        "end": 1251
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.3937102310527997,
+      "character_boundaries": {
+        "start": 1255,
+        "end": 1258
+      }
+    },
+    {
+      "snomed_cui": "264750004",
+      "preferred_name": "Class 4",
+      "source_value": "class IV",
+      "confidence_score": 0.9873703366075697,
+      "character_boundaries": {
+        "start": 1259,
+        "end": 1267
+      }
+    },
+    {
+      "snomed_cui": "228166004",
+      "preferred_name": "Combinations",
+      "source_value": "combination",
+      "confidence_score": 0.6169924348496885,
+      "character_boundaries": {
+        "start": 1289,
+        "end": 1300
+      }
+    },
+    {
+      "snomed_cui": "52642002",
+      "preferred_name": "Peptide",
+      "source_value": "peptide",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1323,
+        "end": 1330
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improved",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1357,
+        "end": 1365
+      }
+    },
+    {
+      "snomed_cui": "263656005",
+      "preferred_name": "Accurate",
+      "source_value": "accuracy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1381,
+        "end": 1389
+      }
+    },
+    {
+      "snomed_cui": "246175000",
+      "preferred_name": "Limitation",
+      "source_value": "Limitations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1436,
+        "end": 1447
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1482,
+        "end": 1489
+      }
+    },
+    {
+      "snomed_cui": "386053000",
+      "preferred_name": "Evaluation procedure",
+      "source_value": "assessment",
+      "confidence_score": 0.8666335368894578,
+      "character_boundaries": {
+        "start": 1490,
+        "end": 1500
+      }
+    },
+    {
+      "snomed_cui": "15220000",
+      "preferred_name": "Laboratory test",
+      "source_value": "laboratory tests",
+      "confidence_score": 0.8068444063103426,
+      "character_boundaries": {
+        "start": 1531,
+        "end": 1547
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "scoring",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1556,
+        "end": 1563
+      }
+    },
+    {
+      "snomed_cui": "248448006",
+      "preferred_name": "Involved",
+      "source_value": "affected",
+      "confidence_score": 0.4409011174458436,
+      "character_boundaries": {
+        "start": 1564,
+        "end": 1572
+      }
+    },
+    {
+      "snomed_cui": "726711005",
+      "preferred_name": "Disposition",
+      "source_value": "disposition",
+      "confidence_score": 0.4760873658198672,
+      "character_boundaries": {
+        "start": 1573,
+        "end": 1584
+      }
+    },
+    {
+      "snomed_cui": "2603003",
+      "preferred_name": "Secondary",
+      "source_value": "secondary",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1627,
+        "end": 1636
+      }
+    },
+    {
+      "snomed_cui": "272389005",
+      "preferred_name": "Analysis",
+      "source_value": "analysis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1637,
+        "end": 1645
+      }
+    },
+    {
+      "snomed_cui": "272116003",
+      "preferred_name": "Durations",
+      "source_value": "duration",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1674,
+        "end": 1682
+      }
+    },
+    {
+      "snomed_cui": "248448006",
+      "preferred_name": "Involved",
+      "source_value": "affected",
+      "confidence_score": 0.3596412359972566,
+      "character_boundaries": {
+        "start": 1687,
+        "end": 1695
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1734,
+        "end": 1738
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.654726475255978,
+      "character_boundaries": {
+        "start": 1802,
+        "end": 1807
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "Study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1843,
+        "end": 1848
+      }
+    },
+    {
+      "snomed_cui": "719581000000108",
+      "preferred_name": "Cohort study",
+      "source_value": "cohort study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1869,
+        "end": 1881
+      }
+    },
+    {
+      "snomed_cui": "50607009",
+      "preferred_name": "Singular",
+      "source_value": "single",
+      "confidence_score": 0.413098306150782,
+      "character_boundaries": {
+        "start": 1885,
+        "end": 1891
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1901,
+        "end": 1907
+      }
+    },
+    {
+      "snomed_cui": "1169358003",
+      "preferred_name": "Multinucleated neurons, anhydramnios, renal dysplasia, cerebellar hypoplasia, hydranencephaly syndrome",
+      "source_value": "March",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1940,
+        "end": 1945
+      }
+    },
+    {
+      "snomed_cui": "272394005",
+      "preferred_name": "Technique",
+      "source_value": "Methods",
+      "confidence_score": 0.9771373610485115,
+      "character_boundaries": {
+        "start": 1952,
+        "end": 1959
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "Outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1962,
+        "end": 1969
+      }
+    },
+    {
+      "snomed_cui": "367346004",
+      "preferred_name": "Measures",
+      "source_value": "Measures",
+      "confidence_score": 0.5400914828098076,
+      "character_boundaries": {
+        "start": 1970,
+        "end": 1978
+      }
+    },
+    {
+      "snomed_cui": "436000",
+      "preferred_name": "Determined by (contextual qualifier)",
+      "source_value": "Determine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1980,
+        "end": 1989
+      }
+    },
+    {
+      "snomed_cui": "263534001",
+      "preferred_name": "Association",
+      "source_value": "association",
+      "confidence_score": 0.6013916670508958,
+      "character_boundaries": {
+        "start": 1990,
+        "end": 2001
+      }
+    },
+    {
+      "snomed_cui": "80534008",
+      "preferred_name": "Biochemical",
+      "source_value": "biochemical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2019,
+        "end": 2030
+      }
+    },
+    {
+      "snomed_cui": "706484002",
+      "preferred_name": "Body reference point marker",
+      "source_value": "markers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2031,
+        "end": 2038
+      }
+    },
+    {
+      "snomed_cui": "52454007",
+      "preferred_name": "Albumin",
+      "source_value": "albumin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2048,
+        "end": 2055
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.7202277002616052,
+      "character_boundaries": {
+        "start": 2060,
+        "end": 2063
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2070,
+        "end": 2079
+      }
+    },
+    {
+      "snomed_cui": "706484002",
+      "preferred_name": "Body reference point marker",
+      "source_value": "markers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2120,
+        "end": 2127
+      }
+    },
+    {
+      "snomed_cui": "89780004",
+      "preferred_name": "Combined",
+      "source_value": "combined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2128,
+        "end": 2136
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.3534057227234756,
+      "character_boundaries": {
+        "start": 2146,
+        "end": 2149
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2154,
+        "end": 2163
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2176,
+        "end": 2184
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2188,
+        "end": 2196
+      }
+    },
+    {
+      "snomed_cui": "385049006",
+      "preferred_name": "Capsule",
+      "source_value": "CAP",
+      "confidence_score": 0.5085853180058063,
+      "character_boundaries": {
+        "start": 2202,
+        "end": 2205
+      }
+    },
+    {
+      "snomed_cui": "52454007",
+      "preferred_name": "Albumin",
+      "source_value": "albumin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2220,
+        "end": 2227
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.7063778916396412,
+      "character_boundaries": {
+        "start": 2232,
+        "end": 2235
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2245,
+        "end": 2260
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.9800237826434117,
+      "character_boundaries": {
+        "start": 2264,
+        "end": 2267
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2268,
+        "end": 2277
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "improve",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2282,
+        "end": 2289
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2290,
+        "end": 2299
+      }
+    },
+    {
+      "snomed_cui": "184091000",
+      "preferred_name": "Patient in hospital",
+      "source_value": "hospitalized",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2314,
+        "end": 2326
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2327,
+        "end": 2335
+      }
+    },
+    {
+      "snomed_cui": "385049006",
+      "preferred_name": "Capsule",
+      "source_value": "CAP",
+      "confidence_score": 0.3212435756396283,
+      "character_boundaries": {
+        "start": 2341,
+        "end": 2344
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2355,
+        "end": 2363
+      }
+    },
+    {
+      "snomed_cui": "887161000000102",
+      "preferred_name": "Diagnoses",
+      "source_value": "diagnosis",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2380,
+        "end": 2389
+      }
+    },
+    {
+      "snomed_cui": "77765009",
+      "preferred_name": "Exclude",
+      "source_value": "excluded",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2398,
+        "end": 2406
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transferred",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2410,
+        "end": 2421
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2435,
+        "end": 2443
+      }
+    },
+    {
+      "snomed_cui": "58000006",
+      "preferred_name": "Patient discharge",
+      "source_value": "discharged",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2445,
+        "end": 2455
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2463,
+        "end": 2471
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "prior",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2475,
+        "end": 2480
+      }
+    },
+    {
+      "snomed_cui": "258703001",
+      "preferred_name": "day",
+      "source_value": "days",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2484,
+        "end": 2488
+      }
+    },
+    {
+      "snomed_cui": "48318009",
+      "preferred_name": "Prior diagnosis (contextual qualifier)",
+      "source_value": "prior diagnosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2490,
+        "end": 2505
+      }
+    },
+    {
+      "snomed_cui": "258703001",
+      "preferred_name": "day",
+      "source_value": "days",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2523,
+        "end": 2527
+      }
+    },
+    {
+      "snomed_cui": "55561003",
+      "preferred_name": "Active",
+      "source_value": "active",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2529,
+        "end": 2535
+      }
+    },
+    {
+      "snomed_cui": "700272008",
+      "preferred_name": "Tuberculosis of respiratory system",
+      "source_value": "pulmonary TB",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2536,
+        "end": 2548
+      }
+    },
+    {
+      "snomed_cui": "86406008",
+      "preferred_name": "Human immunodeficiency virus infection",
+      "source_value": "HIV",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2550,
+        "end": 2553
+      }
+    },
+    {
+      "snomed_cui": "370391006",
+      "preferred_name": "Patient immunosuppressed",
+      "source_value": "immunosuppressed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2570,
+        "end": 2586
+      }
+    },
+    {
+      "snomed_cui": "63161005",
+      "preferred_name": "Principal",
+      "source_value": "primary",
+      "confidence_score": 0.4213002043003917,
+      "character_boundaries": {
+        "start": 2588,
+        "end": 2595
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2596,
+        "end": 2603
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.7639667709756104,
+      "character_boundaries": {
+        "start": 2607,
+        "end": 2610
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2611,
+        "end": 2620
+      }
+    },
+    {
+      "snomed_cui": "2603003",
+      "preferred_name": "Secondary",
+      "source_value": "secondary",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2622,
+        "end": 2631
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2632,
+        "end": 2640
+      }
+    },
+    {
+      "snomed_cui": "870406003",
+      "preferred_name": "Vasopressor",
+      "source_value": "vasopressor",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2642,
+        "end": 2653
+      }
+    },
+    {
+      "snomed_cui": "40617009",
+      "preferred_name": "Artificial ventilation",
+      "source_value": "mechanical ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2659,
+        "end": 2681
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2683,
+        "end": 2686
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2687,
+        "end": 2696
+      }
+    },
+    {
+      "snomed_cui": "48386003",
+      "preferred_name": "Regression - mental defense mechanism",
+      "source_value": "regression",
+      "confidence_score": 0.41766720643735095,
+      "character_boundaries": {
+        "start": 2707,
+        "end": 2717
+      }
+    },
+    {
+      "snomed_cui": "8212001",
+      "preferred_name": "Proportional",
+      "source_value": "proportional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2726,
+        "end": 2738
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2775,
+        "end": 2783
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.8376536491435596,
+      "character_boundaries": {
+        "start": 2788,
+        "end": 2791
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2792,
+        "end": 2801
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2816,
+        "end": 2824
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "class",
+      "confidence_score": 0.6019038833055703,
+      "character_boundaries": {
+        "start": 2864,
+        "end": 2869
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.30067512411162634,
+      "character_boundaries": {
+        "start": 2882,
+        "end": 2885
+      }
+    },
+    {
+      "snomed_cui": "264750004",
+      "preferred_name": "Class 4",
+      "source_value": "classes IV",
+      "confidence_score": 0.8046465495476128,
+      "character_boundaries": {
+        "start": 2886,
+        "end": 2896
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2904,
+        "end": 2913
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2918,
+        "end": 2924
+      }
+    },
+    {
+      "snomed_cui": "104485008",
+      "preferred_name": "Albumin measurement, serum",
+      "source_value": "serum albumin",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2946,
+        "end": 2959
+      }
+    },
+    {
+      "snomed_cui": "258797006",
+      "preferred_name": "Milligram/deciliter",
+      "source_value": "mg/dL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2966,
+        "end": 2971
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2976,
+        "end": 2980
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2981,
+        "end": 2984
+      }
+    },
+    {
+      "snomed_cui": "258797006",
+      "preferred_name": "Milligram/deciliter",
+      "source_value": "mg/dL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2993,
+        "end": 2998
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3008,
+        "end": 3016
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3025,
+        "end": 3029
+      }
+    },
+    {
+      "snomed_cui": "104485008",
+      "preferred_name": "Albumin measurement, serum",
+      "source_value": "serum albumin",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3030,
+        "end": 3043
+      }
+    },
+    {
+      "snomed_cui": "258797006",
+      "preferred_name": "Milligram/deciliter",
+      "source_value": "mg/dL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3051,
+        "end": 3056
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3065,
+        "end": 3068
+      }
+    },
+    {
+      "snomed_cui": "258797006",
+      "preferred_name": "Milligram/deciliter",
+      "source_value": "mg/dL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3076,
+        "end": 3081
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3087,
+        "end": 3095
+      }
+    },
+    {
+      "snomed_cui": "52454007",
+      "preferred_name": "Albumin",
+      "source_value": "albumin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3104,
+        "end": 3111
+      }
+    },
+    {
+      "snomed_cui": "276139006",
+      "preferred_name": "Less-than symbol <",
+      "source_value": "less than",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3112,
+        "end": 3121
+      }
+    },
+    {
+      "snomed_cui": "258797006",
+      "preferred_name": "Milligram/deciliter",
+      "source_value": "mg/dL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3126,
+        "end": 3131
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3133,
+        "end": 3142
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3161,
+        "end": 3167
+      }
+    },
+    {
+      "snomed_cui": "52454007",
+      "preferred_name": "Albumin",
+      "source_value": "albumin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3187,
+        "end": 3194
+      }
+    },
+    {
+      "snomed_cui": "258797006",
+      "preferred_name": "Milligram/deciliter",
+      "source_value": "mg/dL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3199,
+        "end": 3204
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3239,
+        "end": 3248
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3253,
+        "end": 3259
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3263,
+        "end": 3271
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.8779303952264519,
+      "character_boundaries": {
+        "start": 3277,
+        "end": 3280
+      }
+    },
+    {
+      "snomed_cui": "258797006",
+      "preferred_name": "Milligram/deciliter",
+      "source_value": "mg/dL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3286,
+        "end": 3291
+      }
+    },
+    {
+      "snomed_cui": "276140008",
+      "preferred_name": "Greater-than symbol >",
+      "source_value": "more than",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3295,
+        "end": 3304
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.9609720671719685,
+      "character_boundaries": {
+        "start": 3319,
+        "end": 3322
+      }
+    },
+    {
+      "snomed_cui": "276139006",
+      "preferred_name": "Less-than symbol <",
+      "source_value": "less than",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3323,
+        "end": 3332
+      }
+    },
+    {
+      "snomed_cui": "258797006",
+      "preferred_name": "Milligram/deciliter",
+      "source_value": "mg/dL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3338,
+        "end": 3343
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.9733992489721408,
+      "character_boundaries": {
+        "start": 3392,
+        "end": 3395
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3396,
+        "end": 3405
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.3772679958336449,
+      "character_boundaries": {
+        "start": 3420,
+        "end": 3422
+      }
+    },
+    {
+      "snomed_cui": "52454007",
+      "preferred_name": "Albumin",
+      "source_value": "albumin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3441,
+        "end": 3448
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.5831395551866085,
+      "character_boundaries": {
+        "start": 3460,
+        "end": 3462
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3481,
+        "end": 3484
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.6743275606084157,
+      "character_boundaries": {
+        "start": 3500,
+        "end": 3502
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.310515661289933,
+      "character_boundaries": {
+        "start": 3521,
+        "end": 3524
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.8123612209587506,
+      "character_boundaries": {
+        "start": 3549,
+        "end": 3558
+      }
+    },
+    {
+      "snomed_cui": "52454007",
+      "preferred_name": "Albumin",
+      "source_value": "albumin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3564,
+        "end": 3571
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.6604587909655955,
+      "character_boundaries": {
+        "start": 3575,
+        "end": 3578
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.37786682480685313,
+      "character_boundaries": {
+        "start": 3592,
+        "end": 3595
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.8407314618484987,
+      "character_boundaries": {
+        "start": 3601,
+        "end": 3604
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3605,
+        "end": 3614
+      }
+    },
+    {
+      "snomed_cui": "870406003",
+      "preferred_name": "Vasopressor",
+      "source_value": "vasopressor",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3616,
+        "end": 3627
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3636,
+        "end": 3644
+      }
+    },
+    {
+      "snomed_cui": "40617009",
+      "preferred_name": "Artificial ventilation",
+      "source_value": "mechanical ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3645,
+        "end": 3667
+      }
+    },
+    {
+      "snomed_cui": "52454007",
+      "preferred_name": "Albumin",
+      "source_value": "albumin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3669,
+        "end": 3676
+      }
+    },
+    {
+      "snomed_cui": "260364009",
+      "preferred_name": "Additive",
+      "source_value": "additive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3684,
+        "end": 3692
+      }
+    },
+    {
+      "snomed_cui": "766940004",
+      "preferred_name": "Role",
+      "source_value": "role",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3693,
+        "end": 3697
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.7896584464909784,
+      "character_boundaries": {
+        "start": 3723,
+        "end": 3726
+      }
+    },
+    {
+      "snomed_cui": "228166004",
+      "preferred_name": "Combinations",
+      "source_value": "combination",
+      "confidence_score": 0.663012897830288,
+      "character_boundaries": {
+        "start": 3749,
+        "end": 3760
+      }
+    },
+    {
+      "snomed_cui": "52454007",
+      "preferred_name": "Albumin",
+      "source_value": "albumin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3764,
+        "end": 3771
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.8196652844993784,
+      "character_boundaries": {
+        "start": 3773,
+        "end": 3776
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.7870931444225706,
+      "character_boundaries": {
+        "start": 3786,
+        "end": 3795
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.3026888734115467,
+      "character_boundaries": {
+        "start": 3835,
+        "end": 3838
+      }
+    },
+    {
+      "snomed_cui": "246175000",
+      "preferred_name": "Limitation",
+      "source_value": "Limitations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3853,
+        "end": 3864
+      }
+    },
+    {
+      "snomed_cui": "2603003",
+      "preferred_name": "Secondary",
+      "source_value": "Secondary",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3877,
+        "end": 3886
+      }
+    },
+    {
+      "snomed_cui": "272389005",
+      "preferred_name": "Analysis",
+      "source_value": "analysis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3887,
+        "end": 3895
+      }
+    },
+    {
+      "snomed_cui": "258049002",
+      "preferred_name": "Protocols",
+      "source_value": "protocol",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3899,
+        "end": 3907
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3923,
+        "end": 3928
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.33398155913228567,
+      "character_boundaries": {
+        "start": 3933,
+        "end": 3936
+      }
+    },
+    {
+      "snomed_cui": "272393004",
+      "preferred_name": "Tests",
+      "source_value": "tests",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3964,
+        "end": 3969
+      }
+    },
+    {
+      "snomed_cui": "248448006",
+      "preferred_name": "Involved",
+      "source_value": "affected",
+      "confidence_score": 0.47994464378754476,
+      "character_boundaries": {
+        "start": 3970,
+        "end": 3978
+      }
+    },
+    {
+      "snomed_cui": "726711005",
+      "preferred_name": "Disposition",
+      "source_value": "disposition",
+      "confidence_score": 0.40199640402685966,
+      "character_boundaries": {
+        "start": 3979,
+        "end": 3990
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "points",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4038,
+        "end": 4044
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trial",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4063,
+        "end": 4068
+      }
+    },
+    {
+      "snomed_cui": "719341000000105",
+      "preferred_name": "Theory",
+      "source_value": "theory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4080,
+        "end": 4086
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.7741207058227143,
+      "character_boundaries": {
+        "start": 4139,
+        "end": 4144
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "Study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4180,
+        "end": 4185
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4220,
+        "end": 4225
+      }
+    },
+    {
+      "snomed_cui": "50607009",
+      "preferred_name": "Singular",
+      "source_value": "single",
+      "confidence_score": 0.3990232783406318,
+      "character_boundaries": {
+        "start": 4231,
+        "end": 4237
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4238,
+        "end": 4244
+      }
+    },
+    {
+      "snomed_cui": "272394005",
+      "preferred_name": "Technique",
+      "source_value": "Methods",
+      "confidence_score": 0.7949240827733552,
+      "character_boundaries": {
+        "start": 4293,
+        "end": 4300
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "Outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4303,
+        "end": 4310
+      }
+    },
+    {
+      "snomed_cui": "367346004",
+      "preferred_name": "Measures",
+      "source_value": "Measures",
+      "confidence_score": 0.44055456071960086,
+      "character_boundaries": {
+        "start": 4311,
+        "end": 4319
+      }
+    },
+    {
+      "snomed_cui": "116698004",
+      "preferred_name": "Investigates",
+      "source_value": "Investigated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4321,
+        "end": 4333
+      }
+    },
+    {
+      "snomed_cui": "228166004",
+      "preferred_name": "Combinations",
+      "source_value": "combination",
+      "confidence_score": 0.718927429276509,
+      "character_boundaries": {
+        "start": 4391,
+        "end": 4402
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4418,
+        "end": 4423
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "day",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4461,
+        "end": 4464
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4465,
+        "end": 4474
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4478,
+        "end": 4486
+      }
+    },
+    {
+      "snomed_cui": "385049006",
+      "preferred_name": "Capsule",
+      "source_value": "CAP",
+      "confidence_score": 0.5493129914006785,
+      "character_boundaries": {
+        "start": 4492,
+        "end": 4495
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4497,
+        "end": 4505
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4506,
+        "end": 4514
+      }
+    },
+    {
+      "snomed_cui": "184091000",
+      "preferred_name": "Patient in hospital",
+      "source_value": "hospitalized",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4525,
+        "end": 4537
+      }
+    },
+    {
+      "snomed_cui": "58000006",
+      "preferred_name": "Patient discharge",
+      "source_value": "discharged",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4542,
+        "end": 4552
+      }
+    },
+    {
+      "snomed_cui": "77765009",
+      "preferred_name": "Exclude",
+      "source_value": "excluded",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4575,
+        "end": 4583
+      }
+    },
+    {
+      "snomed_cui": "370391006",
+      "preferred_name": "Patient immunosuppressed",
+      "source_value": "immunosuppressed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4590,
+        "end": 4606
+      }
+    },
+    {
+      "snomed_cui": "77386006",
+      "preferred_name": "Pregnancy",
+      "source_value": "pregnant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4608,
+        "end": 4616
+      }
+    },
+    {
+      "snomed_cui": "14766002",
+      "preferred_name": "Aspiration",
+      "source_value": "aspiration",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4637,
+        "end": 4647
+      }
+    },
+    {
+      "snomed_cui": "700272008",
+      "preferred_name": "Tuberculosis of respiratory system",
+      "source_value": "TB",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4653,
+        "end": 4655
+      }
+    },
+    {
+      "snomed_cui": "900000000000073002",
+      "preferred_name": "Sufficiently defined by necessary conditions definition status",
+      "source_value": "defined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4661,
+        "end": 4668
+      }
+    },
+    {
+      "snomed_cui": "409609008",
+      "preferred_name": "Radiologic infiltrate of lung",
+      "source_value": "pulmonary infiltrates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4676,
+        "end": 4697
+      }
+    },
+    {
+      "snomed_cui": "413815006",
+      "preferred_name": "Chest imaging",
+      "source_value": "chest imaging",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4701,
+        "end": 4714
+      }
+    },
+    {
+      "snomed_cui": "385433004",
+      "preferred_name": "Consistent with",
+      "source_value": "consistent with",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4729,
+        "end": 4744
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4750,
+        "end": 4759
+      }
+    },
+    {
+      "snomed_cui": "263731006",
+      "preferred_name": "Coughing",
+      "source_value": "cough",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4760,
+        "end": 4765
+      }
+    },
+    {
+      "snomed_cui": "45710003",
+      "preferred_name": "Sputum",
+      "source_value": "sputum",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4782,
+        "end": 4788
+      }
+    },
+    {
+      "snomed_cui": "703421000",
+      "preferred_name": "Temperature",
+      "source_value": "temperature",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4790,
+        "end": 4801
+      }
+    },
+    {
+      "snomed_cui": "2237002",
+      "preferred_name": "Pleuritic pain",
+      "source_value": "pleuritic chest pain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4847,
+        "end": 4867
+      }
+    },
+    {
+      "snomed_cui": "255396000",
+      "preferred_name": "Acquired",
+      "source_value": "acquired",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4872,
+        "end": 4880
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4886,
+        "end": 4894
+      }
+    },
+    {
+      "snomed_cui": "246112005",
+      "preferred_name": "Severity",
+      "source_value": "severity",
+      "confidence_score": 0.45742736388341015,
+      "character_boundaries": {
+        "start": 4910,
+        "end": 4918
+      }
+    },
+    {
+      "snomed_cui": "272389005",
+      "preferred_name": "Analysis",
+      "source_value": "analysis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4951,
+        "end": 4959
+      }
+    },
+    {
+      "snomed_cui": "258755000",
+      "preferred_name": "Percentage of total",
+      "source_value": "total",
+      "confidence_score": 0.7367511843861965,
+      "character_boundaries": {
+        "start": 4984,
+        "end": 4989
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4997,
+        "end": 5005
+      }
+    },
+    {
+      "snomed_cui": "255586005",
+      "preferred_name": "Mean",
+      "source_value": "mean",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5007,
+        "end": 5011
+      }
+    },
+    {
+      "snomed_cui": "424144002",
+      "preferred_name": "Current chronological age",
+      "source_value": "age",
+      "confidence_score": 0.5224704138781512,
+      "character_boundaries": {
+        "start": 5012,
+        "end": 5015
+      }
+    },
+    {
+      "snomed_cui": "386136009",
+      "preferred_name": "Standard deviation",
+      "source_value": "standard deviation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5024,
+        "end": 5042
+      }
+    },
+    {
+      "snomed_cui": "60549007",
+      "preferred_name": "Multiple endocrine adenomas",
+      "source_value": "men",
+      "confidence_score": 0.5696637479946236,
+      "character_boundaries": {
+        "start": 5058,
+        "end": 5061
+      }
+    },
+    {
+      "snomed_cui": "385049006",
+      "preferred_name": "Capsule",
+      "source_value": "CAP",
+      "confidence_score": 0.4683729843575675,
+      "character_boundaries": {
+        "start": 5068,
+        "end": 5071
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5094,
+        "end": 5099
+      }
+    },
+    {
+      "snomed_cui": "134198009",
+      "preferred_name": "Etiology",
+      "source_value": "cause",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5105,
+        "end": 5110
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5111,
+        "end": 5120
+      }
+    },
+    {
+      "snomed_cui": "259032004",
+      "preferred_name": "per day",
+      "source_value": "day",
+      "confidence_score": 0.8303164374834344,
+      "character_boundaries": {
+        "start": 5131,
+        "end": 5134
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5135,
+        "end": 5144
+      }
+    },
+    {
+      "snomed_cui": "723051000000101",
+      "preferred_name": "Evaluation",
+      "source_value": "evaluation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5145,
+        "end": 5155
+      }
+    },
+    {
+      "snomed_cui": "386134007",
+      "preferred_name": "Significant",
+      "source_value": "significant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5169,
+        "end": 5180
+      }
+    },
+    {
+      "snomed_cui": "255513008",
+      "preferred_name": "Inverse",
+      "source_value": "inverse",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5185,
+        "end": 5192
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5229,
+        "end": 5234
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "found",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5239,
+        "end": 5244
+      }
+    },
+    {
+      "snomed_cui": "259032004",
+      "preferred_name": "per day",
+      "source_value": "day",
+      "confidence_score": 0.8787464896275892,
+      "character_boundaries": {
+        "start": 5304,
+        "end": 5307
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5308,
+        "end": 5317
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5324,
+        "end": 5333
+      }
+    },
+    {
+      "snomed_cui": "35209006",
+      "preferred_name": "Sensitivity",
+      "source_value": "sensitivity",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5358,
+        "end": 5369
+      }
+    },
+    {
+      "snomed_cui": "259032004",
+      "preferred_name": "per day",
+      "source_value": "day",
+      "confidence_score": 0.8527911380540918,
+      "character_boundaries": {
+        "start": 5420,
+        "end": 5423
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5424,
+        "end": 5433
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.3167405646860805,
+      "character_boundaries": {
+        "start": 5449,
+        "end": 5451
+      }
+    },
+    {
+      "snomed_cui": "246175000",
+      "preferred_name": "Limitation",
+      "source_value": "Limitations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5511,
+        "end": 5522
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5555,
+        "end": 5559
+      }
+    },
+    {
+      "snomed_cui": "769038007",
+      "preferred_name": "Researcher",
+      "source_value": "investigators",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5590,
+        "end": 5603
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5635,
+        "end": 5640
+      }
+    },
+    {
+      "snomed_cui": "246099003",
+      "preferred_name": "Purpose",
+      "source_value": "purpose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5641,
+        "end": 5648
+      }
+    },
+    {
+      "snomed_cui": "248448006",
+      "preferred_name": "Involved",
+      "source_value": "affected",
+      "confidence_score": 0.49315360057617874,
+      "character_boundaries": {
+        "start": 5670,
+        "end": 5678
+      }
+    },
+    {
+      "snomed_cui": "726711005",
+      "preferred_name": "Disposition",
+      "source_value": "disposition",
+      "confidence_score": 0.4970973321161736,
+      "character_boundaries": {
+        "start": 5688,
+        "end": 5699
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.8117130589029501,
+      "character_boundaries": {
+        "start": 5740,
+        "end": 5745
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "Study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5781,
+        "end": 5786
+      }
+    },
+    {
+      "snomed_cui": "719581000000108",
+      "preferred_name": "Cohort study",
+      "source_value": "cohort study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5807,
+        "end": 5819
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "center",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5847,
+        "end": 5853
+      }
+    },
+    {
+      "snomed_cui": "223642007",
+      "preferred_name": "Switzerland",
+      "source_value": "Switzerland",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5867,
+        "end": 5878
+      }
+    },
+    {
+      "snomed_cui": "272394005",
+      "preferred_name": "Technique",
+      "source_value": "Methods",
+      "confidence_score": 0.8823844786251756,
+      "character_boundaries": {
+        "start": 5922,
+        "end": 5929
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "Outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5932,
+        "end": 5939
+      }
+    },
+    {
+      "snomed_cui": "367346004",
+      "preferred_name": "Measures",
+      "source_value": "Measures",
+      "confidence_score": 0.45672950456707256,
+      "character_boundaries": {
+        "start": 5940,
+        "end": 5948
+      }
+    },
+    {
+      "snomed_cui": "63161005",
+      "preferred_name": "Principal",
+      "source_value": "Primary",
+      "confidence_score": 0.3970727555716385,
+      "character_boundaries": {
+        "start": 5950,
+        "end": 5957
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5958,
+        "end": 5963
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "objective",
+      "confidence_score": 0.3710172791496788,
+      "character_boundaries": {
+        "start": 5964,
+        "end": 5973
+      }
+    },
+    {
+      "snomed_cui": "436000",
+      "preferred_name": "Determined by (contextual qualifier)",
+      "source_value": "determine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5981,
+        "end": 5990
+      }
+    },
+    {
+      "snomed_cui": "103335007",
+      "preferred_name": "Duration",
+      "source_value": "duration",
+      "confidence_score": 0.8043931377472465,
+      "character_boundaries": {
+        "start": 6002,
+        "end": 6010
+      }
+    },
+    {
+      "snomed_cui": "118582008",
+      "preferred_name": "Percent (property)",
+      "source_value": "PCT",
+      "confidence_score": 0.5414453707033404,
+      "character_boundaries": {
+        "start": 6020,
+        "end": 6023
+      }
+    },
+    {
+      "snomed_cui": "420227002",
+      "preferred_name": "Recommendation to",
+      "source_value": "guidance",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6024,
+        "end": 6032
+      }
+    },
+    {
+      "snomed_cui": "2603003",
+      "preferred_name": "Secondary",
+      "source_value": "secondary",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6036,
+        "end": 6045
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6046,
+        "end": 6053
+      }
+    },
+    {
+      "snomed_cui": "386053000",
+      "preferred_name": "Evaluation procedure",
+      "source_value": "assessment",
+      "confidence_score": 0.8812781794683195,
+      "character_boundaries": {
+        "start": 6058,
+        "end": 6068
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6114,
+        "end": 6122
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6134,
+        "end": 6143
+      }
+    },
+    {
+      "snomed_cui": "77765009",
+      "preferred_name": "Exclude",
+      "source_value": "excluded",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6158,
+        "end": 6166
+      }
+    },
+    {
+      "snomed_cui": "190905008",
+      "preferred_name": "Cystic fibrosis",
+      "source_value": "cystic fibrosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6168,
+        "end": 6183
+      }
+    },
+    {
+      "snomed_cui": "55561003",
+      "preferred_name": "Active",
+      "source_value": "active",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6185,
+        "end": 6191
+      }
+    },
+    {
+      "snomed_cui": "700272008",
+      "preferred_name": "Tuberculosis of respiratory system",
+      "source_value": "TB",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6192,
+        "end": 6194
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severely",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6209,
+        "end": 6217
+      }
+    },
+    {
+      "snomed_cui": "370391006",
+      "preferred_name": "Patient immunosuppressed",
+      "source_value": "immunocompromised",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6218,
+        "end": 6235
+      }
+    },
+    {
+      "snomed_cui": "118582008",
+      "preferred_name": "Percent (property)",
+      "source_value": "PCT",
+      "confidence_score": 0.6879683303501876,
+      "character_boundaries": {
+        "start": 6237,
+        "end": 6240
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.8396049326200806,
+      "character_boundaries": {
+        "start": 6242,
+        "end": 6245
+      }
+    },
+    {
+      "snomed_cui": "767002",
+      "preferred_name": "White blood cell count",
+      "source_value": "leukocyte count",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6254,
+        "end": 6269
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6271,
+        "end": 6279
+      }
+    },
+    {
+      "snomed_cui": "255372005",
+      "preferred_name": "Variable",
+      "source_value": "variables",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6280,
+        "end": 6289
+      }
+    },
+    {
+      "snomed_cui": "258104002",
+      "preferred_name": "Measured",
+      "source_value": "measured",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6308,
+        "end": 6316
+      }
+    },
+    {
+      "snomed_cui": "258104002",
+      "preferred_name": "Measured",
+      "source_value": "measured",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6337,
+        "end": 6345
+      }
+    },
+    {
+      "snomed_cui": "414464004",
+      "preferred_name": "Immunoassay method",
+      "source_value": "immunoassay",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6357,
+        "end": 6368
+      }
+    },
+    {
+      "snomed_cui": "385049006",
+      "preferred_name": "Capsule",
+      "source_value": "CAP",
+      "confidence_score": 0.3416218905417231,
+      "character_boundaries": {
+        "start": 6370,
+        "end": 6373
+      }
+    },
+    {
+      "snomed_cui": "900000000000073002",
+      "preferred_name": "Sufficiently defined by necessary conditions definition status",
+      "source_value": "defined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6374,
+        "end": 6381
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "presence of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6385,
+        "end": 6396
+      }
+    },
+    {
+      "snomed_cui": "255260001",
+      "preferred_name": "Following",
+      "source_value": "following",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6414,
+        "end": 6423
+      }
+    },
+    {
+      "snomed_cui": "263731006",
+      "preferred_name": "Coughing",
+      "source_value": "cough",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6425,
+        "end": 6430
+      }
+    },
+    {
+      "snomed_cui": "45710003",
+      "preferred_name": "Sputum",
+      "source_value": "sputum",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6432,
+        "end": 6438
+      }
+    },
+    {
+      "snomed_cui": "267036007",
+      "preferred_name": "Dyspnea",
+      "source_value": "dyspnea",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6451,
+        "end": 6458
+      }
+    },
+    {
+      "snomed_cui": "703421000",
+      "preferred_name": "Temperature",
+      "source_value": "temperature",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6460,
+        "end": 6471
+      }
+    },
+    {
+      "snomed_cui": "48409008",
+      "preferred_name": "Respiratory crackles",
+      "source_value": "rales",
+      "confidence_score": 0.3107824343929674,
+      "character_boundaries": {
+        "start": 6493,
+        "end": 6498
+      }
+    },
+    {
+      "snomed_cui": "767002",
+      "preferred_name": "White blood cell count",
+      "source_value": "WBC",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6500,
+        "end": 6503
+      }
+    },
+    {
+      "snomed_cui": "47351003",
+      "preferred_name": "Infiltration",
+      "source_value": "infiltrate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6522,
+        "end": 6532
+      }
+    },
+    {
+      "snomed_cui": "399208008",
+      "preferred_name": "Plain X-ray of chest",
+      "source_value": "CXR",
+      "confidence_score": 0.34589019968907475,
+      "character_boundaries": {
+        "start": 6536,
+        "end": 6539
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6541,
+        "end": 6549
+      }
+    },
+    {
+      "snomed_cui": "367409002",
+      "preferred_name": "Followed by",
+      "source_value": "followed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6555,
+        "end": 6563
+      }
+    },
+    {
+      "snomed_cui": "19535007",
+      "preferred_name": "Original",
+      "source_value": "original",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6591,
+        "end": 6599
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6600,
+        "end": 6605
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6635,
+        "end": 6641
+      }
+    },
+    {
+      "snomed_cui": "118582008",
+      "preferred_name": "Percent (property)",
+      "source_value": "PCT",
+      "confidence_score": 0.5980609895575175,
+      "character_boundaries": {
+        "start": 6642,
+        "end": 6645
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6653,
+        "end": 6657
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6696,
+        "end": 6704
+      }
+    },
+    {
+      "snomed_cui": "385420005",
+      "preferred_name": "Contrast media",
+      "source_value": "contrast",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6724,
+        "end": 6732
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.8863712693972485,
+      "character_boundaries": {
+        "start": 6736,
+        "end": 6739
+      }
+    },
+    {
+      "snomed_cui": "414478003",
+      "preferred_name": "Blood leukocyte number above reference range",
+      "source_value": "leukocyte count, increased",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6744,
+        "end": 6770
+      }
+    },
+    {
+      "snomed_cui": "260369004",
+      "preferred_name": "Increasing",
+      "source_value": "increasing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6776,
+        "end": 6786
+      }
+    },
+    {
+      "snomed_cui": "246112005",
+      "preferred_name": "Severity",
+      "source_value": "severity",
+      "confidence_score": 0.7154911610180688,
+      "character_boundaries": {
+        "start": 6787,
+        "end": 6795
+      }
+    },
+    {
+      "snomed_cui": "385049006",
+      "preferred_name": "Capsule",
+      "source_value": "CAP",
+      "confidence_score": 0.517364799178015,
+      "character_boundaries": {
+        "start": 6799,
+        "end": 6802
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "classified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6804,
+        "end": 6814
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.5207708807602476,
+      "character_boundaries": {
+        "start": 6832,
+        "end": 6835
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6836,
+        "end": 6841
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6864,
+        "end": 6872
+      }
+    },
+    {
+      "snomed_cui": "419620001",
+      "preferred_name": "Death",
+      "source_value": "died",
+      "confidence_score": 0.39273331028497793,
+      "character_boundaries": {
+        "start": 6877,
+        "end": 6881
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6889,
+        "end": 6898
+      }
+    },
+    {
+      "snomed_cui": "278307001",
+      "preferred_name": "On admission",
+      "source_value": "on admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6914,
+        "end": 6926
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6946,
+        "end": 6952
+      }
+    },
+    {
+      "snomed_cui": "258817001",
+      "preferred_name": "Nanomole/liter",
+      "source_value": "nmol/L",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6992,
+        "end": 6998
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.9687228708080448,
+      "character_boundaries": {
+        "start": 7004,
+        "end": 7006
+      }
+    },
+    {
+      "snomed_cui": "258817001",
+      "preferred_name": "Nanomole/liter",
+      "source_value": "nmol/L",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7030,
+        "end": 7036
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.9496510268618961,
+      "character_boundaries": {
+        "start": 7042,
+        "end": 7044
+      }
+    },
+    {
+      "snomed_cui": "272389005",
+      "preferred_name": "Analysis",
+      "source_value": "analysis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7075,
+        "end": 7083
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.45464468835542976,
+      "character_boundaries": {
+        "start": 7131,
+        "end": 7133
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7173,
+        "end": 7179
+      }
+    },
+    {
+      "snomed_cui": "118582008",
+      "preferred_name": "Percent (property)",
+      "source_value": "PCT",
+      "confidence_score": 0.7989224131612688,
+      "character_boundaries": {
+        "start": 7194,
+        "end": 7197
+      }
+    },
+    {
+      "snomed_cui": "61425002",
+      "preferred_name": "C reactive protein",
+      "source_value": "CRP",
+      "confidence_score": 0.826685822631729,
+      "character_boundaries": {
+        "start": 7210,
+        "end": 7213
+      }
+    },
+    {
+      "snomed_cui": "258755000",
+      "preferred_name": "Percentage of total",
+      "source_value": "total",
+      "confidence_score": 0.5206995942838567,
+      "character_boundaries": {
+        "start": 7230,
+        "end": 7235
+      }
+    },
+    {
+      "snomed_cui": "767002",
+      "preferred_name": "White blood cell count",
+      "source_value": "leukocyte count",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7236,
+        "end": 7251
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7316,
+        "end": 7324
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7331,
+        "end": 7340
+      }
+    },
+    {
+      "snomed_cui": "35105006",
+      "preferred_name": "Increased",
+      "source_value": "increased",
+      "confidence_score": 0.4404405372020253,
+      "character_boundaries": {
+        "start": 7360,
+        "end": 7369
+      }
+    },
+    {
+      "snomed_cui": "263656005",
+      "preferred_name": "Accurate",
+      "source_value": "accuracy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7385,
+        "end": 7393
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.35945356848858256,
+      "character_boundaries": {
+        "start": 7475,
+        "end": 7477
+      }
+    },
+    {
+      "snomed_cui": "246175000",
+      "preferred_name": "Limitation",
+      "source_value": "Limitations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7502,
+        "end": 7513
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7548,
+        "end": 7555
+      }
+    },
+    {
+      "snomed_cui": "1100881000168104",
+      "preferred_name": "Assessment of cognitive function",
+      "source_value": "assessment",
+      "confidence_score": 0.7402259045735953,
+      "character_boundaries": {
+        "start": 7556,
+        "end": 7566
+      }
+    },
+    {
+      "snomed_cui": "2603003",
+      "preferred_name": "Secondary",
+      "source_value": "secondary",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 7579,
+        "end": 7588
+      }
+    },
+    {
+      "snomed_cui": "272389005",
+      "preferred_name": "Analysis",
+      "source_value": "analysis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7589,
+        "end": 7597
+      }
+    },
+    {
+      "snomed_cui": "272116003",
+      "preferred_name": "Durations",
+      "source_value": "duration",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 7626,
+        "end": 7634
+      }
+    },
+    {
+      "snomed_cui": "248448006",
+      "preferred_name": "Involved",
+      "source_value": "affected",
+      "confidence_score": 0.3194581409725163,
+      "character_boundaries": {
+        "start": 7639,
+        "end": 7647
+      }
+    },
+    {
+      "snomed_cui": "722991000000101",
+      "preferred_name": "Data",
+      "source_value": "data",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7686,
+        "end": 7690
+      }
+    }
+  ]
+}

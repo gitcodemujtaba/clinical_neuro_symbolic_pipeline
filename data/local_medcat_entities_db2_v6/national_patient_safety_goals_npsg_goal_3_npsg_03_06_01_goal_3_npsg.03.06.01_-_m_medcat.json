@@ -1,0 +1,2555 @@
+{
+  "chunk_id": "npsg_goal_3_npsg_03_06_01",
+  "entities": [
+    {
+      "snomed_cui": "107733003",
+      "preferred_name": "Introduction procedure",
+      "source_value": "Introduction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4,
+        "end": 16
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "Medication",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 32,
+        "end": 42
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "Information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 43,
+        "end": 54
+      }
+    },
+    {
+      "snomed_cui": "255509001",
+      "preferred_name": "Large",
+      "source_value": "large",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 60,
+        "end": 65
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "people",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 76,
+        "end": 82
+      }
+    },
+    {
+      "snomed_cui": "722901000000108",
+      "preferred_name": "Health care",
+      "source_value": "health care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 93,
+        "end": 104
+      }
+    },
+    {
+      "snomed_cui": "255204007",
+      "preferred_name": "Multiple",
+      "source_value": "multiple",
+      "confidence_score": 0.4987656886718529,
+      "character_boundaries": {
+        "start": 114,
+        "end": 122
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 123,
+        "end": 134
+      }
+    },
+    {
+      "snomed_cui": "119270007",
+      "preferred_name": "Management procedure",
+      "source_value": "managing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 157,
+        "end": 165
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 172,
+        "end": 183
+      }
+    },
+    {
+      "snomed_cui": "430193006",
+      "preferred_name": "Medication reconciliation",
+      "source_value": "medication reconciliation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 189,
+        "end": 214
+      }
+    },
+    {
+      "snomed_cui": "55607006",
+      "preferred_name": "Problem",
+      "source_value": "issue",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 235,
+        "end": 240
+      }
+    },
+    {
+      "snomed_cui": "430193006",
+      "preferred_name": "Medication reconciliation",
+      "source_value": "medication reconciliation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 245,
+        "end": 270
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physician",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 274,
+        "end": 283
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 328,
+        "end": 339
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 342,
+        "end": 349
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 401,
+        "end": 412
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 438,
+        "end": 445
+      }
+    },
+    {
+      "snomed_cui": "9565401000001109",
+      "preferred_name": "Resolve",
+      "source_value": "resolves",
+      "confidence_score": 0.47110725002862697,
+      "character_boundaries": {
+        "start": 450,
+        "end": 458
+      }
+    },
+    {
+      "snomed_cui": "110287002",
+      "preferred_name": "Discrepancy",
+      "source_value": "discrepancies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 463,
+        "end": 476
+      }
+    },
+    {
+      "snomed_cui": "39352004",
+      "preferred_name": "Joint structure",
+      "source_value": "Joint",
+      "confidence_score": 0.37730082110376684,
+      "character_boundaries": {
+        "start": 483,
+        "end": 488
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organizations",
+      "confidence_score": 0.36793395271327434,
+      "character_boundaries": {
+        "start": 516,
+        "end": 529
+      }
+    },
+    {
+      "snomed_cui": "302549007",
+      "preferred_name": "Entire face",
+      "source_value": "face",
+      "confidence_score": 0.33536828572451266,
+      "character_boundaries": {
+        "start": 530,
+        "end": 534
+      }
+    },
+    {
+      "snomed_cui": "430193006",
+      "preferred_name": "Medication reconciliation",
+      "source_value": "medication reconciliation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 551,
+        "end": 576
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "best",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 582,
+        "end": 586
+      }
+    },
+    {
+      "snomed_cui": "430193006",
+      "preferred_name": "Medication reconciliation",
+      "source_value": "medication reconciliation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 587,
+        "end": 612
+      }
+    },
+    {
+      "snomed_cui": "9668001000001102",
+      "preferred_name": "Complete",
+      "source_value": "complete",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 624,
+        "end": 632
+      }
+    },
+    {
+      "snomed_cui": "66216009",
+      "preferred_name": "Understanding, function",
+      "source_value": "understanding",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 633,
+        "end": 646
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 659,
+        "end": 666
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 691,
+        "end": 702
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 707,
+        "end": 714
+      }
+    },
+    {
+      "snomed_cui": "52925006",
+      "preferred_name": "Difficult",
+      "source_value": "difficult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 745,
+        "end": 754
+      }
+    },
+    {
+      "snomed_cui": "398092000",
+      "preferred_name": "Obtained",
+      "source_value": "obtain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 758,
+        "end": 764
+      }
+    },
+    {
+      "snomed_cui": "9668001000001102",
+      "preferred_name": "Complete",
+      "source_value": "complete",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 767,
+        "end": 775
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 792,
+        "end": 799
+      }
+    },
+    {
+      "snomed_cui": "263656005",
+      "preferred_name": "Accurate",
+      "source_value": "accuracy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 821,
+        "end": 829
+      }
+    },
+    {
+      "snomed_cui": "371154000",
+      "preferred_name": "Dependent",
+      "source_value": "dependent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 833,
+        "end": 842
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 850,
+        "end": 857
+      }
+    },
+    {
+      "snomed_cui": "14671000000105",
+      "preferred_name": "Abilities",
+      "source_value": "ability",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 860,
+        "end": 867
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 900,
+        "end": 911
+      }
+    },
+    {
+      "snomed_cui": "20572008",
+      "preferred_name": "Good",
+      "source_value": "good",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 915,
+        "end": 919
+      }
+    },
+    {
+      "snomed_cui": "19487008",
+      "preferred_name": "Exertion, function",
+      "source_value": "effort",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 926,
+        "end": 932
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 949,
+        "end": 960
+      }
+    },
+    {
+      "snomed_cui": "229057006",
+      "preferred_name": "Meetings",
+      "source_value": "meeting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 978,
+        "end": 985
+      }
+    },
+    {
+      "snomed_cui": "361269008",
+      "preferred_name": "Intentional",
+      "source_value": "intent",
+      "confidence_score": 0.6756178197421288,
+      "character_boundaries": {
+        "start": 990,
+        "end": 996
+      }
+    },
+    {
+      "snomed_cui": "722901000000108",
+      "preferred_name": "Health care",
+      "source_value": "health care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1020,
+        "end": 1031
+      }
+    },
+    {
+      "snomed_cui": "105430000",
+      "preferred_name": "Adoption, life event",
+      "source_value": "adoption",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1049,
+        "end": 1057
+      }
+    },
+    {
+      "snomed_cui": "246333005",
+      "preferred_name": "System",
+      "source_value": "systems",
+      "confidence_score": 0.5117832018883323,
+      "character_boundaries": {
+        "start": 1080,
+        "end": 1087
+      }
+    },
+    {
+      "snomed_cui": "722111000000107",
+      "preferred_name": "Database",
+      "source_value": "databases",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1109,
+        "end": 1118
+      }
+    },
+    {
+      "snomed_cui": "247968005",
+      "preferred_name": "Compulsive hoarding",
+      "source_value": "collecting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1139,
+        "end": 1149
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.963438403055736,
+      "character_boundaries": {
+        "start": 1150,
+        "end": 1160
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1161,
+        "end": 1172
+      }
+    },
+    {
+      "snomed_cui": "255403003",
+      "preferred_name": "Effectiveness",
+      "source_value": "effectiveness",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1179,
+        "end": 1192
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "processes",
+      "confidence_score": 0.30619324640436946,
+      "character_boundaries": {
+        "start": 1202,
+        "end": 1211
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1238,
+        "end": 1245
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "Goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1253,
+        "end": 1257
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1280,
+        "end": 1284
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "points",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1285,
+        "end": 1291
+      }
+    },
+    {
+      "snomed_cui": "430193006",
+      "preferred_name": "Medication reconciliation",
+      "source_value": "medication reconciliation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1295,
+        "end": 1320
+      }
+    },
+    {
+      "snomed_cui": "57795002",
+      "preferred_name": "Chemical element",
+      "source_value": "elements",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1326,
+        "end": 1334
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "help",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1379,
+        "end": 1383
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organizations",
+      "confidence_score": 0.5675268438564067,
+      "character_boundaries": {
+        "start": 1384,
+        "end": 1397
+      }
+    },
+    {
+      "snomed_cui": "260385009",
+      "preferred_name": "Negative",
+      "source_value": "negative",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1405,
+        "end": 1413
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1414,
+        "end": 1421
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1422,
+        "end": 1430
+      }
+    },
+    {
+      "snomed_cui": "47429007",
+      "preferred_name": "Associated with",
+      "source_value": "associated with",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1431,
+        "end": 1446
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1447,
+        "end": 1457
+      }
+    },
+    {
+      "snomed_cui": "110287002",
+      "preferred_name": "Discrepancy",
+      "source_value": "discrepancies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1458,
+        "end": 1471
+      }
+    },
+    {
+      "snomed_cui": "1290002002",
+      "preferred_name": "Alberta Stroke Program Early CT score",
+      "source_value": "aspects",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1478,
+        "end": 1485
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.4312826400891666,
+      "character_boundaries": {
+        "start": 1498,
+        "end": 1505
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.7364953020718084,
+      "character_boundaries": {
+        "start": 1523,
+        "end": 1533
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.9475765539396959,
+      "character_boundaries": {
+        "start": 1537,
+        "end": 1548
+      }
+    },
+    {
+      "snomed_cui": "707695005",
+      "preferred_name": "Standard base excess calculation technique",
+      "source_value": "standards",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1570,
+        "end": 1579
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1600,
+        "end": 1604
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1612,
+        "end": 1619
+      }
+    },
+    {
+      "snomed_cui": "162258009",
+      "preferred_name": "No incoordination",
+      "source_value": "coordinating",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1620,
+        "end": 1632
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1633,
+        "end": 1644
+      }
+    },
+    {
+      "snomed_cui": "261074009",
+      "preferred_name": "External",
+      "source_value": "outside",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1688,
+        "end": 1695
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organization",
+      "confidence_score": 0.47387969298178,
+      "character_boundaries": {
+        "start": 1703,
+        "end": 1715
+      }
+    },
+    {
+      "snomed_cui": "311401005",
+      "preferred_name": "Patient education",
+      "source_value": "patient education",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1731,
+        "end": 1748
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1757,
+        "end": 1767
+      }
+    },
+    {
+      "snomed_cui": "24863003",
+      "preferred_name": "Postprandial",
+      "source_value": "PC",
+      "confidence_score": 0.44597066015407644,
+      "character_boundaries": {
+        "start": 1773,
+        "end": 1775
+      }
+    },
+    {
+      "snomed_cui": "263536004",
+      "preferred_name": "Communication",
+      "source_value": "communications",
+      "confidence_score": 0.35799226434180936,
+      "character_boundaries": {
+        "start": 1791,
+        "end": 1805
+      }
+    },
+    {
+      "snomed_cui": "719031000000103",
+      "preferred_name": "Provider",
+      "source_value": "providers",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1817,
+        "end": 1826
+      }
+    },
+    {
+      "snomed_cui": "24863003",
+      "preferred_name": "Postprandial",
+      "source_value": "PC",
+      "confidence_score": 0.3164541226099691,
+      "character_boundaries": {
+        "start": 1828,
+        "end": 1830
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1861,
+        "end": 1872
+      }
+    },
+    {
+      "snomed_cui": "21139007",
+      "preferred_name": "Organization",
+      "source_value": "organizations",
+      "confidence_score": 0.3330299694477591,
+      "character_boundaries": {
+        "start": 1938,
+        "end": 1951
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1988,
+        "end": 1998
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1999,
+        "end": 2010
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2016,
+        "end": 2020
+      }
+    },
+    {
+      "snomed_cui": "224930009",
+      "preferred_name": "Services",
+      "source_value": "services",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2045,
+        "end": 2053
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2070,
+        "end": 2078
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2106,
+        "end": 2116
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2163,
+        "end": 2174
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2179,
+        "end": 2186
+      }
+    },
+    {
+      "snomed_cui": "397943006",
+      "preferred_name": "Planned",
+      "source_value": "planning",
+      "confidence_score": 0.8948210586898726,
+      "character_boundaries": {
+        "start": 2202,
+        "end": 2210
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2217,
+        "end": 2226
+      }
+    },
+    {
+      "snomed_cui": "224930009",
+      "preferred_name": "Services",
+      "source_value": "services",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2232,
+        "end": 2240
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2267,
+        "end": 2278
+      }
+    },
+    {
+      "snomed_cui": "262009000",
+      "preferred_name": "Not used",
+      "source_value": "not used",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2283,
+        "end": 2291
+      }
+    },
+    {
+      "snomed_cui": "288577006",
+      "preferred_name": "Does communicate",
+      "source_value": "communicate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2325,
+        "end": 2336
+      }
+    },
+    {
+      "snomed_cui": "263656005",
+      "preferred_name": "Accurate",
+      "source_value": "accurate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2337,
+        "end": 2345
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2346,
+        "end": 2353
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2354,
+        "end": 2364
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2365,
+        "end": 2376
+      }
+    },
+    {
+      "snomed_cui": "410666004",
+      "preferred_name": "Reason for",
+      "source_value": "Rationale",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2383,
+        "end": 2392
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2439,
+        "end": 2449
+      }
+    },
+    {
+      "snomed_cui": "110287002",
+      "preferred_name": "Discrepancy",
+      "source_value": "discrepancies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2450,
+        "end": 2463
+      }
+    },
+    {
+      "snomed_cui": "103309006",
+      "preferred_name": "Patient affected (contextual qualifier)",
+      "source_value": "affect patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2468,
+        "end": 2482
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcomes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2483,
+        "end": 2491
+      }
+    },
+    {
+      "snomed_cui": "430193006",
+      "preferred_name": "Medication reconciliation",
+      "source_value": "Medication reconciliation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2493,
+        "end": 2518
+      }
+    },
+    {
+      "snomed_cui": "361269008",
+      "preferred_name": "Intentional",
+      "source_value": "intended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2522,
+        "end": 2530
+      }
+    },
+    {
+      "snomed_cui": "9565401000001109",
+      "preferred_name": "Resolve",
+      "source_value": "resolve",
+      "confidence_score": 0.52513310021654,
+      "character_boundaries": {
+        "start": 2547,
+        "end": 2554
+      }
+    },
+    {
+      "snomed_cui": "110287002",
+      "preferred_name": "Discrepancy",
+      "source_value": "discrepancies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2555,
+        "end": 2568
+      }
+    },
+    {
+      "snomed_cui": "116680003",
+      "preferred_name": "Is a",
+      "source_value": "is a",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2572,
+        "end": 2576
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.4130887485231718,
+      "character_boundaries": {
+        "start": 2577,
+        "end": 2584
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2602,
+        "end": 2613
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2616,
+        "end": 2623
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2675,
+        "end": 2686
+      }
+    },
+    {
+      "snomed_cui": "397635003",
+      "preferred_name": "Address",
+      "source_value": "addresses",
+      "confidence_score": 0.8501689738780613,
+      "character_boundaries": {
+        "start": 2703,
+        "end": 2712
+      }
+    },
+    {
+      "snomed_cui": "81059003",
+      "preferred_name": "Emission",
+      "source_value": "omissions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2727,
+        "end": 2736
+      }
+    },
+    {
+      "snomed_cui": "404204005",
+      "preferred_name": "Drug interaction with drug",
+      "source_value": "interactions",
+      "confidence_score": 0.8261834249133286,
+      "character_boundaries": {
+        "start": 2742,
+        "end": 2754
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2764,
+        "end": 2768
+      }
+    },
+    {
+      "snomed_cui": "255238004",
+      "preferred_name": "Continuous",
+      "source_value": "continue",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2772,
+        "end": 2780
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2781,
+        "end": 2788
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2789,
+        "end": 2800
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2815,
+        "end": 2826
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2832,
+        "end": 2842
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2893,
+        "end": 2904
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2905,
+        "end": 2912
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2928,
+        "end": 2938
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.850170015903526,
+      "character_boundaries": {
+        "start": 2945,
+        "end": 2949
+      }
+    },
+    {
+      "snomed_cui": "260864003",
+      "preferred_name": "Frequency",
+      "source_value": "frequency",
+      "confidence_score": 0.6419791532621502,
+      "character_boundaries": {
+        "start": 2951,
+        "end": 2960
+      }
+    },
+    {
+      "snomed_cui": "246099003",
+      "preferred_name": "Purpose",
+      "source_value": "purpose",
+      "confidence_score": 0.9714176819492931,
+      "character_boundaries": {
+        "start": 2973,
+        "end": 2980
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3016,
+        "end": 3027
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needs",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3033,
+        "end": 3038
+      }
+    },
+    {
+      "snomed_cui": "721963009",
+      "preferred_name": "Order",
+      "source_value": "order",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3058,
+        "end": 3063
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3077,
+        "end": 3084
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3103,
+        "end": 3114
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3139,
+        "end": 3150
+      }
+    },
+    {
+      "snomed_cui": "717141000000103",
+      "preferred_name": "Future",
+      "source_value": "future",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3158,
+        "end": 3164
+      }
+    },
+    {
+      "snomed_cui": "57795002",
+      "preferred_name": "Chemical element",
+      "source_value": "Element",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3171,
+        "end": 3178
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.7161769610670052,
+      "character_boundaries": {
+        "start": 3218,
+        "end": 3220
+      }
+    },
+    {
+      "snomed_cui": "398092000",
+      "preferred_name": "Obtained",
+      "source_value": "Obtain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3225,
+        "end": 3231
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3232,
+        "end": 3243
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3251,
+        "end": 3262
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3267,
+        "end": 3274
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "currently",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3278,
+        "end": 3287
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admitted",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3309,
+        "end": 3317
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3325,
+        "end": 3333
+      }
+    },
+    {
+      "snomed_cui": "373864002",
+      "preferred_name": "Outpatient",
+      "source_value": "outpatient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3351,
+        "end": 3361
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3376,
+        "end": 3387
+      }
+    },
+    {
+      "snomed_cui": "397934002",
+      "preferred_name": "Documented",
+      "source_value": "documented",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3391,
+        "end": 3401
+      }
+    },
+    {
+      "snomed_cui": "397750000",
+      "preferred_name": "Format",
+      "source_value": "format",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3421,
+        "end": 3427
+      }
+    },
+    {
+      "snomed_cui": "285036002",
+      "preferred_name": "Does manage medication",
+      "source_value": "manage medications",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3456,
+        "end": 3474
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "Current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3485,
+        "end": 3492
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3493,
+        "end": 3504
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3505,
+        "end": 3512
+      }
+    },
+    {
+      "snomed_cui": "420449005",
+      "preferred_name": "As needed for",
+      "source_value": "as-needed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3566,
+        "end": 3575
+      }
+    },
+    {
+      "snomed_cui": "900000000000550004",
+      "preferred_name": "Definition",
+      "source_value": "definition",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3606,
+        "end": 3616
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3620,
+        "end": 3631
+      }
+    },
+    {
+      "snomed_cui": "52925006",
+      "preferred_name": "Difficult",
+      "source_value": "difficult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3654,
+        "end": 3663
+      }
+    },
+    {
+      "snomed_cui": "398092000",
+      "preferred_name": "Obtained",
+      "source_value": "obtain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3667,
+        "end": 3673
+      }
+    },
+    {
+      "snomed_cui": "9668001000001102",
+      "preferred_name": "Complete",
+      "source_value": "complete",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3674,
+        "end": 3682
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3683,
+        "end": 3694
+      }
+    },
+    {
+      "snomed_cui": "15240007",
+      "preferred_name": "Current",
+      "source_value": "current",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3698,
+        "end": 3705
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3706,
+        "end": 3717
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3725,
+        "end": 3732
+      }
+    },
+    {
+      "snomed_cui": "20572008",
+      "preferred_name": "Good",
+      "source_value": "good",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3736,
+        "end": 3740
+      }
+    },
+    {
+      "snomed_cui": "19487008",
+      "preferred_name": "Exertion, function",
+      "source_value": "effort",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3747,
+        "end": 3753
+      }
+    },
+    {
+      "snomed_cui": "398092000",
+      "preferred_name": "Obtained",
+      "source_value": "obtain",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3757,
+        "end": 3763
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3769,
+        "end": 3780
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3790,
+        "end": 3797
+      }
+    },
+    {
+      "snomed_cui": "260753009",
+      "preferred_name": "Source",
+      "source_value": "sources",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3811,
+        "end": 3818
+      }
+    },
+    {
+      "snomed_cui": "229057006",
+      "preferred_name": "Meetings",
+      "source_value": "meeting",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3841,
+        "end": 3848
+      }
+    },
+    {
+      "snomed_cui": "361269008",
+      "preferred_name": "Intentional",
+      "source_value": "intent",
+      "confidence_score": 0.8127087549139678,
+      "character_boundaries": {
+        "start": 3853,
+        "end": 3859
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.48293785869251865,
+      "character_boundaries": {
+        "start": 3867,
+        "end": 3869
+      }
+    },
+    {
+      "snomed_cui": "23745001",
+      "preferred_name": "Documentation procedure",
+      "source_value": "Documentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3874,
+        "end": 3887
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.5909751156826277,
+      "character_boundaries": {
+        "start": 3904,
+        "end": 3906
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3931,
+        "end": 3941
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3942,
+        "end": 3953
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.8624755977966246,
+      "character_boundaries": {
+        "start": 3974,
+        "end": 3978
+      }
+    },
+    {
+      "snomed_cui": "272123002",
+      "preferred_name": "Frequencies",
+      "source_value": "frequency",
+      "confidence_score": 0.6175440572629185,
+      "character_boundaries": {
+        "start": 3987,
+        "end": 3996
+      }
+    },
+    {
+      "snomed_cui": "246099003",
+      "preferred_name": "Purpose",
+      "source_value": "purpose",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3998,
+        "end": 4005
+      }
+    },
+    {
+      "snomed_cui": "123027009",
+      "preferred_name": "24 hours",
+      "source_value": "24-hour",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4030,
+        "end": 4037
+      }
+    },
+    {
+      "snomed_cui": "123027009",
+      "preferred_name": "24 hours",
+      "source_value": "24-hour",
+      "confidence_score": 0.6255012835421515,
+      "character_boundaries": {
+        "start": 4071,
+        "end": 4078
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4088,
+        "end": 4095
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "emergency department",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4100,
+        "end": 4120
+      }
+    },
+    {
+      "snomed_cui": "373864002",
+      "preferred_name": "Outpatient",
+      "source_value": "outpatient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4136,
+        "end": 4146
+      }
+    },
+    {
+      "snomed_cui": "110468005",
+      "preferred_name": "Ambulatory surgery",
+      "source_value": "ambulatory surgery",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4158,
+        "end": 4176
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.4280382497691994,
+      "character_boundaries": {
+        "start": 4206,
+        "end": 4208
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.9506276984251494,
+      "character_boundaries": {
+        "start": 4225,
+        "end": 4235
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4236,
+        "end": 4247
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4252,
+        "end": 4259
+      }
+    },
+    {
+      "snomed_cui": "68369002",
+      "preferred_name": "Brought on by",
+      "source_value": "brought",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4260,
+        "end": 4267
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4275,
+        "end": 4283
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.9733229336296845,
+      "character_boundaries": {
+        "start": 4293,
+        "end": 4304
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4321,
+        "end": 4328
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4336,
+        "end": 4344
+      }
+    },
+    {
+      "snomed_cui": "721963009",
+      "preferred_name": "Order",
+      "source_value": "order",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4348,
+        "end": 4353
+      }
+    },
+    {
+      "snomed_cui": "110287002",
+      "preferred_name": "Discrepancy",
+      "source_value": "discrepancies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4378,
+        "end": 4391
+      }
+    },
+    {
+      "snomed_cui": "110287002",
+      "preferred_name": "Discrepancy",
+      "source_value": "Discrepancies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4400,
+        "end": 4413
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4414,
+        "end": 4421
+      }
+    },
+    {
+      "snomed_cui": "81059003",
+      "preferred_name": "Emission",
+      "source_value": "omissions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4422,
+        "end": 4431
+      }
+    },
+    {
+      "snomed_cui": "103306004",
+      "preferred_name": "Contraindication to (contextual qualifier)",
+      "source_value": "contraindications",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4447,
+        "end": 4464
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4474,
+        "end": 4485
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "changes",
+      "confidence_score": 0.41136315001759105,
+      "character_boundaries": {
+        "start": 4491,
+        "end": 4498
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "individual",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4512,
+        "end": 4522
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4524,
+        "end": 4534
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4542,
+        "end": 4550
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.49496308313151643,
+      "character_boundaries": {
+        "start": 4576,
+        "end": 4578
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4595,
+        "end": 4602
+      }
+    },
+    {
+      "snomed_cui": "397678008",
+      "preferred_name": "Surname",
+      "source_value": "family",
+      "confidence_score": 0.44597560708969586,
+      "character_boundaries": {
+        "start": 4607,
+        "end": 4613
+      }
+    },
+    {
+      "snomed_cui": "133932002",
+      "preferred_name": "Caregiver",
+      "source_value": "caregiver",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4615,
+        "end": 4624
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4629,
+        "end": 4636
+      }
+    },
+    {
+      "snomed_cui": "125676002",
+      "preferred_name": "Person",
+      "source_value": "person",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4637,
+        "end": 4643
+      }
+    },
+    {
+      "snomed_cui": "420449005",
+      "preferred_name": "As needed for",
+      "source_value": "as needed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4644,
+        "end": 4653
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4668,
+        "end": 4679
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4687,
+        "end": 4698
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4703,
+        "end": 4710
+      }
+    },
+    {
+      "snomed_cui": "58000006",
+      "preferred_name": "Patient discharge",
+      "source_value": "discharged",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4742,
+        "end": 4752
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4762,
+        "end": 4770
+      }
+    },
+    {
+      "snomed_cui": "373864002",
+      "preferred_name": "Outpatient",
+      "source_value": "outpatient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4791,
+        "end": 4801
+      }
+    },
+    {
+      "snomed_cui": "408102007",
+      "preferred_name": "Unit dose",
+      "source_value": "dose",
+      "confidence_score": 0.7530437668930607,
+      "character_boundaries": {
+        "start": 4832,
+        "end": 4836
+      }
+    },
+    {
+      "snomed_cui": "272123002",
+      "preferred_name": "Frequencies",
+      "source_value": "frequency",
+      "confidence_score": 0.5315993416881969,
+      "character_boundaries": {
+        "start": 4845,
+        "end": 4854
+      }
+    },
+    {
+      "snomed_cui": "246099003",
+      "preferred_name": "Purpose",
+      "source_value": "purpose",
+      "confidence_score": 0.9666793999730139,
+      "character_boundaries": {
+        "start": 4856,
+        "end": 4863
+      }
+    },
+    {
+      "snomed_cui": "23745001",
+      "preferred_name": "Documentation procedure",
+      "source_value": "Documentation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4869,
+        "end": 4882
+      }
+    },
+    {
+      "snomed_cui": "84757009",
+      "preferred_name": "Epilepsy",
+      "source_value": "EP",
+      "confidence_score": 0.4938230766909479,
+      "character_boundaries": {
+        "start": 4899,
+        "end": 4901
+      }
+    },
+    {
+      "snomed_cui": "182832007",
+      "preferred_name": "Procedure related to management of drug administration",
+      "source_value": "managing medication",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4932,
+        "end": 4951
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4952,
+        "end": 4963
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4971,
+        "end": 4978
+      }
+    },
+    {
+      "snomed_cui": "58000006",
+      "preferred_name": "Patient discharge",
+      "source_value": "discharged",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4993,
+        "end": 5003
+      }
+    },
+    {
+      "snomed_cui": "22232009",
+      "preferred_name": "Hospital",
+      "source_value": "hospital",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5013,
+        "end": 5021
+      }
+    },
+    {
+      "snomed_cui": "373864002",
+      "preferred_name": "Outpatient",
+      "source_value": "outpatient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5042,
+        "end": 5052
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5080,
+        "end": 5087
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5104,
+        "end": 5111
+      }
+    },
+    {
+      "snomed_cui": "719031000000103",
+      "preferred_name": "Provider",
+      "source_value": "provider",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5149,
+        "end": 5157
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5173,
+        "end": 5184
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5190,
+        "end": 5201
+      }
+    },
+    {
+      "snomed_cui": "410546004",
+      "preferred_name": "Discontinued",
+      "source_value": "discontinued",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5206,
+        "end": 5218
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "changed",
+      "confidence_score": 0.9687914642938684,
+      "character_boundaries": {
+        "start": 5230,
+        "end": 5237
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5246,
+        "end": 5257
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5259,
+        "end": 5268
+      }
+    },
+    {
+      "snomed_cui": "303502004",
+      "preferred_name": "Counter",
+      "source_value": "counter",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5278,
+        "end": 5285
+      }
+    },
+    {
+      "snomed_cui": "288345009",
+      "preferred_name": "Does carry",
+      "source_value": "carry",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5314,
+        "end": 5319
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medication",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5320,
+        "end": 5330
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5331,
+        "end": 5342
+      }
+    },
+    {
+      "snomed_cui": "272379006",
+      "preferred_name": "Event",
+      "source_value": "event",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5363,
+        "end": 5368
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5372,
+        "end": 5381
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5399,
+        "end": 5410
+      }
+    },
+    {
+      "snomed_cui": "311401005",
+      "preferred_name": "Patient education",
+      "source_value": "patient education",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5414,
+        "end": 5431
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.8635920125583465,
+      "character_boundaries": {
+        "start": 5435,
+        "end": 5446
+      }
+    },
+    {
+      "snomed_cui": "372244006",
+      "preferred_name": "Malignant melanoma",
+      "source_value": "MM",
+      "confidence_score": 0.3511955229799396,
+      "character_boundaries": {
+        "start": 5467,
+        "end": 5469
+      }
+    },
+    {
+      "snomed_cui": "24863003",
+      "preferred_name": "Postprandial",
+      "source_value": "PC",
+      "confidence_score": 0.3626053028915056,
+      "character_boundaries": {
+        "start": 5480,
+        "end": 5482
+      }
+    },
+    {
+      "snomed_cui": "24863003",
+      "preferred_name": "Postprandial",
+      "source_value": "PC",
+      "confidence_score": 0.4660279182975735,
+      "character_boundaries": {
+        "start": 5497,
+        "end": 5499
+      }
+    }
+  ]
+}

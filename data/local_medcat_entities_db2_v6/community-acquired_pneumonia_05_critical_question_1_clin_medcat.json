@@ -1,0 +1,5925 @@
+{
+  "chunk_id": "05",
+  "entities": [
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 0,
+        "end": 8
+      }
+    },
+    {
+      "snomed_cui": "421529006",
+      "preferred_name": "Dementia with acquired immunodeficiency syndrome",
+      "source_value": "Aids",
+      "confidence_score": 0.49930401031322935,
+      "character_boundaries": {
+        "start": 18,
+        "end": 22
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.7981750953766754,
+      "character_boundaries": {
+        "start": 27,
+        "end": 30
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "Admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 31,
+        "end": 40
+      }
+    },
+    {
+      "snomed_cui": "8940901000001109",
+      "preferred_name": "Available",
+      "source_value": "available",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 61,
+        "end": 70
+      }
+    },
+    {
+      "snomed_cui": "386387004",
+      "preferred_name": "Peer review",
+      "source_value": "peer-reviewed",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 71,
+        "end": 84
+      }
+    },
+    {
+      "snomed_cui": "722531000000109",
+      "preferred_name": "Quality standard",
+      "source_value": "quality standards",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 131,
+        "end": 148
+      }
+    },
+    {
+      "snomed_cui": "721241000000109",
+      "preferred_name": "Review",
+      "source_value": "review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 155,
+        "end": 161
+      }
+    },
+    {
+      "snomed_cui": "7882003",
+      "preferred_name": "Identified",
+      "source_value": "identified",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 162,
+        "end": 172
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 175,
+        "end": 183
+      }
+    },
+    {
+      "snomed_cui": "421529006",
+      "preferred_name": "Dementia with acquired immunodeficiency syndrome",
+      "source_value": "aids",
+      "confidence_score": 0.4854377172285786,
+      "character_boundaries": {
+        "start": 193,
+        "end": 197
+      }
+    },
+    {
+      "snomed_cui": "86407004",
+      "preferred_name": "Table, device",
+      "source_value": "Table",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 199,
+        "end": 204
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 239,
+        "end": 247
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 263,
+        "end": 267
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 268,
+        "end": 271
+      }
+    },
+    {
+      "snomed_cui": "342711000000106",
+      "preferred_name": "Referred to",
+      "source_value": "referred to",
+      "confidence_score": 0.6675802647344455,
+      "character_boundaries": {
+        "start": 284,
+        "end": 295
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 299,
+        "end": 305
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "aid",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 352,
+        "end": 355
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "help",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 359,
+        "end": 363
+      }
+    },
+    {
+      "snomed_cui": "436000",
+      "preferred_name": "Determined by (contextual qualifier)",
+      "source_value": "determine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 364,
+        "end": 373
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 378,
+        "end": 386
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 387,
+        "end": 390
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 399,
+        "end": 407
+      }
+    },
+    {
+      "snomed_cui": "191415002",
+      "preferred_name": "Communicable disease",
+      "source_value": "Infectious Diseases",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 495,
+        "end": 514
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 607,
+        "end": 617
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.7393649208370691,
+      "character_boundaries": {
+        "start": 622,
+        "end": 632
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.3636458920059681,
+      "character_boundaries": {
+        "start": 646,
+        "end": 649
+      }
+    },
+    {
+      "snomed_cui": "398070004",
+      "preferred_name": "State",
+      "source_value": "stated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 651,
+        "end": 657
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 663,
+        "end": 671
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.989346131397547,
+      "character_boundaries": {
+        "start": 697,
+        "end": 700
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 701,
+        "end": 710
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.6360168979583873,
+      "character_boundaries": {
+        "start": 739,
+        "end": 744
+      }
+    },
+    {
+      "snomed_cui": "281411007",
+      "preferred_name": "Spastic diplegia",
+      "source_value": "little",
+      "confidence_score": 0.3807409902525756,
+      "character_boundaries": {
+        "start": 806,
+        "end": 812
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 831,
+        "end": 839
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.8271037696582952,
+      "character_boundaries": {
+        "start": 861,
+        "end": 866
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 877,
+        "end": 885
+      }
+    },
+    {
+      "snomed_cui": "40617009",
+      "preferred_name": "Artificial ventilation",
+      "source_value": "mechanical ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 886,
+        "end": 908
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 912,
+        "end": 924
+      }
+    },
+    {
+      "snomed_cui": "870406003",
+      "preferred_name": "Vasopressor",
+      "source_value": "vasopressors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 935,
+        "end": 947
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 949,
+        "end": 953
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 954,
+        "end": 957
+      }
+    },
+    {
+      "snomed_cui": "79065008",
+      "preferred_name": "Critic",
+      "source_value": "critics",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 969,
+        "end": 976
+      }
+    },
+    {
+      "snomed_cui": "726711005",
+      "preferred_name": "Disposition",
+      "source_value": "disposition",
+      "confidence_score": 0.5885286090323743,
+      "character_boundaries": {
+        "start": 1026,
+        "end": 1037
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1059,
+        "end": 1067
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1081,
+        "end": 1089
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1090,
+        "end": 1093
+      }
+    },
+    {
+      "snomed_cui": "263707001",
+      "preferred_name": "Clear",
+      "source_value": "clear",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1108,
+        "end": 1113
+      }
+    },
+    {
+      "snomed_cui": "271649006",
+      "preferred_name": "Systolic blood pressure",
+      "source_value": "systolic blood pressure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1150,
+        "end": 1173
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1180,
+        "end": 1185
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1198,
+        "end": 1205
+      }
+    },
+    {
+      "snomed_cui": "359846004",
+      "preferred_name": "PO>2< measurement",
+      "source_value": "PaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1211,
+        "end": 1215
+      }
+    },
+    {
+      "snomed_cui": "118586006",
+      "preferred_name": "Ratio (property)",
+      "source_value": "ratio",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1221,
+        "end": 1226
+      }
+    },
+    {
+      "snomed_cui": "254648000",
+      "preferred_name": "Effective",
+      "source_value": "effective",
+      "confidence_score": 0.7726809234146845,
+      "character_boundaries": {
+        "start": 1292,
+        "end": 1301
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1316,
+        "end": 1319
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1320,
+        "end": 1329
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1336,
+        "end": 1344
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1358,
+        "end": 1366
+      }
+    },
+    {
+      "snomed_cui": "49499008",
+      "preferred_name": "Stat",
+      "source_value": "immediately",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1393,
+        "end": 1404
+      }
+    },
+    {
+      "snomed_cui": "191415002",
+      "preferred_name": "Communicable disease",
+      "source_value": "Infectious Diseases",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1417,
+        "end": 1436
+      }
+    },
+    {
+      "snomed_cui": "261560009",
+      "preferred_name": "Revision procedure",
+      "source_value": "revised",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1517,
+        "end": 1524
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1532,
+        "end": 1542
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1607,
+        "end": 1617
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1655,
+        "end": 1669
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1675,
+        "end": 1683
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1702,
+        "end": 1705
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.6195520366495032,
+      "character_boundaries": {
+        "start": 1735,
+        "end": 1740
+      }
+    },
+    {
+      "snomed_cui": "386053000",
+      "preferred_name": "Evaluation procedure",
+      "source_value": "investigations",
+      "confidence_score": 0.6034677422228516,
+      "character_boundaries": {
+        "start": 1836,
+        "end": 1850
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1878,
+        "end": 1888
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1920,
+        "end": 1926
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1960,
+        "end": 1970
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "Severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1974,
+        "end": 1980
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2000,
+        "end": 2006
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2012,
+        "end": 2016
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "aid",
+      "confidence_score": 0.676628520250254,
+      "character_boundaries": {
+        "start": 2018,
+        "end": 2021
+      }
+    },
+    {
+      "snomed_cui": "36692007",
+      "preferred_name": "Known",
+      "source_value": "known",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2028,
+        "end": 2033
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2084,
+        "end": 2093
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trial",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2108,
+        "end": 2113
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2123,
+        "end": 2131
+      }
+    },
+    {
+      "snomed_cui": "89780004",
+      "preferred_name": "Combined",
+      "source_value": "combined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2154,
+        "end": 2162
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2163,
+        "end": 2170
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2185,
+        "end": 2194
+      }
+    },
+    {
+      "snomed_cui": "10179008",
+      "preferred_name": "Invasive",
+      "source_value": "invasive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2196,
+        "end": 2204
+      }
+    },
+    {
+      "snomed_cui": "231821000000109",
+      "preferred_name": "Ventilatory support",
+      "source_value": "ventilatory support",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2205,
+        "end": 2224
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2229,
+        "end": 2235
+      }
+    },
+    {
+      "snomed_cui": "870406003",
+      "preferred_name": "Vasopressor",
+      "source_value": "vasopressors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2236,
+        "end": 2248
+      }
+    },
+    {
+      "snomed_cui": "27942005",
+      "preferred_name": "Shock",
+      "source_value": "shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2253,
+        "end": 2258
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2265,
+        "end": 2273
+      }
+    },
+    {
+      "snomed_cui": "261074009",
+      "preferred_name": "External",
+      "source_value": "externally",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2304,
+        "end": 2314
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "aid",
+      "confidence_score": 0.8267678335707651,
+      "character_boundaries": {
+        "start": 2332,
+        "end": 2335
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "includes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2336,
+        "end": 2344
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.638376312854433,
+      "character_boundaries": {
+        "start": 2347,
+        "end": 2352
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommends",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2382,
+        "end": 2392
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2398,
+        "end": 2406
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2425,
+        "end": 2428
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.6364842505626273,
+      "character_boundaries": {
+        "start": 2458,
+        "end": 2463
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2485,
+        "end": 2490
+      }
+    },
+    {
+      "snomed_cui": "719218000",
+      "preferred_name": "Cryptogenic organizing pneumonia",
+      "source_value": "COP",
+      "confidence_score": 0.5212988375993377,
+      "character_boundaries": {
+        "start": 2491,
+        "end": 2494
+      }
+    },
+    {
+      "snomed_cui": "271649006",
+      "preferred_name": "Systolic blood pressure",
+      "source_value": "systolic blood pressure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2532,
+        "end": 2555
+      }
+    },
+    {
+      "snomed_cui": "399208008",
+      "preferred_name": "Plain X-ray of chest",
+      "source_value": "chest radiography",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2568,
+        "end": 2585
+      }
+    },
+    {
+      "snomed_cui": "277803006",
+      "preferred_name": "Involvements",
+      "source_value": "involvement",
+      "confidence_score": 0.40851635016923504,
+      "character_boundaries": {
+        "start": 2586,
+        "end": 2597
+      }
+    },
+    {
+      "snomed_cui": "365801005",
+      "preferred_name": "Finding of albumin level",
+      "source_value": "albumin level",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2599,
+        "end": 2612
+      }
+    },
+    {
+      "snomed_cui": "86290005",
+      "preferred_name": "Respiratory rate",
+      "source_value": "respiratory rate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2614,
+        "end": 2630
+      }
+    },
+    {
+      "snomed_cui": "3424008",
+      "preferred_name": "Tachycardia",
+      "source_value": "tachycardia",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2632,
+        "end": 2643
+      }
+    },
+    {
+      "snomed_cui": "286933003",
+      "preferred_name": "Confusional state",
+      "source_value": "confusion",
+      "confidence_score": 0.5639390982859753,
+      "character_boundaries": {
+        "start": 2645,
+        "end": 2654
+      }
+    },
+    {
+      "snomed_cui": "44284008",
+      "preferred_name": "Alveolar ventilation (V), function",
+      "source_value": "oxygenation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2656,
+        "end": 2667
+      }
+    },
+    {
+      "snomed_cui": "27051004",
+      "preferred_name": "pH measurement, arterial",
+      "source_value": "arterial pH",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2673,
+        "end": 2684
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2686,
+        "end": 2691
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2723,
+        "end": 2731
+      }
+    },
+    {
+      "snomed_cui": "10179008",
+      "preferred_name": "Invasive",
+      "source_value": "invasive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2732,
+        "end": 2740
+      }
+    },
+    {
+      "snomed_cui": "870406003",
+      "preferred_name": "Vasopressor",
+      "source_value": "vasopressor",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2756,
+        "end": 2767
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.8801569560625478,
+      "character_boundaries": {
+        "start": 2768,
+        "end": 2775
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "aid",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2782,
+        "end": 2785
+      }
+    },
+    {
+      "snomed_cui": "277889008",
+      "preferred_name": "Usage",
+      "source_value": "uses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2795,
+        "end": 2799
+      }
+    },
+    {
+      "snomed_cui": "424144002",
+      "preferred_name": "Current chronological age",
+      "source_value": "age",
+      "confidence_score": 0.5869489232762795,
+      "character_boundaries": {
+        "start": 2800,
+        "end": 2803
+      }
+    },
+    {
+      "snomed_cui": "410617001",
+      "preferred_name": "Adjustment",
+      "source_value": "adjusted",
+      "confidence_score": 0.858064370270222,
+      "character_boundaries": {
+        "start": 2804,
+        "end": 2812
+      }
+    },
+    {
+      "snomed_cui": "246510005",
+      "preferred_name": "Threshold",
+      "source_value": "thresholds",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2813,
+        "end": 2823
+      }
+    },
+    {
+      "snomed_cui": "86290005",
+      "preferred_name": "Respiratory rate",
+      "source_value": "respiratory rate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2837,
+        "end": 2853
+      }
+    },
+    {
+      "snomed_cui": "44284008",
+      "preferred_name": "Alveolar ventilation (V), function",
+      "source_value": "oxygenation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2858,
+        "end": 2869
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2883,
+        "end": 2892
+      }
+    },
+    {
+      "snomed_cui": "255372005",
+      "preferred_name": "Variable",
+      "source_value": "variable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2895,
+        "end": 2903
+      }
+    },
+    {
+      "snomed_cui": "424144002",
+      "preferred_name": "Current chronological age",
+      "source_value": "age",
+      "confidence_score": 0.7872145913988545,
+      "character_boundaries": {
+        "start": 2908,
+        "end": 2911
+      }
+    },
+    {
+      "snomed_cui": "277889008",
+      "preferred_name": "Usage",
+      "source_value": "uses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2920,
+        "end": 2924
+      }
+    },
+    {
+      "snomed_cui": "272102008",
+      "preferred_name": "Weights",
+      "source_value": "weights",
+      "confidence_score": 0.8900664773701528,
+      "character_boundaries": {
+        "start": 2935,
+        "end": 2942
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "point",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2946,
+        "end": 2951
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "points",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2961,
+        "end": 2967
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommends",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3003,
+        "end": 3013
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.6047543653615036,
+      "character_boundaries": {
+        "start": 3014,
+        "end": 3017
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3018,
+        "end": 3027
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3032,
+        "end": 3040
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3048,
+        "end": 3053
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "points",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3059,
+        "end": 3065
+      }
+    },
+    {
+      "snomed_cui": "263768009",
+      "preferred_name": "Greater",
+      "source_value": "greater",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3069,
+        "end": 3076
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "Emergency Medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3091,
+        "end": 3109
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "Volume",
+      "confidence_score": 0.6071414456656765,
+      "character_boundaries": {
+        "start": 3110,
+        "end": 3116
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3142,
+        "end": 3150
+      }
+    },
+    {
+      "snomed_cui": "86407004",
+      "preferred_name": "Table, device",
+      "source_value": "Table",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3158,
+        "end": 3163
+      }
+    },
+    {
+      "snomed_cui": "421529006",
+      "preferred_name": "Dementia with acquired immunodeficiency syndrome",
+      "source_value": "aids",
+      "confidence_score": 0.39085294606297094,
+      "character_boundaries": {
+        "start": 3178,
+        "end": 3182
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.8465995351225668,
+      "character_boundaries": {
+        "start": 3187,
+        "end": 3190
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3191,
+        "end": 3200
+      }
+    },
+    {
+      "snomed_cui": "40617009",
+      "preferred_name": "Artificial ventilation",
+      "source_value": "Mechanical ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3212,
+        "end": 3234
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.3698513667354497,
+      "character_boundaries": {
+        "start": 3236,
+        "end": 3239
+      }
+    },
+    {
+      "snomed_cui": "1258985005",
+      "preferred_name": "Invasive mechanical ventilation",
+      "source_value": "Invasive mechanical ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3246,
+        "end": 3277
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3279,
+        "end": 3284
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "Major",
+      "confidence_score": 0.9680017864845372,
+      "character_boundaries": {
+        "start": 3286,
+        "end": 3291
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.4396446861130934,
+      "character_boundaries": {
+        "start": 3298,
+        "end": 3301
+      }
+    },
+    {
+      "snomed_cui": "1258985005",
+      "preferred_name": "Invasive mechanical ventilation",
+      "source_value": "Invasive mechanical ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3308,
+        "end": 3339
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3341,
+        "end": 3346
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "Major",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3348,
+        "end": 3353
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3355,
+        "end": 3359
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3375,
+        "end": 3380
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3385,
+        "end": 3390
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3399,
+        "end": 3404
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.5864348436388318,
+      "character_boundaries": {
+        "start": 3413,
+        "end": 3416
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3421,
+        "end": 3426
+      }
+    },
+    {
+      "snomed_cui": "27942005",
+      "preferred_name": "Shock",
+      "source_value": "Shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3432,
+        "end": 3437
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.48385462223093717,
+      "character_boundaries": {
+        "start": 3439,
+        "end": 3442
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "Septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3449,
+        "end": 3461
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3463,
+        "end": 3468
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "Major",
+      "confidence_score": 0.9031750560722054,
+      "character_boundaries": {
+        "start": 3470,
+        "end": 3475
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.4871531114249288,
+      "character_boundaries": {
+        "start": 3482,
+        "end": 3485
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "Septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3492,
+        "end": 3504
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3510,
+        "end": 3518
+      }
+    },
+    {
+      "snomed_cui": "870406003",
+      "preferred_name": "Vasopressor",
+      "source_value": "vasopressors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3519,
+        "end": 3531
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3533,
+        "end": 3538
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "Major",
+      "confidence_score": 0.9111952647505357,
+      "character_boundaries": {
+        "start": 3540,
+        "end": 3545
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3547,
+        "end": 3551
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3567,
+        "end": 3572
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3577,
+        "end": 3582
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3591,
+        "end": 3596
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.4544429673763152,
+      "character_boundaries": {
+        "start": 3605,
+        "end": 3608
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3613,
+        "end": 3618
+      }
+    },
+    {
+      "snomed_cui": "75367002",
+      "preferred_name": "Blood pressure",
+      "source_value": "Blood pressure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3624,
+        "end": 3638
+      }
+    },
+    {
+      "snomed_cui": "75367002",
+      "preferred_name": "Blood pressure",
+      "source_value": "BP",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3640,
+        "end": 3642
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.4276545315976418,
+      "character_boundaries": {
+        "start": 3645,
+        "end": 3648
+      }
+    },
+    {
+      "snomed_cui": "271649006",
+      "preferred_name": "Systolic blood pressure",
+      "source_value": "Systolic BP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3655,
+        "end": 3666
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3673,
+        "end": 3678
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3680,
+        "end": 3685
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.6065368022688705,
+      "character_boundaries": {
+        "start": 3699,
+        "end": 3702
+      }
+    },
+    {
+      "snomed_cui": "45007003",
+      "preferred_name": "Low blood pressure",
+      "source_value": "Hypotension",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3709,
+        "end": 3720
+      }
+    },
+    {
+      "snomed_cui": "61372001",
+      "preferred_name": "Aggressive behavior",
+      "source_value": "aggressive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3731,
+        "end": 3741
+      }
+    },
+    {
+      "snomed_cui": "439569004",
+      "preferred_name": "Resuscitation",
+      "source_value": "resuscitation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3748,
+        "end": 3761
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3763,
+        "end": 3768
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3777,
+        "end": 3781
+      }
+    },
+    {
+      "snomed_cui": "271649006",
+      "preferred_name": "Systolic blood pressure",
+      "source_value": "Systolic BP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3794,
+        "end": 3805
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3810,
+        "end": 3815
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3817,
+        "end": 3822
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "Major",
+      "confidence_score": 0.9708082687381907,
+      "character_boundaries": {
+        "start": 3824,
+        "end": 3829
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3831,
+        "end": 3836
+      }
+    },
+    {
+      "snomed_cui": "271649006",
+      "preferred_name": "Systolic blood pressure",
+      "source_value": "Systolic BP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3842,
+        "end": 3853
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3858,
+        "end": 3863
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3865,
+        "end": 3870
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3887,
+        "end": 3892
+      }
+    },
+    {
+      "snomed_cui": "258106000",
+      "preferred_name": "Radiographic",
+      "source_value": "Radiographic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3898,
+        "end": 3910
+      }
+    },
+    {
+      "snomed_cui": "404684003",
+      "preferred_name": "Clinical finding",
+      "source_value": "findings",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3911,
+        "end": 3919
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.6054754335370577,
+      "character_boundaries": {
+        "start": 3921,
+        "end": 3924
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3942,
+        "end": 3949
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 3951,
+        "end": 3956
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.6320846775324653,
+      "character_boundaries": {
+        "start": 3970,
+        "end": 3973
+      }
+    },
+    {
+      "snomed_cui": "47351003",
+      "preferred_name": "Infiltration",
+      "source_value": "infiltrates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3991,
+        "end": 4002
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4004,
+        "end": 4009
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4018,
+        "end": 4022
+      }
+    },
+    {
+      "snomed_cui": "51440002",
+      "preferred_name": "Right and left",
+      "source_value": "bilateral",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4049,
+        "end": 4058
+      }
+    },
+    {
+      "snomed_cui": "47351003",
+      "preferred_name": "Infiltration",
+      "source_value": "infiltrates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4059,
+        "end": 4070
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4072,
+        "end": 4077
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4086,
+        "end": 4091
+      }
+    },
+    {
+      "snomed_cui": "719218000",
+      "preferred_name": "Cryptogenic organizing pneumonia",
+      "source_value": "COP",
+      "confidence_score": 0.8197601483415614,
+      "character_boundaries": {
+        "start": 4092,
+        "end": 4095
+      }
+    },
+    {
+      "snomed_cui": "277803006",
+      "preferred_name": "Involvements",
+      "source_value": "involvement",
+      "confidence_score": 0.654188991391174,
+      "character_boundaries": {
+        "start": 4108,
+        "end": 4119
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4121,
+        "end": 4126
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.45160302461684887,
+      "character_boundaries": {
+        "start": 4135,
+        "end": 4138
+      }
+    },
+    {
+      "snomed_cui": "47351003",
+      "preferred_name": "Infiltration",
+      "source_value": "infiltrates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4151,
+        "end": 4162
+      }
+    },
+    {
+      "snomed_cui": "60046008",
+      "preferred_name": "Pleural effusion",
+      "source_value": "pleural effusion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4166,
+        "end": 4182
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4184,
+        "end": 4189
+      }
+    },
+    {
+      "snomed_cui": "44284008",
+      "preferred_name": "Alveolar ventilation (V), function",
+      "source_value": "Oxygenation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4195,
+        "end": 4206
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.4712681324577591,
+      "character_boundaries": {
+        "start": 4208,
+        "end": 4211
+      }
+    },
+    {
+      "snomed_cui": "359846004",
+      "preferred_name": "PO>2< measurement",
+      "source_value": "PaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4218,
+        "end": 4222
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4233,
+        "end": 4238
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4240,
+        "end": 4245
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.38588321044080115,
+      "character_boundaries": {
+        "start": 4259,
+        "end": 4262
+      }
+    },
+    {
+      "snomed_cui": "359846004",
+      "preferred_name": "PO>2< measurement",
+      "source_value": "PaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4269,
+        "end": 4273
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4286,
+        "end": 4291
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.9582148469486453,
+      "character_boundaries": {
+        "start": 4293,
+        "end": 4298
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4307,
+        "end": 4311
+      }
+    },
+    {
+      "snomed_cui": "359846004",
+      "preferred_name": "PO>2< measurement",
+      "source_value": "PaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4324,
+        "end": 4328
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4339,
+        "end": 4344
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.8118506689127606,
+      "character_boundaries": {
+        "start": 4346,
+        "end": 4351
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4360,
+        "end": 4365
+      }
+    },
+    {
+      "snomed_cui": "424144002",
+      "preferred_name": "Current chronological age",
+      "source_value": "Age",
+      "confidence_score": 0.5977323915565289,
+      "character_boundaries": {
+        "start": 4371,
+        "end": 4374
+      }
+    },
+    {
+      "snomed_cui": "359846004",
+      "preferred_name": "PO>2< measurement",
+      "source_value": "PaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4384,
+        "end": 4388
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4393,
+        "end": 4398
+      }
+    },
+    {
+      "snomed_cui": "431314004",
+      "preferred_name": "Peripheral oxygen saturation",
+      "source_value": "SpO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4400,
+        "end": 4404
+      }
+    },
+    {
+      "snomed_cui": "359846004",
+      "preferred_name": "PO>2< measurement",
+      "source_value": "PaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4416,
+        "end": 4420
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4431,
+        "end": 4436
+      }
+    },
+    {
+      "snomed_cui": "424144002",
+      "preferred_name": "Current chronological age",
+      "source_value": "Age",
+      "confidence_score": 0.4456503706064395,
+      "character_boundaries": {
+        "start": 4438,
+        "end": 4441
+      }
+    },
+    {
+      "snomed_cui": "359846004",
+      "preferred_name": "PO>2< measurement",
+      "source_value": "PaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4449,
+        "end": 4453
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4458,
+        "end": 4463
+      }
+    },
+    {
+      "snomed_cui": "431314004",
+      "preferred_name": "Peripheral oxygen saturation",
+      "source_value": "SpO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4465,
+        "end": 4469
+      }
+    },
+    {
+      "snomed_cui": "359846004",
+      "preferred_name": "PO>2< measurement",
+      "source_value": "PaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4481,
+        "end": 4485
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4496,
+        "end": 4501
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.8484515195562786,
+      "character_boundaries": {
+        "start": 4503,
+        "end": 4508
+      }
+    },
+    {
+      "snomed_cui": "359846004",
+      "preferred_name": "PO>2< measurement",
+      "source_value": "PaO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4522,
+        "end": 4526
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4531,
+        "end": 4536
+      }
+    },
+    {
+      "snomed_cui": "431314004",
+      "preferred_name": "Peripheral oxygen saturation",
+      "source_value": "SpO2",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4540,
+        "end": 4544
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4551,
+        "end": 4556
+      }
+    },
+    {
+      "snomed_cui": "86290005",
+      "preferred_name": "Respiratory rate",
+      "source_value": "Respiratory rate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4562,
+        "end": 4578
+      }
+    },
+    {
+      "snomed_cui": "258984001",
+      "preferred_name": "Breaths/minute",
+      "source_value": "breaths/min",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4580,
+        "end": 4591
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.30262160880486744,
+      "character_boundaries": {
+        "start": 4594,
+        "end": 4597
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4607,
+        "end": 4612
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4639,
+        "end": 4644
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4653,
+        "end": 4657
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4675,
+        "end": 4680
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4689,
+        "end": 4694
+      }
+    },
+    {
+      "snomed_cui": "424144002",
+      "preferred_name": "Current chronological age",
+      "source_value": "Age",
+      "confidence_score": 0.7698874092718049,
+      "character_boundaries": {
+        "start": 4700,
+        "end": 4703
+      }
+    },
+    {
+      "snomed_cui": "424144002",
+      "preferred_name": "Current chronological age",
+      "source_value": "Age",
+      "confidence_score": 0.7372239658464125,
+      "character_boundaries": {
+        "start": 4720,
+        "end": 4723
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4738,
+        "end": 4743
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.3991461034411282,
+      "character_boundaries": {
+        "start": 4752,
+        "end": 4755
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4764,
+        "end": 4769
+      }
+    },
+    {
+      "snomed_cui": "36456004",
+      "preferred_name": "Mental state finding",
+      "source_value": "Mental status",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4775,
+        "end": 4788
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4803,
+        "end": 4808
+      }
+    },
+    {
+      "snomed_cui": "286933003",
+      "preferred_name": "Confusional state",
+      "source_value": "confusion",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4832,
+        "end": 4841
+      }
+    },
+    {
+      "snomed_cui": "286933003",
+      "preferred_name": "Confusional state",
+      "source_value": "disorientation",
+      "confidence_score": 0.7855227071256905,
+      "character_boundaries": {
+        "start": 4845,
+        "end": 4859
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4861,
+        "end": 4866
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4875,
+        "end": 4879
+      }
+    },
+    {
+      "snomed_cui": "419284004",
+      "preferred_name": "Altered mental status",
+      "source_value": "Altered mental status",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4892,
+        "end": 4913
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4915,
+        "end": 4920
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4929,
+        "end": 4934
+      }
+    },
+    {
+      "snomed_cui": "719218000",
+      "preferred_name": "Cryptogenic organizing pneumonia",
+      "source_value": "COP",
+      "confidence_score": 0.3712917196677764,
+      "character_boundaries": {
+        "start": 4935,
+        "end": 4938
+      }
+    },
+    {
+      "snomed_cui": "77374008",
+      "preferred_name": "Onset of (contextual qualifier)",
+      "source_value": "onset",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4944,
+        "end": 4949
+      }
+    },
+    {
+      "snomed_cui": "286933003",
+      "preferred_name": "Confusional state",
+      "source_value": "confusion",
+      "confidence_score": 0.9372381973123671,
+      "character_boundaries": {
+        "start": 4950,
+        "end": 4959
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4961,
+        "end": 4966
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.4272069233034482,
+      "character_boundaries": {
+        "start": 4975,
+        "end": 4978
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 4983,
+        "end": 4988
+      }
+    },
+    {
+      "snomed_cui": "250623007",
+      "preferred_name": "Blood urea measurement",
+      "source_value": "BUN",
+      "confidence_score": 0.31767298910585967,
+      "character_boundaries": {
+        "start": 4994,
+        "end": 4997
+      }
+    },
+    {
+      "snomed_cui": "258797006",
+      "preferred_name": "Milligram/deciliter",
+      "source_value": "mg/dL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 4999,
+        "end": 5004
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.6034894823514262,
+      "character_boundaries": {
+        "start": 5007,
+        "end": 5010
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5020,
+        "end": 5025
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.3586340686232805,
+      "character_boundaries": {
+        "start": 5035,
+        "end": 5038
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5052,
+        "end": 5057
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5066,
+        "end": 5070
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5088,
+        "end": 5093
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5102,
+        "end": 5107
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5116,
+        "end": 5121
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.3706476156697263,
+      "character_boundaries": {
+        "start": 5130,
+        "end": 5133
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5140,
+        "end": 5145
+      }
+    },
+    {
+      "snomed_cui": "767002",
+      "preferred_name": "White blood cell count",
+      "source_value": "WBC",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5151,
+        "end": 5154
+      }
+    },
+    {
+      "snomed_cui": "118218001",
+      "preferred_name": "Cell count",
+      "source_value": "count (cells",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5155,
+        "end": 5167
+      }
+    },
+    {
+      "snomed_cui": "420167005",
+      "preferred_name": "Per microliter",
+      "source_value": "mm3",
+      "confidence_score": 0.6401680901260565,
+      "character_boundaries": {
+        "start": 5168,
+        "end": 5171
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.5410518231579968,
+      "character_boundaries": {
+        "start": 5174,
+        "end": 5177
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5187,
+        "end": 5192
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.31305604810506116,
+      "character_boundaries": {
+        "start": 5202,
+        "end": 5205
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5220,
+        "end": 5225
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5234,
+        "end": 5238
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5254,
+        "end": 5259
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5264,
+        "end": 5269
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5278,
+        "end": 5283
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.489649403676762,
+      "character_boundaries": {
+        "start": 5292,
+        "end": 5295
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5318,
+        "end": 5323
+      }
+    },
+    {
+      "snomed_cui": "61928009",
+      "preferred_name": "Platelet count",
+      "source_value": "Platelet count",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5329,
+        "end": 5343
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.5398375912737708,
+      "character_boundaries": {
+        "start": 5345,
+        "end": 5348
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5358,
+        "end": 5363
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.4633809897314375,
+      "character_boundaries": {
+        "start": 5373,
+        "end": 5376
+      }
+    },
+    {
+      "snomed_cui": "4421005",
+      "preferred_name": "Cell structure",
+      "source_value": "cells",
+      "confidence_score": 0.9682693790900383,
+      "character_boundaries": {
+        "start": 5392,
+        "end": 5397
+      }
+    },
+    {
+      "snomed_cui": "258774008",
+      "preferred_name": "Microliter",
+      "source_value": "mm3",
+      "confidence_score": 0.6083695483209033,
+      "character_boundaries": {
+        "start": 5398,
+        "end": 5401
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5403,
+        "end": 5408
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5417,
+        "end": 5421
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5437,
+        "end": 5442
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5447,
+        "end": 5452
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5461,
+        "end": 5466
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.4041529685850524,
+      "character_boundaries": {
+        "start": 5475,
+        "end": 5478
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5483,
+        "end": 5488
+      }
+    },
+    {
+      "snomed_cui": "703421000",
+      "preferred_name": "Temperature",
+      "source_value": "Temperature",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5494,
+        "end": 5505
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5520,
+        "end": 5525
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5563,
+        "end": 5568
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5577,
+        "end": 5581
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5597,
+        "end": 5602
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5607,
+        "end": 5612
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5621,
+        "end": 5626
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.43628778949504826,
+      "character_boundaries": {
+        "start": 5635,
+        "end": 5638
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5643,
+        "end": 5648
+      }
+    },
+    {
+      "snomed_cui": "27051004",
+      "preferred_name": "pH measurement, arterial",
+      "source_value": "Arterial pH",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5654,
+        "end": 5665
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.3909845907142847,
+      "character_boundaries": {
+        "start": 5667,
+        "end": 5670
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5680,
+        "end": 5685
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5708,
+        "end": 5713
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5718,
+        "end": 5722
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5742,
+        "end": 5747
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "Major",
+      "confidence_score": 0.6604546328176575,
+      "character_boundaries": {
+        "start": 5749,
+        "end": 5754
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5756,
+        "end": 5761
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5774,
+        "end": 5779
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.36446287062822547,
+      "character_boundaries": {
+        "start": 5788,
+        "end": 5791
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5800,
+        "end": 5805
+      }
+    },
+    {
+      "snomed_cui": "424144002",
+      "preferred_name": "Current chronological age",
+      "source_value": "Age",
+      "confidence_score": 0.6819472378677512,
+      "character_boundaries": {
+        "start": 5811,
+        "end": 5814
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5833,
+        "end": 5838
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5861,
+        "end": 5866
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5871,
+        "end": 5875
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5895,
+        "end": 5900
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5909,
+        "end": 5914
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5923,
+        "end": 5928
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.3806600986573754,
+      "character_boundaries": {
+        "start": 5937,
+        "end": 5940
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5947,
+        "end": 5952
+      }
+    },
+    {
+      "snomed_cui": "52454007",
+      "preferred_name": "Albumin",
+      "source_value": "Albumin",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5958,
+        "end": 5965
+      }
+    },
+    {
+      "snomed_cui": "258795003",
+      "preferred_name": "Gram/deciliter",
+      "source_value": "g/dL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 5967,
+        "end": 5971
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.5672025741549227,
+      "character_boundaries": {
+        "start": 5974,
+        "end": 5977
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 5987,
+        "end": 5992
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.305838971139087,
+      "character_boundaries": {
+        "start": 6002,
+        "end": 6005
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6015,
+        "end": 6020
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6025,
+        "end": 6029
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6045,
+        "end": 6050
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6055,
+        "end": 6060
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6072,
+        "end": 6077
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.30731967538449134,
+      "character_boundaries": {
+        "start": 6086,
+        "end": 6089
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6094,
+        "end": 6099
+      }
+    },
+    {
+      "snomed_cui": "78564009",
+      "preferred_name": "Heart rate measured at systemic artery",
+      "source_value": "Pulse rate",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6105,
+        "end": 6115
+      }
+    },
+    {
+      "snomed_cui": "258983007",
+      "preferred_name": "Beats/minute",
+      "source_value": "beats/min",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6117,
+        "end": 6126
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6142,
+        "end": 6147
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6170,
+        "end": 6175
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6180,
+        "end": 6184
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6200,
+        "end": 6205
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6210,
+        "end": 6215
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6229,
+        "end": 6234
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.36063096272566814,
+      "character_boundaries": {
+        "start": 6243,
+        "end": 6246
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6256,
+        "end": 6261
+      }
+    },
+    {
+      "snomed_cui": "473013003",
+      "preferred_name": "Finding relating to sexual behavior",
+      "source_value": "Sex",
+      "confidence_score": 0.3256305304236875,
+      "character_boundaries": {
+        "start": 6267,
+        "end": 6270
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6285,
+        "end": 6290
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6313,
+        "end": 6318
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6323,
+        "end": 6327
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6343,
+        "end": 6348
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6353,
+        "end": 6358
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6367,
+        "end": 6372
+      }
+    },
+    {
+      "snomed_cui": "10052007",
+      "preferred_name": "Male structure",
+      "source_value": "Male",
+      "confidence_score": 0.8224614379691935,
+      "character_boundaries": {
+        "start": 6386,
+        "end": 6390
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.9195082840854563,
+      "character_boundaries": {
+        "start": 6392,
+        "end": 6397
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6432,
+        "end": 6437
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6460,
+        "end": 6465
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6470,
+        "end": 6474
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6490,
+        "end": 6495
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6500,
+        "end": 6505
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6514,
+        "end": 6519
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.3828969925961707,
+      "character_boundaries": {
+        "start": 6528,
+        "end": 6531
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6544,
+        "end": 6549
+      }
+    },
+    {
+      "snomed_cui": "39972003",
+      "preferred_name": "Sodium",
+      "source_value": "Sodium",
+      "confidence_score": 0.9045901480827437,
+      "character_boundaries": {
+        "start": 6555,
+        "end": 6561
+      }
+    },
+    {
+      "snomed_cui": "258865000",
+      "preferred_name": "Milliequivalent/liter",
+      "source_value": "mEq/L",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6563,
+        "end": 6568
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.48648190469569763,
+      "character_boundaries": {
+        "start": 6571,
+        "end": 6574
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6584,
+        "end": 6589
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6612,
+        "end": 6617
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6622,
+        "end": 6626
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6642,
+        "end": 6647
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6652,
+        "end": 6657
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6666,
+        "end": 6671
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.590261281888103,
+      "character_boundaries": {
+        "start": 6680,
+        "end": 6683
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6691,
+        "end": 6696
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.7843903196011732,
+      "character_boundaries": {
+        "start": 6725,
+        "end": 6728
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6729,
+        "end": 6738
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.33389478889050894,
+      "character_boundaries": {
+        "start": 6740,
+        "end": 6743
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.8277090206082385,
+      "character_boundaries": {
+        "start": 6755,
+        "end": 6760
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6785,
+        "end": 6790
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.420078870960188,
+      "character_boundaries": {
+        "start": 6800,
+        "end": 6803
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.9656581768857315,
+      "character_boundaries": {
+        "start": 6815,
+        "end": 6820
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6845,
+        "end": 6850
+      }
+    },
+    {
+      "snomed_cui": "239121009",
+      "preferred_name": "Syringocystadenoma papilliferum",
+      "source_value": "SCAP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6855,
+        "end": 6859
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.9641522439240912,
+      "character_boundaries": {
+        "start": 6877,
+        "end": 6882
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6907,
+        "end": 6912
+      }
+    },
+    {
+      "snomed_cui": "410718003",
+      "preferred_name": "Smarting sensation quality",
+      "source_value": "SMART",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6917,
+        "end": 6922
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "points",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6933,
+        "end": 6939
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6941,
+        "end": 6946
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.4209396965715,
+      "character_boundaries": {
+        "start": 6955,
+        "end": 6958
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "points",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6965,
+        "end": 6971
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "Score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 6973,
+        "end": 6978
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "Including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6985,
+        "end": 6994
+      }
+    },
+    {
+      "snomed_cui": "93870000",
+      "preferred_name": "Malignant neoplasm of liver",
+      "source_value": "cancer, liver",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 6995,
+        "end": 7008
+      }
+    },
+    {
+      "snomed_cui": "90708001",
+      "preferred_name": "Kidney disease",
+      "source_value": "disease, kidney",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7009,
+        "end": 7024
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7025,
+        "end": 7032
+      }
+    },
+    {
+      "snomed_cui": "230690007",
+      "preferred_name": "Cerebrovascular accident",
+      "source_value": "stroke",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7034,
+        "end": 7040
+      }
+    },
+    {
+      "snomed_cui": "42343007",
+      "preferred_name": "Congestive heart failure",
+      "source_value": "CHF",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 7042,
+        "end": 7045
+      }
+    },
+    {
+      "snomed_cui": "53741008",
+      "preferred_name": "Coronary arteriosclerosis",
+      "source_value": "coronary disease",
+      "confidence_score": 0.8151039581061401,
+      "character_boundaries": {
+        "start": 7047,
+        "end": 7063
+      }
+    },
+    {
+      "snomed_cui": "13645005",
+      "preferred_name": "Chronic obstructive pulmonary disease",
+      "source_value": "COPD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7065,
+        "end": 7069
+      }
+    },
+    {
+      "snomed_cui": "73211009",
+      "preferred_name": "Diabetes mellitus",
+      "source_value": "diabetes",
+      "confidence_score": 0.6011739855410507,
+      "character_boundaries": {
+        "start": 7074,
+        "end": 7082
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "Emergency Medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7097,
+        "end": 7115
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "Volume",
+      "confidence_score": 0.49220186487035944,
+      "character_boundaries": {
+        "start": 7116,
+        "end": 7122
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7148,
+        "end": 7156
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "Risk of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7164,
+        "end": 7171
+      }
+    },
+    {
+      "snomed_cui": "264499004",
+      "preferred_name": "Early",
+      "source_value": "Early",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7172,
+        "end": 7177
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "Admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7178,
+        "end": 7187
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.9502958464952145,
+      "character_boundaries": {
+        "start": 7195,
+        "end": 7198
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "Risk of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7203,
+        "end": 7210
+      }
+    },
+    {
+      "snomed_cui": "264499004",
+      "preferred_name": "Early",
+      "source_value": "Early",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7211,
+        "end": 7216
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "Admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7217,
+        "end": 7226
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 7234,
+        "end": 7237
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.9676684021853432,
+      "character_boundaries": {
+        "start": 7243,
+        "end": 7246
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "aid",
+      "confidence_score": 0.7013282370663088,
+      "character_boundaries": {
+        "start": 7248,
+        "end": 7251
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.84878628086886,
+      "character_boundaries": {
+        "start": 7295,
+        "end": 7298
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7299,
+        "end": 7308
+      }
+    },
+    {
+      "snomed_cui": "258703001",
+      "preferred_name": "day",
+      "source_value": "days",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7318,
+        "end": 7322
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "hospital admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7326,
+        "end": 7344
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "aid",
+      "confidence_score": 0.7944292474114878,
+      "character_boundaries": {
+        "start": 7372,
+        "end": 7375
+      }
+    },
+    {
+      "snomed_cui": "77765009",
+      "preferred_name": "Exclude",
+      "source_value": "excludes",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7389,
+        "end": 7397
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7398,
+        "end": 7406
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "major",
+      "confidence_score": 0.4541787928507508,
+      "character_boundaries": {
+        "start": 7412,
+        "end": 7417
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.9748141852411863,
+      "character_boundaries": {
+        "start": 7431,
+        "end": 7434
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7435,
+        "end": 7444
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "need for",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7450,
+        "end": 7458
+      }
+    },
+    {
+      "snomed_cui": "40617009",
+      "preferred_name": "Artificial ventilation",
+      "source_value": "mechanical ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7459,
+        "end": 7481
+      }
+    },
+    {
+      "snomed_cui": "870406003",
+      "preferred_name": "Vasopressor",
+      "source_value": "vasopressors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7485,
+        "end": 7497
+      }
+    },
+    {
+      "snomed_cui": "860914002",
+      "preferred_name": "Erectile dysfunction",
+      "source_value": "ED",
+      "confidence_score": 0.32141939147630166,
+      "character_boundaries": {
+        "start": 7502,
+        "end": 7504
+      }
+    },
+    {
+      "snomed_cui": "723051000000101",
+      "preferred_name": "Evaluation",
+      "source_value": "evaluation",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 7505,
+        "end": 7515
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.9215738265248037,
+      "character_boundaries": {
+        "start": 7525,
+        "end": 7528
+      }
+    },
+    {
+      "snomed_cui": "277889008",
+      "preferred_name": "Usage",
+      "source_value": "uses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7529,
+        "end": 7533
+      }
+    },
+    {
+      "snomed_cui": "258755000",
+      "preferred_name": "Percentage of total",
+      "source_value": "total",
+      "confidence_score": 0.653894960978832,
+      "character_boundaries": {
+        "start": 7536,
+        "end": 7541
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7596,
+        "end": 7600
+      }
+    },
+    {
+      "snomed_cui": "421529006",
+      "preferred_name": "Dementia with acquired immunodeficiency syndrome",
+      "source_value": "aids",
+      "confidence_score": 0.5942379303500528,
+      "character_boundaries": {
+        "start": 7601,
+        "end": 7605
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "points",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7641,
+        "end": 7647
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7653,
+        "end": 7661
+      }
+    },
+    {
+      "snomed_cui": "321221000000103",
+      "preferred_name": "Point",
+      "source_value": "points",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7677,
+        "end": 7683
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7688,
+        "end": 7699
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.6031441509930924,
+      "character_boundaries": {
+        "start": 7704,
+        "end": 7707
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7708,
+        "end": 7717
+      }
+    },
+    {
+      "snomed_cui": "371152001",
+      "preferred_name": "Assisted",
+      "source_value": "aid",
+      "confidence_score": 0.8995602189397724,
+      "character_boundaries": {
+        "start": 7723,
+        "end": 7726
+      }
+    },
+    {
+      "snomed_cui": "261074009",
+      "preferred_name": "External",
+      "source_value": "externally",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7731,
+        "end": 7741
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7757,
+        "end": 7766
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7767,
+        "end": 7772
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7808,
+        "end": 7816
+      }
+    },
+    {
+      "snomed_cui": "421529006",
+      "preferred_name": "Dementia with acquired immunodeficiency syndrome",
+      "source_value": "Aids",
+      "confidence_score": 0.4552237767670012,
+      "character_boundaries": {
+        "start": 7826,
+        "end": 7830
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.7537068364743554,
+      "character_boundaries": {
+        "start": 7835,
+        "end": 7838
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7839,
+        "end": 7848
+      }
+    },
+    {
+      "snomed_cui": "110465008",
+      "preferred_name": "Clinical trial",
+      "source_value": "trials",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7869,
+        "end": 7875
+      }
+    },
+    {
+      "snomed_cui": "721811000000109",
+      "preferred_name": "Systematic review",
+      "source_value": "systematic reviews",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7880,
+        "end": 7898
+      }
+    },
+    {
+      "snomed_cui": "64049009",
+      "preferred_name": "Examined for (contextual qualifier)",
+      "source_value": "examined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7904,
+        "end": 7912
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.7097006004972355,
+      "character_boundaries": {
+        "start": 7938,
+        "end": 7941
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7942,
+        "end": 7950
+      }
+    },
+    {
+      "snomed_cui": "421529006",
+      "preferred_name": "Dementia with acquired immunodeficiency syndrome",
+      "source_value": "aids",
+      "confidence_score": 0.6325161773092152,
+      "character_boundaries": {
+        "start": 7951,
+        "end": 7955
+      }
+    },
+    {
+      "snomed_cui": "125677006",
+      "preferred_name": "Relative",
+      "source_value": "relation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 7959,
+        "end": 7967
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.30299239000414646,
+      "character_boundaries": {
+        "start": 7975,
+        "end": 7978
+      }
+    },
+    {
+      "snomed_cui": "700232004",
+      "preferred_name": "General medical service",
+      "source_value": "general",
+      "confidence_score": 0.3094943504503288,
+      "character_boundaries": {
+        "start": 7995,
+        "end": 8002
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8010,
+        "end": 8017
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.982129793066398,
+      "character_boundaries": {
+        "start": 8018,
+        "end": 8025
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8030,
+        "end": 8036
+      }
+    },
+    {
+      "snomed_cui": "421529006",
+      "preferred_name": "Dementia with acquired immunodeficiency syndrome",
+      "source_value": "aids",
+      "confidence_score": 0.5270111373499564,
+      "character_boundaries": {
+        "start": 8037,
+        "end": 8041
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.866451725157567,
+      "character_boundaries": {
+        "start": 8062,
+        "end": 8065
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8066,
+        "end": 8075
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8130,
+        "end": 8138
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 8160,
+        "end": 8163
+      }
+    },
+    {
+      "snomed_cui": "273630004",
+      "preferred_name": "Mortality prediction model",
+      "source_value": "mortality-prediction models",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8193,
+        "end": 8220
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.34247792370622365,
+      "character_boundaries": {
+        "start": 8233,
+        "end": 8236
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8254,
+        "end": 8268
+      }
+    },
+    {
+      "snomed_cui": "385433004",
+      "preferred_name": "Consistent with",
+      "source_value": "consistent with",
+      "confidence_score": 0.7942259970506225,
+      "character_boundaries": {
+        "start": 8272,
+        "end": 8287
+      }
+    },
+    {
+      "snomed_cui": "6493001",
+      "preferred_name": "Recent",
+      "source_value": "recently",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8292,
+        "end": 8300
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.3328181875342474,
+      "character_boundaries": {
+        "start": 8316,
+        "end": 8319
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8325,
+        "end": 8334
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "studies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8350,
+        "end": 8357
+      }
+    },
+    {
+      "snomed_cui": "64049009",
+      "preferred_name": "Examined for (contextual qualifier)",
+      "source_value": "examined",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8377,
+        "end": 8385
+      }
+    },
+    {
+      "snomed_cui": "255403003",
+      "preferred_name": "Effectiveness",
+      "source_value": "effectiveness",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8390,
+        "end": 8403
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.908288966789192,
+      "character_boundaries": {
+        "start": 8429,
+        "end": 8432
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8433,
+        "end": 8442
+      }
+    },
+    {
+      "snomed_cui": "421529006",
+      "preferred_name": "Dementia with acquired immunodeficiency syndrome",
+      "source_value": "aids",
+      "confidence_score": 0.4239568046089116,
+      "character_boundaries": {
+        "start": 8452,
+        "end": 8456
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8466,
+        "end": 8473
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "management",
+      "confidence_score": 0.8026455213604797,
+      "character_boundaries": {
+        "start": 8474,
+        "end": 8484
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8501,
+        "end": 8516
+      }
+    },
+    {
+      "snomed_cui": "163121000000106",
+      "preferred_name": "Findings - care record element",
+      "source_value": "Findings",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 8541,
+        "end": 8549
+      }
+    },
+    {
+      "snomed_cui": "258393007",
+      "preferred_name": "Class 2",
+      "source_value": "Class II",
+      "confidence_score": 0.4205711307248858,
+      "character_boundaries": {
+        "start": 8557,
+        "end": 8565
+      }
+    },
+    {
+      "snomed_cui": "721811000000109",
+      "preferred_name": "Systematic review",
+      "source_value": "systematic review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8566,
+        "end": 8583
+      }
+    },
+    {
+      "snomed_cui": "721631000000102",
+      "preferred_name": "Meta analysis",
+      "source_value": "meta-analysis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8588,
+        "end": 8601
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.82670141875447,
+      "character_boundaries": {
+        "start": 8619,
+        "end": 8626
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8627,
+        "end": 8635
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.8880723297632933,
+      "character_boundaries": {
+        "start": 8636,
+        "end": 8639
+      }
+    },
+    {
+      "snomed_cui": "421529006",
+      "preferred_name": "Dementia with acquired immunodeficiency syndrome",
+      "source_value": "aids",
+      "confidence_score": 0.5454001839429351,
+      "character_boundaries": {
+        "start": 8649,
+        "end": 8653
+      }
+    },
+    {
+      "snomed_cui": "717661000000106",
+      "preferred_name": "Outcome",
+      "source_value": "outcome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8663,
+        "end": 8670
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.9029342775739585,
+      "character_boundaries": {
+        "start": 8674,
+        "end": 8677
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8678,
+        "end": 8687
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8689,
+        "end": 8695
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 8696,
+        "end": 8704
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.45737307537459826,
+      "character_boundaries": {
+        "start": 8748,
+        "end": 8751
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 8762,
+        "end": 8770
+      }
+    },
+    {
+      "snomed_cui": "264730003",
+      "preferred_name": "Lateral rotation - action",
+      "source_value": "LR",
+      "confidence_score": 0.32484369757345,
+      "character_boundaries": {
+        "start": 8771,
+        "end": 8773
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.5920733851193175,
+      "character_boundaries": {
+        "start": 8783,
+        "end": 8785
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.35849362120686784,
+      "character_boundaries": {
+        "start": 8813,
+        "end": 8816
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 8833,
+        "end": 8841
+      }
+    },
+    {
+      "snomed_cui": "264730003",
+      "preferred_name": "Lateral rotation - action",
+      "source_value": "LR",
+      "confidence_score": 0.43259569684062094,
+      "character_boundaries": {
+        "start": 8842,
+        "end": 8844
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.736917502409043,
+      "character_boundaries": {
+        "start": 8854,
+        "end": 8856
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.3805035120959662,
+      "character_boundaries": {
+        "start": 8883,
+        "end": 8886
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8887,
+        "end": 8891
+      }
+    },
+    {
+      "snomed_cui": "264750004",
+      "preferred_name": "Class 4",
+      "source_value": "classes IV",
+      "confidence_score": 0.8220992338209472,
+      "character_boundaries": {
+        "start": 8892,
+        "end": 8902
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 8910,
+        "end": 8918
+      }
+    },
+    {
+      "snomed_cui": "264730003",
+      "preferred_name": "Lateral rotation - action",
+      "source_value": "LR",
+      "confidence_score": 0.40407680067703977,
+      "character_boundaries": {
+        "start": 8919,
+        "end": 8921
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.7179529844501296,
+      "character_boundaries": {
+        "start": 8931,
+        "end": 8933
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 8959,
+        "end": 8964
+      }
+    },
+    {
+      "snomed_cui": "263768009",
+      "preferred_name": "Greater",
+      "source_value": "greater",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 8973,
+        "end": 8980
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 8982,
+        "end": 8990
+      }
+    },
+    {
+      "snomed_cui": "264730003",
+      "preferred_name": "Lateral rotation - action",
+      "source_value": "LR",
+      "confidence_score": 0.5088878267490607,
+      "character_boundaries": {
+        "start": 8991,
+        "end": 8993
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.6529939072844987,
+      "character_boundaries": {
+        "start": 9003,
+        "end": 9005
+      }
+    },
+    {
+      "snomed_cui": "118586006",
+      "preferred_name": "Ratio (property)",
+      "source_value": "ratios",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9039,
+        "end": 9045
+      }
+    },
+    {
+      "snomed_cui": "225436004",
+      "preferred_name": "Reflecting",
+      "source_value": "reflect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9059,
+        "end": 9066
+      }
+    },
+    {
+      "snomed_cui": "14671000000105",
+      "preferred_name": "Abilities",
+      "source_value": "ability",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9071,
+        "end": 9078
+      }
+    },
+    {
+      "snomed_cui": "421529006",
+      "preferred_name": "Dementia with acquired immunodeficiency syndrome",
+      "source_value": "aids",
+      "confidence_score": 0.5964414249525075,
+      "character_boundaries": {
+        "start": 9088,
+        "end": 9092
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9120,
+        "end": 9128
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admitted",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9134,
+        "end": 9142
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.960822375164343,
+      "character_boundaries": {
+        "start": 9150,
+        "end": 9153
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9197,
+        "end": 9203
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.31181039860039184,
+      "character_boundaries": {
+        "start": 9222,
+        "end": 9225
+      }
+    },
+    {
+      "snomed_cui": "439401001",
+      "preferred_name": "Diagnosis",
+      "source_value": "diagnostic",
+      "confidence_score": 0.37219461509521845,
+      "character_boundaries": {
+        "start": 9236,
+        "end": 9246
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.430126291130437,
+      "character_boundaries": {
+        "start": 9260,
+        "end": 9262
+      }
+    },
+    {
+      "snomed_cui": "458432002",
+      "preferred_name": "Arterial tortuosity syndrome",
+      "source_value": "ATS",
+      "confidence_score": 0.3187490931565437,
+      "character_boundaries": {
+        "start": 9291,
+        "end": 9294
+      }
+    },
+    {
+      "snomed_cui": "439401001",
+      "preferred_name": "Diagnosis",
+      "source_value": "diagnostic",
+      "confidence_score": 0.5117577192095555,
+      "character_boundaries": {
+        "start": 9311,
+        "end": 9321
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.49026292085986634,
+      "character_boundaries": {
+        "start": 9335,
+        "end": 9337
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.3091039523832098,
+      "character_boundaries": {
+        "start": 9360,
+        "end": 9363
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9364,
+        "end": 9368
+      }
+    },
+    {
+      "snomed_cui": "264750004",
+      "preferred_name": "Class 4",
+      "source_value": "classes IV",
+      "confidence_score": 0.7015843769170055,
+      "character_boundaries": {
+        "start": 9369,
+        "end": 9379
+      }
+    },
+    {
+      "snomed_cui": "263768009",
+      "preferred_name": "Greater",
+      "source_value": "greater",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9394,
+        "end": 9401
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.5648187986042952,
+      "character_boundaries": {
+        "start": 9426,
+        "end": 9428
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 9450,
+        "end": 9455
+      }
+    },
+    {
+      "snomed_cui": "263768009",
+      "preferred_name": "Greater",
+      "source_value": "greater",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9464,
+        "end": 9471
+      }
+    },
+    {
+      "snomed_cui": "439401001",
+      "preferred_name": "Diagnosis",
+      "source_value": "diagnostic",
+      "confidence_score": 0.4566469651613022,
+      "character_boundaries": {
+        "start": 9473,
+        "end": 9483
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.496267815633067,
+      "character_boundaries": {
+        "start": 9496,
+        "end": 9498
+      }
+    },
+    {
+      "snomed_cui": "721811000000109",
+      "preferred_name": "Systematic review",
+      "source_value": "systematic review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9555,
+        "end": 9572
+      }
+    },
+    {
+      "snomed_cui": "721631000000102",
+      "preferred_name": "Meta analysis",
+      "source_value": "meta-analysis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9577,
+        "end": 9590
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.4151842163821857,
+      "character_boundaries": {
+        "start": 9620,
+        "end": 9623
+      }
+    },
+    {
+      "snomed_cui": "224699009",
+      "preferred_name": "Study",
+      "source_value": "study",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9635,
+        "end": 9640
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "included",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9669,
+        "end": 9677
+      }
+    },
+    {
+      "snomed_cui": "721241000000109",
+      "preferred_name": "Review",
+      "source_value": "reviews",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9697,
+        "end": 9704
+      }
+    },
+    {
+      "snomed_cui": "52101004",
+      "preferred_name": "Present",
+      "source_value": "found",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9714,
+        "end": 9719
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9742,
+        "end": 9748
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 9749,
+        "end": 9757
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.8050598677712796,
+      "character_boundaries": {
+        "start": 9780,
+        "end": 9783
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admission",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9784,
+        "end": 9793
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.39686625786671553,
+      "character_boundaries": {
+        "start": 9821,
+        "end": 9824
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 9841,
+        "end": 9849
+      }
+    },
+    {
+      "snomed_cui": "264730003",
+      "preferred_name": "Lateral rotation - action",
+      "source_value": "LR",
+      "confidence_score": 0.31818446565519204,
+      "character_boundaries": {
+        "start": 9850,
+        "end": 9852
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.6585195755963796,
+      "character_boundaries": {
+        "start": 9862,
+        "end": 9864
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.7402956892736183,
+      "character_boundaries": {
+        "start": 9885,
+        "end": 9888
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9889,
+        "end": 9893
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "classes III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9894,
+        "end": 9905
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "IV",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 9910,
+        "end": 9912
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 9914,
+        "end": 9922
+      }
+    },
+    {
+      "snomed_cui": "264730003",
+      "preferred_name": "Lateral rotation - action",
+      "source_value": "LR",
+      "confidence_score": 0.38786505388433884,
+      "character_boundaries": {
+        "start": 9923,
+        "end": 9925
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.7067657821923501,
+      "character_boundaries": {
+        "start": 9935,
+        "end": 9937
+      }
+    },
+    {
+      "snomed_cui": "406529000",
+      "preferred_name": "Pneumonia severity index",
+      "source_value": "PSI",
+      "confidence_score": 0.38711338573348236,
+      "character_boundaries": {
+        "start": 9964,
+        "end": 9967
+      }
+    },
+    {
+      "snomed_cui": "30207005",
+      "preferred_name": "Risk of (contextual qualifier)",
+      "source_value": "risk",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 9968,
+        "end": 9972
+      }
+    },
+    {
+      "snomed_cui": "264750004",
+      "preferred_name": "Class 4",
+      "source_value": "classes IV",
+      "confidence_score": 0.8288542068500139,
+      "character_boundaries": {
+        "start": 9973,
+        "end": 9983
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 9991,
+        "end": 9999
+      }
+    },
+    {
+      "snomed_cui": "264730003",
+      "preferred_name": "Lateral rotation - action",
+      "source_value": "LR",
+      "confidence_score": 0.4068278656890418,
+      "character_boundaries": {
+        "start": 10000,
+        "end": 10002
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.7158008887593357,
+      "character_boundaries": {
+        "start": 10012,
+        "end": 10014
+      }
+    },
+    {
+      "snomed_cui": "278061009",
+      "preferred_name": "Scores",
+      "source_value": "score",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 10038,
+        "end": 10043
+      }
+    },
+    {
+      "snomed_cui": "263768009",
+      "preferred_name": "Greater",
+      "source_value": "greater",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 10052,
+        "end": 10059
+      }
+    },
+    {
+      "snomed_cui": "10828004",
+      "preferred_name": "Positive",
+      "source_value": "positive",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 10061,
+        "end": 10069
+      }
+    },
+    {
+      "snomed_cui": "264730003",
+      "preferred_name": "Lateral rotation - action",
+      "source_value": "LR",
+      "confidence_score": 0.5149429003633814,
+      "character_boundaries": {
+        "start": 10070,
+        "end": 10072
+      }
+    },
+    {
+      "snomed_cui": "54993008",
+      "preferred_name": "Cardiac index",
+      "source_value": "CI",
+      "confidence_score": 0.6286668287628036,
+      "character_boundaries": {
+        "start": 10082,
+        "end": 10084
+      }
+    },
+    {
+      "snomed_cui": "768651008",
+      "preferred_name": "Antithymocyte immunoglobulin",
+      "source_value": "ATS",
+      "confidence_score": 0.3181325628322066,
+      "character_boundaries": {
+        "start": 10161,
+        "end": 10164
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 10165,
+        "end": 10175
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 10189,
+        "end": 10197
+      }
+    },
+    {
+      "snomed_cui": "32485007",
+      "preferred_name": "Hospital admission",
+      "source_value": "admit",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 10210,
+        "end": 10215
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.835191707884823,
+      "character_boundaries": {
+        "start": 10223,
+        "end": 10226
+      }
+    },
+    {
+      "snomed_cui": "312012004",
+      "preferred_name": "Cognitive function: awareness",
+      "source_value": "aware",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 10241,
+        "end": 10246
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 10318,
+        "end": 10328
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 10354,
+        "end": 10364
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 10447,
+        "end": 10455
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guideline",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 10511,
+        "end": 10520
+      }
+    }
+  ]
+}

@@ -1,0 +1,494 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-4789-0abc-def123456789",
+      "@type": "Finding",
+      "name": "Confused",
+      "snomed": "286933003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Confusion indicates the patient requires ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "New onset confusion warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9b0c1d2e-f3a4-4890-12ab-cdef34567890",
+      "@type": "Finding",
+      "name": "Lethargic",
+      "snomed": "214264003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Lethargy indicates the patient requires ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "New onset lethargy warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5c6d7e8f-a9b0-4cde-f1a2-34567890abcd",
+      "@type": "Finding",
+      "name": "Disoriented",
+      "snomed": "62476001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Disorientation indicates the patient requires ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "New onset disorientation warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b3c4d5e6-f7a8-4901-23ab-cdef45678901",
+      "@type": "Finding",
+      "name": "Severe pain",
+      "snomed": "76948002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Severe pain indicates the patient requires ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Severe pain warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d5e6f7a8-90b1-4cde-01fa-23456789abcd",
+      "@type": "Condition",
+      "name": "Acute coronary syndrome",
+      "snomed": "394659003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Active chest pain suspicious for acute coronary syndrome warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Suspicion for acute coronary syndrome warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f7a8b9c0-d1e2-4678-9abc-def123456789",
+      "@type": "Condition",
+      "name": "Ectopic pregnancy",
+      "snomed": "34801009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Possible ectopic pregnancy warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c0d1e2f3-a4b5-4901-2def-34567890abcd",
+      "@type": "Condition",
+      "name": "Transplant recipient",
+      "snomed": "737294004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Transplant recipient presenting with fever warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9d0e1f2a-b3c4-4567-89ab-cdef01234567",
+      "@type": "Finding",
+      "name": "Actively suicidal",
+      "snomed": "267073005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Actively suicidal patient warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f2a3b4c5-d6e7-4901-8def-9012abcdefab",
+      "@type": "Finding",
+      "name": "Needle stick in a health care worker",
+      "snomed": "223366009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Needle stick in a health care worker warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a3b4c5d6-e7f8-4012-9def-0123456789ab",
+      "@type": "Finding",
+      "name": "Sexual assault survivor",
+      "snomed": "248110007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Sexual assault survivor warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2eb28d91-4faf-4e5b-b38b-e67beb58c1ec",
+      "@type": "Condition",
+      "name": "Stroke",
+      "snomed": "230690007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Signs of a stroke warrant ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-789012abcdef",
+      "@type": "Finding",
+      "name": "High-risk situation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "A high-risk situation indicates the patient requires ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+      "@type": "Acuity",
+      "name": "ESI level 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7e8f9a0b-c3d4-4e56-a7b8-9012defabcde",
+      "@type": "Finding",
+      "name": "Severe distress",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Severe distress indicates the patient requires ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e6f7a8b9-0c1d-4def-a234-567890abcdef",
+      "@type": "Finding",
+      "name": "Stroke signs",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Signs of a stroke warrant ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a8b9c0d1-e2f3-4789-0def-1234567890ab",
+      "@type": "Condition",
+      "name": "Chemotherapy patient",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Patient on chemotherapy with fever warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e1f2a3b4-c5d6-4098-76ab-cdef90123456",
+      "@type": "Finding",
+      "name": "Actively homicidal",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Actively homicidal patient warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b4c5d6e7-f8a9-4123-0def-1234567890cd",
+      "@type": "Finding",
+      "name": "Postpartum hemorrhage",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Postpartum hemorrhage warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a9b0c1d2-e3f4-4678-9abc-def123456789",
+      "@type": "Finding",
+      "name": "Severe distress",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Severe distress warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:378219f0-fc82-487a-a086-384ca63bad70",
+      "@type": "Condition",
+      "name": "Chemotherapy patient",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_–_decision_poi_part1.json",
+        "section_title": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-4567-89ab-cdef01234567",
+          "rationale": "Patient on chemotherapy with fever warrants ESI level 2 triage.",
+          "citation": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_paraphrase": "CHAPTER 4 – Decision Point B: High-Risk Presentation? [Part 1/2]",
+          "citation_verbatim_excerpt": "If it is determined that the patient does not meet ESI level-1 criteria, the nurse moves to decision point B (Figure 4-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:37.632110+00:00",
+    "nodes_before": 28,
+    "nodes_after": 20,
+    "rules_before": 27,
+    "rules_after": 25
+  }
+}

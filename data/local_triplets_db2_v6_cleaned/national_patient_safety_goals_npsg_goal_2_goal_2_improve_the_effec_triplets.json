@@ -1,0 +1,89 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Critical results of tests and diagnostic procedures",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_2_goal_2_improve_the_effec.json",
+        "section_title": "Goal 2: Improve the effectiveness of communication among caregivers"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Critical results indicate a potentially life-threatening situation requiring prompt action.",
+          "citation": "NPSG.02.03.01 Rationale",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:d4bc189a-cfe8-4706-87c7-412fe4eee213",
+          "rationale": "Critical results require timely reporting to the responsible caregiver.",
+          "citation": "NPSG.02.03.01 Element(s) of performance EP 1, EP 3",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Potentially life-threatening situation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_2_goal_2_improve_the_effec.json",
+        "section_title": "Goal 2: Improve the effectiveness of communication among caregivers"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d4bc189a-cfe8-4706-87c7-412fe4eee213",
+      "@type": "Intervention",
+      "name": "Timely reporting of critical results",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_2_goal_2_improve_the_effec.json",
+        "section_title": "Goal 2: Improve the effectiveness of communication among caregivers"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+          "rationale": "Timely reporting is required to ensure prompt patient treatment.",
+          "citation": "NPSG.02.03.01 Element(s) of performance EP 1, EP 3",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+      "@type": "Acuity",
+      "name": "Established time frame for reporting",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_2_goal_2_improve_the_effec.json",
+        "section_title": "Goal 2: Improve the effectiveness of communication among caregivers"
+      },
+      "quantitative_threshold": {
+        "time_frame": "Established time frame (specific duration not defined in text, but implied by requirement)"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.603166+00:00",
+    "nodes_before": 4,
+    "nodes_after": 4,
+    "rules_before": 3,
+    "rules_after": 3
+  }
+}

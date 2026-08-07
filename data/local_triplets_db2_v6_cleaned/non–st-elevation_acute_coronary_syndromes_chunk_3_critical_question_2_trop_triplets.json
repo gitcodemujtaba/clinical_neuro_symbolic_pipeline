@@ -1,0 +1,438 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Troponin testing within 3 hours of ED presentation",
+      "snomed": "102680009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f7e8d9c0-b1a2-4356-9def-7890abcdef12",
+          "rationale": "Troponin testing within 3 hours of ED presentation can be used to predict a low rate of 30-day MACE in adult patients with suspected NSTE ACS.",
+          "citation": "In adult patients with suspected acute [SNOMED: 272118002] NSTE ACS [SNOMED: 394659003], conventional [SNOMED: 255333006] troponin [SNOMED: 102680009] testing at 0 and 3 hours among low-risk ACS [SNOMED: 394659003] patients (defined by HEART [SNOMED: 80891009] score [SNOMED: 278061009] 0 to 3) can predict an acceptable low rate of 30-day MACE.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-3456-7890abcdef13",
+      "@type": "Finding",
+      "name": "HEART score 0 to 3",
+      "snomed": "80891009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-5f4a-4102-8def-34567890abcd",
+          "rationale": "HEART score 0 to 3 defines low-risk ACS patients for predicting MACE using troponin testing.",
+          "citation": "(1) In adult patients with suspected acute [SNOMED: 272118002] NSTE ACS [SNOMED: 394659003], conventional [SNOMED: 255333006] troponin [SNOMED: 102680009] testing at 0 and 3 hours among low-risk ACS [SNOMED: 394659003] patients (defined by HEART [SNOMED: 80891009] score [SNOMED: 278061009] 0 to 3) can predict an acceptable low rate of 30-day MACE.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4688a215-0610-4f4d-b939-6d80a32eef6c",
+      "@type": "Finding",
+      "name": "Conventional troponin testing at 0 and 3 hours",
+      "snomed": "255333006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:0c1d2e3f-a9b8-4765-def0-fedcba987654",
+          "rationale": "Conventional troponin testing at 0 and 3 hours in low-risk ACS patients (HEART score 0-3) predicts an acceptable low rate of 30-day MACE.",
+          "citation": "(1) In adult patients with suspected acute [SNOMED: 272118002] NSTE ACS [SNOMED: 394659003], conventional [SNOMED: 255333006] troponin [SNOMED: 102680009] testing at 0 and 3 hours among low-risk ACS [SNOMED: 394659003] patients (defined by HEART [SNOMED: 80891009] score [SNOMED: 278061009] 0 to 3) can predict an acceptable low rate of 30-day MACE.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7b8c9d0e-f1a2-4567-0def-9abcdeffedca",
+      "@type": "Finding",
+      "name": "Single high-sensitivity troponin result below the level of detection on arrival",
+      "snomed": "35209006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:c89b9a1d-83dd-4c79-91f3-baf1c855573e",
+          "rationale": "A single high-sensitivity troponin result below the level of detection on arrival predicts a low rate of MACE.",
+          "citation": "(2) A single high-sensitivity [SNOMED: 35209006] troponin [SNOMED: 102680009] result below the level of detection on arrival to the ED, or negative serial high-sensitivity [SNOMED: 35209006] troponin [SNOMED: 102680009] result at 0 and 2 hours [SNOMED: 123030002] is predictive of a low rate of MACE.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:c89b9a1d-83dd-4c79-91f3-baf1c855573e",
+          "rationale": "Negative serial high-sensitivity troponin result at 0 and 2 hours predicts a low rate of MACE.",
+          "citation": "(2) A single high-sensitivity [SNOMED: 35209006] troponin [SNOMED: 102680009] result below the level of detection on arrival to the ED, or negative serial high-sensitivity [SNOMED: 35209006] troponin [SNOMED: 102680009] result at 0 and 2 hours [SNOMED: 123030002] is predictive of a low rate of MACE.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:94642b0b-da45-4746-9eeb-7441a482bee1",
+      "@type": "Finding",
+      "name": "Accelerated testing protocols",
+      "snomed": "258049002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:21666955-0bbe-43e9-a7cf-a329b16dc20c",
+          "rationale": "Accelerated testing protocols decrease ED length of stay and avoid unnecessary hospitalizations.",
+          "citation": "Potential Benefit: Accelerated testing protocols [SNOMED: 258049002] decrease ED length of stay and avoid unnecessary hospitalizations [SNOMED: 394656005].",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:637b92f6-864a-4c94-8049-97fe8d8d63df",
+      "@type": "Finding",
+      "name": "NSTE ACS",
+      "snomed": "394659003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7d5b023c-25b2-4d99-a7de-64fb934f607e",
+      "@type": "Finding",
+      "name": "Nonischemic ECG",
+      "snomed": "29303009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e72ec92e-78ad-4f1d-9859-bff765cb6d3c",
+      "@type": "Finding",
+      "name": "Unnecessary hospitalizations",
+      "snomed": "394656005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:dfff32d6-3b03-42d1-b601-28a15a6bd702",
+      "@type": "Finding",
+      "name": "False-positive test results",
+      "snomed": "90213003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c74e7dd2-f859-40ed-b506-86cc41dea5bb",
+      "@type": "Finding",
+      "name": "EDACS protocol",
+      "snomed": "61931000000101",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a89527d3-6b2d-4941-8563-6af7dc64912d",
+      "@type": "Finding",
+      "name": "ADAPT trial",
+      "snomed": "4452006",
+      "icd10": "N/A",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f7e8d9c0-b1a2-4356-9def-7890abcdef12",
+      "@type": "Condition",
+      "name": "Prediction of low rate of 30-day MACE in NSTE ACS patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9b8c7d6e-5f4a-4102-8def-34567890abcd",
+      "@type": "Condition",
+      "name": "Low-risk ACS patient (HEART score 0-3)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0c1d2e3f-a9b8-4765-def0-fedcba987654",
+      "@type": "Condition",
+      "name": "Acceptable low rate of 30-day MACE prediction",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d58571c6-ad32-4738-975d-4640de664e2e",
+      "@type": "Condition",
+      "name": "Prediction of low rate of MACE (single high-sensitivity troponin)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c89b9a1d-83dd-4c79-91f3-baf1c855573e",
+      "@type": "Condition",
+      "name": "Prediction of low rate of MACE (negative serial high-sensitivity troponin)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8f9e0d1c-b2a3-4789-5def-6789abcdef01",
+      "@type": "Finding",
+      "name": "Validated ADPs including nonischemic ECG result and negative serial high-sensitivity troponin results at presentation and 2 hours",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:2b3c4d5e-f0a1-4890-bdef-7890abcdef02",
+          "rationale": "Low risk patients based on validated ADPs including nonischemic ECG and negative serial high-sensitivity troponin at presentation and 2 hours can predict a low rate of 30-day MACE allowing for accelerated discharge.",
+          "citation": "(3) In adult patients with suspected acute [SNOMED: 272118002] NSTE ACS [SNOMED: 394659003] who are determined to be low risk based on validated ADPs that include a nonischemic ECG [SNOMED: 29303009] result and negative serial high-sensitivity [SNOMED: 35209006] troponin [SNOMED: 102680009] testing results both at presentation and at 2 hours [SNOMED: 123030002] can predict a low rate of 30-day MACE allowing for an accelerated discharge pathway from the ED.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2b3c4d5e-f0a1-4890-bdef-7890abcdef02",
+      "@type": "Condition",
+      "name": "Prediction of low rate of 30-day MACE allowing accelerated discharge (validated ADPs)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:21666955-0bbe-43e9-a7cf-a329b16dc20c",
+      "@type": "Condition",
+      "name": "Decreased ED length of stay and avoidance of unnecessary hospitalizations",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9a0b1c2d-e5f6-7890-4567-89abcdef0123",
+      "@type": "Finding",
+      "name": "Single conventional troponin with HEART score 0-3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a3c89b19-c3fa-4099-8f6a-2918231d7617",
+          "rationale": "Single conventional troponin with HEART score 0-3 yields 1.7%-3.3% MACE rates; adding a 3-hour troponin improves safety.",
+          "citation": "A single conventional [SNOMED: 255333006] troponin [SNOMED: 102680009] with HEART [SNOMED: 80891009] score [SNOMED: 278061009] 0-3 yields 1.7%-3.3% MACE rates; adding a 3-hour troponin [SNOMED: 102680009] improves safety.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a3c89b19-c3fa-4099-8f6a-2918231d7617",
+      "@type": "Condition",
+      "name": "MACE rate of 1.7%-3.3% (single conventional troponin + HEART score 0-3)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b6c7d8e9-01f2-4567-defa-bcdeffedcba0",
+      "@type": "Finding",
+      "name": "Single high-sensitivity troponin below the limit of detection (<5 ng/L) with nonischemic ECG",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a0b1c2d3-e4f5-7890-def6-fedcb9876543",
+          "rationale": "A single high-sensitivity troponin below the limit of detection (<5 ng/L) combined with nonischemic ECG achieved 98%-99.8% NPV for 30-day MACE/MI.",
+          "citation": "A single high-sensitivity [SNOMED: 35209006] troponin [SNOMED: 102680009] below the limit [SNOMED: 255469002] of detection (<5 ng/L) combined [SNOMED: 89780004] with nonischemic ECG [SNOMED: 29303009] achieved 98%-99.8% NPV for 30-day MACE/MI [SNOMED: 22298006].",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a0b1c2d3-e4f5-7890-def6-fedcb9876543",
+      "@type": "Condition",
+      "name": "Prediction of low rate of 30-day MACE/MI (single high-sensitivity troponin + nonischemic ECG)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d5e6f7a8-901c-4b3d-2ef4-abcdef012cba",
+      "@type": "Finding",
+      "name": "Novel 0/1-hour and 0/2-hour algorithms using high-sensitivity troponin",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e6f7a8b9-01d2-4c35-defa-bcdeffedcba1",
+          "rationale": "Novel 0/1-hour and 0/2-hour algorithms using high-sensitivity troponin show NPV >99%.",
+          "citation": "Novel [SNOMED: 7147002] 0/1-hour and 0/2-hour [SNOMED: 123030002] algorithms using high-sensitivity [SNOMED: 35209006] troponin [SNOMED: 102680009] show NPV >99%.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e6f7a8b9-01d2-4c35-defa-bcdeffedcba1",
+      "@type": "Condition",
+      "name": "Prediction of low rate of MACE (novel 0/1-hour and 0/2-hour algorithms)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e7f8a9b0-c1d2-4567-defa-bcdeffedcba2",
+      "@type": "Finding",
+      "name": "30-day MACE",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4b021654-af96-4052-b738-775b22214789",
+      "@type": "Finding",
+      "name": "Accelerated discharge pathway",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f8428473-f155-4129-9fac-b18f83fbd61f",
+      "@type": "Finding",
+      "name": "ED length of stay",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6e3d169c-59ea-4589-b70a-1f3f8f70dbe6",
+      "@type": "Finding",
+      "name": "Missed MACE cases",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop.json",
+        "section_title": "Critical Question 2: Troponin Testing Within 3 Hours of Presentation"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:40.689008+00:00",
+    "nodes_before": 34,
+    "nodes_after": 29,
+    "rules_before": 10,
+    "rules_after": 10
+  }
+}

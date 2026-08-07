@@ -1,0 +1,1665 @@
+{
+  "chunk_id": "ssc_2021_long_term_outcomes_1",
+  "entities": [
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3,
+        "end": 7
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 22,
+        "end": 28
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 34,
+        "end": 40
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 44,
+        "end": 56
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 61,
+        "end": 70
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 82,
+        "end": 87
+      }
+    },
+    {
+      "snomed_cui": "20481000",
+      "preferred_name": "Determination of prognosis",
+      "source_value": "prognosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 100,
+        "end": 109
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 115,
+        "end": 123
+      }
+    },
+    {
+      "snomed_cui": "397678008",
+      "preferred_name": "Surname",
+      "source_value": "families",
+      "confidence_score": 0.4140064895511123,
+      "character_boundaries": {
+        "start": 128,
+        "end": 136
+      }
+    },
+    {
+      "snomed_cui": "223482009",
+      "preferred_name": "Discussion",
+      "source_value": "discussion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 150,
+        "end": 160
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 174,
+        "end": 180
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 186,
+        "end": 192
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 196,
+        "end": 208
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 232,
+        "end": 237
+      }
+    },
+    {
+      "snomed_cui": "264499004",
+      "preferred_name": "Early",
+      "source_value": "early",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 246,
+        "end": 251
+      }
+    },
+    {
+      "snomed_cui": "123028004",
+      "preferred_name": "72 hours",
+      "source_value": "72 hours",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 260,
+        "end": 268
+      }
+    },
+    {
+      "snomed_cui": "236040000",
+      "preferred_name": "Late stage",
+      "source_value": "late",
+      "confidence_score": 0.4094338908325945,
+      "character_boundaries": {
+        "start": 275,
+        "end": 279
+      }
+    },
+    {
+      "snomed_cui": "123028004",
+      "preferred_name": "72 hours",
+      "source_value": "72 hours",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 281,
+        "end": 289
+      }
+    },
+    {
+      "snomed_cui": "260383002",
+      "preferred_name": "Late",
+      "source_value": "later",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 293,
+        "end": 298
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 311,
+        "end": 317
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 323,
+        "end": 329
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 333,
+        "end": 345
+      }
+    },
+    {
+      "snomed_cui": "423437008",
+      "preferred_name": "Insufficient",
+      "source_value": "insufficient",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 356,
+        "end": 368
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 388,
+        "end": 402
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 410,
+        "end": 418
+      }
+    },
+    {
+      "snomed_cui": "410658008",
+      "preferred_name": "Provoked by",
+      "source_value": "trigger",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 445,
+        "end": 452
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goals",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 453,
+        "end": 458
+      }
+    },
+    {
+      "snomed_cui": "223482009",
+      "preferred_name": "Discussion",
+      "source_value": "discussion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 467,
+        "end": 477
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 482,
+        "end": 486
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 501,
+        "end": 507
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 513,
+        "end": 519
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 523,
+        "end": 535
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 540,
+        "end": 549
+      }
+    },
+    {
+      "snomed_cui": "103735009",
+      "preferred_name": "Palliative care",
+      "source_value": "palliative care",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 573,
+        "end": 588
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 600,
+        "end": 607
+      }
+    },
+    {
+      "snomed_cui": "713281006",
+      "preferred_name": "Consultation for palliative care",
+      "source_value": "palliative care consultation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 608,
+        "end": 636
+      }
+    },
+    {
+      "snomed_cui": "61254005",
+      "preferred_name": "Judgement",
+      "source_value": "judgement",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 656,
+        "end": 665
+      }
+    },
+    {
+      "snomed_cui": "734163000",
+      "preferred_name": "Care plan",
+      "source_value": "treatment plan",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 690,
+        "end": 704
+      }
+    },
+    {
+      "snomed_cui": "397635003",
+      "preferred_name": "Address",
+      "source_value": "address",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 727,
+        "end": 734
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 735,
+        "end": 742
+      }
+    },
+    {
+      "snomed_cui": "397678008",
+      "preferred_name": "Surname",
+      "source_value": "family",
+      "confidence_score": 0.3932240046886759,
+      "character_boundaries": {
+        "start": 747,
+        "end": 753
+      }
+    },
+    {
+      "snomed_cui": "706873003",
+      "preferred_name": "Suffering",
+      "source_value": "suffering",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 767,
+        "end": 776
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 790,
+        "end": 796
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 802,
+        "end": 808
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 812,
+        "end": 824
+      }
+    },
+    {
+      "snomed_cui": "50811001",
+      "preferred_name": "Routine",
+      "source_value": "routine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 845,
+        "end": 852
+      }
+    },
+    {
+      "snomed_cui": "713281006",
+      "preferred_name": "Consultation for palliative care",
+      "source_value": "palliative care consultation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 860,
+        "end": 888
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 897,
+        "end": 905
+      }
+    },
+    {
+      "snomed_cui": "713281006",
+      "preferred_name": "Consultation for palliative care",
+      "source_value": "palliative care consultation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 911,
+        "end": 939
+      }
+    },
+    {
+      "snomed_cui": "61254005",
+      "preferred_name": "Judgement",
+      "source_value": "judgement",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 959,
+        "end": 968
+      }
+    },
+    {
+      "snomed_cui": "260362008",
+      "preferred_name": "Very low",
+      "source_value": "VERY LOW",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 973,
+        "end": 981
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 987,
+        "end": 992
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1006,
+        "end": 1012
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1016,
+        "end": 1028
+      }
+    },
+    {
+      "snomed_cui": "461481000124109",
+      "preferred_name": "Referral to peer support",
+      "source_value": "referral to peer support",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1060,
+        "end": 1084
+      }
+    },
+    {
+      "snomed_cui": "160481000",
+      "preferred_name": "Social group",
+      "source_value": "groups",
+      "confidence_score": 0.7184627588502801,
+      "character_boundaries": {
+        "start": 1085,
+        "end": 1091
+      }
+    },
+    {
+      "snomed_cui": "440377005",
+      "preferred_name": "Referral by",
+      "source_value": "referral",
+      "confidence_score": 0.6087639633462778,
+      "character_boundaries": {
+        "start": 1105,
+        "end": 1113
+      }
+    },
+    {
+      "snomed_cui": "260362008",
+      "preferred_name": "Very low",
+      "source_value": "VERY LOW",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1118,
+        "end": 1126
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1132,
+        "end": 1138
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1144,
+        "end": 1150
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1154,
+        "end": 1166
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.6539645797433334,
+      "character_boundaries": {
+        "start": 1195,
+        "end": 1202
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1227,
+        "end": 1238
+      }
+    },
+    {
+      "snomed_cui": "1861000124105",
+      "preferred_name": "Transition of care",
+      "source_value": "transitions of care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1242,
+        "end": 1261
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.6662162089048482,
+      "character_boundaries": {
+        "start": 1283,
+        "end": 1290
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1302,
+        "end": 1308
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1314,
+        "end": 1320
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1324,
+        "end": 1336
+      }
+    },
+    {
+      "snomed_cui": "423437008",
+      "preferred_name": "Insufficient",
+      "source_value": "insufficient",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1347,
+        "end": 1359
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1379,
+        "end": 1393
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1401,
+        "end": 1407
+      }
+    },
+    {
+      "snomed_cui": "69658003",
+      "preferred_name": "Specific",
+      "source_value": "specific",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1412,
+        "end": 1420
+      }
+    },
+    {
+      "snomed_cui": "86967005",
+      "preferred_name": "Tool, device",
+      "source_value": "tool",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1440,
+        "end": 1444
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "processes",
+      "confidence_score": 0.3646667523055925,
+      "character_boundaries": {
+        "start": 1464,
+        "end": 1473
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1478,
+        "end": 1482
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1497,
+        "end": 1503
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1509,
+        "end": 1515
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1519,
+        "end": 1531
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1555,
+        "end": 1564
+      }
+    },
+    {
+      "snomed_cui": "722021000000100",
+      "preferred_name": "Screening",
+      "source_value": "screening",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1565,
+        "end": 1574
+      }
+    },
+    {
+      "snomed_cui": "719691000000106",
+      "preferred_name": "Economics",
+      "source_value": "economic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1579,
+        "end": 1587
+      }
+    },
+    {
+      "snomed_cui": "315042007",
+      "preferred_name": "Social support",
+      "source_value": "social support",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1592,
+        "end": 1606
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1608,
+        "end": 1617
+      }
+    },
+    {
+      "snomed_cui": "724741000000100",
+      "preferred_name": "Housing",
+      "source_value": "housing",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1618,
+        "end": 1625
+      }
+    },
+    {
+      "snomed_cui": "386444001",
+      "preferred_name": "Spiritual support",
+      "source_value": "spiritual support",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1655,
+        "end": 1672
+      }
+    },
+    {
+      "snomed_cui": "3457005",
+      "preferred_name": "Patient referral",
+      "source_value": "referrals",
+      "confidence_score": 0.4358960832974692,
+      "character_boundaries": {
+        "start": 1684,
+        "end": 1693
+      }
+    },
+    {
+      "snomed_cui": "8940901000001109",
+      "preferred_name": "Available",
+      "source_value": "available",
+      "confidence_score": 0.8394325179697664,
+      "character_boundaries": {
+        "start": 1700,
+        "end": 1709
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "needs",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1724,
+        "end": 1729
+      }
+    },
+    {
+      "snomed_cui": "260362008",
+      "preferred_name": "Very low",
+      "source_value": "VERY LOW",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1734,
+        "end": 1742
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1748,
+        "end": 1754
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1760,
+        "end": 1766
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1770,
+        "end": 1782
+      }
+    },
+    {
+      "snomed_cui": "397678008",
+      "preferred_name": "Surname",
+      "source_value": "families",
+      "confidence_score": 0.41690910268926573,
+      "character_boundaries": {
+        "start": 1793,
+        "end": 1801
+      }
+    },
+    {
+      "snomed_cui": "410527000",
+      "preferred_name": "Offered",
+      "source_value": "offering",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1814,
+        "end": 1822
+      }
+    },
+    {
+      "snomed_cui": "255373000",
+      "preferred_name": "Verbal",
+      "source_value": "verbal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1835,
+        "end": 1841
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1842,
+        "end": 1848
+      }
+    },
+    {
+      "snomed_cui": "409073007",
+      "preferred_name": "Education",
+      "source_value": "education",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1849,
+        "end": 1858
+      }
+    },
+    {
+      "snomed_cui": "887161000000102",
+      "preferred_name": "Diagnoses",
+      "source_value": "diagnosis",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1860,
+        "end": 1869
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1871,
+        "end": 1880
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.9681066542341947,
+      "character_boundaries": {
+        "start": 1891,
+        "end": 1894
+      }
+    },
+    {
+      "snomed_cui": "238150007",
+      "preferred_name": "Sepsis syndrome",
+      "source_value": "sepsis syndrome",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1900,
+        "end": 1915
+      }
+    },
+    {
+      "snomed_cui": "236874000",
+      "preferred_name": "Status pre- (contextual qualifier)",
+      "source_value": "prior to",
+      "confidence_score": 0.867194734924541,
+      "character_boundaries": {
+        "start": 1917,
+        "end": 1925
+      }
+    },
+    {
+      "snomed_cui": "308283009",
+      "preferred_name": "Discharge from hospital",
+      "source_value": "hospital discharge",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1926,
+        "end": 1944
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1956,
+        "end": 1965
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1978,
+        "end": 1982
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1997,
+        "end": 2003
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2009,
+        "end": 2015
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2019,
+        "end": 2031
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2055,
+        "end": 2064
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2069,
+        "end": 2077
+      }
+    },
+    {
+      "snomed_cui": "231113001",
+      "preferred_name": "Tannenbaum electroanalgesia method",
+      "source_value": "team",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2078,
+        "end": 2082
+      }
+    },
+    {
+      "snomed_cui": "815691000000107",
+      "preferred_name": "Shared decision making",
+      "source_value": "shared decision making",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2125,
+        "end": 2147
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2156,
+        "end": 2159
+      }
+    },
+    {
+      "snomed_cui": "308283009",
+      "preferred_name": "Discharge from hospital",
+      "source_value": "hospital discharge",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2164,
+        "end": 2182
+      }
+    },
+    {
+      "snomed_cui": "397943006",
+      "preferred_name": "Planned",
+      "source_value": "planning",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2183,
+        "end": 2191
+      }
+    },
+    {
+      "snomed_cui": "371754007",
+      "preferred_name": "Discharge planning",
+      "source_value": "discharge plans",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2202,
+        "end": 2217
+      }
+    },
+    {
+      "snomed_cui": "900000000000549004",
+      "preferred_name": "Acceptable",
+      "source_value": "acceptable",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2222,
+        "end": 2232
+      }
+    },
+    {
+      "snomed_cui": "260362008",
+      "preferred_name": "Very low",
+      "source_value": "VERY LOW",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2250,
+        "end": 2258
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2264,
+        "end": 2270
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2276,
+        "end": 2282
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2287,
+        "end": 2299
+      }
+    },
+    {
+      "snomed_cui": "133903000",
+      "preferred_name": "Care of intensive care unit patient",
+      "source_value": "critical care",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2339,
+        "end": 2352
+      }
+    },
+    {
+      "snomed_cui": "720311000000105",
+      "preferred_name": "Programme",
+      "source_value": "programme",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2364,
+        "end": 2373
+      }
+    },
+    {
+      "snomed_cui": "129347002",
+      "preferred_name": "Surgical transfer - action",
+      "source_value": "transfer",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2404,
+        "end": 2412
+      }
+    },
+    {
+      "snomed_cui": "709280007",
+      "preferred_name": "Walking surface of room",
+      "source_value": "floor",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2420,
+        "end": 2425
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2430,
+        "end": 2434
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2449,
+        "end": 2455
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2461,
+        "end": 2467
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2472,
+        "end": 2484
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2489,
+        "end": 2498
+      }
+    },
+    {
+      "snomed_cui": "410942007",
+      "preferred_name": "Drug or medicament",
+      "source_value": "medications",
+      "confidence_score": 0.5983714678614453,
+      "character_boundaries": {
+        "start": 2511,
+        "end": 2522
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.9397242115551936,
+      "character_boundaries": {
+        "start": 2531,
+        "end": 2534
+      }
+    },
+    {
+      "snomed_cui": "308283009",
+      "preferred_name": "Discharge from hospital",
+      "source_value": "hospital discharge",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2539,
+        "end": 2557
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2562,
+        "end": 2566
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adult",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2581,
+        "end": 2586
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2600,
+        "end": 2606
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2611,
+        "end": 2623
+      }
+    },
+    {
+      "snomed_cui": "130168007",
+      "preferred_name": "Nitric-oxide synthase",
+      "source_value": "families",
+      "confidence_score": 0.3244228660244408,
+      "character_boundaries": {
+        "start": 2634,
+        "end": 2642
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2647,
+        "end": 2656
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "including",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2657,
+        "end": 2666
+      }
+    },
+    {
+      "snomed_cui": "722311000000109",
+      "preferred_name": "Information",
+      "source_value": "information",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2667,
+        "end": 2678
+      }
+    },
+    {
+      "snomed_cui": "309904001",
+      "preferred_name": "Intensive care unit",
+      "source_value": "ICU",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2689,
+        "end": 2692
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2699,
+        "end": 2705
+      }
+    },
+    {
+      "snomed_cui": "262094002",
+      "preferred_name": "Related",
+      "source_value": "related",
+      "confidence_score": 0.9789247812640283,
+      "character_boundaries": {
+        "start": 2710,
+        "end": 2717
+      }
+    },
+    {
+      "snomed_cui": "887161000000102",
+      "preferred_name": "Diagnoses",
+      "source_value": "diagnoses",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2718,
+        "end": 2727
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "treatments",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2729,
+        "end": 2739
+      }
+    },
+    {
+      "snomed_cui": "72906007",
+      "preferred_name": "Common",
+      "source_value": "common",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2745,
+        "end": 2751
+      }
+    },
+    {
+      "snomed_cui": "40226000",
+      "preferred_name": "Impairment",
+      "source_value": "impairments",
+      "confidence_score": 0.5097277271374934,
+      "character_boundaries": {
+        "start": 2752,
+        "end": 2763
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2770,
+        "end": 2776
+      }
+    },
+    {
+      "snomed_cui": "255373000",
+      "preferred_name": "Verbal",
+      "source_value": "verbal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2796,
+        "end": 2802
+      }
+    },
+    {
+      "snomed_cui": "308283009",
+      "preferred_name": "Discharge from hospital",
+      "source_value": "hospital discharge",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2803,
+        "end": 2821
+      }
+    },
+    {
+      "snomed_cui": "273308009",
+      "preferred_name": "Bedside evaluation and screening test of aphasia",
+      "source_value": "BEST",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2834,
+        "end": 2838
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2853,
+        "end": 2859
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2865,
+        "end": 2871
+      }
+    },
+    {
+      "snomed_cui": "76571007",
+      "preferred_name": "Septic shock",
+      "source_value": "septic shock",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2875,
+        "end": 2887
+      }
+    },
+    {
+      "snomed_cui": "40226000",
+      "preferred_name": "Impairment",
+      "source_value": "impairments",
+      "confidence_score": 0.4220423496698496,
+      "character_boundaries": {
+        "start": 2906,
+        "end": 2917
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2922,
+        "end": 2931
+      }
+    },
+    {
+      "snomed_cui": "308283009",
+      "preferred_name": "Discharge from hospital",
+      "source_value": "hospital discharge",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2932,
+        "end": 2950
+      }
+    },
+    {
+      "snomed_cui": "397943006",
+      "preferred_name": "Planned",
+      "source_value": "plans",
+      "confidence_score": 0.8315141010409148,
+      "character_boundaries": {
+        "start": 2951,
+        "end": 2956
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2957,
+        "end": 2964
+      }
+    },
+    {
+      "snomed_cui": "308273005",
+      "preferred_name": "Follow-up status",
+      "source_value": "follow-up",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2965,
+        "end": 2974
+      }
+    },
+    {
+      "snomed_cui": "371150009",
+      "preferred_name": "Able",
+      "source_value": "able",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2991,
+        "end": 2995
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2999,
+        "end": 3006
+      }
+    },
+    {
+      "snomed_cui": "358612008",
+      "preferred_name": "Lengthened",
+      "source_value": "long",
+      "confidence_score": 0.45630896326969916,
+      "character_boundaries": {
+        "start": 3026,
+        "end": 3030
+      }
+    },
+    {
+      "snomed_cui": "21243004",
+      "preferred_name": "Term birth of newborn",
+      "source_value": "term",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3031,
+        "end": 3035
+      }
+    },
+    {
+      "snomed_cui": "302049001",
+      "preferred_name": "Sequelae of disorders",
+      "source_value": "sequelae",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 3036,
+        "end": 3044
+      }
+    }
+  ]
+}

@@ -1,0 +1,1215 @@
+{
+  "chunk_id": "ssc_2021_ventilation",
+  "entities": [
+    {
+      "snomed_cui": "423437008",
+      "preferred_name": "Insufficient",
+      "source_value": "insufficient",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 15,
+        "end": 27
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 47,
+        "end": 61
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 69,
+        "end": 75
+      }
+    },
+    {
+      "snomed_cui": "57485005",
+      "preferred_name": "Oxygen therapy",
+      "source_value": "oxygen",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 89,
+        "end": 95
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 107,
+        "end": 113
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 119,
+        "end": 125
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 126,
+        "end": 133
+      }
+    },
+    {
+      "snomed_cui": "10676831000119101",
+      "preferred_name": "Hypoxemic respiratory failure",
+      "source_value": "hypoxemic respiratory failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 134,
+        "end": 163
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 177,
+        "end": 183
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 189,
+        "end": 195
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 196,
+        "end": 203
+      }
+    },
+    {
+      "snomed_cui": "10676831000119101",
+      "preferred_name": "Hypoxemic respiratory failure",
+      "source_value": "hypoxemic respiratory failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 204,
+        "end": 233
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 250,
+        "end": 256
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 257,
+        "end": 261
+      }
+    },
+    {
+      "snomed_cui": "46713006",
+      "preferred_name": "Nasal route",
+      "source_value": "nasal",
+      "confidence_score": 0.8798494313829108,
+      "character_boundaries": {
+        "start": 267,
+        "end": 272
+      }
+    },
+    {
+      "snomed_cui": "57485005",
+      "preferred_name": "Oxygen therapy",
+      "source_value": "oxygen",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 273,
+        "end": 279
+      }
+    },
+    {
+      "snomed_cui": "428311008",
+      "preferred_name": "Non-invasive ventilation",
+      "source_value": "non-invasive ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 285,
+        "end": 309
+      }
+    },
+    {
+      "snomed_cui": "423437008",
+      "preferred_name": "Insufficient",
+      "source_value": "insufficient",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 326,
+        "end": 338
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommendation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 358,
+        "end": 372
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 380,
+        "end": 386
+      }
+    },
+    {
+      "snomed_cui": "428311008",
+      "preferred_name": "Non-invasive ventilation",
+      "source_value": "non-invasive ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 387,
+        "end": 411
+      }
+    },
+    {
+      "snomed_cui": "10179008",
+      "preferred_name": "Invasive",
+      "source_value": "invasive",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 429,
+        "end": 437
+      }
+    },
+    {
+      "snomed_cui": "266700009",
+      "preferred_name": "Assisted breathing",
+      "source_value": "ventilation",
+      "confidence_score": 0.8370073537465005,
+      "character_boundaries": {
+        "start": 438,
+        "end": 449
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 454,
+        "end": 460
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 466,
+        "end": 472
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 473,
+        "end": 480
+      }
+    },
+    {
+      "snomed_cui": "10676831000119101",
+      "preferred_name": "Hypoxemic respiratory failure",
+      "source_value": "hypoxemic respiratory failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 481,
+        "end": 510
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "HIGH",
+      "confidence_score": 0.9694368392136383,
+      "character_boundaries": {
+        "start": 515,
+        "end": 519
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 525,
+        "end": 531
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 537,
+        "end": 543
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 544,
+        "end": 551
+      }
+    },
+    {
+      "snomed_cui": "67782005",
+      "preferred_name": "Acute respiratory distress syndrome",
+      "source_value": "ARDS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 552,
+        "end": 556
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 561,
+        "end": 570
+      }
+    },
+    {
+      "snomed_cui": "13621006",
+      "preferred_name": "Tidal volume",
+      "source_value": "tidal volume",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 583,
+        "end": 595
+      }
+    },
+    {
+      "snomed_cui": "266700009",
+      "preferred_name": "Assisted breathing",
+      "source_value": "ventilation",
+      "confidence_score": 0.6830834159863476,
+      "character_boundaries": {
+        "start": 596,
+        "end": 607
+      }
+    },
+    {
+      "snomed_cui": "396180007",
+      "preferred_name": "mL/kg",
+      "source_value": "mL/kg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 620,
+        "end": 625
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 635,
+        "end": 639
+      }
+    },
+    {
+      "snomed_cui": "13621006",
+      "preferred_name": "Tidal volume",
+      "source_value": "tidal volume",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 640,
+        "end": 652
+      }
+    },
+    {
+      "snomed_cui": "396180007",
+      "preferred_name": "mL/kg",
+      "source_value": "mL/kg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 667,
+        "end": 672
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "MODERATE",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 678,
+        "end": 686
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 692,
+        "end": 698
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 704,
+        "end": 710
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 711,
+        "end": 718
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 719,
+        "end": 725
+      }
+    },
+    {
+      "snomed_cui": "67782005",
+      "preferred_name": "Acute respiratory distress syndrome",
+      "source_value": "ARDS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 726,
+        "end": 730
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 735,
+        "end": 744
+      }
+    },
+    {
+      "snomed_cui": "261183002",
+      "preferred_name": "Upper",
+      "source_value": "upper",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 754,
+        "end": 759
+      }
+    },
+    {
+      "snomed_cui": "255469002",
+      "preferred_name": "Limited",
+      "source_value": "limit",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 760,
+        "end": 765
+      }
+    },
+    {
+      "snomed_cui": "410518001",
+      "preferred_name": "Goal context",
+      "source_value": "goal",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 766,
+        "end": 770
+      }
+    },
+    {
+      "snomed_cui": "264907004",
+      "preferred_name": "Plateau pressure",
+      "source_value": "plateau pressures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 775,
+        "end": 792
+      }
+    },
+    {
+      "snomed_cui": "259019009",
+      "preferred_name": "Centimeter of water",
+      "source_value": "cm H2O",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 799,
+        "end": 805
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 812,
+        "end": 818
+      }
+    },
+    {
+      "snomed_cui": "264907004",
+      "preferred_name": "Plateau pressure",
+      "source_value": "plateau pressures",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 819,
+        "end": 836
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "MODERATE",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 841,
+        "end": 849
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 855,
+        "end": 861
+      }
+    },
+    {
+      "snomed_cui": "371924009",
+      "preferred_name": "Moderate to severe",
+      "source_value": "moderate to severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 867,
+        "end": 885
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 886,
+        "end": 892
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 893,
+        "end": 900
+      }
+    },
+    {
+      "snomed_cui": "67782005",
+      "preferred_name": "Acute respiratory distress syndrome",
+      "source_value": "ARDS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 901,
+        "end": 905
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "higher",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 924,
+        "end": 930
+      }
+    },
+    {
+      "snomed_cui": "250854009",
+      "preferred_name": "Positive end expiratory pressure",
+      "source_value": "PEEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 931,
+        "end": 935
+      }
+    },
+    {
+      "snomed_cui": "261122009",
+      "preferred_name": "Lower",
+      "source_value": "lower",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 941,
+        "end": 946
+      }
+    },
+    {
+      "snomed_cui": "250854009",
+      "preferred_name": "Positive end expiratory pressure",
+      "source_value": "PEEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 947,
+        "end": 951
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 965,
+        "end": 971
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 977,
+        "end": 983
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 984,
+        "end": 991
+      }
+    },
+    {
+      "snomed_cui": "409622000",
+      "preferred_name": "Respiratory failure",
+      "source_value": "respiratory failure",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 992,
+        "end": 1011
+      }
+    },
+    {
+      "snomed_cui": "67782005",
+      "preferred_name": "Acute respiratory distress syndrome",
+      "source_value": "ARDS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1021,
+        "end": 1025
+      }
+    },
+    {
+      "snomed_cui": "13621006",
+      "preferred_name": "Tidal volume",
+      "source_value": "tidal volume",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1049,
+        "end": 1061
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "high",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1077,
+        "end": 1081
+      }
+    },
+    {
+      "snomed_cui": "13621006",
+      "preferred_name": "Tidal volume",
+      "source_value": "tidal volume",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1082,
+        "end": 1094
+      }
+    },
+    {
+      "snomed_cui": "266700009",
+      "preferred_name": "Assisted breathing",
+      "source_value": "ventilation",
+      "confidence_score": 0.9645544114573035,
+      "character_boundaries": {
+        "start": 1095,
+        "end": 1106
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "MODERATE",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1111,
+        "end": 1119
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1125,
+        "end": 1131
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1137,
+        "end": 1143
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1144,
+        "end": 1151
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "moderate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1152,
+        "end": 1160
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1161,
+        "end": 1167
+      }
+    },
+    {
+      "snomed_cui": "67782005",
+      "preferred_name": "Acute respiratory distress syndrome",
+      "source_value": "ARDS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1168,
+        "end": 1172
+      }
+    },
+    {
+      "snomed_cui": "263901007",
+      "preferred_name": "Traditional",
+      "source_value": "traditional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1191,
+        "end": 1202
+      }
+    },
+    {
+      "snomed_cui": "2724004",
+      "preferred_name": "Recruitment",
+      "source_value": "recruitment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1203,
+        "end": 1214
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "MODERATE",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1229,
+        "end": 1237
+      }
+    },
+    {
+      "snomed_cui": "2724004",
+      "preferred_name": "Recruitment",
+      "source_value": "recruitment",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1250,
+        "end": 1261
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1276,
+        "end": 1285
+      }
+    },
+    {
+      "snomed_cui": "250854009",
+      "preferred_name": "Positive end expiratory pressure",
+      "source_value": "PEEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1312,
+        "end": 1316
+      }
+    },
+    {
+      "snomed_cui": "117007006",
+      "preferred_name": "Titration method",
+      "source_value": "titration",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1317,
+        "end": 1326
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "MODERATE",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1340,
+        "end": 1348
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1354,
+        "end": 1360
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1366,
+        "end": 1372
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1373,
+        "end": 1380
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "moderate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1381,
+        "end": 1389
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1390,
+        "end": 1396
+      }
+    },
+    {
+      "snomed_cui": "67782005",
+      "preferred_name": "Acute respiratory distress syndrome",
+      "source_value": "ARDS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1397,
+        "end": 1401
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommend",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1406,
+        "end": 1415
+      }
+    },
+    {
+      "snomed_cui": "1240000",
+      "preferred_name": "Prone body position",
+      "source_value": "prone",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1422,
+        "end": 1427
+      }
+    },
+    {
+      "snomed_cui": "266700009",
+      "preferred_name": "Assisted breathing",
+      "source_value": "ventilation",
+      "confidence_score": 0.7621593274098667,
+      "character_boundaries": {
+        "start": 1428,
+        "end": 1439
+      }
+    },
+    {
+      "snomed_cui": "276140008",
+      "preferred_name": "Greater-than symbol >",
+      "source_value": "greater than",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1444,
+        "end": 1456
+      }
+    },
+    {
+      "snomed_cui": "123035007",
+      "preferred_name": "12 hours",
+      "source_value": "12 hours",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1457,
+        "end": 1465
+      }
+    },
+    {
+      "snomed_cui": "69620002",
+      "preferred_name": "Daily",
+      "source_value": "daily",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1466,
+        "end": 1471
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "MODERATE",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1476,
+        "end": 1484
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1490,
+        "end": 1496
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1502,
+        "end": 1508
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1509,
+        "end": 1516
+      }
+    },
+    {
+      "snomed_cui": "1255665007",
+      "preferred_name": "Moderate",
+      "source_value": "moderate",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1517,
+        "end": 1525
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1526,
+        "end": 1532
+      }
+    },
+    {
+      "snomed_cui": "67782005",
+      "preferred_name": "Acute respiratory distress syndrome",
+      "source_value": "ARDS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1533,
+        "end": 1537
+      }
+    },
+    {
+      "snomed_cui": "7087005",
+      "preferred_name": "Intermittent",
+      "source_value": "intermittent",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1556,
+        "end": 1568
+      }
+    },
+    {
+      "snomed_cui": "13283801000001100",
+      "preferred_name": "Bolus - method of drug administration",
+      "source_value": "boluses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1574,
+        "end": 1581
+      }
+    },
+    {
+      "snomed_cui": "261754007",
+      "preferred_name": "Continuous infusion",
+      "source_value": "continuous infusion",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1593,
+        "end": 1612
+      }
+    },
+    {
+      "snomed_cui": "133936004",
+      "preferred_name": "Adult",
+      "source_value": "adults",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1626,
+        "end": 1632
+      }
+    },
+    {
+      "snomed_cui": "91302008",
+      "preferred_name": "Sepsis",
+      "source_value": "sepsis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1638,
+        "end": 1644
+      }
+    },
+    {
+      "snomed_cui": "16404004",
+      "preferred_name": "Induced",
+      "source_value": "induced",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1645,
+        "end": 1652
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1653,
+        "end": 1659
+      }
+    },
+    {
+      "snomed_cui": "67782005",
+      "preferred_name": "Acute respiratory distress syndrome",
+      "source_value": "ARDS",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1660,
+        "end": 1664
+      }
+    },
+    {
+      "snomed_cui": "260668002",
+      "preferred_name": "Venovenous",
+      "source_value": "Veno-venous",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1683,
+        "end": 1694
+      }
+    },
+    {
+      "snomed_cui": "786453001",
+      "preferred_name": "Venovenous extracorporeal membrane oxygenation",
+      "source_value": "VV) ECMO",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1696,
+        "end": 1704
+      }
+    },
+    {
+      "snomed_cui": "255333006",
+      "preferred_name": "Conventional",
+      "source_value": "conventional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1710,
+        "end": 1722
+      }
+    },
+    {
+      "snomed_cui": "40617009",
+      "preferred_name": "Artificial ventilation",
+      "source_value": "mechanical ventilation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1723,
+        "end": 1745
+      }
+    },
+    {
+      "snomed_cui": "26216008",
+      "preferred_name": "Central",
+      "source_value": "centres",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1767,
+        "end": 1774
+      }
+    },
+    {
+      "snomed_cui": "257557008",
+      "preferred_name": "Place",
+      "source_value": "place",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1802,
+        "end": 1807
+      }
+    },
+    {
+      "snomed_cui": "243114000",
+      "preferred_name": "Support",
+      "source_value": "support",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1811,
+        "end": 1818
+      }
+    }
+  ]
+}

@@ -1,0 +1,1215 @@
+{
+  "chunk_id": "e895_5",
+  "entities": [
+    {
+      "snomed_cui": "303607000",
+      "preferred_name": "Biomedical equipment",
+      "source_value": "Device",
+      "confidence_score": 0.7667310037784838,
+      "character_boundaries": {
+        "start": 9,
+        "end": 15
+      }
+    },
+    {
+      "snomed_cui": "71388002",
+      "preferred_name": "Procedure",
+      "source_value": "Interventional",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 20,
+        "end": 34
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "Therapies",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 35,
+        "end": 44
+      }
+    },
+    {
+      "snomed_cui": "315233008",
+      "preferred_name": "Primary prevention",
+      "source_value": "Primary Prevention",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 57,
+        "end": 75
+      }
+    },
+    {
+      "snomed_cui": "234228008",
+      "preferred_name": "Disorder of implantable defibrillator",
+      "source_value": "ICD",
+      "confidence_score": 0.8678177581439392,
+      "character_boundaries": {
+        "start": 76,
+        "end": 79
+      }
+    },
+    {
+      "snomed_cui": "410535002",
+      "preferred_name": "Indicated",
+      "source_value": "Indicated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 81,
+        "end": 90
+      }
+    },
+    {
+      "snomed_cui": "255426005",
+      "preferred_name": "Ischemic",
+      "source_value": "ischemic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 94,
+        "end": 102
+      }
+    },
+    {
+      "snomed_cui": "258703001",
+      "preferred_name": "day",
+      "source_value": "days",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 108,
+        "end": 112
+      }
+    },
+    {
+      "snomed_cui": "288563008",
+      "preferred_name": "After values",
+      "source_value": "post",
+      "confidence_score": 0.30225215154056795,
+      "character_boundaries": {
+        "start": 113,
+        "end": 117
+      }
+    },
+    {
+      "snomed_cui": "57054005",
+      "preferred_name": "Acute myocardial infarction",
+      "source_value": "MI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 118,
+        "end": 120
+      }
+    },
+    {
+      "snomed_cui": "53043001",
+      "preferred_name": "Primary idiopathic dilated cardiomyopathy",
+      "source_value": "DCM",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 137,
+        "end": 140
+      }
+    },
+    {
+      "snomed_cui": "250908004",
+      "preferred_name": "Left ventricular ejection fraction",
+      "source_value": "LVEF",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 146,
+        "end": 150
+      }
+    },
+    {
+      "snomed_cui": "420816009",
+      "preferred_name": "New York Heart Association Classification",
+      "source_value": "NYHA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 160,
+        "end": 164
+      }
+    },
+    {
+      "snomed_cui": "6651008",
+      "preferred_name": "Structure of central lobule of cerebellum",
+      "source_value": "II-III",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 165,
+        "end": 171
+      }
+    },
+    {
+      "snomed_cui": "259039008",
+      "preferred_name": "per year",
+      "source_value": "year",
+      "confidence_score": 0.914615312399712,
+      "character_boundaries": {
+        "start": 216,
+        "end": 220
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 222,
+        "end": 229
+      }
+    },
+    {
+      "snomed_cui": "75540009",
+      "preferred_name": "High",
+      "source_value": "High",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 239,
+        "end": 243
+      }
+    },
+    {
+      "snomed_cui": "719691000000106",
+      "preferred_name": "Economics",
+      "source_value": "Economic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 244,
+        "end": 252
+      }
+    },
+    {
+      "snomed_cui": "870255009",
+      "preferred_name": "Cardiac resynchronization therapy",
+      "source_value": "Cardiac Resynchronization Therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 267,
+        "end": 300
+      }
+    },
+    {
+      "snomed_cui": "410535002",
+      "preferred_name": "Indicated",
+      "source_value": "Indicated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 303,
+        "end": 312
+      }
+    },
+    {
+      "snomed_cui": "251150006",
+      "preferred_name": "Sinus rhythm",
+      "source_value": "sinus rhythm",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 317,
+        "end": 329
+      }
+    },
+    {
+      "snomed_cui": "63467002",
+      "preferred_name": "Left bundle branch block",
+      "source_value": "LBBB",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 331,
+        "end": 335
+      }
+    },
+    {
+      "snomed_cui": "250908004",
+      "preferred_name": "Left ventricular ejection fraction",
+      "source_value": "LVEF",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 354,
+        "end": 358
+      }
+    },
+    {
+      "snomed_cui": "420816009",
+      "preferred_name": "New York Heart Association Classification",
+      "source_value": "NYHA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 369,
+        "end": 373
+      }
+    },
+    {
+      "snomed_cui": "33138000",
+      "preferred_name": "Structure of substantia gelatinosa of posterior horn of spinal cord",
+      "source_value": "II",
+      "confidence_score": 0.3127051065433243,
+      "character_boundaries": {
+        "start": 374,
+        "end": 376
+      }
+    },
+    {
+      "snomed_cui": "255560000",
+      "preferred_name": "Intravenous",
+      "source_value": "IV",
+      "confidence_score": 0.6612128675855871,
+      "character_boundaries": {
+        "start": 377,
+        "end": 379
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 398,
+        "end": 405
+      }
+    },
+    {
+      "snomed_cui": "63467002",
+      "preferred_name": "Left bundle branch block",
+      "source_value": "LBBB",
+      "confidence_score": 0.9497841636233573,
+      "character_boundaries": {
+        "start": 436,
+        "end": 440
+      }
+    },
+    {
+      "snomed_cui": "63467002",
+      "preferred_name": "Left bundle branch block",
+      "source_value": "LBBB",
+      "confidence_score": 0.8706941324955306,
+      "character_boundaries": {
+        "start": 456,
+        "end": 460
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "Coronary",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 490,
+        "end": 498
+      }
+    },
+    {
+      "snomed_cui": "297183000",
+      "preferred_name": "Revascularization - action",
+      "source_value": "Revascularization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 499,
+        "end": 516
+      }
+    },
+    {
+      "snomed_cui": "83578000",
+      "preferred_name": "Surgical",
+      "source_value": "Surgical",
+      "confidence_score": 0.8013989957194732,
+      "character_boundaries": {
+        "start": 518,
+        "end": 526
+      }
+    },
+    {
+      "snomed_cui": "297183000",
+      "preferred_name": "Revascularization - action",
+      "source_value": "revascularization",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 527,
+        "end": 544
+      }
+    },
+    {
+      "snomed_cui": "232717009",
+      "preferred_name": "Coronary artery bypass grafting",
+      "source_value": "CABG",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 546,
+        "end": 550
+      }
+    },
+    {
+      "snomed_cui": "250908004",
+      "preferred_name": "Left ventricular ejection fraction",
+      "source_value": "LVEF",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 583,
+        "end": 587
+      }
+    },
+    {
+      "snomed_cui": "80891009",
+      "preferred_name": "Heart structure",
+      "source_value": "coronary",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 608,
+        "end": 616
+      }
+    },
+    {
+      "snomed_cui": "722871000000108",
+      "preferred_name": "Anatomy",
+      "source_value": "anatomy",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 617,
+        "end": 624
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 626,
+        "end": 633
+      }
+    },
+    {
+      "snomed_cui": "368009",
+      "preferred_name": "Heart valve disorder",
+      "source_value": "Valvular Heart Disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 655,
+        "end": 677
+      }
+    },
+    {
+      "snomed_cui": "2603003",
+      "preferred_name": "Secondary",
+      "source_value": "secondary",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 703,
+        "end": 712
+      }
+    },
+    {
+      "snomed_cui": "48724000",
+      "preferred_name": "Mitral valve regurgitation",
+      "source_value": "mitral regurgitation (MR",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 713,
+        "end": 737
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 740,
+        "end": 747
+      }
+    },
+    {
+      "snomed_cui": "260519008",
+      "preferred_name": "Transcatheter approach",
+      "source_value": "Transcatheter",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 752,
+        "end": 765
+      }
+    },
+    {
+      "snomed_cui": "57183005",
+      "preferred_name": "Along edge",
+      "source_value": "Edge",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 766,
+        "end": 770
+      }
+    },
+    {
+      "snomed_cui": "57183005",
+      "preferred_name": "Along edge",
+      "source_value": "Edge",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 774,
+        "end": 778
+      }
+    },
+    {
+      "snomed_cui": "4365001",
+      "preferred_name": "Surgical repair",
+      "source_value": "Repair",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 779,
+        "end": 785
+      }
+    },
+    {
+      "snomed_cui": "24484000",
+      "preferred_name": "Severe (severity modifier)",
+      "source_value": "severe",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 821,
+        "end": 827
+      }
+    },
+    {
+      "snomed_cui": "2603003",
+      "preferred_name": "Secondary",
+      "source_value": "secondary",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 828,
+        "end": 837
+      }
+    },
+    {
+      "snomed_cui": "48724000",
+      "preferred_name": "Mitral valve regurgitation",
+      "source_value": "MR",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 838,
+        "end": 840
+      }
+    },
+    {
+      "snomed_cui": "250908004",
+      "preferred_name": "Left ventricular ejection fraction",
+      "source_value": "LVEF",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 854,
+        "end": 858
+      }
+    },
+    {
+      "snomed_cui": "304621005",
+      "preferred_name": "torr",
+      "source_value": "mm Hg",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 895,
+        "end": 900
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.6110834174127698,
+      "character_boundaries": {
+        "start": 902,
+        "end": 907
+      }
+    },
+    {
+      "snomed_cui": "250908004",
+      "preferred_name": "Left ventricular ejection fraction",
+      "source_value": "LVEF",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 952,
+        "end": 956
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.49751703027404853,
+      "character_boundaries": {
+        "start": 993,
+        "end": 998
+      }
+    },
+    {
+      "snomed_cui": "33252009",
+      "preferred_name": "Product containing beta adrenergic receptor antagonist",
+      "source_value": "Beta blockers",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1004,
+        "end": 1017
+      }
+    },
+    {
+      "snomed_cui": "96308008",
+      "preferred_name": "Product containing angiotensin II receptor antagonist",
+      "source_value": "ARB",
+      "confidence_score": 0.9745758264680863,
+      "character_boundaries": {
+        "start": 1029,
+        "end": 1032
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.6803268270630111,
+      "character_boundaries": {
+        "start": 1062,
+        "end": 1067
+      }
+    },
+    {
+      "snomed_cui": "385425000",
+      "preferred_name": "Improved",
+      "source_value": "Improved",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1084,
+        "end": 1092
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1127,
+        "end": 1138
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1147,
+        "end": 1155
+      }
+    },
+    {
+      "snomed_cui": "67335000",
+      "preferred_name": "Asymptomatic",
+      "source_value": "asymptomatic",
+      "confidence_score": 0.5122133944950027,
+      "character_boundaries": {
+        "start": 1163,
+        "end": 1175
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1177,
+        "end": 1184
+      }
+    },
+    {
+      "snomed_cui": "250908004",
+      "preferred_name": "Left ventricular ejection fraction",
+      "source_value": "LVEF",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1213,
+        "end": 1217
+      }
+    },
+    {
+      "snomed_cui": "75367002",
+      "preferred_name": "Blood pressure",
+      "source_value": "Blood pressure",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1226,
+        "end": 1240
+      }
+    },
+    {
+      "snomed_cui": "246106000",
+      "preferred_name": "Control",
+      "source_value": "control",
+      "confidence_score": 0.707210718412451,
+      "character_boundaries": {
+        "start": 1241,
+        "end": 1248
+      }
+    },
+    {
+      "snomed_cui": "723851000000107",
+      "preferred_name": "Guideline",
+      "source_value": "guidelines",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1259,
+        "end": 1269
+      }
+    },
+    {
+      "snomed_cui": "897015005",
+      "preferred_name": "Recommended",
+      "source_value": "recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1273,
+        "end": 1284
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1286,
+        "end": 1293
+      }
+    },
+    {
+      "snomed_cui": "703894008",
+      "preferred_name": "Empagliflozin",
+      "source_value": "empagliflozin",
+      "confidence_score": 0.8846570005755332,
+      "character_boundaries": {
+        "start": 1306,
+        "end": 1319
+      }
+    },
+    {
+      "snomed_cui": "260371004",
+      "preferred_name": "Decreasing",
+      "source_value": "decreasing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1342,
+        "end": 1352
+      }
+    },
+    {
+      "snomed_cui": "84114007",
+      "preferred_name": "Heart failure",
+      "source_value": "HF",
+      "confidence_score": 0.7160663556212223,
+      "character_boundaries": {
+        "start": 1353,
+        "end": 1355
+      }
+    },
+    {
+      "snomed_cui": "394656005",
+      "preferred_name": "Inpatient care",
+      "source_value": "hospitalizations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1356,
+        "end": 1372
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1380,
+        "end": 1389
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.5136237806377367,
+      "character_boundaries": {
+        "start": 1391,
+        "end": 1396
+      }
+    },
+    {
+      "snomed_cui": "260370003",
+      "preferred_name": "Decrease",
+      "source_value": "decrease",
+      "confidence_score": 0.900392837739271,
+      "character_boundaries": {
+        "start": 1455,
+        "end": 1463
+      }
+    },
+    {
+      "snomed_cui": "394656005",
+      "preferred_name": "Inpatient care",
+      "source_value": "hospitalizations",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1464,
+        "end": 1480
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1498,
+        "end": 1506
+      }
+    },
+    {
+      "snomed_cui": "250908004",
+      "preferred_name": "Left ventricular ejection fraction",
+      "source_value": "LVEF",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1512,
+        "end": 1516
+      }
+    },
+    {
+      "snomed_cui": "261122009",
+      "preferred_name": "Lower",
+      "source_value": "lower",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1524,
+        "end": 1529
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.9161816149080959,
+      "character_boundaries": {
+        "start": 1551,
+        "end": 1556
+      }
+    },
+    {
+      "snomed_cui": "50811001",
+      "preferred_name": "Routine",
+      "source_value": "Routine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1564,
+        "end": 1571
+      }
+    },
+    {
+      "snomed_cui": "260676000",
+      "preferred_name": "Use of",
+      "source_value": "use of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1572,
+        "end": 1578
+      }
+    },
+    {
+      "snomed_cui": "89119000",
+      "preferred_name": "Nitrate salt",
+      "source_value": "nitrates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1579,
+        "end": 1587
+      }
+    },
+    {
+      "snomed_cui": "407313002",
+      "preferred_name": "Substance with phosphodiesterase 5 inhibitor mechanism of action",
+      "source_value": "PDE-5 inhibitors",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1591,
+        "end": 1607
+      }
+    },
+    {
+      "snomed_cui": "897016006",
+      "preferred_name": "Not recommended",
+      "source_value": "NOT recommended",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1611,
+        "end": 1626
+      }
+    },
+    {
+      "snomed_cui": "258394001",
+      "preferred_name": "Class 3",
+      "source_value": "Class 3",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1628,
+        "end": 1635
+      }
+    },
+    {
+      "snomed_cui": "16573007",
+      "preferred_name": "Senile cardiac amyloidosis",
+      "source_value": "Cardiac Amyloidosis\n- Diagnosis",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1660,
+        "end": 1691
+      }
+    },
+    {
+      "snomed_cui": "15886004",
+      "preferred_name": "Screening for cancer",
+      "source_value": "Screen",
+      "confidence_score": 0.5105408888746764,
+      "character_boundaries": {
+        "start": 1693,
+        "end": 1699
+      }
+    },
+    {
+      "snomed_cui": "67922002",
+      "preferred_name": "Serum",
+      "source_value": "serum",
+      "confidence_score": 0.9202063203538711,
+      "character_boundaries": {
+        "start": 1704,
+        "end": 1709
+      }
+    },
+    {
+      "snomed_cui": "122575003",
+      "preferred_name": "Urine specimen",
+      "source_value": "urine",
+      "confidence_score": 0.9090685676176022,
+      "character_boundaries": {
+        "start": 1710,
+        "end": 1715
+      }
+    },
+    {
+      "snomed_cui": "371268001",
+      "preferred_name": "Light color",
+      "source_value": "light",
+      "confidence_score": 0.4006389582961923,
+      "character_boundaries": {
+        "start": 1727,
+        "end": 1732
+      }
+    },
+    {
+      "snomed_cui": "46666003",
+      "preferred_name": "Chain, device",
+      "source_value": "chains",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1733,
+        "end": 1739
+      }
+    },
+    {
+      "snomed_cui": "252331000",
+      "preferred_name": "Immunofixation",
+      "source_value": "IFE",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1741,
+        "end": 1744
+      }
+    },
+    {
+      "snomed_cui": "67922002",
+      "preferred_name": "Serum",
+      "source_value": "serum",
+      "confidence_score": 0.9282138834653793,
+      "character_boundaries": {
+        "start": 1749,
+        "end": 1754
+      }
+    },
+    {
+      "snomed_cui": "415684004",
+      "preferred_name": "Suspected",
+      "source_value": "suspected",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1763,
+        "end": 1772
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1773,
+        "end": 1781
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1783,
+        "end": 1790
+      }
+    },
+    {
+      "snomed_cui": "260385009",
+      "preferred_name": "Negative",
+      "source_value": "negative",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1796,
+        "end": 1804
+      }
+    },
+    {
+      "snomed_cui": "41747008",
+      "preferred_name": "Radioisotope scan of bone",
+      "source_value": "bone scintigraphy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1816,
+        "end": 1833
+      }
+    },
+    {
+      "snomed_cui": "59156000",
+      "preferred_name": "Confirmed by (contextual qualifier)",
+      "source_value": "confirms",
+      "confidence_score": 0.8440221657802389,
+      "character_boundaries": {
+        "start": 1834,
+        "end": 1842
+      }
+    },
+    {
+      "snomed_cui": "276654001",
+      "preferred_name": "Congenital malformation",
+      "source_value": "CM",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1848,
+        "end": 1850
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1852,
+        "end": 1859
+      }
+    },
+    {
+      "snomed_cui": "117040002",
+      "preferred_name": "Nucleic acid sequencing",
+      "source_value": "gene sequencing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1866,
+        "end": 1881
+      }
+    },
+    {
+      "snomed_cui": "263933003",
+      "preferred_name": "Well differentiated",
+      "source_value": "differentiates",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1882,
+        "end": 1896
+      }
+    },
+    {
+      "snomed_cui": "262290003",
+      "preferred_name": "Wild",
+      "source_value": "wild",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1897,
+        "end": 1901
+      }
+    },
+    {
+      "snomed_cui": "40885006",
+      "preferred_name": "Variant",
+      "source_value": "variant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1912,
+        "end": 1919
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1926,
+        "end": 1933
+      }
+    },
+    {
+      "snomed_cui": "716151000000103",
+      "preferred_name": "Treatment",
+      "source_value": "Treatment",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1938,
+        "end": 1947
+      }
+    },
+    {
+      "snomed_cui": "703348000",
+      "preferred_name": "Tafamidis",
+      "source_value": "Tafamidis",
+      "confidence_score": 0.5083674044347039,
+      "character_boundaries": {
+        "start": 1949,
+        "end": 1958
+      }
+    },
+    {
+      "snomed_cui": "410535002",
+      "preferred_name": "Indicated",
+      "source_value": "indicated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1988,
+        "end": 1997
+      }
+    },
+    {
+      "snomed_cui": "262290003",
+      "preferred_name": "Wild",
+      "source_value": "wild",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2001,
+        "end": 2005
+      }
+    },
+    {
+      "snomed_cui": "40885006",
+      "preferred_name": "Variant",
+      "source_value": "variant",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2011,
+        "end": 2018
+      }
+    },
+    {
+      "snomed_cui": "276654001",
+      "preferred_name": "Congenital malformation",
+      "source_value": "CM",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2024,
+        "end": 2026
+      }
+    },
+    {
+      "snomed_cui": "420816009",
+      "preferred_name": "New York Heart Association Classification",
+      "source_value": "NYHA",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2032,
+        "end": 2036
+      }
+    },
+    {
+      "snomed_cui": "409651001",
+      "preferred_name": "Mortality rate",
+      "source_value": "mortality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2062,
+        "end": 2071
+      }
+    },
+    {
+      "snomed_cui": "258392002",
+      "preferred_name": "Class 1",
+      "source_value": "Class 1",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2083,
+        "end": 2090
+      }
+    },
+    {
+      "snomed_cui": "182764009",
+      "preferred_name": "Anticoagulant therapy",
+      "source_value": "Anticoagulation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2102,
+        "end": 2117
+      }
+    },
+    {
+      "snomed_cui": "258672001",
+      "preferred_name": "Centimeter",
+      "source_value": "CM",
+      "confidence_score": 0.9159231531746233,
+      "character_boundaries": {
+        "start": 2140,
+        "end": 2142
+      }
+    },
+    {
+      "snomed_cui": "49436004",
+      "preferred_name": "Atrial fibrillation",
+      "source_value": "AF",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 2148,
+        "end": 2150
+      }
+    },
+    {
+      "snomed_cui": "713678009",
+      "preferred_name": "Congestive heart failure, hypertension, age 75 years or older, diabetes, previous stroke or transient ischemic attack, vascular disease, age 65-74 years, and sex category risk score",
+      "source_value": "CHA2DS2-VASc score",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2165,
+        "end": 2183
+      }
+    },
+    {
+      "snomed_cui": "73504009",
+      "preferred_name": "Classified",
+      "source_value": "Class",
+      "confidence_score": 0.7067164606631346,
+      "character_boundaries": {
+        "start": 2185,
+        "end": 2190
+      }
+    }
+  ]
+}

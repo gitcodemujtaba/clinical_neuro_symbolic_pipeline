@@ -1,0 +1,526 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Procalcitonin (PCT) level",
+      "snomed": "255560000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f1e2d3c4-b5a6-9870-4321-fedcba098765",
+          "rationale": "PCT level can be used to predict pneumonia-related complications and mortality, especially when stratified into tiers.",
+          "citation": "Huang et al61 (2008) described the pattern of PCT in CAP and determined whether PCT provides prognostic information beyond PSI and CURB-65.",
+          "citation_paraphrase": "Huang et al61 (2008) described the pattern of PCT in CAP and determined whether PCT provides prognostic information beyond PSI and CURB-65.",
+          "citation_verbatim_excerpt": "(2013), Class of Evidence: III for Q1, Setting & Study Design: Prospective cohort single-center ED in France from June 2009 to July 2010, Methods & Outcome Measu",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f1e2d3c4-b5a6-9870-4321-fedcba098765",
+      "@type": "Acuity",
+      "name": "Risk stratification for pneumonia complications and mortality",
+      "snomed": "278305009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c2d3e4f5-a7b8-6901-2345-67890abcdef1",
+          "rationale": "Higher PCT levels are associated with increased risk of mortality and complications in CAP patients.",
+          "citation": "Huang et al61 (2008) found that higher PCT tiers were associated with higher 30-day mortality.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c2d3e4f5-a7b8-6901-2345-67890abcdef1",
+      "@type": "Condition",
+      "name": "Increased risk of pneumonia complications and mortality",
+      "snomed": "419620001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d4e5f6a7-b8c9-3210-fedc-ba9876543210",
+      "@type": "Acuity",
+      "name": "Risk stratification for mortality in CAP patients",
+      "snomed": "225338004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:4fd42b53-b666-465b-a8f9-3b376c113395",
+          "rationale": "Elevated proADM levels, especially in patients with high PSI scores (PSI class IV and V), significantly predict the risk of death.",
+          "citation": "Courtais et al52 (2013) found that in patients with PSI class IV and V, proADM levels significantly predicted risk of death (OR 4.68; 95% CI 1.66 to 20.22; P=.012).",
+          "citation_paraphrase": "Courtais et al52 (2013) found that in patients with PSI class IV and V, proADM levels significantly predicted risk of death (OR 4.68; 95% CI 1.66 to 20.22; P=.012).",
+          "citation_verbatim_excerpt": "of Evidence: III for Q1, Setting & Study Design: Prospective cohort single-center ED in France from June 2009 to July 2010, Methods & Outcome Measures: Evaluated the",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4fd42b53-b666-465b-a8f9-3b376c113395",
+      "@type": "Condition",
+      "name": "Increased risk of death",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f080b94d-981c-4a31-8870-1648741ac2d5",
+      "@type": "Finding",
+      "name": "30-day mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:c2d3e4f5-a7b8-6901-2345-67890abcdef1",
+          "rationale": "30-day mortality is a primary outcome measure in the studies.",
+          "citation": "Courtais et al52 (2013) and Huang et al61 (2008, 2009) used 30-day mortality as a primary outcome.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:8e4e471f-8fd6-40f8-bac9-705fc88865ad",
+      "@type": "Finding",
+      "name": "Pneumonia Severity Index (PSI) score > 90",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9f9f72da-d327-4461-9944-c2578632dd37",
+          "rationale": "A high PSI score indicates increased severity and risk of adverse outcomes in CAP.",
+          "citation": "Courtais et al52 (2013) analyzed the added value of proADM as a risk stratification tool in comparison with other biomarkers and clinical severity scores, including the PSI score.",
+          "citation_paraphrase": "Courtais et al52 (2013) analyzed the added value of proADM as a risk stratification tool in comparison with other biomarkers and clinical severity scores, including the PSI score.",
+          "citation_verbatim_excerpt": "Courtais et al52 (2013), Class of Evidence: III for Q1, Setting & Study Design: Prospective cohort single-center ED in France from June 2009 to July 2010, Methods & Outcome Measures: Evaluated",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9f9f72da-d327-4461-9944-c2578632dd37",
+          "rationale": "PSI score is used for risk stratification in CAP.",
+          "citation": "Courtais et al52 (2013) and Huang et al61 (2009) evaluated the prognostic value of proADM compared with PSI score.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7ae457f8-d9c1-49b1-a779-22408b7dccea",
+      "@type": "Finding",
+      "name": "Altered mental status",
+      "snomed": "419284004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1a462191-f56f-40bc-acb4-3c8a35fa7839",
+          "rationale": "Altered mental status is a component of the CURB-65 score.",
+          "citation": "Huang et al61 (2009) calculated CURB-65 retrospectively using altered mental status or a new change in Glasgow Coma Scale score as proxy measures for confusion.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6abeb356-73a4-4dab-a4ca-63dfa1e69fe9",
+          "rationale": "Confusion is a component of the CURB-65 score.",
+          "citation": "Huang et al61 (2009) calculated CURB-65 retrospectively using altered mental status or a new change in Glasgow Coma Scale score as proxy measures for confusion.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6abeb356-73a4-4dab-a4ca-63dfa1e69fe9",
+          "rationale": "Altered mental status is a component of the CURB-65 score.",
+          "citation": "Huang et al61 (2009) calculated CURB-65 retrospectively using altered mental status or a new change in Glasgow Coma Scale score as proxy measures for confusion.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6d2f61b2-02c2-41c9-a092-883e7f1bbe7c",
+      "@type": "Finding",
+      "name": "Glasgow Coma Scale score change",
+      "snomed": "386554004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b8b84e91-214c-4f11-a2b5-b766ac88c6bf",
+          "rationale": "Change in Glasgow Coma Scale score is a component of the CURB-65 score.",
+          "citation": "Huang et al61 (2009) calculated CURB-65 retrospectively using altered mental status or a new change in Glasgow Coma Scale score as proxy measures for confusion.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6abeb356-73a4-4dab-a4ca-63dfa1e69fe9",
+          "rationale": "Change in Glasgow Coma Scale score is a component of the CURB-65 score.",
+          "citation": "Huang et al61 (2009) calculated CURB-65 retrospectively using altered mental status or a new change in Glasgow Coma Scale score as proxy measures for confusion.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:def12345-6789-0abc-def1-234567890abc",
+      "@type": "Finding",
+      "name": "Community-acquired pneumonia (CAP)",
+      "snomed": "887161000000102",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9f9f72da-d327-4461-9944-c2578632dd37",
+          "rationale": "CAP is the primary diagnosis in the studies.",
+          "citation": "Courtais et al52 (2013) evaluated patients with a diagnosis of CAP. Huang et al61 (2008, 2009) studied patients with clinical and radiologic diagnosis of PNA.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:16e5b2d4-8dcd-4c2f-b084-e976e0a7e0ba",
+      "@type": "Condition",
+      "name": "Community-acquired pneumonia (CAP)",
+      "snomed": "887161000000102",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:46d1fc94-63e0-4825-8f02-3cbb89f2c760",
+      "@type": "Finding",
+      "name": "Proregional adrenomedullin (proADM) level",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:d4e5f6a7-b8c9-3210-fedc-ba9876543210",
+          "rationale": "ProADM levels can be used as a risk stratification tool in CAP, particularly in patients with high PSI scores.",
+          "citation": "Courtais et al52 (2013) evaluated the prognostic value of midregional proADM in ED patients with CAP.",
+          "citation_paraphrase": "Courtais et al52 (2013) evaluated the prognostic value of midregional proADM in ED patients with CAP.",
+          "citation_verbatim_excerpt": "Courtais et al52 (2013), Class of Evidence: III for Q1, Setting & Study Design: Prospective cohort single-center ED in France from June 2",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:72910ea8-4e83-4cfc-9558-38ba1f309e70",
+      "@type": "Acuity",
+      "name": "High severity CAP",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8d0ab3f5-f0a5-4a78-b512-70c6e21923ef",
+      "@type": "Finding",
+      "name": "C-reactive protein (CRP) level",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543211",
+          "rationale": "CRP level can be used as a biomarker for risk stratification in CAP.",
+          "citation": "Courtais et al52 (2013) evaluated proADM, CRP and PCT along with the PSI score.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543211",
+      "@type": "Acuity",
+      "name": "Risk stratification for mortality in CAP patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:49ebbb50-169a-418e-9beb-b8fbe8072e3c",
+      "@type": "Finding",
+      "name": "Procalcitonin (PCT) level",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:767bf022-e796-4247-842e-8f6ca7f823b6",
+          "rationale": "PCT level can be used to predict pneumonia-related complications and mortality, especially when stratified into tiers.",
+          "citation": "Huang et al61 (2008) determined whether PCT provides prognostic information beyond PSI and CURB-65.",
+          "citation_paraphrase": "Huang et al61 (2008) determined whether PCT provides prognostic information beyond PSI and CURB-65.",
+          "citation_verbatim_excerpt": "Courtais et al52 (2013), Class of Evidence: III for Q1, Setting & Study Design: Prospective cohort single-center ED in France from June 20",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:767bf022-e796-4247-842e-8f6ca7f823b6",
+      "@type": "Acuity",
+      "name": "Risk stratification for pneumonia complications and mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:2ce27841-2857-4c0c-9ed9-2978be9edc4d",
+          "rationale": "Lower PCT tiers (e.g., Tier I) are associated with lower risk of mortality, even in high-risk patients based on clinical scores like PSI or CURB-65.",
+          "citation": "Huang et al61 (2008) found that subjects in PCT tier I had low 30-day mortality regardless of clinical risk.",
+          "citation_paraphrase": "Huang et al61 (2008) found that subjects in PCT tier I had low 30-day mortality regardless of clinical risk.",
+          "citation_verbatim_excerpt": "Courtais et al52 (2013), Class of Evidence: III for Q1, Setting & Study Design: Prospective cohort single-center ED in France from June 2009 to Jul",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2ce27841-2857-4c0c-9ed9-2978be9edc4d",
+      "@type": "Condition",
+      "name": "Low risk of mortality",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c7316875-13e9-41a3-b7f4-eadf31e0d72b",
+      "@type": "Finding",
+      "name": "CURB-65 score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6abeb356-73a4-4dab-a4ca-63dfa1e69fe9",
+          "rationale": "CURB-65 score is used for risk stratification in CAP.",
+          "citation": "Huang et al61 (2008) calculated CURB-65 retrospectively using altered mental status or a new change in Glasgow Coma Scale score as proxy measures for confusion.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:99956e42-0275-4a51-9fab-437d8fe2280e",
+      "@type": "Acuity",
+      "name": "Risk stratification for mortality in CAP patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7894b951-5554-4022-8f9a-1bbe6ce4ac40",
+      "@type": "Acuity",
+      "name": "Increased severity of CAP (CURB-65 component)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5a23d9b5-f79a-4cef-928e-61f08232bf47",
+      "@type": "Acuity",
+      "name": "Increased severity of CAP (CURB-65 component)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2fce41de-0a3c-4b9f-9765-4cf0cc3adcbb",
+      "@type": "Finding",
+      "name": "Pneumonia (PNA)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9f9f72da-d327-4461-9944-c2578632dd37",
+          "rationale": "PNA is the primary diagnosis in the studies.",
+          "citation": "Courtais et al52 (2013) evaluated patients with a diagnosis of CAP. Huang et al61 (2008, 2009) studied patients with clinical and radiologic diagnosis of PNA.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fc0eae5c-58f1-4612-897b-3f7a31caa6ca",
+      "@type": "Acuity",
+      "name": "Risk stratification for mortality in CAP patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9f9f72da-d327-4461-9944-c2578632dd37",
+      "@type": "Acuity",
+      "name": "Risk stratification for mortality in CAP patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:66e389c8-ea31-41db-9c75-3eb12ee4391b",
+      "@type": "Finding",
+      "name": "CURB-65 score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6abeb356-73a4-4dab-a4ca-63dfa1e69fe9",
+          "rationale": "CURB-65 score is used for risk stratification in CAP.",
+          "citation": "Huang et al61 (2009) calculated CURB-65 retrospectively using altered mental status or a new change in Glasgow Coma Scale score as proxy measures for confusion.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6abeb356-73a4-4dab-a4ca-63dfa1e69fe9",
+      "@type": "Acuity",
+      "name": "Risk stratification for mortality in CAP patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a462191-f56f-40bc-acb4-3c8a35fa7839",
+      "@type": "Finding",
+      "name": "Confusion",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json",
+        "section_title": "Evidentiary Table Part 8 (Courtais et al. to Huang et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b8b84e91-214c-4f11-a2b5-b766ac88c6bf",
+      "@type": "Finding",
+      "name": "Change in Glasgow Coma Scale score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_18_evidentiary_table_part_8.json"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:36.481662+00:00",
+    "nodes_before": 34,
+    "nodes_after": 29,
+    "rules_before": 20,
+    "rules_after": 19
+  }
+}

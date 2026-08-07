@@ -1,0 +1,665 @@
+{
+  "chunk_id": "chunk_5",
+  "entities": [
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.6926372588975813,
+      "character_boundaries": {
+        "start": 13,
+        "end": 16
+      }
+    },
+    {
+      "snomed_cui": "900000000000550004",
+      "preferred_name": "Definition",
+      "source_value": "Definition",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 17,
+        "end": 27
+      }
+    },
+    {
+      "snomed_cui": "255238004",
+      "preferred_name": "Continuous",
+      "source_value": "Continued",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 29,
+        "end": 38
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 57,
+        "end": 65
+      }
+    },
+    {
+      "snomed_cui": "410618006",
+      "preferred_name": "Application",
+      "source_value": "applications",
+      "confidence_score": 0.33178920966794645,
+      "character_boundaries": {
+        "start": 66,
+        "end": 78
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 82,
+        "end": 90
+      }
+    },
+    {
+      "snomed_cui": "8940901000001109",
+      "preferred_name": "Available",
+      "source_value": "available",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 135,
+        "end": 144
+      }
+    },
+    {
+      "snomed_cui": "414135002",
+      "preferred_name": "Estimated",
+      "source_value": "estimated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 166,
+        "end": 175
+      }
+    },
+    {
+      "snomed_cui": "702668005",
+      "preferred_name": "Modification of diet in renal disease formula",
+      "source_value": "MDRD",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 186,
+        "end": 190
+      }
+    },
+    {
+      "snomed_cui": "86960007",
+      "preferred_name": "Epidermal growth factor receptor",
+      "source_value": "eGFR",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 218,
+        "end": 222
+      }
+    },
+    {
+      "snomed_cui": "258859000",
+      "preferred_name": "Milliliter/minute",
+      "source_value": "ml/min",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 229,
+        "end": 235
+      }
+    },
+    {
+      "snomed_cui": "229027002",
+      "preferred_name": "Dynamic",
+      "source_value": "Dynamic",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 251,
+        "end": 258
+      }
+    },
+    {
+      "snomed_cui": "243326001",
+      "preferred_name": "Changing",
+      "source_value": "changes in",
+      "confidence_score": 0.6805252927515161,
+      "character_boundaries": {
+        "start": 259,
+        "end": 269
+      }
+    },
+    {
+      "snomed_cui": "364202003",
+      "preferred_name": "Measure of urine output",
+      "source_value": "urine output",
+      "confidence_score": 0.8099869140541593,
+      "character_boundaries": {
+        "start": 278,
+        "end": 290
+      }
+    },
+    {
+      "snomed_cui": "72589006",
+      "preferred_name": "With staging",
+      "source_value": "staging",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 297,
+        "end": 304
+      }
+    },
+    {
+      "snomed_cui": "246453008",
+      "preferred_name": "Course of illness",
+      "source_value": "course of illness",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 314,
+        "end": 331
+      }
+    },
+    {
+      "snomed_cui": "64100000",
+      "preferred_name": "False",
+      "source_value": "pseudo",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 335,
+        "end": 341
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 342,
+        "end": 345
+      }
+    },
+    {
+      "snomed_cui": "261904005",
+      "preferred_name": "Laboratory",
+      "source_value": "Laboratory",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 347,
+        "end": 357
+      }
+    },
+    {
+      "snomed_cui": "40885006",
+      "preferred_name": "Variant",
+      "source_value": "variation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 358,
+        "end": 367
+      }
+    },
+    {
+      "snomed_cui": "37575004",
+      "preferred_name": "Carmoisine A stain",
+      "source_value": "chromogen",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 371,
+        "end": 380
+      }
+    },
+    {
+      "snomed_cui": "78235001",
+      "preferred_name": "Interferes with (contextual qualifier)",
+      "source_value": "interference",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 381,
+        "end": 393
+      }
+    },
+    {
+      "snomed_cui": "263933003",
+      "preferred_name": "Well differentiated",
+      "source_value": "differentiated",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 402,
+        "end": 416
+      }
+    },
+    {
+      "snomed_cui": "31874001",
+      "preferred_name": "True",
+      "source_value": "true",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 422,
+        "end": 426
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 427,
+        "end": 430
+      }
+    },
+    {
+      "snomed_cui": "112231000",
+      "preferred_name": "Atypical",
+      "source_value": "Atypical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 434,
+        "end": 442
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 443,
+        "end": 446
+      }
+    },
+    {
+      "snomed_cui": "33463005",
+      "preferred_name": "Liquid substance",
+      "source_value": "Fluid",
+      "confidence_score": 0.45240554248412634,
+      "character_boundaries": {
+        "start": 448,
+        "end": 453
+      }
+    },
+    {
+      "snomed_cui": "439569004",
+      "preferred_name": "Resuscitation",
+      "source_value": "resuscitation",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 454,
+        "end": 467
+      }
+    },
+    {
+      "snomed_cui": "40095003",
+      "preferred_name": "Injury of kidney",
+      "source_value": "kidney injury",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 500,
+        "end": 513
+      }
+    },
+    {
+      "snomed_cui": "439401001",
+      "preferred_name": "Diagnosis",
+      "source_value": "Diagnostic",
+      "confidence_score": 0.8350610400738121,
+      "character_boundaries": {
+        "start": 532,
+        "end": 542
+      }
+    },
+    {
+      "snomed_cui": "103379005",
+      "preferred_name": "Procedural approach",
+      "source_value": "approach",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 543,
+        "end": 551
+      }
+    },
+    {
+      "snomed_cui": "11953005",
+      "preferred_name": "Renal function",
+      "source_value": "kidney function",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 570,
+        "end": 585
+      }
+    },
+    {
+      "snomed_cui": "900000000000550004",
+      "preferred_name": "Definition",
+      "source_value": "Definitions",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 600,
+        "end": 611
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 622,
+        "end": 625
+      }
+    },
+    {
+      "snomed_cui": "709044004",
+      "preferred_name": "Chronic kidney disease",
+      "source_value": "CKD",
+      "confidence_score": 0.6960466858941335,
+      "character_boundaries": {
+        "start": 627,
+        "end": 630
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "Acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 636,
+        "end": 641
+      }
+    },
+    {
+      "snomed_cui": "17373004",
+      "preferred_name": "Both kidneys",
+      "source_value": "Kidney",
+      "confidence_score": 0.9586618647777652,
+      "character_boundaries": {
+        "start": 642,
+        "end": 648
+      }
+    },
+    {
+      "snomed_cui": "64572001",
+      "preferred_name": "Disease",
+      "source_value": "Diseases and Disorders",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 649,
+        "end": 671
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 681,
+        "end": 684
+      }
+    },
+    {
+      "snomed_cui": "40143009",
+      "preferred_name": "Functional",
+      "source_value": "Functional",
+      "confidence_score": 0.5992550926019646,
+      "character_boundaries": {
+        "start": 686,
+        "end": 696
+      }
+    },
+    {
+      "snomed_cui": "258703001",
+      "preferred_name": "day",
+      "source_value": "days",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 724,
+        "end": 728
+      }
+    },
+    {
+      "snomed_cui": "709044004",
+      "preferred_name": "Chronic kidney disease",
+      "source_value": "CKD",
+      "confidence_score": 0.4201154412785105,
+      "character_boundaries": {
+        "start": 732,
+        "end": 735
+      }
+    },
+    {
+      "snomed_cui": "80274001",
+      "preferred_name": "Glomerular filtration rate",
+      "source_value": "GFR",
+      "confidence_score": 0.7616612706559432,
+      "character_boundaries": {
+        "start": 737,
+        "end": 740
+      }
+    },
+    {
+      "snomed_cui": "258859000",
+      "preferred_name": "Milliliter/minute",
+      "source_value": "ml/min",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 745,
+        "end": 751
+      }
+    },
+    {
+      "snomed_cui": "37782003",
+      "preferred_name": "Damage",
+      "source_value": "damage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 773,
+        "end": 779
+      }
+    },
+    {
+      "snomed_cui": "259036001",
+      "preferred_name": "per month",
+      "source_value": "months",
+      "confidence_score": 0.8249330707574319,
+      "character_boundaries": {
+        "start": 787,
+        "end": 793
+      }
+    },
+    {
+      "snomed_cui": "14669001",
+      "preferred_name": "Acute kidney injury",
+      "source_value": "AKI",
+      "confidence_score": 0.7376463038062739,
+      "character_boundaries": {
+        "start": 802,
+        "end": 805
+      }
+    },
+    {
+      "snomed_cui": "80274001",
+      "preferred_name": "Glomerular filtration rate",
+      "source_value": "GFR",
+      "confidence_score": 0.5847423480874379,
+      "character_boundaries": {
+        "start": 807,
+        "end": 810
+      }
+    },
+    {
+      "snomed_cui": "259036001",
+      "preferred_name": "per month",
+      "source_value": "months",
+      "confidence_score": 0.9408664163183822,
+      "character_boundaries": {
+        "start": 822,
+        "end": 828
+      }
+    },
+    {
+      "snomed_cui": "80274001",
+      "preferred_name": "Glomerular filtration rate",
+      "source_value": "GFR",
+      "confidence_score": 0.5258938625930643,
+      "character_boundaries": {
+        "start": 830,
+        "end": 833
+      }
+    },
+    {
+      "snomed_cui": "260370003",
+      "preferred_name": "Decrease",
+      "source_value": "decrease",
+      "confidence_score": 0.8613684610371503,
+      "character_boundaries": {
+        "start": 834,
+        "end": 842
+      }
+    },
+    {
+      "snomed_cui": "260366006",
+      "preferred_name": "Increase",
+      "source_value": "increase",
+      "confidence_score": 0.7763598194474426,
+      "character_boundaries": {
+        "start": 856,
+        "end": 864
+      }
+    },
+    {
+      "snomed_cui": "259036001",
+      "preferred_name": "per month",
+      "source_value": "months",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 877,
+        "end": 883
+      }
+    },
+    {
+      "snomed_cui": "36692007",
+      "preferred_name": "Known",
+      "source_value": "known",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 895,
+        "end": 900
+      }
+    },
+    {
+      "snomed_cui": "90708001",
+      "preferred_name": "Kidney disease",
+      "source_value": "kidney disease",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 901,
+        "end": 915
+      }
+    },
+    {
+      "snomed_cui": "17373004",
+      "preferred_name": "Both kidneys",
+      "source_value": "kidney",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 928,
+        "end": 934
+      }
+    },
+    {
+      "snomed_cui": "37782003",
+      "preferred_name": "Damage",
+      "source_value": "damage",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 935,
+        "end": 941
+      }
+    },
+    {
+      "snomed_cui": "55919000",
+      "preferred_name": "Including",
+      "source_value": "include",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 942,
+        "end": 949
+      }
+    },
+    {
+      "snomed_cui": "29738008",
+      "preferred_name": "Proteinuria",
+      "source_value": "proteinuria",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 950,
+        "end": 961
+      }
+    },
+    {
+      "snomed_cui": "53298000",
+      "preferred_name": "Hematuria syndrome",
+      "source_value": "hematuria",
+      "confidence_score": 0.5149225406540225,
+      "character_boundaries": {
+        "start": 963,
+        "end": 972
+      }
+    },
+    {
+      "snomed_cui": "13336003",
+      "preferred_name": "Tubular",
+      "source_value": "tubular",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 974,
+        "end": 981
+      }
+    },
+    {
+      "snomed_cui": "276654001",
+      "preferred_name": "Congenital malformation",
+      "source_value": "abnormalities",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1000,
+        "end": 1013
+      }
+    },
+    {
+      "snomed_cui": "363679005",
+      "preferred_name": "Imaging",
+      "source_value": "imaging",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1017,
+        "end": 1024
+      }
+    },
+    {
+      "snomed_cui": "41368006",
+      "preferred_name": "Disorder of urinary tract proper",
+      "source_value": "renal",
+      "confidence_score": 0.8011381135160687,
+      "character_boundaries": {
+        "start": 1029,
+        "end": 1034
+      }
+    },
+    {
+      "snomed_cui": "394595002",
+      "preferred_name": "Pathology",
+      "source_value": "pathology",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1035,
+        "end": 1044
+      }
+    }
+  ]
+}

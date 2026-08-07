@@ -1,0 +1,221 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Suicide risk",
+      "snomed": "225444004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_15_goal_15_the_hospital_ide.json",
+        "section_title": "Goal 15: The hospital identifies safety risks inherent in its patient population"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Patients identified as at risk for suicide require specific interventions to mitigate the risk.",
+          "citation": "NPSG.15.01.01, EP 1-7",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_SCREENING",
+          "target": "urn:uuid:1fd97dd6-0773-4a32-9857-3fc9d2e76164",
+          "rationale": "All patients being evaluated or treated for behavioral health conditions as their primary reason for care should be screened for suicidal ideation.",
+          "citation": "NPSG.15.01.01, EP 2",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_ASSESSMENT",
+          "target": "urn:uuid:d2190b59-4d52-48f9-b4d3-4b2b266e0ede",
+          "rationale": "Patients who screen positive for suicidal ideation require a suicide assessment.",
+          "citation": "NPSG.15.01.01, EP 3",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_MONITORING",
+          "target": "urn:uuid:7890abcd-ef12-3456-7890-abcdef123456",
+          "rationale": "Implementation and effectiveness of policies and procedures for suicide risk management must be monitored.",
+          "citation": "NPSG.15.01.01, EP 7",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_SCREENING",
+          "target": "urn:uuid:1fd97dd6-0773-4a32-9857-3fc9d2e76164",
+          "rationale": "Screen all patients for suicidal ideation who are being evaluated or treated for behavioral health conditions as their primary reason for care.",
+          "citation": "NPSG.15.01.01, EP 2",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_ASSESSMENT",
+          "target": "urn:uuid:d2190b59-4d52-48f9-b4d3-4b2b266e0ede",
+          "rationale": "Use an evidence-based process to conduct a suicide assessment of patients who have screened positive for suicidal ideation.",
+          "citation": "NPSG.15.01.01, EP 3",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_MONITORING",
+          "target": "urn:uuid:7890abcd-ef12-3456-7890-abcdef123456",
+          "rationale": "Monitor implementation and effectiveness of policies and procedures for screening, assessment, and management of patients at risk for suicide and take action as needed to improve compliance.",
+          "citation": "NPSG.15.01.01, EP 7",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:cdef1234-5678-90ab-cdef-1234567890cd",
+      "@type": "Intervention",
+      "name": "Environmental risk assessment (Psychiatric)",
+      "snomed": "787251000000108",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_15_goal_15_the_hospital_ide.json",
+        "section_title": "Goal 15: The hospital identifies safety risks inherent in its patient population"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1fd97dd6-0773-4a32-9857-3fc9d2e76164",
+      "@type": "Condition",
+      "name": "Suicidal ideation",
+      "snomed": "6471006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_15_goal_15_the_hospital_ide.json",
+        "section_title": "Goal 15: The hospital identifies safety risks inherent in its patient population"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d2190b59-4d52-48f9-b4d3-4b2b266e0ede",
+      "@type": "Intervention",
+      "name": "Suicide assessment",
+      "snomed": "1100881000168104",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_15_goal_15_the_hospital_ide.json",
+        "section_title": "Goal 15: The hospital identifies safety risks inherent in its patient population"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Intervention",
+      "name": "Mitigation of suicide risk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_15_goal_15_the_hospital_ide.json",
+        "section_title": "Goal 15: The hospital identifies safety risks inherent in its patient population"
+      },
+      "rules": [
+        {
+          "predicate": "INCLUDES",
+          "target": "urn:uuid:cdef1234-5678-90ab-cdef-1234567890cd",
+          "rationale": "Environmental risk assessment for psychiatric units.",
+          "citation": "NPSG.15.01.01, EP 1 (Psychiatric)",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INCLUDES",
+          "target": "urn:uuid:b1cccb65-4fe0-436d-a980-1f1e21a8d427",
+          "rationale": "Procedures to mitigate suicide risk for nonpsychiatric units (e.g., one-to-one monitoring, object removal).",
+          "citation": "NPSG.15.01.01, EP 1 (Nonpsychiatric)",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INCLUDES",
+          "target": "urn:uuid:0a6260f9-d2e1-4577-91ad-1f5b2036bbf6",
+          "rationale": "Training and competence assessment of staff.",
+          "citation": "NPSG.15.01.01, EP 5",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "INCLUDES",
+          "target": "urn:uuid:85164594-85c8-4a62-be46-1893c46abcec",
+          "rationale": "Guidelines for reassessment and monitoring of high-risk patients.",
+          "citation": "NPSG.15.01.01, EP 5",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "INCLUDES",
+          "target": "urn:uuid:697c8bf2-0542-4d1b-9509-22b04d8442c6",
+          "rationale": "Counseling and follow-up care at discharge.",
+          "citation": "NPSG.15.01.01, EP 6",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b1cccb65-4fe0-436d-a980-1f1e21a8d427",
+      "@type": "Intervention",
+      "name": "Mitigation procedures (Nonpsychiatric)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_15_goal_15_the_hospital_ide.json",
+        "section_title": "Goal 15: The hospital identifies safety risks inherent in its patient population"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0a6260f9-d2e1-4577-91ad-1f5b2036bbf6",
+      "@type": "Intervention",
+      "name": "Staff training and competence assessment",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_15_goal_15_the_hospital_ide.json",
+        "section_title": "Goal 15: The hospital identifies safety risks inherent in its patient population"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:85164594-85c8-4a62-be46-1893c46abcec",
+      "@type": "Intervention",
+      "name": "Reassessment and monitoring guidelines",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_15_goal_15_the_hospital_ide.json",
+        "section_title": "Goal 15: The hospital identifies safety risks inherent in its patient population"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:697c8bf2-0542-4d1b-9509-22b04d8442c6",
+      "@type": "Intervention",
+      "name": "Counseling and follow-up care",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_15_goal_15_the_hospital_ide.json",
+        "section_title": "Goal 15: The hospital identifies safety risks inherent in its patient population"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7890abcd-ef12-3456-7890-abcdef123456",
+      "@type": "Intervention",
+      "name": "Monitoring of policies and procedures",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_15_goal_15_the_hospital_ide.json",
+        "section_title": "Goal 15: The hospital identifies safety risks inherent in its patient population"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.447843+00:00",
+    "nodes_before": 11,
+    "nodes_after": 10,
+    "rules_before": 12,
+    "rules_after": 12
+  }
+}

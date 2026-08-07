@@ -1,0 +1,585 @@
+{
+  "chunk_id": "chunk_1",
+  "entities": [
+    {
+      "snomed_cui": "394579002",
+      "preferred_name": "Cardiology",
+      "source_value": "CARDIOLOGY",
+      "confidence_score": 0.6948308465188054,
+      "character_boundaries": {
+        "start": 0,
+        "end": 10
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "CLINICAL",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 11,
+        "end": 19
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 31,
+        "end": 39
+      }
+    },
+    {
+      "snomed_cui": "225728007",
+      "preferred_name": "Accident and Emergency department",
+      "source_value": "Emergency Department",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 48,
+        "end": 68
+      }
+    },
+    {
+      "snomed_cui": "719891000000107",
+      "preferred_name": "Management",
+      "source_value": "Management",
+      "confidence_score": 0.4560311686292173,
+      "character_boundaries": {
+        "start": 69,
+        "end": 79
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patients",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 83,
+        "end": 91
+      }
+    },
+    {
+      "snomed_cui": "103325001",
+      "preferred_name": "Patient need for (contextual qualifier)",
+      "source_value": "Needing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 92,
+        "end": 99
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "Therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 112,
+        "end": 119
+      }
+    },
+    {
+      "snomed_cui": "272118002",
+      "preferred_name": "Acuteness",
+      "source_value": "Acute",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 124,
+        "end": 129
+      }
+    },
+    {
+      "snomed_cui": "76388001",
+      "preferred_name": "ST segment elevation",
+      "source_value": "ST-Segment Elevation",
+      "confidence_score": 0.5734145993867452,
+      "character_boundaries": {
+        "start": 130,
+        "end": 150
+      }
+    },
+    {
+      "snomed_cui": "74281007",
+      "preferred_name": "Myocardium structure",
+      "source_value": "Myocardial",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 151,
+        "end": 161
+      }
+    },
+    {
+      "snomed_cui": "224864007",
+      "preferred_name": "College",
+      "source_value": "College",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 190,
+        "end": 197
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 201,
+        "end": 210
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "Physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 211,
+        "end": 221
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 222,
+        "end": 230
+      }
+    },
+    {
+      "snomed_cui": "12261009",
+      "preferred_name": "Writing",
+      "source_value": "Writing",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 254,
+        "end": 261
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "Therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 288,
+        "end": 295
+      }
+    },
+    {
+      "snomed_cui": "401303003",
+      "preferred_name": "Acute ST segment elevation myocardial infarction",
+      "source_value": "Acute ST-Segment Elevation Myocardial Infarction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 300,
+        "end": 348
+      }
+    },
+    {
+      "snomed_cui": "706699008",
+      "preferred_name": "Chair",
+      "source_value": "Chair",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 388,
+        "end": 393
+      }
+    },
+    {
+      "snomed_cui": "706699008",
+      "preferred_name": "Chair",
+      "source_value": "Chair",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 497,
+        "end": 502
+      }
+    },
+    {
+      "snomed_cui": "394852005",
+      "preferred_name": "Member of",
+      "source_value": "Members of",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 506,
+        "end": 516
+      }
+    },
+    {
+      "snomed_cui": "224864007",
+      "preferred_name": "College",
+      "source_value": "College",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 530,
+        "end": 537
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 541,
+        "end": 550
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "Physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 551,
+        "end": 561
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 562,
+        "end": 570
+      }
+    },
+    {
+      "snomed_cui": "119270007",
+      "preferred_name": "Management procedure",
+      "source_value": "Oversight",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 591,
+        "end": 600
+      }
+    },
+    {
+      "snomed_cui": "706699008",
+      "preferred_name": "Chair",
+      "source_value": "Chair",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 639,
+        "end": 644
+      }
+    },
+    {
+      "snomed_cui": "75702008",
+      "preferred_name": "Brucellosis",
+      "source_value": "Bruce",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1002,
+        "end": 1007
+      }
+    },
+    {
+      "snomed_cui": "224535009",
+      "preferred_name": "Registered nurse",
+      "source_value": "RN",
+      "confidence_score": 0.99,
+      "character_boundaries": {
+        "start": 1085,
+        "end": 1087
+      }
+    },
+    {
+      "snomed_cui": "55641003",
+      "preferred_name": "Infarct",
+      "source_value": "Infarction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1168,
+        "end": 1178
+      }
+    },
+    {
+      "snomed_cui": "224727009",
+      "preferred_name": "Walls",
+      "source_value": "Wall",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1357,
+        "end": 1361
+      }
+    },
+    {
+      "snomed_cui": "19096001",
+      "preferred_name": "With quality",
+      "source_value": "with Quality",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1444,
+        "end": 1456
+      }
+    },
+    {
+      "snomed_cui": "116154003",
+      "preferred_name": "Patient",
+      "source_value": "Patient",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1461,
+        "end": 1468
+      }
+    },
+    {
+      "snomed_cui": "46998006",
+      "preferred_name": "Massive",
+      "source_value": "Mark",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1490,
+        "end": 1494
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1582,
+        "end": 1590
+      }
+    },
+    {
+      "snomed_cui": "276239002",
+      "preferred_name": "Therapy",
+      "source_value": "Therapy",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1652,
+        "end": 1659
+      }
+    },
+    {
+      "snomed_cui": "57054005",
+      "preferred_name": "Acute myocardial infarction",
+      "source_value": "Acute Myocardial Infarction",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1664,
+        "end": 1691
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1692,
+        "end": 1700
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "Clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1748,
+        "end": 1756
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1791,
+        "end": 1795
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1844,
+        "end": 1853
+      }
+    },
+    {
+      "snomed_cui": "106292003",
+      "preferred_name": "Professional nurse",
+      "source_value": "Nurses",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1854,
+        "end": 1860
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1912,
+        "end": 1920
+      }
+    },
+    {
+      "snomed_cui": "224864007",
+      "preferred_name": "College",
+      "source_value": "College",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1972,
+        "end": 1979
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1983,
+        "end": 1992
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "Physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 1993,
+        "end": 2003
+      }
+    },
+    {
+      "snomed_cui": "386387004",
+      "preferred_name": "Peer review",
+      "source_value": "peer review",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2046,
+        "end": 2057
+      }
+    },
+    {
+      "snomed_cui": "719982003",
+      "preferred_name": "Process",
+      "source_value": "process",
+      "confidence_score": 0.3439775300914536,
+      "character_boundaries": {
+        "start": 2058,
+        "end": 2065
+      }
+    },
+    {
+      "snomed_cui": "58147004",
+      "preferred_name": "Clinical",
+      "source_value": "clinical",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2126,
+        "end": 2134
+      }
+    },
+    {
+      "snomed_cui": "124224004",
+      "preferred_name": "Deficiency of ferroxidase",
+      "source_value": "ACEP",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2147,
+        "end": 2151
+      }
+    },
+    {
+      "snomed_cui": "225436004",
+      "preferred_name": "Reflecting",
+      "source_value": "reflect",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2171,
+        "end": 2178
+      }
+    },
+    {
+      "snomed_cui": "724421000000103",
+      "preferred_name": "Belief",
+      "source_value": "beliefs",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2196,
+        "end": 2203
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "Emergency Medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2218,
+        "end": 2236
+      }
+    },
+    {
+      "snomed_cui": "224864007",
+      "preferred_name": "College",
+      "source_value": "College",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2315,
+        "end": 2322
+      }
+    },
+    {
+      "snomed_cui": "25876001",
+      "preferred_name": "Emergency",
+      "source_value": "Emergency",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2326,
+        "end": 2335
+      }
+    },
+    {
+      "snomed_cui": "309343006",
+      "preferred_name": "Physician",
+      "source_value": "Physicians",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2336,
+        "end": 2346
+      }
+    },
+    {
+      "snomed_cui": "773568002",
+      "preferred_name": "Emergency medicine",
+      "source_value": "Emergency Medicine",
+      "confidence_score": 1,
+      "character_boundaries": {
+        "start": 2411,
+        "end": 2429
+      }
+    },
+    {
+      "snomed_cui": "118565006",
+      "preferred_name": "Volume (property)",
+      "source_value": "Volume",
+      "confidence_score": 0.5101733947062603,
+      "character_boundaries": {
+        "start": 2431,
+        "end": 2437
+      }
+    }
+  ]
+}
