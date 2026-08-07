@@ -1,0 +1,48 @@
+# Environments and Secrets
+.env
+.venv/
+venv/
+env/
+*.pem
+*.key
+
+# Databases and Graph Stores
+db/*.duckdb
+db/*.duckdb.wal
+db/*.db
+db/*.sqlite
+db/*.sqlite3
+
+# Clinical Data & Vocabularies
+data/raw_notes/*
+data/athena_omop/*
+data/snomed_kg/*
+data/processed/*
+data/medical_abbreviations/*
+data/guidelines/*
+
+# Exception: Keep the directory structure intact in git
+!data/raw_notes/.gitkeep
+!data/athena_omop/.gitkeep
+!data/snomed_kg/.gitkeep
+!data/processed/.gitkeep
+!data/medical_abbreviations/.gitkeep
+!data/guidelines/.gitkeep
+
+# Python Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+
+# Testing & UI Artifacts
+.pytest_cache/
+.coverage
+.streamlit/
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
