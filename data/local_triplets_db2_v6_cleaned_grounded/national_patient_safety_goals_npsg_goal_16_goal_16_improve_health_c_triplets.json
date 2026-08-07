@@ -1,0 +1,277 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b3c4d5-e6f7-4890-b123-456789abcdef",
+      "@type": "Finding",
+      "name": "Health care disparities",
+      "snomed": "722901000000108",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b8c9d0e1-f2a3-46c7-8def-1234567890ab",
+          "rationale": "Health care disparities are a quality of care problem that need to be addressed with targeted interventions.",
+          "citation": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json, Introduction to NPSG.16.01.01",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c9d0e1f2-a8b7-46c3-8def-1234567890cd",
+      "@type": "Finding",
+      "name": "Health-related social needs (HRSNs)",
+      "snomed": "263775005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:d0e1f2a3-b7c9-46c3-8def-1234567890ef",
+          "rationale": "HRSNs are frequently identified as root causes of disparities in health outcomes.",
+          "citation": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json, Rationale for NPSG.16.01.01",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b8c9d0e1-f2a3-46c7-8def-1234567890ab",
+      "@type": "Condition",
+      "name": "Quality of care problem",
+      "snomed": "4313282",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": [],
+      "snomed_name": "Quality of care procedure",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:21.649035+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:d0e1f2a3-b7c9-46c3-8def-1234567890ef",
+      "@type": "Condition",
+      "name": "Root cause of health disparities",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e1f2a3b7-c9d0-46c3-8def-1234567890fe",
+      "@type": "Finding",
+      "name": "Patient's health-related social needs (HRSNs)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f2a3b7c9-d0e1-46c3-8def-1234567890ff",
+          "rationale": "Organizations should assess HRSNs and provide information about community resources and support services.",
+          "citation": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json, EP 2",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f2a3b7c9-d0e1-46c3-8def-1234567890ff",
+      "@type": "Intervention",
+      "name": "Assessment of HRSNs and provision of community resources/support services information",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:01f2a3b7-c9d0-46c3-8def-123456789010",
+      "@type": "Finding",
+      "name": "Health care disparities in patient population",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:2a3b7c9d-0e1f-46c3-8def-123456789011",
+          "rationale": "Organizations should identify health care disparities by stratifying quality and safety data using sociodemographic characteristics.",
+          "citation": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json, EP 3",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2a3b7c9d-0e1f-46c3-8def-123456789011",
+      "@type": "Intervention",
+      "name": "Stratification of quality and safety data by sociodemographic characteristics to identify disparities",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3b7c9d0e-1f2a-46c3-8def-123456789012",
+      "@type": "Finding",
+      "name": "Health care disparity",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:4b7c9d0e-1f2a-46c3-8def-123456789013",
+          "rationale": "The hospital should develop a written action plan to improve health care equity by addressing at least one identified disparity.",
+          "citation": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json, EP 4",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4b7c9d0e-1f2a-46c3-8def-123456789013",
+      "@type": "Intervention",
+      "name": "Development of a written action plan to address health care disparities",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5c9d0e1f-2a3b-46c3-8def-123456789014",
+      "@type": "Finding",
+      "name": "Failure to achieve or sustain goal(s) in action plan for health care equity",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:69d0e1f2-a3b7-46c3-8def-123456789015",
+          "rationale": "The hospital must act when it does not achieve or sustain the goal(s) in its action plan.",
+          "citation": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json, EP 5",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:69d0e1f2-a3b7-46c3-8def-123456789015",
+      "@type": "Intervention",
+      "name": "Action when goals in health care equity action plan are not achieved or sustained",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:79d0e1f2-a3b7-46c3-8def-123456789016",
+      "@type": "Finding",
+      "name": "Progress to improve health care equity",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:8d0e1f2a-3b7c-46c3-8def-123456789017",
+          "rationale": "The hospital must inform key stakeholders annually about its progress to improve health care equity.",
+          "citation": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json, EP 6",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:8d0e1f2a-3b7c-46c3-8def-123456789017",
+      "@type": "Intervention",
+      "name": "Annual communication of progress on health care equity initiatives to stakeholders",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9d0e1f2a-3b7c-46c3-8def-123456789018",
+      "@type": "Finding",
+      "name": "Designated leader for health care equity activities",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:0e1f2a3b-7c9d-46c3-8def-123456789019",
+          "rationale": "The hospital must designate an individual(s) to lead activities to improve health care equity.",
+          "citation": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json, EP 1",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0e1f2a3b-7c9d-46c3-8def-123456789019",
+      "@type": "Intervention",
+      "name": "Designation of leader(s) for health care equity activities",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_16_goal_16_improve_health_c.json",
+        "section_title": "Goal 16: Improve health care equity"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.536015+00:00",
+    "nodes_before": 16,
+    "nodes_after": 16,
+    "rules_before": 8,
+    "rules_after": 8
+  }
+}

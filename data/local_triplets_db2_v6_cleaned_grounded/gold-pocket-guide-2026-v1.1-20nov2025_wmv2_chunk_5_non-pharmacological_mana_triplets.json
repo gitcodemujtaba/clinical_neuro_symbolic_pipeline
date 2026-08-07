@@ -1,0 +1,616 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Pulmonary rehabilitation",
+      "snomed": "15081005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Pulmonary rehabilitation improves exercise capacity, symptoms, and quality of life in groups B and E.",
+          "citation": "Essential for Groups B and E.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Long-Term Oxygen Therapy (LTOT)",
+      "snomed": "243137006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:022d1c3a-6502-4d1f-896d-7eebde89bfc5",
+          "rationale": "LTOT is indicated if PaO2 <= 55 mmHg or SaO2 < 88%, OR PaO2 55-60 mmHg with cor pulmonale, secondary polycythemia, or pulmonary hypertension.",
+          "citation": "Oxygen Therapy and Ventilatory Support section.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:022d1c3a-6502-4d1f-896d-7eebde89bfc5",
+      "@type": "Intervention",
+      "name": "Long-Term Oxygen Therapy (LTOT)",
+      "snomed": "243137006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "quantitative_threshold": {
+        "paO2_cutoff": 55,
+        "saO2_cutoff": 88,
+        "paO2_range_lower": 55,
+        "paO2_range_upper": 60,
+        "comorbidities": [
+          "cor pulmonale",
+          "secondary polycythemia",
+          "pulmonary hypertension"
+        ],
+        "unit": "mmHg"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:565c3686-9527-4800-b016-8b4573b1dc96",
+          "rationale": "Titrate oxygen to SaO2 >= 90%. Recheck in 60-90 days.",
+          "citation": "Oxygen Therapy and Ventilatory Support section.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Finding",
+      "name": "Noninvasive Positive Pressure Ventilation (NPPV)",
+      "snomed": "447837008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:cc4b064c-1e01-477c-9181-d56401bc9418",
+          "rationale": "Long-term NPPV may be considered in selected patients with severe chronic daytime hypercapnia (PaCO2 > 53 mmHg) and history of hospitalization for acute respiratory failure.",
+          "citation": "Oxygen Therapy and Ventilatory Support section.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:2a6b9b9c-2cf6-4fa6-a789-7cc1bd46f722",
+      "@type": "Intervention",
+      "name": "Noninvasive Positive Pressure Ventilation (NPPV)",
+      "snomed": "447837008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "quantitative_threshold": {
+        "paCO2_cutoff": 53,
+        "unit": "mmHg"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cc4b064c-1e01-477c-9181-d56401bc9418",
+      "@type": "Intervention",
+      "name": "Noninvasive Positive Pressure Ventilation (NPPV)",
+      "snomed": "447837008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "quantitative_threshold": {
+        "paCO2_cutoff": 53,
+        "unit": "mmHg"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9b8a7c6d-5e4f-3210-fedc-ba9876543210",
+      "@type": "Finding",
+      "name": "Lung Volume Reduction Surgery (LVRS)",
+      "snomed": "429609002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:5ba22521-3ba7-43f4-9324-d5dd994e4eda",
+          "rationale": "LVRS improves survival in upper-lobe emphysema with low post-rehab exercise capacity.",
+          "citation": "Surgical and Interventional Therapies section.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:5ba22521-3ba7-43f4-9324-d5dd994e4eda",
+      "@type": "Intervention",
+      "name": "Lung Volume Reduction Surgery (LVRS)",
+      "snomed": "429609002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0872846d-ae5e-4c53-843e-7174e3af20b1",
+      "@type": "Finding",
+      "name": "Lung Transplantation",
+      "snomed": "88039007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:210fedcb-a987-6543-210f-edcba9876543",
+          "rationale": "Lung Transplantation is indicated for severe progressive COPD (BODE 7-10, FEV1 < 20%, severe hypercapnia/pulmonary hypertension).",
+          "citation": "Surgical and Interventional Therapies section.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:210fedcb-a987-6543-210f-edcba9876543",
+      "@type": "Intervention",
+      "name": "Lung Transplantation",
+      "snomed": "88039007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "quantitative_threshold": {
+        "bode_score_lower": 7,
+        "bode_score_upper": 10,
+        "fev1_cutoff": 20,
+        "unit": "%",
+        "comorbidities": [
+          "severe hypercapnia",
+          "pulmonary hypertension"
+        ]
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b1c2d3e4-f5a6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "B-lines on lung ultrasound",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:c9d0e1f2-a8b7-46c3-8def-1234567890cd",
+          "rationale": "B-lines on lung ultrasound indicate acute heart failure syndrome",
+          "citation": "A systematic review showed high specificity for B-lines.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c9d0e1f2-a8b7-46c3-8def-1234567890cd",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d4e5f678-90ab-cdef-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "PaO2",
+      "snomed": "359846004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+          "rationale": "LTOT is indicated if PaO2 <= 55 mmHg or SaO2 < 88%, OR PaO2 55-60 mmHg with cor pulmonale, secondary polycythemia, or pulmonary hypertension.",
+          "citation": "Oxygen Therapy and Ventilatory Support section.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+      "@type": "Finding",
+      "name": "SaO2",
+      "snomed": "442476006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+          "rationale": "LTOT is indicated if PaO2 <= 55 mmHg or SaO2 < 88%, OR PaO2 55-60 mmHg with cor pulmonale, secondary polycythemia, or pulmonary hypertension.",
+          "citation": "Oxygen Therapy and Ventilatory Support section.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:10fedcba-9876-5432-10fe-dcba98765432",
+      "@type": "Finding",
+      "name": "Dyspnea",
+      "snomed": "267036007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:aee62323-4dcd-442a-8494-27934a660c6f",
+          "rationale": "Bullectomy decreases dyspnea and improves lung function in presence of large bullae.",
+          "citation": "Surgical and Interventional Therapies section.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a9d9d60b-0f1e-411c-8dda-80ad168e4c1d",
+          "rationale": "Dyspnea relief with fans.",
+          "citation": "Palliative, End of Life and Hospice Care section.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d52135e1-bb5f-4aad-936e-cc2188df7311",
+      "@type": "Intervention",
+      "name": "Fans",
+      "snomed": "261259003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c71ddd99-24ae-47ed-862e-980481629ab5",
+      "@type": "Finding",
+      "name": "Opioids",
+      "snomed": "404642006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a9d9d60b-0f1e-411c-8dda-80ad168e4c1d",
+          "rationale": "Dyspnea relief with low-dose opioids.",
+          "citation": "Palliative, End of Life and Hospice Care section.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quantitative_threshold": {
+        "dosage": "Low-dose"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:a9d9d60b-0f1e-411c-8dda-80ad168e4c1d",
+      "@type": "Intervention",
+      "name": "Opioids",
+      "snomed": "404642006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "quantitative_threshold": {
+        "dosage": "Low-dose"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fd52f34a-7aa7-4f6e-8c70-0a2dd7e02848",
+      "@type": "Finding",
+      "name": "Nutritional support",
+      "snomed": "278906000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:565c3686-9527-4800-b016-8b4573b1dc96",
+          "rationale": "Nutritional support for malnourished patients.",
+          "citation": "Palliative, End of Life and Hospice Care section.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:c0c0adeb-f89b-4640-a198-ce6eec8de5ce",
+      "@type": "Intervention",
+      "name": "Nutritional support",
+      "snomed": "278906000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:565c3686-9527-4800-b016-8b4573b1dc96",
+      "@type": "Finding",
+      "name": "Exercise capacity",
+      "snomed": "256235009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Pulmonary rehabilitation improves exercise capacity, symptoms, quality of life.",
+          "citation": "Non-Pharmacological Management section.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:5ba22521-3ba7-43f4-9324-d5dd994e4eda",
+          "rationale": "LVRS improves survival in upper-lobe emphysema with low post-rehab exercise capacity.",
+          "citation": "Surgical and Interventional Therapies section.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:99393b0b-4ad5-4fe3-830b-82f3e895460a",
+      "@type": "Finding",
+      "name": "Quality of life",
+      "snomed": "1156447008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Pulmonary rehabilitation improves exercise capacity, symptoms, quality of life.",
+          "citation": "Non-Pharmacological Management section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Improvement in exercise capacity, symptoms, quality of life",
+      "snomed": "45772680",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [],
+      "snomed_name": "Improved exercise tolerance",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:56.954536+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:7e37ad86-0f12-4d1a-b530-a6007a9c8217",
+      "@type": "Acuity",
+      "name": "Oxygen Saturation Target >= 90%",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "quantitative_threshold": {
+        "saO2_target": 90,
+        "unit": "%"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:30d64829-4e75-4dcb-9426-88e085dbb68d",
+      "@type": "Finding",
+      "name": "Endobronchial Valves (EBV)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:6543210f-edcb-a987-6543-21fedcba0987",
+          "rationale": "EBV is effective in select patients with severe hyperinflation and absence of collateral ventilation.",
+          "citation": "Surgical and Interventional Therapies section.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6543210f-edcb-a987-6543-21fedcba0987",
+      "@type": "Intervention",
+      "name": "Endobronchial Valves (EBV)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:543210fe-dcba-9876-5432-10fedcba9876",
+      "@type": "Finding",
+      "name": "Bullectomy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:fa863b93-fd08-477f-8257-0daab4410e64",
+          "rationale": "Bullectomy decreases dyspnea and improves lung function in presence of large bullae.",
+          "citation": "Surgical and Interventional Therapies section.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fa863b93-fd08-477f-8257-0daab4410e64",
+      "@type": "Intervention",
+      "name": "Bullectomy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f7890123-4567-89ab-cdef-1234567890cd",
+      "@type": "Finding",
+      "name": "PaCO2",
+      "snomed": "37392674",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+          "rationale": "Long-term NPPV may be considered in selected patients with severe chronic daytime hypercapnia (PaCO2 > 53 mmHg) and history of hospitalization for acute respiratory failure.",
+          "citation": "Oxygen Therapy and Ventilatory Support section.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Arterial carbon dioxide",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:59.457050+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:aee62323-4dcd-442a-8494-27934a660c6f",
+      "@type": "Intervention",
+      "name": "Bullectomy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b8c099ed-070c-460b-9b14-63a730882fc3",
+      "@type": "Finding",
+      "name": "Symptoms",
+      "snomed": "4142947",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_5_non-pharmacological_mana.json",
+        "section_title": "Non-Pharmacological Management, Oxygen, Palliative, and Interventional Therapies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Pulmonary rehabilitation improves exercise capacity, symptoms, quality of life.",
+          "citation": "Non-Pharmacological Management section.",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Symptomatic",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:00.093077+00:00"
+      }
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:38.851327+00:00",
+    "nodes_before": 32,
+    "nodes_after": 31,
+    "rules_before": 20,
+    "rules_after": 20
+  }
+}

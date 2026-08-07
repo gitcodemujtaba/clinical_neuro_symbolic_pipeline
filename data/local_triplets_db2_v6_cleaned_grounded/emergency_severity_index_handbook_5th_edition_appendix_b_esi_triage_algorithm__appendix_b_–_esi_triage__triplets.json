@@ -1,0 +1,633 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Requires immediate lifesaving intervention?",
+      "snomed": "44790905",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1ef4fb7b-ff2a-4cb6-b096-87407b464d41",
+          "rationale": "If yes, assign Level 1 acuity.",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision A",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Immediate necessary treatment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:02.273317+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Acuity",
+      "name": "Level 1 Acuity",
+      "snomed": "4082643",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [],
+      "snomed_name": "Level 1",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:03.004110+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:319ed72e-8a34-44a9-9404-4bd00f5cc32b",
+      "@type": "Finding",
+      "name": "High-risk situation? or Confused [SNOMED: 286933003]/lethargic [SNOMED: 214264003]/disoriented [SNOMED: 62476001]? or Severe pain [SNOMED: 76948002]/distress?",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:066b1195-da5e-449a-9c5f-d5505b00eaa4",
+          "rationale": "If yes, assign Level 2 acuity.",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision B",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:309e8fea-d91f-4477-bad7-13e1f1345345",
+      "@type": "Acuity",
+      "name": "Level 2 Acuity",
+      "snomed": "4082644",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [],
+      "snomed_name": "Level 2",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:04.025710+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:0a41ba10-2dc0-4ad4-b339-1651a3876093",
+      "@type": "Finding",
+      "name": "How many different resources are needed?",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "If None, assign Level 5 acuity.",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision C",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b94515e5-d219-4842-a067-91dcf3cad558",
+          "rationale": "If One, assign Level 4 acuity.",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision C",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6543210f-edcb-a987-6543-210fedcba987",
+          "rationale": "If Many, proceed to D.",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision C",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a9486c32-abd0-400e-8d11-4a9823a27fb1",
+      "@type": "Acuity",
+      "name": "Level 5 Acuity",
+      "snomed": "4080123",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [],
+      "snomed_name": "Level 5",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:05.050394+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:b94515e5-d219-4842-a067-91dcf3cad558",
+      "@type": "Acuity",
+      "name": "Level 4 Acuity",
+      "snomed": "4080422",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [],
+      "snomed_name": "Level 4",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:05.680227+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:6543210f-edcb-a987-6543-210fedcba987",
+      "@type": "Finding",
+      "name": "High-risk vital signs?",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:543210fe-dcba-9876-5432-10fedcba9876",
+          "rationale": "If Yes, reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:543210fe-dcba-9876-5432-10fedcba9876",
+      "@type": "Acuity",
+      "name": "Level 2 Acuity (Reassessment)",
+      "snomed": "4082644",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [],
+      "snomed_name": "Level 2",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:06.750105+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:def12345-6789-abcd-ef12-34567890abcd",
+      "@type": "Condition",
+      "name": "Pediatric Fever Considerations",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1a2b3c4d-e5f6-7890-1234-567890abcdef",
+          "rationale": "Assign at least ESI 2 if T > 38° C (100.4 ° F) in patients 1-28 days of age.",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Pediatric Fever Considerations",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1ef4fb7b-ff2a-4cb6-b096-87407b464d41",
+          "rationale": "Consider assigning ESI 2 if T > 38 ° C (100.4 ° F) in patients 1-3 months of age.",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Pediatric Fever Considerations",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:066b1195-da5e-449a-9c5f-d5505b00eaa4",
+          "rationale": "Consider assigning ESI 2 or 3 if T > 39°C (102.2°F) or < 36°C (96.8°F) in patients 3 months and older.",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Pediatric Fever Considerations",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:319ed72e-8a34-44a9-9404-4bd00f5cc32b",
+          "rationale": "Consider assigning ESI 2 or 3 if incomplete immunizations in patients 3 months and older.",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Pediatric Fever Considerations",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1ef4fb7b-ff2a-4cb6-b096-87407b464d41",
+          "rationale": "Consider assigning ESI 2 or 3 if no obvious source of fever in patients 3 months and older.",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Pediatric Fever Considerations",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-7890-1234-567890abcdef",
+      "@type": "Acuity",
+      "name": "Level 2 Acuity (Pediatric Fever)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1ef4fb7b-ff2a-4cb6-b096-87407b464d41",
+      "@type": "Acuity",
+      "name": "Level 2 Acuity (Pediatric Fever)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:066b1195-da5e-449a-9c5f-d5505b00eaa4",
+      "@type": "Acuity",
+      "name": "Level 2 or 3 Acuity (Pediatric Fever)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2d00731a-bea6-4c9f-ae96-5782520031ae",
+      "@type": "Finding",
+      "name": "Age < 1 month, HR > 190",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f508c1e9-203b-4edd-bf67-70acee83b116",
+      "@type": "Acuity",
+      "name": "Level 2 Acuity (Reassessment)",
+      "snomed": "4082644",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [],
+      "snomed_name": "Level 2",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:09.140916+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:7335f595-cd25-4e60-ace7-9171d2ea6949",
+      "@type": "Finding",
+      "name": "Age 1-3 months, HR > 180",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b79ab140-169a-426b-bd19-4aece6d4572c",
+      "@type": "Finding",
+      "name": "Age 1-3 years, HR > 140",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:155b58ca-2fe3-4be3-8af2-b3f32a091623",
+      "@type": "Finding",
+      "name": "Age 3-5 years, HR > 120",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5f6bd1d9-faa7-4754-9d0b-8db0b15a9584",
+      "@type": "Finding",
+      "name": "Age 5-12 years, HR > 120",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d3ad7252-66c8-4f2e-8cde-c27070daf68f",
+      "@type": "Finding",
+      "name": "Age 12-18 years, HR > 100",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:58f2e9fa-ba7b-4969-878c-a5074644f867",
+      "@type": "Finding",
+      "name": "Age > 18 years, HR > 100",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7a19b651-7c3f-4df0-a4ab-49eaa5bd420f",
+      "@type": "Finding",
+      "name": "Age < 1 month, RR > 60",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:94e92217-a182-4cb9-9665-438f338d416f",
+      "@type": "Finding",
+      "name": "Age 1-12 months, RR > 55",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:93baf1d5-80c5-4168-9db7-87d438a313fa",
+      "@type": "Finding",
+      "name": "Age 1-3 years, RR > 40",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4fb6b8aa-3fcb-4f55-9b56-00652e12234a",
+      "@type": "Finding",
+      "name": "Age 3-5 years, RR > 35",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:161e90d6-8b09-4f2f-96d5-02e6fc8d0361",
+      "@type": "Finding",
+      "name": "Age 5-12 years, RR > 30",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4e585f6e-ff90-4670-a4f2-740ef305b3c5",
+      "@type": "Finding",
+      "name": "Age 12-18 years, RR > 20",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:8ea07bb3-f68f-4765-bc4b-5fa0734b10bf",
+      "@type": "Finding",
+      "name": "Age > 18 years, RR > 20",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+      "@type": "Acuity",
+      "name": "Level 2 Acuity (Reassessment)",
+      "snomed": "4082644",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [],
+      "snomed_name": "Level 2",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:12.396679+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:0abcdef1-2345-6789-abcd-ef1234567890",
+      "@type": "Finding",
+      "name": "SpO2 < 92%",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_appendix_b_esi_triage_algorithm__appendix_b_–_esi_triage_.json",
+        "section_title": "APPENDIX B – ESI Triage Algorithm, v5"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c96602cc-05ef-4119-a6c3-6479a1e4f943",
+          "rationale": "Reassess acuity decision (consider Level 2).",
+          "citation": "APPENDIX B – ESI Triage Algorithm, v5: Decision D",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9abcdef2-3456-7890-bcde-f1234567890a",
+      "@type": "Finding",
+      "name": "Age 1-28 days, HR > 190",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:36.875174+00:00",
+    "nodes_before": 31,
+    "nodes_after": 31,
+    "rules_before": 26,
+    "rules_after": 26
+  }
+}

@@ -1,0 +1,649 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Inhospital mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f1e2d3c4-b5a6-9870-4321-fedcba098765",
+          "rationale": "Inhospital mortality is a key outcome measure in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Vora et al (2015) reported inhospital mortality as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:67a90123-4567-890a-bcde-f12345678901",
+          "rationale": "Mortality at 30 days is a key outcome measure in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Denktas et al (2008) reported mortality at 30 days as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b5c5b6eb-835c-4f79-b893-8c4d54b7e9cf",
+          "rationale": "1-year mortality is a key outcome measure in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Ellis et al (2009) reported 1-y mortality as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f67a-9012-3456-7890abcdef12",
+      "@type": "Finding",
+      "name": "Major bleeding",
+      "snomed": "24484000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:749f5894-aea7-42bc-a472-ea847d652358",
+          "rationale": "Major bleeding is a key adverse outcome measure in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Vora et al (2015) reported major bleeding as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:aee8bc7d-926a-47b7-b4ba-57e0d875086e",
+      "@type": "Finding",
+      "name": "Stroke",
+      "snomed": "230690007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:7431df45-99a9-4745-98c6-47ad533c0511",
+          "rationale": "Stroke is a key adverse outcome measure in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Larson et al (2012) reported stroke as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3ab2baa4-413d-4836-a8d8-b3c48a54a862",
+      "@type": "Finding",
+      "name": "Reinfarction",
+      "snomed": "22298006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a5abb02d-3839-48ce-9753-0940f4ae332c",
+          "rationale": "Reinfarction is a key adverse outcome measure in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Larson et al (2012) reported reinfarction as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6bd27f0d-f98e-4787-9874-6009cb56169a",
+      "@type": "Finding",
+      "name": "Revascularization",
+      "snomed": "297183000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:032cd7c7-f17f-464a-a757-30516e662e31",
+          "rationale": "Revascularization is a key outcome measure in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Larson et al (2012) reported revascularization as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ae3cad95-ddc1-449e-ba95-01a69e5bbcff",
+      "@type": "Finding",
+      "name": "Shock",
+      "snomed": "27942005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a0606234-67ca-4179-b6cf-72e34329193b",
+          "rationale": "Shock is a key adverse outcome measure in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Denktas et al (2008) reported shock as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:62282052-4256-4a05-b135-fcdaea2c902e",
+      "@type": "Finding",
+      "name": "Cardiogenic shock",
+      "snomed": "89138009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:041918a1-6958-4395-9bae-79aaeaf6946d",
+          "rationale": "Cardiogenic shock is a key adverse outcome measure in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Meine et al (2005) reported cardiogenic shock as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:de76ae03-8926-44f5-8f9e-bb2df4ebf656",
+      "@type": "Finding",
+      "name": "Heart failure",
+      "snomed": "84114007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:11a24192-f85d-493a-8289-b976e6740d1e",
+          "rationale": "Heart failure is a key adverse outcome measure in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Meine et al (2005) reported heart failure as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f35d99e2-7da0-4741-8f92-a584395c9d02",
+      "@type": "Finding",
+      "name": "B-lines on lung ultrasound",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:4d84eb94-e8c6-44e0-8163-278c58e9974b",
+          "rationale": "B-lines on lung ultrasound indicate acute heart failure syndrome.",
+          "citation": "N/A (This finding is not explicitly cited in the provided text, but it's a common clinical association.  The text focuses on outcomes from studies.)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4d84eb94-e8c6-44e0-8163-278c58e9974b",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:50e9e073-84ae-4751-a1e4-465d6037e09c",
+      "@type": "Finding",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:9b253097-a27a-4c97-8aeb-35d7f5e63565",
+          "rationale": "Presence of acute heart failure syndrome (AHFS) indicates increased severity in STEMI patients.",
+          "citation": "N/A (This is a general clinical principle, not explicitly cited in the provided text.)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:fbdd0e88-d70a-44a9-b456-047068d333f1",
+      "@type": "Finding",
+      "name": "Interhospital drive time",
+      "snomed": "414135002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:01d1e980-f48d-4d80-887d-a22e8016c8f7",
+          "rationale": "Longer interhospital drive time is associated with delayed reperfusion.",
+          "citation": "Vora et al (2015) assessed the association of estimated interhospital drive times.",
+          "citation_paraphrase": "Vora et al (2015) assessed the association of estimated interhospital drive times.",
+          "citation_verbatim_excerpt": "** | Study & Year Published | Class of Evidence | Setting & Study Design | Methods & Outcome Measures",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:101c973b-2b60-4d84-a398-03763090765c",
+      "@type": "Finding",
+      "name": "STEMI",
+      "snomed": "401303003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:998b8419-bddd-4869-929b-acc02581e323",
+          "rationale": "STEMI is the indication for reperfusion therapy.",
+          "citation": "Multiple studies (Vora et al, Cantor et al, Denktas et al, Ellis et al, Larson et al) included STEMI patients.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:032cd7c7-f17f-464a-a757-30516e662e31",
+      "@type": "Finding",
+      "name": "Fibrinolysis",
+      "snomed": "426347000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9da6299c-104b-4613-b70a-fe2b3f8f1323",
+          "rationale": "Fibrinolysis is a reperfusion strategy for STEMI.",
+          "citation": "Multiple studies (Vora et al, Cantor et al, Denktas et al, Ellis et al) evaluated fibrinolysis.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a0606234-67ca-4179-b6cf-72e34329193b",
+      "@type": "Finding",
+      "name": "Primary PCI",
+      "snomed": "415070008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:16a4d8bb-a524-4ae2-811e-7f06f8fe2ed5",
+          "rationale": "Primary PCI is a reperfusion strategy for STEMI.",
+          "citation": "Multiple studies (Vora et al, Cantor et al, Denktas et al, Ellis et al) evaluated primary PCI.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:462a3fb0-a461-4315-bae6-71066c02821e",
+      "@type": "Finding",
+      "name": "Immediate transfer",
+      "snomed": "129347002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f1e2d3c4-b5a6-9870-4321-fedcba098765",
+      "@type": "Condition",
+      "name": "Outcome measure in reperfusion studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:749f5894-aea7-42bc-a472-ea847d652358",
+      "@type": "Condition",
+      "name": "Adverse outcome measure in reperfusion studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d4e5f67a-9012-3456-7890-abcdef123456",
+      "@type": "Finding",
+      "name": "MACE at 30 days",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e5f67a90-1234-5678-90ab-cdef12345678",
+          "rationale": "MACE at 30 days is a composite outcome measure used in studies evaluating reperfusion strategies for STEMI.",
+          "citation": "Cantor et al (2009) reported MACE at 30 days as an outcome.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e5f67a90-1234-5678-90ab-cdef12345678",
+      "@type": "Condition",
+      "name": "Composite outcome measure in reperfusion studies",
+      "snomed": "44797771",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [],
+      "snomed_name": "Clinical Outcomes in Routine Evaluation Outcome Measure",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:49:59.984636+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:67a90123-4567-890a-bcde-f12345678901",
+      "@type": "Condition",
+      "name": "Outcome measure in reperfusion studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b5c5b6eb-835c-4f79-b893-8c4d54b7e9cf",
+      "@type": "Condition",
+      "name": "Outcome measure in reperfusion studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7431df45-99a9-4745-98c6-47ad533c0511",
+      "@type": "Condition",
+      "name": "Adverse outcome measure in reperfusion studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a5abb02d-3839-48ce-9753-0940f4ae332c",
+      "@type": "Condition",
+      "name": "Adverse outcome measure in reperfusion studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:00790ea8-00a9-41d2-b68e-3855dc5cff8e",
+      "@type": "Condition",
+      "name": "Outcome measure in reperfusion studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2d5d6f00-7c76-4d2b-a73e-814677df4c02",
+      "@type": "Condition",
+      "name": "Adverse outcome measure in reperfusion studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:041918a1-6958-4395-9bae-79aaeaf6946d",
+      "@type": "Condition",
+      "name": "Adverse outcome measure in reperfusion studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:11a24192-f85d-493a-8289-b976e6740d1e",
+      "@type": "Condition",
+      "name": "Adverse outcome measure in reperfusion studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9b253097-a27a-4c97-8aeb-35d7f5e63565",
+      "@type": "Acuity",
+      "name": "Increased severity in STEMI",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:01d1e980-f48d-4d80-887d-a22e8016c8f7",
+      "@type": "Condition",
+      "name": "Delayed reperfusion",
+      "snomed": "4078431",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [],
+      "snomed_name": "Ischemic reperfusion injury",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:01.602636+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:998b8419-bddd-4869-929b-acc02581e323",
+      "@type": "Condition",
+      "name": "Indication for reperfusion therapy",
+      "snomed": "4233617",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [],
+      "snomed_name": "Coronary reperfusion type",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:02.316048+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:9da6299c-104b-4613-b70a-fe2b3f8f1323",
+      "@type": "Intervention",
+      "name": "Reperfusion strategy for STEMI",
+      "snomed": "4179063",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [],
+      "snomed_name": "Resolution of myocardial ischemia",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:03.211225+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:16a4d8bb-a524-4ae2-811e-7f06f8fe2ed5",
+      "@type": "Intervention",
+      "name": "Reperfusion strategy for STEMI",
+      "snomed": "4179063",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [],
+      "snomed_name": "Resolution of myocardial ischemia",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:03.222607+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:c4089513-e5db-46cc-9f58-447f6597f779",
+      "@type": "Finding",
+      "name": "Rescue PCI",
+      "snomed": "4216130",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:5c084008-dcdc-4a33-b80c-ac1729330631",
+          "rationale": "Rescue PCI is performed after failed fibrinolysis.",
+          "citation": "Cantor et al (2009) and Armstrong et al (2013) described rescue PCI.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "snomed_name": "Percutaneous coronary intervention",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:03.878343+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:5c084008-dcdc-4a33-b80c-ac1729330631",
+      "@type": "Intervention",
+      "name": "Secondary intervention after failed fibrinolysis",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:65a7db59-5c54-47e0-813c-3c1bed2bdc5f",
+      "@type": "Finding",
+      "name": "Delayed PCI",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:2be34fdf-327f-4c5c-91ef-3ae7ed07d6f9",
+          "rationale": "Delayed PCI is performed after fibrinolysis.",
+          "citation": "Cantor et al (2009) described delayed PCI.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2be34fdf-327f-4c5c-91ef-3ae7ed07d6f9",
+      "@type": "Intervention",
+      "name": "Secondary intervention after fibrinolysis",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "reperfusion_therapy_for_stemi_chunk_8_evidentiary_table.json",
+        "section_title": "Evidentiary Table"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:41.542059+00:00",
+    "nodes_before": 39,
+    "nodes_after": 37,
+    "rules_before": 19,
+    "rules_after": 19
+  }
+}

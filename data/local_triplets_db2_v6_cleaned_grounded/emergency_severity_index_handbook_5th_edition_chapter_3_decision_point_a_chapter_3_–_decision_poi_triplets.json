@@ -1,0 +1,622 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Unresponsiveness",
+      "snomed": "422768004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Unresponsiveness is a sign of instability requiring immediate lifesaving intervention.",
+          "citation": "Signs [SNOMED: 72670004] of instability requiring immediate, lifesaving intervention include unresponsiveness...",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3f2c8061-75a6-414e-aff7-0c293891679f",
+      "@type": "Finding",
+      "name": "Active seizure",
+      "snomed": "91175000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+          "rationale": "Active seizure is a sign of instability requiring immediate lifesaving intervention.",
+          "citation": "Signs [SNOMED: 72670004] of instability requiring immediate, lifesaving intervention include ... active [SNOMED: 55561003] seizure [SNOMED: 91175000].",
+          "citation_paraphrase": "Signs [SNOMED: 72670004] of instability requiring immediate, lifesaving intervention include ... active [SNOMED: 55561003] seizure [SNOMED: 91175000].",
+          "citation_verbatim_excerpt": "At decision point A of the ESI algorithm, the determination needs to be made whether the patient requires immediate lifesaving interventions (Figure 3-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b7118c4b-6ab4-4bb6-9f57-0e69201a3115",
+      "@type": "Finding",
+      "name": "Ineffective gas exchange",
+      "snomed": "70944005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e1cba62d-7c78-42b7-9197-9e1aef915567",
+          "rationale": "Ineffective gas exchange is a sign of instability requiring immediate lifesaving intervention.",
+          "citation": "Signs [SNOMED: 72670004] of instability requiring immediate, lifesaving intervention include ... ineffective gas exchange...",
+          "citation_paraphrase": "Signs [SNOMED: 72670004] of instability requiring immediate, lifesaving intervention include ... ineffective gas exchange...",
+          "citation_verbatim_excerpt": "At decision point A of the ESI algorithm, the determination needs to be made whether the patient requires immediate lifesaving interventions (Figure 3-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e8398237-4c08-4d83-a20d-50736a27e2f0",
+          "rationale": "Impaired gas exchange is a sign of instability requiring immediate lifesaving intervention.",
+          "citation": "Examples of ESI Level-1 criteria include the following:• Impaired gas exchange [SNOMED: 70944005]",
+          "citation_paraphrase": "Examples of ESI Level-1 criteria include the following:• Impaired gas exchange [SNOMED: 70944005]",
+          "citation_verbatim_excerpt": "At decision point A of the ESI algorithm, the determination needs to be made whether the patient requires immediate lifesaving interventions (Figure 3-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a2ef4d68-555c-4000-8d09-6513d984f2a1",
+      "@type": "Finding",
+      "name": "Ineffective/decreased perfusion",
+      "snomed": "88058003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b65e8c57-60e5-49af-8041-6ec7e27fd0cd",
+          "rationale": "Ineffective/decreased perfusion is a sign of instability requiring immediate lifesaving intervention.",
+          "citation": "Signs [SNOMED: 72670004] of instability requiring immediate, lifesaving intervention include ... ineffective/decreased perfusion [SNOMED: 88058003].",
+          "citation_paraphrase": "Signs [SNOMED: 72670004] of instability requiring immediate, lifesaving intervention include ... ineffective/decreased perfusion [SNOMED: 88058003].",
+          "citation_verbatim_excerpt": "At decision point A of the ESI algorithm, the determination needs to be made whether the patient requires immediate lifesaving interventions (Figure 3-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:64d63d08-e593-49c2-a662-8b83c2ac03cb",
+      "@type": "Finding",
+      "name": "Ineffective airway clearance",
+      "snomed": "67750007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:bd5e10cd-cd6e-49fc-b201-5cf1f4e0c004",
+          "rationale": "Ineffective airway clearance is a sign of instability requiring immediate lifesaving intervention.",
+          "citation": "Examples of ESI Level-1 criteria include the following:• Ineffective airway clearance [SNOMED: 67750007]",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b80ae387-d1ec-4f99-bcd9-c2893de49226",
+      "@type": "Finding",
+      "name": "Ineffective respiratory pattern",
+      "snomed": "278907009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:2d8716db-c914-4703-ad43-10e801f6bbd0",
+          "rationale": "Ineffective respiratory pattern is a sign of instability requiring immediate lifesaving intervention.",
+          "citation": "Examples of ESI Level-1 criteria include the following:• Ineffective respiratory pattern [SNOMED: 278907009]",
+          "citation_paraphrase": "Examples of ESI Level-1 criteria include the following:• Ineffective respiratory pattern [SNOMED: 278907009]",
+          "citation_verbatim_excerpt": "At decision point A of the ESI algorithm, the determination needs to be made whether the patient requires immediate lifesaving interventions (Figure 3-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9ea4340e-5c74-4159-b14c-83595fe25f36",
+      "@type": "Finding",
+      "name": "Ineffective tissue perfusion",
+      "snomed": "409055009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:90fe34cf-0f08-426d-8d28-cbd53de48d71",
+          "rationale": "Ineffective tissue perfusion is a sign of instability requiring immediate lifesaving intervention.",
+          "citation": "Examples of ESI Level-1 criteria include the following:• Ineffective tissue perfusion [SNOMED: 409055009]",
+          "citation_paraphrase": "Examples of ESI Level-1 criteria include the following:• Ineffective tissue perfusion [SNOMED: 409055009]",
+          "citation_verbatim_excerpt": "At decision point A of the ESI algorithm, the determination needs to be made whether the patient requires immediate lifesaving interventions (Figure 3-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:876c7916-c944-445a-8bdf-39fc9bf80a84",
+          "rationale": "Presence of unresponsiveness triggers ESI Level 1 assignment.",
+          "citation": "When these signs [SNOMED: 72670004] are present, the patient is assigned an ESI level of 1.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:876c7916-c944-445a-8bdf-39fc9bf80a84",
+      "@type": "Intervention",
+      "name": "Lifesaving intervention",
+      "snomed": "1449370",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:3f2c8061-75a6-414e-aff7-0c293891679f",
+          "rationale": "ESI Level 1 patients require immediate lifesaving interventions.",
+          "citation": "Clinical/Contextual Significance: Identifies the most critically ill patients who require immediate, life-saving care...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Life-sustaining treatment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:19.049717+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f67890ab-cdef-1234-5678-90abcdef1234",
+          "rationale": "Presence of active seizure triggers ESI Level 1 assignment.",
+          "citation": "When these signs [SNOMED: 72670004] are present, the patient is assigned an ESI level of 1.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f67890ab-cdef-1234-5678-90abcdef1234",
+      "@type": "Intervention",
+      "name": "Lifesaving intervention",
+      "snomed": "1449370",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:d5b75749-7866-4e1e-bd52-be1e911d7df3",
+          "rationale": "ESI Level 1 patients require immediate lifesaving interventions.",
+          "citation": "Clinical/Contextual Significance: Identifies the most critically ill patients who require immediate, life-saving care...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Life-sustaining treatment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:19.061296+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:d5b75749-7866-4e1e-bd52-be1e911d7df3",
+      "@type": "Finding",
+      "name": "Occluded airway",
+      "snomed": "4086806",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:d6a61680-d768-4c21-8a88-dea176a6c4cc",
+          "rationale": "Occluded airway is a sign of instability requiring immediate lifesaving intervention.",
+          "citation": "Signs [SNOMED: 72670004] of instability requiring immediate, lifesaving intervention include ... occluded airway...",
+          "citation_paraphrase": "Signs [SNOMED: 72670004] of instability requiring immediate, lifesaving intervention include ... occluded airway...",
+          "citation_verbatim_excerpt": "At decision point A of the ESI algorithm, the determination needs to be made whether the patient requires immediate lifesaving interventions (Figure 3-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ],
+      "snomed_name": "Totally obstructed airway",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:19.767205+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:d6a61680-d768-4c21-8a88-dea176a6c4cc",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:64be34e4-b96e-4b18-b31e-38cc31f9305f",
+          "rationale": "Presence of occluded airway triggers ESI Level 1 assignment.",
+          "citation": "When these signs [SNOMED: 72670004] are present, the patient is assigned an ESI level of 1.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:64be34e4-b96e-4b18-b31e-38cc31f9305f",
+      "@type": "Intervention",
+      "name": "Lifesaving intervention",
+      "snomed": "1449370",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b7118c4b-6ab4-4bb6-9f57-0e69201a3115",
+          "rationale": "ESI Level 1 patients require immediate lifesaving interventions.",
+          "citation": "Clinical/Contextual Significance: Identifies the most critically ill patients who require immediate, life-saving care...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Life-sustaining treatment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:19.778121+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:e1cba62d-7c78-42b7-9197-9e1aef915567",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:79aee8d1-307e-43e1-a9c9-4b8b6d0d7aa3",
+          "rationale": "Presence of ineffective gas exchange triggers ESI Level 1 assignment.",
+          "citation": "When these signs [SNOMED: 72670004] are present, the patient is assigned an ESI level of 1.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:79aee8d1-307e-43e1-a9c9-4b8b6d0d7aa3",
+      "@type": "Intervention",
+      "name": "Lifesaving intervention",
+      "snomed": "1449370",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a2ef4d68-555c-4000-8d09-6513d984f2a1",
+          "rationale": "ESI Level 1 patients require immediate lifesaving interventions.",
+          "citation": "Clinical/Contextual Significance: Identifies the most critically ill patients who require immediate, life-saving care...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Life-sustaining treatment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:19.788826+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:b65e8c57-60e5-49af-8041-6ec7e27fd0cd",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f64d24c8-6a03-4b3d-ac35-555298996e9a",
+          "rationale": "Presence of ineffective/decreased perfusion triggers ESI Level 1 assignment.",
+          "citation": "When these signs [SNOMED: 72670004] are present, the patient is assigned an ESI level of 1.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f64d24c8-6a03-4b3d-ac35-555298996e9a",
+      "@type": "Intervention",
+      "name": "Lifesaving intervention",
+      "snomed": "1449370",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:64d63d08-e593-49c2-a662-8b83c2ac03cb",
+          "rationale": "ESI Level 1 patients require immediate lifesaving interventions.",
+          "citation": "Clinical/Contextual Significance: Identifies the most critically ill patients who require immediate, life-saving care...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Life-sustaining treatment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:19.800270+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:bd5e10cd-cd6e-49fc-b201-5cf1f4e0c004",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:3ffc78c8-60f8-43ea-bad3-7b4d1b127740",
+          "rationale": "Presence of ineffective airway clearance triggers ESI Level 1 assignment.",
+          "citation": "Examples of ESI Level-1 criteria include the following:• Ineffective airway clearance [SNOMED: 67750007]",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3ffc78c8-60f8-43ea-bad3-7b4d1b127740",
+      "@type": "Intervention",
+      "name": "Lifesaving intervention",
+      "snomed": "1449370",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b80ae387-d1ec-4f99-bcd9-c2893de49226",
+          "rationale": "ESI Level 1 patients require immediate lifesaving interventions.",
+          "citation": "Clinical/Contextual Significance: Identifies the most critically ill patients who require immediate, life-saving care...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Life-sustaining treatment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:19.828280+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:2d8716db-c914-4703-ad43-10e801f6bbd0",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:6511db85-43a1-4831-a72f-8775a54a5808",
+          "rationale": "Presence of ineffective respiratory pattern triggers ESI Level 1 assignment.",
+          "citation": "Examples of ESI Level-1 criteria include the following:• Ineffective respiratory pattern [SNOMED: 278907009]",
+          "citation_paraphrase": "Examples of ESI Level-1 criteria include the following:• Ineffective respiratory pattern [SNOMED: 278907009]",
+          "citation_verbatim_excerpt": "At decision point A of the ESI algorithm, the determination needs to be made whether the patient requires immediate lifesaving interventions (Figure 3-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6511db85-43a1-4831-a72f-8775a54a5808",
+      "@type": "Intervention",
+      "name": "Lifesaving intervention",
+      "snomed": "1449370",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b7118c4b-6ab4-4bb6-9f57-0e69201a3115",
+          "rationale": "ESI Level 1 patients require immediate lifesaving interventions.",
+          "citation": "Clinical/Contextual Significance: Identifies the most critically ill patients who require immediate, life-saving care...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Life-sustaining treatment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:19.838879+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:e8398237-4c08-4d83-a20d-50736a27e2f0",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:bbeabd99-10d9-4d8c-9134-ec9319b407a1",
+          "rationale": "Presence of impaired gas exchange triggers ESI Level 1 assignment.",
+          "citation": "Examples of ESI Level-1 criteria include the following:• Impaired gas exchange [SNOMED: 70944005]",
+          "citation_paraphrase": "Examples of ESI Level-1 criteria include the following:• Impaired gas exchange [SNOMED: 70944005]",
+          "citation_verbatim_excerpt": "At decision point A of the ESI algorithm, the determination needs to be made whether the patient requires immediate lifesaving interventions (Figure 3-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:bbeabd99-10d9-4d8c-9134-ec9319b407a1",
+      "@type": "Intervention",
+      "name": "Lifesaving intervention",
+      "snomed": "1449370",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:9ea4340e-5c74-4159-b14c-83595fe25f36",
+          "rationale": "ESI Level 1 patients require immediate lifesaving interventions.",
+          "citation": "Clinical/Contextual Significance: Identifies the most critically ill patients who require immediate, life-saving care...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Life-sustaining treatment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:19.849954+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:90fe34cf-0f08-426d-8d28-cbd53de48d71",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:ed6808da-287c-4873-b770-153fcd2348d6",
+          "rationale": "Presence of ineffective tissue perfusion triggers ESI Level 1 assignment.",
+          "citation": "Examples of ESI Level-1 criteria include the following:• Ineffective tissue perfusion [SNOMED: 409055009]",
+          "citation_paraphrase": "Examples of ESI Level-1 criteria include the following:• Ineffective tissue perfusion [SNOMED: 409055009]",
+          "citation_verbatim_excerpt": "At decision point A of the ESI algorithm, the determination needs to be made whether the patient requires immediate lifesaving interventions (Figure 3-1).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ed6808da-287c-4873-b770-153fcd2348d6",
+      "@type": "Intervention",
+      "name": "Lifesaving intervention",
+      "snomed": "1449370",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_3_decision_point_a_chapter_3_–_decision_poi.json",
+        "section_title": "CHAPTER 3 – Decision Point A: Lifesaving Intervention Required?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "ESI Level 1 patients require immediate lifesaving interventions.",
+          "citation": "Clinical/Contextual Significance: Identifies the most critically ill patients who require immediate, life-saving care...",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Life-sustaining treatment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:19.860669+00:00"
+      }
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:37.126894+00:00",
+    "nodes_before": 28,
+    "nodes_after": 26,
+    "rules_before": 27,
+    "rules_after": 27
+  }
+}

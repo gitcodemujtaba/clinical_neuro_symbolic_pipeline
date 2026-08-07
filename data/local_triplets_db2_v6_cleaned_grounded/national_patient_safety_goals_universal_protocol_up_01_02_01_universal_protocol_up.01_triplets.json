@@ -1,0 +1,385 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Wrong-site surgery",
+      "snomed": "10546003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Wrong-site surgery is a patient safety issue that should be prevented.",
+          "citation": "Introduction to UP.01.02.01",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Patient safety compromise",
+      "snomed": "722901000000108",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Procedure site marking",
+      "snomed": "363704007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:8a9917f3-c976-46e8-b3e7-19cb7b981fe2",
+          "rationale": "Marking the procedure site is a way to protect patients and enhance patient safety.",
+          "citation": "Introduction to UP.01.02.01",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f67a-9012-3456-7890abcdef12",
+      "@type": "Condition",
+      "name": "More than one possible location for a procedure",
+      "snomed": "246267002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "Site marking is required when there is more than one possible location for the procedure.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 1",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a24efded-305c-4e7f-a646-346f67c87dad",
+      "@type": "Finding",
+      "name": "Incision site",
+      "snomed": "34896006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "Procedures requiring marking of the incision site should be marked.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 1",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2f873e26-7af6-4980-8f75-edfc52c89445",
+      "@type": "Finding",
+      "name": "Insertion site",
+      "snomed": "386141001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "Procedures requiring marking of the insertion site should be marked.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 1",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:8a9917f3-c976-46e8-b3e7-19cb7b981fe2",
+      "@type": "Intervention",
+      "name": "Marking the procedure site",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b2dd694b-665f-4091-b0cf-97793a558fa8",
+      "@type": "Condition",
+      "name": "Performing the procedure in a different location would negatively affect quality or safety",
+      "snomed": "763881",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "Site marking is required when performing the procedure in a different location would negatively affect quality or safety.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 1",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Procedure carried out at different service or facility",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:49:13.742127+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:5b3c92db-d0e6-4ec0-b220-2d41fa1d93c7",
+      "@type": "Intervention",
+      "name": "Mark the procedure site before the procedure is performed",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "The procedure site should be marked before the procedure is performed.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 2",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7a901234-5678-90ab-cdef-1234567890fe",
+      "@type": "Intervention",
+      "name": "Mark the procedure site with the patient involved (if possible)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "The procedure site should be marked with the patient involved, if possible.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 2",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2060b320-e2a7-45fa-9410-0c564edfebc4",
+      "@type": "Intervention",
+      "name": "Procedure site marking by a licensed practitioner accountable for the procedure",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "The procedure site is marked by a licensed practitioner who is ultimately accountable for the procedure and will be present when the procedure is performed.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 3",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fa5402f5-fd03-4b0d-aac1-8ea07a1f786d",
+      "@type": "Intervention",
+      "name": "Procedure site marking by a delegated individual (if applicable)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "In limited circumstances, the licensed practitioner may delegate site marking to an individual who is permitted by the organization to participate in the procedure and has specific qualifications.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 3",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ca12f957-a2f8-4a04-bc88-2d1d2cd5763e",
+      "@type": "Intervention",
+      "name": "Use an unambiguous and consistently used method/mark for site marking",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "The method of marking the site and the type of mark must be unambiguous and used consistently throughout the hospital.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 4",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:19cb48cc-1050-42ec-a12e-8a39306ad956",
+      "@type": "Intervention",
+      "name": "Mark at or near the procedure site",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "The mark is made at or near the procedure site.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 4",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:caf2c3a6-5551-48cc-aefa-4552d05fe613",
+      "@type": "Intervention",
+      "name": "Ensure the mark is sufficiently permanent and visible after preparation/draping",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "The mark must be sufficiently permanent to be visible after skin preparation and draping.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 4",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a631d6bd-fde3-4d73-b9c8-ee157a81c1a4",
+      "@type": "Intervention",
+      "name": "Adhesive markers are not the sole means of marking",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "Adhesive markers should not be the only method used for site marking.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 4",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4d4442bd-e672-4ce9-bfee-ea647a2a823a",
+      "@type": "Intervention",
+      "name": "Implement a written, alternative process for patients who refuse marking or when it's technically/anatomically impossible/impractical",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+          "rationale": "A written alternative process must be in place for specific situations where site marking is not possible or refused.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 5",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e838ad25-6ae1-44d1-a75e-0866ccee65cd",
+      "@type": "Condition",
+      "name": "Procedure requiring site marking",
+      "snomed": "4076774",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_02_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.02.01 - Site Marking"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:8a9917f3-c976-46e8-b3e7-19cb7b981fe2",
+          "rationale": "Procedures requiring marking of the incision or insertion site should be marked.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 1",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:5b3c92db-d0e6-4ec0-b220-2d41fa1d93c7",
+          "rationale": "The procedure site should be marked before the procedure is performed.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 2",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a631d6bd-fde3-4d73-b9c8-ee157a81c1a4",
+          "rationale": "A written alternative process is required for patients who refuse site marking or when it's technically/anatomically impossible/impractical.",
+          "citation": "Element(s) of performance for UP.01.02.01 - EP 5",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Marking skin site prior to procedure",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:49:19.434056+00:00"
+      }
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:40.367851+00:00",
+    "nodes_before": 18,
+    "nodes_after": 18,
+    "rules_before": 18,
+    "rules_after": 18
+  }
+}

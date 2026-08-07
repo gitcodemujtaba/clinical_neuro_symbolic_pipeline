@@ -1,0 +1,210 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+      "@type": "Finding",
+      "name": "Medication Discrepancy",
+      "snomed": "110287002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_06_01_goal_3_npsg.03.06.01_-_m.json",
+        "section_title": "Goal 3: NPSG.03.06.01 - Medication Reconciliation"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e7d6c5-b4a3-4210-9876-543210fedcba",
+          "rationale": "Medication discrepancies can affect patient outcomes.",
+          "citation": "Rationale for NPSG.03.06.01",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f8e7d6c5-b4a3-4210-9876-543210fedcba",
+      "@type": "Condition",
+      "name": "Negative Patient Outcomes due to Medication Discrepancies",
+      "snomed": "45767047",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_06_01_goal_3_npsg.03.06.01_-_m.json",
+        "section_title": "Goal 3: NPSG.03.06.01 - Medication Reconciliation"
+      },
+      "rules": [],
+      "snomed_name": "Conflicting attitude towards medication management",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:54.301808+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:45b1c446-c208-4793-8bad-35e956129519",
+      "@type": "Finding",
+      "name": "Patient Medication List",
+      "snomed": "37019019",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_06_01_goal_3_npsg.03.06.01_-_m.json",
+        "section_title": "Goal 3: NPSG.03.06.01 - Medication Reconciliation"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:5b566706-b778-47e5-a440-e8a04b2b8899",
+          "rationale": "Obtain information on the medications the patient is currently taking upon admission or outpatient setting visit.",
+          "citation": "EP 1 of NPSG.03.06.01",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b9a8c7d6-e5f4-4321-0fed-cba987654321",
+          "rationale": "Compare the patient's medication list with newly ordered medications to identify and resolve discrepancies.",
+          "citation": "EP 3 of NPSG.03.06.01",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:cdefa9b8-7654-3210-fedc-ba9876543210",
+          "rationale": "Provide the patient with written information on medications they should be taking upon discharge or end of outpatient encounter.",
+          "citation": "EP 4 of NPSG.03.06.01",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:defa9b87-6543-210f-edcb-a9876543210f",
+          "rationale": "Explain the importance of managing medication information to the patient upon discharge or end of outpatient encounter.",
+          "citation": "EP 5 of NPSG.03.06.01",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Provision of medication list",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:55.036125+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:5b566706-b778-47e5-a440-e8a04b2b8899",
+      "@type": "Intervention",
+      "name": "Obtain Current Medication Information",
+      "snomed": "765467",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_06_01_goal_3_npsg.03.06.01_-_m.json",
+        "section_title": "Goal 3: NPSG.03.06.01 - Medication Reconciliation"
+      },
+      "rules": [],
+      "snomed_name": "Documentation of current medications",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:55.800548+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:b9a8c7d6-e5f4-4321-0fed-cba987654321",
+      "@type": "Intervention",
+      "name": "Compare Medication Lists and Resolve Discrepancies",
+      "snomed": "4326177",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_06_01_goal_3_npsg.03.06.01_-_m.json",
+        "section_title": "Goal 3: NPSG.03.06.01 - Medication Reconciliation"
+      },
+      "rules": [],
+      "snomed_name": "Medication reconciliation",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:56.563426+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:cdefa9b8-7654-3210-fedc-ba9876543210",
+      "@type": "Intervention",
+      "name": "Provide Written Medication Information to Patient",
+      "snomed": "44808926",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_06_01_goal_3_npsg.03.06.01_-_m.json",
+        "section_title": "Goal 3: NPSG.03.06.01 - Medication Reconciliation"
+      },
+      "rules": [],
+      "snomed_name": "Provision of written information about medication",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:57.444881+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:defa9b87-6543-210f-edcb-a9876543210f",
+      "@type": "Intervention",
+      "name": "Educate Patient on Medication Management",
+      "snomed": "4216164",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_06_01_goal_3_npsg.03.06.01_-_m.json",
+        "section_title": "Goal 3: NPSG.03.06.01 - Medication Reconciliation"
+      },
+      "rules": [],
+      "snomed_name": "Patient medication education",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:58.305231+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:49ce425f-b696-45ae-ab64-ef91acce5777",
+      "@type": "Finding",
+      "name": "Medication Information",
+      "snomed": "44803685",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_06_01_goal_3_npsg.03.06.01_-_m.json",
+        "section_title": "Goal 3: NPSG.03.06.01 - Medication Reconciliation"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:2b4d6f8a-9c7e-4561-ba32-fedcba098765",
+          "rationale": "Define the types of medication information (name, dose, route, frequency, purpose) to be collected in non-24-hour settings.",
+          "citation": "EP 2 of NPSG.03.06.01",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Information",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:48:58.647646+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:2b4d6f8a-9c7e-4561-ba32-fedcba098765",
+      "@type": "Intervention",
+      "name": "Define Medication Information Types for Non-24 Hour Settings",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_3_npsg_03_06_01_goal_3_npsg.03.06.01_-_m.json",
+        "section_title": "Goal 3: NPSG.03.06.01 - Medication Reconciliation"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.796100+00:00",
+    "nodes_before": 9,
+    "nodes_after": 9,
+    "rules_before": 6,
+    "rules_after": 6
+  }
+}

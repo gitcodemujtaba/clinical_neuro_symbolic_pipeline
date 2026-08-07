@@ -1,0 +1,484 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Sepsis",
+      "snomed": "91302008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Sepsis is a condition requiring specific fluid resuscitation strategies.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we recommend using crystalloids as first-line fluid for resuscitation [SNOMED: 304252001].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:280c4bb4-95d4-40b2-956a-9c19c489961e",
+          "rationale": "Septic shock is a condition requiring specific fluid and vasopressor strategies.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we recommend using crystalloids as first-line fluid for resuscitation [SNOMED: 304252001].",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Condition",
+      "name": "Sepsis",
+      "snomed": "91302008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:d4e5f678-9012-3456-7890-abcdef123456",
+          "rationale": "First-line fluid resuscitation for sepsis is crystalloids.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we recommend using crystalloids as first-line fluid for resuscitation [SNOMED: 304252001].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+          "rationale": "Balanced crystalloids are suggested over normal saline for sepsis resuscitation.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest using balanced [SNOMED: 78933003] crystalloids instead of normal saline [SNOMED: 70379000] for resuscitation [SNOMED: 304252001].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:5b263f3a-306d-4cd7-9244-1f513140b096",
+          "rationale": "Albumin may be considered after large volumes of crystalloids in sepsis.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest using albumin [SNOMED: 52454007] in patients who received large volumes of crystalloids.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:18706378-9e1b-4418-abc2-2e9ccdfd1c46",
+          "rationale": "Starches are recommended against for resuscitation in sepsis.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we recommend against using starches for resuscitation [SNOMED: 304252001].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c1274a94-0a0e-4a28-9861-51949e2da2c5",
+          "rationale": "Gelatin is recommended against for resuscitation in sepsis.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] and septic shock [SNOMED: 76571007], we suggest against using gelatin [SNOMED: 373531009] for resuscitation [SNOMED: 304252001].",
+          "citation_type": "verbatim"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:280c4bb4-95d4-40b2-956a-9c19c489961e",
+      "@type": "Condition",
+      "name": "Septic shock",
+      "snomed": "76571007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:d4e5f678-9012-3456-7890-abcdef123456",
+          "rationale": "First-line fluid resuscitation for septic shock is crystalloids.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we recommend using crystalloids as first-line fluid for resuscitation [SNOMED: 304252001].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+          "rationale": "Balanced crystalloids are suggested over normal saline for septic shock resuscitation.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest using balanced [SNOMED: 78933003] crystalloids instead of normal saline [SNOMED: 70379000] for resuscitation [SNOMED: 304252001].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:5b263f3a-306d-4cd7-9244-1f513140b096",
+          "rationale": "Albumin may be considered after large volumes of crystalloids in septic shock.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest using albumin [SNOMED: 52454007] in patients who received large volumes of crystalloids.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:18706378-9e1b-4418-abc2-2e9ccdfd1c46",
+          "rationale": "Starches are recommended against for resuscitation in septic shock.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we recommend against using starches for resuscitation [SNOMED: 304252001].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c1274a94-0a0e-4a28-9861-51949e2da2c5",
+          "rationale": "Gelatin is recommended against for resuscitation in septic shock.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] and septic shock [SNOMED: 76571007], we suggest against using gelatin [SNOMED: 373531009] for resuscitation [SNOMED: 304252001].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:1ef1856c-af17-4a84-a4d6-8cad9e29d604",
+          "rationale": "Norepinephrine is the first-line vasopressor for septic shock.",
+          "citation": "For adults with septic shock [SNOMED: 76571007], we recommend using norepinephrine [SNOMED: 45555007] as the first-line agent [SNOMED: 260872001] over other vasopressors [SNOMED: 870406003].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:556743a5-abbe-447b-9c5c-c6ae6f078de4",
+          "rationale": "Vasopressin may be added to norepinephrine for septic shock with inadequate MAP.",
+          "citation": "For adults with septic shock [SNOMED: 76571007] on norepinephrine [SNOMED: 45555007] with inadequate [SNOMED: 71978007] mean arterial pressure [SNOMED: 1285244000] levels, we suggest adding vasopressin instead of escalating the dose [SNOMED: 408102007] of norepinephrine [SNOMED: 45555007].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:556743a5-abbe-447b-9c5c-c6ae6f078de4",
+          "rationale": "Epinephrine may be added to norepinephrine and vasopressin for septic shock with inadequate MAP.",
+          "citation": "For adults with septic shock [SNOMED: 76571007] and inadequate [SNOMED: 71978007] mean arterial pressure [SNOMED: 1285244000] levels despite norepinephrine [SNOMED: 45555007] and vasopressin, we suggest adding epinephrine [SNOMED: 387362001].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:1ef1856c-af17-4a84-a4d6-8cad9e29d604",
+          "rationale": "Terlipressin is recommended against for septic shock.",
+          "citation": "For adults with septic shock [SNOMED: 76571007], we suggest against using terlipressin [SNOMED: 395899009].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:1ef1856c-af17-4a84-a4d6-8cad9e29d604",
+          "rationale": "Dobutamine or epinephrine may be added to norepinephrine for septic shock with cardiac dysfunction and persistent hypoperfusion.",
+          "citation": "For adults with septic shock [SNOMED: 76571007] and cardiac [SNOMED: 80891009] dysfunction [SNOMED: 386585008] with persistent hypoperfusion [SNOMED: 264533003] despite adequate volume status and arterial blood pressure [SNOMED: 386534000], we suggest either adding dobutamine [SNOMED: 387145002] to norepinephrine [SNOMED: 45555007] or using epinephrine [SNOMED: 387362001] alone.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e8c06efd-5445-4f78-97a4-9c194b79482e",
+          "rationale": "Levosimendan is recommended against for septic shock with cardiac dysfunction and persistent hypoperfusion.",
+          "citation": "For adults with septic shock [SNOMED: 76571007] and cardiac [SNOMED: 80891009] dysfunction [SNOMED: 386585008] with persistent hypoperfusion [SNOMED: 264533003] despite adequate volume status and arterial blood pressure [SNOMED: 386534000], we suggest against using levosimendan [SNOMED: 442795003].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c2c801f9-2eb6-42a3-9162-ccac1441ec78",
+          "rationale": "Invasive arterial blood pressure monitoring is suggested for septic shock.",
+          "citation": "For adults with septic shock [SNOMED: 76571007], we suggest invasive [SNOMED: 10179008] monitoring of arterial blood pressure [SNOMED: 386534000] over non-invasive [SNOMED: 22762002] monitoring, as soon as practical and if resources are available.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:2384295e-b4c1-41d6-8822-5bd1bd953ffa",
+          "rationale": "Vasopressors should be started peripherally for septic shock if central access is delayed.",
+          "citation": "For adults with septic shock [SNOMED: 76571007], we suggest starting vasopressors [SNOMED: 870406003] peripherally to restore mean arterial pressure [SNOMED: 1285244000] rather than delaying initiation [SNOMED: 312009002] until a central venous [SNOMED: 29092000] access is secured.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d4e5f678-9012-3456-7890-abcdef123456",
+      "@type": "Intervention",
+      "name": "Crystalloid resuscitation",
+      "snomed": "304252001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5b263f3a-306d-4cd7-9244-1f513140b096",
+      "@type": "Intervention",
+      "name": "Albumin administration",
+      "snomed": "52454007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a498b056-252b-4bc3-9d4f-6a4b2ab5d43f",
+      "@type": "Medication",
+      "name": "Norepinephrine",
+      "snomed": "45555007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2798f735-029d-44a3-bb2a-64a9e90cfd72",
+      "@type": "Medication",
+      "name": "Epinephrine",
+      "snomed": "387362001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:61c14afb-7325-4d3e-8621-7878d962e106",
+      "@type": "Medication",
+      "name": "Dobutamine",
+      "snomed": "387145002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:078359be-4cba-42d6-ae50-7f337e0b4873",
+      "@type": "Intervention",
+      "name": "Invasive arterial blood pressure monitoring",
+      "snomed": "10179008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:556743a5-abbe-447b-9c5c-c6ae6f078de4",
+      "@type": "Condition",
+      "name": "Inadequate mean arterial pressure",
+      "snomed": "71978007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7b6efb7d-57bd-4824-9df8-f96fc33c5b19",
+      "@type": "Condition",
+      "name": "Cardiac dysfunction",
+      "snomed": "80891009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1ef1856c-af17-4a84-a4d6-8cad9e29d604",
+      "@type": "Condition",
+      "name": "Persistent hypoperfusion",
+      "snomed": "264533003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+      "@type": "Intervention",
+      "name": "Balanced crystalloid resuscitation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f54edb25-8c73-4202-8018-b7c4adb3e805",
+      "@type": "Intervention",
+      "name": "Starch avoidance",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a6b5b73d-fd5a-421c-bea4-bcf9f7ce5285",
+      "@type": "Intervention",
+      "name": "Gelatin avoidance",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9dfca402-8ff6-45c8-bba8-f161c1bc9742",
+      "@type": "Medication",
+      "name": "Vasopressin",
+      "snomed": "1507835",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [],
+      "snomed_name": "vasopressin (USP)",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:50:09.850626+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:97c1e180-4b2e-425a-825f-b00db91301e1",
+      "@type": "Intervention",
+      "name": "Peripheral vasopressor administration",
+      "snomed": "3655896",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [],
+      "snomed_name": "Vasopressor therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:10.485142+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:567890ab-cdef-1234-5678-90abcdef1234",
+      "@type": "Intervention",
+      "name": "Peripheral vasopressor administration",
+      "snomed": "3655896",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [],
+      "snomed_name": "Vasopressor therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:10.496356+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:e8c06efd-5445-4f78-97a4-9c194b79482e",
+      "@type": "Condition",
+      "name": "Adequate volume status",
+      "snomed": "600630",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [],
+      "snomed_name": "Adequately hydrated",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:11.343619+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:c2c801f9-2eb6-42a3-9162-ccac1441ec78",
+      "@type": "Condition",
+      "name": "Adequate volume status",
+      "snomed": "600630",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [],
+      "snomed_name": "Adequately hydrated",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:11.353558+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:2384295e-b4c1-41d6-8822-5bd1bd953ffa",
+      "@type": "Condition",
+      "name": "Adequate volume status",
+      "snomed": "600630",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [],
+      "snomed_name": "Adequately hydrated",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:11.363369+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:18706378-9e1b-4418-abc2-2e9ccdfd1c46",
+      "@type": "Condition",
+      "name": "Adequate volume status",
+      "snomed": "600630",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [],
+      "snomed_name": "Adequately hydrated",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:11.373153+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:c1274a94-0a0e-4a28-9861-51949e2da2c5",
+      "@type": "Condition",
+      "name": "Adequate volume status",
+      "snomed": "600630",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON HEMODYNAMIC MANAGEMENT"
+      },
+      "rules": [],
+      "snomed_name": "Adequately hydrated",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:11.384620+00:00"
+      }
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:41.782778+00:00",
+    "nodes_before": 28,
+    "nodes_after": 23,
+    "rules_before": 20,
+    "rules_after": 20
+  }
+}

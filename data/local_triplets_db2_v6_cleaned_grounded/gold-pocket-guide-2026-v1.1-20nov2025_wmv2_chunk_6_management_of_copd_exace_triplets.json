@@ -1,0 +1,502 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-4789-9abc-def012345678",
+      "@type": "Finding",
+      "name": "COPD Exacerbation",
+      "snomed": "13645005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "DEFINED_BY",
+          "target": "urn:uuid:f7e8d9c0-b1a2-4356-7890-fedcba987654",
+          "rationale": "Defines COPD exacerbation as an acute event with worsening dyspnea and/or cough/sputum within 14 days, often accompanied by tachypnea/tachycardia and inflammation.",
+          "citation": "Key Points & Definition section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f7e8d9c0-b1a2-4356-7890-fedcba987654",
+      "@type": "Condition",
+      "name": "Definition of COPD Exacerbation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:650f0881-3705-4ab6-930f-f2734c016dae",
+      "@type": "Finding",
+      "name": "Mild COPD Exacerbation Severity Criteria",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:14dca33a-d46a-4739-8991-213b39cf5668",
+          "rationale": "Mild exacerbation is defined by specific thresholds for dyspnea VAS, respiratory rate (RR), heart rate (HR), and SaO2.",
+          "citation": "Severity Classification section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:14dca33a-d46a-4739-8991-213b39cf5668",
+      "@type": "Acuity",
+      "name": "Mild Severity",
+      "snomed": "4116992",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_CRITERIA",
+          "target": "urn:uuid:c5f0c1f3-ec93-48e5-a357-662f00ed296a",
+          "rationale": "Defines the quantitative thresholds for mild severity.",
+          "citation": "Severity Classification section.",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Mild",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:47:01.213756+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:c5f0c1f3-ec93-48e5-a357-662f00ed296a",
+      "@type": "Condition",
+      "name": "Quantitative Thresholds for Mild Severity",
+      "snomed": "4043000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [],
+      "quantitative_threshold": {
+        "dyspnea_vas": "< 5",
+        "respiratory_rate": "< 24",
+        "heart_rate": "< 95",
+        "sao2": ">= 92%"
+      },
+      "snomed_name": "Threshold",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:02.144515+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Finding",
+      "name": "Moderate COPD Exacerbation Severity Criteria",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-abcd-ef1234567890",
+          "rationale": "Moderate exacerbation is defined by meeting >= 3 of specific criteria including dyspnea VAS, RR, HR, SaO2 change, and CRP.",
+          "citation": "Severity Classification section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-abcd-ef1234567890",
+      "@type": "Acuity",
+      "name": "Moderate Severity",
+      "snomed": "4285732",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_CRITERIA",
+          "target": "urn:uuid:d5bb1d3e-c075-4e5a-b56b-5f04f2d2ed1c",
+          "rationale": "Defines the criteria for moderate severity.",
+          "citation": "Severity Classification section.",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Moderate severity",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:47:02.552110+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:d5bb1d3e-c075-4e5a-b56b-5f04f2d2ed1c",
+      "@type": "Condition",
+      "name": "Criteria for Moderate Severity",
+      "snomed": "4285732",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [],
+      "quantitative_threshold": {
+        "dyspnea_vas": ">= 5",
+        "respiratory_rate": ">= 24",
+        "heart_rate": ">= 95",
+        "sao2": "< 92% or change > 3%",
+        "crp": ">= 10 mg/L",
+        "minimum_criteria_met": ">= 3"
+      },
+      "snomed_name": "Moderate severity",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:03.370224+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:0f5bfe38-b68b-4dce-b3b0-bcda6655d4f1",
+      "@type": "Finding",
+      "name": "Severe COPD Exacerbation Severity Criteria",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b1c2d3e4-f5a6-9870-bcde-f43210fedcba",
+          "rationale": "Severe exacerbation requires meeting moderate criteria plus specific ABG findings (hypoxemia, hypercapnia, acidosis).",
+          "citation": "Severity Classification section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b1c2d3e4-f5a6-9870-bcde-f43210fedcba",
+      "@type": "Acuity",
+      "name": "Severe Severity",
+      "snomed": "4087703",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_CRITERIA",
+          "target": "urn:uuid:a9b8c7d6-e5f4-3210-fedc-ba9876543210",
+          "rationale": "Defines the criteria for severe severity.",
+          "citation": "Severity Classification section.",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Severe",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:47:03.953615+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:a9b8c7d6-e5f4-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Criteria for Severe Severity",
+      "snomed": "4175713",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [],
+      "quantitative_threshold": {
+        "paO2": "<= 60 mmHg",
+        "paCO2": "> 45 mmHg",
+        "ph": "< 7.35"
+      },
+      "snomed_name": "Severity score",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:04.727050+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:380abe3e-daea-4894-b85e-945705752716",
+      "@type": "Finding",
+      "name": "Short-Acting Bronchodilators (SABAs/SAMAs)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "IS_INITIAL_CHOICE",
+          "target": "urn:uuid:82669002-d210-428d-bf34-af48f92737bc",
+          "rationale": "SABAs with or without SAMAs are the initial pharmacological choice for COPD exacerbations.",
+          "citation": "Pharmacological Treatment section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:82669002-d210-428d-bf34-af48f92737bc",
+      "@type": "Medication",
+      "name": "Short-Acting Bronchodilators (SABAs/SAMAs)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b7a43034-84e6-41a7-bd96-5f801e01df97",
+      "@type": "Medication",
+      "name": "Systemic Corticosteroids",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:83489a60-9136-4b49-912e-291becaa8fde",
+          "rationale": "Systemic corticosteroids (e.g., prednisone 40 mg/day for 5 days) are recommended to improve FEV1, oxygenation, and recovery.",
+          "citation": "Pharmacological Treatment section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:83489a60-9136-4b49-912e-291becaa8fde",
+      "@type": "Intervention",
+      "name": "Systemic Corticosteroids Administration",
+      "snomed": "1243048",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [],
+      "quantitative_threshold": {
+        "duration": "5 days",
+        "example_dosage": "prednisone 40 mg/day"
+      },
+      "snomed_name": "Systemic corticosteroid therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:10.862328+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:beaf3111-e213-43ee-8fa3-3c2e534545bc",
+      "@type": "Medication",
+      "name": "Antibiotics",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:cdef1234-5678-90ab-cdef-1234567890cd",
+          "rationale": "Antibiotics are recommended for 5 days when purulent sputum is present or for patients requiring mechanical ventilation.",
+          "citation": "Pharmacological Treatment section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:cdef1234-5678-90ab-cdef-1234567890cd",
+      "@type": "Intervention",
+      "name": "Antibiotics Administration",
+      "snomed": "4284965",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [],
+      "quantitative_threshold": {
+        "duration": "5 days",
+        "indication": "purulent sputum present OR patient requiring mechanical ventilation"
+      },
+      "snomed_name": "Administration of antibiotic",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:13.028316+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:2341fedc-ba98-7654-3210-abcdef012345",
+      "@type": "Finding",
+      "name": "Acute Hypoxemic Respiratory Failure",
+      "snomed": "46271075",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:369cebf2-4424-4a04-9a8a-1a511f73b825",
+          "rationale": "Acute hypoxemic respiratory failure indicates the need for High Flow Nasal Therapy (HFNT) as the first mode of ventilatory support.",
+          "citation": "Ventilatory Support section.",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Acute hypoxemic respiratory failure",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:47:13.055862+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:369cebf2-4424-4a04-9a8a-1a511f73b825",
+      "@type": "Intervention",
+      "name": "High Flow Nasal Therapy (HFNT)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9870fedc-ba98-7654-3210-abcdef012345",
+      "@type": "Finding",
+      "name": "Respiratory Acidosis (PaCO2 >= 45 mmHg, pH <= 7.35)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a61b63e0-e2ae-4d58-878a-892585cc6735",
+          "rationale": "Respiratory acidosis indicates the need for Noninvasive Mechanical Ventilation (NIV).",
+          "citation": "Ventilatory Support section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a61b63e0-e2ae-4d58-878a-892585cc6735",
+      "@type": "Intervention",
+      "name": "Noninvasive Mechanical Ventilation (NIV)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3456789a-bcde-f012-3456-789abcdef012",
+      "@type": "Finding",
+      "name": "Severe Dyspnea with Muscle Fatigue",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a61b63e0-e2ae-4d58-878a-892585cc6735",
+          "rationale": "Severe dyspnea with muscle fatigue indicates the need for Noninvasive Mechanical Ventilation (NIV).",
+          "citation": "Ventilatory Support section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:456789ab-cdef-0123-4567-89abcdef0123",
+      "@type": "Finding",
+      "name": "Persistent Life-Threatening Hypoxemia/Acidosis despite NIV/HFNT",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f99a294f-1ebe-48b9-95e1-48af0c5c974d",
+          "rationale": "Persistent life-threatening hypoxemia/acidosis despite NIV/HFNT indicates the need for Invasive Mechanical Ventilation.",
+          "citation": "Ventilatory Support section.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f99a294f-1ebe-48b9-95e1-48af0c5c974d",
+      "@type": "Intervention",
+      "name": "Invasive Mechanical Ventilation (IMV)",
+      "snomed": "37158404",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_6_management_of_copd_exace.json",
+        "section_title": "Management of COPD Exacerbations"
+      },
+      "rules": [],
+      "snomed_name": "Invasive mechanical ventilation",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:47:15.128168+00:00"
+      }
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:38.920205+00:00",
+    "nodes_before": 24,
+    "nodes_after": 24,
+    "rules_before": 14,
+    "rules_after": 14
+  }
+}

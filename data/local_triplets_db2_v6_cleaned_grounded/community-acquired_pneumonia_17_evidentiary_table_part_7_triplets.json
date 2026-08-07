@@ -1,0 +1,263 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Low serum albumin",
+      "snomed": "258797006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f1e2d3c4-b5a6-9870-4321-fedcba098765",
+          "rationale": "Low serum albumin (<3.3 mg/dL) in patients with CAP, especially PSI classes IV and V, is associated with higher 28-day mortality.",
+          "citation": "Lee et al49 (2011)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f1e2d3c4-b5a6-9870-4321-fedcba098765",
+          "rationale": "High serum CRP (≥14.3 mg/dL) in patients with CAP, especially PSI classes IV and V, is associated with higher 28-day mortality.",
+          "citation": "Lee et al49 (2011)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f1e2d3c4-b5a6-9870-4321-fedcba098765",
+      "@type": "Condition",
+      "name": "Increased 28-day mortality in CAP patients",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d4e5f678-9012-3456-7890-abcdef123456",
+      "@type": "Finding",
+      "name": "B-type natriuretic peptide levels",
+      "snomed": "4307029",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+          "rationale": "Lower B-type natriuretic peptide levels are associated with mild CAP (PSI class I, II, or III).",
+          "citation": "Christ-Crain et al48 (2008)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b8407f77-f8b9-4c35-9ff4-9787e18d7e35",
+          "rationale": "The combination of B-type natriuretic peptide and the PSI significantly improved the prognostic accuracy compared to PSI alone.",
+          "citation": "Christ-Crain et al48 (2008)",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Brain natriuretic peptide measurement",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:45:28.118232+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+      "@type": "Condition",
+      "name": "Mild CAP (PSI class I, II, or III)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b8407f77-f8b9-4c35-9ff4-9787e18d7e35",
+      "@type": "Condition",
+      "name": "Improved prognostic accuracy for CAP severity assessment",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:417ad18f-e45f-4d9b-8d99-173b821df68b",
+      "@type": "Finding",
+      "name": "Procalcitonin levels",
+      "snomed": "44791466",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:32bcb0f2-7372-4334-85d8-c2defa5bae18",
+          "rationale": "Procalcitonin levels increase with increasing severity of CAP, classified according to the PSI score.",
+          "citation": "Christ-Crain et al51 (2006)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9d9542e6-d3a5-4813-a246-1642281017ba",
+          "rationale": "Procalcitonin levels on admission are significantly higher in patients who die during follow-up compared to survivors.",
+          "citation": "Christ-Crain et al51 (2006)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:c1bd1438-104c-476c-985b-6b8c6337db31",
+          "rationale": "Procalcitonin has a higher AUC for predicting survival compared to PCT, CRP, and total leukocyte count.",
+          "citation": "Christ-Crain et al51 (2006)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:567890ab-cdef-1234-5678-90abcdef1234",
+          "rationale": "A clinical model including the PSI and procalcitonin increased prognostic accuracy to predict failure compared with a model relying on the PSI alone.",
+          "citation": "Christ-Crain et al51 (2006)",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Procalcitonin measurement",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:45:31.373360+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:32bcb0f2-7372-4334-85d8-c2defa5bae18",
+      "@type": "Condition",
+      "name": "Increasing severity of CAP (according to PSI score)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9d9542e6-d3a5-4813-a246-1642281017ba",
+      "@type": "Condition",
+      "name": "Increased risk of mortality in CAP patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c1bd1438-104c-476c-985b-6b8c6337db31",
+      "@type": "Condition",
+      "name": "Higher prognostic accuracy for survival in CAP patients compared to PCT, CRP, and leukocyte count",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:567890ab-cdef-1234-5678-90abcdef1234",
+      "@type": "Condition",
+      "name": "Improved prognostic accuracy to predict failure in CAP patients (when combined with PSI)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1e8d5042-e184-47a4-845a-d2a94125fe07",
+      "@type": "Finding",
+      "name": "Mean platelet volume (MPV)",
+      "snomed": "37397923",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:abcdef12-3456-7890-abc1-def234567890",
+          "rationale": "Optimal MPV cutoff for predicting 28-day mortality at ED admission was 8.55 fL.",
+          "citation": "Golcuk et al50 (2015)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:1a2b3c4d-e5f6-7890-def1-234567890abc",
+          "rationale": "There was a significant and inverse correlation between MPV and CURB-65 score.",
+          "citation": "Golcuk et al50 (2015)",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Mean platelet volume",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:45:37.225074+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abc1-def234567890",
+      "@type": "Condition",
+      "name": "Increased risk of 28-day mortality in CAP patients (MPV cutoff 8.55 fL)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-7890-def1-234567890abc",
+      "@type": "Condition",
+      "name": "Inverse correlation between MPV and CURB-65 score in CAP patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_17_evidentiary_table_part_7.json",
+        "section_title": "Evidentiary Table Part 7 (Christ-Crain et al. to Christ-Crain et al.)"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:36.116325+00:00",
+    "nodes_before": 15,
+    "nodes_after": 13,
+    "rules_before": 10,
+    "rules_after": 10
+  }
+}

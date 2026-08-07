@@ -1,0 +1,329 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "B-lines on lung ultrasound",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "B-lines on lung ultrasound indicate acute heart failure syndrome",
+          "citation": "A systematic review showed high specificity for B-lines.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Blood eosinophils >= 300 cells/uL",
+      "snomed": "14793004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:4c857d12-eca4-4481-8bd8-748c68538b06",
+          "rationale": "Blood eosinophils >= 300 cells/uL triggers escalation to LABA + LAMA + ICS therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:e5a910e7-faa3-4864-8e3f-dc0f52b824e8",
+          "rationale": "Blood eosinophils < 300 cells/uL triggers escalation to LABA + LAMA therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:785bf2a9-3181-4477-9a7e-6bd3add721db",
+          "rationale": "Blood eosinophils < 100 cells/uL triggers consideration of Azithromycin therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:d1f07277-683d-405a-bb4d-14e7448f6684",
+          "rationale": "Blood eosinophils >= 300 cells/uL (or >= 100 on dual therapy) triggers escalation to LABA + LAMA + ICS therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:d1f07277-683d-405a-bb4d-14e7448f6684",
+          "rationale": "Blood eosinophils >= 300 cells/uL triggers escalation to LABA + LAMA + ICS therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:785bf2a9-3181-4477-9a7e-6bd3add721db",
+          "rationale": "Blood eosinophils >= 300 cells/uL triggers escalation to LABA + LAMA + ICS therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:d1f07277-683d-405a-bb4d-14e7448f6684",
+          "rationale": "Blood eosinophils >= 100 cells/uL (on dual therapy) triggers escalation to LABA + LAMA + ICS therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e5a910e7-faa3-4864-8e3f-dc0f52b824e8",
+      "@type": "Medication",
+      "name": "Long-acting beta-agonist (LABA) + Long-acting muscarinic antagonist (LAMA)",
+      "snomed": "424001003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:762669ce-4988-4fc1-a9fc-cd9c26318563",
+      "@type": "Medication",
+      "name": "Azithromycin",
+      "snomed": "387531004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:785bf2a9-3181-4477-9a7e-6bd3add721db",
+      "@type": "Medication",
+      "name": "Roflumilast",
+      "snomed": "448971002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9abcdef0-1234-5678-90ab-cdef12345678",
+      "@type": "Finding",
+      "name": "Chronic bronchitis",
+      "snomed": "63480004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:785bf2a9-3181-4477-9a7e-6bd3add721db",
+          "rationale": "Chronic bronchitis triggers consideration of Roflumilast therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f24742b3-3460-45b5-bf91-94f605f99fbd",
+      "@type": "Finding",
+      "name": "Former smokers",
+      "snomed": "8517006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:785bf2a9-3181-4477-9a7e-6bd3add721db",
+          "rationale": "Former smokers triggers consideration of Azithromycin therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7a51af02-1d0a-4cd3-a269-309499dc74ba",
+      "@type": "Finding",
+      "name": "Refractory exacerbations on triple therapy",
+      "snomed": "20646008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:785bf2a9-3181-4477-9a7e-6bd3add721db",
+          "rationale": "Refractory exacerbations on triple therapy triggers consideration of Dupilumab or Mepolizumab therapy in COPD patients.",
+          "citation": "Guideline recommendation for biologic therapy.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d1f07277-683d-405a-bb4d-14e7448f6684",
+      "@type": "Medication",
+      "name": "Dupilumab",
+      "snomed": "716046009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4c857d12-eca4-4481-8bd8-748c68538b06",
+      "@type": "Medication",
+      "name": "Inhaled Corticosteroid (ICS)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abc1-def234567890",
+      "@type": "Medication",
+      "name": "Inhaled Corticosteroid (ICS)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:45fd2038-2628-4a15-9ac4-79f82ddfec39",
+      "@type": "Finding",
+      "name": "FEV1 < 50%",
+      "snomed": "4151447",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:785bf2a9-3181-4477-9a7e-6bd3add721db",
+          "rationale": "FEV1 < 50% triggers consideration of Roflumilast therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "snomed_name": "FEV1/FVC < 70 percent of predicted",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:55.902220+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:11b3589f-c84c-446d-bc13-a1e9cad40fb2",
+      "@type": "Medication",
+      "name": "Inhaled Corticosteroid (ICS)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4ab59ed3-92b7-49b0-97c6-71fca62e0c19",
+      "@type": "Medication",
+      "name": "Inhaled Corticosteroid (ICS)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:02c96383-b55a-4b3a-b133-1f5818a20c09",
+      "@type": "Medication",
+      "name": "Inhaled Corticosteroid (ICS)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cb00f18a-1253-455b-8583-59156657f805",
+      "@type": "Finding",
+      "name": "FEV1 < 50%",
+      "snomed": "4151447",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_4_prevention_and_pharmacol.json",
+        "section_title": "Prevention and Pharmacological Management of COPD"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:785bf2a9-3181-4477-9a7e-6bd3add721db",
+          "rationale": "FEV1 < 50% triggers consideration of Roflumilast therapy in COPD patients.",
+          "citation": "Guideline recommendation for exacerbation pathway.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "snomed_name": "FEV1/FVC < 70 percent of predicted",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:55.913466+00:00"
+      }
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:38.789661+00:00",
+    "nodes_before": 36,
+    "nodes_after": 17,
+    "rules_before": 17,
+    "rules_after": 13
+  }
+}
