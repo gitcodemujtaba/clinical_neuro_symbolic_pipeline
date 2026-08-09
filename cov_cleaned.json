@@ -1,0 +1,36 @@
+{
+  "total_annotations": 75491,
+  "distinct_concepts": 6595,
+  "guideline_codes": 447,
+  "channel_a": {
+    "concepts": 142,
+    "annotations": 8156,
+    "pct": 10.803936893139579
+  },
+  "channel_b_only": {
+    "concepts": 1225,
+    "annotations": 15200,
+    "pct": 20.13485051198156
+  },
+  "combined_raw": {
+    "concepts": 1367,
+    "annotations": 23356,
+    "pct": 30.938787405121136
+  },
+  "guarded": {
+    "concepts": 424,
+    "annotations": 7517,
+    "pct": 9.957478374905618,
+    "via_direct": 73,
+    "via_hierarchy": 351
+  },
+  "hop_distribution": {
+    "1": 330,
+    "2": 414,
+    "3": 481
+  },
+  "max_hops": 3,
+  "triplets_dir": "data/local_triplets_db2_v6_cleaned",
+  "grounded_nodes": 714,
+  "ungrounded_nodes": 983
+}

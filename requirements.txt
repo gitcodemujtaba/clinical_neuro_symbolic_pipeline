@@ -1,20 +1,113 @@
-# Deep Learning & NLP
+# =============================================================================
+# Clinical Neuro-Symbolic Pipeline — Python dependencies
+# Last updated: 2026-08-08 (Stage 3 implementation)
+#
+# TARGET: Python 3.9 (confirmed on the EC2 host, 2026-08-08). All src/, scripts/
+# and tests/ modules are verified to parse under 3.9 grammar — no match
+# statements, no PEP 604 `X | Y` unions. Keep it that way, or upgrade the host
+# deliberately rather than discovering the constraint through a SyntaxError.
+#
+# NOTE ON VERSION PINNING. The lower bounds below are mostly permissive, with
+# two deliberate exceptions documented inline (transformers/torch and spacy).
+# This project has already lost time to a silent version-drift failure --
+# GLiREL's DeBERTa-v3 backbone produced numerically garbage output under a
+# newer transformers than it was validated against, with NO error raised
+# (documented in src/extraction.py). Treat "it imports fine" as insufficient
+# evidence that a model still works after an upgrade.
+# =============================================================================
+
+# --- Deep Learning & NLP -----------------------------------------------------
+# Known-good on the EC2 host as of 2026-08-07: torch 2.8.0 / transformers
+# 4.57.6, exercised against GLiNER-BioMed, GLiNER-relex and SapBERT together.
+# The floors are deliberately not raised to those exact versions (that would
+# force an upgrade on anyone running an older working env), but if you upgrade
+# past them, re-run scripts/test_pipeline_e2e.py and check the SCORES, not just
+# that it runs -- that is precisely how the GLiREL failure hid.
 torch>=2.0.0
 transformers>=4.30.0
-gliner>=0.1.7
+
+# Stage 2a. Provides BOTH models: Ihor/gliner-biomed-large-v1.0 (entities,
+# src/entity_extraction.py) and knowledgator/gliner-relex-large-v1.0
+# (relations, src/extraction.py). One library, one backbone, so the two cannot
+# drift apart independently -- which is part of why GLiNER-relex was chosen
+# over GLiREL for relation extraction.
+gliner>=0.2.13
+
+# Stage 1 tokenisation and sentence segmentation.
+# The <3.8.0 ceiling comes from scispacy 0.5.3, not from our own code.
 spacy>=3.7.0,<3.8.0
 scispacy>=0.5.3
 
-# Databases & Drivers
+# Stage 2a assertion detection — negation / experiencer / temporality via the
+# ConText algorithm (src/assertion.py). Rule-based and deterministic by design:
+# negation inverts clinical meaning, so a missed negation flips a Stage 3
+# verdict rather than degrading it gracefully, and that decision must be
+# auditable rather than inferred by an LLM. ~20.9% of gold-annotated spans in
+# the evaluation set are non-assertive, so this is a high-frequency path.
+#
+# NOT YET INSTALLED as of 2026-08-08 (confirmed: `pip show spacy` on the EC2
+# host lists Required-by as en_core_sci_sm and scispacy only). Until it is,
+# src/assertion.py takes its `unavailable_default` path and marks EVERY entity
+# PRESENT — which silently disables the negation handling that ~20.9% of spans
+# depend on. Install with spacy constrained in the same command so pip cannot
+# resolve a spacy that breaks scispacy's <3.8.0 ceiling:
+#
+#   pip install "medspacy>=1.0.0" "spacy>=3.7.0,<3.8.0"
+#
+# Then verify the ConText pipe actually registers (medspaCy has exposed it
+# under more than one name across releases; src/assertion.py handles the
+# variants and raises an actionable error, but confirm rather than assume):
+#
+#   python3 -c "import spacy; n=spacy.blank('en'); n.add_pipe('sentencizer'); \
+#               n.add_pipe('medspacy_context'); print('ConText OK')"
+medspacy>=1.0.0
+
+# --- Databases & Drivers -----------------------------------------------------
+# KG2 lexical/vector store, and the source of Channel B hierarchy via
+# athena_concept_ancestor (see src/retrieval.py).
 duckdb>=0.9.0
+
+# Bolt driver, used for both Memgraph and Neo4j (Memgraph is Bolt-compatible).
+# Required by src/retrieval.py's Neo4jHierarchy once KG1 is populated; the
+# DuckDB hierarchy provider is the default until then.
 neo4j>=5.14.0
 
-# LLM Inference (vLLM / Ollama API calls)
+# --- LLM Inference -----------------------------------------------------------
+# Stage 3 talks to the two local vLLM servers over their OpenAI-compatible API
+# (src/llm_client.py). Endpoints default to localhost — the proposal's Legal
+# section commits to keeping clinical text off third-party APIs, so pointing
+# these anywhere remote is a deliberate act, not a config tweak.
 openai>=1.12.0
 
-# UI & Visualization
+# --- UI & Visualization ------------------------------------------------------
+# Stage 4 HITL review queue and pipeline runner. Not yet implemented (ui/ is
+# still all 0-line stubs); listed so the environment is ready when it lands.
 streamlit>=1.31.0
 pyvis>=0.3.2
 
-# Data Processing
+# --- Data Processing ---------------------------------------------------------
 pandas>=2.1.0
+
+# --- Testing -----------------------------------------------------------------
+# tests/test_offset_mapping.py. That file also runs standalone
+# (`python3 tests/test_offset_mapping.py`) without pytest, so this is a
+# convenience rather than a hard requirement -- it deliberately avoids
+# importing the src modules directly, since those load multi-GB models at
+# import time and would make the unit tests unrunnable off the EC2 box.
+pytest>=7.4.0
+
+# =============================================================================
+# NOT INSTALLABLE FROM THIS FILE — install separately
+# =============================================================================
+# scispaCy's model is not on PyPI and is NOT pulled in by `scispacy` above.
+# src/preprocessing.py calls spacy.load("en_core_sci_sm") and Stage 1 will fail
+# at import without it:
+#
+#   pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.3/en_core_sci_sm-0.5.3.tar.gz
+#
+# Keep the model release aligned with the scispacy version above; a mismatched
+# pair is a common and confusing failure.
+#
+# The LLM weights themselves (MedGemma 4B, OpenBioLLM 8B) are served by vLLM
+# outside this environment — see scripts/boot_infra.sh, which probes both
+# endpoints on :8000 and :8001 at boot.

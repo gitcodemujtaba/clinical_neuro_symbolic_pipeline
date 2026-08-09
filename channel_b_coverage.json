@@ -1,0 +1,36 @@
+{
+  "total_annotations": 75491,
+  "distinct_concepts": 6595,
+  "guideline_codes": 570,
+  "channel_a": {
+    "concepts": 116,
+    "annotations": 6333,
+    "pct": 8.389079492919686
+  },
+  "channel_b_only": {
+    "concepts": 1002,
+    "annotations": 13532,
+    "pct": 17.925315600535164
+  },
+  "combined_raw": {
+    "concepts": 1118,
+    "annotations": 19865,
+    "pct": 26.314395093454852
+  },
+  "guarded": {
+    "concepts": 370,
+    "annotations": 6442,
+    "pct": 8.53346756567008,
+    "via_direct": 67,
+    "via_hierarchy": 303
+  },
+  "hop_distribution": {
+    "1": 254,
+    "2": 343,
+    "3": 405
+  },
+  "max_hops": 3,
+  "triplets_dir": "/home/ec2-user/clinical_neuro_symbolic_pipeline/data/local_triplets_db2_v6_cleaned_grounded",
+  "grounded_nodes": 794,
+  "ungrounded_nodes": 520
+}

@@ -45,7 +45,9 @@ def test_pipeline_on_mimic():
                 print(f"\n--- Processing Note {count + 1}: {note_id} ---")
                 
                 # Execute Stage 1 preprocessing
-                expanded_text, provenance = process_and_store_note(note_id, raw_text, conn)
+                # is_test=True: flags this row in note_expansions so it can
+                # be purged before production.
+                expanded_text, provenance = process_and_store_note(note_id, raw_text, conn, is_test=True)
                 
                 # Find how many expansions occurred
                 exp_count = provenance.get("expansions_count", 0)
