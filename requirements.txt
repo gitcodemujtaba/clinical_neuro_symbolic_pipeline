@@ -108,6 +108,6 @@ pytest>=7.4.0
 # Keep the model release aligned with the scispacy version above; a mismatched
 # pair is a common and confusing failure.
 #
-# The LLM weights themselves (MedGemma 4B, OpenBioLLM 8B) are served by vLLM
+# The LLM weights themselves (BioMistral 7B AWQ, OpenBioLLM 8B AWQ) are served by vLLM
 # outside this environment — see scripts/boot_infra.sh, which probes both
 # endpoints on :8000 and :8001 at boot.

@@ -11,7 +11,7 @@ The pipeline processes clinical text through 5 distinct stages:
    * **GLiNER:** Zero-shot Named Entity Recognition (NER) executed on expanded text, mapping coordinate bounds back to raw source notes.
    * **Clinical-T5:** Sequence-to-sequence Relation Extraction (ReLEx) fine-tuned to extract structured clinical relation triples (e.g., `[Medication] -[:TREATED_WITH]-> [Condition]`).
 3. **Normalization (DuckDB + SapBERT):** Cascading normalization (Exact Name -> Exact Synonym -> SapBERT CLS-token cosine similarity) against the Athena OMOP vocabulary (`kg2_lexical_store.duckdb`).
-4. **MoLLM Consensus Gate (MedGemma + OpenBioLLM):** Local LLMs evaluate extractions against SNOMED hierarchies and clinical guideline triplets. Includes automated hallucination detection to verify cited evidence.
+4. **MoLLM Consensus Gate (BioMistral + OpenBioLLM):** Local LLMs evaluate extractions against SNOMED hierarchies and clinical guideline triplets. Includes automated hallucination detection to verify cited evidence.
 5. **Graph Ingestion & HITL:** Atomic Cypher transactions log the full provenance subgraph (`PatientObservation` -> `MoLLMDecision` -> `Concept`) into Memgraph. Low-confidence or contradictory extractions are routed to a Human-in-the-Loop (HITL) Streamlit queue.
 
 ## System Databases & Graph Infrastructure
@@ -44,7 +44,7 @@ MEMGRAPH_USER=
 MEMGRAPH_PASSWORD=
 
 # Model Endpoints & Paths
-MEDGEMMA_URL=http://localhost:8000/v1
+BIOMISTRAL_BASE_URL=http://localhost:8000/v1
 OPENBIOLLM_URL=http://localhost:8001/v1
 CLINICAL_T5_MODEL_NAME=luisaaguiar/Clinical-T5-Base
 ABBREV_DIR=/home/ec2-user/clinical_neuro_symbolic_pipeline/data/medical_abbreviations

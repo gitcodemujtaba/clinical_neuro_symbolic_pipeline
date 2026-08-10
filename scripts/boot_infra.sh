@@ -42,9 +42,9 @@ python3 scripts/profile_databases.py
 
 echo "7. Checking vLLM Model Serving Endpoints..."
 if curl -s http://localhost:8000/v1/models > /dev/null; then
-    echo "   ✅ MedGemma vLLM Service (Port 8000): ONLINE"
+    echo "   ✅ BioMistral vLLM Service (Port 8000): ONLINE"
 else
-    echo "   ❌ MedGemma vLLM Service (Port 8000): OFFLINE"
+    echo "   ❌ BioMistral vLLM Service (Port 8000): OFFLINE"
 fi
 
 if curl -s http://localhost:8001/v1/models > /dev/null; then

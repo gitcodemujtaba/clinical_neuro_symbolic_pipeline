@@ -44,6 +44,31 @@ GLiNER-BioMed's. entity_extraction.py remains the single source of truth for
 extracted_entities; when an endpoint can't be linked with sufficient overlap it
 is recorded as `unresolved` rather than guessed at, and Stage 3 treats that
 endpoint as ungrounded free text.
+
+2026-08-09 — SHARED FLAT_NER, AND A PREDICTION THAT WAS WRONG.
+This module previously passed flat_ner=False (nested) while
+entity_extraction.py used predict_entities()' flat default. That divergence was
+a library-default accident rather than a decision, so both now import a single
+FLAT_NER constant.
+
+The change was expected to REDUCE relation yield, on the reasoning that nested
+spans give relex more candidate endpoints to relate. Measured on note
+10000032-DS-21 it did the opposite:
+
+    before (nested relex):  3 relations, 2 with an unlinked endpoint
+    after  (flat, shared):  3 relations, 0 unlinked
+
+Same relations found, and endpoint linking went from 33% to 100%. The reason is
+the linking step, not the extraction step: when both models produce flat spans
+they agree on boundaries, so _overlap_ratio() clears MIN_ENDPOINT_OVERLAP that
+it previously missed. The two unresolved endpoints under the old setting were
+both nested relex spans ("right upper quadrant") with no flat counterpart in
+extracted_entities.
+
+Recorded because the prediction was confidently wrong in a way only the data
+caught -- and because it means consistency between the two models is worth
+MORE than the extra candidate endpoints nesting provided, which is the opposite
+of the trade-off assumed when this was written.
 """
 
 import os

@@ -177,6 +177,38 @@ def find_sentence(sentences: list, exp_start: int):
     return None
 
 
+def sentence_ids_spanned(sentences: list, exp_start: int, exp_end: int) -> list:
+    """Sentence IDs whose span overlaps [exp_start, exp_end) in expanded-text
+    coordinates.
+
+    2026-08-10, added after scripts/score_gold_recall.py's compound-span
+    detection measured a concrete case on 17751158-DS-19: GLiNER extracted
+    "Gunshot wound to abdomen\\nPneumonia" as ONE entity, merging a gunshot
+    wound diagnosis with an unrelated line from what is almost certainly a
+    discharge-diagnosis list -- 34 characters, one predicted concept, and it
+    can never correctly link to either gold annotation it overlaps.
+
+    WHY SENTENCE BOUNDARIES AND NOT JUST "\\n" IN THE SPAN. A naive
+    "reject any span containing a newline" rule was considered and rejected:
+    the SAME note's gold set links "left \\nbase" (60859004) as ONE
+    annotation, because that newline is mid-statement line-wrap
+    ("...decreased breath sounds at left base"), not a real boundary. This
+    module's own docstring (see _clinical_sentencizer) already establishes
+    that MIMIC notes use newlines/list breaks as REAL structural boundaries
+    more often than punctuation, which is why PyRuSH sentence segmentation
+    was adopted for local_context in the first place -- but nothing
+    previously checked an extracted span itself against those boundaries. A
+    span crossing >1 PyRuSH sentence is the signal that generalizes: a
+    line-wrapped continuation of one clinical statement stays inside a single
+    sentence, while two distinct diagnosis-list lines do not.
+
+    Returns a list (not a bool) so the caller/reviewer can see exactly which
+    sentences got merged, not just that a merge happened.
+    """
+    return [s["sentence_id"] for s in sentences
+            if not (s["end"] <= exp_start or s["start"] >= exp_end)]
+
+
 def build_local_context(expanded_text: str, sentences: list, exp_start: int, exp_end: int) -> dict:
     """Builds the sentence-bounded context window Stage 3 reasons over.
 
@@ -242,6 +274,180 @@ def build_local_context(expanded_text: str, sentences: list, exp_start: int, exp
     }
 
 
+def ensure_extracted_entities_table(conn):
+    """Creates/migrates extracted_entities. Idempotent.
+
+    Factored out of extract_and_store_entities() (2026-08-10) so
+    src/clinical_pipeline.py's compound-span splitter (see
+    src/normalization.find_compound_split()) can call store_entities() below
+    against the SAME schema definition, rather than maintaining a second DDL
+    block that could silently drift from this one -- exactly the kind of
+    two-copies-of-the-same-thing risk this codebase's other docstrings
+    repeatedly flag (see e.g. src/normalization.py's _tier_queries()).
+    """
+    conn.sql("""
+    CREATE TABLE IF NOT EXISTS extracted_entities (
+        note_id VARCHAR,
+        entity_label VARCHAR,
+        expanded_text VARCHAR,
+        original_text VARCHAR,
+        confidence FLOAT,
+        orig_start INT,
+        orig_end INT,
+        exp_start INT,
+        exp_end INT,
+        is_test BOOLEAN DEFAULT FALSE,
+        UNIQUE(note_id, orig_start, orig_end, entity_label)
+    );
+    """)
+    for ddl in [
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS is_test BOOLEAN DEFAULT FALSE;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS entity_id VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_status VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS experiencer VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS temporality VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_cue VARCHAR;",
+        # Cue offsets, not just the cue text. The HITL reviewer needs to see
+        # WHERE the negation fired, not merely that a word matched -- with the
+        # text alone, a note containing "no" five times gives a reviewer no way
+        # to check the detector picked the right one. Stored in expanded-text
+        # coordinates, the same system assertion detection ran in.
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_cue_start INT;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_cue_end INT;",
+        # The ConText rule category that fired (NEGATED_EXISTENCE, FAMILY,
+        # HISTORICAL, ...). More diagnostic than the cue text alone: "denies"
+        # and "no" both produce ABSENT, but the category tells a reviewer which
+        # rule class made the call, which is what you need to spot a systematic
+        # detector failure rather than a one-off.
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_cue_category VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_engine VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS section_name VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS sentence_id INT;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS local_context VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS expansion_ambiguous BOOLEAN DEFAULT FALSE;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS candidate_expansions JSON;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS gliner_model_version VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS extraction_threshold FLOAT;",
+        # TRUE for spans that scored between SUBTHRESHOLD_FLOOR and
+        # EXTRACTION_THRESHOLD. Retained for analysis only -- every consumer
+        # MUST filter these out unless deliberately studying them.
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS below_threshold BOOLEAN DEFAULT FALSE;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS flat_ner BOOLEAN;",
+        # See sentence_ids_spanned()'s docstring above. TRUE means this span
+        # was very likely two unrelated mentions GLiNER merged into one --
+        # flagged, not dropped, same policy as expansion_ambiguous and
+        # domain_conflict: a reviewer/Stage 3 gets to see it rather than
+        # having it silently discarded or silently trusted.
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS crosses_sentence_boundary BOOLEAN DEFAULT FALSE;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS sentence_ids_spanned JSON;",
+        # 2026-08-10, compound-span splitting (src/clinical_pipeline.py,
+        # src/normalization.find_compound_split()). compound_split_of is the
+        # entity_id of the ORIGINAL merged entity a split-half was derived
+        # from (NULL for every entity that was never split). superseded_by_split
+        # marks that original entity's own row TRUE once it has been replaced
+        # by its split halves -- the row is kept, not deleted (this codebase's
+        # consistent policy: is_test/flags over destructive deletes), so the
+        # merged extraction remains visible and auditable, just excluded from
+        # normalization and downstream stages by the same accepted-list
+        # filtering that below_threshold already uses.
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS compound_split_of VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS superseded_by_split BOOLEAN DEFAULT FALSE;",
+        # 2026-08-10, span growth (src/clinical_pipeline.py,
+        # src/normalization.find_span_growth()) -- the mirror image of the
+        # compound-split columns above. grown_from is the entity_id of the
+        # pre-growth (narrower) entity a widened entity was derived from
+        # (NULL for every entity that was never grown). superseded_by_growth
+        # marks that narrower entity's own row TRUE once replaced -- same
+        # keep-not-delete policy as superseded_by_split.
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS grown_from VARCHAR;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS superseded_by_growth BOOLEAN DEFAULT FALSE;",
+    ]:
+        conn.sql(ddl)
+
+
+def store_entities(conn, processed_entities: list, is_test: bool = False):
+    """Writes processed-entity dicts (the shape built in
+    extract_and_store_entities()'s loop, and by
+    src/clinical_pipeline.py's compound-span splitter and span-growth step)
+    to extracted_entities.
+
+    Every dict must carry compound_split_of/superseded_by_split and
+    grown_from/superseded_by_growth (default None / False for ordinary
+    Stage 2a output) alongside the fields extract_and_store_entities() has
+    always produced.
+    """
+    ensure_extracted_entities_table(conn)
+    if not processed_entities:
+        return
+
+    rows = [(
+        e["note_id"], e["entity_label"], e["expanded_text"], e["original_text"],
+        e["confidence"], e["orig_start"], e["orig_end"], e["exp_start"], e["exp_end"],
+        is_test, e["entity_id"], e["assertion_status"], e["experiencer"],
+        e["temporality"], e["assertion_cue"], e["assertion_engine"],
+        e["assertion_cue_start"], e["assertion_cue_end"], e["assertion_cue_category"],
+        e["section_name"], e["sentence_id"], e["local_context"],
+        e["expansion_ambiguous"],
+        json.dumps(e["candidate_expansions"]) if e["candidate_expansions"] else None,
+        e["gliner_model_version"], e["extraction_threshold"],
+        e["below_threshold"], e["flat_ner"],
+        e["crosses_sentence_boundary"], json.dumps(e["sentence_ids_spanned"]),
+        e.get("compound_split_of"), e.get("superseded_by_split", False),
+        e.get("grown_from"), e.get("superseded_by_growth", False),
+    ) for e in processed_entities]
+
+    # DO UPDATE rather than DO NOTHING: re-running a note after a model or
+    # assertion-logic change must refresh the row, not silently preserve
+    # whatever the first run computed. This is also how the splitter marks an
+    # already-persisted parent row superseded_by_split=TRUE -- it resubmits
+    # that row's own (note_id, orig_start, orig_end, entity_label) key with
+    # the flag set, landing on this same UPDATE branch rather than a second
+    # SQL statement.
+    conn.executemany("""
+    INSERT INTO extracted_entities
+    (note_id, entity_label, expanded_text, original_text, confidence,
+     orig_start, orig_end, exp_start, exp_end, is_test, entity_id,
+     assertion_status, experiencer, temporality, assertion_cue, assertion_engine,
+     assertion_cue_start, assertion_cue_end, assertion_cue_category,
+     section_name, sentence_id, local_context, expansion_ambiguous,
+     candidate_expansions, gliner_model_version, extraction_threshold,
+     below_threshold, flat_ner, crosses_sentence_boundary, sentence_ids_spanned,
+     compound_split_of, superseded_by_split, grown_from, superseded_by_growth)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ON CONFLICT (note_id, orig_start, orig_end, entity_label) DO UPDATE SET
+        expanded_text = EXCLUDED.expanded_text,
+        original_text = EXCLUDED.original_text,
+        confidence = EXCLUDED.confidence,
+        exp_start = EXCLUDED.exp_start,
+        exp_end = EXCLUDED.exp_end,
+        is_test = EXCLUDED.is_test,
+        entity_id = EXCLUDED.entity_id,
+        assertion_status = EXCLUDED.assertion_status,
+        experiencer = EXCLUDED.experiencer,
+        temporality = EXCLUDED.temporality,
+        assertion_cue = EXCLUDED.assertion_cue,
+        assertion_cue_start = EXCLUDED.assertion_cue_start,
+        assertion_cue_end = EXCLUDED.assertion_cue_end,
+        assertion_cue_category = EXCLUDED.assertion_cue_category,
+        assertion_engine = EXCLUDED.assertion_engine,
+        section_name = EXCLUDED.section_name,
+        sentence_id = EXCLUDED.sentence_id,
+        local_context = EXCLUDED.local_context,
+        expansion_ambiguous = EXCLUDED.expansion_ambiguous,
+        candidate_expansions = EXCLUDED.candidate_expansions,
+        gliner_model_version = EXCLUDED.gliner_model_version,
+        extraction_threshold = EXCLUDED.extraction_threshold,
+        below_threshold = EXCLUDED.below_threshold,
+        flat_ner = EXCLUDED.flat_ner,
+        crosses_sentence_boundary = EXCLUDED.crosses_sentence_boundary,
+        sentence_ids_spanned = EXCLUDED.sentence_ids_spanned,
+        compound_split_of = EXCLUDED.compound_split_of,
+        superseded_by_split = EXCLUDED.superseded_by_split,
+        grown_from = EXCLUDED.grown_from,
+        superseded_by_growth = EXCLUDED.superseded_by_growth;
+    """, rows)
+
+
 def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str, conn,
                                is_test: bool = False):
     """Runs GLiNER on expanded text, reconciles offsets, attaches assertion /
@@ -300,56 +506,7 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str, 
             assertions.append(d)
 
     # 4. Create the extracted entities table if it doesn't exist
-    conn.sql("""
-    CREATE TABLE IF NOT EXISTS extracted_entities (
-        note_id VARCHAR,
-        entity_label VARCHAR,
-        expanded_text VARCHAR,
-        original_text VARCHAR,
-        confidence FLOAT,
-        orig_start INT,
-        orig_end INT,
-        exp_start INT,
-        exp_end INT,
-        is_test BOOLEAN DEFAULT FALSE,
-        UNIQUE(note_id, orig_start, orig_end, entity_label)
-    );
-    """)
-    for ddl in [
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS is_test BOOLEAN DEFAULT FALSE;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS entity_id VARCHAR;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_status VARCHAR;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS experiencer VARCHAR;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS temporality VARCHAR;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_cue VARCHAR;",
-        # Cue offsets, not just the cue text. The HITL reviewer needs to see
-        # WHERE the negation fired, not merely that a word matched -- with the
-        # text alone, a note containing "no" five times gives a reviewer no way
-        # to check the detector picked the right one. Stored in expanded-text
-        # coordinates, the same system assertion detection ran in.
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_cue_start INT;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_cue_end INT;",
-        # The ConText rule category that fired (NEGATED_EXISTENCE, FAMILY,
-        # HISTORICAL, ...). More diagnostic than the cue text alone: "denies"
-        # and "no" both produce ABSENT, but the category tells a reviewer which
-        # rule class made the call, which is what you need to spot a systematic
-        # detector failure rather than a one-off.
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_cue_category VARCHAR;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS assertion_engine VARCHAR;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS section_name VARCHAR;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS sentence_id INT;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS local_context VARCHAR;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS expansion_ambiguous BOOLEAN DEFAULT FALSE;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS candidate_expansions JSON;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS gliner_model_version VARCHAR;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS extraction_threshold FLOAT;",
-        # TRUE for spans that scored between SUBTHRESHOLD_FLOOR and
-        # EXTRACTION_THRESHOLD. Retained for analysis only -- every consumer
-        # MUST filter these out unless deliberately studying them.
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS below_threshold BOOLEAN DEFAULT FALSE;",
-        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS flat_ner BOOLEAN;",
-    ]:
-        conn.sql(ddl)
+    ensure_extracted_entities_table(conn)
 
     processed_entities = []
 
@@ -378,6 +535,9 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str, 
         )
 
         context = build_local_context(expanded_text, sentences, exp_start, exp_end)
+
+        spanned_sentence_ids = sentence_ids_spanned(sentences, exp_start, exp_end)
+        crosses_sentence_boundary = len(spanned_sentence_ids) > 1
 
         # Structured lab panels are tabular data, not narrative -- ConText's
         # cue propagation does not apply and can only produce false negations
@@ -442,60 +602,18 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str, 
             "extraction_threshold": EXTRACTION_THRESHOLD,
             "below_threshold": confidence < EXTRACTION_THRESHOLD,
             "flat_ner": FLAT_NER,
+            "crosses_sentence_boundary": crosses_sentence_boundary,
+            "sentence_ids_spanned": spanned_sentence_ids,
+            # Ordinary Stage 2a output -- never a split or grown product,
+            # never yet superseded. src/clinical_pipeline.py's compound-span
+            # splitter and span-growth step set these explicitly on the
+            # entities THEY build, and mutate the superseded_* field TRUE on
+            # a parent's own dict when replacing it.
+            "compound_split_of": None,
+            "superseded_by_split": False,
+            "grown_from": None,
+            "superseded_by_growth": False,
         })
 
-    if processed_entities:
-        rows = [(
-            e["note_id"], e["entity_label"], e["expanded_text"], e["original_text"],
-            e["confidence"], e["orig_start"], e["orig_end"], e["exp_start"], e["exp_end"],
-            is_test, e["entity_id"], e["assertion_status"], e["experiencer"],
-            e["temporality"], e["assertion_cue"], e["assertion_engine"],
-            e["assertion_cue_start"], e["assertion_cue_end"], e["assertion_cue_category"],
-            e["section_name"], e["sentence_id"], e["local_context"],
-            e["expansion_ambiguous"],
-            json.dumps(e["candidate_expansions"]) if e["candidate_expansions"] else None,
-            e["gliner_model_version"], e["extraction_threshold"],
-            e["below_threshold"], e["flat_ner"],
-        ) for e in processed_entities]
-
-        # DO UPDATE rather than DO NOTHING: re-running a note after a model or
-        # assertion-logic change must refresh the row, not silently preserve
-        # whatever the first run computed.
-        conn.executemany("""
-        INSERT INTO extracted_entities
-        (note_id, entity_label, expanded_text, original_text, confidence,
-         orig_start, orig_end, exp_start, exp_end, is_test, entity_id,
-         assertion_status, experiencer, temporality, assertion_cue, assertion_engine,
-         assertion_cue_start, assertion_cue_end, assertion_cue_category,
-         section_name, sentence_id, local_context, expansion_ambiguous,
-         candidate_expansions, gliner_model_version, extraction_threshold,
-         below_threshold, flat_ner)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON CONFLICT (note_id, orig_start, orig_end, entity_label) DO UPDATE SET
-            expanded_text = EXCLUDED.expanded_text,
-            original_text = EXCLUDED.original_text,
-            confidence = EXCLUDED.confidence,
-            exp_start = EXCLUDED.exp_start,
-            exp_end = EXCLUDED.exp_end,
-            is_test = EXCLUDED.is_test,
-            entity_id = EXCLUDED.entity_id,
-            assertion_status = EXCLUDED.assertion_status,
-            experiencer = EXCLUDED.experiencer,
-            temporality = EXCLUDED.temporality,
-            assertion_cue = EXCLUDED.assertion_cue,
-            assertion_cue_start = EXCLUDED.assertion_cue_start,
-            assertion_cue_end = EXCLUDED.assertion_cue_end,
-            assertion_cue_category = EXCLUDED.assertion_cue_category,
-            assertion_engine = EXCLUDED.assertion_engine,
-            section_name = EXCLUDED.section_name,
-            sentence_id = EXCLUDED.sentence_id,
-            local_context = EXCLUDED.local_context,
-            expansion_ambiguous = EXCLUDED.expansion_ambiguous,
-            candidate_expansions = EXCLUDED.candidate_expansions,
-            gliner_model_version = EXCLUDED.gliner_model_version,
-            extraction_threshold = EXCLUDED.extraction_threshold,
-            below_threshold = EXCLUDED.below_threshold,
-            flat_ner = EXCLUDED.flat_ner;
-        """, rows)
-
+    store_entities(conn, processed_entities, is_test)
     return processed_entities

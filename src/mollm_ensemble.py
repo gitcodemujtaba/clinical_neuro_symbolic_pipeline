@@ -48,6 +48,7 @@ from src.llm_client import (
     build_clients,
     extract_verdict_confidence,
     parse_json_response,
+    verdict_schema,
 )
 from src.retrieval import CITABLE_TYPES
 
@@ -489,7 +490,13 @@ def _format_suppressed(retrieval: dict) -> str:
 
 
 def _query_one(client, system_prompt, user_prompt, allowed_verdicts) -> dict:
-    raw = client.complete(system_prompt, user_prompt)
+    # Guided decoding constrains the verdict to allowed_verdicts, so the
+    # out-of-vocabulary branch below should become unreachable -- but it is
+    # kept, because llm_client falls back to unguided json_object mode if the
+    # server rejects the guided request, and a silent fallback must not turn
+    # into a silent coercion.
+    raw = client.complete(system_prompt, user_prompt,
+                          schema=verdict_schema(allowed_verdicts))
     parsed = parse_json_response(raw["text"])
 
     verdict = str(parsed.get("verdict", "")).strip().upper()
@@ -512,6 +519,9 @@ def _query_one(client, system_prompt, user_prompt, allowed_verdicts) -> dict:
         "logprob_confidence": extract_verdict_confidence(raw["tokens"], verdict),
         "verdict_out_of_vocabulary": parsed.get("_verdict_out_of_vocabulary"),
         "finish_reason": raw.get("finish_reason"),
+        # Guided vs unguided changes the logprob distribution, so a calibration
+        # set must not mix the two. Recorded per call rather than assumed.
+        "decoding_mode": raw.get("decoding_mode"),
     }
 
 
@@ -708,11 +718,121 @@ def validate_record(record: dict, retriever, clients: dict = None) -> dict:
     ensemble = combine(model_results)
     routing = route(ensemble, citation, model_results)
 
+    modes = {m.get("decoding_mode") for m in model_results}
+    artifact["decoding_modes"] = sorted(x for x in modes if x)
+    if len(modes) > 1:
+        # One model guided and the other not means their confidences are not
+        # on the same scale, which silently breaks ensemble_agreement's
+        # premise. Flagged rather than averaged over.
+        artifact["decoding_mode_mismatch"] = True
+
     artifact["models"] = model_results
     artifact.update(ensemble)
     artifact.update(citation)
     artifact.update(routing)
     return artifact
+
+
+def load_validation_records(conn, note_id: str, limit: int = None,
+                            tier: str = None, include_subthreshold: bool = False) -> list:
+    """Reads Stage 2 output back into the ValidationRecord shape Stage 3 expects.
+
+    This is the Stage 2 -> Stage 3 boundary made concrete. It reads from the
+    tables rather than taking run_pipeline()'s in-memory return value, because
+    Stage 3 must be runnable independently: over a note processed hours ago,
+    re-runnable after a threshold change without re-extracting, and restartable
+    mid-batch. Coupling it to a live pipeline object would make all three
+    impossible.
+
+    The join is on entity_id -- the identifier minted in Stage 2a precisely so
+    this join would have something stable to use. Before it existed,
+    extracted_entities and normalized_entities were unique on two DIFFERENT
+    composite keys and could not be reliably joined at all.
+
+    include_subthreshold defaults False. Spans between SUBTHRESHOLD_FLOOR and
+    EXTRACTION_THRESHOLD are retained for analysis but have NOT passed the
+    extraction gate; feeding them to Stage 3 by default would quietly change
+    what the pipeline claims to validate. Set True only when deliberately
+    measuring how many of them Stage 3 would recover.
+    """
+    where = ["e.note_id = ?"]
+    params = [note_id]
+    if not include_subthreshold:
+        where.append("(e.below_threshold IS NULL OR e.below_threshold = FALSE)")
+    if tier:
+        where.append("n.confidence_tier_in = ?")
+        params.append(tier)
+
+    rows = conn.sql(f"""
+        SELECT e.entity_id, e.note_id, e.original_text, e.expanded_text,
+               e.entity_label, e.confidence, e.orig_start, e.orig_end,
+               e.local_context, e.section_name, e.assertion_status, e.experiencer,
+               e.temporality, e.assertion_cue, e.expansion_ambiguous,
+               e.candidate_expansions,
+               n.candidates, n.confidence_tier_in, n.is_ambiguous,
+               n.ambiguity_reason, n.match_tier, n.matched
+        FROM extracted_entities e
+        JOIN normalized_entities n ON n.entity_id = e.entity_id
+        WHERE {' AND '.join(where)}
+        ORDER BY e.orig_start ASC
+        {f'LIMIT {int(limit)}' if limit else ''}
+    """, params=params).fetchall()
+
+    def _json(v, default):
+        if not v:
+            return default
+        try:
+            return json.loads(v) if isinstance(v, str) else v
+        except (ValueError, TypeError):
+            return default
+
+    records = []
+    for r in rows:
+        entity_id = r[0]
+        # Relations touching this entity, from EITHER endpoint. A relation is
+        # equally informative whichever side the entity sits on.
+        rels = []
+        try:
+            for rel in conn.sql("""
+                SELECT relation_id, relation_label, head_entity_id, tail_entity_id,
+                       head_entity_text, tail_entity_text, relation_confidence,
+                       head_link_status, tail_link_status
+                FROM extracted_relations
+                WHERE note_id = ? AND (head_entity_id = ? OR tail_entity_id = ?)
+            """, params=[note_id, entity_id, entity_id]).fetchall():
+                is_head = rel[2] == entity_id
+                rels.append({
+                    "relation_id": rel[0],
+                    "relation_label": rel[1],
+                    "other_endpoint_text": rel[5] if is_head else rel[4],
+                    "other_entity_id": rel[3] if is_head else rel[2],
+                    "relation_confidence": rel[6],
+                    "entity_link_status": rel[8] if is_head else rel[7],
+                })
+        except Exception:
+            pass
+
+        records.append({
+            "entity_id": entity_id, "note_id": r[1],
+            "original_text": r[2], "expanded_text": r[3],
+            "gliner_label": r[4], "gliner_confidence": r[5],
+            "orig_start": r[6], "orig_end": r[7],
+            "local_context": r[8] or "", "section_name": r[9],
+            "assertion_status": r[10] or "PRESENT",
+            "experiencer": r[11] or "PATIENT",
+            "temporality": r[12] or "CURRENT",
+            "assertion_cue": r[13],
+            "expansion_ambiguous": bool(r[14]),
+            "candidate_expansions": _json(r[15], None),
+            "candidates": _json(r[16], []),
+            "confidence_tier_in": r[17] or "HIGH",
+            "is_ambiguous": bool(r[18]),
+            "ambiguity_reason": r[19],
+            "match_tier": r[20],
+            "matched": r[21],
+            "relations": rels,
+        })
+    return records
 
 
 def store_decision(artifact: dict, conn, is_test: bool = False):
@@ -738,6 +858,7 @@ def store_decision(artifact: dict, conn, is_test: bool = False):
         citation_verified BOOLEAN,
         cited_suppressed_rules JSON,
         expansion JSON,
+        decoding_modes JSON,
         mollm_routing_decision VARCHAR,
         queue_reason VARCHAR,
         routing_basis VARCHAR,
@@ -753,9 +874,10 @@ def store_decision(artifact: dict, conn, is_test: bool = False):
     INSERT INTO mollm_decisions
     (mollm_call_id, entity_id, note_id, confidence_tier_in, mode, ensemble_agreement,
      composite_confidence, confidence_basis, citation_verified, cited_suppressed_rules,
-     expansion, mollm_routing_decision, queue_reason, routing_basis, models,
-     retrieved_context, citation_checks, prompt, error, is_test)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+     expansion, decoding_modes, mollm_routing_decision, queue_reason,
+     routing_basis, models, retrieved_context, citation_checks, prompt,
+     error, is_test)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT (mollm_call_id) DO NOTHING;
     """, params=[
         artifact["mollm_call_id"], artifact.get("entity_id"), artifact.get("note_id"),
@@ -764,6 +886,7 @@ def store_decision(artifact: dict, conn, is_test: bool = False):
         artifact.get("confidence_basis"), artifact.get("citation_verified"),
         json.dumps(artifact.get("cited_suppressed_rules"), default=str),
         json.dumps(artifact.get("expansion"), default=str) if artifact.get("expansion") else None,
+        json.dumps(artifact.get("decoding_modes")),
         artifact.get("mollm_routing_decision"), artifact.get("queue_reason"),
         artifact.get("routing_basis"), json.dumps(artifact.get("models"), default=str),
         json.dumps(artifact.get("retrieved_context"), default=str),
