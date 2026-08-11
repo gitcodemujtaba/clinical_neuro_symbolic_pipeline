@@ -119,8 +119,17 @@ DEFAULT_BIOMISTRAL = os.environ.get(
 DEFAULT_OPENBIOLLM = os.environ.get("OPENBIOLLM_MODEL", "bartowski/OpenBioLLM-Llama3-8B-AWQ")
 
 
-def verdict_schema(allowed_verdicts) -> dict:
+def verdict_schema(allowed_verdicts, require_citation: bool = True) -> dict:
     """JSON Schema constraining a response to the legal verdict set.
+
+    `require_citation` (docs/Stage3_Open_Issues.md Issue 2 experiment,
+    2026-08-11). `cited_evidence` was unconditionally `required`, and the
+    hypothesis on file was that a required-but-often-empty array under guided
+    decoding invites the model to fill it rather than leave it `[]` -- callers
+    should pass `require_citation=False` when retrieval found zero rules,
+    since there is nothing legitimate to cite in that case regardless of what
+    the model does. Deliberately record-scoped rather than global: a record
+    WITH evidence should still be required to engage with it.
 
     WHY GUIDED DECODING RATHER THAN TRUSTING THE PROMPT. Without it, an
     out-of-vocabulary verdict is indistinguishable from genuine uncertainty:
@@ -152,6 +161,10 @@ def verdict_schema(allowed_verdicts) -> dict:
     a rule_id, because that tells us something about the model that a
     constrained decode would hide.
     """
+    required = ["verdict", "reasoning", "confidence"]
+    if require_citation:
+        required.append("cited_evidence")
+
     return {
         "type": "object",
         "properties": {
@@ -174,7 +187,7 @@ def verdict_schema(allowed_verdicts) -> dict:
                 "enum": ["MORE_RULES", "SUPPRESSED_RULES", "CANDIDATE_DETAIL", "NONE"],
             },
         },
-        "required": ["verdict", "reasoning", "cited_evidence", "confidence"],
+        "required": required,
     }
 
 

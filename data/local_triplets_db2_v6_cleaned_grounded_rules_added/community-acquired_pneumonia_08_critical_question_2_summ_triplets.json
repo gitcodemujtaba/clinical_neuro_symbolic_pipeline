@@ -1,0 +1,529 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+      "@type": "Condition",
+      "name": "Community-acquired pneumonia (CAP)",
+      "snomed": "385093006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:53dc52d8-34d9-4cc5-a56c-33d99407e791",
+          "rationale": "Adult patients diagnosed with CAP in the ED may require parenteral antibiotics initially, potentially followed by oral treatment.",
+          "citation": "Appropriately selected antibiotics are the standard treatment for CAP, with outpatients generally treated orally and those requiring admission generally initially treated parenterally.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:cb7df76a-50e4-40f9-a676-7b00cca2fd0b",
+      "@type": "Finding",
+      "name": "Patient clinically stable",
+      "snomed": "58158008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c75767d5-e3d7-42d6-965e-4f7372edf889",
+          "rationale": "Clinical stability is a criterion for transitioning from parenteral to oral antibiotics.",
+          "citation": "These studies used various criteria to define when the parenteral to oral therapy switch should occur, but most mandate the patient be clinically stable and afebrile for a minimum of 24 to 72 hours.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:db2699f0-eb97-419e-a9ab-c24b282f0985",
+      "@type": "Finding",
+      "name": "Patient afebrile",
+      "snomed": "86699002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c75767d5-e3d7-42d6-965e-4f7372edf889",
+          "rationale": "Afebrile status is a criterion for transitioning from parenteral to oral antibiotics.",
+          "citation": "These studies used various criteria to define when the parenteral to oral therapy switch should occur, but most mandate the patient be clinically stable and afebrile for a minimum of 24 to 72 hours.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Clinically stable and afebrile for a minimum of 24 to 72 hours",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:e75e43cb-a238-4cd4-8c3c-eeeb50aa55ec",
+          "rationale": "Clinical stability and afebrile status for 24-72 hours are criteria used to determine when a patient can transition from parenteral to oral antibiotics in CAP.",
+          "citation": "With appropriate application of clinical decision aids, an increasing proportion of patients may be treated as outpatients or with periods of observation (<24 hours). In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy. Our systematic review of the literature, however, found lack of evidence that assessed whether a single dose of parenteral antibiotics in the ED followed by oral treatment was safe or associated with improved outcomes when compared with oral treatment alone among patients either being admitted or discharged home.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Acuity",
+      "name": "Criteria for transition from parenteral to oral antibiotics",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:53dc52d8-34d9-4cc5-a56c-33d99407e791",
+      "@type": "Intervention",
+      "name": "Initial parenteral antibiotics followed by oral treatment",
+      "snomed": "4085731",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:c3b606fa-1aff-4b6d-87eb-e10b847384df",
+          "rationale": "Patients admitted for CAP are often initially treated with parenteral antibiotics.",
+          "citation": "Appropriately selected antibiotics are the standard treatment for CAP, with outpatients generally treated orally and those requiring admission generally initially treated parenterally.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Intravenous antibiotic therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:44:36.913627+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:c3b606fa-1aff-4b6d-87eb-e10b847384df",
+      "@type": "Medication",
+      "name": "Parenteral antibiotics",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Medication",
+      "name": "Oral antibiotics",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9bcbdb42-dee9-47f0-bd4b-5086ca2c7ce9",
+      "@type": "Finding",
+      "name": "Single dose of parenteral antibiotics in the ED followed by oral treatment",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:0fedcba9-8765-4321-0fed-cba987654321",
+          "rationale": "The guideline discusses the potential use of a single dose of parenteral antibiotics followed by oral treatment, but notes lack of evidence for its safety or efficacy compared to oral treatment alone.",
+          "citation": "Our systematic review of the literature, however, found lack of evidence that assessed whether a single dose of parenteral antibiotics in the ED followed by oral treatment was safe or associated with improved outcomes when compared with oral treatment alone among patients either being admitted or discharged home.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0fedcba9-8765-4321-0fed-cba987654321",
+      "@type": "Intervention",
+      "name": "Single dose parenteral antibiotics in ED followed by oral treatment vs. oral treatment alone",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9abcdef0-1234-5678-90ab-cdef01234567",
+      "@type": "Finding",
+      "name": "Patient admitted for CAP",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c3b606fa-1aff-4b6d-87eb-e10b847384df",
+          "rationale": "Patients admitted for CAP are often initially treated with parenteral antibiotics.",
+          "citation": "Appropriately selected antibiotics are the standard treatment for CAP, with outpatients generally treated orally and those requiring admission generally initially treated parenterally.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:503526a5-295d-4d75-9880-15af03ad3fe8",
+      "@type": "Finding",
+      "name": "Patient discharged home from ED for CAP",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:db2699f0-eb97-419e-a9ab-c24b282f0985",
+          "rationale": "Patients discharged home for CAP are typically treated with oral antibiotics.",
+          "citation": "Appropriately selected antibiotics are the standard treatment for CAP, with outpatients generally treated orally and those requiring admission generally initially treated parenterally.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Finding",
+      "name": "Patient requiring observation in ED for CAP",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c3b606fa-1aff-4b6d-87eb-e10b847384df",
+          "rationale": "Patients requiring observation in ED for CAP may be considered for initial parenteral antibiotics.",
+          "citation": "In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c0291991-c847-48d0-a16e-6fa1af58a8df",
+      "@type": "Finding",
+      "name": "Patient being considered for brief admission from ED for CAP",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c3b606fa-1aff-4b6d-87eb-e10b847384df",
+          "rationale": "Patients being considered for brief admission from ED for CAP may be considered for initial parenteral antibiotics.",
+          "citation": "In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ef567890-12ab-cdef-3456-7890abcdef12",
+      "@type": "Finding",
+      "name": "Patient being considered for discharge home from ED for CAP",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:db2699f0-eb97-419e-a9ab-c24b282f0985",
+          "rationale": "Patients being considered for discharge home from ED for CAP may be considered for initial parenteral antibiotics.",
+          "citation": "In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:10fedcba-9876-5432-10fe-dcba98765432",
+      "@type": "Finding",
+      "name": "Parenteral antibiotics administered prior to oral therapy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:c3b606fa-1aff-4b6d-87eb-e10b847384df",
+          "rationale": "The guideline mentions the consideration of a single dose of parenteral antibiotics prior to switching to oral therapy in certain patient groups.",
+          "citation": "In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e75e43cb-a238-4cd4-8c3c-eeeb50aa55ec",
+      "@type": "Finding",
+      "name": "Transition from parenteral to oral antibiotics",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:83a23592-fc14-4133-a003-50c58e62f6af",
+      "@type": "Finding",
+      "name": "Patient requires admission",
+      "snomed": "8715",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c3b606fa-1aff-4b6d-87eb-e10b847384df",
+          "rationale": "Patients requiring admission for CAP are generally initially treated with parenteral antibiotics.",
+          "citation": "Appropriately selected antibiotics are the standard treatment for CAP, with outpatients generally treated orally and those requiring admission generally initially treated parenterally.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Hospital admission",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:44:45.102715+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:464d046c-ffee-447d-b249-39c8006fc6c3",
+      "@type": "Finding",
+      "name": "Patient requires observation in ED",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:6fb07f41-d61a-4ceb-9dc0-1be5e9b43c66",
+          "rationale": "Patients requiring observation in ED for CAP may be considered for initial parenteral antibiotics.",
+          "citation": "In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b765441f-a0c8-44b1-9813-ae675a5ccfbc",
+      "@type": "Finding",
+      "name": "Patient being considered for brief admission from ED",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:6fb07f41-d61a-4ceb-9dc0-1be5e9b43c66",
+          "rationale": "Patients being considered for brief admission from ED for CAP may be considered for initial parenteral antibiotics.",
+          "citation": "In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e6948bf4-91ed-4761-8a9d-a7850dd22c43",
+      "@type": "Finding",
+      "name": "Patient being considered for discharge home from ED",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:6fb07f41-d61a-4ceb-9dc0-1be5e9b43c66",
+          "rationale": "Patients being considered for discharge home from ED for CAP may be considered for initial parenteral antibiotics.",
+          "citation": "In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:10c75103-fcc1-4b21-b9ca-288eaf5ba6a3",
+      "@type": "Intervention",
+      "name": "Initial parenteral antibiotics prior to conversion to oral therapy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c75767d5-e3d7-42d6-965e-4f7372edf889",
+      "@type": "Finding",
+      "name": "Patient requires transition from parenteral to oral antibiotics",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:66268bc2-9d1e-4421-9914-a7eb5ddf1326",
+      "@type": "Finding",
+      "name": "Patient requires admission",
+      "snomed": "8715",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c3b606fa-1aff-4b6d-87eb-e10b847384df",
+          "rationale": "Patients requiring admission for CAP are generally initially treated with parenteral antibiotics.",
+          "citation": "Appropriately selected antibiotics are the standard treatment for CAP, with outpatients generally treated orally and those requiring admission generally initially treated parenterally.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Hospital admission",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:44:46.839998+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:0cc181b1-5252-47a2-b05c-b50d19648938",
+      "@type": "Finding",
+      "name": "Patient requires observation in ED",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:6fb07f41-d61a-4ceb-9dc0-1be5e9b43c66",
+          "rationale": "Patients requiring observation in ED for CAP may be considered for initial parenteral antibiotics.",
+          "citation": "In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:242ba8d2-96f5-46de-aa7f-85d371b5a575",
+      "@type": "Finding",
+      "name": "Patient being considered for brief admission from ED",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:6fb07f41-d61a-4ceb-9dc0-1be5e9b43c66",
+          "rationale": "Patients being considered for brief admission from ED for CAP may be considered for initial parenteral antibiotics.",
+          "citation": "In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:75284555-3f6b-4464-a70d-71725983dea3",
+      "@type": "Finding",
+      "name": "Patient being considered for discharge home from ED",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:6fb07f41-d61a-4ceb-9dc0-1be5e9b43c66",
+          "rationale": "Patients being considered for discharge home from ED for CAP may be considered for initial parenteral antibiotics.",
+          "citation": "In those patients requiring observation or for whom a brief admission or discharge is deemed to be a reasonable option (borderline cases), it would be reasonable to consider an initial parenteral dose of antibiotics prior to conversion to oral therapy.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6fb07f41-d61a-4ceb-9dc0-1be5e9b43c66",
+      "@type": "Intervention",
+      "name": "Initial parenteral antibiotics prior to conversion to oral therapy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_08_critical_question_2_summ.json",
+        "section_title": "Critical Question 2: Summary and Future Research; Critical Question 3: Parenteral Antibiotics in ED"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:35.272100+00:00",
+    "nodes_before": 31,
+    "nodes_after": 28,
+    "rules_before": 22,
+    "rules_after": 20
+  }
+}

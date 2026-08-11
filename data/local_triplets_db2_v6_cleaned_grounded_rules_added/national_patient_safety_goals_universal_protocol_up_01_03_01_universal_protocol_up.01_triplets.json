@@ -1,0 +1,119 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Time-out",
+      "snomed": "398166005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_03_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.03.01 - Time-out"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "A time-out is required before starting an invasive procedure or making an incision to ensure correct patient, site, and procedure identification.",
+          "citation": "UP.01.03.01 Element of Performance 1",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "A time-out is required when two or more procedures are performed on the same patient, and the person performing the procedure changes.",
+          "citation": "UP.01.03.01 Element of Performance 3",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Intervention",
+      "name": "Conduct a time-out",
+      "snomed": "844005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_03_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.03.01 - Time-out"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_AGREEMENT",
+          "target": "urn:uuid:8282826d-16de-4ccd-b457-338851c12782",
+          "rationale": "During the time-out, team members must agree on the correct patient identity.",
+          "citation": "UP.01.03.01 Element of Performance 4",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "REQUIRES_AGREEMENT",
+          "target": "urn:uuid:abcdef98-7654-3210-fedc-ba9876543210",
+          "rationale": "During the time-out, team members must agree on the correct site.",
+          "citation": "UP.01.03.01 Element of Performance 4",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "REQUIRES_AGREEMENT",
+          "target": "urn:uuid:6bab5497-b6bf-4959-a80f-a3dfedd6ceb5",
+          "rationale": "During the time-out, team members must agree on the procedure to be done.",
+          "citation": "UP.01.03.01 Element of Performance 4",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "REQUIRES_DOCUMENTATION",
+          "target": "urn:uuid:6bab5497-b6bf-4959-a80f-a3dfedd6ceb5",
+          "rationale": "The completion of the time-out must be documented.",
+          "citation": "UP.01.03.01 Element of Performance 5",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:8282826d-16de-4ccd-b457-338851c12782",
+      "@type": "Finding",
+      "name": "Correct patient identity",
+      "snomed": "247889000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_03_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.03.01 - Time-out"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef98-7654-3210-fedc-ba9876543210",
+      "@type": "Finding",
+      "name": "Correct site",
+      "snomed": "10546003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_03_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.03.01 - Time-out"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6bab5497-b6bf-4959-a80f-a3dfedd6ceb5",
+      "@type": "Finding",
+      "name": "Procedure to be done",
+      "snomed": "385643006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_universal_protocol_up_01_03_01_universal_protocol_up.01.json",
+        "section_title": "Universal Protocol: UP.01.03.01 - Time-out"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:40.410064+00:00",
+    "nodes_before": 5,
+    "nodes_after": 5,
+    "rules_before": 6,
+    "rules_after": 6
+  }
+}

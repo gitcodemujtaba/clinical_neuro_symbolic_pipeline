@@ -1,0 +1,366 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "ST-elevation ACS",
+      "snomed": "164931005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": [
+        {
+          "predicate": "EXCLUDES",
+          "target": "urn:uuid:f7e8d9c0-b1a2-4356-987f-0123456789ab",
+          "rationale": "Patients without evidence of ST-elevation ACS are eligible for initial risk stratification.",
+          "citation": "Critical Question 1: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], can initial risk stratification be used to predict a low rate of 30-day MACE?",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f7e8d9c0-b1a2-4356-987f-0123456789ab",
+      "@type": "Condition",
+      "name": "Non-ST-elevation Acute Coronary Syndrome (NSTE-ACS)",
+      "snomed": "394659003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b3c4d5e6-f7a8-4901-2345-67890abcdef1",
+      "@type": "Finding",
+      "name": "HEART Score",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b716c7e9-1b38-46d9-8566-5fd9d6201138",
+          "rationale": "A low HEART score predicts a low rate of 30-day MACE.",
+          "citation": "Level B recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], the History, ECG [SNOMED: 29303009], Age, Risk factors [SNOMED: 80943009], Troponin [SNOMED: 102680009] (HEART [SNOMED: 80891009]) score [SNOMED: 278061009] can be used as a clinical prediction instrument [SNOMED: 57134006] for risk stratification. A low score [SNOMED: 278061009] (<=3) predicts 30-day MACE miss rate within a range of 0% to 2%.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:b716c7e9-1b38-46d9-8566-5fd9d6201138",
+          "rationale": "The HEART score threshold for low risk is <= 3.",
+          "citation": "Level B recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], the History, ECG [SNOMED: 29303009], Age, Risk factors [SNOMED: 80943009], Troponin [SNOMED: 102680009] (HEART [SNOMED: 80891009]) score [SNOMED: 278061009] can be used as a clinical prediction instrument [SNOMED: 57134006] for risk stratification. A low score [SNOMED: 278061009] (<=3) predicts 30-day MACE miss rate within a range of 0% to 2%.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e5294e12-5189-4974-8f8a-f9567179796e",
+          "rationale": "A TIMI score of 0 provides high sensitivity for ruling out 30-day MACE.",
+          "citation": "Level C recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], other risk-stratification tools [SNOMED: 86967005], such as Thrombolysis [SNOMED: 51308000] in Myocardial Infarction [SNOMED: 22298006] (TIMI), can be used to predict rate of 30-day MACE. Literature Review: TIMI Score [SNOMED: 278061009]: A TIMI score [SNOMED: 278061009] of 0 provides high sensitivity [SNOMED: 35209006] (96%-99%) for ruling out 30-day MACE, but lower bounds of 95% CI in some studies fall [SNOMED: 1912002] below acceptable thresholds [SNOMED: 246510005], and specificity is low (~20-25%).",
+          "citation_paraphrase": "Level C recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], other risk-stratification tools [SNOMED: 86967005], such as Thrombolysis [SNOMED: 51308000] in Myocardial Infarction [SNOMED: 22298006] (TIMI), can be used to predict rate of 30-day MACE. Literature Review: TIMI Score [SNOMED: 278061009]: A TIMI score [SNOMED: 278061009] of 0 provides high sensitivity [SNOMED: 35209006] (96%-99%) for ruling out 30-day MACE, but lower bounds of 95% CI in some studies fall [SNOMED: 1912002] below acceptable thresholds [SNOMED: 246510005], and specificity is low (~20-25%).",
+          "citation_verbatim_excerpt": "Level B recommendations: In adult patients without evidence of ST-elevation ACS, the History, ECG, Age, Risk factors, Troponin (HEART) score can be used as a clinical prediction instrument for risk stratification. A low score (<=3) predicts 30-day MACE miss rate within a range of 0% to 2%.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "HAS_QUANTITATIVE_THRESHOLD",
+          "target": "urn:uuid:e5294e12-5189-4974-8f8a-f9567179796e",
+          "rationale": "The TIMI score threshold for high sensitivity ruling out 30-day MACE is 0.",
+          "citation": "Level C recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], other risk-stratification tools [SNOMED: 86967005], such as Thrombolysis [SNOMED: 51308000] in Myocardial Infarction [SNOMED: 22298006] (TIMI), can be used to predict rate of 30-day MACE. Literature Review: TIMI Score [SNOMED: 278061009]: A TIMI score [SNOMED: 278061009] of 0 provides high sensitivity [SNOMED: 35209006] (96%-99%) for ruling out 30-day MACE, but lower bounds of 95% CI in some studies fall [SNOMED: 1912002] below acceptable thresholds [SNOMED: 246510005], and specificity is low (~20-25%).",
+          "citation_paraphrase": "Level C recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], other risk-stratification tools [SNOMED: 86967005], such as Thrombolysis [SNOMED: 51308000] in Myocardial Infarction [SNOMED: 22298006] (TIMI), can be used to predict rate of 30-day MACE. Literature Review: TIMI Score [SNOMED: 278061009]: A TIMI score [SNOMED: 278061009] of 0 provides high sensitivity [SNOMED: 35209006] (96%-99%) for ruling out 30-day MACE, but lower bounds of 95% CI in some studies fall [SNOMED: 1912002] below acceptable thresholds [SNOMED: 246510005], and specificity is low (~20-25%).",
+          "citation_verbatim_excerpt": "Level B recommendations: In adult patients without evidence of ST-elevation ACS, the History, ECG, Age, Risk factors, Troponin (HEART) score can be used as a clinical prediction instrument for risk stratification. A low score (<=3) predicts 30-day MACE miss rate within a range of 0% to 2%.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:226c3ba2-f9f2-42c8-8b64-4f4bba4725f0",
+      "@type": "Finding",
+      "name": "Clinical Judgment",
+      "snomed": "61254005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f7e8d9c0-b1a2-4356-987f-0123456789ab",
+          "rationale": "Clinical judgment alone achieves ~91-96% sensitivity for MACE, but falls short of the >98% threshold unless combined with objective biomarkers and ECG.",
+          "citation": "Clinical Judgment [SNOMED: 61254005]: Unstructured physician gestalt alone achieves ~91-96% sensitivity [SNOMED: 35209006] for MACE, falling short of the required >98% sensitivity [SNOMED: 35209006] threshold [SNOMED: 246510005] unless combined [SNOMED: 89780004] with objective cardiac [SNOMED: 80891009] biomarkers and ECG [SNOMED: 29303009].",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c2d3e4f5-a6b7-49d8-b3c4-567890abcdef",
+      "@type": "Intervention",
+      "name": "Initial Risk Stratification",
+      "snomed": "4062325",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": [
+        {
+          "predicate": "USES_TOOL",
+          "target": "urn:uuid:b3c4d5e6-f7a8-4901-2345-67890abcdef1",
+          "rationale": "The HEART score can be used for initial risk stratification in NSTE-ACS.",
+          "citation": "Level B recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], the History, ECG [SNOMED: 29303009], Age, Risk factors [SNOMED: 80943009], Troponin [SNOMED: 102680009] (HEART [SNOMED: 80891009]) score [SNOMED: 278061009] can be used as a clinical prediction instrument [SNOMED: 57134006] for risk stratification.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "USES_TOOL",
+          "target": "urn:uuid:b3c4d5e6-f7a8-4901-2345-67890abcdef1",
+          "rationale": "The TIMI score can be used for initial risk stratification in NSTE-ACS.",
+          "citation": "Level C recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], other risk-stratification tools [SNOMED: 86967005], such as Thrombolysis [SNOMED: 51308000] in Myocardial Infarction [SNOMED: 22298006] (TIMI), can be used to predict rate of 30-day MACE.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "USES_TOOL",
+          "target": "urn:uuid:cb4cf1ea-5aa4-41d4-bbe3-0e1649874797",
+          "rationale": "Other risk stratification tools can be used for initial risk stratification in NSTE-ACS.",
+          "citation": "Level C recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], other risk-stratification tools [SNOMED: 86967005], such as Thrombolysis [SNOMED: 51308000] in Myocardial Infarction [SNOMED: 22298006] (TIMI), can be used to predict rate of 30-day MACE.",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Initial risk drug assessment",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:49:20.104448+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:f8a9b0c1-d2e3-4756-89ab-cdef12345678",
+      "@type": "Acuity",
+      "name": "Low Risk (HEART Score <= 3)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:a2b3c4d5-e6f7-8901-2345-67890abcdef1",
+          "rationale": "A low HEART score (<=3) is associated with a low rate of 30-day MACE.",
+          "citation": "Level B recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], the History, ECG [SNOMED: 29303009], Age, Risk factors [SNOMED: 80943009], Troponin [SNOMED: 102680009] (HEART [SNOMED: 80891009]) score [SNOMED: 278061009] can be used as a clinical prediction instrument [SNOMED: 57134006] for risk stratification. A low score [SNOMED: 278061009] (<=3) predicts 30-day MACE miss rate within a range of 0% to 2%.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a2b3c4d5-e6f7-8901-2345-67890abcdef1",
+      "@type": "Finding",
+      "name": "30-day MACE miss rate between 0% and 2%",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e6f7a8b9-c0d1-4865-9abc-def123456789",
+      "@type": "Acuity",
+      "name": "High Sensitivity for Ruling Out 30-day MACE (TIMI Score = 0)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:2b3a2f91-af30-4b87-bf43-6cf5af3ef01b",
+          "rationale": "A TIMI score of 0 is associated with high sensitivity (96%-99%) for ruling out 30-day MACE.",
+          "citation": "Level C recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], other risk-stratification tools [SNOMED: 86967005], such as Thrombolysis [SNOMED: 51308000] in Myocardial Infarction [SNOMED: 22298006] (TIMI), can be used to predict rate of 30-day MACE. Literature Review: TIMI Score [SNOMED: 278061009]: A TIMI score [SNOMED: 278061009] of 0 provides high sensitivity [SNOMED: 35209006] (96%-99%) for ruling out 30-day MACE, but lower bounds of 95% CI in some studies fall [SNOMED: 1912002] below acceptable thresholds [SNOMED: 246510005], and specificity is low (~20-25%).",
+          "citation_paraphrase": "Level C recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], other risk-stratification tools [SNOMED: 86967005], such as Thrombolysis [SNOMED: 51308000] in Myocardial Infarction [SNOMED: 22298006] (TIMI), can be used to predict rate of 30-day MACE. Literature Review: TIMI Score [SNOMED: 278061009]: A TIMI score [SNOMED: 278061009] of 0 provides high sensitivity [SNOMED: 35209006] (96%-99%) for ruling out 30-day MACE, but lower bounds of 95% CI in some studies fall [SNOMED: 1912002] below acceptable thresholds [SNOMED: 246510005], and specificity is low (~20-25%).",
+          "citation_verbatim_excerpt": "Level B recommendations: In adult patients without evidence of ST-elevation ACS, the History, ECG, Age, Risk factors, Troponin (HEART) score can be used as a clinical prediction instrument for risk stratification. A low score (<=3) predicts 30-day MACE miss rate within a range of 0% to 2%.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a3b4c5d6-e7f8-9012-3456-7890abcdef13",
+      "@type": "Finding",
+      "name": "High sensitivity (96%-99%) for ruling out 30-day MACE",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cb4cf1ea-5aa4-41d4-bbe3-0e1649874797",
+      "@type": "Finding",
+      "name": "Alternative Scoring Systems",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": [
+        {
+          "predicate": "EXAMPLE",
+          "target": "urn:uuid:cc34d83c-8410-492a-a000-48b17fc0e7fc",
+          "rationale": "Examples of alternative scoring systems include North American Chest Pain Rule, Manchester ACS (MACS), Vancouver Chest Pain Rule, GRACE, EDACS, Banach, and m-Goldman scores.",
+          "citation": "Level C recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], other risk-stratification tools [SNOMED: 86967005], such as Thrombolysis [SNOMED: 51308000] in Myocardial Infarction [SNOMED: 22298006] (TIMI), can be used to predict rate of 30-day MACE. Alternative Scoring [SNOMED: 278061009] Systems: North American [SNOMED: 160516002] Chest Pain [SNOMED: 29857009] Rule, Manchester ACS [SNOMED: 394659003] (MACS), Vancouver Chest Pain [SNOMED: 29857009] Rule, GRACE, EDACS [SNOMED: 61931000000101], Banach, and m-Goldman scores [SNOMED: 278061009] show variable performance across populations.",
+          "citation_paraphrase": "Level C recommendations: In adult patients without evidence of ST-elevation [SNOMED: 164931005] ACS [SNOMED: 394659003], other risk-stratification tools [SNOMED: 86967005], such as Thrombolysis [SNOMED: 51308000] in Myocardial Infarction [SNOMED: 22298006] (TIMI), can be used to predict rate of 30-day MACE. Alternative Scoring [SNOMED: 278061009] Systems: North American [SNOMED: 160516002] Chest Pain [SNOMED: 29857009] Rule, Manchester ACS [SNOMED: 394659003] (MACS), Vancouver Chest Pain [SNOMED: 29857009] Rule, GRACE, EDACS [SNOMED: 61931000000101], Banach, and m-Goldman scores [SNOMED: 278061009] show variable performance across populations.",
+          "citation_verbatim_excerpt": "CRITICAL QUESTION 1: In adult patients without evidence of ST-elevation ACS, can initial risk stratification be used to predict a low rate of 30-day MACE? Level A recommendations: None specified. Level B recommendations: In adult patients without evidence of ST-elevation ACS, the History, ECG, Age, Risk factors, Troponin (HEART) score can be used as a clinical prediction instrument for risk stratification.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:cc34d83c-8410-492a-a000-48b17fc0e7fc",
+      "@type": "Finding",
+      "name": "North American Chest Pain Rule",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0388263c-2678-494c-9132-cded906802bd",
+      "@type": "Finding",
+      "name": "Manchester ACS (MACS) Rule",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f27882ce-4b30-4421-8227-8c4854e26a6e",
+      "@type": "Finding",
+      "name": "Vancouver Chest Pain Rule",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:74f7d2ed-f8a3-4872-acc8-aeca2488576c",
+      "@type": "Finding",
+      "name": "GRACE Score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:daddca8a-1876-444f-9c40-f32b02329a17",
+      "@type": "Finding",
+      "name": "EDACS Score",
+      "snomed": "37207500",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": [],
+      "snomed_name": "EDACS - Eating and Drinking Ability Classification System",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:49:23.684775+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:179253fe-db34-40f1-9a14-7c4f651894a2",
+      "@type": "Finding",
+      "name": "Banach Score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:710d80b0-cde6-4d8b-bf6f-963ac7097f04",
+      "@type": "Finding",
+      "name": "m-Goldman Score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2b3a2f91-af30-4b87-bf43-6cf5af3ef01b",
+      "@type": "Finding",
+      "name": "Sensitivity ~91-96% for MACE (Clinical Judgment Alone)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e5294e12-5189-4974-8f8a-f9567179796e",
+      "@type": "Finding",
+      "name": "Sensitivity 96%-99% for Ruling Out 30-day MACE (TIMI Score = 0)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b716c7e9-1b38-46d9-8566-5fd9d6201138",
+      "@type": "Finding",
+      "name": "Sensitivity 98%-99% for Ruling Out 30-day MACE (HEART Score <= 3)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "non–st-elevation_acute_coronary_syndromes_chunk_2_critical_question_1_init.json",
+        "section_title": "Critical Question 1: Initial Risk Stratification for 30-Day MACE"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:40.597029+00:00",
+    "nodes_before": 22,
+    "nodes_after": 20,
+    "rules_before": 13,
+    "rules_after": 12
+  }
+}

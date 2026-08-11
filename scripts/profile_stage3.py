@@ -60,6 +60,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
 TRIPLETS_CANDIDATES = [
+    # 2026-08-11 Stage3 Issue1 rule backfill -- see
+    # docs/Stage3_Issue1_Rule_Backfill.md. Non-destructive; fallbacks below
+    # still work if this dir is ever missing.
+    os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned_grounded_rules_added"),
     os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned_grounded"),
     os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned"),
 ]

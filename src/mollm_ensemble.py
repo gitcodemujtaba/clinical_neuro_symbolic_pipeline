@@ -489,14 +489,22 @@ def _format_suppressed(retrieval: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
-def _query_one(client, system_prompt, user_prompt, allowed_verdicts) -> dict:
+def _query_one(client, system_prompt, user_prompt, allowed_verdicts,
+                require_citation: bool = True) -> dict:
     # Guided decoding constrains the verdict to allowed_verdicts, so the
     # out-of-vocabulary branch below should become unreachable -- but it is
     # kept, because llm_client falls back to unguided json_object mode if the
     # server rejects the guided request, and a silent fallback must not turn
     # into a silent coercion.
+    #
+    # require_citation=False (docs/Stage3_Open_Issues.md Issue 2 experiment):
+    # caller sets this when retrieval found zero rules, testing whether an
+    # unconditionally-required cited_evidence array was itself inviting
+    # fabrication under guided decoding. verify_citations() still runs
+    # either way -- this changes what the model is pressured to emit, not
+    # what gets checked.
     raw = client.complete(system_prompt, user_prompt,
-                          schema=verdict_schema(allowed_verdicts))
+                          schema=verdict_schema(allowed_verdicts, require_citation=require_citation))
     parsed = parse_json_response(raw["text"])
 
     verdict = str(parsed.get("verdict", "")).strip().upper()
@@ -649,10 +657,12 @@ def validate_record(record: dict, retriever, clients: dict = None) -> dict:
         "prompt": user_prompt,
     }
 
+    require_citation = bool(retrieval.get("rules"))
     model_results = []
     for name, client in clients.items():
         try:
-            model_results.append(_query_one(client, SYSTEM_PROMPT, user_prompt, allowed))
+            model_results.append(_query_one(client, SYSTEM_PROMPT, user_prompt, allowed,
+                                              require_citation=require_citation))
         except (LLMUnavailable, ValueError) as exc:
             # An unavailable or unparseable model invalidates the ensemble.
             # Recorded and routed to a human rather than proceeding on one
@@ -694,10 +704,12 @@ def validate_record(record: dict, retriever, clients: dict = None) -> dict:
             "round_1_models": model_results,
             "round_1_prompt": user_prompt,
         }
+        exp_require_citation = bool(expanded.get("rules"))
         second = []
         for name, client in clients.items():
             try:
-                second.append(_query_one(client, SYSTEM_PROMPT, exp_prompt, exp_allowed))
+                second.append(_query_one(client, SYSTEM_PROMPT, exp_prompt, exp_allowed,
+                                          require_citation=exp_require_citation))
             except (LLMUnavailable, ValueError) as exc:
                 artifact["expansion"]["error"] = f"{name}: {exc}"
                 second = []

@@ -43,6 +43,14 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
 TRIPLETS_CANDIDATES = [
+    # 2026-08-11 Stage3 Issue1 rule backfill: 42->12 rule-less high-frequency
+    # nodes fixed against the 51-file _grounded corpus, then the 25 files that
+    # never went through grounding backfill at all were merged in and given
+    # the same treatment (26->14 remaining). See
+    # docs/Stage3_Issue1_Rule_Backfill.md. Non-destructive: the original
+    # _grounded/ and _cleaned/ dirs below are untouched and still work as
+    # fallbacks if this one is ever missing.
+    os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned_grounded_rules_added"),
     os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned_grounded"),
     os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned"),
 ]

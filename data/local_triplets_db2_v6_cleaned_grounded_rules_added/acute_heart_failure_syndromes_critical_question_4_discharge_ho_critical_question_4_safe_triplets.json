@@ -1,0 +1,574 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "B-lines on lung ultrasound",
+      "snomed": "25876001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:ccd06c33-f043-44c2-a053-38ccaf5f661c",
+          "rationale": "B-lines on lung ultrasound indicate acute heart failure syndrome",
+          "citation": "A systematic review showed high specificity for B-lines.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ccd06c33-f043-44c2-a053-38ccaf5f661c",
+      "@type": "Condition",
+      "name": "Acute heart failure syndrome (AHFS)",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:df185430-72f9-4ccb-8012-5467ca6ae12c",
+      "@type": "Finding",
+      "name": "Acute heart failure",
+      "snomed": "56675007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0778a2b6-485d-4953-9706-58bfe525da15",
+      "@type": "Finding",
+      "name": "Ottawa Heart Failure Risk Scale (OHFRS)",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:adae5926-1647-4eed-81f4-3d07ca1ee04a",
+          "rationale": "OHFRS score is used to determine risk stratification for AHFS patients.",
+          "citation": "Stiell et al. developed the OHFRS score.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-12ab-34cd567890ef",
+          "rationale": "OHFRS score is used to determine risk stratification for AHFS patients.",
+          "citation": "Stiell et al. developed the OHFRS score.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:abcdef01-2345-6789-abcd-ef0123456789",
+      "@type": "Finding",
+      "name": "Emergency Heart Failure Mortality Risk Grade for 7-day mortality (EHMRG7)",
+      "snomed": "86967005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-12ab-34cd567890ef",
+          "rationale": "EHMRG7 is used to determine risk stratification for AHFS patients.",
+          "citation": "Mentioned as a tool to help determine which higher-risk patients should not be discharged home.",
+          "citation_paraphrase": "Mentioned as a tool to help determine which higher-risk patients should not be discharged home.",
+          "citation_verbatim_excerpt": "In adult patients presenting to the emergency department with symptomatic acute heart failure syndrome, is there a defined group that may be safely discharged home for outpatient follow-up?Patient Management RecommendationsLevel A recommendations.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-12ab-34cd567890ef",
+          "rationale": "STRATIFY is used to determine risk stratification for AHFS patients.",
+          "citation": "Mentioned as a tool to help determine which higher-risk patients should not be discharged home.",
+          "citation_paraphrase": "Mentioned as a tool to help determine which higher-risk patients should not be discharged home.",
+          "citation_verbatim_excerpt": "In adult patients presenting to the emergency department with symptomatic acute heart failure syndrome, is there a defined group that may be safely discharged home for outpatient follow-up?Patient Management RecommendationsLevel A recommendations.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1c9a90ce-1fca-42a4-a3b6-1c3dd3df81e0",
+      "@type": "Finding",
+      "name": "Emergency Department (ED)",
+      "snomed": "225728007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a3be33b3-3e1b-445b-a984-4abe088c7022",
+      "@type": "Finding",
+      "name": "Discharge home",
+      "snomed": "58000006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5f82159f-65b4-4417-905e-80893a272669",
+      "@type": "Finding",
+      "name": "Symptomatic",
+      "snomed": "264931009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0c6c064f-59f0-4f70-a797-945237b7c782",
+      "@type": "Finding",
+      "name": "Shared decision-making",
+      "snomed": "815691000000107",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2d232045-01cc-4301-ba15-46886a600cad",
+      "@type": "Finding",
+      "name": "Disposition",
+      "snomed": "726711005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c4d5e6f7-a890-1234-b3c4-d5e6f7a89012",
+      "@type": "Finding",
+      "name": "Hospital admission",
+      "snomed": "32485007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d5e6f7a8-9012-3456-b3c4-d5e6f7a89012",
+      "@type": "Finding",
+      "name": "Hospital overcrowding",
+      "snomed": "105532006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e6f7a890-1234-5678-b3c4-d5e6f7a89012",
+      "@type": "Finding",
+      "name": "Acute decompensated heart failure",
+      "snomed": "195111005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [
+        {
+          "predicate": "IS_A",
+          "target": "urn:uuid:1e6bf3b9-0b23-4d2e-86b5-042d62625f23",
+          "rationale": "Acute decompensated heart failure is treated as a synonym/subtype of heart failure in this clinical policy's own terminology (it appears alongside 'acute heart failure' and 'acute systolic/diastolic heart failure' as equivalent search terms for the same condition, not as a clinically distinct entity with its own recommendations in this chunk).",
+          "citation": "Key words/phrases for literature searches: acute decompensated heart failure, acute diastolic heart failure, acute disease, acute heart failure, acute systolic heart failure, discharge, discharged, ED, ...",
+          "citation_type": "paraphrase",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Key words/phrases for literature searches: acute decompensated heart failure, acute diastolic heart failure, acute disease, acute heart failure, acute systolic heart failure, discharge, discharged, ED, ..."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f7a89012-3456-7890-b3c4-d5e6f7a89012",
+      "@type": "Finding",
+      "name": "Acute diastolic heart failure",
+      "snomed": "443343001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a8901234-5678-9012-b3c4-d5e6f7a89012",
+      "@type": "Finding",
+      "name": "Acute disease",
+      "snomed": "2704003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8e68c498-69ec-40c4-8241-03a5ed0b9aad",
+      "@type": "Finding",
+      "name": "Acute systolic heart failure",
+      "snomed": "443254009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:bbb3f9c8-d1bb-4738-af85-bf2dc885b199",
+      "@type": "Finding",
+      "name": "Emergency medical services",
+      "snomed": "409971007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:733c7d08-77b2-4c0e-b05a-5e177cb37a96",
+      "@type": "Finding",
+      "name": "Emergency medicine",
+      "snomed": "773568002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:795e2cad-f907-4ff8-ba49-7a50dfc667a7",
+      "@type": "Finding",
+      "name": "Emergency service",
+      "snomed": "719491000000109",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6939a0ae-2d85-4477-a65a-9415a0c56f7c",
+      "@type": "Finding",
+      "name": "Hospital discharge",
+      "snomed": "308283009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1e6bf3b9-0b23-4d2e-86b5-042d62625f23",
+      "@type": "Finding",
+      "name": "Heart failure",
+      "snomed": "84114007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fe4e771a-f44a-44d1-af49-ad8addaa9d30",
+      "@type": "Finding",
+      "name": "Comorbid conditions",
+      "snomed": "398192003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:36a04398-5259-4e29-aa53-2c4f6cf604a8",
+      "@type": "Finding",
+      "name": "Hypertension",
+      "snomed": "38341003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:fe4e771a-f44a-44d1-af49-ad8addaa9d30",
+          "rationale": "Hypertension is one of the comorbid conditions commonly present in heart failure patients that can contribute to admission decisions and prolong hospital length of stay.",
+          "citation": "Patients with heart failure often have other comorbid conditions (eg, hypertension, ischemic heart disease, diabetes, chronic kidney disease, and atrial fibrillation), which may also contribute to admission decisions and prolong hospital length of stay.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Patients with heart failure often have other comorbid conditions (eg, hypertension, ischemic heart disease, diabetes, chronic kidney disease, and atrial fibrillation), which may also contribute to admission decisions and prolong hospital length of stay."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0caa1574-906c-43df-be7c-fa1d94755640",
+      "@type": "Finding",
+      "name": "Ischemic heart disease",
+      "snomed": "414795007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:fe4e771a-f44a-44d1-af49-ad8addaa9d30",
+          "rationale": "Ischemic heart disease is one of the comorbid conditions commonly present in heart failure patients that can contribute to admission decisions and prolong hospital length of stay.",
+          "citation": "Patients with heart failure often have other comorbid conditions (eg, hypertension, ischemic heart disease, diabetes, chronic kidney disease, and atrial fibrillation), which may also contribute to admission decisions and prolong hospital length of stay.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Patients with heart failure often have other comorbid conditions (eg, hypertension, ischemic heart disease, diabetes, chronic kidney disease, and atrial fibrillation), which may also contribute to admission decisions and prolong hospital length of stay."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7ece2934-aa82-468e-a744-85b8fae3d33b",
+      "@type": "Finding",
+      "name": "Chronic kidney disease",
+      "snomed": "709044004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:fe4e771a-f44a-44d1-af49-ad8addaa9d30",
+          "rationale": "Chronic kidney disease is one of the comorbid conditions commonly present in heart failure patients that can contribute to admission decisions and prolong hospital length of stay.",
+          "citation": "Patients with heart failure often have other comorbid conditions (eg, hypertension, ischemic heart disease, diabetes, chronic kidney disease, and atrial fibrillation), which may also contribute to admission decisions and prolong hospital length of stay.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Patients with heart failure often have other comorbid conditions (eg, hypertension, ischemic heart disease, diabetes, chronic kidney disease, and atrial fibrillation), which may also contribute to admission decisions and prolong hospital length of stay."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:124d3fd4-63f7-4d7a-b330-667edcbb49ae",
+      "@type": "Finding",
+      "name": "Atrial fibrillation",
+      "snomed": "49436004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b06cd452-2d4b-4dce-af1d-578e2f60b53c",
+      "@type": "Finding",
+      "name": "Mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:adae5926-1647-4eed-81f4-3d07ca1ee04a",
+      "@type": "Acuity",
+      "name": "Risk stratification for AHFS patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-12ab-34cd567890ef",
+      "@type": "Acuity",
+      "name": "Risk stratification for AHFS patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b6515b16-a052-4ac1-b99e-0a79131ce481",
+      "@type": "Finding",
+      "name": "Adverse outcome",
+      "snomed": "4231813",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [],
+      "snomed_name": "Adverse incident outcome",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:43:14.408555+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:b3c4d5e6-f7a8-9012-b3c4-d5e6f7a89012",
+      "@type": "Finding",
+      "name": "Emergency physician",
+      "snomed": "36674375",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [],
+      "snomed_name": "Emergency medicine",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:43:15.089193+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:99678ccb-1b58-466d-938e-1e86df0f39a4",
+      "@type": "Finding",
+      "name": "Emergency care",
+      "snomed": "4249865",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [],
+      "snomed_name": "Emergency medical services",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:43:15.343069+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:884ad5e2-5e28-4c57-b6d8-dc97008899cc",
+      "@type": "Finding",
+      "name": "Emergency room",
+      "snomed": "4176269",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [],
+      "snomed_name": "Emergency room admission",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:43:16.075113+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:58016d13-332b-4ff0-9a4c-9fb0b1fa31d9",
+      "@type": "Finding",
+      "name": "Emergency treatment",
+      "snomed": "4295073",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [],
+      "snomed_name": "Emergency treatment management",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:43:16.724898+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:0800f585-54f9-498f-900a-364619f57e50",
+      "@type": "Finding",
+      "name": "Readmission",
+      "snomed": "4213258",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe.json",
+        "section_title": "Critical Question 4: Safe Discharge Home for Symptomatic AHFS Patients"
+      },
+      "rules": [],
+      "snomed_name": "Hospital re-admission",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:43:17.340977+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:97aa76a2-be87-4f1e-bc08-def4892aa560",
+      "@type": "Finding",
+      "name": "",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:32.325395+00:00",
+    "nodes_before": 45,
+    "nodes_after": 37,
+    "rules_before": 6,
+    "rules_after": 5
+  }
+}

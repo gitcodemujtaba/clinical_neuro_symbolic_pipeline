@@ -1,0 +1,287 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Algorithms used in emergency care",
+      "snomed": "70232002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Finding",
+      "name": "Emergency clinicians familiar with algorithms",
+      "snomed": "409971007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b98d3d57-ac4f-4107-974f-96746bb42ca2",
+      "@type": "Finding",
+      "name": "Emergency Severity Index (ESI)",
+      "snomed": "713010006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8ee9576e-e3f0-44a0-a735-1379f5ef2db5",
+      "@type": "Finding",
+      "name": "Triage acuity level",
+      "snomed": "225390008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+      "@type": "Finding",
+      "name": "Emergency nursing experience",
+      "snomed": "722165004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:734feadb-9e79-437b-93be-0f3cb5fdd6cf",
+      "@type": "Finding",
+      "name": "Stability",
+      "snomed": "58158008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cacb4eeb-e6d7-40cf-a245-e2f37d0fe82b",
+      "@type": "Finding",
+      "name": "Psychological stability",
+      "snomed": "60224009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:16cd737f-42fe-4a09-8517-c943aa1ed3f8",
+      "@type": "Finding",
+      "name": "Vital signs",
+      "snomed": "61746007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:acdeb0f1-486e-9c2f-edcb-a09876543219",
+      "@type": "Finding",
+      "name": "Heart Rate (HR)",
+      "snomed": "364075005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:deb0f148-6e9c-2fed-cbaf-0987654321ac",
+      "@type": "Finding",
+      "name": "SpO2",
+      "snomed": "431314004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e20f5f77-2eef-4eda-9ec8-40d036ff52d9",
+      "@type": "Finding",
+      "name": "Immediate lifesaving intervention",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:13579ace-dfb0-486e-a9c2-fedcba098765",
+          "rationale": "Requires immediate lifesaving intervention (e.g., airway support, emergency medications, hemodynamic interventions).",
+          "citation": "Chapter 2 – Overview of the ESI Algorithm",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:13579ace-dfb0-486e-a9c2-fedcba098765",
+      "@type": "Acuity",
+      "name": "ESI Level 1",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2468aceb-01df-486e-9c2f-edcbaf098765",
+      "@type": "Finding",
+      "name": "High risk situation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:3579acde-fb01-486e-a9c2-fedcb0987654",
+          "rationale": "Patient may become unstable, have high risk for deterioration, or exhibit newly altered mental status.",
+          "citation": "Chapter 2 – Overview of the ESI Algorithm",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3579acde-fb01-486e-a9c2-fedcb0987654",
+      "@type": "Acuity",
+      "name": "ESI Level 2",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e0b2bc39-a405-4648-85ee-6b0469788cf6",
+      "@type": "Finding",
+      "name": "Resource needs",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:579acdeb-f014-86e9-c2fe-dcba09876543",
+          "rationale": "Anticipation of resources needed during a typical ED course for patients with similar presentations.",
+          "citation": "Chapter 2 – Overview of the ESI Algorithm",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:579acdeb-f014-86e9-c2fe-dcba09876543",
+      "@type": "Acuity",
+      "name": "ESI Level 3, 4, or 5",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:68aceb01-df48-6e9c-2fed-cbaf09876543",
+      "@type": "Finding",
+      "name": "High-risk vital signs",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8ea6101-242a-4801-9c7b-b72554bfd05e",
+          "rationale": "Identify more subtle high-risk presentations or an immediate need for lifesaving interventions and to reassess the acuity decision.",
+          "citation": "Chapter 2 – Overview of the ESI Algorithm",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f8ea6101-242a-4801-9c7b-b72554bfd05e",
+      "@type": "Acuity",
+      "name": "Reassess acuity decision (potentially upgrade to ESI Level 2)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9acdeb0f-1486-e9c2-fedc-ba0987654321",
+      "@type": "Finding",
+      "name": "Age",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cdeb0f14-86e9-c2fe-dcba-0987654321ab",
+      "@type": "Finding",
+      "name": "Respiratory Rate (RR)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_2_overview_of_esi_algori_chapter_2_–_overview_of_.json",
+        "section_title": "CHAPTER 2 – Overview of the ESI Algorithm"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:36.927823+00:00",
+    "nodes_before": 22,
+    "nodes_after": 20,
+    "rules_before": 4,
+    "rules_after": 4
+  }
+}

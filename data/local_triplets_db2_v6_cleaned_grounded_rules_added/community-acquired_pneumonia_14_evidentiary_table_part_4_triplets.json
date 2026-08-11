@@ -1,0 +1,557 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "ICU admission",
+      "snomed": "309904001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME_OF",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "ICU admission is an outcome measure used in studies evaluating severity scores for CAP.",
+          "citation": "Buising et al28, Chalmers et al31, Liapikou et al33, Fukuyama et al35",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Condition",
+      "name": "ICU admission",
+      "snomed": "309904001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ed849347-dbec-46fa-a246-bec018c508a9",
+      "@type": "Finding",
+      "name": "ICU admission",
+      "snomed": "309904001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME_OF",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "ICU admission is an outcome measure used in studies evaluating severity scores for CAP.",
+          "citation": "Buising et al28, Chalmers et al31, Fukuyama et al35",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:2e0aa4a4-928d-4641-98d9-b9ab69a2a839",
+      "@type": "Finding",
+      "name": "ICU admission",
+      "snomed": "309904001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME_OF",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "ICU admission is an outcome measure used in studies evaluating severity scores for CAP.",
+          "citation": "Buising et al28, Chalmers et al31, Fukuyama et al35",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:6fb1a295-c5d2-44f9-a7d2-3ecfc84e8467",
+      "@type": "Finding",
+      "name": "PSI class IV",
+      "snomed": "255560000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "PSI class IV is associated with increased risk of ICU admission.",
+          "citation": "Chalmers et al31 (Meta-analysis: pooled sensitivity 74.1%, specificity 47.9% for ICU admission)",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "PSI class IV is associated with increased risk of ICU admission.",
+          "citation": "Fukuyama et al35 (Sensitivity 93%, Specificity 31% for mechanical ventilation)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fadda532-0a1a-4f38-adb7-4fa2d44f635c",
+      "@type": "Finding",
+      "name": "PSI class V",
+      "snomed": "277970007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "PSI class V is associated with increased risk of ICU admission.",
+          "citation": "Chalmers et al31 (Meta-analysis: pooled sensitivity 74.1%, specificity 47.9% for ICU admission)",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "PSI class V is associated with increased risk of ICU admission.",
+          "citation": "Fukuyama et al35 (Sensitivity 93%, Specificity 31% for mechanical ventilation)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c05f26a1-240f-489f-9146-f188a6ba37c0",
+      "@type": "Finding",
+      "name": "Modified BTS severity score",
+      "snomed": "278305009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Modified BTS severity score is associated with increased risk of ICU admission.",
+          "citation": "Chalmers et al31 (Meta-analysis: pooled sensitivity 100%, specificity not reported for ICU admission)",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Modified BTS severity score is associated with increased risk of ICU admission.",
+          "citation": "Liapikou et al33 (Sensitivity 71%, Specificity 88% for ICU admission)",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1c4d22f4-f67a-474d-839b-3e409b8e47e5",
+      "@type": "Finding",
+      "name": "Revised ATS score",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Revised ATS score is associated with increased risk of ICU admission.",
+          "citation": "Chalmers et al31 (Meta-analysis: pooled sensitivity 66.7%, specificity 84.6% for ICU admission)",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Revised ATS score is associated with increased risk of ICU admission.",
+          "citation": "Liapikou et al33 (Sensitivity 61%, Specificity 88% for ICU admission)",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d7506d85-2107-4ab2-9d9c-688125099603",
+      "@type": "Finding",
+      "name": "Inhospital mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME_OF",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Inhospital mortality is an outcome measure used in studies evaluating severity scores for CAP.",
+          "citation": "Buising et al28, Chalmers et al31, Fukuyama et al35",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "IS_OUTCOME_OF",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Inpatient mortality is an outcome measure used in studies evaluating severity scores for CAP.",
+          "citation": "Buising et al28, Fukuyama et al35",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:137ca44d-3bfd-46c6-8feb-a59dee0f7681",
+      "@type": "Finding",
+      "name": "Mechanical ventilation",
+      "snomed": "40617009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME_OF",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Mechanical ventilation is an outcome measure used in studies evaluating severity scores for CAP.",
+          "citation": "Fukuyama et al35",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6d9c5095-28df-42fd-b4ab-7e1e55544701",
+      "@type": "Finding",
+      "name": "Septic shock",
+      "snomed": "76571007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME_OF",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Septic shock is an outcome measure used in studies evaluating severity scores for CAP.",
+          "citation": "Fukuyama et al35",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d41ec221-86c3-4277-b33d-96d4c4ef28a0",
+      "@type": "Finding",
+      "name": "Composite outcome of requiring either inotropic support or noninvasive or invasive ventilation",
+      "snomed": "1520008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME_OF",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Composite outcome of requiring either inotropic support or noninvasive or invasive ventilation is an outcome measure used in studies evaluating severity scores for CAP.",
+          "citation": "Buising et al28",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:98f645ce-3a8f-4444-b845-590172e84431",
+      "@type": "Finding",
+      "name": "Inotropic support",
+      "snomed": "373213009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:d41ec221-86c3-4277-b33d-96d4c4ef28a0",
+          "rationale": "Inotropic support is part of the composite outcome used in Buising et al.",
+          "citation": "Buising et al28",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:63e00283-2c7f-4435-903e-34ac0f2e788e",
+      "@type": "Finding",
+      "name": "Noninvasive ventilation",
+      "snomed": "266700009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:d41ec221-86c3-4277-b33d-96d4c4ef28a0",
+          "rationale": "Noninvasive ventilation is part of the composite outcome used in Buising et al.",
+          "citation": "Buising et al28",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ec3e389d-f5d3-456b-b42d-203a66559d21",
+      "@type": "Finding",
+      "name": "Invasive ventilation",
+      "snomed": "10179008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:d41ec221-86c3-4277-b33d-96d4c4ef28a0",
+          "rationale": "Invasive ventilation is part of the composite outcome used in Buising et al.",
+          "citation": "Buising et al28",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0fdc38c7-7221-4b32-9dd1-a3bef95c38b5",
+      "@type": "Finding",
+      "name": "Circulatory failure",
+      "snomed": "113257007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:d41ec221-86c3-4277-b33d-96d4c4ef28a0",
+          "rationale": "Circulatory failure is part of the composite outcome used in Buising et al.",
+          "citation": "Buising et al28",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:71a30a78-fd15-45e2-aaad-19e10fcdd5ea",
+      "@type": "Finding",
+      "name": "Respiratory failure",
+      "snomed": "409622000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:d41ec221-86c3-4277-b33d-96d4c4ef28a0",
+          "rationale": "Respiratory failure is part of the composite outcome used in Buising et al.",
+          "citation": "Buising et al28",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a35e1be2-d99c-49dc-8a67-781aae7c838c",
+      "@type": "Finding",
+      "name": "PNA",
+      "snomed": "439401001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_CONDITION_FOR_STUDY",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "PNA is the condition studied in Buising et al.",
+          "citation": "Buising et al28",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:450bcb1c-339e-4fbf-a387-d148a89c6299",
+      "@type": "Finding",
+      "name": "Vasopressor support",
+      "snomed": "870406003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME_OF",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Vasopressor support is an outcome measure used in studies evaluating severity scores for CAP.",
+          "citation": "Chalmers et al31",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:242ac860-6c08-4ab1-ad11-3d06c0667f09",
+      "@type": "Finding",
+      "name": "CURB-65 score >= 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "CURB-65 score >= 3 is associated with increased risk of ICU admission.",
+          "citation": "Chalmers et al31 (Meta-analysis: pooled sensitivity 48.8%, specificity 74.0% for ICU admission using cutoff 3)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:abdeca62-9add-4394-8e53-a8090837b0a0",
+      "@type": "Finding",
+      "name": "CURB-65 score >= 4",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "CURB-65 score >= 4 is associated with increased risk of ICU admission.",
+          "citation": "Chalmers et al31 (Meta-analysis: pooled sensitivity 28.9%, specificity 89.9% for ICU admission using cutoff 4)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2eb1f7ce-57d1-4ad7-bf39-a1176cf59d61",
+      "@type": "Finding",
+      "name": "IDSA/ATS criteria for severe CAP (2007)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "IDSA/ATS criteria for severe CAP (2007) is associated with increased risk of ICU admission.",
+          "citation": "Liapikou et al33 (Sensitivity 71%, Specificity 88% for ICU admission)",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "IDSA/ATS criteria for severe CAP (2007) is associated with increased risk of ICU admission.",
+          "citation": "Fukuyama et al35 (Sensitivity 87%, Specificity 62% for mechanical ventilation)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fc9ee7e8-bfde-4ecb-bf53-12b4e4005659",
+      "@type": "Finding",
+      "name": "SMART-COP score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "SMART-COP score is associated with increased risk of ICU admission.",
+          "citation": "Fukuyama et al35 (Sensitivity 93%, Specificity 45% for mechanical ventilation)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e1b575dd-b1ed-409b-b0b7-988476123226",
+      "@type": "Finding",
+      "name": "España rule",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "España rule is associated with increased risk of ICU admission.",
+          "citation": "Fukuyama et al35 (Sensitivity 97%, Specificity 35% for mechanical ventilation)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:94111dea-fa7b-4b23-b0bc-bb4dfd9ae2dc",
+      "@type": "Finding",
+      "name": "A-DROP score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_14_evidentiary_table_part_4.json",
+        "section_title": "Evidentiary Table Part 4 (Buising et al. to Fukuyama et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "A-DROP score is associated with increased risk of ICU admission.",
+          "citation": "Fukuyama et al35 (Sensitivity 77%, Specificity 60% for mechanical ventilation)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b8dc6b11-53ea-49c1-96f8-9c230c6acf3b",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:35.905508+00:00",
+    "nodes_before": 29,
+    "nodes_after": 26,
+    "rules_before": 32,
+    "rules_after": 30
+  }
+}

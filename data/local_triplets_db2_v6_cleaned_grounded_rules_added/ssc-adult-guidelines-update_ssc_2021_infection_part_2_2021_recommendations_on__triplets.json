@@ -1,0 +1,540 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Sepsis",
+      "snomed": "91302008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Optimizing dosing strategies of antimicrobials based on PK/PD principles and specific drug properties is recommended for adults with sepsis or septic shock.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we recommend optimising dosing strategies of antimicrobials based on accepted [SNOMED: 385645004] pharmacokinetic/pharmacodynamic (PK/PD) principles and specific drug properties [SNOMED: 118598001].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:dd94673e-d59a-48e6-a55f-43431a41aa35",
+          "rationale": "Rapidly identifying or excluding a specific anatomical diagnosis of infection that requires emergent source control and implementing any required source control intervention is recommended for adults with sepsis or septic shock.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we recommend rapidly identifying or excluding a specific anatomical [SNOMED: 36298004] diagnosis [SNOMED: 887161000000102] of infection [SNOMED: 191415002] that requires emergent source control and implementing any required source control intervention as soon as medically and logistically practical.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:3847ad5f-fa9e-4c70-9f09-86f477f8397d",
+          "rationale": "Prompt removal of intravascular access devices that are a possible source of sepsis or septic shock is recommended for adults with sepsis or septic shock after other vascular access has been established.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we recommend prompt removal [SNOMED: 118292001] of intravascular [SNOMED: 261101003] access devices that are a possible source of sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007] after other vascular [SNOMED: 27550009] access has been established.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b033f09f-7523-4b7a-9157-0e95b5ca0c9c",
+          "rationale": "Daily assessment for de-escalation of antimicrobials over using fixed durations of therapy without daily reassessment is suggested for adults with sepsis or septic shock.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we suggest daily assessment [SNOMED: 310243009] for de-escalation of antimicrobials over using fixed [SNOMED: 261010008] durations of therapy [SNOMED: 261773006] without daily reassessment for de-escalation.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:6f8095f0-13f0-463c-8e6d-005e1d846b79",
+          "rationale": "Using shorter over longer duration of antimicrobial therapy is suggested for adults with an initial diagnosis of sepsis or septic shock and adequate source control.",
+          "citation": "For adults with an initial diagnosis [SNOMED: 887161000000102] of sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007] and adequate source control, we suggest using shorter over longer duration [SNOMED: 272116003] of antimicrobial therapy.",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:8391ef6d-af32-4c05-af89-738c210a7935",
+          "rationale": "Using procalcitonin AND clinical evaluation to decide when to discontinue antimicrobials over clinical evaluation alone is suggested for adults with an initial diagnosis of sepsis or septic shock and adequate source control where optimal duration of therapy is unclear.",
+          "citation": "For adults with an initial diagnosis [SNOMED: 887161000000102] of sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007] and adequate source control where optimal duration of therapy [SNOMED: 261773006] is unclear, we suggest using procalcitonin [SNOMED: 418752001] AND clinical evaluation [SNOMED: 386053000] to decide when to discontinue antimicrobials over clinical evaluation [SNOMED: 386053000] alone.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ef4d27c2-b161-4d2f-a7ec-1d25743ba3d5",
+      "@type": "Finding",
+      "name": "Septic shock",
+      "snomed": "76571007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ba987654-3210-fedc-ba98-76543210fedc",
+      "@type": "Finding",
+      "name": "Intravascular access devices",
+      "snomed": "261101003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d2578597-907b-4654-b4de-9b8b4ee19492",
+      "@type": "Finding",
+      "name": "Procalcitonin",
+      "snomed": "418752001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Finding",
+      "name": "Clinical evaluation",
+      "snomed": "386053000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:8391ef6d-af32-4c05-af89-738c210a7935",
+          "rationale": "Clinical evaluation alone is the inferior comparator: guidance suggests combining it with procalcitonin to decide when to discontinue antimicrobials in sepsis/septic shock with adequate source control, rather than relying on clinical evaluation alone.",
+          "citation": "For adults with an initial diagnosis of sepsis or septic shock and adequate source control where optimal duration of therapy is unclear, we suggest using procalcitonin AND clinical evaluation to decide when to discontinue antimicrobials over clinical evaluation alone.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "For adults with an initial diagnosis of sepsis or septic shock and adequate source control where optimal duration of therapy is unclear, we suggest using procalcitonin AND clinical evaluation to decide when to discontinue antimicrobials over clinical evaluation alone."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7aaa9f81-0881-4f72-b6f2-fcb0232a6a8f",
+      "@type": "Finding",
+      "name": "Pharmacokinetic/pharmacodynamic (PK/PD) principles",
+      "snomed": "385645004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:17622739-e18c-4bc9-965b-c66138e3281a",
+      "@type": "Finding",
+      "name": "Specific drug properties",
+      "snomed": "118598001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:aee32dc7-3a7f-461a-a3f0-4faca6652d8b",
+      "@type": "Finding",
+      "name": "Anatomical diagnosis of infection",
+      "snomed": "36298004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7991cc45-dd43-461c-9663-d710e265f631",
+      "@type": "Finding",
+      "name": "Vascular access",
+      "snomed": "27550009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:3847ad5f-fa9e-4c70-9f09-86f477f8397d",
+          "rationale": "Establishing alternative vascular access is a precondition for the recommended prompt removal of a potentially infected intravascular access device.",
+          "citation": "For adults with sepsis or septic shock, we recommend prompt removal of intravascular access devices that are a possible source of sepsis or septic shock after other vascular access has been established.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "For adults with sepsis or septic shock, we recommend prompt removal of intravascular access devices that are a possible source of sepsis or septic shock after other vascular access has been established."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1cc83382-0d97-4557-b6cc-bfa89a5ca8b4",
+      "@type": "Finding",
+      "name": "Fixed durations of therapy",
+      "snomed": "261010008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f1d84e72-2fb4-41dd-b35a-6efb094bed01",
+      "@type": "Finding",
+      "name": "Therapy duration",
+      "snomed": "261773006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:48735b77-daf9-452c-9487-a76551654c24",
+      "@type": "Finding",
+      "name": "Shorter duration",
+      "snomed": "272116003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:41c30e1b-5c81-410e-86f2-380d9b2fcd40",
+      "@type": "Finding",
+      "name": "Infection diagnosis",
+      "snomed": "887161000000102",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7bb30180-e891-4eab-ac1e-98a281b94cf2",
+      "@type": "Finding",
+      "name": "Infection",
+      "snomed": "191415002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:866d833e-2c1b-490e-be76-6c4cf1ae77b3",
+      "@type": "Finding",
+      "name": "Removal",
+      "snomed": "118292001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:ba987654-3210-fedc-ba98-76543210fedc",
+          "rationale": "Prompt removal of intravascular access devices that are a possible source of infection is a best-practice recommendation for adults with sepsis or septic shock, once alternative vascular access has been established.",
+          "citation": "For adults with sepsis or septic shock, we recommend prompt removal of intravascular access devices that are a possible source of sepsis or septic shock after other vascular access has been established.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "For adults with sepsis or septic shock, we recommend prompt removal of intravascular access devices that are a possible source of sepsis or septic shock after other vascular access has been established."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Medication",
+      "name": "Antimicrobials",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Antimicrobials are required for the treatment of sepsis and septic shock.",
+          "citation": "For adults with sepsis [SNOMED: 91302008] or septic shock [SNOMED: 76571007], we recommend optimising dosing strategies of antimicrobials...",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:dd94673e-d59a-48e6-a55f-43431a41aa35",
+      "@type": "Intervention",
+      "name": "Optimizing dosing strategies of antimicrobials based on PK/PD principles and specific drug properties",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3847ad5f-fa9e-4c70-9f09-86f477f8397d",
+      "@type": "Intervention",
+      "name": "Prompt removal of intravascular access devices that are a possible source of sepsis or septic shock after other vascular access has been established",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b033f09f-7523-4b7a-9157-0e95b5ca0c9c",
+      "@type": "Intervention",
+      "name": "Daily assessment for de-escalation of antimicrobials",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:6f8095f0-13f0-463c-8e6d-005e1d846b79",
+      "@type": "Intervention",
+      "name": "Using shorter over longer duration of antimicrobial therapy",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8391ef6d-af32-4c05-af89-738c210a7935",
+      "@type": "Intervention",
+      "name": "Using procalcitonin AND clinical evaluation to decide when to discontinue antimicrobials over clinical evaluation alone",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Finding",
+      "name": "Source control intervention",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d1496ed2-2227-4929-bfb6-281209af7686",
+      "@type": "Finding",
+      "name": "De-escalation of antimicrobials",
+      "snomed": "46272642",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [],
+      "snomed_name": "Use of de-escalation technique",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:19.960327+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:9e3739b4-9a77-4402-adc3-8e814b7fa02a",
+      "@type": "Finding",
+      "name": "Longer duration",
+      "snomed": "4128644",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [],
+      "snomed_name": "Long duration",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:20.680874+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:c7844eb5-3066-4ea5-ac35-a7b073c450d8",
+      "@type": "Finding",
+      "name": "Adequate source control",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d2f77db4-17e2-423c-bd41-65028b17a65f",
+      "@type": "Finding",
+      "name": "Optimal duration of therapy",
+      "snomed": "4129945",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [],
+      "snomed_name": "Duration of therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:22.194162+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:cfd49862-6fab-43b2-8248-c12d4b809252",
+      "@type": "Finding",
+      "name": "Initial diagnosis of sepsis or septic shock",
+      "snomed": "196236",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [],
+      "snomed_name": "Septic shock",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:50:22.465605+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:49791114-538b-415a-8a42-6ebaf93ed593",
+      "@type": "Finding",
+      "name": "Discontinue antimicrobials",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:81326052-0ee6-448b-a684-617d55a7fc1d",
+      "@type": "Finding",
+      "name": "Daily reassessment for de-escalation",
+      "snomed": "46272642",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [],
+      "snomed_name": "Use of de-escalation technique",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:23.568984+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:4a7fcd4a-4646-4c76-ba36-de57362b4fc4",
+      "@type": "Finding",
+      "name": "Fixed durations of therapy",
+      "snomed": "600708",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": [],
+      "snomed_name": "Fixed dose",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:50:24.291668+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:deb04c6d-613c-43d1-9c5f-b69cee71925b",
+      "@type": "Finding",
+      "name": "Emergent source control",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8663b953-a7df-4010-af86-04a81917e75f",
+      "@type": "Finding",
+      "name": "Specific anatomical diagnosis of infection",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d72f0352-a85b-4839-bf0b-9957b4c02937",
+      "@type": "Finding",
+      "name": "Source control intervention",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c2f7f872-681f-46c4-9e61-546461ffa654",
+      "@type": "Finding",
+      "name": "Source control intervention",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on_.json",
+        "section_title": "2021 RECOMMENDATIONS ON INFECTION 2/2"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:41.923931+00:00",
+    "nodes_before": 40,
+    "nodes_after": 34,
+    "rules_before": 7,
+    "rules_after": 7
+  }
+}

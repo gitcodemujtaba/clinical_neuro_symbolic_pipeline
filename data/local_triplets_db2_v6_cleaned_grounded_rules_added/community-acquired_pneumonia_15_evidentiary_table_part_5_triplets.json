@@ -1,0 +1,229 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Systolic blood pressure <90 mm Hg",
+      "snomed": "271649006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_15_evidentiary_table_part_5.json",
+        "section_title": "Evidentiary Table Part 5 (Chalmers et al. to Labarère et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Systolic blood pressure <90 mm Hg is an independent predictor of Severe Community Acquired Pneumonia (SCAP).",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6569ed4c-54a3-443a-93fe-4bd85ea8e97e",
+      "@type": "Finding",
+      "name": "Arterial pH <7.30",
+      "snomed": "27051004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_15_evidentiary_table_part_5.json",
+        "section_title": "Evidentiary Table Part 5 (Chalmers et al. to Labarère et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Arterial pH <7.30 is an independent predictor of Severe Community Acquired Pneumonia (SCAP).",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9a67c61e-df2e-4ce3-a49c-276a86cb131a",
+      "@type": "Finding",
+      "name": "Respiratory rate >30 breaths/min",
+      "snomed": "258984001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_15_evidentiary_table_part_5.json",
+        "section_title": "Evidentiary Table Part 5 (Chalmers et al. to Labarère et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Respiratory rate >30 breaths/min is an independent predictor of Severe Community Acquired Pneumonia (SCAP).",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Blood urea nitrogen >30 mg/dL",
+      "snomed": "250623007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_15_evidentiary_table_part_5.json",
+        "section_title": "Evidentiary Table Part 5 (Chalmers et al. to Labarère et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Blood urea nitrogen >30 mg/dL is an independent predictor of Severe Community Acquired Pneumonia (SCAP).",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c1d2e3f4-a5b6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Altered mental status",
+      "snomed": "419284004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_15_evidentiary_table_part_5.json",
+        "section_title": "Evidentiary Table Part 5 (Chalmers et al. to Labarère et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Altered mental status is an independent predictor of Severe Community Acquired Pneumonia (SCAP).",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Severe Community Acquired Pneumonia (SCAP)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_15_evidentiary_table_part_5.json",
+        "section_title": "Evidentiary Table Part 5 (Chalmers et al. to Labarère et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b1c2d3e4-f5a6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Oxygen arterial pressure <54 mm Hg or PaO2/FiO2 <250 mm Hg",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_15_evidentiary_table_part_5.json",
+        "section_title": "Evidentiary Table Part 5 (Chalmers et al. to Labarère et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Oxygen arterial pressure <54 mm Hg or PaO2/FiO2 <250 mm Hg is an independent predictor of Severe Community Acquired Pneumonia (SCAP).",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d1e2f3a4-b5c6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Multilobar/bilateral lung infiltrates on radiographs",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_15_evidentiary_table_part_5.json",
+        "section_title": "Evidentiary Table Part 5 (Chalmers et al. to Labarère et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Multilobar/bilateral lung infiltrates on radiographs is an independent predictor of Severe Community Acquired Pneumonia (SCAP).",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5ea7c6b6-e605-40be-85ce-4351c077edca",
+      "@type": "Condition",
+      "name": "Severe Community Acquired Pneumonia (SCAP)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_15_evidentiary_table_part_5.json",
+        "section_title": "Evidentiary Table Part 5 (Chalmers et al. to Labarère et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Presence of systolic blood pressure <90 mm Hg indicates severe CAP.",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:6569ed4c-54a3-443a-93fe-4bd85ea8e97e",
+          "rationale": "Presence of arterial pH <7.30 indicates severe CAP.",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:9a67c61e-df2e-4ce3-a49c-276a86cb131a",
+          "rationale": "Presence of respiratory rate >30 breaths/min indicates severe CAP.",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+          "rationale": "Presence of blood urea nitrogen >30 mg/dL indicates severe CAP.",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:b1c2d3e4-f5a6-7890-1234-567890abcdef",
+          "rationale": "Presence of oxygen arterial pressure <54 mm Hg or PaO2/FiO2 <250 mm Hg indicates severe CAP.",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:c1d2e3f4-a5b6-7890-1234-567890abcdef",
+          "rationale": "Presence of altered mental status indicates severe CAP.",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:d1e2f3a4-b5c6-7890-1234-567890abcdef",
+          "rationale": "Presence of multilobar/bilateral lung infiltrates on radiographs indicates severe CAP.",
+          "citation": "España et al38 (2006)",
+          "citation_type": "verbatim"
+        }
+      ]
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:35.968693+00:00",
+    "nodes_before": 9,
+    "nodes_after": 9,
+    "rules_before": 14,
+    "rules_after": 14
+  }
+}

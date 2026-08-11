@@ -86,6 +86,10 @@ GOLD_CANDIDATES = [
 # ungrounded corpus when a grounded one exists would understate coverage.
 # Overridable with --triplets so the two can be compared directly.
 TRIPLETS_CANDIDATES = [
+    # 2026-08-11 Stage3 Issue1 rule backfill -- see
+    # docs/Stage3_Issue1_Rule_Backfill.md. Non-destructive; fallbacks below
+    # still work if this dir is ever missing.
+    os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned_grounded_rules_added"),
     os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned_grounded"),
     os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned"),
 ]

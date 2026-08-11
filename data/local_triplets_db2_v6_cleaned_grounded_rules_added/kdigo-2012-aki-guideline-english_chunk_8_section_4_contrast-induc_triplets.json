@@ -1,0 +1,465 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+      "@type": "Finding",
+      "name": "Contrast-induced AKI",
+      "snomed": "14669001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [
+        {
+          "predicate": "INCREASES",
+          "target": "urn:uuid:b8c9d0e1-f2a3-44b5-c6d7-e8f901234567",
+          "rationale": "CI-AKI increases mortality.",
+          "citation": "Section 4.1"
+        },
+        {
+          "predicate": "INCREASES",
+          "target": "urn:uuid:c9d0e1f2-a3b5-45c6-d7e8-f90123456789",
+          "rationale": "CI-AKI increases prolonged hospital stay.",
+          "citation": "Section 4.1"
+        },
+        {
+          "predicate": "INCREASES",
+          "target": "urn:uuid:d0e1f2a3-b5c6-47d8-e9f0-123456789abc",
+          "rationale": "CI-AKI increases long-term risk of CKD.",
+          "citation": "Section 4.1"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:def12345-6789-0abc-def1-234567890cef",
+      "@type": "Condition",
+      "name": "Contrast-Induced AKI",
+      "snomed": "14669001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4850c5e0-9b3f-42f9-80c7-b7f55ccb1f61",
+      "@type": "Condition",
+      "name": "Contrast-Induced AKI",
+      "snomed": "14669001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8e6aea49-3ad1-4898-b07d-5ac6f67e9ea4",
+      "@type": "Condition",
+      "name": "Contrast-Induced AKI",
+      "snomed": "14669001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e28b7fb1-162f-41c8-a1d7-30b8ca646429",
+      "@type": "Condition",
+      "name": "Contrast-Induced AKI",
+      "snomed": "14669001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b8c9d0e1-f2a3-44b5-c6d7-e8f901234567",
+      "@type": "Finding",
+      "name": "Mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c9d0e1f2-a3b5-45c6-d7e8-f90123456789",
+      "@type": "Finding",
+      "name": "Prolonged hospital stay",
+      "snomed": "255224006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d0e1f2a3-b5c6-47d8-e9f0-123456789abc",
+      "@type": "Finding",
+      "name": "Chronic Kidney Disease (CKD)",
+      "snomed": "21243004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e1f2a3b5-c6d7-48e9-01f2-34567890defa",
+      "@type": "Condition",
+      "name": "Pre-existing kidney impairment",
+      "snomed": "17373004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_SCREENING",
+          "target": "urn:uuid:f2a3b5c6-d7e8-4901-f234-567890abcdef",
+          "rationale": "Screen all patients for pre-existing kidney impairment (eGFR <60 ml/min/1.73m²) prior to intravascular iodinated contrast administration.",
+          "citation": "Section 4.2.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f2a3b5c6-d7e8-4901-f234-567890abcdef",
+      "@type": "Finding",
+      "name": "eGFR < 60 ml/min/1.73m²",
+      "snomed": "86960007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "quantitative_threshold": {
+        "value": 60,
+        "unit": "ml/min/1.73m²",
+        "operator": "<"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a9af1fa-1466-4443-ac5f-55741dfdc5e1",
+      "@type": "Medication",
+      "name": "Contrast medium",
+      "snomed": "385420005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c6d7e8f9-0123-4356-7890-abcdef123456",
+      "@type": "Medication",
+      "name": "Iso-osmolar iodinated contrast media",
+      "snomed": "258866004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f9012345-6789-0abc-def1-234567890abc",
+      "@type": "Intervention",
+      "name": "i.v. volume expansion with isotonic sodium chloride",
+      "snomed": "70379000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [
+        {
+          "predicate": "RECOMMENDS",
+          "target": "urn:uuid:ed32691d-8f5a-47d2-9ec8-a62098929db4",
+          "rationale": "Recommend i.v. volume expansion with isotonic sodium chloride or sodium bicarbonate.",
+          "citation": "Section 4.4.1"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:ed32691d-8f5a-47d2-9ec8-a62098929db4",
+      "@type": "Medication",
+      "name": "Isotonic sodium chloride",
+      "snomed": "70379000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0e3ba0eb-5263-4a77-9db3-82e99d1f3757",
+      "@type": "Intervention",
+      "name": "i.v. volume expansion with sodium bicarbonate",
+      "snomed": "387319002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [
+        {
+          "predicate": "RECOMMENDS",
+          "target": "urn:uuid:ed32691d-8f5a-47d2-9ec8-a62098929db4",
+          "rationale": "Recommend i.v. volume expansion with isotonic sodium chloride or sodium bicarbonate.",
+          "citation": "Section 4.4.1"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:18855f68-0b29-4ac1-92b8-e65adabe2c1f",
+      "@type": "Medication",
+      "name": "Sodium bicarbonate",
+      "snomed": "387319002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a3b5c6d7-e8f9-4012-3456-7890abcdef12",
+      "@type": "Intervention",
+      "name": "Use the lowest possible contrast medium dose",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [
+        {
+          "predicate": "RECOMMENDS",
+          "target": "urn:uuid:1a9af1fa-1466-4443-ac5f-55741dfdc5e1",
+          "rationale": "Use the lowest possible contrast medium dose in patients at risk.",
+          "citation": "Section 4.3.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ab71af41-66bc-4601-81fb-bed5c816633b",
+      "@type": "Medication",
+      "name": "Oral NAC",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [
+        {
+          "predicate": "SUGGESTS",
+          "target": "urn:uuid:9f47683f-9fbd-43c4-9972-33119d6b1366",
+          "rationale": "Suggest oral NAC together with i.v. crystalloids.",
+          "citation": "Section 4.4.3"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9f47683f-9fbd-43c4-9972-33119d6b1366",
+      "@type": "Intervention",
+      "name": "i.v. crystalloids",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cdef1234-5678-90ab-cdef-1234567890cd",
+      "@type": "Medication",
+      "name": "Theophylline",
+      "snomed": "1237049",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [
+        {
+          "predicate": "NOT_RECOMMENDED_FOR",
+          "target": "urn:uuid:def12345-6789-0abc-def1-234567890cef",
+          "rationale": "Suggest NOT using theophylline to prevent CI-AKI.",
+          "citation": "Section 4.4.4"
+        }
+      ],
+      "snomed_name": "theophylline",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:48:08.042558+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:585cc4c7-8305-4bcf-b9c3-5028dac5bf9a",
+      "@type": "Medication",
+      "name": "Fenoldopam",
+      "snomed": "19095721",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [
+        {
+          "predicate": "NOT_RECOMMENDED_FOR",
+          "target": "urn:uuid:e28b7fb1-162f-41c8-a1d7-30b8ca646429",
+          "rationale": "Recommend NOT using fenoldopam to prevent CI-AKI.",
+          "citation": "Section 4.4.5"
+        }
+      ],
+      "snomed_name": "fenoldopam",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:48:08.130581+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:9b8e5ffd-8b85-4eb7-ba34-39edbeca3e8c",
+      "@type": "Intervention",
+      "name": "Prophylactic IHD",
+      "snomed": "4153322",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [
+        {
+          "predicate": "NOT_RECOMMENDED_FOR",
+          "target": "urn:uuid:df28d69c-94db-40a1-b913-362d1eb03271",
+          "rationale": "Suggest NOT using prophylactic IHD or HF for contrast removal to prevent CI-AKI.",
+          "citation": "Section 4.5.1"
+        }
+      ],
+      "snomed_name": "Primary prevention of ischemic heart disease",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:08.833898+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Intervention",
+      "name": "Prophylactic HF",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [
+        {
+          "predicate": "NOT_RECOMMENDED_FOR",
+          "target": "urn:uuid:df28d69c-94db-40a1-b913-362d1eb03271",
+          "rationale": "Suggest NOT using prophylactic IHD or HF for contrast removal to prevent CI-AKI.",
+          "citation": "Section 4.5.1"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Intervention",
+      "name": "Contrast removal",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c287cc81-09e6-46d3-ba80-f70ea4b886ff",
+      "@type": "Intervention",
+      "name": "Intermittent Hemodialysis (IHD)",
+      "snomed": "4051326",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [],
+      "snomed_name": "Intermittent hemodialysis",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:48:10.100378+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:df28d69c-94db-40a1-b913-362d1eb03271",
+      "@type": "Intervention",
+      "name": "Hemofiltration (HF)",
+      "snomed": "4050864",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": [],
+      "snomed_name": "Hemofiltration",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:48:10.391589+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:c171d169-e52b-4dff-94eb-30cd72ff8767",
+      "@type": "Intervention",
+      "name": "Contrast removal",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_8_section_4_contrast-induc.json",
+        "section_title": "Section 4: Contrast-Induced AKI"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.310841+00:00",
+    "nodes_before": 29,
+    "nodes_after": 27,
+    "rules_before": 15,
+    "rules_after": 12
+  }
+}

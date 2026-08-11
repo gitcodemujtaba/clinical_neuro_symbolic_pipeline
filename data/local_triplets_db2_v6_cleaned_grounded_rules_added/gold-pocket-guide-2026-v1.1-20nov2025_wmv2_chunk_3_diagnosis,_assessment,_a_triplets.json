@@ -1,0 +1,413 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a6-b5c7-89def0123456",
+      "@type": "Finding",
+      "name": "Dyspnea",
+      "snomed": "267036007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "Dyspnea is a key symptom considered for COPD diagnosis.",
+          "citation": "A diagnosis [SNOMED: 887161000000102] of COPD [SNOMED: 13645005] should be considered in any patient who has dyspnea [SNOMED: 267036007].",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "Progressive dyspnea is a clinical indicator for COPD.",
+          "citation": "Clinical Indicators (Figure 2.1): Progressive [SNOMED: 255314001] dyspnea [SNOMED: 267036007].",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+      "@type": "Condition",
+      "name": "COPD",
+      "snomed": "13645005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c1d2e3f4-a5b6-49d0-87ef-1234567890cd",
+          "rationale": "Spirometry is mandatory to establish the diagnosis of COPD.",
+          "citation": "Spirometry [SNOMED: 127783003] with post-bronchodilator [SNOMED: 372580007] FEV1/FVC < 0.7 is mandatory to establish the diagnosis [SNOMED: 887161000000102].",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c1d2e3f4-a5b6-49d0-87ef-1234567890cd",
+      "@type": "Intervention",
+      "name": "Spirometry",
+      "snomed": "127783003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:294bcec6-618e-4a7c-b387-c52cedacdb39",
+          "rationale": "Post-bronchodilator FEV1/FVC < 0.7 confirms airflow obstruction, which is diagnostic for COPD.",
+          "citation": "Spirometry [SNOMED: 127783003] with post-bronchodilator [SNOMED: 372580007] FEV1/FVC < 0.7 is mandatory to establish the diagnosis [SNOMED: 887161000000102].",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:294bcec6-618e-4a7c-b387-c52cedacdb39",
+      "@type": "Condition",
+      "name": "Airflow Obstruction",
+      "snomed": "26036001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1a2b3c4d-e5f6-4098-7654-3210fedcba98",
+          "rationale": "Severity of airflow obstruction is graded based on FEV1 percentage predicted.",
+          "citation": "Severity of Airflow [SNOMED: 4601000] Obstruction [SNOMED: 26036001] (GOLD Grades [SNOMED: 258349007] 1-4, Figure 2.10): GOLD 1 (Mild): FEV1 >= 80% predicted. GOLD 2 (Moderate): 50% <= FEV1 < 80% predicted. GOLD 3 (Severe [SNOMED: 24484000]): 30% <= FEV1 < 50% predicted. GOLD 4 (Very Severe [SNOMED: 24484000]): FEV1 < 30% predicted.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-4098-7654-3210fedcba98",
+      "@type": "Acuity",
+      "name": "COPD Severity Grade",
+      "snomed": "258349007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:9b8c7d6e-f5a4-41b3-9876-543210fedcba",
+          "rationale": "FEV1 >= 80% predicted indicates GOLD 1 (Mild) severity.",
+          "citation": "Severity of Airflow [SNOMED: 4601000] Obstruction [SNOMED: 26036001] (GOLD Grades [SNOMED: 258349007] 1-4, Figure 2.10): GOLD 1 (Mild): FEV1 >= 80% predicted.",
+          "citation_paraphrase": "Severity of Airflow [SNOMED: 4601000] Obstruction [SNOMED: 26036001] (GOLD Grades [SNOMED: 258349007] 1-4, Figure 2.10): GOLD 1 (Mild): FEV1 >= 80% predicted.",
+          "citation_verbatim_excerpt": "DIAGNOSIS, ASSESSMENT AND MONITORING Key Points: - Diagnosis: A diagnosis of COPD should be considered i",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:a2b3c4d5-e6f7-49c6-87ef-1234567890ba",
+          "rationale": "FEV1 between 50% and < 80% predicted indicates GOLD 2 (Moderate) severity.",
+          "citation": "Severity of Airflow [SNOMED: 4601000] Obstruction [SNOMED: 26036001] (GOLD Grades [SNOMED: 258349007] 1-4, Figure 2.10): GOLD 2 (Moderate): 50% <= FEV1 < 80% predicted.",
+          "citation_paraphrase": "Severity of Airflow [SNOMED: 4601000] Obstruction [SNOMED: 26036001] (GOLD Grades [SNOMED: 258349007] 1-4, Figure 2.10): GOLD 2 (Moderate): 50% <= FEV1 < 80% predicted.",
+          "citation_verbatim_excerpt": "DIAGNOSIS, ASSESSMENT AND MONITORING Key Points: - Diagnosis: A diagnosis of COPD should be considered i",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b3c4d5e6-f7a8-42d9-9876-543210fedcb9",
+          "rationale": "FEV1 between 30% and < 50% predicted indicates GOLD 3 (Severe) severity.",
+          "citation": "Severity of Airflow [SNOMED: 4601000] Obstruction [SNOMED: 26036001] (GOLD Grades [SNOMED: 258349007] 1-4, Figure 2.10): GOLD 3 (Severe [SNOMED: 24484000]): 30% <= FEV1 < 50% predicted.",
+          "citation_paraphrase": "Severity of Airflow [SNOMED: 4601000] Obstruction [SNOMED: 26036001] (GOLD Grades [SNOMED: 258349007] 1-4, Figure 2.10): GOLD 3 (Severe [SNOMED: 24484000]): 30% <= FEV1 < 50% predicted.",
+          "citation_verbatim_excerpt": "DIAGNOSIS, ASSESSMENT AND MONITORING Key Points: - Diagnosis: A diagnosis of COPD should be considered i",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        },
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b3c4d5e6-f7a8-42d9-9876-543210fedcb9",
+          "rationale": "FEV1 < 30% predicted indicates GOLD 4 (Very Severe) severity.",
+          "citation": "Severity of Airflow [SNOMED: 4601000] Obstruction [SNOMED: 26036001] (GOLD Grades [SNOMED: 258349007] 1-4, Figure 2.10): GOLD 4 (Very Severe [SNOMED: 24484000]): FEV1 < 30% predicted.",
+          "citation_paraphrase": "Severity of Airflow [SNOMED: 4601000] Obstruction [SNOMED: 26036001] (GOLD Grades [SNOMED: 258349007] 1-4, Figure 2.10): GOLD 4 (Very Severe [SNOMED: 24484000]): FEV1 < 30% predicted.",
+          "citation_verbatim_excerpt": "DIAGNOSIS, ASSESSMENT AND MONITORING Key Points: - Diagnosis: A diagnosis of COPD should be considered i",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b3c4d5e6-f7a8-42d9-9876-543210fedcb9",
+      "@type": "Acuity",
+      "name": "GOLD 3 (Severe)",
+      "snomed": "24484000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9ba83c58-5a0c-4466-9c89-b71d883e48dd",
+      "@type": "Finding",
+      "name": "Recurrent wheeze",
+      "snomed": "56018004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "Recurrent wheeze is a clinical indicator for COPD.",
+          "citation": "Clinical Indicators (Figure 2.1): recurrent [SNOMED: 255227004] wheeze [SNOMED: 56018004].",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3b1b016a-135e-462d-8c3a-0120cd7815f3",
+      "@type": "Finding",
+      "name": "Chronic cough",
+      "snomed": "68154008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "Chronic cough is a clinical indicator for COPD.",
+          "citation": "Clinical Indicators (Figure 2.1): chronic cough [SNOMED: 68154008].",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7c196937-2a32-443c-beac-add63c0ed8e0",
+      "@type": "Finding",
+      "name": "Recurrent lower respiratory tract infections",
+      "snomed": "448739000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "Recurrent lower respiratory tract infections is a clinical indicator for COPD.",
+          "citation": "Clinical Indicators (Figure 2.1): recurrent lower respiratory tract infections [SNOMED: 448739000].",
+          "citation_paraphrase": "Clinical Indicators (Figure 2.1): recurrent lower respiratory tract infections [SNOMED: 448739000].",
+          "citation_verbatim_excerpt": "DIAGNOSIS, ASSESSMENT AND MONITORING Key Points: - Diagnosis: A diagnosis of COPD should be considered in any patient who has dyspnea, chronic cough or sputum production, a history of recurrent lower respiratory tract infections and/or a history of exposure to risk factors.",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:28de3bf4-281a-4825-80e0-550b28f120de",
+      "@type": "Finding",
+      "name": "History of risk factors",
+      "snomed": "80943009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "History of risk factors is a clinical indicator for COPD.",
+          "citation": "Clinical Indicators (Figure 2.1): history of risk factors [SNOMED: 80943009].",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9248fe25-fad1-411c-a500-655106b97d77",
+      "@type": "Condition",
+      "name": "Asthma",
+      "snomed": "195967001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "IS_DIFFERENTIAL_DIAGNOSIS_OF",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "Asthma is part of the differential diagnosis to consider when evaluating a patient for possible COPD.",
+          "citation": "Differential Diagnosis (Figure 2.3): Asthma, Congestive Heart Failure, Bronchiectasis, Tuberculosis, Obliterative Bronchiolitis, Diffuse Panbronchiolitis.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Differential Diagnosis (Figure 2.3): Asthma, Congestive Heart Failure, Bronchiectasis, Tuberculosis, Obliterative Bronchiolitis, Diffuse Panbronchiolitis."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7b40894f-589e-4464-bf10-68a57e4f4d99",
+      "@type": "Condition",
+      "name": "Congestive Heart Failure",
+      "snomed": "42343007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "IS_DIFFERENTIAL_DIAGNOSIS_OF",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "Congestive Heart Failure is part of the differential diagnosis to consider when evaluating a patient for possible COPD.",
+          "citation": "Differential Diagnosis (Figure 2.3): Asthma, Congestive Heart Failure, Bronchiectasis, Tuberculosis, Obliterative Bronchiolitis, Diffuse Panbronchiolitis.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Differential Diagnosis (Figure 2.3): Asthma, Congestive Heart Failure, Bronchiectasis, Tuberculosis, Obliterative Bronchiolitis, Diffuse Panbronchiolitis."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a965e12b-28da-4afc-8f88-c7549272868f",
+      "@type": "Condition",
+      "name": "Bronchiectasis",
+      "snomed": "12295008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "IS_DIFFERENTIAL_DIAGNOSIS_OF",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "Bronchiectasis is part of the differential diagnosis to consider when evaluating a patient for possible COPD.",
+          "citation": "Differential Diagnosis (Figure 2.3): Asthma, Congestive Heart Failure, Bronchiectasis, Tuberculosis, Obliterative Bronchiolitis, Diffuse Panbronchiolitis.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Differential Diagnosis (Figure 2.3): Asthma, Congestive Heart Failure, Bronchiectasis, Tuberculosis, Obliterative Bronchiolitis, Diffuse Panbronchiolitis."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b903cf01-c3c1-4026-9042-69546f8313e3",
+      "@type": "Condition",
+      "name": "Tuberculosis",
+      "snomed": "56717001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "IS_DIFFERENTIAL_DIAGNOSIS_OF",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "Tuberculosis is part of the differential diagnosis to consider when evaluating a patient for possible COPD.",
+          "citation": "Differential Diagnosis (Figure 2.3): Asthma, Congestive Heart Failure, Bronchiectasis, Tuberculosis, Obliterative Bronchiolitis, Diffuse Panbronchiolitis.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Differential Diagnosis (Figure 2.3): Asthma, Congestive Heart Failure, Bronchiectasis, Tuberculosis, Obliterative Bronchiolitis, Diffuse Panbronchiolitis."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c1912e59-5bfb-43d4-8335-d1e8aa170561",
+      "@type": "Condition",
+      "name": "Obliterative Bronchiolitis",
+      "snomed": "40100001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:bab1133d-ef36-47e9-b80e-d5c61de1aa1a",
+      "@type": "Condition",
+      "name": "Diffuse Panbronchiolitis",
+      "snomed": "430476004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d99f6a8b-0121-46ba-8e9a-b79b3fc796a0",
+      "@type": "Finding",
+      "name": "Progressive dyspnea",
+      "snomed": "255314001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:f8e9d0c1-b2a3-47e5-96d8-1234567890ab",
+          "rationale": "Progressive dyspnea is a clinical indicator for COPD.",
+          "citation": "Clinical Indicators (Figure 2.1): Progressive [SNOMED: 255314001] dyspnea [SNOMED: 267036007].",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9b8c7d6e-f5a4-41b3-9876-543210fedcba",
+      "@type": "Acuity",
+      "name": "GOLD 1 (Mild)",
+      "snomed": "4116992",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [],
+      "snomed_name": "Mild",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:46:52.564592+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:a2b3c4d5-e6f7-49c6-87ef-1234567890ba",
+      "@type": "Acuity",
+      "name": "GOLD 2 (Moderate)",
+      "snomed": "36685456",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a.json",
+        "section_title": "Diagnosis, Assessment, and Monitoring"
+      },
+      "rules": [],
+      "snomed_name": "GOLD (Global Initiative for Chronic Obstructive Lung Disease) 2017 spirometric grade 2",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:46:53.364467+00:00"
+      }
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:38.740652+00:00",
+    "nodes_before": 31,
+    "nodes_after": 19,
+    "rules_before": 18,
+    "rules_after": 14
+  }
+}

@@ -1,0 +1,588 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+      "@type": "Finding",
+      "name": "Anemia & Iron Deficiency",
+      "snomed": "87522002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:b8c9d0e1-f2a3-44b5-c6d7-e8f901234567",
+          "rationale": "Intravenous iron replacement is reasonable in HFrEF with iron deficiency to improve functional capacity and QOL.",
+          "citation": "Class 2a recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c9d0e1f2-a3b5-45c6-d7e8-f90123456789",
+          "rationale": "Erythropoietin-stimulating agents should NOT be used due to potential harm.",
+          "citation": "Class 3: Harm recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b8c9d0e1-f2a3-44b5-c6d7-e8f901234567",
+      "@type": "Medication",
+      "name": "Intravenous iron replacement (e.g., ferric carboxymaltose)",
+      "snomed": "255560000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c9d0e1f2-a3b5-45c6-d7e8-f90123456789",
+      "@type": "Medication",
+      "name": "Erythropoietin-stimulating agents",
+      "snomed": "111167001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f2a3b5c6-d7e8-49f0-1234-56789abcdef0",
+      "@type": "Finding",
+      "name": "Sleep Disorders (OSA, CSA)",
+      "snomed": "39898005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:40641447-9358-4397-9836-3e7d22dfbae4",
+          "rationale": "Formal sleep assessment is reasonable to differentiate OSA and CSA.",
+          "citation": "Class 2a recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:8d61b02f-a2ca-4b0f-b2eb-7bc5aaf799c0",
+          "rationale": "CPAP is reasonable for OSA.",
+          "citation": "Class 2a recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:33e7f8c4-044e-4166-99e4-0dfef92ddaf7",
+          "rationale": "Adaptive servo-ventilation causes harm in HFrEF with CSA.",
+          "citation": "Class 3: Harm recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:40641447-9358-4397-9836-3e7d22dfbae4",
+      "@type": "Intervention",
+      "name": "Formal sleep assessment",
+      "snomed": "258158006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8d61b02f-a2ca-4b0f-b2eb-7bc5aaf799c0",
+      "@type": "Medication",
+      "name": "CPAP",
+      "snomed": "47545007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:75f987c8-be41-46d5-9936-d8d547b9ecc7",
+      "@type": "Finding",
+      "name": "Atrial Fibrillation",
+      "snomed": "49436004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:da02c5f5-15f4-4894-a46f-e311ebd54f95",
+          "rationale": "Chronic anticoagulation (DOAC preferred over warfarin) is recommended for AF with CHA2DS2-VASc ≥2 (men) or ≥3 (women).",
+          "citation": "Class 1 recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:efe1f1a3-ee1f-485a-a2b6-24e434675dcc",
+          "rationale": "Catheter ablation is reasonable to improve symptoms/QOL.",
+          "citation": "Class 2a recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:2cd95eff-205d-4181-996b-6772038f9d56",
+          "rationale": "AV node ablation + CRT is reasonable if rate/rhythm control fails.",
+          "citation": "Class 2a recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:da02c5f5-15f4-4894-a46f-e311ebd54f95",
+      "@type": "Medication",
+      "name": "Chronic anticoagulation (DOAC preferred over warfarin)",
+      "snomed": "182764009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:efe1f1a3-ee1f-485a-a2b6-24e434675dcc",
+      "@type": "Intervention",
+      "name": "Catheter ablation",
+      "snomed": "3319911000001101",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:65a44f25-c4cf-4307-b775-d0e0466d36b7",
+      "@type": "Intervention",
+      "name": "Multidisciplinary risk-benefit discussion",
+      "snomed": "223482009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:29dff0b8-cc7b-408e-ab51-91c6c3926c56",
+      "@type": "Intervention",
+      "name": "Pretherapy baseline and serial cardiac monitoring",
+      "snomed": "23852006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:571f5c8e-c9fb-457e-a780-afb332c160a1",
+      "@type": "Finding",
+      "name": "Pregnancy",
+      "snomed": "77386006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f5466953-1116-4129-ab51-94db69e219b9",
+          "rationale": "Pre-pregnancy counseling regarding risks is recommended.",
+          "citation": "Class 1 recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:28743b7b-9f00-4b36-a79a-1d084f7d06d9",
+          "rationale": "ACEi, ARB, ARNi, MRA, SGLT2i, ivabradine, and vericiguat are strictly contraindicated due to teratogenicity.",
+          "citation": "Class 3: Harm recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f5466953-1116-4129-ab51-94db69e219b9",
+          "rationale": "Pre-pregnancy counseling regarding risks is recommended.",
+          "citation": "Class 1 recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e618583f-7c44-41ee-8a0c-1d020e83335b",
+          "rationale": "ACEi, ARB, ARNi, MRA, SGLT2i, ivabradine, and vericiguat are strictly contraindicated due to teratogenicity.",
+          "citation": "Class 3: Harm recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f5466953-1116-4129-ab51-94db69e219b9",
+      "@type": "Intervention",
+      "name": "Pre-pregnancy counseling",
+      "snomed": "171012002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1bd35fd2-7b4e-423c-8358-e7af3f09925a",
+      "@type": "Finding",
+      "name": "Palliative & Supportive Care",
+      "snomed": "103735009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:bf5b2fa5-3022-48bf-b80e-ff92cf77ef19",
+          "rationale": "Palliative care (communication, prognosis, shared decision-making, symptom management) should be integrated throughout the illness continuum.",
+          "citation": "Class 1 recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:25635abd-7a0b-4dbb-b32e-2b21624055d5",
+          "rationale": "Discontinuation options for life-extending therapies (ICD, MCS) should be proactively discussed.",
+          "citation": "Class 1 recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b9f061ab-12ef-4ce1-8fb1-a10c48bea3cb",
+          "rationale": "Specialist palliative care consult is reasonable for advanced HF or complex decisions.",
+          "citation": "Class 2a recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:25635abd-7a0b-4dbb-b32e-2b21624055d5",
+      "@type": "Intervention",
+      "name": "Discontinuation options for life-extending therapies (ICD, MCS)",
+      "snomed": "410546004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b9f061ab-12ef-4ce1-8fb1-a10c48bea3cb",
+      "@type": "Intervention",
+      "name": "Specialist palliative care consult",
+      "snomed": "11429006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:760797cb-f0d9-4e2f-97b4-a5fe9139b2c9",
+      "@type": "Intervention",
+      "name": "Address social determinants of health and structural barriers",
+      "snomed": "720581000000109",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d0e1f2a3-b5c6-47d8-e9f0-123456789abc",
+      "@type": "Finding",
+      "name": "Hypertension",
+      "snomed": "316866",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e1f2a3b5-c6d7-48e9-f012-3456789abcde",
+          "rationale": "Titrate GDMT to target doses.",
+          "citation": "Class 1 recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Hypertensive disorder",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "2 (Synonym)",
+        "grounded_at": "2026-08-07T16:43:55.259527+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:e1f2a3b5-c6d7-48e9-f012-3456789abcde",
+      "@type": "Intervention",
+      "name": "Titrate GDMT to target doses",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:33e7f8c4-044e-4166-99e4-0dfef92ddaf7",
+      "@type": "Medication",
+      "name": "Adaptive servo-ventilation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:016db840-9e7e-4791-b5ee-a8cf60f9ecab",
+      "@type": "Finding",
+      "name": "Diabetes",
+      "snomed": "201826",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:f3fa81a7-e0b3-4fb1-9a9e-24f25edd1e6e",
+          "rationale": "SGLT2i are recommended for hyperglycemia management and CV/HF risk reduction.",
+          "citation": "Class 1 recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Type 2 diabetes mellitus",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:43:57.798760+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:f3fa81a7-e0b3-4fb1-9a9e-24f25edd1e6e",
+      "@type": "Medication",
+      "name": "SGLT2i",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2cd95eff-205d-4181-996b-6772038f9d56",
+      "@type": "Intervention",
+      "name": "AV node ablation + CRT",
+      "snomed": "4020231",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [],
+      "snomed_name": "Percutaneous transluminal ablation of atrioventricular node",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:44:00.003606+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:739230a6-d37d-4a31-a0b6-7c4914988bbc",
+      "@type": "Finding",
+      "name": "Cardio-Oncology",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:65a44f25-c4cf-4307-b775-d0e0466d36b7",
+          "rationale": "Multidisciplinary risk-benefit discussion before changing cardiotoxic cancer therapy.",
+          "citation": "Class 1 recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:29dff0b8-cc7b-408e-ab51-91c6c3926c56",
+          "rationale": "Pretherapy baseline and serial cardiac monitoring are reasonable.",
+          "citation": "Class 2a recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:e59e5c49-2ecd-4e35-9863-002159edeb1d",
+          "rationale": "ACEi/ARB and beta blockers are reasonable for asymptomatic cardiotoxicity (EF <50%).",
+          "citation": "Class 2a recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e59e5c49-2ecd-4e35-9863-002159edeb1d",
+      "@type": "Medication",
+      "name": "ACEi/ARB and beta blockers",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:28743b7b-9f00-4b36-a79a-1d084f7d06d9",
+      "@type": "Medication",
+      "name": "ACEi, ARB, ARNi, MRA, SGLT2i, ivabradine, vericiguat",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:bf5b2fa5-3022-48bf-b80e-ff92cf77ef19",
+      "@type": "Intervention",
+      "name": "Palliative care (communication, prognosis, shared decision-making, symptom management)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f5472007-3031-4aca-a96a-a167ce462cf7",
+      "@type": "Finding",
+      "name": "Disparities",
+      "snomed": "44804130",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:760797cb-f0d9-4e2f-97b4-a5fe9139b2c9",
+          "rationale": "Address social determinants of health and structural barriers to eliminate disparate HF outcomes.",
+          "citation": "Class 1 recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "snomed_name": "Inequality",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:44:03.918193+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:215324dd-001b-4d8d-a1a8-95039d32ad15",
+      "@type": "Finding",
+      "name": "Cardio-Oncology",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:65a44f25-c4cf-4307-b775-d0e0466d36b7",
+          "rationale": "Multidisciplinary risk-benefit discussion before changing cardiotoxic cancer therapy.",
+          "citation": "Class 1 recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:29dff0b8-cc7b-408e-ab51-91c6c3926c56",
+          "rationale": "Pretherapy baseline and serial cardiac monitoring are reasonable.",
+          "citation": "Class 2a recommendation.",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:e429e132-ae95-4670-89e4-595b1643ef7d",
+          "rationale": "ACEi/ARB and beta blockers are reasonable for asymptomatic cardiotoxicity (EF <50%).",
+          "citation": "Class 2a recommendation.",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e429e132-ae95-4670-89e4-595b1643ef7d",
+      "@type": "Medication",
+      "name": "ACEi/ARB and beta blockers",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json",
+        "section_title": "Comorbidities, Special Populations, Goals of Care, and Quality Metrics"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e618583f-7c44-41ee-8a0c-1d020e83335b",
+      "@type": "Medication",
+      "name": "ACEi, ARB, ARNi, MRA, SGLT2i, ivabradine, vericiguat",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_7_comorbidities,_special_p.json"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:32.682716+00:00",
+    "nodes_before": 35,
+    "nodes_after": 31,
+    "rules_before": 24,
+    "rules_after": 24
+  }
+}

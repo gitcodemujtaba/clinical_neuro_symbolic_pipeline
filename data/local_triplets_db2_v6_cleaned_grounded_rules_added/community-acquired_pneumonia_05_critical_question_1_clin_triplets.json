@@ -1,0 +1,391 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Need for mechanical ventilation",
+      "snomed": "40617009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "IS_MAJOR_CRITERION_FOR",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Need for mechanical ventilation is a major criterion for ICU admission according to the 2001 ATS and 2007 IDSA/ATS guidelines.",
+          "citation": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria... Since there is little disagreement that patients with either of the 2 major criteria (need for mechanical ventilation or septic shock requiring vasopressors) need ICU care...",
+          "citation_paraphrase": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria... Since there is little disagreement that patients with either of the 2 major criteria (need for mechanical ventilation or septic shock requiring vasopressors) need ICU care...",
+          "citation_verbatim_excerpt": "ards, this review identified 5 clinical decision aids (Table 2) designed to predict whether ED patients with CAP would need ICU care (often referred to as severe CAP). In most cases, readers using a decision aid to help determine the need for ICU care",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Condition",
+      "name": "ICU Admission",
+      "snomed": "309904001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:7e850832-c11e-4f4c-a857-d08e5078da71",
+      "@type": "Finding",
+      "name": "Septic shock requiring vasopressors",
+      "snomed": "76571007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "IS_MAJOR_CRITERION_FOR",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Septic shock requiring vasopressors is a major criterion for ICU admission according to the 2001 ATS and 2007 IDSA/ATS guidelines.",
+          "citation": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria... Since there is little disagreement that patients with either of the 2 major criteria (need for mechanical ventilation or septic shock requiring vasopressors) need ICU care...",
+          "citation_paraphrase": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria... Since there is little disagreement that patients with either of the 2 major criteria (need for mechanical ventilation or septic shock requiring vasopressors) need ICU care...",
+          "citation_verbatim_excerpt": "ards, this review identified 5 clinical decision aids (Table 2) designed to predict whether ED patients with CAP would need ICU care (often referred to as severe CAP). In most cases, readers using a decision aid to help determine the need for ICU care",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fd7649bb-4736-48ce-8c17-c06a6fc0a138",
+      "@type": "Condition",
+      "name": "Systolic blood pressure < 90 mm Hg",
+      "snomed": "304621005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "IS_MINOR_CRITERION_FOR",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Systolic blood pressure < 90 mm Hg is a minor criterion for ICU admission according to the 2001 ATS and 2007 IDSA/ATS guidelines.",
+          "citation": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria or at least 2 of 3 minor criteria. ... As a result, the 3 minor criteria (systolic blood pressure <90 mm Hg, multilobar disease, and PaO2/FiO2 ratio <250) were subsequently independently evaluated...",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:8e9bdf6e-4483-490b-8363-0aef255cacb8",
+      "@type": "Finding",
+      "name": "PaO2/FiO2 ratio < 250 mm Hg",
+      "snomed": "304621005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "IS_MINOR_CRITERION_FOR",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "PaO2/FiO2 ratio < 250 mm Hg is a minor criterion for ICU admission according to the 2001 ATS and 2007 IDSA/ATS guidelines.",
+          "citation": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria or at least 2 of 3 minor criteria. ... As a result, the 3 minor criteria (systolic blood pressure <90 mm Hg, multilobar disease, and PaO2/FiO2 ratio <250) were subsequently independently evaluated...",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:7fe8f8ab-2c3a-42d1-a03c-651f1d7eb84d",
+      "@type": "Finding",
+      "name": "Systolic blood pressure < 90 mm Hg",
+      "snomed": "304621005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "IS_MINOR_CRITERION_FOR",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Systolic blood pressure < 90 mm Hg is a minor criterion for ICU admission according to the 2001 ATS and 2007 IDSA/ATS guidelines.",
+          "citation": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria or at least 2 of 3 minor criteria. ... As a result, the 3 minor criteria (systolic blood pressure <90 mm Hg, multilobar disease, and PaO2/FiO2 ratio <250) were subsequently independently evaluated...",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:9e4dd8b5-1110-480b-be8e-159e43f4fd87",
+      "@type": "Finding",
+      "name": "PaO2/FiO2 ratio < 250 mm Hg",
+      "snomed": "304621005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "IS_MINOR_CRITERION_FOR",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "PaO2/FiO2 ratio < 250 mm Hg is a minor criterion for ICU admission according to the 2001 ATS and 2007 IDSA/ATS guidelines.",
+          "citation": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria or at least 2 of 3 minor criteria. ... As a result, the 3 minor criteria (systolic blood pressure <90 mm Hg, multilobar disease, and PaO2/FiO2 ratio <250) were subsequently independently evaluated...",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:59ac75ab-b005-4566-9bfb-787262582b46",
+      "@type": "Finding",
+      "name": "Systolic blood pressure < 90 mm Hg",
+      "snomed": "304621005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "IS_MINOR_CRITERION_FOR",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Systolic blood pressure < 90 mm Hg is a minor criterion for ICU admission according to the 2001 ATS and 2007 IDSA/ATS guidelines.",
+          "citation": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria or at least 2 of 3 minor criteria. ... As a result, the 3 minor criteria (systolic blood pressure <90 mm Hg, multilobar disease, and PaO2/FiO2 ratio <250) were subsequently independently evaluated...",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:bcdef123-4567-890a-bcde-f1234567890a",
+      "@type": "Finding",
+      "name": "PaO2/FiO2 ratio < 250 mm Hg",
+      "snomed": "304621005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "IS_MINOR_CRITERION_FOR",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "PaO2/FiO2 ratio < 250 mm Hg is a minor criterion for ICU admission according to the 2001 ATS and 2007 IDSA/ATS guidelines."
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:665e6b02-83b4-4f9d-b660-9923ce9d31b2",
+      "@type": "Finding",
+      "name": "Multilobar disease",
+      "snomed": "47351003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "IS_MINOR_CRITERION_FOR",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Multilobar disease is a minor criterion for ICU admission according to the 2001 ATS and 2007 IDSA/ATS guidelines.",
+          "citation": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria or at least 2 of 3 minor criteria. ... As a result, the 3 minor criteria (systolic blood pressure <90 mm Hg, multilobar disease, and PaO2/FiO2 ratio <250) were subsequently independently evaluated...",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0877eecd-8eba-4779-8d2b-c8dd5126aed9",
+      "@type": "Condition",
+      "name": "ICU Admission Criteria (ATS 2001)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Patients meeting at least 1 major criterion or 2 minor criteria should be considered for ICU admission according to the 2001 ATS guidelines.",
+          "citation": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria or at least 2 of 3 minor criteria.",
+          "citation_paraphrase": "American Thoracic Society (2001) The 2001 ATS guidelines for management of CAP stated that patients should be considered for ICU admission if they met at least 1 of 2 major criteria or at least 2 of 3 minor criteria.",
+          "citation_verbatim_excerpt": "on in CAP Based on the available peer-reviewed research articles that met our methodological quality standards, this review identified 5 clinical decision aids (Table 2) designed to predict whether ED patients with CAP would need ICU care (often referred to as severe CAP).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9087f1fe-8bac-4a03-80cb-7467ee6f7a28",
+      "@type": "Condition",
+      "name": "ICU Admission Criteria (IDSA/ATS 2007)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Patients meeting at least 1 major criterion or 3 minor criteria should be considered for ICU admission according to the 2007 IDSA/ATS guidelines.",
+          "citation": "In 2007, the ATS produced a revised set of guidelines for CAP in collaboration with the IDSA... These guidelines added 6 new minor criteria, with the recommendation that patients be considered for ICU care if they have at least 1 major criterion or 3 minor criteria.",
+          "citation_paraphrase": "In 2007, the ATS produced a revised set of guidelines for CAP in collaboration with the IDSA... These guidelines added 6 new minor criteria, with the recommendation that patients be considered for ICU care if they have at least 1 major criterion or 3 minor criteria.",
+          "citation_verbatim_excerpt": "n the available peer-reviewed research articles that met our methodological quality standards, this review identified 5 clinical decision aids (Table 2) designed to predict whether ED patients with CAP would need ICU care (often referred to as severe CAP).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2cdade07-a660-4754-afa6-12c015efb36f",
+      "@type": "Condition",
+      "name": "ICU Admission Criteria (SCAP/CURXO-80)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Patients meeting at least 1 major criterion or 2 minor criteria should be considered for ICU admission according to the SCAP/CURXO-80 criteria.",
+          "citation": "The severe CAP (SCAP) aid, also known as CURXO-80... It was subsequently externally validated. The aid includes 2 major and 6 minor criteria, and it recommends that patients be considered for ICU care if they have at least 1 major or 2 minor criteria.",
+          "citation_paraphrase": "The severe CAP (SCAP) aid, also known as CURXO-80... It was subsequently externally validated. The aid includes 2 major and 6 minor criteria, and it recommends that patients be considered for ICU care if they have at least 1 major or 2 minor criteria.",
+          "citation_verbatim_excerpt": "on the available peer-reviewed research articles that met our methodological quality standards, this review identified 5 clinical decision aids (Table 2) designed to predict whether ED patients with CAP would need ICU care (often referred to as severe CAP).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a9e372f6-fff5-432d-b90d-f558896e96e1",
+      "@type": "Condition",
+      "name": "ICU Admission Criteria (SMART-COP)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Patients with a SMART-COP score of 3 points or greater should be considered for ICU admission.",
+          "citation": "Charles et al developed the 8-item systolic blood pressure, multilobar chest radiography involvement, albumin level, respiratory rate, tachycardia, confusion, oxygenation, and arterial pH (SMART-COP) scale... The scale recommends ICU admission for patients with a score of 3 points or greater.",
+          "citation_paraphrase": "Charles et al developed the 8-item systolic blood pressure, multilobar chest radiography involvement, albumin level, respiratory rate, tachycardia, confusion, oxygenation, and arterial pH (SMART-COP) scale... The scale recommends ICU admission for patients with a score of 3 points or greater.",
+          "citation_verbatim_excerpt": "Clinical Decision Aids for ICU Admission in CAP Based on the available peer-reviewed research articles that met our methodological quality standards, this review identified 5 clinical decision aids (Table 2) designed to predict whether ED patients with CAP would need ICU care (often referred to as severe CAP).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c632ed3f-3fd2-42cf-b823-231bc92f8076",
+      "@type": "Condition",
+      "name": "ICU Admission Criteria (REA-ICU)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Patients with a REA-ICU score of 7 points or greater should be considered for ICU admission.",
+          "citation": "The Risk of Early Admission to the ICU (REA-ICU) aid was developed by Renaud et al... Each criterion is assigned 1 to 3 points, and patients with 7 or more points are recommended for ICU admission.",
+          "citation_paraphrase": "The Risk of Early Admission to the ICU (REA-ICU) aid was developed by Renaud et al... Each criterion is assigned 1 to 3 points, and patients with 7 or more points are recommended for ICU admission.",
+          "citation_verbatim_excerpt": "CAP Based on the available peer-reviewed research articles that met our methodological quality standards, this review identified 5 clinical decision aids (Table 2) designed to predict whether ED patients with CAP would need ICU care (often referred to as severe CAP).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9aeaa055-3769-4519-8cee-b915678a3173",
+      "@type": "Condition",
+      "name": "ICU Admission Criteria (CURXO-80)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Patients meeting at least 1 major criterion or 2 minor criteria should be considered for ICU admission according to the CURXO-80 criteria.",
+          "citation": "The severe CAP (SCAP) aid, also known as CURXO-80... It was subsequently externally validated. The aid includes 2 major and 6 minor criteria, and it recommends that patients be considered for ICU care if they have at least 1 major or 2 minor criteria.",
+          "citation_paraphrase": "The severe CAP (SCAP) aid, also known as CURXO-80... It was subsequently externally validated. The aid includes 2 major and 6 minor criteria, and it recommends that patients be considered for ICU care if they have at least 1 major or 2 minor criteria.",
+          "citation_verbatim_excerpt": "on the available peer-reviewed research articles that met our methodological quality standards, this review identified 5 clinical decision aids (Table 2) designed to predict whether ED patients with CAP would need ICU care (often referred to as severe CAP).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:30d69102-fbb3-4457-8a39-a275accbae35",
+      "@type": "Condition",
+      "name": "ICU Admission Criteria (SMART-COP)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Patients with a SMART-COP score of 3 points or greater should be considered for ICU admission.",
+          "citation": "Charles et al developed the 8-item systolic blood pressure, multilobar chest radiography involvement, albumin level, respiratory rate, tachycardia, confusion, oxygenation, and arterial pH (SMART-COP) scale... The scale recommends ICU admission for patients with a score of 3 points or greater.",
+          "citation_paraphrase": "Charles et al developed the 8-item systolic blood pressure, multilobar chest radiography involvement, albumin level, respiratory rate, tachycardia, confusion, oxygenation, and arterial pH (SMART-COP) scale... The scale recommends ICU admission for patients with a score of 3 points or greater.",
+          "citation_verbatim_excerpt": "Clinical Decision Aids for ICU Admission in CAP Based on the available peer-reviewed research articles that met our methodological quality standards, this review identified 5 clinical decision aids (Table 2) designed to predict whether ED patients with CAP would need ICU care (often referred to as severe CAP).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:328f65f9-8347-40fe-9eeb-f0ac0b50d3f1",
+      "@type": "Condition",
+      "name": "ICU Admission Criteria (REA-ICU)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_05_critical_question_1_clin.json",
+        "section_title": "Critical Question 1: Clinical Decision Aids for ICU Admission in CAP"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Patients with a REA-ICU score of 7 points or greater should be considered for ICU admission.",
+          "citation": "The Risk of Early Admission to the ICU (REA-ICU) aid was developed by Renaud et al... Each criterion is assigned 1 to 3 points, and patients with 7 or more points are recommended for ICU admission.",
+          "citation_paraphrase": "The Risk of Early Admission to the ICU (REA-ICU) aid was developed by Renaud et al... Each criterion is assigned 1 to 3 points, and patients with 7 or more points are recommended for ICU admission.",
+          "citation_verbatim_excerpt": "CAP Based on the available peer-reviewed research articles that met our methodological quality standards, this review identified 5 clinical decision aids (Table 2) designed to predict whether ED patients with CAP would need ICU care (often referred to as severe CAP).",
+          "citation_type": "paraphrase_with_recovered_excerpt"
+        }
+      ]
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:34.143724+00:00",
+    "nodes_before": 24,
+    "nodes_after": 18,
+    "rules_before": 23,
+    "rules_after": 17
+  }
+}

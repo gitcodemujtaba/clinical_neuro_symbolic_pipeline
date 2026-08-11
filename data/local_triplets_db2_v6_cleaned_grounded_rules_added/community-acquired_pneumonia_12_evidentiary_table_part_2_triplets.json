@@ -1,0 +1,508 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME",
+          "target": "urn:uuid:a085ab73-1f81-4433-aaa0-a3a2596014b8",
+          "rationale": "Mortality is a key outcome measure in studies evaluating risk scores for CAP.",
+          "citation": "Chalmers et al15 (2010), Akram et al17 (2011), Marrie et al19 (2000)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Acuity",
+      "name": "Mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:496c913b-3f53-43c6-b5c5-12b9e2ee631c",
+      "@type": "Finding",
+      "name": "PSI score",
+      "snomed": "278305009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_USED_IN",
+          "target": "urn:uuid:87c86b1c-262a-4cd1-b10f-6d718521b206",
+          "rationale": "The Pneumonia Severity Index (PSI) score is used to assess severity and predict outcomes in CAP.",
+          "citation": "Chalmers et al15 (2010), Akram et al17 (2011), Atlas et al18 (1998), Marrie et al19 (2000)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:ed276c46-7933-4798-8345-792c811f5f0a",
+      "@type": "Condition",
+      "name": "Pneumonia Severity Index (PSI)",
+      "snomed": "278305009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-12ab-34567890abcd",
+      "@type": "Finding",
+      "name": "CURB-65 score",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_USED_IN",
+          "target": "urn:uuid:7b14e07c-f24e-46fc-8e85-862584ed2192",
+          "rationale": "The CURB-65 score is used to assess severity and predict outcomes in CAP.",
+          "citation": "Chalmers et al15 (2010), Akram et al17 (2011), Marrie et al19 (2000)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:7b14e07c-f24e-46fc-8e85-862584ed2192",
+      "@type": "Condition",
+      "name": "CURB-65 score",
+      "snomed": "278061009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3a4b5c6d-7e8f-0123-4567-890abcdef123",
+      "@type": "Finding",
+      "name": "Inpatient admission",
+      "snomed": "32485007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME",
+          "target": "urn:uuid:4b5c6d7e-8f90-1234-5678-90abcdef1234",
+          "rationale": "Inpatient admission is a common outcome in CAP management.",
+          "citation": "Atlas et al18 (1998), Marrie et al19 (2000)",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:4b5c6d7e-8f90-1234-5678-90abcdef1234",
+      "@type": "Intervention",
+      "name": "Inpatient admission",
+      "snomed": "32485007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4c5d6e7f-901a-2345-6789-0abcdef12345",
+      "@type": "Finding",
+      "name": "Outpatient treatment",
+      "snomed": "373864002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME",
+          "target": "urn:uuid:5d6e7f89-01ab-2345-6789-abcdef123456",
+          "rationale": "Outpatient treatment is a common management strategy for CAP.",
+          "citation": "Atlas et al18 (1998), Akram et al17 (2011)",
+          "citation_type": "paraphrase"
+        }
+      ],
+      "quality_flag": "same_snomed_type_mismatch_not_merged"
+    },
+    {
+      "@id": "urn:uuid:5d6e7f89-01ab-2345-6789-abcdef123456",
+      "@type": "Intervention",
+      "name": "Outpatient treatment",
+      "snomed": "373864002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "quality_flag": "same_snomed_type_mismatch_not_merged",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f0bf5a5b-ad5f-4c36-bf19-a958ca56862f",
+      "@type": "Finding",
+      "name": "AUC",
+      "snomed": "60301000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2a959de6-610e-405d-bd12-a36e13987776",
+      "@type": "Finding",
+      "name": "Sensitivity",
+      "snomed": "35209006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Finding",
+      "name": "Specificity",
+      "snomed": "733985002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d1e2f345-6789-0def-abc1-234567890def",
+      "@type": "Finding",
+      "name": "Negative LR",
+      "snomed": "31836009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:10fe4dcb-a987-6543-210f-edcba9876543",
+      "@type": "Finding",
+      "name": "Inconsistent outcome use",
+      "snomed": "260380004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_LIMITATION",
+          "target": "urn:uuid:a085ab73-1f81-4433-aaa0-a3a2596014b8",
+          "rationale": "Inconsistent outcome use is a limitation of the study.",
+          "citation": "Chalmers et al15 (2010)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2b3c4d5e-6f7a-9012-3456-7890abcdef12",
+      "@type": "Finding",
+      "name": "CRB-65 score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_USED_IN",
+          "target": "urn:uuid:9d23e127-5ef6-4252-9776-87673c867022",
+          "rationale": "The CRB-65 score is used to assess severity and predict outcomes in CAP.",
+          "citation": "Chalmers et al15 (2010), Akram et al17 (2011), Marrie et al19 (2000)",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9d23e127-5ef6-4252-9776-87673c867022",
+      "@type": "Condition",
+      "name": "CRB-65 score",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3e44880a-554a-468e-8d84-5ce78dc2dada",
+      "@type": "Finding",
+      "name": "IRVS required",
+      "snomed": "4206339",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_OUTCOME",
+          "target": "urn:uuid:6f7890ab-cdef-1234-5678-90abcdef1234",
+          "rationale": "Requirement for invasive respiratory ventilation support (IRVS) is a severe outcome in CAP.",
+          "citation": "Charles et al16 (2008)",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Inspiratory reserve volume",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:45:11.390275+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:6f7890ab-cdef-1234-5678-90abcdef1234",
+      "@type": "Acuity",
+      "name": "Invasive respiratory ventilation support (IRVS)",
+      "snomed": "37158404",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [],
+      "snomed_name": "Invasive mechanical ventilation",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:45:12.155091+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:0fedcba9-8765-4321-0fed-cba987654321",
+      "@type": "Finding",
+      "name": "Heterogeneity",
+      "snomed": "44804379",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_ASSESSED_BY",
+          "target": "urn:uuid:87c86b1c-262a-4cd1-b10f-6d718521b206",
+          "rationale": "Heterogeneity is assessed using Cochran Q test and Higgins I^2 test.",
+          "citation": "Chalmers et al15 (2010)",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Regional variation",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:45:12.788215+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:87c86b1c-262a-4cd1-b10f-6d718521b206",
+      "@type": "Finding",
+      "name": "Cochran Q test and Higgins I^2 test",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a085ab73-1f81-4433-aaa0-a3a2596014b8",
+      "@type": "Finding",
+      "name": "Limitation",
+      "snomed": "4112285",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [],
+      "snomed_name": "Limited",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:45:13.932465+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:34f15368-028d-43d5-bc00-98dc7d499137",
+      "@type": "Finding",
+      "name": "Significant heterogeneity in all analyses of discrimination",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_LIMITATION",
+          "target": "urn:uuid:a085ab73-1f81-4433-aaa0-a3a2596014b8",
+          "rationale": "Significant heterogeneity in all analyses of discrimination is a limitation of the study.",
+          "citation": "Chalmers et al15 (2010)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:828ec9f4-41af-45a2-95c9-7280c1938872",
+      "@type": "Finding",
+      "name": "Limitation",
+      "snomed": "4112285",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [],
+      "snomed_name": "Limited",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:45:14.308845+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:06e4aff3-8253-4a2d-8891-07734a5ef65f",
+      "@type": "Finding",
+      "name": "No sensitivity analysis was undertaken using higher-quality studies",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_LIMITATION",
+          "target": "urn:uuid:a085ab73-1f81-4433-aaa0-a3a2596014b8",
+          "rationale": "No sensitivity analysis was undertaken using higher-quality studies is a limitation of the study.",
+          "citation": "Chalmers et al15 (2010)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:330267a4-8499-4272-b709-12c265486436",
+      "@type": "Finding",
+      "name": "Inconsistent outcome use",
+      "snomed": "4127662",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_LIMITATION",
+          "target": "urn:uuid:a085ab73-1f81-4433-aaa0-a3a2596014b8",
+          "rationale": "Inconsistent outcome use is a limitation of the study.",
+          "citation": "Akram et al17 (2011)",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Inconsistent",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:45:15.469713+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:0d0b1fef-8b39-4201-8a32-9c6acc574763",
+      "@type": "Finding",
+      "name": "Significant heterogeneity in all analyses of discrimination",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_LIMITATION",
+          "target": "urn:uuid:a085ab73-1f81-4433-aaa0-a3a2596014b8",
+          "rationale": "Significant heterogeneity in all analyses of discrimination is a limitation of the study.",
+          "citation": "Akram et al17 (2011)",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:44ef7080-1fa2-4d11-a970-60b9b3d49da3",
+      "@type": "Finding",
+      "name": "Small number of studies for CRB-65 and CURB-65",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_12_evidentiary_table_part_2.json",
+        "section_title": "Evidentiary Table Part 2 (Chalmers et al. to Marrie et al.)"
+      },
+      "rules": [
+        {
+          "predicate": "IS_LIMITATION",
+          "target": "urn:uuid:a085ab73-1f81-4433-aaa0-a3a2596014b8",
+          "rationale": "Small number of studies for CRB-65 and CURB-65 is a limitation of the study.",
+          "citation": ""
+        }
+      ]
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:35.594791+00:00",
+    "nodes_before": 36,
+    "nodes_after": 28,
+    "rules_before": 20,
+    "rules_after": 14
+  }
+}

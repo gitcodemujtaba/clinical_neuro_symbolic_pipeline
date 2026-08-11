@@ -1,0 +1,275 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Goal 1: Improve the accuracy of patient identification",
+      "snomed": "372039005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:753b1892-f011-4f91-ae41-8875a69914a8",
+      "@type": "Finding",
+      "name": "Use at least two patient identifiers",
+      "snomed": "118522005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:d4e5f678-9012-3456-7890-abcdef123456",
+          "rationale": "Using at least two patient identifiers is required to prevent wrong-patient errors during care, treatment, and services.",
+          "citation": "NPSG.01.01.01"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f67890ab-cdef-1234-5678-90abcdef1234",
+      "@type": "Finding",
+      "name": "Assigned identification number",
+      "snomed": "396278008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:67890abc-def1-2345-6789-0abcdef12345",
+      "@type": "Finding",
+      "name": "Telephone number",
+      "snomed": "734005006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Condition",
+      "name": "Wrong-patient errors",
+      "snomed": "44804287",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": [],
+      "snomed_name": "Medical error",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:29.070763+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:d4e5f678-9012-3456-7890-abcdef123456",
+      "@type": "Intervention",
+      "name": "Use at least two patient identifiers for care, treatment, and services",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+      "@type": "Finding",
+      "name": "Patient identifiers",
+      "snomed": "4038694",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": [],
+      "snomed_name": "Identifier",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:48:30.410257+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:c2060228-2332-4214-8b61-111d4fd388cb",
+      "@type": "Finding",
+      "name": "Newborns at higher risk of misidentification",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0a325e08-e9d9-47cb-8ad0-5eab3198ecfe",
+      "@type": "Finding",
+      "name": "Feeding wrong newborn breastmilk",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2526c693-d22f-44d2-a87d-d07a016b9ab7",
+      "@type": "Finding",
+      "name": "Reliable identification system among staff necessary",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Finding",
+      "name": "Element of performance 1 (EP 1)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:bcdef123-4567-890a-bcde-f1234567890a",
+          "rationale": "Use at least two patient identifiers when administering medications, blood/components, collecting specimens, or providing treatments/procedures.",
+          "citation": "NPSG.01.01.01, EP 1",
+          "citation_type": "paraphrase"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:cdef1234-5678-90ab-cdef-1234567890ab",
+          "rationale": "Patient's room number or physical location should not be used as an identifier.",
+          "citation": "NPSG.01.01.01, EP 1",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:bcdef123-4567-890a-bcde-f1234567890a",
+      "@type": "Intervention",
+      "name": "Use at least two patient identifiers for medications, blood/components, specimens, treatments/procedures",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cdef1234-5678-90ab-cdef-1234567890ab",
+      "@type": "Intervention",
+      "name": "Do not use patient's room number or physical location as identifier",
+      "snomed": "44789711",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": [],
+      "snomed_name": "Patient paper record not available",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:34.064215+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:def12345-6789-0abc-def1-234567890abc",
+      "@type": "Finding",
+      "name": "Element of performance 2 (EP 2)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:ef123456-7890-abcd-ef12-34567890abcd",
+          "rationale": "Label containers for blood and other specimens in the presence of the patient.",
+          "citation": "NPSG.01.01.01, EP 2",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ef123456-7890-abcd-ef12-34567890abcd",
+      "@type": "Intervention",
+      "name": "Label specimen containers in patient's presence",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8c1737a8-e95e-406a-854c-df46a59f412c",
+      "@type": "Finding",
+      "name": "Element of performance 3 (EP 3)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7713881d-3e5e-4551-be63-5035d7a5448a",
+          "rationale": "Use distinct methods of identification for newborn patients.",
+          "citation": "NPSG.01.01.01, EP 3",
+          "citation_type": "paraphrase"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7713881d-3e5e-4551-be63-5035d7a5448a",
+      "@type": "Intervention",
+      "name": "Use distinct identification methods for newborns",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "national_patient_safety_goals_npsg_goal_1_goal_1_improve_the_accur.json",
+        "section_title": "Goal 1: Improve the accuracy of patient identification"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.571251+00:00",
+    "nodes_before": 18,
+    "nodes_after": 17,
+    "rules_before": 5,
+    "rules_after": 5
+  }
+}

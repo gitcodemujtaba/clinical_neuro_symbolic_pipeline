@@ -1,0 +1,356 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Stage C HF",
+      "snomed": "261626008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Patients with Stage C HF should receive multidisciplinary team care and self-care support.",
+          "citation": "Multidisciplinary Team Care & Self [SNOMED: 384758001]-Care Support: Patients should receive care from multidisciplinary teams and specific education/support to facilitate HF self-care [SNOMED: 326051000000105] (Class 1).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:5555cec6-8ae5-446e-86f5-a724affe2318",
+          "rationale": "Patients with Stage C HF should receive vaccinations (influenza, pneumococcal, COVID-19).",
+          "citation": "Vaccinations (influenza [SNOMED: 86198006], pneumococcal [SNOMED: 9861002], COVID-19 [SNOMED: 840539006]) are recommended (Class 2a).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c64b0b64-5a3d-4a1d-b48a-185d4095bf1a",
+          "rationale": "Patients with Stage C HF should restrict dietary sodium intake to less than 2.3 g/day.",
+          "citation": "Dietary [SNOMED: 41829006] Sodium [SNOMED: 39972003] Restriction [SNOMED: 263856008]: Avoiding excessive sodium intake [SNOMED: 440921000124100] (<2.3 g/day [SNOMED: 258829005]) is reasonable to reduce congestive symptoms (Class 2a).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e43b5d24-c723-42e3-9253-8fcf5e2fa2a8",
+          "rationale": "Eligible patients with Stage C HF should participate in exercise training or cardiac rehabilitation.",
+          "citation": "Activity [SNOMED: 68130003] & Rehabilitation [SNOMED: 52052004]: Exercise [SNOMED: 256235009] training [SNOMED: 118629009] or cardiac rehabilitation [SNOMED: 313395003] is recommended for eligible patients to improve functional status and QOL (Class 1).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:d1e9f982-3c62-468d-955c-d9db74880b9e",
+          "rationale": "Patients with Stage C HF and fluid retention should receive loop diuretics.",
+          "citation": "Loop diuretics [SNOMED: 372691009] (furosemide [SNOMED: 387475002], bumetanide [SNOMED: 387498005], torsemide [SNOMED: 108476002]) are recommended in patients with fluid retention [SNOMED: 43498006] to relieve [SNOMED: 397855004] congestion [SNOMED: 85804007] and maintain euvolemia (Class 1).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:52bb297b-dacc-4463-bbb1-30df0b83f5be",
+          "rationale": "Patients with Stage C HF who are resistant to loop diuretics may require the addition of a thiazide diuretic.",
+          "citation": "Adding a thiazide [SNOMED: 860766002] (e.g., metolazone [SNOMED: 387123003]) is reserved [SNOMED: 1256105002] for diuretic [SNOMED: 372695000] resistance (Class 1).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:38251d6e-07da-449b-a3c1-548eab0ac991",
+          "rationale": "Patients with Stage C HF and NYHA Class II-III HFrEF should be treated with an ARNI (sacubitril-valsartan).",
+          "citation": "ARNi (sacubitril-valsartan [SNOMED: 763540002]) is recommended in NYHA [SNOMED: 420816009] Class II-III HFrEF to reduce morbidity and mortality [SNOMED: 409651001] (Class 1, LOE A).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:9f157d09-7d47-486a-a95c-5895d1ee8d7d",
+          "rationale": "If ARNI is not feasible, patients with Stage C HF should be treated with an ACEi or ARB.",
+          "citation": "If ARNi is not feasible, ACEi (or ARB [SNOMED: 96308008] if ACEi intolerant) is indicated (Class 1, LOE A).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:263dedc2-97f3-4042-874a-8c8625c983a7",
+          "rationale": "All symptomatic or asymptomatic patients with Stage C HF should be treated with a beta blocker (bisoprolol, carvedilol, metoprolol succinate).",
+          "citation": "Bisoprolol [SNOMED: 386868003], carvedilol [SNOMED: 386870007], or sustained [SNOMED: 263892007]-release [SNOMED: 58000006] metoprolol succinate [SNOMED: 412432007] are recommended for all symptomatic [SNOMED: 264931009] or asymptomatic HFrEF patients to reduce mortality [SNOMED: 409651001] and hospitalization [SNOMED: 394656005] (Class 1, LOE A).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:a6a839a2-1c23-43df-8c51-8e3df949a101",
+          "rationale": "Patients with Stage C HF (NYHA Class II-IV) and eGFR >30 mL/min/1.73m² and K+ <5.0 mEq/L should be treated with an MRA (spironolactone or eplerenone).",
+          "citation": "Spironolactone [SNOMED: 387078006] or eplerenone [SNOMED: 407010008] is recommended for NYHA [SNOMED: 420816009] Class II-IV [SNOMED: 255560000] HFrEF if eGFR [SNOMED: 86960007] >30 mL/min [SNOMED: 258859000]/1.73m² and K+ <5.0 mEq/L [SNOMED: 258865000] (Class 1, LOE A).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:dff14506-a5e1-4585-a27d-d3404243c442",
+          "rationale": "Symptomatic patients with Stage C HF should be treated with an SGLT2 inhibitor (dapagliflozin or empagliflozin), regardless of diabetes status.",
+          "citation": "Dapagliflozin [SNOMED: 703674001] or empagliflozin [SNOMED: 703894008] is recommended for symptomatic [SNOMED: 264931009] chronic [SNOMED: 90734009] HFrEF, regardless of diabetes status, to reduce HF [SNOMED: 84114007] hospitalizations [SNOMED: 394656005] and cardiovascular [SNOMED: 113257007] mortality [SNOMED: 409651001] (Class 1, LOE A).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:65a02c5c-c8b5-490d-bfac-28a9a4063a85",
+          "rationale": "Self-identified Black/African American patients with Stage C HF (NYHA Class III-IV) on optimal GDMT should be treated with hydralazine and isosorbide dinitrate.",
+          "citation": "Hydralazine [SNOMED: 387125005] and Isosorbide Dinitrate [SNOMED: 387332007]: Recommended for self-identified Black/African [SNOMED: 413464008] American patients with NYHA [SNOMED: 420816009] Class III-IV [SNOMED: 255560000] HFrEF on optimal GDMT (Class 1, LOE A).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:dc36daff-5f76-47e6-8e24-ae96c7ff8c16",
+          "rationale": "Patients with Stage C HF (NYHA II-III) with LVEF ≤35% in sinus rhythm and resting HR ≥70 bpm on maximum tolerated beta blocker may benefit from ivabradine.",
+          "citation": "Ivabradine [SNOMED: 421228002]: Beneficial in NYHA [SNOMED: 420816009] II-III [SNOMED: 6651008] HFrEF (LVEF [SNOMED: 250908004] ≤35%) in sinus rhythm [SNOMED: 251150006] with resting [SNOMED: 258157001] HR [SNOMED: 364075005] ≥70 bpm [SNOMED: 258983007] on maximum [SNOMED: 398303009] tolerated beta blocker [SNOMED: 33252009] (Class 2a, LOE B-R).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:685f26cf-9bc8-469c-bb85-25bbbe9da968",
+          "rationale": "Patients with Stage C HF may be considered for vericiguat if they are high-risk and have had recent worsening HF.",
+          "citation": "Vericiguat: Soluble guanylyl cyclase [SNOMED: 28954008] stimulator [SNOMED: 36645008] may be considered in high-risk HFrEF with recent worsening HF [SNOMED: 84114007] (Class 2b, LOE B-R).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:e2279b9e-c4b6-4c9b-885e-31742c66b55f",
+          "rationale": "Patients with Stage C HF who remain refractory may be considered for digoxin.",
+          "citation": "Digoxin [SNOMED: 387461009]: May be considered to reduce HF [SNOMED: 84114007] hospitalizations [SNOMED: 394656005] in refractory [SNOMED: 20646008] HFrEF (Class 2b, LOE B-R).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:e7126501-3860-412f-8bc0-6495bdfc39b5",
+          "rationale": "Patients with Stage C HF may be considered for omega-3 PUFA supplementation as adjunctive therapy.",
+          "citation": "Omega-3 PUFA [SNOMED: 226365003]: Supplementation may be reasonable as adjunctive therapy (Class 2b, LOE B-R).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Intervention",
+      "name": "Multidisciplinary Team Care & Self-Care Support",
+      "snomed": "384758001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c64b0b64-5a3d-4a1d-b48a-185d4095bf1a",
+      "@type": "Intervention",
+      "name": "Dietary Sodium Restriction (<2.3 g/day)",
+      "snomed": "258829005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e43b5d24-c723-42e3-9253-8fcf5e2fa2a8",
+      "@type": "Intervention",
+      "name": "Exercise training or cardiac rehabilitation",
+      "snomed": "313395003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d1e9f982-3c62-468d-955c-d9db74880b9e",
+      "@type": "Medication",
+      "name": "Loop diuretics (furosemide, bumetanide, torsemide)",
+      "snomed": "372691009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:52bb297b-dacc-4463-bbb1-30df0b83f5be",
+      "@type": "Medication",
+      "name": "Thiazide diuretics (e.g., metolazone)",
+      "snomed": "860766002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:38251d6e-07da-449b-a3c1-548eab0ac991",
+      "@type": "Medication",
+      "name": "ARNi (sacubitril-valsartan)",
+      "snomed": "763540002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:263dedc2-97f3-4042-874a-8c8625c983a7",
+      "@type": "Medication",
+      "name": "Beta Blockers (bisoprolol, carvedilol, metoprolol succinate)",
+      "snomed": "33252009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:dc36daff-5f76-47e6-8e24-ae96c7ff8c16",
+      "@type": "Medication",
+      "name": "Ivabradine",
+      "snomed": "421228002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e2279b9e-c4b6-4c9b-885e-31742c66b55f",
+      "@type": "Medication",
+      "name": "Digoxin",
+      "snomed": "387461009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e7126501-3860-412f-8bc0-6495bdfc39b5",
+      "@type": "Medication",
+      "name": "Omega-3 PUFA",
+      "snomed": "226365003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5555cec6-8ae5-446e-86f5-a724affe2318",
+      "@type": "Intervention",
+      "name": "Vaccinations (influenza, pneumococcal, COVID-19)",
+      "snomed": "1450701",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": [],
+      "snomed_name": "Partial vaccination for COVID-19",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:43:34.717750+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:9f157d09-7d47-486a-a95c-5895d1ee8d7d",
+      "@type": "Medication",
+      "name": "ACEi or ARB",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a6a839a2-1c23-43df-8c51-8e3df949a101",
+      "@type": "Medication",
+      "name": "MRAs (spironolactone, eplerenone)",
+      "snomed": "1309799",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": [],
+      "snomed_name": "eplerenone",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:43:37.110997+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:dff14506-a5e1-4585-a27d-d3404243c442",
+      "@type": "Medication",
+      "name": "SGLT2 Inhibitors (dapagliflozin, empagliflozin)",
+      "snomed": "45774751",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": [],
+      "snomed_name": "empagliflozin",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:43:37.469040+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:65a02c5c-c8b5-490d-bfac-28a9a4063a85",
+      "@type": "Medication",
+      "name": "Hydralazine and Isosorbide Dinitrate",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:685f26cf-9bc8-469c-bb85-25bbbe9da968",
+      "@type": "Medication",
+      "name": "Vericiguat",
+      "snomed": "739665",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "ahaacchfsa_clinical_practice_guideline_e895_4_stage_c_hf_nonpharmacolo.json",
+        "section_title": "Stage C HF: Nonpharmacological, Diuretics, and Pharmacological Treatment for HFrEF"
+      },
+      "rules": [],
+      "snomed_name": "vericiguat",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:43:37.886567+00:00"
+      }
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:32.543378+00:00",
+    "nodes_before": 17,
+    "nodes_after": 17,
+    "rules_before": 16,
+    "rules_after": 16
+  }
+}

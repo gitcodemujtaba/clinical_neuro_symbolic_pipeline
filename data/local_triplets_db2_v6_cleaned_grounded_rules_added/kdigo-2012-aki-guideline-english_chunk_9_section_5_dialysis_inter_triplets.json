@@ -1,0 +1,412 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:e7f8a9b0-c1d2-45e6-a7b8-c9d0e1f23456",
+      "@type": "Medication",
+      "name": "Unfractionated Heparin",
+      "snomed": "372877000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:f8a9b0c1-d2e3-46e7-a8b9-c0d1e2f34567",
+          "rationale": "Unfractionated heparin is recommended for intermittent RRT.",
+          "citation": "5.3.2.1: For intermittent [SNOMED: 7087005] RRT, recommend unfractionated or low-molecular-weight heparin [SNOMED: 373294004] (1C).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:f8a9b0c1-d2e3-46e7-a8b9-c0d1e2f34567",
+          "rationale": "Heparin is an alternative anticoagulation for intermittent RRT.",
+          "citation": "5.3.2.1: For intermittent [SNOMED: 7087005] RRT, recommend unfractionated or low-molecular-weight heparin [SNOMED: 373294004] (1C).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:2b3c4d5e-f6a7-49d0-b1c2-d3e4f56789a0",
+          "rationale": "Heparin is an alternative anticoagulation for CRRT.",
+          "citation": "5.3.2.2: For CRRT [SNOMED: 714749008] without contraindications, suggest regional [SNOMED: 410674003] citrate [SNOMED: 59351004] anticoagulation [SNOMED: 182764009] rather than heparin [SNOMED: 372877000] (2B).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:e9f0a1b2-c3d4-45e6-b7c8-a9d0e1f23456",
+          "rationale": "Heparin should be stopped in HIT.",
+          "citation": "5.3.4: In HIT, stop all heparin [SNOMED: 372877000] and use direct thrombin inhibitors [SNOMED: 734938004] (argatroban [SNOMED: 116508003]) or Factor Xa inhibitors [SNOMED: 763709007] (1A).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-48d9-a0b1-c2d3e4f56789",
+      "@type": "Medication",
+      "name": "Regional Citrate",
+      "snomed": "59351004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:2b3c4d5e-f6a7-49d0-b1c2-d3e4f56789a0",
+          "rationale": "Regional citrate anticoagulation is suggested for CRRT without contraindications.",
+          "citation": "5.3.2.2: For CRRT [SNOMED: 714749008] without contraindications, suggest regional [SNOMED: 410674003] citrate [SNOMED: 59351004] anticoagulation [SNOMED: 182764009] rather than heparin [SNOMED: 372877000] (2B).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+      "@type": "Finding",
+      "name": "Life-threatening changes in fluid, electrolyte, and acid-base balance",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:b8c9d0e1-f2a4-43a5-b6c7-d8e9f0123456",
+          "rationale": "Life-threatening changes in fluid, electrolyte, and acid-base balance indicate the need for emergent RRT.",
+          "citation": "5.1.1: Initiate RRT emergently when life-threatening changes in fluid, electrolyte [SNOMED: 86355000], and acid [SNOMED: 34957004]-base balance [SNOMED: 705235004] exist",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b8c9d0e1-f2a4-43a5-b6c7-d8e9f0123456",
+      "@type": "Intervention",
+      "name": "Renal Replacement Therapy (RRT)",
+      "snomed": "37018292",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-d7e8f9012345",
+          "rationale": "Emergent RRT is indicated for life-threatening changes in fluid, electrolyte, and acid-base balance.",
+          "citation": "5.1.1: Initiate RRT emergently when life-threatening changes in fluid, electrolyte [SNOMED: 86355000], and acid [SNOMED: 34957004]-base balance [SNOMED: 705235004] exist",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Continuous renal replacement therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "2 (Synonym, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:48:11.288363+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:c1d2e3f4-a5b6-47c8-9d0e-f1a2b3c4d5e6",
+      "@type": "Finding",
+      "name": "Intrinsic kidney function recovery",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:d3e4f5a6-b7c8-49d0-e1f2-a3b4c5d6e7f8",
+          "rationale": "Recovery of intrinsic kidney function is a criterion for stopping RRT.",
+          "citation": "5.2.1: Discontinue [SNOMED: 410546004] RRT when intrinsic kidney function [SNOMED: 11953005] has recovered or RRT is no longer consistent with goals of care",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:d3e4f5a6-b7c8-49d0-e1f2-a3b4c5d6e7f8",
+      "@type": "Intervention",
+      "name": "Discontinuation of Renal Replacement Therapy (RRT)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:c1d2e3f4-a5b6-47c8-9d0e-f1a2b3c4d5e6",
+          "rationale": "RRT should be discontinued when intrinsic kidney function has recovered.",
+          "citation": "5.2.1: Discontinue [SNOMED: 410546004] RRT when intrinsic kidney function [SNOMED: 11953005] has recovered or RRT is no longer consistent with goals of care",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f8a9b0c1-d2e3-46e7-a8b9-c0d1e2f34567",
+      "@type": "Intervention",
+      "name": "Intermittent Renal Replacement Therapy (RRT)",
+      "snomed": "619390",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:e7f8a9b0-c1d2-45e6-a7b8-c9d0e1f23456",
+          "rationale": "Intermittent RRT requires anticoagulation.",
+          "citation": "5.3.2.1: For intermittent [SNOMED: 7087005] RRT, recommend unfractionated or low-molecular-weight heparin [SNOMED: 373294004] (1C).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Prolonged intermittent renal replacement therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:12.881028+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:2b3c4d5e-f6a7-49d0-b1c2-d3e4f56789a0",
+      "@type": "Intervention",
+      "name": "Continuous Renal Replacement Therapy (CRRT)",
+      "snomed": "37018292",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:1a2b3c4d-e5f6-48d9-a0b1-c2d3e4f56789",
+          "rationale": "CRRT requires anticoagulation.",
+          "citation": "5.3.2.2: For CRRT [SNOMED: 714749008] without contraindications, suggest regional [SNOMED: 410674003] citrate [SNOMED: 59351004] anticoagulation [SNOMED: 182764009] rather than heparin [SNOMED: 372877000] (2B).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Continuous renal replacement therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:48:13.130704+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:e9f0a1b2-c3d4-45e6-b7c8-a9d0e1f23456",
+      "@type": "Condition",
+      "name": "Heparin-Induced Thrombocytopenia (HIT)",
+      "snomed": "433749",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:e7f8a9b0-c1d2-45e6-a7b8-c9d0e1f23456",
+          "rationale": "In HIT, heparin should be stopped.",
+          "citation": "5.3.4: In HIT, stop all heparin [SNOMED: 372877000] and use direct thrombin inhibitors [SNOMED: 734938004] (argatroban [SNOMED: 116508003]) or Factor Xa inhibitors [SNOMED: 763709007] (1A).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Heparin-induced thrombocytopenia",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:48:13.370954+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:1c2d3e4f-a5b6-47c8-9d0e-f1a2b3c4d5e6",
+      "@type": "Medication",
+      "name": "Direct Thrombin Inhibitors (e.g., Argatroban)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:e9f0a1b2-c3d4-45e6-b7c8-a9d0e1f23456",
+          "rationale": "Direct thrombin inhibitors (e.g., argatroban) should be used in HIT instead of heparin.",
+          "citation": "5.3.4: In HIT, stop all heparin [SNOMED: 372877000] and use direct thrombin inhibitors [SNOMED: 734938004] (argatroban [SNOMED: 116508003]) or Factor Xa inhibitors [SNOMED: 763709007] (1A).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2d3e4f5a-b7c8-49d0-e1f2-a3b4c5d6e7f9",
+      "@type": "Medication",
+      "name": "Factor Xa Inhibitors",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:e9f0a1b2-c3d4-45e6-b7c8-a9d0e1f23456",
+          "rationale": "Factor Xa inhibitors should be used in HIT instead of heparin.",
+          "citation": "5.3.4: In HIT, stop all heparin [SNOMED: 372877000] and use direct thrombin inhibitors [SNOMED: 734938004] (argatroban [SNOMED: 116508003]) or Factor Xa inhibitors [SNOMED: 763709007] (1A).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f2e3d4c5-b6a7-48d9-a0b1-c2d3e4f56789",
+      "@type": "Intervention",
+      "name": "Uncuffed Nontunneled Dialysis Catheter",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:3e4f5a6b-c7d8-40e1-f2a3-b4c5d6e7f89a",
+          "rationale": "RRT should be initiated via an uncuffed nontunneled dialysis catheter.",
+          "citation": "5.4.1: Initiate RRT via uncuffed nontunneled dialysis catheter [SNOMED: 397849009] (2D).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:3e4f5a6b-c7d8-40e1-f2a3-b4c5d6e7f89a",
+      "@type": "Intervention",
+      "name": "Renal Replacement Therapy (RRT)",
+      "snomed": "37018292",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f2e3d4c5-b6a7-48d9-a0b1-c2d3e4f56789",
+          "rationale": "RRT is the intervention being initiated.",
+          "citation": "5.4.1: Initiate RRT via uncuffed nontunneled dialysis catheter [SNOMED: 397849009] (2D).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Continuous renal replacement therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "2 (Synonym, via GLiNER span)",
+        "grounded_at": "2026-08-07T16:48:15.463525+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:4a5b6c7d-e8f9-42d3-a4b5-c6d7e8f90123",
+      "@type": "Finding",
+      "name": "Internal Jugular or Subclavian Catheters",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:5b6c7d8e-f9a0-43d4-b5c6-d7e8f9012345",
+          "rationale": "Position of internal jugular or subclavian catheters should be confirmed with chest radiograph prior to first use.",
+          "citation": "5.4.4: Confirm position [SNOMED: 246268007] with chest [SNOMED: 51185008] radiograph [SNOMED: 168537006] prior to first use of internal [SNOMED: 260521003] jugular or subclavian catheters [SNOMED: 465589004] (1B).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5b6c7d8e-f9a0-43d4-b5c6-d7e8f9012345",
+      "@type": "Intervention",
+      "name": "Chest Radiograph for Catheter Position Confirmation",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:4a5b6c7d-e8f9-42d3-a4b5-c6d7e8f90123",
+          "rationale": "Confirmation of catheter position is required before first use.",
+          "citation": "5.4.4: Confirm position [SNOMED: 246268007] with chest [SNOMED: 51185008] radiograph [SNOMED: 168537006] prior to first use of internal [SNOMED: 260521003] jugular or subclavian catheters [SNOMED: 465589004] (1B).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6c7d8e9f-a0b1-44d5-c6d7-e8f901234567",
+      "@type": "Intervention",
+      "name": "Ultrasound Guidance for Vein Insertion",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:7d8e9fa0-b1c2-45d6-a7b8-c9d0e1f23456",
+          "rationale": "Ultrasound guidance is recommended for vein insertion.",
+          "citation": "5.4.3: Recommend ultrasound guidance [SNOMED: 61593002] for insertion [SNOMED: 257867005] (1A).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:7d8e9fa0-b1c2-45d6-a7b8-c9d0e1f23456",
+      "@type": "Intervention",
+      "name": "Vein Insertion",
+      "snomed": "4049694",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_9_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Timing, Stopping, Anticoagulation, and Access"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:6c7d8e9f-a0b1-44d5-c6d7-e8f901234567",
+          "rationale": "Vein insertion is the procedure being performed.",
+          "citation": "5.4.3: Recommend ultrasound guidance [SNOMED: 61593002] for insertion [SNOMED: 257867005] (1A).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Insertion of intraluminal device into vein",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:48:17.120264+00:00"
+      }
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.385032+00:00",
+    "nodes_before": 18,
+    "nodes_after": 17,
+    "rules_before": 20,
+    "rules_after": 20
+  }
+}

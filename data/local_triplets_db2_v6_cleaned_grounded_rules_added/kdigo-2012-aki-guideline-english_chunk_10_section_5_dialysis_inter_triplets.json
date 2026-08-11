@@ -1,0 +1,193 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+      "@type": "Intervention",
+      "name": "Continuous Renal Replacement Therapy (CRRT)",
+      "snomed": "714749008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:052a96bb-afdf-423e-9f3d-3291dea9330a",
+      "@type": "Finding",
+      "name": "Acute brain injury",
+      "snomed": "81308009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Suggest CRRT rather than IHD for patients with acute brain injury or increased intracranial pressure.",
+          "citation": "5.6.3"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e5f67890-1234-5678-90ab-cdef12345678",
+      "@type": "Finding",
+      "name": "Increased intracranial pressure",
+      "snomed": "271719001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Suggest CRRT rather than IHD for patients with acute brain injury or increased intracranial pressure.",
+          "citation": "5.6.3"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:2e227e65-4063-4d5a-9301-3e4dac367117",
+      "@type": "Medication",
+      "name": "Bicarbonate",
+      "snomed": "68615006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:cddcc537-17ce-4114-9300-4c159ec66b87",
+          "rationale": "Suggest bicarbonate rather than lactate as buffer in dialysate/replacement fluid.",
+          "citation": "5.7.1"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:cddcc537-17ce-4114-9300-4c159ec66b87",
+          "rationale": "Recommend bicarbonate in circulatory shock.",
+          "citation": "5.7.2"
+        },
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:a94557a1-8c07-4416-9667-5f920b8bf3f6",
+          "rationale": "Suggest bicarbonate in liver failure and/or lactic acidemia.",
+          "citation": "5.7.3"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:cddcc537-17ce-4114-9300-4c159ec66b87",
+      "@type": "Condition",
+      "name": "Circulatory shock",
+      "snomed": "27942005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a94557a1-8c07-4416-9667-5f920b8bf3f6",
+      "@type": "Condition",
+      "name": "Liver failure",
+      "snomed": "59927004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:09008540-3a2d-4989-b4c9-1abe7ee2cda2",
+      "@type": "Condition",
+      "name": "Lactic acidemia",
+      "snomed": "190882007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f923bf45-3ce8-4bf2-a117-437260890f81",
+      "@type": "Medication",
+      "name": "Lactate",
+      "snomed": "83036002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1622ca44-9c4f-44ac-9e83-218a2fd1da14",
+      "@type": "Intervention",
+      "name": "Intermittent Hemodialysis (IHD)",
+      "snomed": "707695005",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b03952c0-39bb-4aa1-9543-488c5d7644d0",
+      "@type": "Intervention",
+      "name": "Prescribe dose of RRT",
+      "snomed": "408102007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Hemodynamically unstable patients",
+      "snomed": "4311860",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_10_section_5_dialysis_inter.json",
+        "section_title": "Section 5: Dialysis Interventions for Treatment of AKI - Membranes, Modalities, Buffers, and Dosing"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:b2c3d4e5-f678-9012-3456-7890abcdef12",
+          "rationale": "Suggest CRRT rather than standard IHD for hemodynamically unstable patients.",
+          "citation": "5.6.2"
+        }
+      ],
+      "snomed_name": "Hemodynamic instability",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:30.171268+00:00"
+      }
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.053517+00:00",
+    "nodes_before": 21,
+    "nodes_after": 11,
+    "rules_before": 11,
+    "rules_after": 6
+  }
+}

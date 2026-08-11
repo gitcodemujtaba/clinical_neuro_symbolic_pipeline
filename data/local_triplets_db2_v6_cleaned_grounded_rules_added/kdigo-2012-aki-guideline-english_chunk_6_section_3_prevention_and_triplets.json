@@ -1,0 +1,435 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a4-b5c6-789012345678",
+      "@type": "Finding",
+      "name": "Volume expansion",
+      "snomed": "4042996",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:b8c9d0e1-f2a4-34b5-c678-901234567890",
+          "rationale": "Isotonic crystalloids are recommended for volume expansion in patients at risk for or with AKI.",
+          "citation": "3.1.1: Use isotonic [SNOMED: 16709005] crystalloids rather than colloids (albumin [SNOMED: 52454007] or starches) for volume expansion in patients at risk for or with AKI [SNOMED: 14669001] (2B).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Volume",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:47:47.367222+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:b8c9d0e1-f2a4-34b5-c678-901234567890",
+      "@type": "Medication",
+      "name": "Isotonic crystalloids",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:c9d0e1f2-a8b7-46c3-8def-1234567890cd",
+      "@type": "Finding",
+      "name": "Vasomotor shock",
+      "snomed": "201965",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_MEDICATION",
+          "target": "urn:uuid:d0e1f2a4-34b5-c678-9012-3456789012cd",
+          "rationale": "Vasopressors should be used alongside fluids in vasomotor shock.",
+          "citation": "3.1.2: Use vasopressors [SNOMED: 870406003] alongside fluids in vasomotor shock [SNOMED: 27942005] (1C).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Shock",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:47:49.177183+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:d0e1f2a4-34b5-c678-9012-3456789012cd",
+      "@type": "Medication",
+      "name": "Vasopressors",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e1f2a434-b5c6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Perioperative high-risk patients",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f2a434b5-c678-9012-3456-7890abcdef12",
+          "rationale": "Protocol-based hemodynamic management is recommended in perioperative high-risk patients.",
+          "citation": "3.1.3: Use protocol [SNOMED: 258049002]-based hemodynamic management in perioperative high-risk patients (2C) or septic shock [SNOMED: 76571007] (2C).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f2a434b5-c678-9012-3456-7890abcdef12",
+      "@type": "Intervention",
+      "name": "Protocol-based hemodynamic management",
+      "snomed": "36716467",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [],
+      "snomed_name": "Hemodynamic care management",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:51.742200+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:a6125dcc-f55d-4062-8fe7-929cdbc87081",
+      "@type": "Finding",
+      "name": "Septic shock",
+      "snomed": "196236",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:f2a434b5-c678-9012-3456-7890abcdef12",
+          "rationale": "Protocol-based hemodynamic management is recommended in septic shock.",
+          "citation": "3.1.3: Use protocol [SNOMED: 258049002]-based hemodynamic management in perioperative high-risk patients (2C) or septic shock [SNOMED: 76571007] (2C).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Septic shock",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:47:51.774332+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Finding",
+      "name": "Plasma glucose",
+      "snomed": "4218282",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:e8365504-24ec-4a45-a18f-5e2c79f56dd9",
+          "rationale": "Target plasma glucose should be 110–149 mg/dl in critically ill patients.",
+          "citation": "3.3.1: Target plasma glucose [SNOMED: 72191006] 110–149 mg/dl [SNOMED: 258797006] (6.1–8.3 mmol [SNOMED: 258718000]/l) in critically ill patients (2C).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Glucose measurement, plasma",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "2 (Synonym)",
+        "grounded_at": "2026-08-07T16:47:51.896821+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:e8365504-24ec-4a45-a18f-5e2c79f56dd9",
+      "@type": "Intervention",
+      "name": "Glycemic control",
+      "snomed": "4302255",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "quantitative_threshold": {
+        "lower_bound": 110,
+        "upper_bound": 149,
+        "unit": "mg/dl",
+        "alternative_unit": "mmol/l",
+        "alternative_lower_bound": 6.1,
+        "alternative_upper_bound": 8.3
+      },
+      "rules": [],
+      "snomed_name": "Hyperglycemia management",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:52.559555+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:c0396e67-9f22-44bb-a426-60bc7aacb91d",
+      "@type": "Finding",
+      "name": "Total energy intake",
+      "snomed": "37206982",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+          "rationale": "Total energy intake should be 20–30 kcal/kg/d.",
+          "citation": "3.3.2: Achieve total energy intake [SNOMED: 787787004] of 20–30 kcal [SNOMED: 258791007]/kg/d [SNOMED: 258831001] (2C).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Energy intake",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1/2 (via MedCAT entity)",
+        "grounded_at": "2026-08-07T16:47:52.809659+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+      "@type": "Intervention",
+      "name": "Nutritional support",
+      "snomed": "4132896",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "quantitative_threshold": {
+        "lower_bound": 20,
+        "upper_bound": 30,
+        "unit": "kcal/kg/d"
+      },
+      "rules": [],
+      "snomed_name": "Nutritional support",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:47:52.844033+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:abcdef12-3456-7890-abcd-ef1234567890",
+      "@type": "Finding",
+      "name": "Protein intake",
+      "snomed": "618727",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:ef123456-7890-abcd-1234-567890abcdef",
+          "rationale": "Protein intake recommendations vary based on dialysis status and catabolic state.",
+          "citation": "3.3.4: Administer [SNOMED: 738990001] 0.8–1.0 g/kg/d [SNOMED: 414306004] protein [SNOMED: 88878007] in noncatabolic non-dialyzed AKI, 1.0–1.5 g/kg/d [SNOMED: 414306004] on RRT, and up to 1.7 g/kg/d [SNOMED: 414306004] on CRRT [SNOMED: 714749008]/hypercatabolic patients (2D).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Protein and/or protein derivative intake",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:53.580645+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:ef123456-7890-abcd-1234-567890abcdef",
+      "@type": "Intervention",
+      "name": "Protein supplementation",
+      "snomed": "4048587",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "quantitative_threshold": {
+        "lower_bound": 0.8,
+        "upper_bound": 1.7,
+        "unit": "g/kg/d",
+        "condition": "varies based on dialysis status (RRT, CRRT) and catabolic state (noncatabolic, hypercatabolic)"
+      },
+      "rules": [],
+      "snomed_name": "Protein supplementary feedings diet",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:54.261800+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:1234abcd-5678-90ef-12ab-cdef34567890",
+      "@type": "Finding",
+      "name": "Diuretics",
+      "snomed": "36716149",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:4092fb14-7606-4325-8815-a5942169e338",
+          "rationale": "Diuretics are NOT recommended for prevention of AKI.",
+          "citation": "3.4.1: Recommend NOT using diuretics [SNOMED: 372695000] to prevent AKI [SNOMED: 14669001] (1B).",
+          "citation_type": "verbatim"
+        },
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:4092fb14-7606-4325-8815-a5942169e338",
+          "rationale": "Diuretics are generally NOT recommended for treatment of AKI, except for volume overload.",
+          "citation": "3.4.2: Suggest NOT using diuretics [SNOMED: 372695000] to treat AKI [SNOMED: 14669001], except to manage volume overload [SNOMED: 21639008] (2C).",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Diuretic therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:54.966499+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:9015b995-f08b-42d9-85ba-94de8e8c9523",
+      "@type": "Intervention",
+      "name": "Diuretic therapy",
+      "snomed": "36716149",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [],
+      "snomed_name": "Diuretic therapy",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:47:54.999714+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:cdd44cad-2dd2-4469-ab35-290e3acb2a3b",
+      "@type": "Finding",
+      "name": "Low-dose dopamine",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:4092fb14-7606-4325-8815-a5942169e338",
+          "rationale": "Low-dose dopamine is NOT recommended for prevention or treatment of AKI.",
+          "citation": "3.5.1: Recommend NOT using low-dose [SNOMED: 262459003] dopamine [SNOMED: 412383006] to prevent or treat AKI [SNOMED: 14669001] (1A).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:016031df-3241-48f7-ac7a-c80c8721b110",
+      "@type": "Finding",
+      "name": "Fenoldopam",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:4092fb14-7606-4325-8815-a5942169e338",
+          "rationale": "Fenoldopam is NOT recommended for prevention or treatment of AKI.",
+          "citation": "3.5.2: Suggest NOT using fenoldopam to prevent or treat AKI [SNOMED: 14669001] (2C).",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:0a1b2c3d-4e5f-6789-0abc-def123456789",
+      "@type": "Finding",
+      "name": "ANP (Atrial Natriuretic Peptide)",
+      "snomed": "4197113",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:4092fb14-7606-4325-8815-a5942169e338",
+          "rationale": "ANP is NOT recommended for prevention or treatment of AKI.",
+          "citation": "3.5.3: Suggest NOT using ANP to prevent (2C) or treat (2B) AKI [SNOMED: 14669001].",
+          "citation_type": "verbatim"
+        }
+      ],
+      "snomed_name": "Atrial natriuretic factor (ANF) measurement",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:47:57.112052+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:4092fb14-7606-4325-8815-a5942169e338",
+      "@type": "Intervention",
+      "name": "Vasodilator therapy (Dopamine, Fenoldopam, ANP)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "kdigo-2012-aki-guideline-english_chunk_6_section_3_prevention_and.json",
+        "section_title": "Section 3: Prevention and Treatment of AKI - Hemodynamics, Glycemic Control, Diuretics, and Vasodilators"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:39.225933+00:00",
+    "nodes_before": 19,
+    "nodes_after": 19,
+    "rules_before": 12,
+    "rules_after": 12
+  }
+}

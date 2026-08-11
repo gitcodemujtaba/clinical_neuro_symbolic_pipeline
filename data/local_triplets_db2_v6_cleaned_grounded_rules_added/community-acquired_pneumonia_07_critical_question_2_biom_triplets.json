@@ -1,0 +1,605 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "Procalcitonin level",
+      "snomed": "418752001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:56c0e0c1-9379-4939-a31c-f8402e089eff",
+          "rationale": "Procalcitonin is a biomarker released in response to bacterial infection and tissue injury, downregulated in viral infections.",
+          "citation": "In 2017, a Class II Cochrane review by Schuetz et al evaluated the use of PCT on initiating or discontinuing antibiotics in patients with acute respiratory infections regarding mortality and treatment failure. In 2018, a large Class II randomized controlled trial by Huang et al (ProACT study) examined the effect of a PCT-based algorithm on antibiotic prescription in patients with suspected acute LRTI in the ED setting.",
+          "citation_type": "pointer_unverifiable"
+        },
+        {
+          "predicate": "NOT_RECOMMENDED_FOR",
+          "target": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+          "rationale": "Procalcitonin and/or C-reactive protein are not recommended as the sole basis for distinguishing bacterial from viral pathogens when deciding on antimicrobial administration in ED patients with CAP.",
+          "citation": "Do not rely upon any current laboratory test(s), such as procalcitonin and/or C-reactive protein, to distinguish a viral pathogen from a bacterial pathogen when deciding on administration of antimicrobials in ED patients who have CAP.",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Do not rely upon any current laboratory test(s), such as procalcitonin and/or C-reactive protein, to distinguish a viral pathogen from a bacterial pathogen when deciding on administration of antimicrobials in ED patients who have CAP."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fedcba98-7654-3210-fedc-ba9876543210",
+      "@type": "Condition",
+      "name": "Bacterial infection",
+      "snomed": "87628006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-5e6f-7890-1234-567890abcdef",
+      "@type": "Finding",
+      "name": "C-reactive protein level",
+      "snomed": "61425002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:17d46978-3b09-457e-a0a5-024aa79103ce",
+          "rationale": "C-reactive protein is a non-specific inflammatory biomarker that increases as a result of numerous infectious and noninfectious pathologies resulting in systemic inflammation.",
+          "citation": "In 2017, a Class II Cochrane review by Schuetz et al evaluated the use of PCT on initiating or discontinuing antibiotics in patients with acute respiratory infections regarding mortality and treatment failure. Research involving CRP has investigated its use in differentiating bacterial from viral pneumonia.",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:024805aa-68cf-48b0-9196-ae891875d299",
+      "@type": "Condition",
+      "name": "Inflammation",
+      "snomed": "257552002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f06d2bc1-140d-4a64-bc4c-d699a71bf7f1",
+      "@type": "Finding",
+      "name": "Community-acquired pneumonia",
+      "snomed": "385093006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:80a60121-ec6e-4d2c-a092-57e9d3eb0976",
+          "rationale": "The guideline recommends against relying on current laboratory tests like procalcitonin and C-reactive protein to distinguish viral from bacterial pathogens when deciding on antimicrobial administration in ED patients with CAP.",
+          "citation": "Level C recommendations. Do not rely upon any current laboratory test(s), such as procalcitonin [SNOMED: 418752001] and/or C-reactive protein [SNOMED: 61425002], to distinguish a viral pathogen [SNOMED: 264418008] from a bacterial pathogen [SNOMED: 264418008] when deciding on administration of antimicrobials in ED patients who have CAP.",
+          "citation_type": "verbatim"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:28d48745-b4d9-458a-8c73-10d9e8e34fbd",
+      "@type": "Finding",
+      "name": "Viral pathogen",
+      "snomed": "264418008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f0e5c42c-7f35-4a3a-b68a-8df7c8576303",
+      "@type": "Finding",
+      "name": "Acute respiratory infection",
+      "snomed": "195647007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9f3910b8-176d-43dd-9978-4ca1b5264ecf",
+      "@type": "Finding",
+      "name": "Lower respiratory tract infections",
+      "snomed": "50417007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:732f65cb-6db9-4061-9292-5e128ddd0795",
+      "@type": "Finding",
+      "name": "Non-specific biomarker",
+      "snomed": "10003008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:81f0c259-6fe4-4c99-afde-5772314175f9",
+      "@type": "Finding",
+      "name": "Systemic inflammation",
+      "snomed": "31099001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3dbb2653-d079-4d35-9433-163fb8ab288c",
+      "@type": "Finding",
+      "name": "Infectious pathologies",
+      "snomed": "191415002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:56c0e0c1-9379-4939-a31c-f8402e089eff",
+      "@type": "Finding",
+      "name": "Noninfectious pathologies",
+      "snomed": "394595002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:f98d804a-a430-440f-b440-ddf758c2da40",
+      "@type": "Finding",
+      "name": "Bacteremia",
+      "snomed": "5758002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [
+        {
+          "predicate": "IS_ASSESSED_BY",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Bacteremia can be predicted using procalcitonin levels, which perform better than high-sensitivity CRP for this purpose.",
+          "citation": "Although both PCT and high-sensitivity CRP increased the likelihood of accurately identifying CAP, PCT performed better than high-sensitivity CRP and was also beneficial in predicting bacteremia and severity of illness (ie, higher PCT levels correlate to higher morbidity and mortality).",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Although both PCT and high-sensitivity CRP increased the likelihood of accurately identifying CAP, PCT performed better than high-sensitivity CRP and was also beneficial in predicting bacteremia and severity of illness (ie, higher PCT levels correlate to higher morbidity and mortality)."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5a4d933d-2a37-45b5-a385-5ff550bd7309",
+      "@type": "Finding",
+      "name": "Acute exacerbation of COPD",
+      "snomed": "195951007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_ASSESSMENT",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Procalcitonin has been evaluated to determine which patients with acute exacerbations of COPD will benefit from antibiotic therapy.",
+          "citation": "Procalcitonin has also been evaluated to assist in the decision to initiate antibiotic therapy,71 to identify potential bacterial cause in the patient with undifferentiated fever in the ED,72-78 and to determine who will benefit from antibiotic use in acute exacerbations of chronic obstructive pulmonary disease (COPD).79-81",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Procalcitonin has also been evaluated to assist in the decision to initiate antibiotic therapy,71 to identify potential bacterial cause in the patient with undifferentiated fever in the ED,72-78 and to determine who will benefit from antibiotic use in acute exacerbations of chronic obstructive pulmonary disease (COPD).79-81"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ba85fd7f-ebea-4460-8e84-477450f2cf5e",
+      "@type": "Finding",
+      "name": "Acute exacerbation of asthma",
+      "snomed": "281239006",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [
+        {
+          "predicate": "IS_ASSESSED_BY",
+          "target": "urn:uuid:a1b2c3d4-e5f6-7890-1234-567890abcdef",
+          "rationale": "Acute exacerbation of asthma was one of the final diagnoses among ED patients enrolled in the procalcitonin-guided antibiotic algorithm study (ProACT), representing 39.3% of diagnoses.",
+          "citation": "Final diagnoses for patients (some patients received more than 1 final diagnosis) included CAP (19.9%), acute exacerbation of COPD (31.9%), acute exacerbation of asthma (39.3%), and acute bronchitis (24.2%).",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "Final diagnoses for patients (some patients received more than 1 final diagnosis) included CAP (19.9%), acute exacerbation of COPD (31.9%), acute exacerbation of asthma (39.3%), and acute bronchitis (24.2%)."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:5eb436af-25d8-4c50-aa64-cf7393d3b3f6",
+      "@type": "Finding",
+      "name": "Acute bronchitis",
+      "snomed": "10509002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:159be096-a836-4830-aff0-16b906cf6f85",
+      "@type": "Finding",
+      "name": "Mortality",
+      "snomed": "409651001",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:8c819447-f768-4063-a796-927c1ccfcf0b",
+      "@type": "Finding",
+      "name": "Treatment failure",
+      "snomed": "266721009",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:0cd4775b-7288-493f-8a42-e76a3b750e15",
+      "@type": "Finding",
+      "name": "Radiographic evidence of pneumonia",
+      "snomed": "258106000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:cb3ef380-ee61-4e8e-a504-12e2a3264e69",
+      "@type": "Finding",
+      "name": "Infiltrate",
+      "snomed": "47351003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:42b2e123-9b66-4c66-adf3-028b2d481fa6",
+      "@type": "Finding",
+      "name": "Polymerase chain reaction (PCR)",
+      "snomed": "258066000",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:649ef124-6f12-4019-9e47-ee2a72c7be1a",
+      "@type": "Finding",
+      "name": "Urine antigens",
+      "snomed": "7120007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b2a9bd85-2dad-4586-a391-cb0d78b57611",
+      "@type": "Finding",
+      "name": "Definitive cause",
+      "snomed": "261002007",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:fbfd9910-24a1-4499-903d-f52cad61a540",
+      "@type": "Finding",
+      "name": "Human rhinovirus",
+      "snomed": "1573008",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:64729393-26a1-4509-a8c6-fb100ef0521c",
+      "@type": "Finding",
+      "name": "Influenza",
+      "snomed": "6142004",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [
+        {
+          "predicate": "IS_PART_OF",
+          "target": "urn:uuid:28d48745-b4d9-458a-8c73-10d9e8e34fbd",
+          "rationale": "Influenza was identified as a viral cause of community-acquired pneumonia in 6% of cases in a large epidemiologic study.",
+          "citation": "The predominant identified cause was viral, at 23% (human rhinovirus 9%, influenza 6%, and other 8%), whereas bacterial pathogens were identified in 11% of patients (predominant strain Streptococcus pneumoniae, at 5%).",
+          "citation_type": "verbatim",
+          "curated_by": "manual_curation_2026-08-11_stage3_issue1_v2",
+          "citation_verbatim_excerpt": "The predominant identified cause was viral, at 23% (human rhinovirus 9%, influenza 6%, and other 8%), whereas bacterial pathogens were identified in 11% of patients (predominant strain Streptococcus pneumoniae, at 5%)."
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:fc581ee3-bedd-4463-af96-54349add60c1",
+      "@type": "Finding",
+      "name": "Streptococcus pneumoniae",
+      "snomed": "9861002",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:dac98d24-621a-4c0d-a29b-9feacb75070a",
+      "@type": "Finding",
+      "name": "Antibiotic duration",
+      "snomed": "272116003",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:80a60121-ec6e-4d2c-a092-57e9d3eb0976",
+      "@type": "Finding",
+      "name": "Hospital-acquired pneumonia",
+      "snomed": "277056009",
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:094c7a72-4c35-482f-b893-f8191ff7be37",
+      "@type": "Intervention",
+      "name": "Avoidance of antimicrobial administration based on biomarkers",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:9fa2afa8-209e-497d-a16c-a560b7053710",
+      "@type": "Medication",
+      "name": "Antimicrobials",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:44c999fc-4d36-40e0-ba5d-0916cae6c5c3",
+      "@type": "Finding",
+      "name": "Inflammatory biomarker",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ce60a90c-006e-4b50-83ad-79012655e509",
+      "@type": "Finding",
+      "name": "Antibiotic exposure",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:a1a00163-9e24-4e9d-a7de-564ad7e6dfb5",
+      "@type": "Finding",
+      "name": "Adverse outcomes",
+      "snomed": "4231813",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [],
+      "snomed_name": "Adverse incident outcome",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:44:32.690704+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:8dd7c85e-4ac0-4f91-8108-ff3ed549effd",
+      "@type": "Finding",
+      "name": "Antibiotic-related side effects",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e165801a-6067-439b-abb4-ef29087e1af4",
+      "@type": "Finding",
+      "name": "Effusion",
+      "snomed": "4215818",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [],
+      "snomed_name": "Effusion",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:44:33.152200+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:d629eaf0-858a-4feb-957c-bb4a8e0696af",
+      "@type": "Finding",
+      "name": "Bacterial culture",
+      "snomed": "4016945",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [],
+      "snomed_name": "Bacterial culture",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:44:33.186375+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:cdf68d12-bb88-404f-a6cf-8c0d06959e6d",
+      "@type": "Finding",
+      "name": "Viral culture",
+      "snomed": "4130349",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [],
+      "snomed_name": "Viral culture",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "1 (Exact)",
+        "grounded_at": "2026-08-07T16:44:33.216632+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:ae3a2136-fb54-4684-96a5-dc64a5b6d819",
+      "@type": "Finding",
+      "name": "Antibiotic stewardship",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e5872304-e788-4442-a2d3-d9147cf498f2",
+      "@type": "Finding",
+      "name": "Antibiotic-related side effects",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:b02e9529-b583-4d91-9aa1-005de573ef28",
+      "@type": "Finding",
+      "name": "Neopterin",
+      "snomed": "4301896",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": [],
+      "snomed_name": "Neopterin measurement",
+      "grounding_provenance": {
+        "source": "backfill_guideline_grounding",
+        "tier": "3 (Semantic)",
+        "grounded_at": "2026-08-07T16:44:34.441896+00:00"
+      }
+    },
+    {
+      "@id": "urn:uuid:17d46978-3b09-457e-a0a5-024aa79103ce",
+      "@type": "Finding",
+      "name": "CRP/neopterin ratio",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "community-acquired_pneumonia_07_critical_question_2_biom.json",
+        "section_title": "Critical Question 2: Biomarkers to Direct Initial Antimicrobial Therapy - Recommendations and Studies"
+      },
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:34.850943+00:00",
+    "nodes_before": 48,
+    "nodes_after": 41,
+    "rules_before": 3,
+    "rules_after": 3
+  }
+}

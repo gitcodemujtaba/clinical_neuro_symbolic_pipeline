@@ -51,7 +51,12 @@ from collections import defaultdict
 warnings.filterwarnings("ignore")
 
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
-DEFAULT_TRIPLETS_DIR = os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned")
+# 2026-08-11 Stage3 Issue1 rule backfill -- see docs/Stage3_Issue1_Rule_Backfill.md.
+# Callers that pick from scripts/*.py's own TRIPLETS_CANDIDATES lists (test_stage3_live.py,
+# profile_stage3.py, diagnose_guard_suppression.py, measure_channel_b_coverage.py) are
+# unaffected by this default; this only matters for a caller that constructs
+# GuidelineIndex() with no argument.
+DEFAULT_TRIPLETS_DIR = os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned_grounded_rules_added")
 
 # --- name-agreement guard bands (design doc S5.1) --------------------------
 NAME_AGREE_STRONG = 0.75

@@ -1,0 +1,555 @@
+{
+  "@context": {
+    "@vocab": "http://clinical-ontology.org/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:uuid:a7b8c9d0-e1f2-43a5-b6c7-89def0123456",
+      "@type": "Finding",
+      "name": "ESI Level 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:f8e7d6c5-b4a3-4210-9876-54321fedcba9",
+          "rationale": "Patients requiring two or more resources are assigned ESI level 3.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:f8e7d6c5-b4a3-4210-9876-54321fedcba9",
+      "@type": "Acuity",
+      "name": "ESI Level 3",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a2b3c4d-e5f6-4789-0abc-def123456789",
+      "@type": "Finding",
+      "name": "ESI Level 4",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:9c8b7a6f-5d4e-4102-8fed-3cba98765432",
+          "rationale": "Patients requiring one resource are assigned ESI level 4.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:9c8b7a6f-5d4e-4102-8fed-3cba98765432",
+      "@type": "Acuity",
+      "name": "ESI Level 4",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:2b3c4d5e-f67a-4890-b123-456789abcdef",
+      "@type": "Finding",
+      "name": "ESI Level 5",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "TRIGGERS_SEVERITY",
+          "target": "urn:uuid:1e2f3a4b-c7d8-4901-2def-567890abcdef",
+          "rationale": "Patients requiring no resources are assigned ESI level 5.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:1e2f3a4b-c7d8-4901-2def-567890abcdef",
+      "@type": "Acuity",
+      "name": "ESI Level 5",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:3f4e5d6c-b7a8-4012-9fed-8cba09876543",
+      "@type": "Finding",
+      "name": "Resource needs determination",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:cc86e29f-0a07-40f7-85ac-6f8b71e69561",
+          "rationale": "The nurse must determine the number of different types of resources needed to reach a disposition decision.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:4a5b6c7d-e8f9-4123-0abc-def123456789",
+      "@type": "Intervention",
+      "name": "Determine number of resources needed",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:5d5cf94f-75f7-4fac-a8a2-21fc9f83d139",
+      "@type": "Finding",
+      "name": "Lab tests (blood, urine)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e726f5c5-3bf0-4e80-8b7f-c828b7c8fa19",
+          "rationale": "Multiple different types of lab tests count as one resource.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:dfc60d00-f2de-4061-a87b-b60546a5794c",
+      "@type": "Condition",
+      "name": "One resource (lab test)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:25e37346-15e1-4b11-892f-7c5906c838a3",
+      "@type": "Finding",
+      "name": "Radiographs (X-rays)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b723b2d6-c2f1-4f63-a01e-1236aaace405",
+          "rationale": "Multiple different types of radiographs count as one resource.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e644a6bc-b91f-4a61-b4ab-0248631e86e2",
+      "@type": "Condition",
+      "name": "One resource (radiograph)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:53a6daa9-baa2-4aeb-8c42-2db92d7506d1",
+      "@type": "Finding",
+      "name": "Computed tomography (CT) scan",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:ba38651f-852b-4d5d-bbcf-78e90749ef3e",
+          "rationale": "A CT scan counts as one resource.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b0d703e9-5037-42ad-b053-ac9ac2431eda",
+      "@type": "Condition",
+      "name": "One resource (CT scan)",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:35bf7f35-6ce3-414c-9261-fe70bb97eb0f",
+      "@type": "Finding",
+      "name": "Resource prediction",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:45cdea49-8017-48b6-a8e3-11353863c9db",
+          "rationale": "Resource prediction is used to sort stable patients into distinct acuity groups (ESI levels 3, 4, and 5).",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:779851fd-5d5d-46dc-999b-f341de9cef59",
+      "@type": "Acuity",
+      "name": "ESI Levels 3, 4, and 5 determination",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:75559397-7b34-4d10-9b21-e8ee176d8f30",
+      "@type": "Finding",
+      "name": "Disposition decision",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "REQUIRES_INTERVENTION",
+          "target": "urn:uuid:cc86e29f-0a07-40f7-85ac-6f8b71e69561",
+          "rationale": "Resource prediction helps determine the number of resources needed to reach a disposition decision.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b2aaebad-6d85-4b65-8131-ca78106d3379",
+      "@type": "Intervention",
+      "name": "Reach disposition decision",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:4c3b3fd3-9842-415c-b030-df6d918f48ec",
+      "@type": "Finding",
+      "name": "ESI triage acuity tool",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e726f5c5-3bf0-4e80-8b7f-c828b7c8fa19",
+          "rationale": "The ESI triage tool uses resource prediction for less acute patients (ESI levels 3–5).",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:dca50bb3-2719-44cf-b534-067e63956f9e",
+      "@type": "Condition",
+      "name": "Resource prediction for ESI levels 3-5",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:e02684f2-508f-4b2d-8b0d-8befd538769f",
+      "@type": "Finding",
+      "name": "Stable patient",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b723b2d6-c2f1-4f63-a01e-1236aaace405",
+          "rationale": "Once ESI 1 or 2 designation has been ruled out, the presumed stability of the patient enables the nurse to move to decision point C.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:6c250fd9-8222-41ea-ba80-bcb1a331c23b",
+      "@type": "Condition",
+      "name": "Proceed to Decision Point C",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:600e16d3-a23b-4c06-9dc5-542b9032aba7",
+      "@type": "Finding",
+      "name": "Resource prediction",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:ba38651f-852b-4d5d-bbcf-78e90749ef3e",
+          "rationale": "Resource prediction requires the nurse to determine how many resources are likely to be used.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:c0ca3db1-d24f-4179-b38e-ee381359f86e",
+      "@type": "Intervention",
+      "name": "Determine number of resources needed",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:1a53ebb1-40c0-4a05-929a-4b88615d8591",
+      "@type": "Finding",
+      "name": "Resource determination",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:45cdea49-8017-48b6-a8e3-11353863c9db",
+          "rationale": "Resource determination is independent of type of hospital (teaching versus nonteaching) and location of the hospital (urban versus rural).",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:45cdea49-8017-48b6-a8e3-11353863c9db",
+      "@type": "Acuity",
+      "name": "Resource determination independence",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:006014d7-7039-4d12-a8cf-a310f28cf60a",
+      "@type": "Finding",
+      "name": "Resource prediction",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:cc86e29f-0a07-40f7-85ac-6f8b71e69561",
+          "rationale": "The purpose of resource prediction in ESI is to sort patients into distinct groups and help get the right patient to the right area of the ED.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:cc86e29f-0a07-40f7-85ac-6f8b71e69561",
+      "@type": "Intervention",
+      "name": "Sort patients into acuity groups",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:ecf79d1a-40a8-40da-b721-b24776b96c2b",
+      "@type": "Finding",
+      "name": "Resource prediction",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:e726f5c5-3bf0-4e80-8b7f-c828b7c8fa19",
+          "rationale": "The ESI triage acuity tool uses an approach that includes resource prediction for less acute patients (ESI levels 3–5).",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:e726f5c5-3bf0-4e80-8b7f-c828b7c8fa19",
+      "@type": "Condition",
+      "name": "Resource prediction for ESI levels 3-5",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:64fadfd0-bfa8-4c28-807a-3b3cce29d29e",
+      "@type": "Finding",
+      "name": "Resource prediction",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:b723b2d6-c2f1-4f63-a01e-1236aaace405",
+          "rationale": "Resource prediction requires the nurse to determine how many resources are likely to be used in order for the provider to reach a disposition decision.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:b723b2d6-c2f1-4f63-a01e-1236aaace405",
+      "@type": "Intervention",
+      "name": "Determine resources needed for disposition",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": []
+    },
+    {
+      "@id": "urn:uuid:d688f719-ecdc-4258-8818-b6fe46234f94",
+      "@type": "Finding",
+      "name": "Resource prediction",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "provenance": {
+        "source_document": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json",
+        "section_title": "CHAPTER 5 – Decision Point C: How Many Resources?"
+      },
+      "rules": [
+        {
+          "predicate": "INDICATES",
+          "target": "urn:uuid:ba38651f-852b-4d5d-bbcf-78e90749ef3e",
+          "rationale": "Resource prediction requires the nurse to determine how many resources are likely to be used in order for the provider to reach a disposition decision.",
+          "citation": "emergency_severity_index_handbook_5th_edition_chapter_5_decision_point_c_chapter_5_–_decision_poi.json, CHAPTER 5 – Decision Point C: How Many Resources?",
+          "citation_type": "pointer_unverifiable"
+        }
+      ]
+    },
+    {
+      "@id": "urn:uuid:ba38651f-852b-4d5d-bbcf-78e90749ef3e",
+      "@type": "Intervention",
+      "name": "Determine resources needed for disposition",
+      "snomed": "N/A",
+      "icd10": "N/A",
+      "rules": []
+    }
+  ],
+  "_cleaning_provenance": {
+    "cleaned_by": "clean_local_triplets.py",
+    "cleaned_at": "2026-08-07T13:39:37.984435+00:00",
+    "nodes_before": 34,
+    "nodes_after": 34,
+    "rules_before": 17,
+    "rules_after": 17
+  }
+}
