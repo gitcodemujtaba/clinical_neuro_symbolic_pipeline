@@ -42,14 +42,14 @@ AORTIC_CANDIDATES = [
     {"concept_name": "Entire cusp of aortic valve"},
 ]
 # The actual reasoning text recorded in mollm_decisions for this entity.
-BIOMISTRAL_REASONING = (
+MODEL_A_REASONING = (
     "The context and section both indicate the patient is having an "
     "echocardiogram done. The entity is in the conclusion, which is a "
     "summary of the findings. The closest candidate is 'Structure of cusp "
     "of aortic valve' which is a sub-concept of the entity. The other "
     "candidates are not the correct concept, but are related concepts."
 )
-OPENBIOLLM_REASONING = (
+MODEL_B_REASONING = (
     "The entity 'aortic valve leaflets' is most consistent with the concept "
     "'Structure of cusp of aortic valve' as it is a specific part of the "
     "aortic valve mentioned in the context."
@@ -73,14 +73,14 @@ def run():
     # 1. THE REAL CASE. Reasoning names candidate [2] verbatim; verdict picks
     #    candidate [3].
     r = reasoning_verdict_mismatch(
-        "RESOLVED_TO_CANDIDATE_3", BIOMISTRAL_REASONING, AORTIC_CANDIDATES)
+        "RESOLVED_TO_CANDIDATE_3", MODEL_A_REASONING, AORTIC_CANDIDATES)
     check("aortic valve replay: checked", r["checked"] is True)
     check("aortic valve replay: mismatch detected", r["mismatch"] is True)
     check("aortic valve replay: names candidate 2", r["reasoning_names_candidate"] == 2)
     check("aortic valve replay: verdict was candidate 3", r["verdict_candidate"] == 3)
 
     r2 = reasoning_verdict_mismatch(
-        "RESOLVED_TO_CANDIDATE_3", OPENBIOLLM_REASONING, AORTIC_CANDIDATES)
+        "RESOLVED_TO_CANDIDATE_3", MODEL_B_REASONING, AORTIC_CANDIDATES)
     check("aortic valve replay (2nd model): mismatch detected", r2["mismatch"] is True)
 
     # 2. CONSISTENT CASE: reasoning names the SAME candidate the verdict picks.
@@ -140,22 +140,22 @@ def run():
 
     def _models_with_check(verdict, reasoning, candidates):
         chk = reasoning_verdict_mismatch(verdict, reasoning, candidates)
-        return [{"model": "biomistral", "verdict": verdict,
+        return [{"model": "model_a", "verdict": verdict,
                  "reasoning_verdict_check": chk},
-                {"model": "openbio", "verdict": verdict,
+                {"model": "model_b", "verdict": verdict,
                  "reasoning_verdict_check": chk}]
 
     # 6. A mismatched verdict is forced to HITL even at high confidence and
     #    full agreement -- same posture as the other three hard rules.
     models = _models_with_check(
-        "RESOLVED_TO_CANDIDATE_3", BIOMISTRAL_REASONING, AORTIC_CANDIDATES)
+        "RESOLVED_TO_CANDIDATE_3", MODEL_A_REASONING, AORTIC_CANDIDATES)
     r = route(AGREE, VERIFIED, models)
     check("mismatch forces HITL despite high confidence",
           r["mollm_routing_decision"] == "HITL_REQUIRED")
     check("mismatch has its own queue_reason",
           r["queue_reason"] == "reasoning_verdict_mismatch")
     check("routing_basis names the models and candidates involved",
-          "biomistral" in r["routing_basis"] and "candidate 2" in r["routing_basis"])
+          "model_a" in r["routing_basis"] and "candidate 2" in r["routing_basis"])
 
     # 7. A consistent verdict is NOT blocked by this rule. Uses candidate 1
     #    (a confirmation of Stage 2b's own top-1) so the separate P2.1
@@ -186,11 +186,11 @@ def run():
         {"model": "BioMistral/BioMistral-7B-AWQ-QGS128-W4-GEMM",
          "verdict": "RESOLVED_TO_CANDIDATE_3",
          "reasoning_verdict_check": reasoning_verdict_mismatch(
-             "RESOLVED_TO_CANDIDATE_3", BIOMISTRAL_REASONING, AORTIC_CANDIDATES)},
+             "RESOLVED_TO_CANDIDATE_3", MODEL_A_REASONING, AORTIC_CANDIDATES)},
         {"model": "bartowski/OpenBioLLM-Llama3-8B-AWQ",
          "verdict": "RESOLVED_TO_CANDIDATE_3",
          "reasoning_verdict_check": reasoning_verdict_mismatch(
-             "RESOLVED_TO_CANDIDATE_3", OPENBIOLLM_REASONING, AORTIC_CANDIDATES)},
+             "RESOLVED_TO_CANDIDATE_3", MODEL_B_REASONING, AORTIC_CANDIDATES)},
     ]
     r = route({"ensemble_agreement": True, "composite_confidence": 0.93},
               VERIFIED, models, grounding_basis="model_terminology_knowledge")

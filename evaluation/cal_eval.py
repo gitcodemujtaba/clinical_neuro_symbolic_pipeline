@@ -33,7 +33,7 @@ score_gold_recall.py states for its 3-note IoU numbers, for the same reason.
 
 Run:
   python3 evaluation/cal_eval.py
-  python3 evaluation/cal_eval.py --note-ids 10000032-DS-21 --out cal_report.json
+  python3 evaluation/cal_eval.py --note-ids 10000032-DS-21 --out reports/cal_report.json
 """
 
 import argparse

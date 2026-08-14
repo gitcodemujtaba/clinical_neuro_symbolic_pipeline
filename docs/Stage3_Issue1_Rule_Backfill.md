@@ -1,5 +1,7 @@
 # Stage 3, Issue 1 — Rule Backfill for High-Frequency Rule-Less Nodes
 
+> **Model-choice note (2026-08-14):** this doc was written against the earlier two-model vLLM ensemble (BioMistral-7B-AWQ / OpenBioLLM-Llama3-8B-AWQ). The standing ensemble as of 2026-08-14 is qwen2.5:3b / llama3.2:3b / phi4-mini served via Ollama (`src/llm_client.py`) — see `docs/2026-08-14_Stage2_Alias_Fixes_And_Stage3_Provenance.md` §6 for why, and `docs/2026-08-14_Dead_Code_Audit.md` for what else changed alongside it. Design rationale below may still apply structurally; specific model names, base URLs, and context-window numbers do not.
+
 **Date:** 2026-08-10/11
 **Status:** Confirmed on EC2. **Read the correction section first** — it
 supersedes the corpus this doc originally worked from.

@@ -1,5 +1,7 @@
 # Stage 1–3 Calibration, Diagnostics, and Fixes — Technical Report
 
+> **Model-choice note (2026-08-14):** this doc was written against the earlier two-model vLLM ensemble (BioMistral-7B-AWQ / OpenBioLLM-Llama3-8B-AWQ). The standing ensemble as of 2026-08-14 is qwen2.5:3b / llama3.2:3b / phi4-mini served via Ollama (`src/llm_client.py`) — see `docs/2026-08-14_Stage2_Alias_Fixes_And_Stage3_Provenance.md` §6 for why, and `docs/2026-08-14_Dead_Code_Audit.md` for what else changed alongside it. Design rationale below may still apply structurally; specific model names, base URLs, and context-window numbers do not.
+
 **Date:** 2026-08-13
 **Scope:** Clinical Neuro-Symbolic NER Pipeline — Stage 1 (preprocessing), Stage 2a (GLiNER-BioMed extraction), Stage 2b (OMOP concept-linking), Stage 3 (MoLLM ensemble validation)
 **Gold standard:** DrivenData SNOMED CT Entity Linking Challenge, `train_annotations.csv` / `train_notes.csv` (272 MIMIC-IV-Note discharge notes, SNOMED-annotated). Confirmed byte-identical (SHA256) between the repo copy and the version supplied directly.

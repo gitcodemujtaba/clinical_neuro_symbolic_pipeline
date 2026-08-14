@@ -25,7 +25,7 @@ inferring it from newline presence in a terminal printout.
 
 Run:
   python3 scripts/measure_heuristic_and_boundary.py --note-ids <25 note ids>
-  python3 scripts/measure_heuristic_and_boundary.py --out heuristic_report.json
+  python3 scripts/measure_heuristic_and_boundary.py --out reports/heuristic_report.json
 """
 
 import argparse

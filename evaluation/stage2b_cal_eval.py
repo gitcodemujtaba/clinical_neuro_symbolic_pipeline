@@ -67,7 +67,7 @@ docstring).
 
 Run:
   python3 evaluation/stage2b_cal_eval.py
-  python3 evaluation/stage2b_cal_eval.py --note-ids 17751158-DS-19,19442119-DS-15 --out stage2b_cal.json
+  python3 evaluation/stage2b_cal_eval.py --note-ids 17751158-DS-19,19442119-DS-15 --out reports/stage2b_cal.json
 """
 
 import argparse

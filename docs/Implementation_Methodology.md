@@ -1,5 +1,7 @@
 # docs/Implementation_Methodology.md
 
+> **Model-choice note (2026-08-14):** this doc was written against the earlier two-model vLLM ensemble (BioMistral-7B-AWQ / OpenBioLLM-Llama3-8B-AWQ). The standing ensemble as of 2026-08-14 is qwen2.5:3b / llama3.2:3b / phi4-mini served via Ollama (`src/llm_client.py`) — see `docs/2026-08-14_Stage2_Alias_Fixes_And_Stage3_Provenance.md` §6 for why, and `docs/2026-08-14_Dead_Code_Audit.md` for what else changed alongside it. Design rationale below may still apply structurally; specific model names, base URLs, and context-window numbers do not.
+
 ## Objective
 * The central claim under test is that a neuro-symbolic pipeline combining zero-shot extraction, KG-grounded normalization, and LLM-based validation with a human-in-the-loop (HITL) active learning loop can match or exceed the performance of a pretrained generative baseline (Clinical-T5) on clinical entity/relation extraction from MIMIC-IV discharge notes[cite: 7].
 * This approach aims to require substantially less human annotation effort over time as the system's knowledge base grows[cite: 7]. 

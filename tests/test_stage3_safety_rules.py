@@ -333,8 +333,8 @@ class TestRecord3Regression:
     """
 
     def test_wrong_but_confident_and_agreeing_is_saved_by_citation_check(self):
-        models = [mk_model("RESOLVED_TO_CANDIDATE_3", 0.922471, "biomistral"),
-                  mk_model("RESOLVED_TO_CANDIDATE_3", 0.910462, "openbiollm")]
+        models = [mk_model("RESOLVED_TO_CANDIDATE_3", 0.922471, "qwen2.5:3b"),
+                  mk_model("RESOLVED_TO_CANDIDATE_3", 0.910462, "llama3.2:3b")]
         ensemble = combine(models)
 
         # Preconditions: every non-citation signal says "accept".

@@ -1,5 +1,7 @@
 # Stage 3 — Open Issues After First Live Run
 
+> **Model-choice note (2026-08-14):** this doc was written against the earlier two-model vLLM ensemble (BioMistral-7B-AWQ / OpenBioLLM-Llama3-8B-AWQ). The standing ensemble as of 2026-08-14 is qwen2.5:3b / llama3.2:3b / phi4-mini served via Ollama (`src/llm_client.py`) — see `docs/2026-08-14_Stage2_Alias_Fixes_And_Stage3_Provenance.md` §6 for why, and `docs/2026-08-14_Dead_Code_Audit.md` for what else changed alongside it. Design rationale below may still apply structurally; specific model names, base URLs, and context-window numbers do not.
+
 **Date:** 2026-08-10
 **Status:** Stage 3's core logic is written and proven end-to-end against both live vLLM endpoints. Issues 1–4 concern *quality of the result*; the "Implementation completeness" section near the end lists what is still genuinely unbuilt (pipeline integration, the untested expansion path, production writes, unit tests for the safety rules).
 

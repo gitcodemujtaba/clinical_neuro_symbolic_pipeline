@@ -1,8 +1,12 @@
 """
 scripts/inspect_review_decisions.py — prints each mollm_review_decisions row's
-routing decision alongside what each of the two models (BioMistral, OpenBioLLM)
-actually said, so a disagreement can be read and judged rather than just
-counted.
+routing decision alongside what each ensemble model actually said, so a
+disagreement can be read and judged rather than just counted.
+
+2026-08-14: reads the `models` JSON array generically (however many entries
+it has) rather than assuming exactly two -- the ensemble is now three models
+(qwen2.5:3b, llama3.2:3b, phi4-mini; see src/llm_client.py) and hardcoding
+`$[0]`/`$[1]` indices would have silently dropped the third model's opinion.
 
 Printed rather than conn.sql(...).show()'d: reasoning text routinely runs
 past the width .show() truncates columns to, and the whole point here is to
@@ -15,6 +19,7 @@ Run:
 """
 
 import argparse
+import json
 import os
 
 import duckdb
@@ -51,15 +56,7 @@ def main():
     conn = duckdb.connect(args.db, read_only=True)
     try:
         rows = conn.execute(f"""
-            SELECT entity_id, note_id, original_text, al_routing_decision, queue_reason,
-                   json_extract_string(models, '$[0].model') AS m0_name,
-                   json_extract_string(models, '$[0].assessment') AS m0_assessment,
-                   json_extract_string(models, '$[0].reasoning') AS m0_reasoning,
-                   json_extract_string(models, '$[0].proposed_concept_name') AS m0_proposed_concept,
-                   json_extract_string(models, '$[1].model') AS m1_name,
-                   json_extract_string(models, '$[1].assessment') AS m1_assessment,
-                   json_extract_string(models, '$[1].reasoning') AS m1_reasoning,
-                   json_extract_string(models, '$[1].proposed_concept_name') AS m1_proposed_concept
+            SELECT entity_id, note_id, original_text, al_routing_decision, queue_reason, models
             FROM mollm_review_decisions
             {where_clause}
             ORDER BY note_id, entity_id
@@ -69,18 +66,16 @@ def main():
             print("No matching rows in mollm_review_decisions.")
             return 0
 
-        for (entity_id, note_id, text, routing, reason,
-             m0_name, m0_assessment, m0_reasoning, m0_concept,
-             m1_name, m1_assessment, m1_reasoning, m1_concept) in rows:
+        for entity_id, note_id, text, routing, reason, models_json in rows:
+            models = json.loads(models_json) if isinstance(models_json, str) else (models_json or [])
             print("=" * 78)
             print(f"[{note_id}] {entity_id}  {text!r}")
             print(f"routing: {routing}   reason: {reason}")
-            print(f"\n  {m0_name}: {m0_assessment}"
-                  + (f"  -> proposed: {m0_concept}" if m0_concept else ""))
-            print(f"    {m0_reasoning}")
-            print(f"\n  {m1_name}: {m1_assessment}"
-                  + (f"  -> proposed: {m1_concept}" if m1_concept else ""))
-            print(f"    {m1_reasoning}")
+            for m in models:
+                concept = m.get("proposed_concept_name")
+                print(f"\n  {m.get('model')}: {m.get('assessment')}"
+                      + (f"  -> proposed: {concept}" if concept else ""))
+                print(f"    {m.get('reasoning')}")
             print()
 
         print(f"{len(rows)} row(s).")

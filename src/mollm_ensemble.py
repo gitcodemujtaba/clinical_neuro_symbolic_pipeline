@@ -52,6 +52,7 @@ from src.llm_client import (
     parse_json_response,
     verdict_schema,
 )
+from src.normalization.compound_span import strip_lab_value_suffix
 from src.retrieval import CITABLE_TYPES
 from src.provenance import (
     candidates_hash,
@@ -243,6 +244,33 @@ evidence was shown and used."""
 # Prompt assembly
 # ==========================================================================
 
+def _lab_value_note(entity_text: str) -> str:
+    """2026-08-14 (Option 1.5, lab-value display cleanup). Candidates for a
+    flowsheet-style entity like "WBC-13.0" are ALREADY correctly resolved --
+    src/normalization/orchestrator.py's LAB VALUE SUFFIX FALLBACK already
+    strips the value and re-normalizes before storing normalized_entities.
+    candidates (confirmed empirically: raw "WBC-13.0" fails Tier 3 entirely,
+    below TIER3_SIMILARITY_FLOOR; the stored 0.892-score "Leucocyte count"
+    candidate comes from the cleaned "WBC" embedding, correctly adopted by
+    the tier-rank comparison in that fallback). What's NOT clean is what the
+    MoLLM prompt itself shows: the entity fields still carry the raw value,
+    so the model has to notice on its own that "WBC-13.0" ~ "Leucocyte
+    count" is a valid match despite the numeric suffix -- exactly the
+    lexical-greediness inconsistency that produces 2-1 splits on these
+    entities. This is display-only: the caller's own text fields are
+    untouched (still "WBC-13.0" everywhere else -- DB writes, grading,
+    entity_id), so it can't affect gold-span scoring. Returns "" when
+    strip_lab_value_suffix() finds no lab-value shape, so ordinary entities
+    get no extra line.
+    """
+    candidates = strip_lab_value_suffix(entity_text or "")
+    if not candidates:
+        return ""
+    return (f'\n  (this looks like a lab/flowsheet result -- "{candidates[0]}" '
+            f'is the test name, the trailing number is its measured VALUE, not '
+            f'part of the concept. Match on "{candidates[0]}", not the number.)')
+
+
 def _format_candidates(record, retrieval) -> str:
     cands = record.get("candidates") or []
     if not cands:
@@ -399,7 +427,8 @@ def build_prompt(record: dict, retrieval: dict) -> tuple:
     parts = [
         "ENTITY:",
         f"  text as written: {record.get('original_text')!r}",
-        f"  after abbreviation expansion: {record.get('expanded_text')!r}",
+        f"  after abbreviation expansion: {record.get('expanded_text')!r}"
+        f"{_lab_value_note(record.get('expanded_text'))}",
         f"  extractor label: {record.get('gliner_label')} "
         f"(confidence {record.get('gliner_confidence')})",
         assertion_line,
@@ -884,7 +913,7 @@ def reasoning_verdict_mismatch(verdict: str, reasoning: str, candidates: list) -
 
 def route(ensemble: dict, citation: dict, model_results: list,
           calibrator_score: float = None, grounding_basis: str = None,
-          candidate_permutation=None) -> dict:
+          candidate_permutation=None, normalized_from: str = None) -> dict:
     """Final routing. The four safety rules are checked BEFORE the thresholds
     and each short-circuits, so no confidence score -- calibrated or not --
     can override them.
@@ -900,6 +929,18 @@ def route(ensemble: dict, citation: dict, model_results: list,
     been fit on real data (mollm_calibrator.MoLLMCalibrator.score() itself
     returns None until trained, so an untrained calibrator is indistinguishable
     from no calibrator at the call site).
+
+    `normalized_from` (2026-08-14, Fragile Concept Gate, user proposal):
+    normalized_entities.normalized_from, passed straight through by the
+    caller. When it starts with "value_stripped_from_", Stage 2b's own
+    winning concept only exists because
+    src/normalization/orchestrator.py's LAB VALUE SUFFIX FALLBACK had to
+    salvage it after Tier 1/2 failed on the raw text -- see the
+    AUTO_VALIDATE_THRESHOLD branch below for what this changes. Unlike the
+    four hard safety rules above, this is not a short-circuit to HITL: it
+    caps how far a fragile-foundation decision can rise, it does not veto
+    it outright. A None default (no normalized_from passed, or the field
+    was never populated) reproduces exactly today's behavior.
     """
     # 2026-08-13 (P4). Every model's generation degenerated into a repetition
     # loop, so there is no opinion here at all -- not a disagreement, not an
@@ -1002,6 +1043,24 @@ def route(ensemble: dict, citation: dict, model_results: list,
                     "confidence_basis_for_routing": basis_label}
 
     if routed_on >= AUTO_VALIDATE_THRESHOLD:
+        # 2026-08-14 (Fragile Concept Gate). Measured on the 16393593-DS-5
+        # smoke test: giving the models a clean lab-value display made
+        # WBC-13/RBC-3/PTT-114/AlkPhos-255/Phos-9.4 unanimously WRONG
+        # instead of visibly split -- ensemble consensus went up, precision
+        # did not, and the only tier that skips human review is exactly
+        # where that gap must not land silently. A fragile-foundation
+        # decision is capped at MOLLM_RESOLVED rather than promoted to
+        # AUTO_VALIDATED, same as a 2-1 split gets today -- not routed all
+        # the way to HITL, since the confidence signal itself is still
+        # intact and usable, just not license to skip review.
+        if normalized_from and normalized_from.startswith("value_stripped_from_"):
+            return {"mollm_routing_decision": INGESTION_RESOLVED, "queue_reason": None,
+                    "routing_basis": f"{basis_label} {routed_on} >= {AUTO_VALIDATE_THRESHOLD}, "
+                                     f"but capped at MOLLM_RESOLVED: winning concept only "
+                                     f"resolved via lab-value-suffix fallback "
+                                     f"({normalized_from}) -- too fragile a foundation for a "
+                                     f"human-review skip regardless of ensemble agreement",
+                    "confidence_basis_for_routing": basis_label}
         return {"mollm_routing_decision": INGESTION_AUTO, "queue_reason": None,
                 "routing_basis": f"{basis_label} {routed_on} >= {AUTO_VALIDATE_THRESHOLD}",
                 "confidence_basis_for_routing": basis_label}
@@ -1311,7 +1370,8 @@ def validate_record(record: dict, retriever, clients: dict = None,
                     # already records. Computed above, before route(), so this
                     # is a pass-through rather than a new derivation.
                     grounding_basis=grounding_basis,
-                    candidate_permutation=candidate_permutation)
+                    candidate_permutation=candidate_permutation,
+                    normalized_from=record.get("normalized_from"))
 
     modes = {m.get("decoding_mode") for m in model_results}
     artifact["decoding_modes"] = sorted(x for x in modes if x)
@@ -1361,8 +1421,22 @@ def load_validation_records(conn, note_id: str, limit: int = None,
     extraction gate; feeding them to Stage 3 by default would quietly change
     what the pipeline claims to validate. Set True only when deliberately
     measuring how many of them Stage 3 would recover.
+
+    2026-08-14: filters out superseded_by_split/superseded_by_growth rows.
+    src/clinical_pipeline.py's split_compound_entities()/grow_entity_spans()
+    keep a superseded parent's extracted_entities row for audit rather than
+    deleting it (this codebase's flag-don't-delete policy), which meant this
+    function was joining that stale parent back in ALONGSIDE its own correct
+    split children/grown replacement -- e.g. "Gunshot wound to abdomen
+    \nPneumonia" (17751158-DS-19) reaching Stage 3 as one composite entity
+    even though its three split children ("Gunshot wound", "abdomen",
+    "Pneumonia") were already sitting in normalized_entities too. Confirmed
+    87 such stale rows in normalized_entities project-wide. Same fix
+    evaluation/stage2b_cal_eval.py's query already applies.
     """
-    where = ["e.note_id = ?"]
+    where = ["e.note_id = ?",
+             "(e.superseded_by_split IS NULL OR e.superseded_by_split = FALSE)",
+             "(e.superseded_by_growth IS NULL OR e.superseded_by_growth = FALSE)"]
     params = [note_id]
     if not include_subthreshold:
         where.append("(e.below_threshold IS NULL OR e.below_threshold = FALSE)")
@@ -1377,7 +1451,7 @@ def load_validation_records(conn, note_id: str, limit: int = None,
                e.temporality, e.assertion_cue, e.expansion_ambiguous,
                e.candidate_expansions,
                n.candidates, n.confidence_tier_in, n.is_ambiguous,
-               n.ambiguity_reason, n.match_tier, n.matched
+               n.ambiguity_reason, n.match_tier, n.matched, n.normalized_from
         FROM extracted_entities e
         JOIN normalized_entities n ON n.entity_id = e.entity_id
         WHERE {' AND '.join(where)}
@@ -1437,6 +1511,7 @@ def load_validation_records(conn, note_id: str, limit: int = None,
             "ambiguity_reason": r[19],
             "match_tier": r[20],
             "matched": r[21],
+            "normalized_from": r[22],
             "relations": rels,
         })
     return records

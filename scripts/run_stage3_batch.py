@@ -16,7 +16,7 @@ RESUMABILITY. Before calling validate_record() for an entity, this script
 checks whether a mollm_decisions row already exists for that entity_id
 (is_test=TRUE). If so, it is skipped. validate_record() is only ever called
 once per entity regardless of tier, so this check is correct independent of
-which --tier a given run used. This means: if vLLM hangs or the process is
+which --tier a given run used. This means: if Ollama hangs or the process is
 killed at hour 8, re-running the EXACT SAME command resumes from wherever it
 stopped rather than re-processing everything (and re-spending the LLM calls
 already paid for) from zero.
@@ -138,11 +138,11 @@ def main():
     print("STAGE 3 BATCH RUN")
     print("=" * 78)
 
-    from src.llm_client import BIOMISTRAL_BASE_URL, OPENBIOLLM_BASE_URL, build_clients
+    from src.llm_client import MODEL_NAMES, build_clients
     from scripts.test_stage3_live import preflight
 
-    if not preflight({"biomistral": BIOMISTRAL_BASE_URL, "openbiollm": OPENBIOLLM_BASE_URL}):
-        print("\nAborting -- start both vLLM servers first: bash scripts/start_vllm.sh")
+    if not preflight(MODEL_NAMES):
+        print("\nAborting -- pull the missing model(s) with `ollama pull <model>` first.")
         return 1
 
     from src.mollm_ensemble import load_validation_records, store_decision, validate_record
@@ -249,11 +249,11 @@ def main():
                     traceback.print_exc()
                     if consecutive_failures >= args.max_consecutive_failures:
                         print(f"\n{consecutive_failures} consecutive failures -- "
-                              f"stopping early. vLLM may be down or hung; check "
-                              f"/tmp/biomistral.log and /tmp/openbiollm.log, restart "
-                              f"if needed (bash scripts/start_vllm.sh), then re-run "
-                              f"this EXACT command -- already-stored decisions will "
-                              f"be skipped automatically.")
+                              f"stopping early. Ollama may be down or hung; check "
+                              f"`ollama ps` / `journalctl -u ollama` (or restart the "
+                              f"`ollama serve` process), then re-run this EXACT "
+                              f"command -- already-stored decisions will be skipped "
+                              f"automatically.")
                         return 1
                     continue
 

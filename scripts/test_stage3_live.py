@@ -1,16 +1,16 @@
 """
 scripts/test_stage3_live.py
 
-First live exercise of Stage 3 against the real vLLM endpoints. Everything in
-src/mollm_ensemble.py has so far been unit-tested against fixtures only -- no
-prompt has ever been sent to BioMistral or OpenBioLLM, no logprob has been
-extracted from a real response, and no model output has ever been parsed. This
-script is deliberately verbose rather than terse, because the first run of an
-untested integration is a diagnostic exercise, not a benchmark.
+Live exercise of Stage 3 against the real Ollama-served ensemble (2026-08-14:
+qwen2.5:3b, llama3.2:3b, phi4-mini -- see src/llm_client.py's docstring for
+why this replaced the earlier two-model vLLM setup). This script is
+deliberately verbose rather than terse, because the first run of an untested
+integration is a diagnostic exercise, not a benchmark.
 
 WHAT IT CHECKS, IN ORDER (each gates the next):
-  1. Both vLLM endpoints are reachable and report a model name. Failing here
-     costs a second; failing later costs a model load and a confusing traceback.
+  1. The Ollama server is reachable and each required model is pulled.
+     Failing here costs a second; failing later costs a model load and a
+     confusing traceback.
   2. Stage 2 output can be read back into ValidationRecord shape.
   3. Retrieval produces evidence (or explains why it did not).
   4. A prompt can be built and fits the token budget.
@@ -56,33 +56,44 @@ TRIPLETS_CANDIDATES = [
 ]
 
 
-def preflight(urls: dict) -> bool:
-    """Confirms each vLLM endpoint answers /v1/models and reports what it serves.
+def preflight(model_names) -> bool:
+    """Confirms the Ollama server is reachable and each required model is
+    pulled (2026-08-14: replaces the old per-model vLLM :8000/:8001 HTTP
+    check -- all three models now share one Ollama daemon, so there is one
+    server to reach and N model names to confirm on it, not N separate
+    endpoints).
 
     Checked BEFORE importing src.mollm_ensemble, because that import pulls in
-    src.retrieval and the openai client; discovering a dead endpoint after a
-    model load wastes minutes and buries the real cause in an unrelated
-    traceback. The served model NAME is printed because llm_client.build_clients()
-    sends a `model` field that must match what the server was launched with --
-    a mismatch produces a 404 that reads like a network error.
+    src.retrieval; discovering a dead server after a model load wastes
+    minutes and buries the real cause in an unrelated traceback. Matched
+    against `ollama list` because llm_client.build_clients() sends a `model`
+    field that must match exactly what's pulled -- a mismatch produces a 404
+    that reads like a network error. A bare name with no ":tag" (e.g.
+    "phi4-mini") is Ollama's own shorthand for ":latest", so that suffix is
+    tried too before declaring a model missing.
     """
+    import ollama
+
     ok = True
-    print("--- 1. vLLM ENDPOINT PREFLIGHT ---")
-    for label, base in urls.items():
-        url = base.rstrip("/") + "/models"
-        try:
-            with urllib.request.urlopen(url, timeout=5) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-            served = [m.get("id") for m in data.get("data", [])]
-            print(f"  OK   {label:<12} {base}")
-            print(f"       serving: {served}")
-        except (urllib.error.URLError, OSError, ValueError) as exc:
+    print("--- 1. OLLAMA MODEL PREFLIGHT ---")
+    try:
+        available = {m.model for m in ollama.list().models}
+    except Exception as exc:
+        print(f"  XX   Ollama server unreachable -> {exc}")
+        print("\n  Start it (e.g. `ollama serve`), or run with --dry-run to")
+        print("  exercise everything up to the LLM call.")
+        return False
+
+    for name in model_names:
+        candidates = {name, f"{name}:latest"} if ":" not in name else {name}
+        if candidates & available:
+            print(f"  OK   {name}")
+        else:
             ok = False
-            print(f"  XX   {label:<12} {base}  -> {exc}")
+            print(f"  XX   {name}  -> not pulled (available: {sorted(available)})")
     if not ok:
-        print("\n  One or more endpoints are down. Start them, or run with --dry-run")
-        print("  to exercise everything up to the LLM call. scripts/boot_infra.sh")
-        print("  probes :8000 and :8001 on boot.")
+        print("\n  One or more required models are missing. Run `ollama pull <model>`,")
+        print("  or run with --dry-run to exercise everything up to the LLM call.")
     return ok
 
 
@@ -105,17 +116,13 @@ def main():
     except AttributeError:
         pass
 
-    from src.llm_client import (
-        BIOMISTRAL_BASE_URL, OPENBIOLLM_BASE_URL, PROMPT_BUDGET_TOKENS,
-        SERVED_MODEL_LEN,
-    )
+    from src.llm_client import MODEL_NAMES, PROMPT_BUDGET_TOKENS, CONTEXT_WINDOW_TOKENS
 
     print("=" * 78)
     print("STAGE 3 LIVE TEST")
     print("=" * 78)
 
-    endpoints_up = preflight({"biomistral": BIOMISTRAL_BASE_URL,
-                              "openbiollm": OPENBIOLLM_BASE_URL})
+    endpoints_up = preflight(MODEL_NAMES)
     if not endpoints_up and not args.dry_run:
         return 1
 
@@ -185,7 +192,7 @@ def main():
         # so it must be caught here rather than discovered mid-run.
         print(f"  prompt: {len(prompt)} chars ~= {approx_tokens} tokens "
               f"{'OK' if approx_tokens < PROMPT_BUDGET_TOKENS else 'OVER BUDGET'} "
-              f"(budget {PROMPT_BUDGET_TOKENS} = served {SERVED_MODEL_LEN} - output)")
+              f"(budget {PROMPT_BUDGET_TOKENS} = context {CONTEXT_WINDOW_TOKENS} - output)")
         if args.verbose:
             print("\n" + "-" * 78)
             print(prompt)

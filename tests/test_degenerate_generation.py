@@ -151,12 +151,12 @@ def run():
     # 8. THE CASE FROM THE REPORT. OpenBioLLM answers SUPPORTED confidently;
     #    BioMistral emits a repetition loop that defaults to
     #    INSUFFICIENT_EVIDENCE. Before P4 this was model_disagreement -> HITL.
-    results = [_model("openbio", "SUPPORTED", 0.9),
-               _model("biomistral", "INSUFFICIENT_EVIDENCE", 0.4, degenerate=True)]
+    results = [_model("llama3.2:3b", "SUPPORTED", 0.9),
+               _model("qwen2.5:3b", "INSUFFICIENT_EVIDENCE", 0.4, degenerate=True)]
     ens = combine(results)
     check("degenerate voter excluded -> agreement", ens["ensemble_agreement"] is True)
     check("exclusion counted", ens["n_degenerate_models"] == 1)
-    check("exclusion names the model", ens["degenerate_models"] == ["biomistral"])
+    check("exclusion names the model", ens["degenerate_models"] == ["qwen2.5:3b"])
     check("only one model scored", ens["n_models_scored"] == 1)
     check("basis says a voter was excluded",
           "degenerate_excluded" in ens["confidence_basis"])
@@ -164,7 +164,7 @@ def run():
           abs(ens["composite_confidence"] - 0.9) < 1e-6)
 
     # 9. GENUINE disagreement is untouched -- the safety rule must still fire.
-    results = [_model("openbio", "SUPPORTED"), _model("biomistral", "CONTRADICTED")]
+    results = [_model("llama3.2:3b", "SUPPORTED"), _model("qwen2.5:3b", "CONTRADICTED")]
     ens = combine(results)
     check("genuine disagreement still disagrees", ens["ensemble_agreement"] is False)
     check("no degeneracy claimed", ens["n_degenerate_models"] == 0)
@@ -173,8 +173,8 @@ def run():
           r["queue_reason"] == "model_disagreement")
 
     # 10. ALL models degenerate: not agreement-by-elimination, its own route.
-    results = [_model("openbio", "INSUFFICIENT_EVIDENCE", 0.3, degenerate=True),
-               _model("biomistral", "INSUFFICIENT_EVIDENCE", 0.3, degenerate=True)]
+    results = [_model("llama3.2:3b", "INSUFFICIENT_EVIDENCE", 0.3, degenerate=True),
+               _model("qwen2.5:3b", "INSUFFICIENT_EVIDENCE", 0.3, degenerate=True)]
     ens = combine(results)
     check("all-degenerate flagged", ens["all_models_degenerate"] is True)
     r = route(ens, {"citation_verified": True}, results)
@@ -185,7 +185,7 @@ def run():
           r["queue_reason"] != "model_disagreement")
 
     # 11. Clean agreement is completely unaffected by any of this.
-    results = [_model("openbio", "SUPPORTED", 0.9), _model("biomistral", "SUPPORTED", 0.9)]
+    results = [_model("llama3.2:3b", "SUPPORTED", 0.9), _model("qwen2.5:3b", "SUPPORTED", 0.9)]
     ens = combine(results)
     check("clean agreement unaffected", ens["ensemble_agreement"] is True)
     check("clean agreement has no exclusion note",

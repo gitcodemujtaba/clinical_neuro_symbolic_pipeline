@@ -758,10 +758,10 @@ def main():
     print("=" * 78)
 
     from scripts.test_stage3_live import preflight
-    from src.llm_client import BIOMISTRAL_BASE_URL, OPENBIOLLM_BASE_URL
+    from src.llm_client import MODEL_NAMES
 
-    if not preflight({"biomistral": BIOMISTRAL_BASE_URL, "openbiollm": OPENBIOLLM_BASE_URL}):
-        print("\nAborting -- start both vLLM servers first: bash scripts/start_vllm.sh")
+    if not preflight(MODEL_NAMES):
+        print("\nAborting -- pull the missing model(s) with `ollama pull <model>` first.")
         return 1
 
     from src.retrieval import DuckDBHierarchy, GroundingRetriever, GuidelineIndex, VocabularyRetriever

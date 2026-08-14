@@ -28,7 +28,7 @@ Run on EC2:
     cd ~/clinical_neuro_symbolic_pipeline/code
     source ~/.venv/bin/activate
     python3 scripts/measure_gliner_risk_vs_match_tier.py --note-ids <ids>
-    python3 scripts/measure_gliner_risk_vs_match_tier.py --out gliner_risk_report.json
+    python3 scripts/measure_gliner_risk_vs_match_tier.py --out reports/gliner_risk_report.json
 
 Read-only. No LLM calls, no pipeline run -- run test_pipeline_e2e.py /
 score_gold_recall.py's own prerequisites first so extracted_entities /

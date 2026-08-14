@@ -31,9 +31,10 @@ the hard prerequisites):
     important addition in this change.
 
   * section_name, sentence_id, local_context -- Stage 3 runs per-entity, not
-    per-note, because OpenBioLLM 8B's context window is 8,192 tokens while
-    notes run 2,374-24,858 characters. A sentence-bounded window keeps every
-    prompt's size independent of note length.
+    per-note, because the ensemble's shared prompt budget (src/llm_client.py's
+    PROMPT_BUDGET_TOKENS) is far smaller than notes run (2,374-24,858
+    characters). A sentence-bounded window keeps every prompt's size
+    independent of note length.
 
   * gliner_model_version / extraction_threshold -- docs/Provenance_Schema.md
     fields that were never written. Not bookkeeping: the checkpoint changed on
@@ -125,8 +126,9 @@ CLINICAL_LABELS = [
 # Target size for the per-entity context window handed to Stage 3. Sized
 # against the token budget in docs/MoLLM_Stage3_Retrieval_Design.md S6.5: at
 # roughly 4 chars/token this is ~200 tokens, which leaves room for the
-# candidate list and up to five guideline rules inside OpenBioLLM's 8,192-token
-# window with headroom to spare.
+# candidate list and up to five guideline rules inside the ensemble's shared
+# 8,192-token prompt budget (src/llm_client.py's CONTEXT_WINDOW_TOKENS) with
+# headroom to spare.
 LOCAL_CONTEXT_MAX_CHARS = 800
 LOCAL_CONTEXT_MIN_CHARS = 300
 

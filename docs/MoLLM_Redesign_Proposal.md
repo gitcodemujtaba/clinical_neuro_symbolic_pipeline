@@ -1,5 +1,7 @@
 # MoLLM (Stage 3) Redesign — Proposal Informed by Qi et al. 2026 (MoLLIA)
 
+> **Model-choice note (2026-08-14):** this doc was written against the earlier two-model vLLM ensemble (BioMistral-7B-AWQ / OpenBioLLM-Llama3-8B-AWQ). The standing ensemble as of 2026-08-14 is qwen2.5:3b / llama3.2:3b / phi4-mini served via Ollama (`src/llm_client.py`) — see `docs/2026-08-14_Stage2_Alias_Fixes_And_Stage3_Provenance.md` §6 for why, and `docs/2026-08-14_Dead_Code_Audit.md` for what else changed alongside it. Design rationale below may still apply structurally; specific model names, base URLs, and context-window numbers do not.
+
 **Date:** 2026-08-11
 **Status:** implemented locally (S1-S9's core mechanisms + S10's Channel E), verified via py_compile and stub tests, NOT yet synced to EC2. See S11 for exactly what changed, where, and what's still open.
 **Trigger:** direct request to review "Next Generation Active Learning: Mixture of LLMs in the Loop" (Qi et al., arXiv:2601.15773, AAAI 2026) and propose a Stage 3 redesign.

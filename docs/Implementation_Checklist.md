@@ -1,4 +1,6 @@
 # Implementation Checklist
+
+> **Model-choice note (2026-08-14):** this doc was written against the earlier two-model vLLM ensemble (BioMistral-7B-AWQ / OpenBioLLM-Llama3-8B-AWQ). The standing ensemble as of 2026-08-14 is qwen2.5:3b / llama3.2:3b / phi4-mini served via Ollama (`src/llm_client.py`) — see `docs/2026-08-14_Stage2_Alias_Fixes_And_Stage3_Provenance.md` §6 for why, and `docs/2026-08-14_Dead_Code_Audit.md` for what else changed alongside it. Design rationale below may still apply structurally; specific model names, base URLs, and context-window numbers do not.
 ## Clinical Neuro-Symbolic Pipeline — Coding Project
 
 Last updated: 2026-08-07. Cross-referenced to the 5 proposal objectives and `Proposal_Alignment_Review.md`. Status reflects the actual code/data in the repo as of this date, not the design docs alone.
