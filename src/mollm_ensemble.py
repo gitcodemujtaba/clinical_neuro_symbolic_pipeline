@@ -39,6 +39,7 @@ decision, purely so the dissertation can report whether the two agree.
 """
 
 import json
+import os
 import re
 import uuid
 import warnings
@@ -46,11 +47,26 @@ import warnings
 from src.llm_client import (
     LLMUnavailable,
     build_clients,
+    extract_candidate_alternatives,
     extract_verdict_confidence,
     parse_json_response,
     verdict_schema,
 )
 from src.retrieval import CITABLE_TYPES
+from src.provenance import (
+    candidates_hash,
+    provenance_alter_statements,
+    provenance_column_sql,
+    provenance_placeholders,
+    provenance_params,
+)
+
+# docs/MoLLM_Redesign_Proposal.md S4.3 -- floor below which an alternative
+# verdict's probability is treated as "rejected" and logged. CALIBRATION-
+# PENDING like every other threshold in this file's ensemble math (see
+# AUTO_VALIDATE_THRESHOLD/MOLLM_RESOLVE_THRESHOLD below); a placeholder, not a
+# measured value, until there is a labeled sample to check it against.
+REJECTED_CANDIDATE_FLOOR = 0.05
 
 warnings.filterwarnings("ignore")
 
@@ -64,6 +80,50 @@ RESOLUTION_VERDICTS_BASE = {"NONE_CORRECT", "INSUFFICIENT_EVIDENCE"}
 AUTO_VALIDATE_THRESHOLD = 0.85
 MOLLM_RESOLVE_THRESHOLD = 0.60
 
+# ==========================================================================
+# ASYMMETRIC OVERRIDE GATE (2026-08-13,
+# docs/2026-08-13_Code_Improvement_Proposals.md P2.1)
+# ==========================================================================
+#
+# THE MEASUREMENT THIS ANSWERS. evaluation/stage2b_cal_eval.py's cross-tab
+# over the 31-note corpus (2026-08-13 report S6):
+#
+#     CAUGHT_AND_FIXED   13  ( 9.7%)  Stage 2b wrong, MoLLM fixed it
+#     INTRODUCED_ERROR   30  (22.4%)  Stage 2b RIGHT, MoLLM broke it
+#     NET VALUE         -17
+#
+# and a fresh 3-note replication, immune to the candidate-drift confound,
+# pointing the same way (0 fixed, 1 introduced).
+#
+# WHY A THRESHOLD CHANGE WOULD NOT FIX THIS. route() currently treats
+# "confirm Stage 2b's top-1" and "override it" as the same decision, gated on
+# the same number. They are not the same decision. Confirming a correct link
+# costs nothing when wrong (it was already right); overriding a correct link
+# DESTROYS it. The measured override is wrong more than twice as often as it
+# is right, so the two directions cannot share an acceptance bar.
+#
+# THE GATE. An override -- any verdict RESOLVED_TO_CANDIDATE_n where n is not
+# Stage 2b's own top-1 -- must clear ALL THREE of:
+#   * a calibrator score >= OVERRIDE_TOP1_THRESHOLD (raw composite_confidence
+#     is explicitly not sufficient: report S5.4 measured it at 14.29% accuracy
+#     across the whole threshold sweep, so it cannot carry this decision),
+#   * grounding_basis == "guideline_rule" -- the model must have had real
+#     retrieved evidence, not its own terminology intuitions, and
+#   * citation_verified -- that evidence must actually check out.
+# Anything less routes to a human under `unsupported_top1_override`.
+#
+# WHY THIS IS SAFE RATHER THAN MERELY CONSERVATIVE. It cannot lose a
+# CAUGHT_AND_FIXED case outright -- a blocked override becomes HITL, where a
+# human can still make the correction. It can only convert silent corrections
+# into reviewed ones. INTRODUCED_ERROR, by construction, goes toward zero.
+#
+# DEFAULT ON, unlike P1.1's ranker, because unlike the ranker this changes no
+# stored Stage 2b value and invalidates nothing already measured -- it only
+# redirects decisions that the same report showed to be net-harmful.
+OVERRIDE_TOP1_THRESHOLD = 0.90
+OVERRIDE_GATE_ENABLED = os.environ.get(
+    "CNSP_OVERRIDE_GATE", "1").strip().lower() not in ("0", "false", "no")
+
 # Applied to composite_confidence when the two models agree on the verdict but
 # differ substantially in how confident they were. Disagreement in degree is
 # weaker evidence than agreement in degree, and averaging alone would hide it.
@@ -76,10 +136,34 @@ CONFIDENCE_SPREAD_TRIGGER = 0.30
 # truth and audits the model against it.
 CITATION_CONTAINMENT_THRESHOLD = 0.8
 
+# ==========================================================================
+# REASONING/VERDICT CONSISTENCY CHECK
+# ==========================================================================
+#
+# Found by hand-tracing evaluation/stage2b_cal_eval.py's INTRODUCED_ERROR rows
+# (docs/2026-08-13_Implementation_Verification.md follow-up): for the
+# 'aortic valve leaflets' entity (note 11838076-DS-20), BOTH ensemble models
+# named candidate [2] ("Structure of cusp of aortic valve") verbatim in their
+# free-text `reasoning` field, then independently voted
+# RESOLVED_TO_CANDIDATE_3 -- a DIFFERENT candidate. Traced to
+# _format_candidates() below: candidate [3]'s own is-a hint line repeats
+# candidate [2]'s name verbatim, and a guided-JSON decode can lock the
+# structured `verdict` field onto the wrong bracket independently of what the
+# free-text `reasoning` field (generated from the same pass) actually argued
+# for. Same containment metric and cutoff as citation verification, reused
+# rather than re-invented, so a candidate name that reasoning only PARAPHRASES
+# does not false-positive -- only a near-verbatim mention counts.
+REASONING_MENTION_THRESHOLD = 0.8
+
 # Evidence cap after an expansion request. Higher than the first-round 5, but
 # still bounded -- the 8,192-token window is the constraint, not willingness to
 # show more.
 MAX_RULES_AFTER_EXPANSION = 15
+
+# Matches build_prompt()'s RESOLVED_TO_CANDIDATE_{i} verdict vocabulary. Used
+# by _is_top1_override() to tell a confirmation of Stage 2b's own pick from a
+# substitution of a different concept for it.
+RESOLVED_RE = re.compile(r"^RESOLVED_TO_CANDIDATE_(\d+)$")
 
 INGESTION_AUTO = "AUTO_VALIDATED"
 INGESTION_RESOLVED = "MOLLM_RESOLVED"
@@ -91,16 +175,46 @@ You will be given one entity extracted from a clinical note, the concept(s) a
 terminology service mapped it to, and any clinical guideline evidence retrieved
 from a curated knowledge graph.
 
+Your task is LABELING, not clinical decision-making: you are judging whether a
+concept is the CORRECT LABEL for a text span, not whether a patient's care is
+clinically appropriate, not a diagnosis, and not a treatment recommendation.
+Keep every judgment scoped to that question.
+
 RULES:
-- Judge ONLY what you are shown. Do not use outside clinical knowledge as
-  evidence for a verdict.
+- When guideline evidence IS shown, judge only what is in the EVIDENCE block.
+  Do not use outside knowledge to override or supplement it.
+- When the EVIDENCE block says no guideline evidence was retrieved, you may
+  use your knowledge of medical terminology and clinical concepts to judge
+  whether the candidate concept is the correct label for the entity shown,
+  given its context. This is a labeling judgment -- whether this text
+  correctly refers to this concept -- not a judgment about whether the
+  patient's care is clinically appropriate. If you use this basis, set
+  "reasoning_basis" to "medical_terminology_knowledge"; if your judgment
+  rests only on the ontology facts you were shown (concept name, semantic
+  tag, parents) with no additional knowledge needed, set it to
+  "ontology_only". Leave "reasoning_basis" unset when guideline evidence was
+  shown and used.
 - You may cite evidence ONLY by the rule_id values in the EVIDENCE block. Never
-  invent a rule_id, and never cite text that is not shown to you.
+  invent a rule_id, and never cite text that is not shown to you. This applies
+  regardless of which basis you reasoned from -- you must never attribute a
+  terminology-knowledge judgment to a guideline.
 - If the EVIDENCE block says no guideline evidence was retrieved, you cannot
-  return CONTRADICTED. Return SUPPORTED if the mapping is ontologically sound,
+  return CONTRADICTED. Return SUPPORTED if the mapping is a correct label,
   otherwise INSUFFICIENT_EVIDENCE.
 - Respect the stated assertion status. A finding marked ABSENT was explicitly
   negated in the note; do not treat it as present.
+- PROVENANCE OVERRIDES SPELLING: pay close attention to the "basis" of each
+  candidate. A candidate with basis verified_brand_alias or exact_text is a
+  mathematically verified terminology link. Trust these relationships
+  completely. Do NOT reject them just because the candidate's spelling
+  differs from the extracted entity.
+- SCORE WARNING: a high score (e.g. above 0.80) is NOT reliable evidence on
+  its own. Near-identical spelling frequently points to completely unrelated
+  clinical concepts. Always confirm clinical meaning and domain alignment
+  before trusting a high score.
+- SYNONYM TOLERANCE: do not reject valid clinical paraphrases (e.g. rejecting
+  "Right atrial structure" for the entity "right atrium") purely due to minor
+  wording differences. You are matching semantic concepts, not exact strings.
 
 The EVIDENCE block is a ranked selection, not everything that was found. If it
 is insufficient and more of the retrieved record would change your answer, you
@@ -118,9 +232,11 @@ Reply with a single JSON object and nothing else:
  "reasoning": "<two sentences maximum>",
  "cited_evidence": [{"rule_id": "<id from EVIDENCE>", "quote": "<exact text from that rule>"}],
  "confidence": "<HIGH|MEDIUM|LOW>",
- "request": "<MORE_RULES|SUPPRESSED_RULES|CANDIDATE_DETAIL|NONE>"}
-Use an empty cited_evidence list if you cited nothing, and "NONE" if you need
-no further information."""
+ "request": "<MORE_RULES|SUPPRESSED_RULES|CANDIDATE_DETAIL|NONE>",
+ "reasoning_basis": "<ontology_only|medical_terminology_knowledge, ONLY when no guideline evidence was retrieved>"}
+Use an empty cited_evidence list if you cited nothing, "NONE" if you need no
+further information, and omit reasoning_basis entirely when guideline
+evidence was shown and used."""
 
 
 # ==========================================================================
@@ -132,15 +248,39 @@ def _format_candidates(record, retrieval) -> str:
     if not cands:
         return "CANDIDATE CONCEPTS: none — Stage 2 could not map this entity.\n"
     ctxs = retrieval.get("candidate_contexts") or []
+    # 2026-08-13 (reasoning_verdict_mismatch's motivating case): a candidate's
+    # is-a PARENT can happen to be another candidate's own concept name (e.g.
+    # "Entire cusp of aortic valve" is-a "Structure of cusp of aortic valve",
+    # which is ALSO candidate [2] here). Read flat, that line is easy to
+    # misattribute to the sibling candidate rather than to the parent
+    # relationship it actually states -- both ensemble models did exactly
+    # that, naming [2] in their reasoning while voting for [3]. Marking the
+    # collision explicitly removes the ambiguity instead of relying on the
+    # model to track bracket numbers across two separate mentions of the same
+    # name.
+    name_to_index = {
+        (c.get("concept_name") or "").strip().lower(): i
+        for i, c in enumerate(cands, 1) if c.get("concept_name")
+    }
     lines = ["CANDIDATE CONCEPTS:"]
     for i, c in enumerate(cands, 1):
         ctx = ctxs[i - 1] if i - 1 < len(ctxs) else {}
         line = (f"  [{i}] {c.get('concept_name')} (OMOP {c.get('omop_concept_id')}, "
                 f"{c.get('vocabulary_id')}/{c.get('domain_id')}, "
-                f"match tier {c.get('match_tier')}, score {c.get('similarity_score')})")
+                f"match tier {c.get('match_tier')}, score {c.get('similarity_score')}, "
+                f"basis {c.get('match_basis', 'semantic_similarity')})")
         parents = ctx.get("parents") or []
         if parents:
-            line += "\n      is-a: " + "; ".join(p["name"] for p in parents[:3])
+            parts = []
+            for p in parents[:3]:
+                pname = p["name"]
+                sibling_idx = name_to_index.get(pname.strip().lower())
+                if sibling_idx and sibling_idx != i:
+                    parts.append(f"{pname} (this IS candidate [{sibling_idx}] above -- "
+                                 f"a PARENT of [{i}], not a name for [{i}] itself)")
+                else:
+                    parts.append(pname)
+            line += "\n      is-a: " + "; ".join(parts)
         lines.append(line)
     return "\n".join(lines) + "\n"
 
@@ -298,10 +438,26 @@ def build_prompt(record: dict, retrieval: dict) -> tuple:
         allowed = RESOLUTION_VERDICTS_BASE | {
             f"RESOLVED_TO_CANDIDATE_{i}" for i in range(1, len(record["candidates"]) + 1)
         }
+        # docs/Stage3_Open_Issues.md Issue 3 (spirnolactone -> SPIRAPRILAT,
+        # 2026-08-10 run): NONE_CORRECT was legal and correct but unused. The
+        # candidates here came from a lexical/semantic fallback (Tier 3), not
+        # a guarantee the true concept is even on the list -- the previous
+        # wording implied picking one of them was always the task. Both models
+        # picked the closest-SPELLED candidate over the closest-MEANING one;
+        # BioMistral's own reasoning named "Spirinolactone" correctly and then
+        # selected SPIRAPRILAT anyway. The instruction now names that failure
+        # mode explicitly rather than leaving NONE_CORRECT to be inferred from
+        # the verdict enum.
         parts.append(
             "TASK: Stage 2 could not decide between the candidate concepts above. "
             "Using the context, section and any evidence, decide which candidate the "
             "entity refers to.\n"
+            "These candidates were surfaced by lexical/semantic similarity, not "
+            "guaranteed correctness -- the true concept may not be among them at all, "
+            "particularly for misspellings, where the nearest-SPELLED match and the "
+            "nearest-MEANING match can be different concepts. If none of the candidates "
+            "is the concept this entity actually refers to, return NONE_CORRECT rather "
+            "than choosing the closest-looking one.\n"
             f"Allowed verdicts: {', '.join(sorted(allowed))}"
         )
     elif skipped or record.get("assertion_status") == "ABSENT" or \
@@ -515,6 +671,10 @@ def _query_one(client, system_prompt, user_prompt, allowed_verdicts,
         parsed["_verdict_out_of_vocabulary"] = verdict or None
         verdict = "INSUFFICIENT_EVIDENCE"
 
+    reasoning_basis = parsed.get("reasoning_basis")
+    if reasoning_basis not in ("ontology_only", "medical_terminology_knowledge"):
+        reasoning_basis = None
+
     return {
         "model": raw["model"],
         "verdict": verdict,
@@ -525,11 +685,32 @@ def _query_one(client, system_prompt, user_prompt, allowed_verdicts,
                     if str(parsed.get("request", "")).strip().upper() in VALID_REQUESTS
                     else None),
         "logprob_confidence": extract_verdict_confidence(raw["tokens"], verdict),
+        # docs/MoLLM_Redesign_Proposal.md S9.5 -- self-reported grounding basis,
+        # only meaningful (and only requested by the prompt) when no guideline
+        # evidence was retrieved. None when unset, mis-set, or not applicable;
+        # never coerced to a default, same discipline as logprob_confidence.
+        "reasoning_basis": reasoning_basis,
+        # docs/MoLLM_Redesign_Proposal.md S4.3 -- probability the model
+        # assigned to verdicts it did NOT choose, read off the logprob
+        # alternates already being requested (TOP_LOGPROBS) but discarded
+        # before 2026-08-11. {} when unavailable or not applicable (e.g. a
+        # contradiction-mode verdict with no sibling candidates to compare
+        # against), never omitted -- an empty dict is distinguishable from
+        # "not computed" by callers that check for the key.
+        "candidate_alternatives": extract_candidate_alternatives(
+            raw["tokens"], verdict, allowed_verdicts),
         "verdict_out_of_vocabulary": parsed.get("_verdict_out_of_vocabulary"),
         "finish_reason": raw.get("finish_reason"),
         # Guided vs unguided changes the logprob distribution, so a calibration
         # set must not mix the two. Recorded per call rather than assumed.
         "decoding_mode": raw.get("decoding_mode"),
+        # 2026-08-13 (P4). Carried through from src/llm_client.py so combine()
+        # can exclude this verdict from the agreement test and so the per-model
+        # rate survives into the models JSON column -- which is what makes the
+        # FREQUENCY_PENALTY fix measurable rather than merely asserted.
+        "degenerate_generation": raw.get("degenerate_generation", False),
+        "degenerate_retried": raw.get("degenerate_retried", False),
+        "degenerate_detail": raw.get("degenerate_detail"),
     }
 
 
@@ -544,13 +725,52 @@ def combine(model_results: list) -> dict:
     Returns composite_confidence None when no model reported a logprob, so
     "unmeasured" stays distinguishable from "measured as low".
     """
-    verdicts = [m["verdict"] for m in model_results]
+    # 2026-08-13 (docs/2026-08-13_Code_Improvement_Proposals.md P4).
+    # DEGENERATE GENERATIONS ARE NOT VOTES.
+    #
+    # The 2026-08-13 report S4.2 measured 475 verdicts -- 23.8% of every
+    # BioMistral verdict this project has ever produced -- whose `reasoning`
+    # was a repetition loop, always defaulting to INSUFFICIENT_EVIDENCE. Those
+    # were counted here as genuine disagreement, which forced HITL via safety
+    # rule 1. On the 3-note sample the report inspected by hand, 4 of 8
+    # "disagreements" were this: OpenBioLLM answering correctly and
+    # confidently about an entity stated plainly in the note, against a
+    # BioMistral output that was not a second opinion but a stuck decoder.
+    #
+    # A model that could not stop talking did not disagree. Its verdict is
+    # excluded from the agreement test, and the exclusion is RECORDED (never
+    # silent) so the decision is auditable and the rate is measurable.
+    #
+    # THE ONE CASE WHERE THIS MUST NOT APPLY: if EVERY model degenerated there
+    # is no surviving opinion, and dropping them all would leave an empty
+    # verdict set that len(set()) == 1 would score as False -- accidentally
+    # correct routing for entirely the wrong reason. That case is handled
+    # explicitly below and routed on its own queue_reason.
+    usable = [m for m in model_results if not m.get("degenerate_generation")]
+    n_degenerate = len(model_results) - len(usable)
+    all_degenerate = bool(model_results) and not usable
+
+    scored = model_results if all_degenerate else usable
+    verdicts = [m["verdict"] for m in scored]
     agreement = len(set(verdicts)) == 1
 
-    confs = [m["logprob_confidence"] for m in model_results if m["logprob_confidence"] is not None]
+    # Confidence is likewise averaged over the USABLE models only: a
+    # degenerate generation's logprob describes how sure the model was about
+    # repeating itself, which is not a confidence in the verdict.
+    confs = [m["logprob_confidence"] for m in scored if m["logprob_confidence"] is not None]
+
+    degeneracy = {
+        "n_degenerate_models": n_degenerate,
+        "all_models_degenerate": all_degenerate,
+        "degenerate_models": [m.get("model") for m in model_results
+                              if m.get("degenerate_generation")],
+        "n_models_scored": len(scored),
+    }
+
     if not confs:
         return {"ensemble_agreement": agreement, "composite_confidence": None,
-                "confidence_basis": "no_logprobs_available", "confidence_spread": None}
+                "confidence_basis": "no_logprobs_available",
+                "confidence_spread": None, **degeneracy}
 
     mean = sum(confs) / len(confs)
     spread = (max(confs) - min(confs)) if len(confs) > 1 else 0.0
@@ -558,7 +778,7 @@ def combine(model_results: list) -> dict:
     if not agreement:
         return {"ensemble_agreement": False, "composite_confidence": round(mean, 6),
                 "confidence_basis": "verdicts_disagree_composite_not_used_for_routing",
-                "confidence_spread": round(spread, 6)}
+                "confidence_spread": round(spread, 6), **degeneracy}
 
     composite = mean
     basis = "mean_logprob_agreeing_verdicts"
@@ -566,13 +786,136 @@ def combine(model_results: list) -> dict:
         composite *= CONFIDENCE_SPREAD_PENALTY
         basis += "+spread_penalty"
 
+    if n_degenerate and not all_degenerate:
+        # Agreement reached only because a degenerate voter was set aside --
+        # a single surviving opinion is unanimous by construction. Recorded in
+        # the basis string so a reader of routing_basis can see that this was
+        # a one-model decision, not a two-model consensus.
+        basis += f"+{n_degenerate}_degenerate_excluded"
+
     return {"ensemble_agreement": True, "composite_confidence": round(composite, 6),
-            "confidence_basis": basis, "confidence_spread": round(spread, 6)}
+            "confidence_basis": basis, "confidence_spread": round(spread, 6),
+            **degeneracy}
 
 
-def route(ensemble: dict, citation: dict, model_results: list) -> dict:
-    """Final routing. The three safety rules are checked BEFORE the thresholds
-    and each short-circuits, so no confidence score can override them."""
+def _is_top1_override(verdict: str, candidate_permutation=None) -> bool:
+    """True when `verdict` picks a candidate OTHER than Stage 2b's own top-1.
+
+    Candidate numbering in the prompt is 1-based and follows the order the
+    candidates were PRESENTED in (build_prompt()'s RESOLVED_TO_CANDIDATE_{i}
+    for i in 1..n).
+
+    THE PERMUTATION MATTERS AND IS EASY TO MISS. Under
+    --shuffle-candidates (P2.2), presented position 1 is NOT Stage 2b's top-1
+    -- it is whichever candidate the shuffle put first. Comparing the verdict
+    index against 1 without consulting the permutation would make the override
+    gate fire on confirmations and wave through genuine overrides, i.e. exactly
+    backwards, in precisely the experimental run whose numbers are meant to be
+    compared against the unshuffled baseline. candidate_permutation[i] is the
+    original index of the candidate shown at position i, so original index 0 is
+    Stage 2b's top-1.
+
+    NONE_CORRECT is deliberately NOT an override for this purpose. It does not
+    substitute a different concept for a correct one; it declines to link,
+    which routes onward on its own existing path and cannot silently install a
+    wrong concept_id. The failure mode P2.1 targets is specifically "replaced
+    something right with something wrong".
+    """
+    m = RESOLVED_RE.match(verdict or "")
+    if not m:
+        return False
+    presented_idx = int(m.group(1)) - 1  # 1-based verdict -> 0-based position
+    if candidate_permutation:
+        try:
+            original_idx = candidate_permutation[presented_idx]
+        except (IndexError, TypeError):
+            return True  # unmappable verdict: treat as an override, i.e. gate it
+    else:
+        original_idx = presented_idx
+    return original_idx != 0
+
+
+def reasoning_verdict_mismatch(verdict: str, reasoning: str, candidates: list) -> dict:
+    """Detects a model's free-text `reasoning` naming a DIFFERENT candidate
+    than the one its structured `verdict` field points to. See
+    REASONING_MENTION_THRESHOLD above for the motivating case.
+
+    Only meaningful for RESOLVED_TO_CANDIDATE_n verdicts against >= 2
+    candidates -- NONE_CORRECT, INSUFFICIENT_EVIDENCE and contradiction-mode
+    verdicts (SUPPORTED/CONTRADICTED) have no sibling candidate name a
+    mismatch could point to, so those return checked=False rather than a
+    forced non-mismatch, keeping "not applicable" distinguishable from
+    "checked and consistent".
+
+    A mismatch requires the best-matching OTHER candidate's containment score
+    to both clear REASONING_MENTION_THRESHOLD and exceed the chosen
+    candidate's own score -- so a reasoning text that happens to mention
+    multiple candidate names (e.g. to rule them out) does not false-positive
+    as long as it argues most strongly for the one actually chosen.
+    """
+    m = RESOLVED_RE.match(verdict or "")
+    if not m or not reasoning or len(candidates) < 2:
+        return {"checked": False, "mismatch": False}
+
+    chosen_idx = int(m.group(1)) - 1
+    if chosen_idx < 0 or chosen_idx >= len(candidates):
+        return {"checked": False, "mismatch": False}
+
+    reasoning_lower = reasoning.lower()
+    scores = []
+    for c in candidates:
+        name = (c.get("concept_name") or "").strip().lower()
+        scores.append(_containment(name, reasoning_lower) if name else 0.0)
+
+    chosen_score = scores[chosen_idx]
+    best_idx = max(range(len(scores)), key=lambda i: scores[i])
+    best_score = scores[best_idx]
+
+    if (best_idx != chosen_idx
+            and best_score >= REASONING_MENTION_THRESHOLD
+            and best_score > chosen_score):
+        return {"checked": True, "mismatch": True,
+                "reasoning_names_candidate": best_idx + 1,
+                "reasoning_names_score": round(best_score, 4),
+                "verdict_candidate": chosen_idx + 1,
+                "verdict_candidate_score": round(chosen_score, 4)}
+    return {"checked": True, "mismatch": False}
+
+
+def route(ensemble: dict, citation: dict, model_results: list,
+          calibrator_score: float = None, grounding_basis: str = None,
+          candidate_permutation=None) -> dict:
+    """Final routing. The four safety rules are checked BEFORE the thresholds
+    and each short-circuits, so no confidence score -- calibrated or not --
+    can override them.
+
+    `calibrator_score` (docs/MoLLM_Redesign_Proposal.md S4.1, "MoLLM-Cal"):
+    when provided, SUBSTITUTES for ensemble["composite_confidence"] in the two
+    threshold comparisons below, and ONLY there. It is never consulted for the
+    three safety-rule checks above it, and it cannot promote a CONTRADICTED,
+    INSUFFICIENT_EVIDENCE or NONE_CORRECT verdict past those either -- a
+    trained calibrator changes what counts as "confident enough", not which
+    checks a decision must clear first. None (the default) reproduces exactly
+    today's behavior; callers only pass a value once a calibrator has actually
+    been fit on real data (mollm_calibrator.MoLLMCalibrator.score() itself
+    returns None until trained, so an untrained calibrator is indistinguishable
+    from no calibrator at the call site).
+    """
+    # 2026-08-13 (P4). Every model's generation degenerated into a repetition
+    # loop, so there is no opinion here at all -- not a disagreement, not an
+    # abstention, just no usable output. Routed HITL like any other unresolved
+    # case, but under its own queue_reason so the 2026-08-13 report's 69.8%
+    # model_disagreement figure DECOMPOSES on the next run instead of silently
+    # absorbing a decoding bug. This check precedes the agreement rule because
+    # combine() scores the degenerate verdicts in this case (see its comment on
+    # all_degenerate) and they would otherwise be read as a real vote.
+    if ensemble.get("all_models_degenerate"):
+        return {"mollm_routing_decision": INGESTION_HITL,
+                "queue_reason": "degenerate_generation",
+                "routing_basis": "safety_rule: every validator's output was a "
+                                 "repetition loop, not a verdict "
+                                 "(src/llm_client.py is_degenerate)"}
+
     if not ensemble["ensemble_agreement"]:
         return {"mollm_routing_decision": INGESTION_HITL,
                 "queue_reason": "model_disagreement",
@@ -582,6 +925,26 @@ def route(ensemble: dict, citation: dict, model_results: list) -> dict:
         return {"mollm_routing_decision": INGESTION_HITL,
                 "queue_reason": "citation_verification_failed",
                 "routing_basis": "safety_rule: model cited evidence not present in what it was shown"}
+
+    # 2026-08-13: a model's free-text reasoning naming a different candidate
+    # than its structured verdict field is evidence the verdict was not
+    # actually produced by the reasoning shown alongside it -- see
+    # reasoning_verdict_mismatch() above. Checked regardless of agreement or
+    # confidence, same as the other three: a self-inconsistent verdict is not
+    # made trustworthy by a second model reaching it independently, or by a
+    # high logprob on the (inconsistent) token that was sampled.
+    mismatched = [m for m in model_results
+                  if m.get("reasoning_verdict_check", {}).get("mismatch")]
+    if mismatched:
+        detail = mismatched[0]["reasoning_verdict_check"]
+        return {"mollm_routing_decision": INGESTION_HITL,
+                "queue_reason": "reasoning_verdict_mismatch",
+                "routing_basis": (
+                    f"safety_rule: {mismatched[0].get('model')}'s reasoning named "
+                    f"candidate {detail['reasoning_names_candidate']} "
+                    f"(containment {detail['reasoning_names_score']}) but its verdict "
+                    f"selected candidate {detail['verdict_candidate']} "
+                    f"(containment {detail['verdict_candidate_score']})")}
 
     composite = ensemble["composite_confidence"]
     if composite is None:
@@ -593,34 +956,203 @@ def route(ensemble: dict, citation: dict, model_results: list) -> dict:
     if verdict == "CONTRADICTED":
         return {"mollm_routing_decision": INGESTION_HITL,
                 "queue_reason": "guideline_contradiction",
-                "routing_basis": "a flagged contradiction is a clinical finding for a human, "
-                                 "not something to auto-resolve"}
+                # docs/MoLLM_Redesign_Proposal.md S9.6: this flags a label
+                # that conflicts with retrieved guideline evidence about the
+                # CONCEPT -- an entity-linking inconsistency for a human to
+                # adjudicate, not a judgment about the patient's care.
+                "routing_basis": "a flagged label/evidence inconsistency for a human to "
+                                 "adjudicate, not something to auto-resolve"}
 
     if verdict == "INSUFFICIENT_EVIDENCE" or verdict == "NONE_CORRECT":
         return {"mollm_routing_decision": INGESTION_HITL,
                 "queue_reason": f"verdict_{verdict.lower()}",
                 "routing_basis": "no usable resolution produced"}
 
-    if composite >= AUTO_VALIDATE_THRESHOLD:
+    used_calibrator = calibrator_score is not None
+    routed_on = calibrator_score if used_calibrator else composite
+    basis_label = "calibrator_score" if used_calibrator else "composite_confidence"
+
+    # 2026-08-13 (P2.1). ASYMMETRIC OVERRIDE GATE -- see OVERRIDE_TOP1_THRESHOLD
+    # above for the -17 NET VALUE measurement this exists to stop. Placed here,
+    # AFTER the hard safety rules and BEFORE the thresholds, because it is
+    # neither: it does not override a safety rule (those already returned), and
+    # it is not a confidence cutoff (it adds requirements a confidence score
+    # alone cannot satisfy). Applies only to overrides -- a verdict confirming
+    # Stage 2b's own top-1, or NONE_CORRECT, falls straight through to the
+    # unchanged threshold logic below.
+    if OVERRIDE_GATE_ENABLED and _is_top1_override(verdict, candidate_permutation):
+        blockers = []
+        if calibrator_score is None:
+            blockers.append("no_calibrator")
+        elif calibrator_score < OVERRIDE_TOP1_THRESHOLD:
+            blockers.append(f"calibrator_score {calibrator_score} < "
+                            f"{OVERRIDE_TOP1_THRESHOLD}")
+        if grounding_basis != "guideline_rule":
+            blockers.append(f"grounding_basis={grounding_basis!r} "
+                            f"(guideline_rule required)")
+        if not citation.get("citation_verified"):
+            blockers.append("citation_unverified")
+        if blockers:
+            return {"mollm_routing_decision": INGESTION_HITL,
+                    "queue_reason": "unsupported_top1_override",
+                    "routing_basis":
+                        "override of Stage 2b's top-1 requires calibrator >= "
+                        f"{OVERRIDE_TOP1_THRESHOLD} AND verified guideline "
+                        f"evidence; blocked by: {'; '.join(blockers)}",
+                    "confidence_basis_for_routing": basis_label}
+
+    if routed_on >= AUTO_VALIDATE_THRESHOLD:
         return {"mollm_routing_decision": INGESTION_AUTO, "queue_reason": None,
-                "routing_basis": f"composite_confidence {composite} >= {AUTO_VALIDATE_THRESHOLD}"}
-    if composite >= MOLLM_RESOLVE_THRESHOLD:
+                "routing_basis": f"{basis_label} {routed_on} >= {AUTO_VALIDATE_THRESHOLD}",
+                "confidence_basis_for_routing": basis_label}
+    if routed_on >= MOLLM_RESOLVE_THRESHOLD:
         return {"mollm_routing_decision": INGESTION_RESOLVED, "queue_reason": None,
-                "routing_basis": f"composite_confidence {composite} in "
-                                 f"[{MOLLM_RESOLVE_THRESHOLD}, {AUTO_VALIDATE_THRESHOLD})"}
+                "routing_basis": f"{basis_label} {routed_on} in "
+                                 f"[{MOLLM_RESOLVE_THRESHOLD}, {AUTO_VALIDATE_THRESHOLD})",
+                "confidence_basis_for_routing": basis_label}
     return {"mollm_routing_decision": INGESTION_HITL,
             "queue_reason": "below_confidence_threshold",
-            "routing_basis": f"composite_confidence {composite} < {MOLLM_RESOLVE_THRESHOLD}"}
+            "routing_basis": f"{basis_label} {routed_on} < {MOLLM_RESOLVE_THRESHOLD}",
+            "confidence_basis_for_routing": basis_label}
 
 
-def validate_record(record: dict, retriever, clients: dict = None) -> dict:
+def _compute_grounding_basis(retrieval: dict, model_results: list) -> tuple:
+    """(grounding_basis, self_reports) per docs/MoLLM_Redesign_Proposal.md S9.5.
+
+    Mechanical when evidence exists: "guideline_rule" whenever Channels A/B/D/E
+    retrieved anything, regardless of whether the model actually cited it --
+    this tier answers "was checkable evidence available", not "was it used".
+
+    When no evidence was retrieved, falls back to the models' own
+    self-reported `reasoning_basis` (S9.2's prompt addition). If EITHER model
+    reports "medical_terminology_knowledge", that is the tier recorded -- the
+    less-checkable basis is the more informative one to surface, and hiding
+    it behind an "ontology_only" default because the OTHER model reported
+    (or omitted) something more conservative would understate how much of
+    the auto-validated set actually rests on the least-checkable tier. Only
+    when NEITHER model self-reports does this default to "ontology_only",
+    on the mechanical grounds that Channel C's structured facts are always
+    present regardless (S9.1) -- the raw self-reports are still returned
+    alongside so this default is never the only record of what happened.
+    """
+    self_reports = [m.get("reasoning_basis") for m in model_results]
+    if retrieval.get("rules"):
+        return "guideline_rule", self_reports
+    if "medical_terminology_knowledge" in self_reports:
+        return "model_terminology_knowledge", self_reports
+    if "ontology_only" in self_reports:
+        return "ontology_only", self_reports
+    return "ontology_only", self_reports
+
+
+def _compute_annotation_discrepancy(verdict: str, mode: str):
+    """d_anno (docs/MoLLM_Redesign_Proposal.md S4.2/S9.3): does MoLLM's
+    verdict CONFIRM or OVERRIDE Stage 2b's own top-ranked candidate?
+
+    resolution mode: RESOLVED_TO_CANDIDATE_1 confirms Stage 2b's rank-1 pick
+    (False = no discrepancy); any other candidate index, or NONE_CORRECT,
+    overrides it (True). contradiction mode has only one candidate, so
+    SUPPORTED plays the same "confirms" role and CONTRADICTED the same
+    "overrides" role. INSUFFICIENT_EVIDENCE is neither a confirmation nor an
+    override -- returns None, same "not measured" discipline as
+    logprob_confidence, rather than being coerced into either bucket.
+    """
+    if mode == "resolution":
+        if verdict == "RESOLVED_TO_CANDIDATE_1":
+            return False
+        if verdict.startswith("RESOLVED_TO_CANDIDATE_") or verdict == "NONE_CORRECT":
+            return True
+        return None
+    if mode == "contradiction":
+        if verdict == "SUPPORTED":
+            return False
+        if verdict == "CONTRADICTED":
+            return True
+        return None
+    return None
+
+
+def _compute_rejected_candidates(model_results: list) -> list:
+    """Merges candidate_alternatives across models (docs/MoLLM_Redesign_Proposal.md
+    S4.3), keeping only alternates below REJECTED_CANDIDATE_FLOOR. Pure
+    bookkeeping -- no training, no gradient, just a record of which verdicts
+    the ensemble considered and dismissed, for later Stage 2b/KG curation
+    review (S9.4) or as a MoLLM-Cal feature (n_rejected_candidates)."""
+    by_verdict = {}
+    for m in model_results:
+        for alt_verdict, prob in (m.get("candidate_alternatives") or {}).items():
+            if prob is not None and prob < REJECTED_CANDIDATE_FLOOR:
+                by_verdict.setdefault(alt_verdict, []).append(
+                    {"model": m.get("model"), "probability": prob})
+    return [{"verdict": v, "observations": obs} for v, obs in by_verdict.items()]
+
+
+def _shuffled_candidates(record: dict, seed_key: str):
+    """Returns (shuffled_record, permutation) or (record, None).
+
+    2026-08-13 (docs/2026-08-13_Code_Improvement_Proposals.md P2.2). WHY THIS
+    EXPERIMENT EXISTS. Stage 2b hands candidates to the prompt in
+    concept_id-ascending order, and the report's INTRODUCED_ERROR examples
+    cluster in one family of near-identical lab strings (AST-956, AST-909,
+    AST-16, CK(CPK)). Position bias in list-selection prompts is well
+    documented, and a block of near-identical options is exactly where it
+    shows. If it is real, then a chunk of the 22.4% INTRODUCED_ERROR rate is a
+    PROMPT bug being read as a model-quality finding -- a different problem
+    with a different fix. Running the same slice with and without shuffling
+    settles it.
+
+    THE PERMUTATION IS RECORDED, NOT JUST APPLIED. `permutation[i]` is the
+    ORIGINAL index of the candidate presented in position i, so a verdict of
+    RESOLVED_TO_CANDIDATE_{i+1} maps back to original candidate
+    permutation[i]. Without that mapping the run would be unanalysable, and
+    _is_top1_override() would compare against the wrong candidate.
+
+    SEEDED PER ENTITY, not globally: the shuffle must be reproducible on a
+    re-run (this project's whole determinism argument) but must not apply the
+    same permutation to every entity, which would just be a second fixed
+    ordering rather than a randomisation.
+    """
+    import random
+
+    cands = record.get("candidates") or []
+    if len(cands) < 2:
+        return record, None
+    order = list(range(len(cands)))
+    random.Random(seed_key).shuffle(order)
+    if order == sorted(order):
+        return record, None
+    shuffled = dict(record)
+    shuffled["candidates"] = [cands[i] for i in order]
+    return shuffled, order
+
+
+def validate_record(record: dict, retriever, clients: dict = None,
+                    calibrator=None, shuffle_candidates: bool = False) -> dict:
     """Runs Stage 3 for one entity and returns the decision artifact.
 
     Artifact field names follow docs/Provenance_Schema.md's Stage 3 spec so it
     can be written straight into the KG3 :MoLLMDecision node without a
     translation layer that could drift.
+
+    `calibrator` (docs/MoLLM_Redesign_Proposal.md S4.1): an optional
+    mollm_calibrator.MoLLMCalibrator. None (the default) reproduces exactly
+    today's threshold-only routing -- existing callers (scripts/test_stage3_live.py,
+    scripts/run_stage3_batch.py) need no changes to keep working. Passing a
+    loaded calibrator only changes behavior once it has actually been fit
+    (score() returns None otherwise, see route()'s calibrator_score docstring).
+
+    `shuffle_candidates` (2026-08-13, P2.2): permutes the candidate list before
+    building the prompt, recording the permutation in the artifact so verdicts
+    map back to original indices. An EXPERIMENT, default False -- see
+    _shuffled_candidates() for the position-bias hypothesis it tests.
     """
     clients = clients if clients is not None else build_clients()
+
+    candidate_permutation = None
+    if shuffle_candidates:
+        record, candidate_permutation = _shuffled_candidates(
+            record, seed_key=str(record.get("entity_id") or record.get("note_id")))
+
     retrieval = retriever.retrieve(record)
     user_prompt, mode, allowed = build_prompt(record, retrieval)
 
@@ -631,6 +1163,18 @@ def validate_record(record: dict, retriever, clients: dict = None) -> dict:
         "confidence_tier_in": record.get("confidence_tier_in"),
         "mode": mode,
         "allowed_verdicts": sorted(allowed),
+        # 2026-08-13 (report S6): hashed HERE, at decision time, because this
+        # is the only point where the candidate list this verdict was made
+        # against is in scope. store_decision() writes the 16 characters, not
+        # the list. Without it, "was this decision graded against the same
+        # candidates it was made against" is unanswerable after any Stage 2b
+        # rerun -- the exact confound that caveats the NET VALUE = -17 result.
+        "candidates_hash": candidates_hash(record.get("candidates")),
+        # NULL means presented in Stage 2b's own order. When set,
+        # candidate_permutation[i] is the ORIGINAL index of the candidate
+        # shown in position i -- the mapping any grader needs to interpret a
+        # RESOLVED_TO_CANDIDATE_n verdict from a shuffled run.
+        "candidate_permutation": candidate_permutation,
         "retrieved_context": {
             "rules": retrieval.get("rules"),
             "channels_run": retrieval.get("channels_run"),
@@ -721,6 +1265,15 @@ def validate_record(record: dict, retriever, clients: dict = None) -> dict:
             artifact["prompt"] = exp_prompt
             artifact["retrieved_context"]["expansion_applied"] = expanded.get("expansion_applied")
 
+    # 2026-08-13: computed on the FINAL model_results (post-expansion, if any)
+    # against the candidates actually shown -- record["candidates"] is the
+    # presented order even under --shuffle-candidates (_shuffled_candidates()
+    # reassigns record["candidates"] itself), so no separate permutation
+    # handling is needed here the way _is_top1_override() needs one.
+    for m in model_results:
+        m["reasoning_verdict_check"] = reasoning_verdict_mismatch(
+            m["verdict"], m.get("reasoning"), record.get("candidates") or [])
+
     citation = verify_citations(model_results[0], retrieval)
     for m in model_results[1:]:
         other = verify_citations(m, retrieval)
@@ -728,7 +1281,37 @@ def validate_record(record: dict, retriever, clients: dict = None) -> dict:
         citation["citation_checks"].extend(other["citation_checks"])
 
     ensemble = combine(model_results)
-    routing = route(ensemble, citation, model_results)
+
+    # docs/MoLLM_Redesign_Proposal.md S4.2/S4.3/S9.5 -- computed from the FINAL
+    # model_results/retrieval (post-expansion, if any), before route() runs.
+    grounding_basis, reasoning_bases = _compute_grounding_basis(retrieval, model_results)
+    annotation_discrepancy = _compute_annotation_discrepancy(
+        model_results[0]["verdict"], mode)
+    rejected_candidates = _compute_rejected_candidates(model_results)
+
+    calibrator_score = None
+    if calibrator is not None:
+        feature_ctx = {
+            "confidence_tier_in": record.get("confidence_tier_in"),
+            "mode": mode,
+            "ensemble": ensemble,
+            "retrieval": retrieval,
+            "model_results": model_results,
+            "grounding_basis": grounding_basis,
+            "annotation_discrepancy": annotation_discrepancy,
+            "rejected_candidates": rejected_candidates,
+        }
+        calibrator_score = calibrator.score(feature_ctx)
+
+    routing = route(ensemble, citation, model_results,
+                    calibrator_score=calibrator_score,
+                    # 2026-08-13 (P2.1): the override gate needs to know
+                    # whether the model had real retrieved guideline evidence
+                    # to reason from, which is exactly what grounding_basis
+                    # already records. Computed above, before route(), so this
+                    # is a pass-through rather than a new derivation.
+                    grounding_basis=grounding_basis,
+                    candidate_permutation=candidate_permutation)
 
     modes = {m.get("decoding_mode") for m in model_results}
     artifact["decoding_modes"] = sorted(x for x in modes if x)
@@ -739,6 +1322,18 @@ def validate_record(record: dict, retriever, clients: dict = None) -> dict:
         artifact["decoding_mode_mismatch"] = True
 
     artifact["models"] = model_results
+    artifact["grounding_basis"] = grounding_basis
+    artifact["reasoning_bases"] = reasoning_bases
+    artifact["annotation_discrepancy"] = annotation_discrepancy
+    artifact["rejected_candidates"] = rejected_candidates
+    artifact["calibrator_score"] = calibrator_score
+    # 2026-08-13 (P4). Row-level flag: did ANY model in this decision's
+    # ensemble degenerate. Persisted to mollm_decisions.degenerate_generation
+    # so `SELECT count(*) FILTER (WHERE degenerate_generation)` before and
+    # after the FREQUENCY_PENALTY change is a one-line query rather than a
+    # re-parse of the models JSON. The per-model detail stays in that JSON.
+    artifact["degenerate_generation"] = any(
+        m.get("degenerate_generation") for m in model_results)
     artifact.update(ensemble)
     artifact.update(citation)
     artifact.update(routing)
@@ -866,6 +1461,7 @@ def store_decision(artifact: dict, conn, is_test: bool = False):
         mode VARCHAR,
         ensemble_agreement BOOLEAN,
         composite_confidence DOUBLE,
+        confidence_spread DOUBLE,
         confidence_basis VARCHAR,
         citation_verified BOOLEAN,
         cited_suppressed_rules JSON,
@@ -882,14 +1478,48 @@ def store_decision(artifact: dict, conn, is_test: bool = False):
         is_test BOOLEAN DEFAULT FALSE
     );
     """)
-    conn.sql("""
+    # Additive migration for tables created before docs/MoLLM_Redesign_Proposal.md's
+    # implementation (2026-08-11) -- CREATE TABLE IF NOT EXISTS above is a no-op
+    # against an EC2 table that already exists from before these columns existed,
+    # same pattern src/extraction.py's extracted_relations table already uses.
+    for stmt in [
+        "ALTER TABLE mollm_decisions ADD COLUMN IF NOT EXISTS grounding_basis VARCHAR;",
+        "ALTER TABLE mollm_decisions ADD COLUMN IF NOT EXISTS reasoning_bases JSON;",
+        "ALTER TABLE mollm_decisions ADD COLUMN IF NOT EXISTS annotation_discrepancy BOOLEAN;",
+        "ALTER TABLE mollm_decisions ADD COLUMN IF NOT EXISTS rejected_candidates JSON;",
+        "ALTER TABLE mollm_decisions ADD COLUMN IF NOT EXISTS calibrator_score DOUBLE;",
+        "ALTER TABLE mollm_decisions ADD COLUMN IF NOT EXISTS confidence_basis_for_routing VARCHAR;",
+        # confidence_spread was computed by combine() and merged into every
+        # artifact via artifact.update(ensemble) from day one, but was never
+        # actually listed in this table's column/INSERT list below -- silently
+        # dropped on every write until 2026-08-11. Backfilling the column here;
+        # existing rows will have NULL until re-run, which is honest (the value
+        # was genuinely never persisted) rather than reconstructed after the fact.
+        "ALTER TABLE mollm_decisions ADD COLUMN IF NOT EXISTS confidence_spread DOUBLE;",
+        # 2026-08-13: degenerate-generation flag (report S4.2). Persisted so
+        # the FREQUENCY_PENALTY fix's effect is MEASURABLE on a later run
+        # rather than asserted -- S9.5 lists "not yet re-validated against a
+        # live batch" as outstanding precisely because nothing recorded it.
+        "ALTER TABLE mollm_decisions ADD COLUMN IF NOT EXISTS degenerate_generation BOOLEAN;",
+        # 2026-08-13: the permutation candidates were PRESENTED in, when
+        # scripts/run_stage3_batch.py --shuffle-candidates is used. NULL means
+        # presented in Stage 2b's own order. See report S6's position-bias
+        # hypothesis for why the ordering has to be recoverable per decision.
+        "ALTER TABLE mollm_decisions ADD COLUMN IF NOT EXISTS candidate_permutation JSON;",
+    ] + provenance_alter_statements("mollm_decisions"):
+        conn.sql(stmt)
+    conn.sql(f"""
     INSERT INTO mollm_decisions
     (mollm_call_id, entity_id, note_id, confidence_tier_in, mode, ensemble_agreement,
      composite_confidence, confidence_basis, citation_verified, cited_suppressed_rules,
      expansion, decoding_modes, mollm_routing_decision, queue_reason,
      routing_basis, models, retrieved_context, citation_checks, prompt,
-     error, is_test)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+     error, is_test, grounding_basis, reasoning_bases, annotation_discrepancy,
+     rejected_candidates, calibrator_score, confidence_basis_for_routing,
+     confidence_spread, degenerate_generation, candidate_permutation,
+     {provenance_column_sql()})
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+            {provenance_placeholders()})
     ON CONFLICT (mollm_call_id) DO NOTHING;
     """, params=[
         artifact["mollm_call_id"], artifact.get("entity_id"), artifact.get("note_id"),
@@ -904,4 +1534,15 @@ def store_decision(artifact: dict, conn, is_test: bool = False):
         json.dumps(artifact.get("retrieved_context"), default=str),
         json.dumps(artifact.get("citation_checks"), default=str),
         artifact.get("prompt"), artifact.get("error"), is_test,
+        artifact.get("grounding_basis"), json.dumps(artifact.get("reasoning_bases"), default=str),
+        artifact.get("annotation_discrepancy"),
+        json.dumps(artifact.get("rejected_candidates"), default=str),
+        artifact.get("calibrator_score"), artifact.get("confidence_basis_for_routing"),
+        artifact.get("confidence_spread"),
+        artifact.get("degenerate_generation"),
+        json.dumps(artifact.get("candidate_permutation")) if artifact.get("candidate_permutation") else None,
+        # candidates_hash was computed in validate_record() where the candidate
+        # list was actually in scope; pass it through rather than re-deriving
+        # it from an artifact that does not carry the list.
+        *provenance_params(precomputed_hash=artifact.get("candidates_hash")),
     ])

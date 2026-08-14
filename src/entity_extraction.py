@@ -326,6 +326,11 @@ def ensure_extracted_entities_table(conn):
         "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS local_context VARCHAR;",
         "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS expansion_ambiguous BOOLEAN DEFAULT FALSE;",
         "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS candidate_expansions JSON;",
+        # 2026-08-13: see store_entities()'s docstring / the comment at this
+        # field's computation site above -- which tiebreak resolved an
+        # ambiguous abbreviation, so Stage 1's disambiguation accuracy can be
+        # graded per method rather than only "ambiguous vs not".
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS selection_basis VARCHAR;",
         "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS gliner_model_version VARCHAR;",
         "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS extraction_threshold FLOAT;",
         # TRUE for spans that scored between SUBTHRESHOLD_FLOOR and
@@ -389,6 +394,7 @@ def store_entities(conn, processed_entities: list, is_test: bool = False):
         e["section_name"], e["sentence_id"], e["local_context"],
         e["expansion_ambiguous"],
         json.dumps(e["candidate_expansions"]) if e["candidate_expansions"] else None,
+        e.get("selection_basis"),
         e["gliner_model_version"], e["extraction_threshold"],
         e["below_threshold"], e["flat_ner"],
         e["crosses_sentence_boundary"], json.dumps(e["sentence_ids_spanned"]),
@@ -410,10 +416,10 @@ def store_entities(conn, processed_entities: list, is_test: bool = False):
      assertion_status, experiencer, temporality, assertion_cue, assertion_engine,
      assertion_cue_start, assertion_cue_end, assertion_cue_category,
      section_name, sentence_id, local_context, expansion_ambiguous,
-     candidate_expansions, gliner_model_version, extraction_threshold,
+     candidate_expansions, selection_basis, gliner_model_version, extraction_threshold,
      below_threshold, flat_ner, crosses_sentence_boundary, sentence_ids_spanned,
      compound_split_of, superseded_by_split, grown_from, superseded_by_growth)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT (note_id, orig_start, orig_end, entity_label) DO UPDATE SET
         expanded_text = EXCLUDED.expanded_text,
         original_text = EXCLUDED.original_text,
@@ -435,6 +441,7 @@ def store_entities(conn, processed_entities: list, is_test: bool = False):
         local_context = EXCLUDED.local_context,
         expansion_ambiguous = EXCLUDED.expansion_ambiguous,
         candidate_expansions = EXCLUDED.candidate_expansions,
+        selection_basis = EXCLUDED.selection_basis,
         gliner_model_version = EXCLUDED.gliner_model_version,
         extraction_threshold = EXCLUDED.extraction_threshold,
         below_threshold = EXCLUDED.below_threshold,
@@ -572,6 +579,16 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str, 
         ]
         expansion_ambiguous = bool(overlapping)
         candidate_expansions = overlapping[0].get("candidate_expansions") if overlapping else None
+        # 2026-08-13: which of preprocessing.py's three tiebreaks resolved this
+        # ambiguous abbreviation -- "numeric_context:<kind>", "omop_groundability",
+        # or "alphabetical_default" (src/preprocessing.py's
+        # expand_text_and_track_offsets() docstring). Computed there since
+        # 2026-08-13 (the fx/fractions groundability fix) but never threaded
+        # through to persistence until now -- there was no way to grade "did
+        # Stage 1's disambiguation choice hold up" per tiebreak method without
+        # it. None for every non-ambiguous entity, same convention as
+        # candidate_expansions above.
+        selection_basis = overlapping[0].get("selection_basis") if overlapping else None
 
         processed_entities.append({
             "entity_id": entity_id,
@@ -598,6 +615,7 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str, 
             "local_context_basis": context["basis"],
             "expansion_ambiguous": expansion_ambiguous,
             "candidate_expansions": candidate_expansions,
+            "selection_basis": selection_basis,
             "gliner_model_version": GLINER_MODEL_NAME,
             "extraction_threshold": EXTRACTION_THRESHOLD,
             "below_threshold": confidence < EXTRACTION_THRESHOLD,

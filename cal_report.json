@@ -1,0 +1,353 @@
+{
+  "coverage": {
+    "total_resolution_decisions": 797,
+    "gradable": 140,
+    "ungradable_reasons": {
+      "model_disagreement": 584,
+      "no_overlapping_gold_span": 67,
+      "chosen_candidate_uncrosswalked": 6
+    },
+    "ungraded_modes": {
+      "non_asserted_check": 142,
+      "contradiction": 978
+    },
+    "decoding_purity_all_resolution_decisions": {
+      "guided": 788,
+      "unguided_or_mixed": 9
+    },
+    "decoding_purity_gradable_only": {
+      "guided": 140
+    }
+  },
+  "accuracy": {
+    "correct": 20,
+    "n": 140,
+    "rate": 0.14285714285714285
+  },
+  "ece": 0.773,
+  "reliability_table": [
+    {
+      "bin": "[0.0, 0.1)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.1, 0.2)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.2, 0.3)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.3, 0.4)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.4, 0.5)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.5, 0.6)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.6, 0.7)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.7, 0.8)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.8, 0.9)",
+      "n": 12,
+      "mean_confidence": 0.8892,
+      "accuracy": 0.3333
+    },
+    {
+      "bin": "[0.9, 1.0)",
+      "n": 128,
+      "mean_confidence": 0.9184,
+      "accuracy": 0.125
+    }
+  ],
+  "threshold_sweep": [
+    {
+      "threshold": 0.05,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.1,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.15,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.2,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.25,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.3,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.35,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.4,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.45,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.5,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.55,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.6,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.65,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.7,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.75,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.8,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.85,
+      "n_admitted": 140,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.1429
+    },
+    {
+      "threshold": 0.9,
+      "n_admitted": 128,
+      "coverage": 0.9143,
+      "precision_if_admitted": 0.125
+    },
+    {
+      "threshold": 0.95,
+      "n_admitted": 4,
+      "coverage": 0.0286,
+      "precision_if_admitted": 0.5
+    }
+  ],
+  "unguided_or_mixed": {
+    "accuracy": {
+      "correct": 0,
+      "n": 0,
+      "rate": null
+    },
+    "ece": null,
+    "reliability_table": [],
+    "threshold_sweep": [
+      {
+        "threshold": 0.05,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.1,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.15,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.2,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.25,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.3,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.35,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.4,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.45,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.5,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.55,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.6,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.65,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.7,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.75,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.8,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.85,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.9,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      },
+      {
+        "threshold": 0.95,
+        "n_admitted": 0,
+        "coverage": null,
+        "precision_if_admitted": null
+      }
+    ]
+  },
+  "raw_label_breakdown": {
+    "BioMistral/BioMistral-7B-AWQ-QGS128-W4-GEMM": {
+      "?": {
+        "n": 25,
+        "correct": 4
+      },
+      "HIGH": {
+        "n": 115,
+        "correct": 16
+      }
+    },
+    "bartowski/OpenBioLLM-Llama3-8B-AWQ": {
+      "HIGH": {
+        "n": 136,
+        "correct": 19
+      },
+      "LOW": {
+        "n": 4,
+        "correct": 1
+      }
+    }
+  }
+}

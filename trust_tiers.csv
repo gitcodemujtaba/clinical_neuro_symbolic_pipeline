@@ -1,0 +1,67 @@
+mollm_call_id,entity_id,note_id,original_text,entity_label,mollm_routing_decision,composite_confidence,grounding_basis,citation_verified,gold_outcome,gold_reason,trust_tier,tier_basis
+b22f76c3-ff9a-447e-8914-6543c9c5cc04,10000032-DS-21-e2b88fdda51,10000032-DS-21,Emtricitabine-Tenofovir,Medication,AUTO_VALIDATED,0.938087,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+facdbd71-2bef-404c-95e4-8bbf6adc3652,14490470-DS-11-e8b91787453,14490470-DS-11,Removal of chest tubes,Procedure,AUTO_VALIDATED,0.909025,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+6e3b7bed-9c46-4a5a-b376-3220f0683c78,14490470-DS-11-efc50ae7bb7,14490470-DS-11,"right brachial, basilic thrombus",Condition,AUTO_VALIDATED,0.923056,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+ff0b62c5-12b5-4507-b5a5-f2d51d2bf5dc,17751158-DS-19-e85b9113fab,17751158-DS-19,Oxycodone-Acetaminophen,Medication,AUTO_VALIDATED,0.902455,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+ad57e6d7-8a9f-4129-8e3e-f931aafde5f7,17751158-DS-19-ecc82e5b5c3,17751158-DS-19,tylenol,Medication,AUTO_VALIDATED,0.888193,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+6aeea264-1b1b-405f-b268-625a5e314e30,19442119-DS-15-e534190db45,19442119-DS-15,inferoseptum,Anatomy,AUTO_VALIDATED,0.948815,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+fc84b990-8262-4201-9bd1-644829ff2f7e,19442119-DS-15-edf45e6b5d7,19442119-DS-15,Neo infusion,Medication,AUTO_VALIDATED,0.920202,model_terminology_knowledge,True,,chosen_candidate_uncrosswalked,C_agreement_only,ensemble_agreement_only
+8158e57f-4cd3-4449-aa05-8e60f9873f42,14490470-DS-11-e3c70827fab,14490470-DS-11,EVD replacement,Procedure,AUTO_VALIDATED,0.931262,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+d750791a-a6e8-4f7d-9a32-bb1d967eb5ac,14490470-DS-11-eb7f7f1161d,14490470-DS-11,"brachial, basilic thrombus",Condition,AUTO_VALIDATED,0.898648,ontology_only,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+51a03933-9796-4d42-9bff-9518714226df,19442119-DS-15-e35b9863af0,19442119-DS-15,obtuse marginal ostial,Anatomy,AUTO_VALIDATED,0.918002,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+36670e0f-c11b-4407-a4f7-768a392d186b,10371195-DS-9-e8303a5b5c7,10371195-DS-9,Lipase-226,Lab Test,AUTO_VALIDATED,0.92355,model_terminology_knowledge,True,correct,,A_gold_or_human_verified,gold_match
+be0b732e-e51c-4966-888c-9adb458f1bd7,10848570-DS-12-ea3b6314b23,10848570-DS-12,TSH-3.8,Lab Test,AUTO_VALIDATED,0.920482,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+0ea034be-c1a7-4924-9e11-c1f4db9cf148,10848570-DS-12-e74045087f1,10848570-DS-12,proair,Medication,AUTO_VALIDATED,0.895953,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+9da0601c-2622-4f33-a69a-44bf209171a0,10848570-DS-12-eebd16f5bb0,10848570-DS-12,vitamin b1,Medication,AUTO_VALIDATED,0.903253,ontology_only,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+e660520f-0f0e-4184-81d7-319905085268,10860165-DS-24-eca8bb72deb,10860165-DS-24,HCT-40,Lab Test,AUTO_VALIDATED,0.923059,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+4cdfb300-31de-4e64-a910-a0c7fa3f4016,11532659-DS-11-ea63b065bcf,11532659-DS-11,AlkPhos-64,Lab Test,AUTO_VALIDATED,0.893926,guideline_rule,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+71ad68fd-a714-4f67-b5c8-97a09df62e70,11532659-DS-11-e7f0a8cbd87,11532659-DS-11,cTropnT,Lab Test,AUTO_VALIDATED,0.897463,ontology_only,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+d411b2e5-25d0-40e0-97e5-441d96a2fb33,11532659-DS-11-efe871a251b,11532659-DS-11,Hapto,Lab Test,AUTO_VALIDATED,0.900608,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+88f9a2d4-e21d-4776-87ce-a7c7057f5118,11649745-DS-4-ee8bd54af54,11649745-DS-4,Antiplatelet therapy,Medication,AUTO_VALIDATED,0.913364,model_terminology_knowledge,True,,chosen_candidate_uncrosswalked,C_agreement_only,ensemble_agreement_only
+71e97456-d352-4290-a68a-8f28e7d01cb6,11649745-DS-4-e74c624b7b7,11649745-DS-4,LD(LDH),Lab Test,AUTO_VALIDATED,0.908229,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+35c8f16a-8ce5-4933-88f1-b8e94d4b408f,11649745-DS-4-e7aa3ad32f3,11649745-DS-4,eAG-108,Lab Test,AUTO_VALIDATED,0.891091,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+c057d253-0081-4eae-9b09-e1f1827ee076,11649745-DS-4-e22b4fdba4c,11649745-DS-4,CastHy-1,Lab Test,AUTO_VALIDATED,0.89295,guideline_rule,True,,no_overlapping_gold_span,B_cited_rule_verified,cited_rule_plus_verified_citation
+a1a17c84-0d10-482c-919e-7f6cfc00bd65,11838076-DS-20-eda17da9663,11838076-DS-20,Cholest-169,Lab Test,AUTO_VALIDATED,0.914881,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+39a93424-ca9d-41eb-9620-3ca78ef52061,11838076-DS-20-eca6e2fa135,11838076-DS-20,aortic valve leaflets,Anatomy,AUTO_VALIDATED,0.929323,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+1bdf659d-757f-4469-a60b-4874f8f17174,11997336-DS-3-ed87740d8cf,11997336-DS-3,"aortic valve 
+leaflets",Anatomy,AUTO_VALIDATED,0.924635,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+ef2278fb-0d80-470e-83a6-500561c93a29,12128814-DS-15-e0340a40759,12128814-DS-15,ALT-26,Lab Test,AUTO_VALIDATED,0.91512,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+6655a3d8-d077-4f60-aef1-fb99e57095c0,12128814-DS-15-e48116254a9,12128814-DS-15,Lipase-28,Lab Test,AUTO_VALIDATED,0.919733,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+5c0492a8-773c-4346-a170-edee3cc599de,12128814-DS-15-ec0100e1e1e,12128814-DS-15,Dilaudid,Medication,AUTO_VALIDATED,0.907992,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+af82e8b3-1672-4225-b631-65040521a66d,12247014-DS-9-e19a2396a40,12247014-DS-9,m/r/g,Symptom,AUTO_VALIDATED,0.912821,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+b32339fd-a20d-4b47-8915-07b0ff488b4d,12247014-DS-9-e04c5b404cd,12247014-DS-9,TCO2-23,Lab Test,AUTO_VALIDATED,0.920522,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+e4b6afbd-3caf-4af2-9301-658a9829bb87,12247014-DS-9-efda01041d4,12247014-DS-9,UREA N-22,Lab Test,AUTO_VALIDATED,0.920811,guideline_rule,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+638ba477-1cc1-441b-9fe8-ea241e354934,12247014-DS-9-efbe72d7f9f,12247014-DS-9,Oxycodone-Acetaminophen,Medication,AUTO_VALIDATED,0.906189,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+5214330f-49d7-4d21-9806-9fda5e841033,12314513-DS-16-ef122678ba1,12314513-DS-16,NSAID,Medication,AUTO_VALIDATED,0.920378,model_terminology_knowledge,True,,chosen_candidate_uncrosswalked,C_agreement_only,ensemble_agreement_only
+9ed0c3f9-3710-4f1f-b06b-7754e4519e61,12545016-DS-17-ec53540da37,12545016-DS-17,CTA,Procedure,AUTO_VALIDATED,0.920193,guideline_rule,True,,no_overlapping_gold_span,B_cited_rule_verified,cited_rule_plus_verified_citation
+c0aaa3a7-2104-4796-98cf-8580695096ce,12545016-DS-17-ed74259083c,12545016-DS-17,aortic valve leaflets,Anatomy,AUTO_VALIDATED,0.926662,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+c20d5f95-2772-4b20-9e85-94a38a9a4135,12962702-DS-14-ed99dcb99f7,12962702-DS-14,MCHC-34,Lab Test,AUTO_VALIDATED,0.918381,ontology_only,True,correct,,A_gold_or_human_verified,gold_match
+9ebefdfb-9a3d-4f08-a341-bc7c2dc6d23b,12970259-DS-4-eb4d00a49d6,12970259-DS-4,HCT-27,Lab Test,AUTO_VALIDATED,0.922983,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+fb672e4b-54f5-4470-974f-e461a5ea3cf8,12970259-DS-4-ebe96b58009,12970259-DS-4,HCT 25 mg,Lab Test,AUTO_VALIDATED,0.915602,ontology_only,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+9eb118f6-2c5a-45eb-9bce-68c490c7f01f,12970259-DS-4-ef89c3028ee,12970259-DS-4,Advil,Medication,AUTO_VALIDATED,0.908389,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+2f5299b2-866f-42a0-84bb-c2e7099eea54,12970259-DS-4-ede1a5c1ee5,12970259-DS-4,Aleve,Medication,AUTO_VALIDATED,0.904761,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+774d2516-b12a-46e5-847a-70d1cc06fe09,13164440-DS-18-e7aba1c335f,13164440-DS-18,naproxen PRN,Medication,AUTO_VALIDATED,0.91226,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+589d14c0-076f-4a1b-9322-79183eaea7d7,13164440-DS-18-eadb7cef59b,13164440-DS-18,HCT-41,Lab Test,AUTO_VALIDATED,0.930258,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+2aeacb60-6c32-4807-b09c-b9c11e23027c,13164440-DS-18-ec79072306c,13164440-DS-18,MCH-29,Lab Test,AUTO_VALIDATED,0.934057,ontology_only,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+d43fdbd5-3340-4ff7-b662-d409338b9a94,13164440-DS-18-e92fe9f2b30,13164440-DS-18,percocet,Medication,AUTO_VALIDATED,0.907776,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+622b17f7-44c3-4c09-a7aa-97aef53ed669,14102739-DS-16-e115fa15b3d,14102739-DS-16,Pegylated interferon,Medication,AUTO_VALIDATED,0.954098,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+6e581d27-9908-45d2-867a-e38df3a90a46,14102739-DS-16-e6b7f64b4ff,14102739-DS-16,"main, right and 
+left portal veins",Anatomy,AUTO_VALIDATED,0.917466,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+a3a5bd3c-7614-417a-82c5-70f3536f5d13,14280440-DS-8-e2885a20fa0,14280440-DS-8,aortic valve leaflets,Anatomy,AUTO_VALIDATED,0.919873,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+070e20a7-2f1e-4636-aae7-56e2435d0783,15853461-DS-4-e0380353781,15853461-DS-4,Acetaminophen 650 mg,Medication,AUTO_VALIDATED,0.916383,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+849bb6b9-a123-4183-b24d-fa7fcdcf37ef,15853461-DS-4-e186a34c924,15853461-DS-4,CastHy-14,Lab Test,AUTO_VALIDATED,0.91615,guideline_rule,True,,no_overlapping_gold_span,B_cited_rule_verified,cited_rule_plus_verified_citation
+fba58bd2-68b9-48d1-a7d0-2961cfe549c1,15853461-DS-4-ef74d69a5fe,15853461-DS-4,aortic valve leaflets,Anatomy,AUTO_VALIDATED,0.917782,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+4f5935da-9da6-4cc7-a6d8-d157fa8888c2,16393593-DS-5-e0213aa57a5,16393593-DS-5,CABGx3,Procedure,AUTO_VALIDATED,0.920711,model_terminology_knowledge,True,correct,,A_gold_or_human_verified,gold_match
+00a6eae8-58f5-4857-88e2-20ed7079dc4f,16393593-DS-5-e40f00d1b3a,16393593-DS-5,"Na-146 
+K-6",Lab Test,AUTO_VALIDATED,0.908133,guideline_rule,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+3bbd0d65-c4ad-4e34-9812-2ff8b5859259,16393593-DS-5-e197d5f532f,16393593-DS-5,cTropnT-3,Lab Test,AUTO_VALIDATED,0.937334,guideline_rule,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+efc62f60-9674-4d31-9360-c66c46400aac,16393593-DS-5-ec7e8ca0787,16393593-DS-5,Mg-2.3,Lab Test,AUTO_VALIDATED,0.931188,guideline_rule,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+5e37b93f-b717-4ada-8bb0-ac412bcff54d,16991646-DS-11-e036cfc3ab8,16991646-DS-11,fevers,Symptom,AUTO_VALIDATED,0.874022,model_terminology_knowledge,True,correct,,A_gold_or_human_verified,gold_match
+29e763a3-7ce8-44ad-aa9a-861e78264788,16991646-DS-11-e1261fb5ffb,16991646-DS-11,CK-MB-3 cTropnT,Lab Test,AUTO_VALIDATED,0.897517,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+c03a2b7a-fca2-47ed-8eea-6b08bfdae99d,18570237-DS-10-e0b75dbd08a,18570237-DS-10,fevers,Symptom,AUTO_VALIDATED,0.882485,model_terminology_knowledge,True,correct,,A_gold_or_human_verified,gold_match
+25509555-a74d-40e5-a736-8588445a2ae6,18570237-DS-10-e115342d8be,18570237-DS-10,Glucosamine-Chondroitin DS,Medication,AUTO_VALIDATED,0.901616,ontology_only,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+6768a345-b5d4-450c-87b5-7e16c13af01f,12247014-DS-9-eac949fa971,12247014-DS-9,PHOSPHATE-2,Lab Test,AUTO_VALIDATED,0.921115,guideline_rule,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+82307786-83c3-4bea-baa1-54ecdd8b68ea,12970259-DS-4-e5f654a0fc3,12970259-DS-4,LIPASE-22,Lab Test,AUTO_VALIDATED,0.909361,ontology_only,True,correct,,A_gold_or_human_verified,gold_match
+1ac349ee-bc16-4e72-881f-81856bb123fb,14102739-DS-16-e8a56db5d3b,14102739-DS-16,Doppler examination,Procedure,AUTO_VALIDATED,0.919123,guideline_rule,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch
+04f7a024-0bc9-4e35-96a8-989d6d021bdd,18570237-DS-10-e4583983cef,18570237-DS-10,Tylenol,Medication,AUTO_VALIDATED,0.880773,model_terminology_knowledge,True,,no_overlapping_gold_span,C_agreement_only,ensemble_agreement_only
+022a0b3f-0718-45d1-8c9b-3ab2dbb90b13,11532659-DS-11-e1c73393f74,11532659-DS-11,Hct-31,Lab Test,AUTO_VALIDATED,0.919907,model_terminology_knowledge,True,incorrect,,REJECTED_GOLD_MISMATCH,gold_mismatch

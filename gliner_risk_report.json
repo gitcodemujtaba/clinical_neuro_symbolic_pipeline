@@ -1,0 +1,204 @@
+{
+  "high_gliner_risk / confirmed_tier_1_2": {
+    "n_total_in_bucket": 1172,
+    "n_gradable": 803,
+    "linked_correct": 463,
+    "linked_accuracy": 0.5765877957658779,
+    "example_errors": [
+      {
+        "text": "heart failure",
+        "predicted_concept": "Heart failure",
+        "predicted_snomed": "84114007",
+        "gold_concepts": [
+          "441481004"
+        ]
+      },
+      {
+        "text": "Vancomycin",
+        "predicted_concept": "vancomycin",
+        "predicted_snomed": "1335910004",
+        "gold_concepts": [
+          "281789004"
+        ]
+      },
+      {
+        "text": "S2",
+        "predicted_concept": "Structure of second sacral vertebra",
+        "predicted_snomed": "11808007",
+        "gold_concepts": [
+          "111974005"
+        ]
+      },
+      {
+        "text": "heart disease",
+        "predicted_concept": "Heart disease",
+        "predicted_snomed": "56265001",
+        "gold_concepts": [
+          "368009"
+        ]
+      },
+      {
+        "text": "AFib",
+        "predicted_concept": "Atrial fibrillation",
+        "predicted_snomed": "49436004",
+        "gold_concepts": [
+          "120041000119109"
+        ]
+      }
+    ]
+  },
+  "high_gliner_risk / unconfirmed_tier_3_4_0": {
+    "n_total_in_bucket": 704,
+    "n_gradable": 453,
+    "linked_correct": 151,
+    "linked_accuracy": 0.3333333333333333,
+    "example_errors": [
+      {
+        "text": "right EVD placement",
+        "predicted_concept": "Exteriorization of brain ventricular shunt",
+        "predicted_snomed": "281590006",
+        "gold_concepts": [
+          "5228007",
+          "230869001",
+          "782902008"
+        ]
+      },
+      {
+        "text": "Right EVD removal",
+        "predicted_concept": "Removal of extracranial ventricular shunt",
+        "predicted_snomed": "444601005",
+        "gold_concepts": [
+          "5228007",
+          "230869001",
+          "118292001"
+        ]
+      },
+      {
+        "text": "Right EVD placement",
+        "predicted_concept": "Exteriorization of brain ventricular shunt",
+        "predicted_snomed": "281590006",
+        "gold_concepts": [
+          "5228007",
+          "230869001",
+          "782902008"
+        ]
+      },
+      {
+        "text": "Tracheostomy",
+        "predicted_concept": "Construction of tracheostomy",
+        "predicted_snomed": "1303805000",
+        "gold_concepts": [
+          "697984004"
+        ]
+      },
+      {
+        "text": "Intermaxillary fixation",
+        "predicted_concept": "Intermaxillary fixation of mandible",
+        "predicted_snomed": "178452003",
+        "gold_concepts": [
+          "302474008"
+        ]
+      }
+    ]
+  },
+  "low_gliner_risk / confirmed_tier_1_2": {
+    "n_total_in_bucket": 519,
+    "n_gradable": 416,
+    "linked_correct": 234,
+    "linked_accuracy": 0.5625,
+    "example_errors": [
+      {
+        "text": "NECK",
+        "predicted_concept": "Neck structure",
+        "predicted_snomed": "45048000",
+        "gold_concepts": [
+          "5880005"
+        ]
+      },
+      {
+        "text": "gunshot wound",
+        "predicted_concept": "Gunshot wound",
+        "predicted_snomed": "283545005",
+        "gold_concepts": [
+          "56768003"
+        ]
+      },
+      {
+        "text": "superior",
+        "predicted_concept": "Superior",
+        "predicted_snomed": "264217000",
+        "gold_concepts": [
+          "48345005"
+        ]
+      },
+      {
+        "text": "right",
+        "predicted_concept": "Right",
+        "predicted_snomed": "24028007",
+        "gold_concepts": [
+          "771199001"
+        ]
+      },
+      {
+        "text": "cephalic",
+        "predicted_concept": "Cephalic",
+        "predicted_snomed": "66787007",
+        "gold_concepts": [
+          "1269311007"
+        ]
+      }
+    ]
+  },
+  "low_gliner_risk / unconfirmed_tier_3_4_0": {
+    "n_total_in_bucket": 554,
+    "n_gradable": 422,
+    "linked_correct": 116,
+    "linked_accuracy": 0.27488151658767773,
+    "example_errors": [
+      {
+        "text": "BP",
+        "predicted_concept": "Blood pressure",
+        "predicted_snomed": "75367002",
+        "gold_concepts": [
+          "392570002"
+        ]
+      },
+      {
+        "text": "Multiple Skull and Facial Fractures",
+        "predicted_concept": "Multiple fractures involving skull and facial bones",
+        "predicted_snomed": "207881000",
+        "gold_concepts": [
+          "49128003",
+          "263152008"
+        ]
+      },
+      {
+        "text": "Left clavicular fracture",
+        "predicted_concept": "Fracture of left clavicle",
+        "predicted_snomed": "1303380004",
+        "gold_concepts": [
+          "720617006",
+          "72704001"
+        ]
+      },
+      {
+        "text": "right brachial, basilic \nthrombus",
+        "predicted_concept": "Unmapped",
+        "predicted_snomed": null,
+        "gold_concepts": [
+          "771199001",
+          "19715009",
+          "396339007"
+        ]
+      },
+      {
+        "text": "subcutaneous \nheparin",
+        "predicted_concept": "heparin Injectable Solution",
+        "predicted_snomed": null,
+        "gold_concepts": [
+          "103746007"
+        ]
+      }
+    ]
+  }
+}

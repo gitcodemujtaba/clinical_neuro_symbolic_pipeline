@@ -1,0 +1,27 @@
+{
+  "generated": "2026-08-10T23:22:58.945201Z",
+  "note": "merge pass v3: rules for the 25 files merged in from data/local_triplets_db2_v6_cleaned/",
+  "files": {
+    "emergency_severity_index_handbook_5th_edition_chapter_4_decision_point_b_chapter_4_\u2013_decision_poi_part2_triplets.json": {
+      "rules_added": 9,
+      "nodes_added": [],
+      "dangling_targets": []
+    },
+    "non\u2013st-elevation_acute_coronary_syndromes_chunk_3_critical_question_2_trop_triplets.json": {
+      "rules_added": 2,
+      "nodes_added": [],
+      "dangling_targets": []
+    },
+    "acute_heart_failure_syndromes_critical_question_3_nitroglyceri_critical_question_3_vaso_triplets.json": {
+      "rules_added": 2,
+      "nodes_added": [
+        {
+          "id": "urn:uuid:6687acaf-de12-4766-b6be-bfeed8bb6aeb",
+          "name": "Endotracheal intubation",
+          "snomed": "112798008"
+        }
+      ],
+      "dangling_targets": []
+    }
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "discrete_reliability_by_tier": {
+    "1 (Exact)": {
+      "n": 766,
+      "correct": 402,
+      "accuracy": 0.5248
+    },
+    "3 (Semantic)": {
+      "n": 742,
+      "correct": 278,
+      "accuracy": 0.3747
+    },
+    "0 (Failed)": {
+      "n": 160,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "2 (Synonym)": {
+      "n": 525,
+      "correct": 323,
+      "accuracy": 0.6152
+    }
+  },
+  "tier3_ece": 0.4986,
+  "tier3_reliability_table": [
+    {
+      "bin": "[0.0, 0.1)",
+      "n": 0,
+      "mean_similarity": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.1, 0.2)",
+      "n": 0,
+      "mean_similarity": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.2, 0.3)",
+      "n": 0,
+      "mean_similarity": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.3, 0.4)",
+      "n": 0,
+      "mean_similarity": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.4, 0.5)",
+      "n": 0,
+      "mean_similarity": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.5, 0.6)",
+      "n": 0,
+      "mean_similarity": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.6, 0.7)",
+      "n": 0,
+      "mean_similarity": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.7, 0.8)",
+      "n": 195,
+      "mean_similarity": 0.7669,
+      "accuracy": 0.1897
+    },
+    {
+      "bin": "[0.8, 0.9)",
+      "n": 243,
+      "mean_similarity": 0.8547,
+      "accuracy": 0.3004
+    },
+    {
+      "bin": "[0.9, 1.0)",
+      "n": 304,
+      "mean_similarity": 0.9565,
+      "accuracy": 0.5526
+    }
+  ],
+  "tier3_n": 742,
+  "cross_tab": {
+    "counts": {
+      "ungradable": 641,
+      "MISSED_ERROR": 85,
+      "CONFIRMED_CORRECT": 6,
+      "INTRODUCED_ERROR": 30,
+      "CAUGHT_AND_FIXED": 13
+    },
+    "examples": {
+      "MISSED_ERROR": [
+        {
+          "note_id": "14490470-DS-11",
+          "text": "Removal of chest tubes",
+          "entity_label": "Procedure",
+          "stage2b_concept": "Removal of endotracheal tube",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "AUTO_VALIDATED"
+        },
+        {
+          "note_id": "14490470-DS-11",
+          "text": "right brachial, basilic \nthrombus",
+          "entity_label": "Condition",
+          "stage2b_concept": "Unmapped",
+          "stage2b_match_tier": "0 (Failed)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "14490470-DS-11",
+          "text": "right brachial, basilic thrombus",
+          "entity_label": "Condition",
+          "stage2b_concept": "Unmapped",
+          "stage2b_match_tier": "0 (Failed)",
+          "mollm_routing_decision": "AUTO_VALIDATED"
+        },
+        {
+          "note_id": "17751158-DS-19",
+          "text": "WBC-13.0",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Leucocyte count",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "17751158-DS-19",
+          "text": "PTT-29.0",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Prothrombin time",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "17751158-DS-19",
+          "text": "left lobe consolidation",
+          "entity_label": "Symptom",
+          "stage2b_concept": "Trilobed left lung",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "19442119-DS-15",
+          "text": "midcircumflex",
+          "entity_label": "Anatomy",
+          "stage2b_concept": "Unmapped",
+          "stage2b_match_tier": "0 (Failed)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "19442119-DS-15",
+          "text": "Congestive Hepatopathy",
+          "entity_label": "Condition",
+          "stage2b_concept": "Acute passive congestion of liver",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        }
+      ],
+      "CONFIRMED_CORRECT": [
+        {
+          "note_id": "17751158-DS-19",
+          "text": "fevers",
+          "entity_label": "Symptom",
+          "stage2b_concept": "Fever",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "10371195-DS-9",
+          "text": "fevers",
+          "entity_label": "Symptom",
+          "stage2b_concept": "Fever",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "11134545-DS-21",
+          "text": "fevers",
+          "entity_label": "Symptom",
+          "stage2b_concept": "Fever",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "12128814-DS-15",
+          "text": "feeling dizzy or faint",
+          "entity_label": "Symptom",
+          "stage2b_concept": "Dizziness",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "16991646-DS-11",
+          "text": "fevers",
+          "entity_label": "Symptom",
+          "stage2b_concept": "Fever",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "AUTO_VALIDATED"
+        },
+        {
+          "note_id": "18570237-DS-10",
+          "text": "fevers",
+          "entity_label": "Symptom",
+          "stage2b_concept": "Fever",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "AUTO_VALIDATED"
+        }
+      ],
+      "INTRODUCED_ERROR": [
+        {
+          "note_id": "19442119-DS-15",
+          "text": "AST-956",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Aspartate aminotransferase measurement",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "10371195-DS-9",
+          "text": "AST-909",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Aspartate aminotransferase measurement",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "10848570-DS-12",
+          "text": "AST-16",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Aspartate aminotransferase measurement",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "10848570-DS-12",
+          "text": "TSH-3.8",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Thyroid stimulating hormone measurement",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "AUTO_VALIDATED"
+        },
+        {
+          "note_id": "10860165-DS-24",
+          "text": "HGB-0",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Measurement of total hemoglobin concentration",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "10860165-DS-24",
+          "text": "splenic varices",
+          "entity_label": "Condition",
+          "stage2b_concept": "Esophageal varices",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "11532659-DS-11",
+          "text": "AST-35",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Aspartate aminotransferase measurement",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "11649745-DS-4",
+          "text": "AST-74",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Aspartate aminotransferase measurement",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        }
+      ],
+      "CAUGHT_AND_FIXED": [
+        {
+          "note_id": "10043750-DS-6",
+          "text": "MCHC-32",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "MCHC - Mean corpuscular haemoglobin concentration",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "10371195-DS-9",
+          "text": "Lipase-226",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Measurement of lipase activity",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "AUTO_VALIDATED"
+        },
+        {
+          "note_id": "11532659-DS-11",
+          "text": "Trans-jugular temporary pacer wire\nScrew-in pacemaker",
+          "entity_label": "Procedure",
+          "stage2b_concept": "Unmapped",
+          "stage2b_match_tier": "0 (Failed)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "11532659-DS-11",
+          "text": "MCHC-31",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "MCHC - Mean corpuscular haemoglobin concentration",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "11532659-DS-11",
+          "text": "Lipase-96",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Measurement of lipase activity",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "12962702-DS-14",
+          "text": "MCHC-34",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "MCHC - Mean corpuscular haemoglobin concentration",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "AUTO_VALIDATED"
+        },
+        {
+          "note_id": "13164440-DS-18",
+          "text": "TOTAL CO2-21",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "Carbon dioxide content measurement",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        },
+        {
+          "note_id": "13164440-DS-18",
+          "text": "MCHC-33",
+          "entity_label": "Lab Test",
+          "stage2b_concept": "MCHC - Mean corpuscular haemoglobin concentration",
+          "stage2b_match_tier": "3 (Semantic)",
+          "mollm_routing_decision": "HITL_REQUIRED"
+        }
+      ]
+    },
+    "no_stage2b_match": 22
+  }
+}

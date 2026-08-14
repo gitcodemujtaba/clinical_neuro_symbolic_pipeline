@@ -127,6 +127,31 @@ TYPE_COMPATIBILITY = {
 }
 TYPE_MISMATCH_PENALTY = 0.85
 
+# --- relex relation label -> guideline predicate compatibility (Channel E) --
+# GLiNER-relex's 5-label vocabulary (src/extraction.py RELATION_LABELS) mapped
+# onto the guideline KG's canonicalized predicates. Membership only, no
+# direction check -- GuidelineIndex.rules_touching() already treats in/out
+# edges as equally relevant (S4.2's "in and out edges" rule), and Channel A/B
+# follow the same precedent, so Channel E does too rather than introducing a
+# new, unproven directionality requirement.
+#
+# PARTIAL AND UNVERIFIED. Only "REQUIRES_MEDICATION", "REQUIRES_INTERVENTION",
+# "INDICATES" and "TRIGGERS_SEVERITY" have been directly confirmed as real
+# predicate names in the corpus (docs/MoLLM_Stage3_Retrieval_Design.md SS2.0,
+# 2.1). The other ~45 of the documented 49 canonicalized predicates have never
+# been enumerated in this codebase. "causes", "located in" and "measured by"
+# are left with an EMPTY set deliberately -- an unmapped label must retrieve
+# nothing, not guess a plausible-sounding predicate name that was never
+# checked against the real corpus. Fill these in only after running
+# scripts/measure_relation_coverage.py's predicate dump against the live KG.
+RELEX_LABEL_TO_PREDICATES = {
+    "treated with": {"REQUIRES_MEDICATION", "REQUIRES_INTERVENTION"},
+    "indicates": {"INDICATES", "TRIGGERS_SEVERITY"},
+    "causes": set(),
+    "located in": set(),
+    "measured by": set(),
+}
+
 # The 2b->KG bridge. GLINER_LABEL_TO_DOMAIN (normalization.py) bridges the
 # GLiNER label to the OMOP domain, and TYPE_COMPATIBILITY above bridges the
 # GLiNER label to the guideline @type -- but nothing connected the OMOP domain
@@ -678,6 +703,52 @@ class VocabularyRetriever:
         self._xwalk_cache = {}
         self._fsn_by_code = {}
         self._syn_by_code = {}
+        self._entity_snapshot_cache = {}
+
+    def entity_snapshot(self, entity_id) -> dict:
+        """Minimal Stage 2 snapshot for an entity that is NOT the one being
+        validated right now -- built for Channel E (relation-aware retrieval,
+        docs/MoLLM_Redesign_Proposal.md S10.3), which needs to know a RELATED
+        entity's label and primary concept, not the current record's own.
+
+        Deliberately thin: just enough to hand back to snomed_code_for_concept()
+        and concept_context(), which already exist and already handle the
+        RxNorm crosswalk / FSN lookup. Returns {} on a miss (entity_id unknown,
+        never normalized, or normalization produced zero candidates) rather
+        than raising -- Channel E's caller treats that as "this relation
+        partner isn't usable," not an error.
+        """
+        if entity_id in self._entity_snapshot_cache:
+            return self._entity_snapshot_cache[entity_id]
+
+        snap = {}
+        try:
+            row = self.conn.sql("""
+                SELECT e.entity_label, n.candidates
+                FROM extracted_entities e
+                JOIN normalized_entities n ON n.entity_id = e.entity_id
+                WHERE e.entity_id = ?
+            """, params=[entity_id]).fetchone()
+            if row:
+                gliner_label, candidates_raw = row
+                candidates = []
+                if candidates_raw:
+                    try:
+                        candidates = (json.loads(candidates_raw)
+                                      if isinstance(candidates_raw, str) else candidates_raw)
+                    except (ValueError, TypeError):
+                        candidates = []
+                primary = candidates[0] if candidates else {}
+                snap = {
+                    "gliner_label": gliner_label,
+                    "primary_omop_concept_id": primary.get("omop_concept_id"),
+                    "primary_domain_id": primary.get("domain_id"),
+                }
+        except Exception:
+            snap = {}
+
+        self._entity_snapshot_cache[entity_id] = snap
+        return snap
 
     def snomed_code_for_concept(self, omop_concept_id):
         """SNOMED code for an OMOP concept, via crosswalk for non-SNOMED vocabs.
@@ -1028,6 +1099,89 @@ class GroundingRetriever:
             ))
         return out
 
+    def channel_e_relation(self, record, snomed_code, entity_name, concept_fsn,
+                           gliner_label=None, omop_domain=None, stats=None) -> list:
+        """Relation-aware structured match (docs/MoLLM_Redesign_Proposal.md S10).
+
+        For each GLiNER-relex relation linking this entity to another
+        Stage-2-normalized entity, look for a guideline edge that connects a
+        node reachable from THIS entity's SNOMED code to a node reachable from
+        the RELATED entity's code, via a predicate compatible with the relex
+        relation label (RELEX_LABEL_TO_PREDICATES). A rule confirmed from both
+        ends this way is stronger evidence than either entity matched alone --
+        Channel A/B only ever look at one entity in isolation.
+
+        v1, deliberately scoped: requires BOTH entities to have a SNOMED code
+        (same requirement as Channel A). Extending to a name-only anchor on
+        either side is a natural v2, held back until this version is measured.
+        Also requires entity_link_status == "linked" (GLiNER-relex's own
+        endpoint-overlap check already passed) and a relation label with a
+        non-empty predicate mapping -- "causes"/"located in"/"measured by"
+        currently map to nothing (see RELEX_LABEL_TO_PREDICATES) and this
+        channel correctly returns nothing for them rather than guessing.
+        """
+        if not snomed_code:
+            return []
+        nodes_x = self.index.nodes_for_code(snomed_code)
+        if not nodes_x:
+            return []
+
+        # Format once, reused across however many relations this entity has --
+        # rules_touching() is re-walked per relation below only to find the
+        # doubly-confirmed subset, not to re-derive the guard/type scoring.
+        x_rules_formatted = {
+            r["rule_id"]: r
+            for r in self._rules_from_nodes(
+                nodes_x, entity_name, concept_fsn, base_confidence=1.0,
+                channel="E", matched_code=snomed_code,
+                gliner_label=gliner_label, omop_domain=omop_domain, stats=stats,
+                concept_synonyms=self.vocab.synonyms_for_snomed_code(snomed_code),
+            )
+        }
+        if not x_rules_formatted:
+            return []
+
+        out = []
+        seen_rule_ids = set()
+        for rel in (record.get("relations") or []):
+            if rel.get("entity_link_status") != "linked":
+                continue
+            compat_predicates = RELEX_LABEL_TO_PREDICATES.get(rel.get("relation_label")) or set()
+            if not compat_predicates:
+                continue
+            other_id = rel.get("other_entity_id")
+            if not other_id:
+                continue
+            snap = self.vocab.entity_snapshot(other_id)
+            if not snap or not snap.get("primary_omop_concept_id"):
+                continue
+            other_code = self.vocab.snomed_code_for_concept(snap["primary_omop_concept_id"])
+            if not other_code:
+                continue
+            nodes_y_uids = {n["uid"] for n in self.index.nodes_for_code(other_code)}
+            if not nodes_y_uids:
+                continue
+
+            for node_x in nodes_x:
+                for rule in self.index.rules_touching(node_x["uid"]):
+                    if rule["predicate"] not in compat_predicates:
+                        continue
+                    other_uid = (rule["target_uid"] if rule["direction"] == "outgoing"
+                                 else rule["source_uid"])
+                    if other_uid not in nodes_y_uids:
+                        continue
+                    rid = (f"{node_x['file']}::{rule['predicate']}::"
+                           f"{node_x['uid'][1]}->{other_uid[1]}")
+                    formatted = x_rules_formatted.get(rid)
+                    # A miss here means the guard (name/boilerplate/quality-flag
+                    # rejection inside _rules_from_nodes) already dropped this
+                    # rule from the single-entity pass -- Channel E must not
+                    # resurrect evidence the guard specifically rejected.
+                    if formatted and rid not in seen_rule_ids:
+                        seen_rule_ids.add(rid)
+                        out.append(formatted)
+        return out
+
     # ------------------------------------------------------------- ranking
 
     @staticmethod
@@ -1146,6 +1300,25 @@ class GroundingRetriever:
         if not getattr(self.hierarchy, "available", True):
             result["channels_skipped"].append(
                 {"channel": "B", "reason": "no hierarchy provider configured"})
+
+        # Channel E runs regardless of tier and regardless of whether A/B
+        # already found something -- unlike D, a relation-confirmed match is
+        # additive, higher-precision evidence, not a fallback for when
+        # everything else came up empty. It is naturally sparse and cheap when
+        # it doesn't apply (no linked relation, no mapped predicate, or the
+        # partner never normalized to a SNOMED-anchored concept).
+        e_rules = self.channel_e_relation(record, snomed_code, entity_text, concept_fsn,
+                                          gliner_label=gliner_label,
+                                          omop_domain=omop_domain, stats=stats)
+        if e_rules:
+            pooled.extend(e_rules)
+            result["channels_run"].append("E")
+        else:
+            result["channels_skipped"].append({
+                "channel": "E",
+                "reason": "no linked relation with a mapped predicate and a "
+                          "SNOMED-anchored partner concept",
+            })
 
         if record.get("confidence_tier_in") == "LOW" and not pooled:
             pooled.extend(self.channel_d_name(record.get("original_text"), entity_text,

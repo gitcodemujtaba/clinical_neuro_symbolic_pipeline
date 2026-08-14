@@ -1,0 +1,58 @@
+{
+  "generated": "2026-08-10T23:17:09.999946Z",
+  "source_corpus": "code/data/local_triplets_db2_v6_cleaned_grounded",
+  "files": {
+    "community-acquired_pneumonia_20_evidentiary_table_part_1_triplets.json": {
+      "rules_added": 1,
+      "nodes_added": [],
+      "dangling_targets": []
+    },
+    "ssc-adult-guidelines-update_ssc_2021_infection_part_2_2021_recommendations_on__triplets.json": {
+      "rules_added": 3,
+      "nodes_added": [],
+      "dangling_targets": []
+    },
+    "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a_triplets.json": {
+      "rules_added": 4,
+      "nodes_added": [],
+      "dangling_targets": []
+    },
+    "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_2_definition,_overview,_tr_triplets.json": {
+      "rules_added": 2,
+      "nodes_added": [],
+      "dangling_targets": []
+    },
+    "gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_7_copd_and_multimorbidity_triplets.json": {
+      "rules_added": 9,
+      "nodes_added": [
+        {
+          "id": "urn:uuid:d9ad9ecc-46d7-4d34-b061-93523303065b",
+          "name": "Pulmonary hypertension in COPD",
+          "snomed": "70995007"
+        }
+      ],
+      "dangling_targets": []
+    },
+    "community-acquired_pneumonia_07_critical_question_2_biom_triplets.json": {
+      "rules_added": 5,
+      "nodes_added": [],
+      "dangling_targets": []
+    },
+    "acute_heart_failure_syndromes_critical_question_4_discharge_ho_critical_question_4_safe_triplets.json": {
+      "rules_added": 4,
+      "nodes_added": [],
+      "dangling_targets": []
+    },
+    "ssc-adult-guidelines-update_ssc_2021_hemodynamic_management_2021_recommendations_on__triplets.json": {
+      "rules_added": 2,
+      "nodes_added": [
+        {
+          "id": "urn:uuid:f10edd5b-33f0-41c6-969e-13b75f50a189",
+          "name": "Levosimendan",
+          "snomed": "N/A"
+        }
+      ],
+      "dangling_targets": []
+    }
+  }
+}

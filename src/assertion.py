@@ -219,6 +219,25 @@ def _flag(span, name: str) -> bool:
 _LAB_NAME_VALUE = re.compile(r"^[A-Za-z][A-Za-z0-9 /%()-]*?-[<>]?\d", re.I)
 _LAB_PANEL_TOKEN = re.compile(r"\b[A-Za-z][A-Za-z0-9]{1,14}-[<>]?\d+(\.\d+)?\*?")
 
+# 2026-08-11: delimiter-less variants of the two patterns above. Measured via
+# scripts/measure_heuristic_and_boundary.py's alnum_mix check (5.04% of the
+# 25-note test split): vitals/labs like "RR18" and heart-sound findings like
+# "S1S2" glue name and value directly together with NO hyphen at all, which
+# _LAB_NAME_VALUE's required "-" cannot match -- confirmed these fall
+# through both existing regexes on note 10043750-DS-6 and 10848570-DS-12.
+#
+# Bounded to a 1-4 letter prefix per repetition, requiring the string to END
+# in a digit run. That bound alone is not enough to rule out every
+# non-lab shorthand -- "AOx3" ("alert and oriented x3") also matches this
+# shape ("AOx" + "3") despite not being a lab value. This is the same
+# ambiguity _LAB_NAME_VALUE already has with "COVID-19", and it is solved
+# the same way: is_structured_result() only applies signal (1) when
+# gliner_label == "Lab Test", so an "AOx3" entity extracted under any other
+# label is untouched by this pattern, exactly as "denies COVID-19" is
+# untouched by _LAB_NAME_VALUE today.
+_LAB_NAME_VALUE_NO_DELIM = re.compile(r"^(?:[A-Za-z]{1,4}\d+(?:\.\d+)?)+$")
+_LAB_PANEL_TOKEN_NO_DELIM = re.compile(r"\b[A-Za-z]{1,4}\d+(?:\.\d+)?\*?\b")
+
 
 def is_structured_result(entity_text: str, context_text: str,
                          gliner_label: str = None) -> bool:
@@ -246,25 +265,34 @@ def is_structured_result(entity_text: str, context_text: str,
     then trusted.
 
     Two independent signals, either sufficient:
-      1. The entity itself is a NAME-VALUE token (`CREAT-0.3`, `WBC-5`).
-      2. Its surrounding line contains three or more such tokens -- which
-         catches entities like `SGPT` or `ANION GAP` that carry no value in
-         their own span but sit inside an obvious panel.
+      1. The entity itself is a NAME-VALUE token, hyphenated (`CREAT-0.3`,
+         `WBC-5`) or delimiter-less (`RR18`, `S1S2` -- 2026-08-11, see
+         _LAB_NAME_VALUE_NO_DELIM above).
+      2. Its surrounding line contains three or more such tokens (either
+         form) -- which catches entities like `SGPT` or `ANION GAP` that
+         carry no value in their own span but sit inside an obvious panel.
 
-    Signal (1) is GATED ON THE `Lab Test` LABEL. Without that gate it fires on
-    "COVID-19", which has the same NAME-VALUE shape -- and forcing COVID-19 to
-    PRESENT would break "denies COVID-19", turning a correct negation into a
-    false positive assertion. That is the direction of error that reaches KG3,
-    so the gate matters. Signal (2) needs no gate: three NAME-VALUE tokens in
-    one line is a panel regardless of how the entity was labelled, which is
-    what catches `SGPT` and `ANION GAP` sitting inside a panel without values
-    of their own.
+    Signal (1) is GATED ON THE `Lab Test` LABEL, for BOTH the hyphenated and
+    delimiter-less forms. Without that gate the hyphenated pattern fires on
+    "COVID-19" and the delimiter-less pattern fires on "AOx3" -- neither is a
+    lab value, and forcing either to PRESENT would break "denies COVID-19" /
+    "not AOx3", turning a correct negation into a false positive assertion.
+    That is the direction of error that reaches KG3, so the gate matters for
+    both forms equally. Signal (2) needs no gate: three or more NAME-VALUE
+    tokens in one line is a panel regardless of how any one entity in it was
+    labelled, which is what catches `SGPT` and `ANION GAP` sitting inside a
+    panel without values of their own -- and now also catches delimiter-less
+    panels like "RR18  SpO2  BP110/70".
     """
-    if (entity_text and gliner_label == "Lab Test"
-            and _LAB_NAME_VALUE.match(entity_text.strip())):
-        return True
-    if context_text and len(_LAB_PANEL_TOKEN.findall(context_text)) >= 3:
-        return True
+    if entity_text and gliner_label == "Lab Test":
+        stripped = entity_text.strip()
+        if _LAB_NAME_VALUE.match(stripped) or _LAB_NAME_VALUE_NO_DELIM.match(stripped):
+            return True
+    if context_text:
+        panel_hits = (len(_LAB_PANEL_TOKEN.findall(context_text))
+                     + len(_LAB_PANEL_TOKEN_NO_DELIM.findall(context_text)))
+        if panel_hits >= 3:
+            return True
     return False
 
 

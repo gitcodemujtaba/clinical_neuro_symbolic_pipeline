@@ -353,8 +353,32 @@ class TestRecord3Regression:
     def test_without_the_citation_check_it_would_have_auto_validated(self):
         """Demonstrates what was at stake, and documents that agreement plus
         confidence alone are NOT sufficient. This is the counterfactual the
-        dissertation's argument for symbolic verification rests on."""
+        dissertation's argument for symbolic verification rests on.
+
+        2026-08-13: this verdict (RESOLVED_TO_CANDIDATE_3) is now ALSO caught
+        by the P2.1 asymmetric override gate, independently of the citation
+        check. That is a second layer of protection, not a replacement -- and
+        for this test to keep isolating the CITATION check's contribution it
+        must satisfy the override gate's requirements explicitly, otherwise it
+        would pass for the wrong reason and stop testing what it names.
+
+        (Worth stating plainly: as of 2026-08-13 this record would be blocked
+        twice over. The counterfactual the dissertation rests on is unchanged
+        -- confidence and agreement alone still auto-validate a wrong answer,
+        which is exactly what the assertion below shows.)
+        """
+        models = [mk_model("RESOLVED_TO_CANDIDATE_3", 0.922471),
+                  mk_model("RESOLVED_TO_CANDIDATE_3", 0.910462)]
+        out = route(combine(models), VERIFIED, models,
+                    calibrator_score=0.99, grounding_basis="guideline_rule")
+        assert out["mollm_routing_decision"] == INGESTION_AUTO
+
+    def test_override_gate_also_catches_it_independently(self):
+        """The same record, WITHOUT the override gate's requirements met.
+        Blocked by P2.1 even when the citation happens to verify -- which is
+        the whole point of an asymmetric bar on overrides."""
         models = [mk_model("RESOLVED_TO_CANDIDATE_3", 0.922471),
                   mk_model("RESOLVED_TO_CANDIDATE_3", 0.910462)]
         out = route(combine(models), VERIFIED, models)
-        assert out["mollm_routing_decision"] == INGESTION_AUTO
+        assert out["mollm_routing_decision"] == INGESTION_HITL
+        assert out["queue_reason"] == "unsupported_top1_override"

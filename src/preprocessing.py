@@ -130,6 +130,18 @@ def load_abbreviations_dict(conn) -> tuple:
     across runs rather than dependent on DuckDB's row order, and (b) the
     ambiguity flag reflects genuinely distinct meanings rather than duplicate
     rows for the same expansion.
+
+    2026-08-13 CASE-INSENSITIVE SORT FIX. Python's default sorted() is
+    case-sensitive (all capitals sort before all lowercase in ASCII), and the
+    source CSVs mix casing inconsistently -- proper nouns and acronym
+    expansions capitalized ("American Society of Anesthesiologists",
+    "Creatinine"), common terms lowercase ("acetylsalicylic acid (aspirin)",
+    "clinical response"). Measured directly on the 272-note corpus: this
+    silently made ASA default to "American Society of Anesthesiologists"
+    instead of "aspirin" in every medication-dosage context, purely because
+    of capitalization, not true a-z order. key=str.lower makes the sort (and
+    therefore the deterministic default pick) reflect actual alphabetical
+    order regardless of source casing.
     """
     tables = [t[0] for t in conn.sql("SHOW TABLES").fetchall()]
     if "kg2a_abbreviations" not in tables:
@@ -142,7 +154,7 @@ def load_abbreviations_dict(conn) -> tuple:
     for abbr, meaning in rows:
         grouped.setdefault(abbr.lower(), set()).add(meaning)
 
-    return {a: sorted(m) for a, m in grouped.items()}, _dict_version(rows)
+    return {a: sorted(m, key=str.lower) for a, m in grouped.items()}, _dict_version(rows)
 
 
 def segment_sections(text: str) -> list:
@@ -184,16 +196,164 @@ def section_for_offset(sections: list, offset: int):
     return hit
 
 
-def expand_text_and_track_offsets(text: str, abbrev_dict: dict):
+# 2026-08-13 NUMERIC-CONTEXT-AWARE MEANING SELECTION. Two shapes, matching a
+# pattern measured directly in this project's data (SBP<100, HR<60 in note
+# 10097089-DS-8; 12.5 mg dosage lines throughout):
+#   "lab_value"  -- the abbreviation is immediately followed by a comparator
+#                   (< > = -) then a number, e.g. "HR<60", "SBP <100". Prefer
+#                   whichever candidate meaning resolves to OMOP's
+#                   Measurement/Observation domain.
+#   "unit_value" -- a bare number sits directly adjacent (either side, no
+#                   comparator), e.g. "12.5 mg". Prefer whichever candidate
+#                   resolves to OMOP's Unit domain.
+# Classification is ontology-arbitrated (an athena_concept domain_id lookup),
+# not a hand-maintained keyword list -- same philosophy as
+# strip_lab_value_suffix()/find_compound_split() in src/normalization.py:
+# "ontology arbitrates, not guesses". If no candidate resolves to the target
+# domain (or conn is unavailable), falls back to the pre-existing
+# alphabetical-first pick unchanged. Every candidate is still preserved in
+# candidate_expansions regardless of which one is selected -- this only
+# changes which one is applied to expanded_text, never what is logged.
+_LAB_VALUE_CONTEXT_RE = re.compile(r'^\s*[<>=\-]\s*-?\d')
+_UNIT_VALUE_AFTER_RE = re.compile(r'^\s*-?\d')
+_UNIT_VALUE_BEFORE_RE = re.compile(r'-?\d\s*$')
+
+_UNIT_DOMAINS = {"Unit"}
+_LAB_VALUE_DOMAINS = {"Measurement", "Observation"}
+
+_domain_lookup_cache = {}
+
+
+def _numeric_context_kind(text: str, orig_start: int, orig_end: int):
+    """Classifies the immediate character context around a token as
+    'lab_value', 'unit_value', or None. Looks at the ORIGINAL (unexpanded)
+    text using original-coordinate offsets, so a prior expansion earlier in
+    the same note cannot shift what this token sees.
+    """
+    after = text[orig_end:orig_end + 12]
+    before = text[max(0, orig_start - 12):orig_start]
+
+    if _LAB_VALUE_CONTEXT_RE.match(after):
+        return "lab_value"
+    if _UNIT_VALUE_AFTER_RE.match(after) or _UNIT_VALUE_BEFORE_RE.search(before):
+        return "unit_value"
+    return None
+
+
+def _omop_domain_for_meaning(conn, meaning: str):
+    """OMOP domain_id for a candidate meaning's Tier-1/2-shaped exact or
+    synonym match -- same SQL shape as normalization.py's _lookup_tier12(),
+    deliberately Tier 1/2 only (no semantic guessing) since this decides
+    WHICH expansion becomes the note's text, a higher-stakes choice than a
+    single entity's candidate ranking. Cached per meaning per process:
+    the same handful of words (milligram, heart rate, ...) recur across
+    every note, so this avoids re-querying identical lookups thousands of
+    times over a batch. Returns None (not a guess) on no hit or any DB
+    error, so the caller always has a safe fallback.
+    """
+    key = meaning.lower()
+    if key in _domain_lookup_cache:
+        return _domain_lookup_cache[key]
+
+    domain = None
+    try:
+        row = conn.execute("""
+            SELECT domain_id FROM athena_concept
+            WHERE lower(concept_name) = ? AND standard_concept = 'S'
+            ORDER BY concept_id ASC LIMIT 1
+        """, [key]).fetchone()
+        if row is None:
+            row = conn.execute("""
+                SELECT c.domain_id FROM athena_concept_synonym s
+                JOIN athena_concept c ON s.concept_id = c.concept_id
+                WHERE lower(s.concept_synonym_name) = ? AND c.standard_concept = 'S'
+                ORDER BY c.concept_id ASC LIMIT 1
+            """, [key]).fetchone()
+        if row is not None:
+            domain = row[0]
+    except duckdb.Error:
+        domain = None
+
+    _domain_lookup_cache[key] = domain
+    return domain
+
+
+def _select_by_numeric_context(conn, meanings: list, kind: str):
+    """Returns whichever meaning (in the existing sorted order, so ties still
+    resolve deterministically) resolves to the domain implied by `kind`, or
+    None if nothing qualifies -- the caller keeps the alphabetical default
+    in that case rather than forcing a pick.
+    """
+    if conn is None:
+        return None
+    target_domains = _UNIT_DOMAINS if kind == "unit_value" else _LAB_VALUE_DOMAINS
+    for m in meanings:
+        if _omop_domain_for_meaning(conn, m) in target_domains:
+            return m
+    return None
+
+
+def _select_by_groundability(conn, meanings: list):
+    """Fallback tiebreak for ambiguous abbreviations with NO numeric-context
+    trigger (_numeric_context_kind returned None, or the numeric-context pick
+    itself found nothing): prefer a candidate meaning that resolves to SOME
+    real OMOP concept over one that does not, when exactly one candidate
+    does.
+
+    2026-08-13, found while diagnosing why 'L \\nclavicular fx' still wasn't
+    compound-splitting after the laterality-floor fix (_SHORT_LATERALITY_
+    TOKENS, src/normalization.py): kg2a_abbreviations has 'fx' -> {'fracture',
+    'fractions'} (case-insensitive-merged, per this module's 2026-08-13 sort
+    fix -- that fix is working correctly). Plain alphabetical order has no
+    relationship to clinical likelihood, though: comparing the two strings
+    character by character, 'fractions' sorts before 'fracture' purely
+    because 'i' < 'u' at the first differing character, so the alphabetical
+    default picked 'fractions' -- not a real OMOP concept at all in this
+    corpus -- over 'fracture', the standard orthopedic/radiology reading and
+    an actual SNOMED concept. Same "let the ontology arbitrate instead of
+    guessing" principle _select_by_numeric_context/find_compound_split()/
+    strip_lab_value_suffix() (src/normalization.py) already use elsewhere in
+    this pipeline, generalized to the no-numeric-context case rather than
+    left to fall through to alphabetical order unchallenged.
+
+    Deliberately conservative: if MULTIPLE candidates resolve to a real
+    concept (a genuine cross-concept ambiguity -- two distinct real
+    meanings) or NONE do (neither is a known OMOP concept), this returns
+    None and the caller keeps the alphabetical default -- forcing a pick in
+    either of those cases would be a guess, not an arbitration, the same
+    reasoning find_compound_split()'s REVERT NOTICE gives for requiring
+    EVERY part to resolve rather than "at least one."
+    """
+    if conn is None:
+        return None
+    grounded = [m for m in meanings if _omop_domain_for_meaning(conn, m) is not None]
+    if len(grounded) == 1:
+        return grounded[0]
+    return None
+
+
+def expand_text_and_track_offsets(text: str, abbrev_dict: dict, conn=None):
     """Expands known abbreviations, tracking original<->expanded offsets.
 
-    abbrev_dict maps abbreviation -> LIST of meanings. When an abbreviation has
-    more than one known meaning, the first (sorted) meaning is applied so the
-    expansion is deterministic, and the expansion record carries
-    `ambiguous: True` plus the full `candidate_expansions` list so Stage 3 can
-    reconsider the choice with context the dictionary lookup never had. This
-    is the point: Stage 1 should not be silently resolving a genuine clinical
-    ambiguity by row order.
+    abbrev_dict maps abbreviation -> LIST of meanings. When an abbreviation
+    has more than one known meaning, three tiebreaks are tried in order: (1)
+    numeric context around the token (_numeric_context_kind/
+    _select_by_numeric_context above), (2) OMOP groundability when numeric
+    context didn't apply or didn't resolve anything (_select_by_groundability
+    above -- prefers a candidate that resolves to a real OMOP concept over
+    one that doesn't, when exactly one does), (3) if neither resolves
+    anything, the first (sorted) meaning is applied so the expansion is still
+    deterministic. Either way, the expansion record carries `ambiguous: True`
+    plus the full `candidate_expansions` list so Stage 3 can reconsider the
+    choice with context the dictionary lookup never had. This is the point:
+    Stage 1 should not be silently resolving a genuine clinical ambiguity by
+    row order (or by numeric-context/groundability guessing either -- all
+    three are a prior, not a verdict).
+
+    conn is optional (default None): passing it enables the numeric-context
+    OMOP lookup; omitting it preserves the pre-2026-08-13 pure-alphabetical
+    behavior unchanged, so any other caller that hasn't been updated keeps
+    working exactly as before.
     """
     doc = nlp(text)
     expanded_text = text
@@ -209,11 +369,25 @@ def expand_text_and_track_offsets(text: str, abbrev_dict: dict):
         if not meanings:
             continue
 
-        expansion = meanings[0]
         is_ambiguous = len(meanings) > 1
+        expansion = meanings[0]
+        selection_basis = "alphabetical_default"
 
         orig_start = token.idx
         orig_end = token.idx + len(token.text)
+
+        if is_ambiguous:
+            kind = _numeric_context_kind(text, orig_start, orig_end)
+            if kind is not None:
+                preferred = _select_by_numeric_context(conn, meanings, kind)
+                if preferred is not None:
+                    expansion = preferred
+                    selection_basis = f"numeric_context:{kind}"
+            if selection_basis == "alphabetical_default":
+                preferred = _select_by_groundability(conn, meanings)
+                if preferred is not None:
+                    expansion = preferred
+                    selection_basis = "omop_groundability"
 
         exp_start = orig_start + offset_shift
         exp_end = exp_start + len(expansion)
@@ -229,6 +403,7 @@ def expand_text_and_track_offsets(text: str, abbrev_dict: dict):
         }
         if is_ambiguous:
             record["candidate_expansions"] = meanings
+            record["selection_basis"] = selection_basis
         expansions_log.append(record)
 
         expanded_text = (
@@ -320,7 +495,7 @@ def process_and_store_note(note_id: str, raw_text: str, conn, is_test: bool = Fa
     later without touching real note data. Defaults to False.
     """
     abbrev_dict, dict_version = load_abbreviations_dict(conn)
-    expanded_text, expansions_log = expand_text_and_track_offsets(raw_text, abbrev_dict)
+    expanded_text, expansions_log = expand_text_and_track_offsets(raw_text, abbrev_dict, conn=conn)
     sections = segment_sections(raw_text)
     sentences = sentence_spans(expanded_text)
 

@@ -1,0 +1,242 @@
+{
+  "coverage": {
+    "total_entities": 3121,
+    "excluded_gold_less_note": 125,
+    "excluded_gold_less_note_ids": [
+      "10000032-DS-21"
+    ],
+    "excluded_out_of_scope_label": 1214,
+    "out_of_scope_n": 1214,
+    "in_scope_n": 1782
+  },
+  "accuracy": {
+    "correct": 1598,
+    "n": 1782,
+    "rate": 0.8967452300785634
+  },
+  "ece": 0.1446,
+  "reliability_table": [
+    {
+      "bin": "[0.0, 0.1)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.1, 0.2)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.2, 0.3)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.3, 0.4)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.4, 0.5)",
+      "n": 0,
+      "mean_confidence": null,
+      "accuracy": null
+    },
+    {
+      "bin": "[0.5, 0.6)",
+      "n": 391,
+      "mean_confidence": 0.5472,
+      "accuracy": 0.844
+    },
+    {
+      "bin": "[0.6, 0.7)",
+      "n": 332,
+      "mean_confidence": 0.6498,
+      "accuracy": 0.8976
+    },
+    {
+      "bin": "[0.7, 0.8)",
+      "n": 319,
+      "mean_confidence": 0.7494,
+      "accuracy": 0.8809
+    },
+    {
+      "bin": "[0.8, 0.9)",
+      "n": 307,
+      "mean_confidence": 0.8524,
+      "accuracy": 0.9055
+    },
+    {
+      "bin": "[0.9, 1.0)",
+      "n": 433,
+      "mean_confidence": 0.9518,
+      "accuracy": 0.9492
+    }
+  ],
+  "threshold_sweep": [
+    {
+      "threshold": 0.05,
+      "n_admitted": 1782,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.8967
+    },
+    {
+      "threshold": 0.1,
+      "n_admitted": 1782,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.8967
+    },
+    {
+      "threshold": 0.15,
+      "n_admitted": 1782,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.8967
+    },
+    {
+      "threshold": 0.2,
+      "n_admitted": 1782,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.8967
+    },
+    {
+      "threshold": 0.25,
+      "n_admitted": 1782,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.8967
+    },
+    {
+      "threshold": 0.3,
+      "n_admitted": 1782,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.8967
+    },
+    {
+      "threshold": 0.35,
+      "n_admitted": 1782,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.8967
+    },
+    {
+      "threshold": 0.4,
+      "n_admitted": 1782,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.8967
+    },
+    {
+      "threshold": 0.45,
+      "n_admitted": 1782,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.8967
+    },
+    {
+      "threshold": 0.5,
+      "n_admitted": 1782,
+      "coverage": 1.0,
+      "precision_if_admitted": 0.8967
+    },
+    {
+      "threshold": 0.55,
+      "n_admitted": 1579,
+      "coverage": 0.8861,
+      "precision_if_admitted": 0.9056
+    },
+    {
+      "threshold": 0.6,
+      "n_admitted": 1391,
+      "coverage": 0.7806,
+      "precision_if_admitted": 0.9116
+    },
+    {
+      "threshold": 0.65,
+      "n_admitted": 1224,
+      "coverage": 0.6869,
+      "precision_if_admitted": 0.9085
+    },
+    {
+      "threshold": 0.7,
+      "n_admitted": 1059,
+      "coverage": 0.5943,
+      "precision_if_admitted": 0.916
+    },
+    {
+      "threshold": 0.75,
+      "n_admitted": 899,
+      "coverage": 0.5045,
+      "precision_if_admitted": 0.9155
+    },
+    {
+      "threshold": 0.8,
+      "n_admitted": 740,
+      "coverage": 0.4153,
+      "precision_if_admitted": 0.9311
+    },
+    {
+      "threshold": 0.85,
+      "n_admitted": 599,
+      "coverage": 0.3361,
+      "precision_if_admitted": 0.9399
+    },
+    {
+      "threshold": 0.9,
+      "n_admitted": 433,
+      "coverage": 0.243,
+      "precision_if_admitted": 0.9492
+    },
+    {
+      "threshold": 0.95,
+      "n_admitted": 241,
+      "coverage": 0.1352,
+      "precision_if_admitted": 0.9834
+    }
+  ],
+  "label_breakdown": {
+    "Condition": {
+      "n": 713,
+      "correct": 631,
+      "accuracy": 0.885,
+      "mean_confidence": 0.7534
+    },
+    "Procedure": {
+      "n": 206,
+      "correct": 182,
+      "accuracy": 0.8835,
+      "mean_confidence": 0.8243
+    },
+    "Anatomy": {
+      "n": 464,
+      "correct": 418,
+      "accuracy": 0.9009,
+      "mean_confidence": 0.7083
+    },
+    "Symptom": {
+      "n": 399,
+      "correct": 367,
+      "accuracy": 0.9198,
+      "mean_confidence": 0.7692
+    }
+  },
+  "out_of_scope_breakdown": {
+    "Lab Test": {
+      "n": 457,
+      "correct": 363,
+      "accuracy": 0.7943,
+      "mean_confidence": 0.6941
+    },
+    "Medication": {
+      "n": 578,
+      "correct": 93,
+      "accuracy": 0.1609,
+      "mean_confidence": 0.8428
+    },
+    "Qualifier": {
+      "n": 179,
+      "correct": 139,
+      "accuracy": 0.7765,
+      "mean_confidence": 0.7334
+    }
+  }
+}

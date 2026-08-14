@@ -1,0 +1,115 @@
+{
+  "heuristics": {
+    "n_total_entities": 3854,
+    "rate_len<=4": 0.23456149455111572,
+    "rate_isupper": 0.2802283341982356,
+    "rate_alnum_mix": 0.04436948624805397,
+    "rate_any_combined": 0.34950700570835497,
+    "n_any_combined": 1347,
+    "examples": {
+      "len<=4": [
+        "COPD",
+        "ED",
+        "SOB",
+        "ED",
+        "ED",
+        "ED",
+        "ALT",
+        "AST",
+        "AP",
+        "WBC"
+      ],
+      "isupper": [
+        "COPD",
+        "ED",
+        "SOB",
+        "BRBPR",
+        "ED",
+        "ED",
+        "ED",
+        "ALT",
+        "AST",
+        "AP"
+      ],
+      "alnum_mix": [
+        "Tbili1",
+        "TOTAL CO2-27",
+        "O2Sat",
+        "O2 Sat",
+        "S1",
+        "S2",
+        "vit B12 \ndeficiency",
+        "AOx3",
+        "S1S2\nAbd",
+        "HCO3-22"
+      ]
+    },
+    "combo_breakdown": {
+      "len<=4=False,isupper=False,alnum_mix=False": 2507,
+      "len<=4=True,isupper=True,alnum_mix=False": 577,
+      "len<=4=False,isupper=True,alnum_mix=False": 380,
+      "len<=4=True,isupper=False,alnum_mix=False": 219,
+      "len<=4=True,isupper=True,alnum_mix=True": 104,
+      "len<=4=False,isupper=False,alnum_mix=True": 44,
+      "len<=4=False,isupper=True,alnum_mix=True": 19,
+      "len<=4=True,isupper=False,alnum_mix=True": 4
+    }
+  },
+  "boundaries": [
+    {
+      "note_id": "10043750-DS-6",
+      "orig_start": 1132,
+      "orig_end": 1140,
+      "label": "S1S2 / Abd (embedded newline)",
+      "found": true,
+      "actual_text": "S1S2\nAbd",
+      "crosses_sentence_boundary": false,
+      "sentence_ids_spanned": "[42]",
+      "already_caught": false
+    },
+    {
+      "note_id": "10371195-DS-9",
+      "orig_start": 3216,
+      "orig_end": 3232,
+      "label": "L / clavicular fx (embedded newline)",
+      "found": true,
+      "actual_text": "L \nclavicular fx",
+      "crosses_sentence_boundary": false,
+      "sentence_ids_spanned": "[72]",
+      "already_caught": false
+    },
+    {
+      "note_id": "10371195-DS-9",
+      "orig_start": 3278,
+      "orig_end": 3305,
+      "label": "L L2 / transverse process fx (embedded newline)",
+      "found": true,
+      "actual_text": "L L2 \ntransverse process fx",
+      "crosses_sentence_boundary": false,
+      "sentence_ids_spanned": "[72]",
+      "already_caught": false
+    },
+    {
+      "note_id": "10848570-DS-12",
+      "orig_start": 819,
+      "orig_end": 860,
+      "label": "left acetabular and iliac crest / fracture (embedded newline)",
+      "found": true,
+      "actual_text": "left acetabular and iliac crest \nfracture",
+      "crosses_sentence_boundary": false,
+      "sentence_ids_spanned": "[26]",
+      "already_caught": false
+    },
+    {
+      "note_id": "10860165-DS-24",
+      "orig_start": 3794,
+      "orig_end": 3822,
+      "label": "left / lung base / atelectasis (embedded newlines)",
+      "found": true,
+      "actual_text": "left \nlung base \natelectasis",
+      "crosses_sentence_boundary": false,
+      "sentence_ids_spanned": "[117]",
+      "already_caught": false
+    }
+  ]
+}

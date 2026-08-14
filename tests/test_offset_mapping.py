@@ -87,7 +87,19 @@ def _load_pure_functions(module_filename: str, wanted: set, extra_globals: dict 
 
 PRE = _load_pure_functions(
     "preprocessing.py",
-    {"segment_sections", "section_for_offset", "expand_text_and_track_offsets"},
+    # 2026-08-13: the four helpers below are the tiebreak chain
+    # expand_text_and_track_offsets() calls -- _numeric_context_kind and
+    # _select_by_numeric_context arrived with the numeric-context fix, and
+    # _select_by_groundability (plus its _omop_domain_for_meaning helper) with
+    # the "fx" -> fractions fix earlier the same day. Neither change added them
+    # to this set, so every test in this file raised NameError at
+    # expand_text_and_track_offsets()'s first ambiguous abbreviation -- a whole
+    # suite silently red, discovered during the P0-P5 verification pass rather
+    # than reported by it. They are pure functions (the conn-touching ones take
+    # conn=None and return early), so extracting them costs nothing.
+    {"segment_sections", "section_for_offset", "expand_text_and_track_offsets",
+     "_numeric_context_kind", "_select_by_numeric_context",
+     "_select_by_groundability", "_omop_domain_for_meaning"},
 )
 EXT = _load_pure_functions(
     "entity_extraction.py",
