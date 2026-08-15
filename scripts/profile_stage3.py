@@ -57,7 +57,7 @@ import duckdb
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
+PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
 TRIPLETS_CANDIDATES = [
     # 2026-08-11 Stage3 Issue1 rule backfill -- see

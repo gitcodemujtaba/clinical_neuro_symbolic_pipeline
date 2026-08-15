@@ -34,7 +34,7 @@ import time
 
 import duckdb
 
-PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
+PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
 TRIPLETS_DIR = os.path.join(PROJECT_DIR, "data", "local_triplets_db2_v6_cleaned")
 

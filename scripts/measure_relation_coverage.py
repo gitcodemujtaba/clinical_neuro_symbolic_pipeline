@@ -39,7 +39,7 @@ import sys
 
 import duckdb
 
-PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
+PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
 sys.path.insert(0, PROJECT_DIR)
 

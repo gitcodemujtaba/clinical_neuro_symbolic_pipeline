@@ -5,7 +5,7 @@ import sys
 import duckdb
 
 # Ensure Python can find the 'src' module
-PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
+PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 sys.path.append(PROJECT_DIR)
 
 from src.preprocessing import process_and_store_note

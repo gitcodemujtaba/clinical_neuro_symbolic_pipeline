@@ -50,7 +50,7 @@ from collections import defaultdict
 
 warnings.filterwarnings("ignore")
 
-PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
+PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 # 2026-08-11 Stage3 Issue1 rule backfill -- see docs/Stage3_Issue1_Rule_Backfill.md.
 # Callers that pick from scripts/*.py's own TRIPLETS_CANDIDATES lists (test_stage3_live.py,
 # profile_stage3.py, diagnose_guard_suppression.py, measure_channel_b_coverage.py) are

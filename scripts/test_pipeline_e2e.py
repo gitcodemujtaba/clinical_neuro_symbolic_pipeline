@@ -5,7 +5,7 @@ import csv
 import json
 import argparse
 
-PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
+PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 sys.path.append(PROJECT_DIR)
 
 # 2026-08-07: was three separate imports (src.preprocessing,

@@ -79,7 +79,7 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
+PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
 
 print("Loading GLiNER-relex model... (this may take a moment on the first run)")

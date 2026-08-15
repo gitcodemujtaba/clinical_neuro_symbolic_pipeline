@@ -72,7 +72,7 @@ from src.preprocessing import (
 
 warnings.filterwarnings("ignore")
 
-PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
+PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
 
 GLINER_MODEL_NAME = "Ihor/gliner-biomed-large-v1.0"
