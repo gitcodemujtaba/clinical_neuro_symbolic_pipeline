@@ -1,15 +1,25 @@
 """
-src/kg3_ingestion.py — Stage 4 KG3 write-back (Memgraph).
+src/kg3_ingestion.py — Stage 4/Pass 4 KG3 write-back (Memgraph).
 
-WHY THIS ONLY EVER RUNS FOR HUMAN_VERIFIED CASES. docs/Implementation_Checklist.md:
-"Gate KG 3 write-back behind Stage 3 + the calibrated confidence threshold,
-not Stage 2b confidence alone... a pseudo-labeling feedback-loop risk."
-Measured 2026-08-14: AUTO_VALIDATED precision 39.4% on the freshly
-re-validated corpus -- not yet safe to write unreviewed. Every case this
-module ingests has already passed through src/hitl_queue.py's review
-workflow (reviewer_decision in APPROVED/CORRECTED, final_ingestion_path=
-'HUMAN_VERIFIED'); this module has no code path that writes anything else,
-by construction -- see ingest_reviewed_case()'s validation.
+TWO WRITE PATHS, BOTH GATED, NEITHER OPTIONAL. ingest_reviewed_case() is the
+original, human-reviewed path: docs/Implementation_Checklist.md's "gate KG3
+write-back behind Stage 3 + the calibrated confidence threshold... a
+pseudo-labeling feedback-loop risk" concern, and the measured 39.4%/52.6%
+AUTO_VALIDATED precision under the OLD binary route() (src/mollm_ensemble.py)
+this concern was raised about -- every case it ingests has already passed
+through src/hitl_queue.py's review workflow (reviewer_decision in
+APPROVED/CORRECTED), and it has no code path that writes anything else, by
+construction (see its own validation).
+
+ingest_auto_decision() (added for src/mollm_tier_gate.py's Tier 1-5 gate) is
+the NEW, deliberately narrower unreviewed path -- it only accepts Tier 1/2/3
+decisions, whose whole purpose is to be trustworthy enough to skip human
+review, and defaults to dry_run=True so it writes nothing until that trust
+has actually been validated on real data. See its own docstring for the
+gating detail. The two paths write structurally identical graph shapes (a
+:HITLReview node either way, distinguished by final_decision_status =
+'APPROVED'/'CORRECTED' vs. 'AUTO') so a query walking the graph never needs a
+special case for which path a given observation came through.
 
 WHY MERGE, NOT CREATE, EVERYWHERE. Idempotency: scripts/run_kg3_ingestion.py
 is designed to be safely re-runnable (it only re-attempts cases whose
@@ -157,3 +167,130 @@ def ingest_reviewed_case(driver, case: dict, entity_fields: dict):
     }
     with driver.session() as session:
         session.execute_write(_ingest_tx, params)
+
+
+# ==========================================================================
+# Pass 4 (src/mollm_tier_gate.py) -- Tier 1/2/3 direct write, unreviewed
+# ==========================================================================
+
+def _ingest_auto_tx(tx, params: dict):
+    # Identical shape to _ingest_tx() above, on purpose -- a query walking
+    # :MoLLMDecision -[:REVIEWED_BY]-> :HITLReview should not need a special
+    # case for "this one was never reviewed by a human"; it should see
+    # review.final_decision_status = 'AUTO' and know what that means. The
+    # only structural difference is corrected_concept_id/review_duration are
+    # always NULL here -- an AUTO decision was never corrected by anyone.
+    tx.run(
+        """
+        MERGE (concept:Concept {omop_concept_id: $omop_concept_id})
+        ON CREATE SET concept.vocabulary_id = $vocabulary_id,
+                      concept.domain_id = $domain_id,
+                      concept.concept_name = $concept_name
+
+        MERGE (obs:PatientObservation {entity_id: $entity_id})
+        SET obs.note_id = $note_id,
+            obs.raw_text = $raw_text,
+            obs.label = $label,
+            obs.orig_start = $orig_start,
+            obs.orig_end = $orig_end,
+            obs.confidence = $confidence,
+            obs.matched = true,
+            obs.omop_concept_id = $omop_concept_id,
+            obs.vocabulary_id = $vocabulary_id,
+            obs.timestamp = timestamp()
+        MERGE (obs)-[:INSTANCE_OF]->(concept)
+
+        MERGE (decision:MoLLMDecision {mollm_call_id: $source_call_id})
+        SET decision.source_table = $source_table,
+            decision.routing_decision = $routing_decision,
+            decision.tier = $tier,
+            decision.composite_confidence = $composite_confidence
+        MERGE (obs)-[:VALIDATED_BY]->(decision)
+
+        MERGE (review:HITLReview {hitl_case_id: $hitl_case_id})
+        SET review.queue_reason = $queue_reason,
+            review.final_decision_status = 'AUTO',
+            review.corrected_concept_id = NULL,
+            review.review_duration = NULL
+        MERGE (decision)-[:REVIEWED_BY]->(review)
+        """,
+        **params,
+    )
+
+
+def ingest_auto_decision(driver, decision: dict, entity_fields: dict,
+                         dry_run: bool = True) -> dict:
+    """Writes one Tier 1/2/3 AUTO_VALIDATED/AUTO_RESOLVED decision
+    (src/mollm_tier_gate.py's route_tier()) as a single atomic Cypher
+    transaction -- the direct, unreviewed KG3 write-back path Pass 4 needs
+    and that does not exist anywhere else in this codebase: this module's own
+    docstring above records that NOTHING writes to KG3 today without first
+    passing through src/hitl_queue.py's human review workflow.
+
+    `dry_run=True` (the default): does not touch Memgraph at all. Returns the
+    params dict that WOULD have been written, for logging/review. Per the
+    plan's own risk note, direct KG3 write-back is new, higher-stakes code
+    and should run feature-flagged/log-only against a held-out slice before
+    any real write happens -- callers must pass dry_run=False explicitly once
+    that validation has actually been done.
+
+    `decision` is one src/mollm_tier_gate.route_tier() return dict, plus
+    mollm_call_id/entity_id/note_id merged in by the caller (route_tier()
+    itself does not know those IDs). `entity_fields` is the caller's own
+    DuckDB lookup of extracted_entities.{orig_start,orig_end,confidence} and
+    normalized_entities.candidates for this entity_id -- same separation of
+    concerns as ingest_reviewed_case(): this module's only external
+    dependency is Memgraph, not also DuckDB.
+
+    Raises UningestibleCase (not silently) for anything that reaches this
+    function without a resolvable concept -- a Tier 4/5 decision, a missing
+    final_candidate_index, or an out-of-range one.
+    """
+    tier = decision.get("tier")
+    if tier not in ("TIER_1_AUTO_VALIDATED", "TIER_2_AUTO_RESOLVED", "TIER_3_AUTO_VALIDATED"):
+        raise UningestibleCase(
+            f"{decision.get('mollm_call_id', '?')}: tier={tier!r} is not an "
+            f"auto-write tier -- only TIER_1/2/3 (route_tier()'s AUTO_TIERS) "
+            f"ever reach this function; Tier 4/5 decisions belong in "
+            f"src/hitl_queue.py's review workflow instead")
+
+    final_candidate_index = decision.get("final_candidate_index")
+    candidates = entity_fields.get("candidates") or []
+    idx = (final_candidate_index - 1) if final_candidate_index else None
+    if idx is None or idx < 0 or idx >= len(candidates):
+        raise UningestibleCase(
+            f"{decision.get('mollm_call_id', '?')}: final_candidate_index="
+            f"{final_candidate_index!r} does not resolve to a real candidate "
+            f"in this entity's {len(candidates)}-candidate list")
+    chosen = candidates[idx]
+    omop_concept_id = chosen.get("omop_concept_id")
+    if omop_concept_id is None:
+        raise UningestibleCase(
+            f"{decision.get('mollm_call_id', '?')}: chosen candidate "
+            f"{chosen.get('concept_name')!r} has no omop_concept_id")
+
+    params = {
+        "omop_concept_id": omop_concept_id,
+        "vocabulary_id": chosen.get("vocabulary_id"),
+        "domain_id": chosen.get("domain_id"),
+        "concept_name": chosen.get("concept_name"),
+        "entity_id": decision.get("entity_id"),
+        "note_id": decision.get("note_id"),
+        "raw_text": entity_fields.get("original_text"),
+        "label": entity_fields.get("entity_label"),
+        "orig_start": entity_fields.get("orig_start"),
+        "orig_end": entity_fields.get("orig_end"),
+        "confidence": entity_fields.get("confidence"),
+        "source_call_id": decision.get("mollm_call_id"),
+        "source_table": "mollm_tier_gate_decisions",
+        "routing_decision": decision.get("mollm_routing_decision"),
+        "tier": tier,
+        "composite_confidence": decision.get("composite_confidence"),
+        "hitl_case_id": f"auto_{decision.get('mollm_call_id')}",
+        "queue_reason": decision.get("queue_reason"),
+    }
+    if dry_run:
+        return {"dry_run": True, "params": params}
+    with driver.session() as session:
+        session.execute_write(_ingest_auto_tx, params)
+    return {"dry_run": False, "params": params}
