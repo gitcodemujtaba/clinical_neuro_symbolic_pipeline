@@ -1,0 +1,1128 @@
+[
+  {
+    "note_id": "17751158-DS-19",
+    "text": "gunshot wound",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.755127,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "This refers to a gunshot injury that has caused damage to the patient's abdomen, which is a serious and traumatic medical condition.",
+        "reasoning": "The term 'gunshot wound' is too specific and does not capture the broader context of a gunshot injury causing damage to the abdomen.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Gunshot wound",
+            "match": false,
+            "reasoning": "The candidate concept 'Gunshot wound' is too broad and does not specifically indicate that it has caused damage to the patient's abdomen.",
+            "confidence": 0.970896,
+            "degenerate_generation": false
+          },
+          {
+            "candidate_index": 2,
+            "concept_name": "Gunshot wound",
+            "match": false,
+            "reasoning": "The term 'gunshot wound' is too specific and does not capture the broader context of a gunshot injury causing damage to the abdomen.",
+            "confidence": 0.909401,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a physical injury caused by a gunshot that penetrated their abdomen.",
+        "reasoning": "The candidate concept 'Gunshot wound' matches the clinical meaning because its name is identical to the entity text and it belongs to the same domain (Condition) with a verified terminology-database link, indicating that it accurately labels the described physical injury.",
+        "logprob_confidence": 0.596253,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Gunshot wound",
+            "match": true,
+            "reasoning": "The candidate concept 'Gunshot wound' matches the clinical meaning because its name is identical to the entity text and it belongs to the same domain (Condition) with a verified terminology-database link, indicating that it accurately labels the described physical injury.",
+            "confidence": 0.596253,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A gunshot wound to the abdomen is a physical injury caused by being shot, which can involve penetration of tissues or organs in that area.",
+        "reasoning": "The 'gunshot wound' directly corresponds to physical injury caused by being shot as described in the provided clinical definition.",
+        "logprob_confidence": 0.914001,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Gunshot wound",
+            "match": true,
+            "reasoning": "The 'gunshot wound' directly corresponds to physical injury caused by being shot as described in the provided clinical definition.",
+            "confidence": 0.914001,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "17751158-DS-19",
+    "text": "Exploratory laparotomy",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.838497,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A surgical procedure where an incision is made into the abdominal cavity to explore internal organs, particularly after a gunshot wound has damaged parts of the stomach and small intestine.",
+        "reasoning": "The term 'Exploratory laparotomy' directly corresponds to the surgical procedure described in the independent statement.",
+        "logprob_confidence": 0.979796,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Exploratory laparotomy",
+            "match": true,
+            "reasoning": "The term 'Exploratory laparotomy' directly corresponds to the surgical procedure described in the independent statement.",
+            "confidence": 0.979796,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A surgical procedure where a surgeon makes an incision in the abdomen to explore and examine the internal organs",
+        "reasoning": "The candidate concept 'Exploratory laparotomy' matches the clinical meaning because its name exactly matches the entity text and it is classified under Procedure with SNOMED vocabulary.",
+        "logprob_confidence": 0.697198,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Exploratory laparotomy",
+            "match": true,
+            "reasoning": "The candidate concept 'Exploratory laparotomy' matches the clinical meaning because its name exactly matches the entity text and it is classified under Procedure with SNOMED vocabulary.",
+            "confidence": 0.697198,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "This refers to a surgical procedure where doctors perform an exploratory laparotomy, which is looking inside the belly cavity to examine organs and tissues, along with repairing damage from a gunshot wound in the stomach and small intestine.",
+        "reasoning": "The candidate concept 'Exploratory laparotomy' does not fully capture the full procedure described in the independent statement. It only mentions an exploratory laparotomy and repair of gunshot wound to the stomach and jejunum, but it misses other details such as looking inside the belly cavity to examine organs and tissues.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Exploratory laparotomy",
+            "match": false,
+            "reasoning": "The candidate concept 'Exploratory laparotomy' does not fully capture the full procedure described in the independent statement. It only mentions an exploratory laparotomy and repair of gunshot wound to the stomach and jejunum, but it misses other details such as looking inside the belly cavity to examine organs and tissues.",
+            "confidence": 0.986898,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "17751158-DS-19",
+    "text": "LLQ",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.743822,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "a gunshot wound to the abdomen",
+        "reasoning": "The candidate concept 'Structure of left lower quadrant of abdomen' matches the clinical meaning because it is a verified brand alias and accurately labels the anatomical site referred to in the text.",
+        "logprob_confidence": 0.618943,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Structure of left lower quadrant of abdomen",
+            "match": true,
+            "reasoning": "The candidate concept 'Structure of left lower quadrant of abdomen' matches the clinical meaning because it is a verified brand alias and accurately labels the anatomical site referred to in the text.",
+            "confidence": 0.618943,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient sustained an injury to his left lower abdomen area.",
+        "reasoning": "The term 'LLQ' refers specifically to the left lower quadrant of the abdomen which aligns directly with the injury location described in the text.",
+        "logprob_confidence": 0.868701,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Structure of left lower quadrant of abdomen",
+            "match": true,
+            "reasoning": "The term 'LLQ' refers specifically to the left lower quadrant of the abdomen which aligns directly with the injury location described in the text.",
+            "confidence": 0.868701,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The left lower quadrant refers to a specific area of the abdomen where a gunshot wound could be located, clinically indicating injury to that part of the body.",
+        "reasoning": "The LLQ (left lower quadrant) is anatomical information about the body but does not describe a gunshot wound specifically. The candidate concept 'Structure of left lower quadrant of abdomen' is too broad and unrelated to the specific clinical context provided.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Structure of left lower quadrant of abdomen",
+            "match": false,
+            "reasoning": "The LLQ (left lower quadrant) is anatomical information about the body but does not describe a gunshot wound specifically. The candidate concept 'Structure of left lower quadrant of abdomen' is too broad and unrelated to the specific clinical context provided.",
+            "confidence": 0.999586,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "17751158-DS-19",
+    "text": "Laparoscopic appendectomy",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.932088,
+    "final_candidate_index": 1,
+    "outcome": "correct",
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A surgical procedure to remove an inflamed appendix through small incisions in the abdomen using a camera-guided instrument.",
+        "reasoning": "The entity 'Laparoscopic appendectomy' directly corresponds to the surgical procedure described in the independent statement.",
+        "logprob_confidence": 0.989128,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Laparoscopic appendectomy",
+            "match": true,
+            "reasoning": "The entity 'Laparoscopic appendectomy' directly corresponds to the surgical procedure described in the independent statement.",
+            "confidence": 0.989128,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "This refers to a surgical procedure where an appendectomy is performed using laparoscopic techniques, which means the appendix is removed through small incisions made in the abdomen.",
+        "reasoning": "The candidate concept 'Laparoscopic appendectomy' from SNOMED matches the clinical meaning of a surgical procedure where an appendectomy is performed using laparoscopic techniques.",
+        "logprob_confidence": 0.958118,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Laparoscopic appendectomy",
+            "match": true,
+            "reasoning": "The candidate concept 'Laparoscopic appendectomy' from SNOMED matches the clinical meaning of a surgical procedure where an appendectomy is performed using laparoscopic techniques.",
+            "confidence": 0.958118,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A surgical procedure where a laparoscope is used to remove the appendix through small incisions in the abdomen.",
+        "reasoning": "The candidate concept's name matches the entity text and is verified as a brand alias in the SNOMED vocabulary, indicating a mathematically verified terminology-database link.",
+        "logprob_confidence": 0.849018,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Laparoscopic appendectomy",
+            "match": true,
+            "reasoning": "The candidate concept's name matches the entity text and is verified as a brand alias in the SNOMED vocabulary, indicating a mathematically verified terminology-database link.",
+            "confidence": 0.849018,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "17751158-DS-19",
+    "text": "NC",
+    "tier": "TIER_5_TRUE_AMBIGUITY",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "unresolved_acronym",
+    "composite_confidence": null,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": []
+  },
+  {
+    "note_id": "17751158-DS-19",
+    "text": "BP",
+    "tier": "TIER_5_TRUE_AMBIGUITY",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "unresolved_acronym",
+    "composite_confidence": null,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": []
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "Dyspnea on exertion",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.830318,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient is experiencing shortness of breath when engaging in physical activity.",
+        "reasoning": "The term 'Dyspnea on exertion' directly corresponds to experiencing shortness of breath when engaging in physical activity.",
+        "logprob_confidence": 0.97346,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Dyspnea on exertion",
+            "match": true,
+            "reasoning": "The term 'Dyspnea on exertion' directly corresponds to experiencing shortness of breath when engaging in physical activity.",
+            "confidence": 0.97346,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient is experiencing shortness of breath when they exert themselves.",
+        "reasoning": "The candidate concept 'Dyspnea on exertion' matches the clinical meaning because its name exactly matches the entity text and it is in the same domain (Condition) with a verified brand alias basis, indicating a direct terminology-database link.",
+        "logprob_confidence": 0.687177,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Dyspnea on exertion",
+            "match": true,
+            "reasoning": "The candidate concept 'Dyspnea on exertion' matches the clinical meaning because its name exactly matches the entity text and it is in the same domain (Condition) with a verified brand alias basis, indicating a direct terminology-database link.",
+            "confidence": 0.687177,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "Dyspnea on exertion is a symptom where a person experiences shortness of breath during physical activity, which was mentioned in the chief complaint section.",
+        "reasoning": "The candidate concept does not specify that it is a symptom. The provided clinical meaning states 'Dyspnea on exertion is a symptom where a person experiences shortness of breath during physical activity,' but the candidate only provides information about its domain and vocabulary without specifying whether it refers to a condition or symptom.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Dyspnea on exertion",
+            "match": false,
+            "reasoning": "The candidate concept does not specify that it is a symptom. The provided clinical meaning states 'Dyspnea on exertion is a symptom where a person experiences shortness of breath during physical activity,' but the candidate only provides information about its domain and vocabulary without specifying whether it refers to a condition or symptom.",
+            "confidence": 0.527574,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "Major",
+    "tier": "TIER_5_TRUE_AMBIGUITY",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "verdict_none_correct",
+    "composite_confidence": null,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient is experiencing shortness of breath when engaging in physical activity.",
+        "reasoning": "The term 'Major' does not specifically denote shortness of breath during physical activity; it could refer to a major surgical procedure.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Major",
+            "match": false,
+            "reasoning": "The term 'Major' does not specifically denote shortness of breath during physical activity; it could refer to a major surgical procedure.",
+            "confidence": 0.997416,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "Major Surgical or Invasive Procedure refers to a significant surgical operation or other medical procedure that requires substantial intervention and recovery time.",
+        "reasoning": "The term 'Major' in the context of 'Dyspnea on exertion' does not align with a major surgical or invasive procedure as defined by the clinical meaning provided.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Major",
+            "match": false,
+            "reasoning": "The term 'Major' in the context of 'Dyspnea on exertion' does not align with a major surgical or invasive procedure as defined by the clinical meaning provided.",
+            "confidence": 0.999912,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient is experiencing a major symptom of shortness of breath during physical activity.",
+        "reasoning": "The candidate concept 'Major' does not map to the specific symptom of shortness of breath during physical activity as described in the clinical meaning, but rather appears to be a general term used for severity or importance.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Major",
+            "match": false,
+            "reasoning": "The candidate concept 'Major' does not map to the specific symptom of shortness of breath during physical activity as described in the clinical meaning, but rather appears to be a general term used for severity or importance.",
+            "confidence": 0.588127,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "Surgical",
+    "tier": "TIER_5_TRUE_AMBIGUITY",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "verdict_none_correct",
+    "composite_confidence": null,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient has undergone surgery.",
+        "reasoning": "The term 'Surgical' does not specifically indicate that surgery has been performed; it could refer to anything related to surgical procedures.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Surgical",
+            "match": false,
+            "reasoning": "The term 'Surgical' does not specifically indicate that surgery has been performed; it could refer to anything related to surgical procedures.",
+            "confidence": 0.82535,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "Surgical refers to a major surgical procedure that has occurred, contributing to dyspnea on exertion.",
+        "reasoning": "The candidate concept 'Surgical' does not directly align with the provided clinical meaning which specifies a major surgical procedure contributing to dyspnea on exertion.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Surgical",
+            "match": false,
+            "reasoning": "The candidate concept 'Surgical' does not directly align with the provided clinical meaning which specifies a major surgical procedure contributing to dyspnea on exertion.",
+            "confidence": 0.998036,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient underwent a surgical procedure that caused breathing difficulties during physical activity.",
+        "reasoning": "The candidate concept 'Surgical' does not map to the exact entity text due to a spelling difference, but its domain and vocabulary match the clinical meaning of 'Major Surgical or Invasive Procedure', indicating it is a verified brand alias that should be accepted.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Surgical",
+            "match": false,
+            "reasoning": "The candidate concept 'Surgical' does not map to the exact entity text due to a spelling difference, but its domain and vocabulary match the clinical meaning of 'Major Surgical or Invasive Procedure', indicating it is a verified brand alias that should be accepted.",
+            "confidence": 0.583803,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "Invasive Procedure",
+    "tier": "TIER_5_TRUE_AMBIGUITY",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "verdict_none_correct",
+    "composite_confidence": null,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient is currently experiencing difficulty breathing when engaging in physical activity.",
+        "reasoning": "The term 'Open approach' refers specifically to surgical technique and does not describe difficulty breathing during physical activity.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Open approach",
+            "match": false,
+            "reasoning": "The term 'Open approach' refers specifically to surgical technique and does not describe difficulty breathing during physical activity.",
+            "confidence": 0.999958,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "This refers to a major surgical or invasive procedure that has occurred, likely causing dyspnea (difficulty breathing) on exertion.",
+        "reasoning": "The candidate concept 'Open approach' does not directly align with the clinical meaning of a major surgical or invasive procedure that has occurred and likely caused dyspnea on exertion.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Open approach",
+            "match": false,
+            "reasoning": "The candidate concept 'Open approach' does not directly align with the clinical meaning of a major surgical or invasive procedure that has occurred and likely caused dyspnea on exertion.",
+            "confidence": 0.999945,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient underwent a surgical procedure that required entering the body to treat an underlying condition.",
+        "reasoning": "The 'Open approach' concept does not directly relate to the clinical meaning of an invasive procedure for treating an underlying condition, as it is a surgical technique rather than a procedure itself.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Open approach",
+            "match": false,
+            "reasoning": "The 'Open approach' concept does not directly relate to the clinical meaning of an invasive procedure for treating an underlying condition, as it is a surgical technique rather than a procedure itself.",
+            "confidence": 0.571068,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "type 2 diabetes",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.803055,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Type 2 diabetes is an ongoing metabolic disorder characterized by high blood sugar levels due to insulin resistance or a lack of insulin production.",
+        "reasoning": "The entity 'type 2 diabetes' directly corresponds to the condition described in its clinical definition.",
+        "logprob_confidence": 0.971295,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Type 2 diabetes mellitus",
+            "match": true,
+            "reasoning": "The entity 'type 2 diabetes' directly corresponds to the condition described in its clinical definition.",
+            "confidence": 0.971295,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient has type 2 diabetes, which is a chronic condition characterized by high blood sugar levels that can lead to various complications if not managed properly.",
+        "reasoning": "The candidate concept 'Type 2 diabetes mellitus' from SNOMED does not directly align with the specific description of type 2 diabetes provided in the clinical meaning statement.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Type 2 diabetes mellitus",
+            "match": false,
+            "reasoning": "The candidate concept 'Type 2 diabetes mellitus' from SNOMED does not directly align with the specific description of type 2 diabetes provided in the clinical meaning statement.",
+            "confidence": 0.977153,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A chronic condition characterized by high blood sugar levels that can cause a range of health problems.",
+        "reasoning": "The candidate concept 'Type 2 diabetes mellitus' matches the clinical meaning because it is a verified brand alias in SNOMED, which indicates a mathematically verified terminology-database link, and its name closely aligns with the entity text 'type 2 diabetes', despite minor spelling differences.",
+        "logprob_confidence": 0.634815,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Type 2 diabetes mellitus",
+            "match": true,
+            "reasoning": "The candidate concept 'Type 2 diabetes mellitus' matches the clinical meaning because it is a verified brand alias in SNOMED, which indicates a mathematically verified terminology-database link, and its name closely aligns with the entity text 'type 2 diabetes', despite minor spelling differences.",
+            "confidence": 0.634815,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "heart \ndisease",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.659167,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient currently has heart disease as indicated by elevated troponin levels.",
+        "reasoning": "The text 'heart disease' directly corresponds to elevated troponin levels indicating heart issues as per the given clinical meaning.",
+        "logprob_confidence": 0.765979,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Heart disease",
+            "match": true,
+            "reasoning": "The text 'heart disease' directly corresponds to elevated troponin levels indicating heart issues as per the given clinical meaning.",
+            "confidence": 0.765979,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A heart attack has occurred.",
+        "reasoning": "The candidate concept 'Heart disease' matches the clinical meaning because it is listed in SNOMED and its name corresponds to a condition related to heart issues, despite minor spelling differences.",
+        "logprob_confidence": 0.552356,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Heart disease",
+            "match": true,
+            "reasoning": "The candidate concept 'Heart disease' matches the clinical meaning because it is listed in SNOMED and its name corresponds to a condition related to heart issues, despite minor spelling differences.",
+            "confidence": 0.552356,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient has a history of heart disease, which is indicated by his mention of chronic systolic and valvular heart diseases.",
+        "reasoning": "The provided text mentions 'heart disease' but does not specify its type (systolic vs valvular). The candidate concept only covers a general condition without specifying the types mentioned in the context.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Heart disease",
+            "match": false,
+            "reasoning": "The provided text mentions 'heart disease' but does not specify its type (systolic vs valvular). The candidate concept only covers a general condition without specifying the types mentioned in the context.",
+            "confidence": 0.991161,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "Traumatic brain injury",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.791129,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A traumatic brain injury is an acute medical condition caused by external force that results in damage to a patient's brain.",
+        "reasoning": "The entity 'Traumatic brain injury' directly corresponds to the defined condition of an acute medical state caused by external force leading to damage in a patient's brain.",
+        "logprob_confidence": 0.987363,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Traumatic brain injury",
+            "match": true,
+            "reasoning": "The entity 'Traumatic brain injury' directly corresponds to the defined condition of an acute medical state caused by external force leading to damage in a patient's brain.",
+            "confidence": 0.987363,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "Traumatic brain injury refers to an injury caused by external physical force, such as a blow or jolt to the head or body that results in changes to brain function or structure.",
+        "reasoning": "The candidate concept is for 'Condition' but the provided clinical definition refers to an injury caused by external physical force resulting in changes to brain function or structure. This does not align with a general condition category.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Traumatic brain injury",
+            "match": false,
+            "reasoning": "The candidate concept is for 'Condition' but the provided clinical definition refers to an injury caused by external physical force resulting in changes to brain function or structure. This does not align with a general condition category.",
+            "confidence": 0.690144,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has suffered a head injury that caused damage to their brain.",
+        "reasoning": "The candidate concept 'Traumatic brain injury' matches the clinical meaning because its name exactly matches the entity text and it is classified under Condition in SNOMED with a basis of exact_text, indicating a direct mapping to the specified clinical meaning.",
+        "logprob_confidence": 0.594894,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Traumatic brain injury",
+            "match": true,
+            "reasoning": "The candidate concept 'Traumatic brain injury' matches the clinical meaning because its name exactly matches the entity text and it is classified under Condition in SNOMED with a basis of exact_text, indicating a direct mapping to the specified clinical meaning.",
+            "confidence": 0.594894,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "Right",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": null,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The text 'Right' refers to a surgical procedure where an external ventricular drain was placed on the right side, indicating that one of the drainage systems for cerebrospinal fluid was inserted into the patient's body on their right side.",
+        "reasoning": "The candidate concept 'Right' does not directly correspond to the specific surgical procedure described in the provided context.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Right",
+            "match": false,
+            "reasoning": "The candidate concept 'Right' does not directly correspond to the specific surgical procedure described in the provided context.",
+            "confidence": 0.995945,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a right-sided external ventricular drain",
+        "reasoning": "The candidate concept 'Right' matches the clinical meaning because it is verified as an exact text match in the SNOMED vocabulary and its domain aligns with anatomical location.",
+        "logprob_confidence": 0.635612,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Right",
+            "match": true,
+            "reasoning": "The candidate concept 'Right' matches the clinical meaning because it is verified as an exact text match in the SNOMED vocabulary and its domain aligns with anatomical location.",
+            "confidence": 0.635612,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The entity refers to an invasive procedure involving a tube placed in the chest cavity, specifically for draining fluid or air from around the lungs.",
+        "reasoning": "The entity 'Right' does not specifically refer to any invasive procedure involving draining fluid from around the lungs; it merely denotes a direction.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Right",
+            "match": false,
+            "reasoning": "The entity 'Right' does not specifically refer to any invasive procedure involving draining fluid from around the lungs; it merely denotes a direction.",
+            "confidence": 0.785749,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "chest",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": null,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a chest injury requiring drainage of air or fluid",
+        "reasoning": "The candidate concept 'Thoracic structure' matches the clinical meaning because it is a synonym for 'chest', which is present in the entity's text and corresponds to a major surgical or invasive procedure.",
+        "logprob_confidence": 0.567221,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Thoracic structure",
+            "match": true,
+            "reasoning": "The candidate concept 'Thoracic structure' matches the clinical meaning because it is a synonym for 'chest', which is present in the entity's text and corresponds to a major surgical or invasive procedure.",
+            "confidence": 0.567221,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The chest refers to the area of the body between the neck and abdomen, where procedures such as chest tube placement and removal are performed.",
+        "reasoning": "The provided candidate concept 'Thoracic structure' does not directly align with the specific context of chest-related procedures mentioned in the independent statement.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Thoracic structure",
+            "match": false,
+            "reasoning": "The provided candidate concept 'Thoracic structure' does not directly align with the specific context of chest-related procedures mentioned in the independent statement.",
+            "confidence": 0.999523,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The entity refers to an invasive procedure involving a tube inserted into the chest cavity, likely for drainage or ventilation purposes.",
+        "reasoning": "The term 'thoracic structure' is too broad and does not specifically refer to an invasive procedure involving a tube inserted into the chest cavity.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Thoracic structure",
+            "match": false,
+            "reasoning": "The term 'thoracic structure' is too broad and does not specifically refer to an invasive procedure involving a tube inserted into the chest cavity.",
+            "confidence": 0.662928,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "chest tube placement",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.813487,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A chest tube is surgically placed into a patient's left side to drain air, fluid or pus from around their lungs.",
+        "reasoning": "The term 'Insertion of pleural tube drain' closely aligns semantically and clinically to describe placing chest tubes for drainage purposes.",
+        "logprob_confidence": 0.833297,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Insertion of pleural tube drain",
+            "match": true,
+            "reasoning": "The term 'Insertion of pleural tube drain' closely aligns semantically and clinically to describe placing chest tubes for drainage purposes.",
+            "confidence": 0.833297,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A medical procedure where a tube is inserted into the chest cavity to drain fluid or air",
+        "reasoning": "The candidate concept 'Insertion of pleural tube drain' matches the clinical meaning because it is a procedure that involves inserting a tube into the chest cavity to drain fluid or air, as described in the entity's text.",
+        "logprob_confidence": 0.793676,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Insertion of pleural tube drain",
+            "match": true,
+            "reasoning": "The candidate concept 'Insertion of pleural tube drain' matches the clinical meaning because it is a procedure that involves inserting a tube into the chest cavity to drain fluid or air, as described in the entity's text.",
+            "confidence": 0.793676,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "This refers to a procedure where a chest tube is inserted into the patient's chest cavity, typically for purposes of drainage or ventilation.",
+        "reasoning": "The provided candidate concept 'Drainage of pleural cavity via chest tube' does not exactly align with the specific procedure described in the clinical meaning statement ('chest tube insertion into the patient's chest cavity for drainage or ventilation purposes').",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Insertion of pleural tube drain",
+            "match": false,
+            "reasoning": "The proposed concept 'Insertion of pleural tube drain' does not accurately reflect the clinical meaning provided for chest tube placement.",
+            "confidence": 0.995342,
+            "degenerate_generation": false
+          },
+          {
+            "candidate_index": 2,
+            "concept_name": "Opening of chest and insertion of pleural tube drain",
+            "match": false,
+            "reasoning": "The proposed concept 'Opening of chest and insertion of pleural tube drain' does not directly correspond to the specific procedure described in the clinical meaning ('chest tube placement'). While both involve a chest intervention for drainage or ventilation, they are not semantically identical.",
+            "confidence": 0.985702,
+            "degenerate_generation": false
+          },
+          {
+            "candidate_index": 3,
+            "concept_name": "Drainage of pleural cavity via chest tube",
+            "match": false,
+            "reasoning": "The provided candidate concept 'Drainage of pleural cavity via chest tube' does not exactly align with the specific procedure described in the clinical meaning statement ('chest tube insertion into the patient's chest cavity for drainage or ventilation purposes').",
+            "confidence": 0.619133,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "Right EVD placement",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.669674,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient underwent placement of an external ventricular drain in their right chest cavity to manage intracranial pressure or cerebral edema.",
+        "reasoning": "The term 'Exteriorization of brain ventricular shunt' semantically aligns closely to an external ventricular drain placement for managing intracranial pressure.",
+        "logprob_confidence": 0.832951,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Exteriorization of brain ventricular shunt",
+            "match": true,
+            "reasoning": "The term 'Exteriorization of brain ventricular shunt' semantically aligns closely to an external ventricular drain placement for managing intracranial pressure.",
+            "confidence": 0.832951,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient had a surgical procedure to place an external ventricular drain in their right side.",
+        "reasoning": "The candidate concept 'Exteriorization of brain ventricular shunt' matches the clinical meaning because it is a procedure that involves placing an external device to drain cerebrospinal fluid, which aligns with the description of 'Right EVD placement'.",
+        "logprob_confidence": 0.506396,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Exteriorization of brain ventricular shunt",
+            "match": true,
+            "reasoning": "The candidate concept 'Exteriorization of brain ventricular shunt' matches the clinical meaning because it is a procedure that involves placing an external device to drain cerebrospinal fluid, which aligns with the description of 'Right EVD placement'.",
+            "confidence": 0.506396,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "Right external ventricular drain placement is a procedure used to manage excess cerebrospinal fluid in the brain, often following traumatic injuries or surgeries.",
+        "reasoning": "The proposed concept 'Replacement of extracranial ventricular shunt' does not directly correspond to the specific procedure described ('Right external ventricular drain placement'), although it is related. The clinical meaning provided focuses on a right external ventricular drain placement for managing excess cerebrospinal fluid, while the candidate concept refers more generally to replacing any extracranial ventricular shunt.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Exteriorization of brain ventricular shunt",
+            "match": false,
+            "reasoning": "The proposed concept 'Exteriorization of brain ventricular shunt' does not directly align with the specific procedure described ('Right external ventricular drain placement'), although it is related to a type of shunt. The clinical meaning provided focuses on right external ventricular drain placement for managing cerebrospinal fluid, which is more specific than just exteriorizing any brain ventricular shunt.",
+            "confidence": 0.999914,
+            "degenerate_generation": false
+          },
+          {
+            "candidate_index": 2,
+            "concept_name": "Removal of extracranial ventricular shunt",
+            "match": false,
+            "reasoning": "The proposed concept 'Removal of extracranial ventricular shunt' does not accurately reflect the clinical meaning provided for 'Right external ventricular drain placement.' The clinical statement describes a procedure used to manage excess cerebrospinal fluid in the brain, often following traumatic injuries or surgeries. The candidate concept refers to the removal of an extracranial ventricular shunt, which is different from the right external ventricular drain placement described.",
+            "confidence": 0.999933,
+            "degenerate_generation": false
+          },
+          {
+            "candidate_index": 3,
+            "concept_name": "Replacement of extracranial ventricular shunt",
+            "match": false,
+            "reasoning": "The proposed concept 'Replacement of extracranial ventricular shunt' does not directly correspond to the specific procedure described ('Right external ventricular drain placement'), although it is related. The clinical meaning provided focuses on a right external ventricular drain placement for managing excess cerebrospinal fluid, while the candidate concept refers more generally to replacing any extracranial ventricular shunt.",
+            "confidence": 0.999951,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "Tracheostomy",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.898394,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A surgical procedure where an opening is made in the trachea to provide a direct airway for breathing when natural airways are not usable.",
+        "reasoning": "The term 'Tracheostomy' directly corresponds to the surgical procedure described in the independent statement.",
+        "logprob_confidence": 0.910728,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Construction of tracheostomy",
+            "match": true,
+            "reasoning": "The term 'Tracheostomy' directly corresponds to the surgical procedure described in the independent statement.",
+            "confidence": 0.910728,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A surgical procedure to create an opening in the neck for airway access",
+        "reasoning": "The candidate concept 'Construction of tracheostomy' matches the clinical meaning because its name directly corresponds to the entity text 'Tracheostomy', and it is a verified SNOMED terminology-database link.",
+        "logprob_confidence": 0.886061,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Construction of tracheostomy",
+            "match": true,
+            "reasoning": "The candidate concept 'Construction of tracheostomy' matches the clinical meaning because its name directly corresponds to the entity text 'Tracheostomy', and it is a verified SNOMED terminology-database link.",
+            "confidence": 0.886061,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "Tracheostomy is a procedure where a small hole is made in the front of the neck to allow air to reach the lungs.",
+        "reasoning": "The provided candidate concept 'Insertion of tracheostomy tube' does not precisely align with the given clinical meaning which specifies a procedure where a small hole is made in the front of the neck to allow air to reach the lungs.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Construction of tracheostomy",
+            "match": false,
+            "reasoning": "The provided candidate concept 'Construction of tracheostomy' does not accurately reflect the independent determined clinical meaning which is about a procedure where a small hole is made in the front of the neck to allow air to reach the lungs.",
+            "confidence": 0.999749,
+            "degenerate_generation": false
+          },
+          {
+            "candidate_index": 2,
+            "concept_name": "Insertion of tracheostomy tube",
+            "match": false,
+            "reasoning": "The provided candidate concept 'Insertion of tracheostomy tube' does not precisely align with the given clinical meaning which specifies a procedure where a small hole is made in the front of the neck to allow air to reach the lungs.",
+            "confidence": 0.997358,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  }
+]
