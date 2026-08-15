@@ -53,8 +53,8 @@ figures already treat it. Two different "was this correct" answers for the
 same decision would be a bug, not a modeling choice.
 
 Run:
-  python3 evaluation/mollm_trust_tiers.py --out trust_tiers.csv
-  python3 evaluation/mollm_trust_tiers.py --note-ids 10043750-DS-6 --human-audit-csv audit.csv --out trust_tiers.csv
+  python3 evaluation/mollm_trust_tiers.py --out reports/trust_tiers.csv
+  python3 evaluation/mollm_trust_tiers.py --note-ids 10043750-DS-6 --human-audit-csv audit.csv --out reports/trust_tiers.csv
 """
 
 import argparse
@@ -66,7 +66,7 @@ import sys
 
 import duckdb
 
-PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline"
+PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
 
 sys.path.insert(0, PROJECT_DIR)

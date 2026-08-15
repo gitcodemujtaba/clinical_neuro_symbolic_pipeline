@@ -65,8 +65,8 @@ decide whether the model is used at all. A wide AUROC interval spanning 0.5
 means "this model does not discriminate", regardless of how good its ECE looks.
 
 Run:
-  python3 evaluation/cal_eval.py --split val --emit-training-data mollm_cal_train.jsonl
-  python3 scripts/fit_mollm_calibrator.py --train-data mollm_cal_train.jsonl \
+  python3 evaluation/cal_eval.py --split val --emit-training-data reports/mollm_cal_train.jsonl
+  python3 scripts/fit_mollm_calibrator.py --train-data reports/mollm_cal_train.jsonl \
       --out models/mollm_calibrator_v1.pkl
 """
 
