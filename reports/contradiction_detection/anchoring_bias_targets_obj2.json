@@ -1,0 +1,342 @@
+[
+  {
+    "entity_id": "19442119-DS-15-e41d2fe0263",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Anatomy",
+    "original_text": "S2",
+    "top1_concept_name": "Structure of second sacral vertebra",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "S2",
+    "gold_concept_id": "111974005",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "19442119-DS-15-e30ce984141",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Condition",
+    "original_text": "AFib",
+    "top1_concept_name": "Atrial fibrillation",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "AFib w/ RVR",
+    "gold_concept_id": "120041000119109",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "14490470-DS-11-e7dad9859ed",
+    "note_id": "14490470-DS-11",
+    "entity_label": "Anatomy",
+    "original_text": "chest",
+    "top1_concept_name": "Thoracic structure",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "chest tube placement",
+    "gold_concept_id": "264957007",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "14490470-DS-11-e11f33eae94",
+    "note_id": "14490470-DS-11",
+    "entity_label": "Procedure",
+    "original_text": "PEG",
+    "top1_concept_name": "Percutaneous",
+    "top1_score": 1.0,
+    "top1_basis": null,
+    "gold_span": "PEG tube placement",
+    "gold_concept_id": "235159007",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "14490470-DS-11-e1c97f4012c",
+    "note_id": "14490470-DS-11",
+    "entity_label": "Procedure",
+    "original_text": "placement",
+    "top1_concept_name": "Implantation procedure",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "PEG tube placement",
+    "gold_concept_id": "235159007",
+    "old_verdicts": [
+      "INSUFFICIENT_EVIDENCE",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "17751158-DS-19-ed64fe2c9ae",
+    "note_id": "17751158-DS-19",
+    "entity_label": "Qualifier",
+    "original_text": "bloody",
+    "top1_concept_name": "Hemorrhagic",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "bloody cough",
+    "gold_concept_id": "66857006",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "19442119-DS-15-ef18a65ff0e",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Lab Test",
+    "original_text": "systolic",
+    "top1_concept_name": "Systole",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "chronic systolic CHF",
+    "gold_concept_id": "443253003",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "19442119-DS-15-e1858469473",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Condition",
+    "original_text": "CHF",
+    "top1_concept_name": "Congestive heart failure",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "chronic systolic CHF",
+    "gold_concept_id": "443253003",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10043750-DS-6-e865d5b3d75",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "diverticulosis",
+    "top1_concept_name": "Diverticular disease",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "diverticulosis",
+    "gold_concept_id": "724538004",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10043750-DS-6-e38d9769290",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "CKD",
+    "top1_concept_name": "Chronic kidney disease",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "CKD III",
+    "gold_concept_id": "433144002",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10043750-DS-6-eefaa3b31ee",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Anatomy",
+    "original_text": "sclera",
+    "top1_concept_name": "Scleral structure",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "anicteric sclera",
+    "gold_concept_id": "427801009",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10043750-DS-6-e866ee33301",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "cancer",
+    "top1_concept_name": "Malignant neoplastic disease",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "colon cancer",
+    "gold_concept_id": "363406005",
+    "old_verdicts": [
+      "RESOLVED_TO_CANDIDATE_1",
+      "RESOLVED_TO_CANDIDATE_1",
+      "RESOLVED_TO_CANDIDATE_1"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10371195-DS-9-ec52b89473e",
+    "note_id": "10371195-DS-9",
+    "entity_label": "Condition",
+    "original_text": "Ra",
+    "top1_concept_name": "Rheumatoid arthritis",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "Ra",
+    "gold_concept_id": "722742002",
+    "old_verdicts": [
+      "INSUFFICIENT_EVIDENCE",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10371195-DS-9-e20972f2787",
+    "note_id": "10371195-DS-9",
+    "entity_label": "Procedure",
+    "original_text": "placement",
+    "top1_concept_name": "Implantation procedure",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "catheter placement",
+    "gold_concept_id": "45211000",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10371195-DS-9-ec120cbafc8",
+    "note_id": "10371195-DS-9",
+    "entity_label": "Qualifier",
+    "original_text": "fx",
+    "top1_concept_name": "Fractions",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "rib fx",
+    "gold_concept_id": "1261007",
+    "old_verdicts": [
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10371195-DS-9-e7ef985a697",
+    "note_id": "10371195-DS-9",
+    "entity_label": "Symptom",
+    "original_text": "PCA",
+    "top1_concept_name": "Posterior",
+    "top1_score": 1.0,
+    "top1_basis": null,
+    "gold_span": "PCA",
+    "gold_concept_id": "241716000",
+    "old_verdicts": [
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10848570-DS-12-e9318779e72",
+    "note_id": "10848570-DS-12",
+    "entity_label": "Anatomy",
+    "original_text": "LAD",
+    "top1_concept_name": "Structure of left anterior descending artery",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "LAD",
+    "gold_concept_id": "30746006",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10848570-DS-12-e8fdc58e4be",
+    "note_id": "10848570-DS-12",
+    "entity_label": "Procedure",
+    "original_text": "Placement",
+    "top1_concept_name": "Implantation procedure",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "Central Venous Line Placement",
+    "gold_concept_id": "1172566008",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10848570-DS-12-ee0b26a30f2",
+    "note_id": "10848570-DS-12",
+    "entity_label": "Qualifier",
+    "original_text": "C5",
+    "top1_concept_name": "Fifth",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "C5",
+    "gold_concept_id": "36978003",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10848570-DS-12-e91bd8d3956",
+    "note_id": "10848570-DS-12",
+    "entity_label": "Qualifier",
+    "original_text": "C6",
+    "top1_concept_name": "Sixth",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "C6",
+    "gold_concept_id": "36054005",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "name_word_overlap": 0.0
+  }
+]

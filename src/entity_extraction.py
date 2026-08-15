@@ -54,6 +54,7 @@ scripts/test_*.py smoke tests still index tuples and need updating.
 import os
 import json
 import hashlib
+import re
 import duckdb
 from gliner import GLiNER
 import warnings
@@ -368,6 +369,20 @@ def ensure_extracted_entities_table(conn):
         # keep-not-delete policy as superseded_by_split.
         "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS grown_from VARCHAR;",
         "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS superseded_by_growth BOOLEAN DEFAULT FALSE;",
+        # 2026-08-15 (Implementation_Checklist.md Stage 1/2a item: "silent
+        # truncation on long notes"). GLiNER's own word-level tokenizer
+        # silently truncates input over model.config.max_len (2048 for this
+        # checkpoint) via a UserWarning that this module's blanket
+        # warnings.filterwarnings("ignore") (top of file) was swallowing
+        # entirely -- truncation was happening with no record of it anywhere.
+        # extract_and_store_entities() now captures that warning explicitly
+        # per note (see the predict_entities() call site) rather than relying
+        # on it surfacing to a human. NOTE-level facts, written identically
+        # onto every entity row for that note -- same redundant-but-simple
+        # convention gliner_model_version/extraction_threshold already use,
+        # not a new note-level table.
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS possibly_truncated BOOLEAN DEFAULT FALSE;",
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS gliner_input_token_count INT;",
     ]:
         conn.sql(ddl)
 
@@ -402,6 +417,7 @@ def store_entities(conn, processed_entities: list, is_test: bool = False):
         e["crosses_sentence_boundary"], json.dumps(e["sentence_ids_spanned"]),
         e.get("compound_split_of"), e.get("superseded_by_split", False),
         e.get("grown_from"), e.get("superseded_by_growth", False),
+        e.get("possibly_truncated", False), e.get("gliner_input_token_count"),
     ) for e in processed_entities]
 
     # DO UPDATE rather than DO NOTHING: re-running a note after a model or
@@ -420,8 +436,9 @@ def store_entities(conn, processed_entities: list, is_test: bool = False):
      section_name, sentence_id, local_context, expansion_ambiguous,
      candidate_expansions, selection_basis, gliner_model_version, extraction_threshold,
      below_threshold, flat_ner, crosses_sentence_boundary, sentence_ids_spanned,
-     compound_split_of, superseded_by_split, grown_from, superseded_by_growth)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+     compound_split_of, superseded_by_split, grown_from, superseded_by_growth,
+     possibly_truncated, gliner_input_token_count)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT (note_id, orig_start, orig_end, entity_label) DO UPDATE SET
         expanded_text = EXCLUDED.expanded_text,
         original_text = EXCLUDED.original_text,
@@ -453,12 +470,14 @@ def store_entities(conn, processed_entities: list, is_test: bool = False):
         compound_split_of = EXCLUDED.compound_split_of,
         superseded_by_split = EXCLUDED.superseded_by_split,
         grown_from = EXCLUDED.grown_from,
-        superseded_by_growth = EXCLUDED.superseded_by_growth;
+        superseded_by_growth = EXCLUDED.superseded_by_growth,
+        possibly_truncated = EXCLUDED.possibly_truncated,
+        gliner_input_token_count = EXCLUDED.gliner_input_token_count;
     """, rows)
 
 
-def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str, conn,
-                               is_test: bool = False):
+def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str,
+                               provenance: dict, conn, is_test: bool = False):
     """Runs GLiNER on expanded text, reconciles offsets, attaches assertion /
     section / context metadata, and stores in DuckDB.
 
@@ -468,17 +487,18 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str, 
     is_test flags these rows as coming from a test/smoke-test run rather than
     production ingest, so extracted_entities rows can be traced back to (and
     purged for) the same test note without touching real data.
+
+    `provenance` (2026-08-15, Implementation_Checklist.md's Stage 2a
+    pure-function item): the caller's own Stage 1 output, passed in rather
+    than re-queried from `note_expansions` here. `run_pipeline()`
+    (src/clinical_pipeline.py) already holds this from
+    `process_and_store_note()` moments earlier -- re-fetching an identical
+    copy from the DB was a redundant read with no purpose beyond convenience,
+    and it was the one remaining DB touch keeping this function from being a
+    pure compute step ahead of the explicit `store_entities()` persist call
+    below. Every caller must now have already run Stage 1 and be holding its
+    provenance dict; there is no fallback DB read.
     """
-
-    # 1. Fetch provenance log from Stage 1
-    prov_row = conn.sql(
-        "SELECT provenance FROM note_expansions WHERE note_id = ?", params=[note_id]
-    ).fetchone()
-    if not prov_row:
-        print(f"⚠️ No provenance found for {note_id}. Did it pass through Stage 1?")
-        return []
-
-    provenance = json.loads(prov_row[0])
     expansions = provenance.get("expansions", [])
     sections = provenance.get("sections", [])
     sentences = provenance.get("sentences", [])
@@ -493,9 +513,30 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str, 
     # Extracted at the LOWER floor; the split into accepted vs below-threshold
     # happens per-entity below. One model call, not two.
     floor = SUBTHRESHOLD_FLOOR if RETAIN_SUBTHRESHOLD else EXTRACTION_THRESHOLD
-    raw_entities = model.predict_entities(
-        expanded_text, CLINICAL_LABELS, threshold=floor, flat_ner=FLAT_NER
-    )
+    # 2026-08-15: catch GLiNER's own truncation UserWarning
+    # ("Sentence of length {num_tokens} has been truncated to {max_len}",
+    # gliner/data_processing/processor.py) explicitly, scoped to just this
+    # call -- NOT by touching the module-level warnings.filterwarnings(
+    # "ignore") above, which suppresses other, unrelated library warnings
+    # this module has no reason to newly surface. Long notes (mean ~10,257
+    # chars, max 24,858) can exceed model.config.max_len=2048 word-tokens for
+    # this checkpoint and were being silently truncated with zero record of
+    # it. This does not fix truncation (that needs chunk-and-merge extraction,
+    # a bigger feature deliberately not built here -- see
+    # Implementation_Checklist.md) -- it makes it measurable.
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        raw_entities = model.predict_entities(
+            expanded_text, CLINICAL_LABELS, threshold=floor, flat_ner=FLAT_NER
+        )
+    possibly_truncated = False
+    gliner_input_token_count = None
+    for w in caught:
+        m = re.search(r"Sentence of length (\d+) has been truncated to (\d+)", str(w.message))
+        if m:
+            possibly_truncated = True
+            gliner_input_token_count = int(m.group(1))
+            break
 
     # 3. Assertion detection over the SAME text and coordinate system GLiNER
     #    produced the spans in -- no offset mapping happens inside
@@ -633,6 +674,8 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str, 
             "superseded_by_split": False,
             "grown_from": None,
             "superseded_by_growth": False,
+            "possibly_truncated": possibly_truncated,
+            "gliner_input_token_count": gliner_input_token_count,
         })
 
     store_entities(conn, processed_entities, is_test)

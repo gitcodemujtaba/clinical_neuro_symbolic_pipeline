@@ -1,0 +1,502 @@
+[
+  {
+    "entity_id": "10043750-DS-6-e865d5b3d75",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "diverticulosis",
+    "top1_concept_name": "Diverticular disease",
+    "top1_score": 1.0,
+    "gold_span": "diverticulosis",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'diverticulosis' from the clinical note refers to a condition affecting the intestine. The candidate concept 'Diverticular disease (OMOP 4266809, SNOMED/Condition)' also refers to a disorder of the intestine involving diverticula. Both meanings align with each other and are consistent with the context provided in the patient's medical history which mentions 'diverticulosis'.",
+      "The extracted text 'diverticulosis' refers to a condition affecting the intestine. The candidate concept 'Diverticular disease (OMOP 4266809, SNOMED/Condition, match tier 2 (Synonym), score 1.0, basis synonym)' is also related to a disorder of the intestine and shares a similar name. Given the context of progressive macular hypomelanosis, degenerative joint disease, sciatica, b/l blepharitis, and other conditions listed in the PMH section, it is reasonable to conclude that 'diverticulosis' refers to this concept.",
+      "(1) The extracted text 'diverticulosis' refers to a medical condition related to diverticula in the intestine. (2) Diverticular disease is defined as an abnormal protrusion of tissue through weak spots, typically involving parts like the colon or rectum; it can be associated with inflammation and infection known collectively as diverticulitis when symptomatic. The candidate concept 'Diverticular disease' refers broadly to disorders related to these intestinal structures but does not specifically denote a condition characterized by chronic symptoms such as those implied in 'diverticulosis'. (3) While both terms relate closely, the specific clinical context of progressive macular hypomelanosis and other conditions listed suggests that merely stating diverticulosis without further specification may lack sufficient detail for accurate diagnosis or treatment planning. Therefore, additional information is needed to confirm if this concept assignment accurately reflects 'diverticulosis' as intended in a medical setting."
+    ]
+  },
+  {
+    "entity_id": "10043750-DS-6-e38d9769290",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "CKD",
+    "top1_concept_name": "Chronic kidney disease",
+    "top1_score": 1.0,
+    "gold_span": "CKD III",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'CKD' refers to 'chronic kidney disease'. The candidate concept 'Chronic kidney disease (OMOP 46271022, SNOMED/Condition)' is a correct label for the entity as it matches the clinical context provided in the PMH section. Chronic kidney disease III is listed under Comorbid conditions (Finding) which aligns with the statement that chronic kidney disease is one of the comorbid conditions commonly present in heart failure patients, contributing to admission decisions and prolonging hospital length of stay.",
+      "The extracted text 'CKD' refers to chronic kidney disease. The candidate concept Chronic kidney disease (OMOP 46271022) is a condition of the genitourinary system and is often comorbid with other conditions like hypertension, which are mentioned in the patient's PMH. According to guideline rule IS_PART_OF::urn:uuid:7ece2934-aa82-468e-a744-85b8fae3d33b->urn:uuid:fe4e771a-f44a-44d1-af49-ad8addaa9d30, chronic kidney disease is one of the comorbid conditions commonly present in heart failure patients. Therefore, the concept assignment is supported by the evidence.",
+      "(1) The extracted text 'CKD' refers to a medical condition related to kidney disease. (2) Chronic kidney disease is defined as chronic impairment of renal function or structure and/or abnormalities in urinary excretion that are not reversible by conservative measures, which agrees with the meaning provided for CKD after abbreviation expansion ('chronic kidney disease'). (3) The evidence supports this concept assignment because it states 'Chronic kidney disease \u2014[IS_PART_OF]\u2192 Comorbid conditions' indicating chronic kidney disease is a comorbidity in heart failure patients and thus relevant to hospital discharge decisions."
+    ]
+  },
+  {
+    "entity_id": "10043750-DS-6-eefaa3b31ee",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Anatomy",
+    "original_text": "sclera",
+    "top1_concept_name": "Scleral structure",
+    "top1_score": 1.0,
+    "gold_span": "anicteric sclera",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'sclera' refers to the scleral structure of the eye. The candidate concept Scleral structure (OMOP 4091162) matches this meaning as it is a synonym for Sclera and/or iris structures; Fibrous tunic of eye structure, which includes the sclera. Therefore, the candidate concept fits with the surrounding clinical context.",
+      "The extracted text 'sclera' refers to a specific anatomical structure of the eye. The candidate concept Scleral structure is a synonym for this entity and shares its meaning. Although no guideline evidence was retrieved, the context suggests that the patient's current condition (anicteric sclera) implies a correct assignment of the concept Scleral structure. Therefore, based on medical terminology knowledge, I support this concept assignment.",
+      "(1) The extracted text 'sclera' refers to a part of anatomy related to vision. (2) Scleral structure is an anatomical term referring specifically to the white outer layer surrounding and protecting structures within the eye such as muscles, nerves, blood vessels; it also includes parts like cornea or iris in its broader context which fits with 'sclera'. (3) The meanings agree perfectly."
+    ]
+  },
+  {
+    "entity_id": "10043750-DS-6-e866ee33301",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "cancer",
+    "top1_concept_name": "Malignant neoplastic disease",
+    "top1_score": 1.0,
+    "gold_span": "colon cancer",
+    "old_verdicts": [
+      "RESOLVED_TO_CANDIDATE_1",
+      "RESOLVED_TO_CANDIDATE_1",
+      "RESOLVED_TO_CANDIDATE_1"
+    ],
+    "new_verdicts": [
+      "RESOLVED_TO_CANDIDATE_1",
+      "RESOLVED_TO_CANDIDATE_1",
+      "RESOLVED_TO_CANDIDATE_1"
+    ],
+    "new_mode": "resolution",
+    "new_reasonings": [
+      "The entity 'cancer' refers to the clinical condition of cancer. The candidate concept Malignant neoplastic disease (OMOP 443392, SNOMED/Condition) is a synonym for cancer and is-a Neoplastic disease. This aligns with the context provided in the discharge diagnosis where it mentions 'Right colon cancer'.",
+      "The entity refers to a specific type of cancer. The context mentions 'Right colon cancer', which suggests that the entity is referring to a particular location and type of cancer. Candidate concept 1, Malignant neoplastic disease (OMOP 443392), matches this description more closely than candidate concept 2, Malignant neoplasm (OMOP 37153816).",
+      "(1) The extracted text 'cancer' refers to a type of neoplastic disease. (2) Malignant neoplastic disease means cancer that is malignant and involves abnormal cell growth, which fits the context better than just any malignancy or tumor without specifying it as neoplastic. (3) These meanings agree in this clinical setting."
+    ]
+  },
+  {
+    "entity_id": "10371195-DS-9-ec52b89473e",
+    "note_id": "10371195-DS-9",
+    "entity_label": "Condition",
+    "original_text": "Ra",
+    "top1_concept_name": "Rheumatoid arthritis",
+    "top1_score": 1.0,
+    "gold_span": "Ra",
+    "old_verdicts": [
+      "INSUFFICIENT_EVIDENCE",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'rheumatoid arthritis' from the clinical note refers to a specific medical condition. The candidate concept 'Rheumatoid arthritis (OMOP 80809, SNOMED/Condition)' matches this meaning as it is-a Autoimmune disease and Arthritis. Although the abbreviation expansion provided was 'right atrium', which does not align with the context of the clinical note, the text itself clearly refers to rheumatoid arthritis. Given that no guideline evidence contradicts or supports this mapping, we must rely on the surrounding context to judge correctness. The term is used in a manner consistent with its definition as a medical condition and fits within the provided clinical scenario.",
+      "The extracted text 'Ra' likely refers to a medical abbreviation for 'Right atrium', given its context in the Physical Exam section and the extractor label. The candidate concept Rheumatoid arthritis is not supported by any guideline evidence, but it shares some words with the correct expansion of 'Right atrium'. Without further information or clarification on which expansion was intended, I cannot confidently assign this concept.",
+      "(1) The extracted text 'Ra' alone does not clearly indicate a medical condition. (2) Rheumatoid arthritis is an autoimmune disease and type of Arthritis as per the candidate concept details provided by OMOP 80809, SNOMED/Condition with exact match_text basis. However, without additional context or evidence linking 'Ra' to rheumatoid arthritis specifically in this clinical note excerpt, it cannot be conclusively determined that 'Ra' refers exclusively to Rheumatoid arthritis and not another condition abbreviated as such (e.g., right atrium)."
+    ]
+  },
+  {
+    "entity_id": "10371195-DS-9-e20972f2787",
+    "note_id": "10371195-DS-9",
+    "entity_label": "Procedure",
+    "original_text": "placement",
+    "top1_concept_name": "Implantation procedure",
+    "top1_score": 1.0,
+    "gold_span": "catheter placement",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'placement' refers to the act of placing something in a specific location. The candidate concept 'Implantation procedure (OMOP 37204304, SNOMED/Procedure)' means introducing an object or substance into another part of the body for therapeutic purposes. In this context, 'Epidural catheter placement' is described as placing an epidural catheter, which aligns with the concept meaning of introduction procedures. Therefore, the candidate concept correctly labels the extracted text.",
+      "The extracted text 'placement' refers to a procedure performed on the patient (as indicated by the assertion PRESENT / experiencer: PATIENT). The candidate concept Implantation procedure is a synonym for this meaning. Although no guideline evidence was retrieved, the context of the note and the extractor label Procedure suggest that implantation placement is indeed a correct label for this text span.",
+      "(1) The extracted text 'placement' refers to a position where something has been put. (2) Implantation procedure is an introduction of material into the body for therapeutic or diagnostic purposes; it can involve placing devices, tissues, etc., within bodily structures. (3) While both terms relate broadly to inserting materials inside the human anatomy and could be considered synonymous in some contexts related to medical procedures, there isn't enough specific evidence provided here from clinical guidelines that directly links 'placement' with an implantation procedure as defined by OMOP 37204304."
+    ]
+  },
+  {
+    "entity_id": "10371195-DS-9-ec120cbafc8",
+    "note_id": "10371195-DS-9",
+    "entity_label": "Qualifier",
+    "original_text": "fx",
+    "top1_concept_name": "Fractions",
+    "top1_score": 1.0,
+    "gold_span": "rib fx",
+    "old_verdicts": [
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_verdicts": [
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'fx' after abbreviation expansion means 'fractions'. The candidate concept 'Fractions (OMOP 4081834, SNOMED/Meas Value)' is a correct label for the entity as it matches the clinical context provided in the note. However, since no guideline evidence was retrieved to support or contradict this mapping, we cannot definitively judge whether this assignment is correct based solely on the given information.",
+      "The extracted text 'fx' likely refers to a medical abbreviation for fractions (as suggested by the extractor label), but without context or guideline evidence, it's unclear if this is the correct reading. The surrounding clinical notes mention various medical conditions and procedures, including bilateral rib fractions, which could be related to the 'fractions' concept. However, other expansions like 'fracture' are also possible due to the ambiguity in the abbreviation expansion. Further information would be needed to confirm or rule out this assignment.",
+      "(1) The extracted text 'fx' could mean either fractions (as expanded from its abbreviation form in medical context referring to rib fractures or clavicular injuries), which is a plausible reading given the surrounding clinical notes mentioning ribs and clavi. However, it also commonly means 'feet', but this meaning does not fit well with the rest of the sentence structure here.\n(2) The candidate concept refers specifically to fractions (OMOP 4081834).\n(3) Without additional context or guideline evidence that confirms whether 'fx' in this instance is referring to medical conditions like rib fractures, we cannot conclusively determine if it matches. Therefore, there isn't enough information provided by the EVIDENCE block alone."
+    ]
+  },
+  {
+    "entity_id": "10371195-DS-9-e7ef985a697",
+    "note_id": "10371195-DS-9",
+    "entity_label": "Symptom",
+    "original_text": "PCA",
+    "top1_concept_name": "Posterior",
+    "top1_score": 1.0,
+    "gold_span": "PCA",
+    "old_verdicts": [
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The entity 'PCA' after abbreviation expansion means 'Posterior Carotid Artery'. The candidate concept is 'Posterior (OMOP 4116868, SNOMED/Observation, match tier 1 (Exact), score 1.0, basis semantic_similarity)', which is a General site descriptor. In the context of the clinical note discussing pain management and epidural use at Denver Health Center for Eating Disorders and Severe Malnutrition, 'Posterior Carotid Artery' fits as it refers to an anatomical structure used in intravenous administration of medications. The term matches the description provided in the text.",
+      "The extracted text 'PCA' could refer to either 'Posterior Carotid Artery' (given the extractor label and assertion) or other possible expansions like 'patient controlled analgesia', which is mentioned in the context. The candidate concept 'Posterior' does not directly match any of these possibilities, making it unclear whether this assignment is correct without further information.",
+      "(1) The extracted text 'PCA' refers to an abbreviation that could mean different things in a medical context. (2) Posterior Carotid Artery is one of the possible expansions for PCA mentioned as having multiple known meanings, but without additional clinical details or patient history provided here, it's unclear which specific meaning was intended by the original text 'PCA'."
+    ]
+  },
+  {
+    "entity_id": "10848570-DS-12-e9318779e72",
+    "note_id": "10848570-DS-12",
+    "entity_label": "Anatomy",
+    "original_text": "LAD",
+    "top1_concept_name": "Structure of left anterior descending artery",
+    "top1_score": 1.0,
+    "gold_span": "LAD",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'LAD' refers to the left anterior descending artery. The candidate concept 'Structure of left anterior descending artery (OMOP 4245039, SNOMED/Spec Anatomic Site)' is a synonym for the anatomical structure and does not directly address whether there is an actual presence or absence of this artery in the patient's neck as described in the context. The evidence provided does not contain any information about the presence or absence of arteries in patients' necks, thus we cannot determine if the candidate concept fits the clinical context based solely on the given information.",
+      "The extracted text 'LAD' refers to a medical abbreviation that has multiple known expansions. The chosen expansion 'left anterior descending artery' is based on the extractor label's confidence score (0.5986149311065674), but this does not necessarily mean it is the correct reading given the context of the note. Without guideline evidence, I must consider whether the candidate concept matches the surrounding clinical context. The note mentions a regular rate and rhythm, tachy, and no murmurs in the neck section, which does not directly relate to the left anterior descending artery. Therefore, I cannot confidently support or contradict this assignment based on the provided evidence.",
+      "(1) The extracted text 'LAD' refers to an abbreviation that could stand for multiple anatomical structures. (2) Without context, it is unclear whether the candidate concept means a structure of left anterior descending artery or another entity with similar acronym expansion like lesional atopic dermatitis which are not related anatomically and temporally in this clinical note focused on neck anatomy assessment."
+    ]
+  },
+  {
+    "entity_id": "10848570-DS-12-e8fdc58e4be",
+    "note_id": "10848570-DS-12",
+    "entity_label": "Procedure",
+    "original_text": "Placement",
+    "top1_concept_name": "Implantation procedure",
+    "top1_score": 1.0,
+    "gold_span": "Central Venous Line Placement",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'Placement' refers to a procedure of placing something in a specific location. The candidate concept 'Implantation procedure (OMOP 37204304, SNOMED/Procedure)' also means a procedure where something is placed or introduced into the body. Both meanings align with each other as they both describe procedures involving placement.",
+      "The extracted text 'Placement' refers to a procedure performed on a patient (as indicated by the assertion PRESENT/experiencer PATIENT/temporality HISTORICAL). The candidate concept Implantation procedure is a synonym for Placement, and it is an introduction procedure. Given that there is no guideline evidence retrieved, I am relying on my knowledge of medical terminology to judge whether this text correctly refers to the concept Implantation procedure. Therefore, I conclude that the assignment is supported.",
+      "(1) The extracted text 'Placement' refers to a procedure involving placing something into position. (2) Implantation procedure means introducing an implant or device surgically; it is not synonymous with the general term for placement of any object, such as feeding tubes which are placed non-surgically and do not involve implantation in its strict sense. (3) The meanings agree only partially because 'implantation' implies a surgical context while 'placement' does not necessarily imply surgery or implanting."
+    ]
+  },
+  {
+    "entity_id": "10848570-DS-12-ee0b26a30f2",
+    "note_id": "10848570-DS-12",
+    "entity_label": "Qualifier",
+    "original_text": "C5",
+    "top1_concept_name": "Fifth",
+    "top1_score": 1.0,
+    "gold_span": "C5",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'fifth' refers to a ordinal number indicating position. The candidate concept 'Fifth (OMOP 4136808, SNOMED/Meas Value)' also represents an ordinal number and is used in the clinical context of describing spinal vertebrae positions. Therefore, it fits the surrounding clinical context.",
+      "The extracted text 'C5' refers to a cervical spine vertebra. The candidate concept 'Fifth' is an ordinal number and matches this meaning in the context of the minimally invasive lumbar decompression procedure described. Although no guideline evidence was retrieved, the clinical context strongly supports this interpretation.",
+      "(1) The extracted text 'C5' refers to a specific vertebra in an anatomical context. (2) The candidate concept is the ordinal number Fifth or General adjectival modifier referring to position five on something, such as part of anatomy like cervical spine vertebrae. (3) While both refer to numerical positioning and could be related anatomically ('C5' being fifth), there isn't enough evidence in this snippet alone that confirms 'fifth' is the correct label for 'C5'. The context provided does not explicitly confirm or deny it as a qualifier."
+    ]
+  },
+  {
+    "entity_id": "10848570-DS-12-e91bd8d3956",
+    "note_id": "10848570-DS-12",
+    "entity_label": "Qualifier",
+    "original_text": "C6",
+    "top1_concept_name": "Sixth",
+    "top1_score": 1.0,
+    "gold_span": "C6",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'C6' refers to the ordinal number six. The candidate concept Sixth (OMOP 4203150, SNOMED/Meas Value) matches this meaning as it is an Ordinal number and fits within the context of describing a cervical spine vertebra level. Therefore, based on the surrounding clinical note which mentions 'sixth cervical spine vertebra', the candidate concept is supported by the evidence.",
+      "The extracted text 'C6' refers to a numerical value (ordinal number), and the candidate concept 'Sixth' is an ordinal number. The context of minimally invasive lumbar decompression suggests that the patient's current condition involves a specific level of cervical spine vertebrae, which aligns with the meaning of 'sixth'. Although no guideline evidence was retrieved, this reasoning is based on medical terminology knowledge and does not rely on external information.",
+      "(1) The extracted text 'C6' refers to a specific vertebra in clinical context. (2) The candidate concept means an ordinal number indicating the sixth position or item within a sequence; specifically related to anatomy as it pertains to cervical spine levels. (3) While both refer to something being at level six, there is no direct evidence linking 'C6' from the text with its expanded meaning of 'sixth vertebra'. The abbreviation and full term are used interchangeably in medical contexts but without explicit guideline confirmation connecting them directly."
+    ]
+  },
+  {
+    "entity_id": "14490470-DS-11-e7dad9859ed",
+    "note_id": "14490470-DS-11",
+    "entity_label": "Anatomy",
+    "original_text": "chest",
+    "top1_concept_name": "Thoracic structure",
+    "top1_score": 1.0,
+    "gold_span": "chest tube placement",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'chest' refers to a part of the body. The candidate concept 'Thoracic structure (OMOP 4199473, SNOMED/Spec Anatomic Site)' is specifically related to thoracic structures and sites, including parts of the chest such as the thorax. Since the context mentions procedures involving chest tubes and external ventricular drains, it aligns with the concept meaning of 'chest' in this clinical scenario.",
+      "The extracted text 'chest' refers to a body region. The candidate concept Thoracic structure (OMOP 4199473) is a valid label for this entity, as it describes the anatomical location of the thorax. Although no guideline evidence was retrieved, the context suggests that the procedure involves surgical interventions in the chest area, which supports the assignment of 'chest' to this concept.",
+      "(1) The extracted text 'chest' refers to a part of anatomy. (2) Thoracic structure is an anatomical concept that includes the chest region as one of its parts or segments; it encompasses both thorax and abdomen, which can include structures like ribs in relation to the term 'chest'. However, without further context from surrounding sentences about whether this procedure specifically involved work on a rib cage versus other aspects such as lungs within the thoracic cavity (e.g., pleura), we cannot conclusively determine if it was indeed related solely or primarily to chest anatomy. The evidence provided does not give enough detail for an accurate judgment."
+    ]
+  },
+  {
+    "entity_id": "14490470-DS-11-e11f33eae94",
+    "note_id": "14490470-DS-11",
+    "entity_label": "Procedure",
+    "original_text": "PEG",
+    "top1_concept_name": "Percutaneous",
+    "top1_score": 1.0,
+    "gold_span": "PEG tube placement",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'PEG' refers to percutaneous endoscopic gastrostomy (PEEG), which is a procedure for placing a gastrostomy tube. The candidate concept 'Percutaneous endoscopic gastrostomy' matches this meaning exactly, as it is-a Operation on stomach; Percutaneous placement of gastrostomy tube. This match is supported by the context provided in the clinical note where the patient underwent percutaneous endoscopic gastrostomy tube placement.",
+      "The extracted text 'PEG' refers to a medication (Polyethylene Glycol), but in the context of a hospital course and tube feeding recommendations, it is more likely that 'PEG' refers to Percutaneous Endoscopic Gastrostomy. The extractor label Procedure with high confidence supports this interpretation. Although no guideline evidence was retrieved, the clinical context strongly suggests that Percutaneous Endoscopic Gastrostomy is the intended meaning of 'PEG'.",
+      "(1) The extracted text 'PEG' refers to an abbreviation that could stand for either 'percutaneous endoscopic gastrostomy' or another meaning. (2) Percutaneous endoscopic gastrostomy is a specific medical procedure involving the placement of a tube into the stomach through abdominal wall puncture, guided by percutaneous and endoscopic techniques using polyethylene-glycol as an adhesive agent to seal incisions after removal; however, PEG can also refer to 'polyethylene glycol', which does not match this context. (3) Without additional contextual information or guideline evidence that confirms whether 'PEG' in the clinical note refers specifically to a gastrostomy tube placement procedure rather than another use of polyethylene-glycol for medication administration via an IV drip, it is impossible to determine if PEG as used here aligns with Percutaneous endoscopic gastrostomy."
+    ]
+  },
+  {
+    "entity_id": "14490470-DS-11-e1c97f4012c",
+    "note_id": "14490470-DS-11",
+    "entity_label": "Procedure",
+    "original_text": "placement",
+    "top1_concept_name": "Implantation procedure",
+    "top1_score": 1.0,
+    "gold_span": "PEG tube placement",
+    "old_verdicts": [
+      "INSUFFICIENT_EVIDENCE",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'placement' refers to a procedure of placing something (in this case, a tube) in the body. The candidate concept 'Implantation procedure' is also related to procedures involving placement or introduction into the body. Given that the context mentions percutaneous endoscopic gastrostomy tube placement, which involves inserting a tube for feeding purposes, the extracted text and the candidate concept align with each other.",
+      "The extracted text 'placement' has a high confidence match with Procedure (0.991287887096405), but its meaning is ambiguous due to the presence of multiple known expansions ['percutaneous endoscopic gastrostomy', 'polyethylene-glycol']. The context suggests that the procedure was performed on a patient, which aligns with one possible expansion, but does not rule out other possibilities. Without further information or guideline evidence, it is unclear whether this assignment is correct.",
+      "(1) The extracted text 'placement' refers to an action taken during a medical procedure. (2) Implantation procedure means introducing something into the body as part of treatment or surgery; it is related but not identical in meaning compared to just 'placement'. (3) Without additional context, it's unclear if 'implantation procedure' accurately describes what happened with percutaneous endoscopic gastrostomy tube placement."
+    ]
+  },
+  {
+    "entity_id": "17751158-DS-19-ed64fe2c9ae",
+    "note_id": "17751158-DS-19",
+    "entity_label": "Qualifier",
+    "original_text": "bloody",
+    "top1_concept_name": "Hemorrhagic",
+    "top1_score": 1.0,
+    "gold_span": "bloody cough",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'bloody' after abbreviation expansion means a bleeding condition. The candidate concept 'Hemorrhagic (OMOP 4116701, SNOMED/Meas Value)' refers to hemorrhage or bleeding. In the context of the discharge instructions provided, which mention symptoms such as bloody cough and other concerning symptoms like fever, the use of 'bloody' aligns with a concept related to bleeding. Therefore, based on the clinical guideline evidence not retrieved but given the synonym tolerance for clinical terms, this assignment is supported.",
+      "The extracted text 'bloody' refers to a bloody cough. The candidate concept Hemorrhagic (OMOP 4116701) is a synonym for Causal appearances, which could be related to the patient's condition. Although no guideline evidence was retrieved, the context of discharge instructions and symptoms suggests that this concept assignment might be correct. I am using my knowledge of medical terminology and clinical concepts as the reasoning basis.",
+      "(1) The extracted text 'bloody' refers to a symptom that could be associated with various conditions. (2) Hemorrhagic is defined as causing or characterized by bleeding; it can refer to the presence of blood in bodily fluids, which aligns semantically but not necessarily clinically without more context. (3) Without guideline evidence showing how this concept relates specifically and exclusively to 'bloody cough', we cannot confirm that hemorrhagic directly refers to a bloody cough."
+    ]
+  },
+  {
+    "entity_id": "19442119-DS-15-e41d2fe0263",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Anatomy",
+    "original_text": "S2",
+    "top1_concept_name": "Structure of second sacral vertebra",
+    "top1_score": 1.0,
+    "gold_span": "S2",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'S2' refers to the second sacral vertebra. The candidate concept 'Structure of second sacral vertebra (OMOP 4036687, SNOMED/Spec Anatomic Site)' also refers to a part of the second sacral vertebra. Both meanings are consistent with each other as they both pertain to anatomical structures within the second sacral vertebra.",
+      "The extracted text 'S2' refers to a specific sacral vertebra. The candidate concept 'Structure of second sacral vertebra' is a synonym for the OMOP 4036687 code, which represents the anatomical site of the second sacral vertebra. Given its context in the sentence describing normal anatomy and location of murmurs, this interpretation seems plausible. However, without explicit guideline evidence to confirm or deny it, I must rely on my knowledge of medical terminology and clinical concepts to make this judgment.",
+      "(1) The extracted text 'S2' refers to a numerical designation commonly used in medical imaging and anatomy. (2) The candidate concept is Structure of second sacral vertebra which directly corresponds with the anatomical reference indicated by 'S2'. (3) These meanings agree as both refer to an aspect related to bone structure, specifically at this location."
+    ]
+  },
+  {
+    "entity_id": "19442119-DS-15-e30ce984141",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Condition",
+    "original_text": "AFib",
+    "top1_concept_name": "Atrial fibrillation",
+    "top1_score": 1.0,
+    "gold_span": "AFib w/ RVR",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'AFib' refers to atrial fibrillation. The candidate concept Atrial fibrillation (OMOP 313217, SNOMED/Condition) matches the context of atrial fibrillation mentioned in the clinical note. The guideline evidence supports that atrial fibrillation is a condition requiring interventions such as catheter ablation and chronic anticoagulation with DOACs preferred over warfarin for patients at risk. This aligns with the mention of 'atriial fibrillation w/ rapid ventricular response' in the context, indicating that Atrial fibrillation (OMOP 313217) is a correct label for 'AFib'.",
+      "The extracted text 'AFib' refers to atrial fibrillation. The candidate concept Atrial fibrillation (OMOP 313217) is a synonym for the entity's meaning. Although guideline evidence suggests interventions and medications for AF, these recommendations do not contradict the assignment of 'AFib' as the correct label for this entity.",
+      "1. The extracted text 'AFib' refers to a condition known as atrial fibrillation after abbreviation expansion. 2. Atrial fibrillation is indeed the concept referred to by AFib in clinical terms, which means it agrees with both meanings of the entity and candidate concepts respectively (3). However, there are no direct guideline rules retrieved that specifically address 'AFib' or its management as a standalone condition without mentioning comorbidities like congestive hepatopathy. The evidence provided discusses interventions for atrial fibrillation in patients who also have respiratory distress but does not directly confirm the necessity of intervention solely based on AFib (4). Therefore, while there is an agreement between meanings and no direct contradiction from guideline rules about 'AFib' alone as a condition requiring immediate action or specific medication without comorbidities being mentioned. The evidence provided focuses more broadly than just managing atrial fibrillation in isolation."
+    ]
+  },
+  {
+    "entity_id": "19442119-DS-15-ef18a65ff0e",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Lab Test",
+    "original_text": "systolic",
+    "top1_concept_name": "Systole",
+    "top1_score": 1.0,
+    "gold_span": "chronic systolic CHF",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "The extracted text 'systolic' refers to a measurement of blood pressure. The candidate concept 'Systole (OMOP 4008099, SNOMED/Measurement)' is defined as a measurement related to cardiac function and specifically mentions systole which aligns with the context provided in the clinical note where systolic measurements are discussed in relation to heart failure.",
+      "The extracted text 'systolic' refers to a state of being in a condition where blood pressure is high. The candidate concept Systole (OMOP 4008099) means the period of time when the heart beats, which can be related to cardiac function. Although no guideline evidence was retrieved, the context suggests that systolic refers to a condition or phase rather than a specific measurement. Therefore, based on this reasoning and without further information, I support the concept assignment.",
+      "(1) The extracted text 'systolic' refers to a measurement related to heart function. (2) Systole is indeed the phase of one heartbeat in which blood pressure is highest and timing begins again, as indicated by its own name/vocabulary identity: Cardiac function matches this meaning closely but does not fully capture what 'systolic' specifically denotes within clinical context; it refers more to a measurement rather than an action or state. (3) The meanings do agree in the sense that systole is related to cardiac functions, however, they are used differently - one as a concept and another for specific measurements."
+    ]
+  },
+  {
+    "entity_id": "19442119-DS-15-e1858469473",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Condition",
+    "original_text": "CHF",
+    "top1_concept_name": "Congestive heart failure",
+    "top1_score": 1.0,
+    "gold_span": "chronic systolic CHF",
+    "old_verdicts": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "new_verdicts": [
+      "SUPPORTED",
+      "INSUFFICIENT_EVIDENCE",
+      "SUPPORTED"
+    ],
+    "new_mode": "contradiction",
+    "new_reasonings": [
+      "[1] Congestive heart failure (OMOP 319835, SNOMED/Condition) is-a Heart failure; Disorder of cardiac ventricle. The context mentions chronic systolic congestive heart failure with a specific ejection fraction and mitral regurgitation. This aligns with the clinical concept 'Congestive heart failure' (omitting the exact text match basis as it's not necessary for this judgment).",
+      "The extracted text 'CHF' refers to congestive heart failure. The candidate concept 'Congestive heart failure' is a synonym for the condition. However, without more information on how this assignment was made (e.g., exact_text match), it's unclear if the mapping is correct or not. Therefore, I cannot determine if the evidence supports or contradicts this assignment.",
+      "The extracted text 'CHF' refers to a medical condition that has been expanded in its abbreviation form as 'congestive heart failure'. The candidate concept provided is Congestive Heart Failure (OMOP 319835), which matches the meaning of CHF after expansion. This aligns with Rule ID gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_3_diagnosis,_assessment,_a_triplets.json, indicating that congestive heart failure is part of a differential diagnosis to consider when evaluating for COPD and thus supports the assignment."
+    ]
+  }
+]

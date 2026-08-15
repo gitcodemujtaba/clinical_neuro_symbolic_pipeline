@@ -262,7 +262,7 @@ class LLMClient:
         self._client = ollama.Client(host=self.host, timeout=timeout)
 
     def complete(self, system_prompt: str, user_prompt: str,
-                 schema: dict = None) -> dict:
+                 schema: dict = None, max_tokens: int = None) -> dict:
         """Single completion. Returns the raw text plus token logprobs.
 
         `schema` enables Ollama's structured-output mode (confirmed 2026-08-14
@@ -272,6 +272,12 @@ class LLMClient:
         plain "json" mode if the server rejects the schema, because a model
         or Ollama version that doesn't support structured output should
         degrade rather than fail the whole run.
+
+        `max_tokens` (2026-08-15, added for scripts/analysis/mollm_wholenote_ensemble.py's
+        experiment): overrides MAX_OUTPUT_TOKENS=800, which is sized for a
+        single verdict object and far too small for a guided-decoding array
+        response covering many entities at once. None (default) preserves
+        today's behavior exactly for every existing caller.
 
         Every failure path raises LLMUnavailable rather than returning a
         sentinel, so a transport problem can never be silently scored as a
@@ -284,7 +290,7 @@ class LLMClient:
                 system=system_prompt,
                 options={
                     "temperature": TEMPERATURE,
-                    "num_predict": MAX_OUTPUT_TOKENS,
+                    "num_predict": max_tokens or MAX_OUTPUT_TOKENS,
                     "frequency_penalty": frequency_penalty,
                 },
                 logprobs=True,
@@ -622,7 +628,7 @@ def extract_candidate_alternatives(tokens: list, verdict: str, allowed_verdicts)
     return {}
 
 
-def build_clients() -> dict:
+def build_clients(timeout: float = None) -> dict:
     """Constructs all ensemble members (2026-08-14: qwen2.5:3b, llama3.2:3b,
     phi4-mini -- see MODEL_NAMES above).
 
@@ -632,5 +638,10 @@ def build_clients() -> dict:
     clients.items()` loop was already written generically over however many
     entries this returns, so the ensemble size lives in exactly one place:
     MODEL_NAMES above.
+
+    `timeout` (2026-08-15): overrides LLMClient's 120s default. None
+    preserves today's behavior for every existing caller -- added for the
+    much larger prompts/completions in scripts/analysis/mollm_wholenote_ensemble.py's
+    experiment, which need more headroom than a single-verdict call does.
     """
-    return {name: LLMClient(model_name=name) for name in MODEL_NAMES}
+    return {name: LLMClient(model_name=name, timeout=timeout or 120.0) for name in MODEL_NAMES}

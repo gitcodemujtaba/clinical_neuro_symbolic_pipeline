@@ -1,0 +1,502 @@
+[
+  {
+    "entity_id": "10043750-DS-6-e865d5b3d75",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "diverticulosis",
+    "top1_concept_name": "Diverticular disease",
+    "top1_score": 1.0,
+    "gold_span": "diverticulosis",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": "CORRECT",
+    "new_reasonings": [
+      "The extracted text 'diverticulosis' refers to diverticular disease, which is correctly mapped to the candidate concept 'Diverticular disease (OMOP 4266809, SNOMED/Condition, match tier 2 (Synonym), score 1.0, basis synonym)' in Stage 2 normalization. The clinical context provided supports this mapping as diverticulosis is a specific form of Diverticular disease and the term 'diverticulosis' is often used interchangeably with 'diverticular disease'. Both terms refer to the presence of diverticula within the intestinal wall, which aligns with the description in the clinical section provided.",
+      "The extracted entity 'diverticulosis' refers to a condition where diverticula (small pouches) form in the wall of the colon, which can cause symptoms like abdominal pain and changes in bowel habits. The Stage 2 candidate concept 'Diverticular disease' accurately captures this meaning, as it is a synonym for diverticulosis. The context provided also supports this mapping, as the text mentions 'diverticulosis' alongside other conditions related to the colon and intestine. There is no clear contradiction between the extracted entity and the Stage 2 concept.",
+      "(1) The extracted term 'diverticulosis' refers to an abnormal condition where small pouches form in your digestive tract, specifically the colon; (2) Stage 2 candidate concept accurately maps this as Diverticular disease which encompasses disorders related to diverticula of intestine and matches perfectly with clinical context provided about a patient's medical history involving such conditions. No contradiction between extracted text meaning based on surrounding sentence and stage two mapping."
+    ]
+  },
+  {
+    "entity_id": "10043750-DS-6-e38d9769290",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "CKD",
+    "top1_concept_name": "Chronic kidney disease",
+    "top1_score": 1.0,
+    "gold_span": "CKD III",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'CKD' refers to chronic kidney disease, which is described in the context as a current finding (III stage) and not necessarily part of other conditions like hypertension or diabetes. The Stage 2 candidate concept 'Chronic kidney disease (OMOP 46271022, SNOMED/Condition)' is more accurately used for chronic kidney disease as a condition rather than its specific stage III classification.",
+      "The extracted text 'CKD' refers to chronic kidney disease, which is a condition that can be present alongside other comorbid conditions in heart failure patients, as stated by the guideline rule IS_PART_OF::urn:uuid:fe4e771a-f44a-44d1-af49-ad8addaa9d30. The Stage 2 candidate concept Chronic kidney disease (OMOP 46271022) is a correct mapping given its exact match with the extracted text and its inclusion in the guideline rule as one of the comorbid conditions. However, I would like to propose a slight adjustment to the proposed entity label: 'Chronic Kidney Disease' instead of just 'CKD', as it provides more clarity and specificity.",
+      "(1) The extracted text 'CKD' refers to chronic kidney disease based on its context in medical history; (2) the candidate concept Chronic Kidney Disease accurately represents CKD as per Stage 2 mapping, which includes an exact match and high confidence score from a knowledge graph guideline indicating it is part of comorbid conditions often seen with heart failure patients. The surrounding text mentions 'chronic kidney disease III', confirming its presence; (3) There are no contradictions between the extracted entity's meaning based on clinical context ('CKD' as chronic kidney disease in this case), and Stage 2 candidate concept, which is also Chronic Kidney Disease."
+    ]
+  },
+  {
+    "entity_id": "10043750-DS-6-eefaa3b31ee",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Anatomy",
+    "original_text": "sclera",
+    "top1_concept_name": "Scleral structure",
+    "top1_score": 1.0,
+    "gold_span": "anicteric sclera",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'sclera' refers to the sclera, which is the outer protective layer of the eye. The Stage 2 candidate concept 'Scleral structure (OMOP 4091162, SNOMED/Spec Anatomic Site)' describes a broader anatomical structure that includes both the sclera and other structures like iris. This does not align with the specific mention of 'sclera' in the clinical context.",
+      "The extracted entity 'sclera' refers to the white outer layer of the eye, which is described in the context as 'anicteric sclera'. This matches the definition of Scleral structure (OMOP 4091162), which includes the fibrous tunic of the eye. The Stage 1 extractor's confidence tier being LOW does not affect my assessment, as it seems to be a reasonable extraction given the text. The prior automated decision is informative but not authoritative, and I agree with its composite confidence.",
+      "(1) The extracted text 'sclera' refers to part of an eye anatomy; (2) Scleral structure as the candidate concept also pertains specifically to parts of eyes, namely sclera and/or iris structures which are fibrous tunic components. These meanings do not contradict each other but rather align closely in clinical context."
+    ]
+  },
+  {
+    "entity_id": "10043750-DS-6-e866ee33301",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "cancer",
+    "top1_concept_name": "Malignant neoplastic disease",
+    "top1_score": 1.0,
+    "gold_span": "colon cancer",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": "CORRECT",
+    "new_reasonings": [
+      "The extracted text 'cancer' refers to a specific type of malignant neoplasm, which aligns with the stage 2 candidate concepts 'Malignant neoplasm (OMOP 37153816, SNOMED/Observation)' and 'Neoplasm'. The context provided in the section header explicitly mentions 'Right colon cancer', confirming that the extracted text is indeed a specific type of malignant neoplasm. Both candidates are correct as they both refer to malignancies without specifying further details like location (right colon).",
+      "The extracted entity 'cancer' refers to a specific type of condition that affects the patient, which is currently present (assertion: PRESENT / experiencer: PATIENT / temporality: CURRENT). The Stage 2 candidate concepts Malignant neoplastic disease and Malignant neoplasm both describe conditions characterized by abnormal cell growth, which aligns with the meaning of 'cancer'. However, since there is no guideline evidence retrieved for this record, I must rely on my own knowledge. In clinical practice, cancer refers to a broad category of malignant diseases that can affect various parts of the body. Given the context of 'Right colon cancer', it's reasonable to conclude that the Stage 1 extractor's label Condition is correct and accurately reflects the patient's condition.",
+      "(1) The extracted text 'cancer' refers to malignant neoplastic disease affecting an organ or tissue; (2) the candidate concepts Malignant neoplastic disease and Malignant neoplasm both refer to cancerous conditions, with Neoplasms being a broader category that includes cancers as well. These meanings do not contradict each other but rather are different levels of specificity within oncology.; (3) The extracted entity label 'Condition' is appropriate for this context since it denotes the presence or absence of disease."
+    ]
+  },
+  {
+    "entity_id": "10912090-DS-33-e1d0febd239",
+    "note_id": "10912090-DS-33",
+    "entity_label": "Condition",
+    "original_text": "RA",
+    "top1_concept_name": "Rheumatoid arthritis",
+    "top1_score": 1.0,
+    "gold_span": "RA",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "CONCEPT_MAPPING_INCORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'rheumatoid arthritis' refers to a specific medical condition, which is rheumatoid arthritis (RA). The Stage 2 candidate concept 'Rheumatoid arthritis (OMOP 80809, SNOMED/Condition, match tier 1 (Exact), score 1.0, basis exact_text)' is also correct in terms of being a medical condition related to RA. However, the context provided indicates that rheumatoid arthritis is part of the vital signs section and not as a standalone finding or diagnosis. The term 'rheumatoid arthritis' appears alongside other vital sign measurements (e.g., temperature, blood pressure), suggesting it might be more accurately classified as a condition rather than an explicit diagnostic entity in this context.",
+      "The extracted 'RA' likely refers to rheumatoid arthritis due to its context in the sentence describing the patient's condition and symptoms, such as chronic obstructive lung disease and joint pain. The Stage 2 candidate concept Rheumatoid arthritis is a plausible match, but it does not account for the potential expansion of 'RA' to other medical conditions or anatomical structures (e.g., right atrium). Therefore, I consider the extractor's entity label incorrect due to its narrow scope.",
+      "(1) The extracted text 'RA' in context refers to room air (basis_notes: own medical knowledge). (2) The stage 2 candidate concept Rheumatoid arthritis means an autoimmune disease affecting joints, not related to the surrounding clinical sentence. (3) These meanings contradict each other."
+    ]
+  },
+  {
+    "entity_id": "10912090-DS-33-e62844286c2",
+    "note_id": "10912090-DS-33",
+    "entity_label": "Anatomy",
+    "original_text": "LAD",
+    "top1_concept_name": "Structure of left anterior descending artery",
+    "top1_score": 1.0,
+    "gold_span": "LAD",
+    "old_verdicts": [
+      "CORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT"
+    ],
+    "new_assessment_ensemble": "ENTITY_LABEL_INCORRECT",
+    "new_reasonings": [
+      "The extracted text 'LAD' refers to the left anterior descending artery, which is an anatomical structure in the heart's coronary arteries. The Stage 2 candidate concept 'Structure of left anterior descending artery (OMOP 4245039, SNOMED/Spec Anatomic Site)' describes a structural aspect rather than the actual anatomy itself. This does not align with the clinical context provided where LAD is mentioned in relation to cardiovascular findings.",
+      "The extracted 'left anterior descending artery' means the actual anatomical structure being referred to, not just its name. The surrounding context indicates that there is no left anterior descending artery present (cue: 'no'), which contradicts the Stage 1 extraction. Therefore, the entity label should be corrected to something more specific and accurate in this context.",
+      "(1) The extracted text 'LAD' refers to an abbreviation that can mean left anterior descending artery, which pertains to anatomy; (2) the Stage 2 candidate concept correctly identifies this as Structure of left anterior descending artery and its relationship with Branch of left coronary artery in terms of anatomical structure; however, it is not clear if LAD was meant anatomically or clinically from context alone. The surrounding text discusses clinical findings like chronic obstructive lung disease but does NOT mention the cardiovascular system directly related to 'LAD'. (3) These meanings do not contradict each other as they both pertain to anatomy and its relation with left coronary artery."
+    ]
+  },
+  {
+    "entity_id": "10912090-DS-33-ee14d1e5e83",
+    "note_id": "10912090-DS-33",
+    "entity_label": "Anatomy",
+    "original_text": "S1",
+    "top1_concept_name": "Structure of first sacral vertebra",
+    "top1_score": 1.0,
+    "gold_span": "normal S1",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'first sacral vertebra' refers to a specific anatomical structure, which should be labeled as Anatomy (as per the Stage 1 extraction). However, the concept mapping under review is for a bone structure of the first sacral vertebra. This does not align with the clinical context provided in the section header and subsequent text, where it is mentioned that there are 'no left anterior descending artery' and 'no second sacral vertebra'. The correct entity label should be Anatomy to match the actual anatomical reference.",
+      "The extracted 'Anatomy' entity type seems plausible given the context of discussing anatomical structures, but considering the specific mention of 'first sacral vertebra', it's more accurate to label this as an Anatomy-related finding rather than a general Anatomy. The Stage 2 candidate concept 'Structure of first sacral vertebra' is correct in terms of its definition and relationship to other concepts, but the extractor's entity type could be improved for clarity and specificity.",
+      "(1) The extracted text 'first sacral vertebra' refers to an anatomical structure within the spine; (2) The stage two candidate concept, Structure of first sacral vertebra, correctly identifies this as part of a bone's anatomy at that specific location in the body. There is no contradiction between these meanings."
+    ]
+  },
+  {
+    "entity_id": "10912090-DS-33-e6e842544d8",
+    "note_id": "10912090-DS-33",
+    "entity_label": "Anatomy",
+    "original_text": "S2",
+    "top1_concept_name": "Structure of second sacral vertebra",
+    "top1_score": 1.0,
+    "gold_span": "S2",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'S2' refers to the second sacral vertebra, which is anatomically located in the lower part of the spine. The Stage 1 extraction correctly identifies this as Anatomy (confidence 0.6687208414077759). However, the Stage 2 concept mapping suggests 'Structure of second sacral vertebra', which does not accurately reflect that it is simply a sacral vertebra and not its structure. The correct entity label should be 'Sacral vertebra' (e.g., first sacral or second sacral) rather than 'Structure of second sacral vertebra'.",
+      "The extracted 'S2' refers to the second sacral vertebra, which is anatomically correct given its position in the spine. However, the Stage 2 candidate concept 'Structure of second sacral vertebra' seems to be a more general term that includes all structures of the sacral vertebra, not just the specific one referred to by 'S2'. This discrepancy suggests that the Stage 1 extractor's entity label is correct, but the Stage 2 concept mapping may be too broad. ",
+      "(1) The extracted text 'S2' refers to anatomical landmarks; specifically in clinical contexts like these, it usually denotes the second sacral vertebra (second lumbar vertebra). This interpretation aligns with common medical knowledge and practice for identifying spinal levels by numerical order. (2) Stage 2 candidate concept: Structure of second sacral vertebra is a precise match as 'S2' directly refers to this anatomical structure in clinical settings, especially when discussing the spine or related anatomy like during physical examinations involving lumbar punctures where S1-S5 are referenced for spinal levels near L4-L5. (3) There\u2019s no contradiction between these meanings; they complement each other perfectly."
+    ]
+  },
+  {
+    "entity_id": "11532659-DS-11-e3530452d2d",
+    "note_id": "11532659-DS-11",
+    "entity_label": "Anatomy",
+    "original_text": "S3",
+    "top1_concept_name": "Structure of third sacral vertebra",
+    "top1_score": 1.0,
+    "gold_span": "+S3",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'S3' refers to the third sacral vertebra, which is anatomical information about a specific part of the spine. The Stage 2 candidate concept 'Structure of third sacral vertebra (OMOP 4173421, SNOMED/Spec Anatomic Site)' describes a structure rather than an entity or finding related to the S3 vertebra. This does not align with the clinical context provided in the sentence where it is mentioned as part of a physical examination and medical findings.",
+      "The extracted entity 'third sacral vertebra' refers to a specific anatomical location, whereas the Stage 2 candidate concept 'Structure of third sacral vertebra' seems to describe the overall structure or characteristics of this particular vertebra. The context provided in the text suggests that the focus is on the clinical presentation and symptoms associated with this vertebra (e.g., mechanical mitral sound), rather than its structural properties. Therefore, I believe the Stage 1 entity label 'Anatomy' might be too broad, while the Stage 2 concept mapping seems to be more focused on the specific characteristics of this vertebra.",
+      "(1) The extracted text 'S3' refers to anatomical terminology indicating the third sacral vertebra; (2) The candidate concept, Structure of third sacral vertebra, correctly denotes an anatomical structure related specifically to a part of human anatomy as indicated by its SNOMED/Spec Anatomic Site identifier and synonym match score being 1.0 which is perfect; (3) There are no contradictions between the extracted text meaning based on surrounding clinical sentence context ('...+third sacral vertebra with mechanical mitral sound.') and Stage 2 candidate concept, as both refer to a specific anatomical structure."
+    ]
+  },
+  {
+    "entity_id": "11532659-DS-11-ebe208a5bac",
+    "note_id": "11532659-DS-11",
+    "entity_label": "Condition",
+    "original_text": "TTP",
+    "top1_concept_name": "Thrombotic thrombocytopenic purpura",
+    "top1_score": 1.0,
+    "gold_span": "TTP",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "CONCEPT_MAPPING_INCORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'TTP' refers to Thrombotic Thrombocytopenic Purpura, which is described in the context as an abdominal condition with edema and Murphy's sign. The Stage 2 candidate concept 'Thrombotic thrombocytopenic purpura (OMOP 4301602, SNOMED/Condition)' describes a broader Thrombotic microangiopathy that is not specifically aligned with the context of abdominal findings in this case. Additionally, the term used in the clinical description ('Thrombotic Thrombocytopenic Purpura +Murphys') suggests a more specific and localized condition related to Murphy's sign rather than a general thrombotic microangiopathy.",
+      "The extracted 'TTP' refers to Thrombotic Thrombocytopenic Purpura, which is the full expansion of the abbreviation given in the context. The surrounding clinical sentence mentions 'Thrombotic Thrombocytopenic Purpura +Murphys', indicating that this is indeed the correct condition being described. However, the Stage 2 candidate concept only partially captures this meaning by including 'is-a' relationships to other conditions (thrombotic microangiopathy and thrombocytopenic purpura), which may not be directly relevant to the current clinical context.",
+      "(1) The extracted text 'TTP' in context refers to Thrombotic thrombocytopenic purpura, which matches the abbreviation expansion provided by the extractor; (2) however, Stage 2 candidate concept is a general condition that includes various forms of thrombotic microangiopathy and not specifically TTP as indicated earlier. The term 'Thrombotic' in this context does suggest thrombosis but it lacks specificity to Thrombotic thrombocytopenic purpura; (3) These meanings contradict each other because the extracted text clearly refers to a specific condition, while Stage 2 candidate concept is too broad and non-specific."
+    ]
+  },
+  {
+    "entity_id": "14490470-DS-11-e7dad9859ed",
+    "note_id": "14490470-DS-11",
+    "entity_label": "Anatomy",
+    "original_text": "chest",
+    "top1_concept_name": "Thoracic structure",
+    "top1_score": 1.0,
+    "gold_span": "chest tube placement",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'chest' refers to a body part or structure, specifically the chest area. The proposed entity label 'Thoracic structure (OMOP 4199473, SNOMED/Spec Anatomic Site)' is too broad and does not accurately represent the specific anatomical location of the chest as mentioned in the text. The context provided lists various surgical procedures including 'Right chest tube placement' and 'Left chest tube placement', clearly indicating that 'chest' refers to a localized area rather than an entire thoracic structure.",
+      "The extracted entity 'chest' refers to the anatomical region of the body where surgical procedures such as chest tube placement and external ventricular drain insertion occur. The Stage 2 candidate concept 'Thoracic structure (OMOP 4199473, SNOMED/Spec Anatomic Site, match tier 2 (Synonym), score 1.0, basis synonym)' accurately captures this meaning, given the context of surgical procedures in the chest region. The prior automated decision indicating a contradiction is not relevant to this specific task.",
+      "(1) The extracted text 'chest' refers to part of the thoracic region in anatomy; (2) Thoracic structure as identified by SNOMED/Spec Anatomic Site accurately describes this anatomical location, specifically referring to structures within or related to both sides ('Right chest tube placement', etc.); (3) There is no contradiction between these meanings."
+    ]
+  },
+  {
+    "entity_id": "14490470-DS-11-e8fc723a44c",
+    "note_id": "14490470-DS-11",
+    "entity_label": "Qualifier",
+    "original_text": "PTT",
+    "top1_concept_name": "Partial",
+    "top1_score": 1.0,
+    "gold_span": "PTT was consistently elevated",
+    "old_verdicts": [
+      "CORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": "CORRECT",
+    "new_reasonings": [
+      "The extracted text 'PTT' refers to Partial Thromboplastin Time, which is a laboratory test used in clinical practice. The Stage 2 candidate concept 'Partial (OMOP 4116993, SNOMED/Meas Value, match tier 1 (Exact), score 1.0)' directly corresponds to the medical term 'partial thromboplastin time' as it is a standardized code for this laboratory test. The context provided in the section also supports that PTT was consistently elevated and subcutaneous heparin was held based on these results, indicating that the entity label and concept mapping are correct.",
+      "The extracted 'PTT' refers to partial thromboplastin time, which is a laboratory test used to measure the blood clotting process. In this context, where the patient's PTT was consistently elevated and subcutaneous heparin was held, it makes sense that the extractor labeled it as a Qualifier (confidence 0.9290612936019897). The Stage 2 candidate concept 'Partial' matches this meaning, as it is an OMOP code for partial thromboplastin time. There is no guideline evidence retrieved to contradict this mapping.",
+      "(1) The extracted term 'PTT' refers to partial thromboplastin time in clinical context; (2) the candidate concept means Partial, which correctly maps onto PTT as it represents an incomplete or reduced function of a biological process\u2014in this case, clotting. (3) There is no contradiction between these meanings."
+    ]
+  },
+  {
+    "entity_id": "17751158-DS-19-e472e2ead6a",
+    "note_id": "17751158-DS-19",
+    "entity_label": "Anatomy",
+    "original_text": "HEENT",
+    "top1_concept_name": "Structure of anterior portion of neck",
+    "top1_score": 1.0,
+    "gold_span": "HEENT",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'HEENT' refers to the head, eyes, ears, nose, throat system as a whole. The Stage 1 extraction of 'head, eyes, ears, nose, throat' is more specific and does not match the broader anatomical structure implied by 'HEENT'. The concept mapping should reflect the full HEENT system rather than just individual parts.",
+      "The extracted 'Anatomy' label seems plausible given the context of 'HEENT', which refers to the head, eyes, ears, nose, and throat region. However, upon closer inspection, I believe the Stage 2 candidate concept 'Head structure (OMOP 4287390)' is more accurate. The description provided for this concept ('Structure of head and/or neck') aligns well with the context of the text, which includes specific details about the patient's head and neck region (e.g., pupils equal round and reactive to light). In contrast, 'Head part' seems too general and doesn't capture the full scope of information provided in the text. Therefore, I propose replacing 'Anatomy' with 'Head structure'.",
+      "(1) The extracted text 'HEENT' refers to an anatomical region encompassing head (head), eyes (eyes), ears (ears), nose (nose), and throat, as indicated by the surrounding clinical context mentioning pupils equal round and reactive to light; extra ocular movements intact; sclera anicteric. These observations pertain specifically to parts of this anatomy being examined or assessed for abnormalities in a patient setting. The abbreviation 'HEENT' is commonly used among healthcare professionals when referring collectively to these anatomical regions, especially during physical examinations focused on the head and neck area (e.g., assessing pupils). This interpretation aligns with standard clinical practice where HEENT examination includes evaluating eyes, ears, nose, throat for any abnormalities or signs of disease. (2) The Stage 2 candidate concepts are all related terms describing parts within this anatomical region: 'Head structure' refers to the overall anatomy and organization; 'Head part,' a more specific subdivision indicating individual components like muscles in head structures such as eyes ('eyes') etc.; while 'Structure of head and/or neck' encompasses both upper body (head) and lower regions, including throat. These concepts are semantically related but represent different levels or scopes within the anatomical region HEENT is referring to; they do not contradict each other based on their meanings in a clinical context as described above."
+    ]
+  },
+  {
+    "entity_id": "17751158-DS-19-e220b189e4a",
+    "note_id": "17751158-DS-19",
+    "entity_label": "Anatomy",
+    "original_text": "mesocolon",
+    "top1_concept_name": "Structure of mesentery of colon",
+    "top1_score": 1.0,
+    "gold_span": "transverse mesocolon",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'mesocolon' refers to part of the mesentery that surrounds the colon, specifically the transverse mesocolon mentioned in the context. The Stage 2 candidate concept 'Structure of mesentery of colon (OMOP 4141725)' is about a broader structure related to the entire mesentery surrounding the colon, not specifically the transverse mesocolon as implied by the clinical text.",
+      "The extracted entity 'mesocolon' refers to the part of the mesentery that attaches to the transverse colon, which is injured in the patient's gunshot wound. The Stage 2 candidate concept 'Structure of mesentery of colon (OMOP 4141725)' accurately describes this anatomical structure. There is no evidence contradicting this mapping, and it aligns with standard medical terminology.",
+      "(1) The extracted term 'mesocolon' refers to an anatomical structure in clinical context; (2) The candidate concept, Structure of mesentery of colon, correctly maps the anatomy involved as it includes parts like transverse mesocolon and jejunum which are part of or related to the mesentery's attachment points on organs such as intestines. These meanings do not contradict each other."
+    ]
+  },
+  {
+    "entity_id": "19442119-DS-15-e41d2fe0263",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Anatomy",
+    "original_text": "S2",
+    "top1_concept_name": "Structure of second sacral vertebra",
+    "top1_score": 1.0,
+    "gold_span": "S2",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'S2' refers to the second sacral vertebra, which is mentioned in the context as being normal and not causing any issues (e.g., systolic murmur). The Stage 1 extraction correctly identifies this. However, the Stage 2 concept mapping suggests a structure of the second sacral vertebra, which does not align with the clinical context where it is described as 'Normal first sacral vertebra, second sacral vertebra.' This implies that S2 (second sacral vertebra) is functioning normally and not causing any structural issues.",
+      "The extracted 'second sacral vertebra' refers to the anatomical structure in question, which is described as being normal in the context of regular heart rate and rhythm. The Stage 2 candidate concept 'Structure of second sacral vertebra' accurately captures this meaning, with its synonym basis supporting a high match score. There is no clear contradiction between the extracted label and the proposed mapping.",
+      "(1) The extracted text 'S2' refers to anatomical landmarks related to vertebrae in clinical context, specifically indicating the second sacral vertebra; (2) Stage 2 candidate concept correctly identifies this as Structure of Second Sacral Vertebra with a high match score and synonym basis confirming its accuracy; (3) There is no contradiction between these meanings."
+    ]
+  },
+  {
+    "entity_id": "19442119-DS-15-e30ce984141",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Condition",
+    "original_text": "AFib",
+    "top1_concept_name": "Atrial fibrillation",
+    "top1_score": 1.0,
+    "gold_span": "AFib w/ RVR",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "BOTH_INCORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'AFib' refers to atrial fibrillation, which is correctly identified as a Condition by the Stage 1 extractor. However, the Stage 2 candidate concept for Atrial Fibrillation (OMOP 313217, SNOMED/Condition) does not align with the clinical context provided in the text. The text mentions 'atriial fibrillation w/ rapid ventricular response', indicating a specific type of atrial fibrillation that requires intervention and management. The Stage 2 candidate concept is too broad and does not capture the specific nature of this condition as described in the text.",
+      "The extracted entity 'AFib' refers to atrial fibrillation, which is a condition characterized by an irregular heart rhythm. The surrounding context indicates that the patient has atrial fibrillation with rapid ventricular response, and the discharge diagnosis includes treatment recommendations for this condition. The Stage 2 candidate concept mapping correctly identifies atrial fibrillation as a finding requiring intervention (AV node ablation + CRT or catheter ablation) and medication (chronic anticoagulation).",
+      "(1) The extracted text 'atrial fibrillation' refers to an arrhythmia condition characterized by rapid, irregular beating of the atrial chambers in the heart; (2) Atrial Fibrillation as a candidate concept is indeed related to cardiac rhythm disorders but implies chronicity and may not necessarily be linked with acute symptoms like respiratory distress or immediate intervention requirements indicated elsewhere in this context. The extracted text does NOT directly imply an 'acute' condition requiring urgent care, which contradicts the surrounding clinical narrative suggesting emergency treatment; (3) There are indications of a high-risk presentation ('Tachycardia \u2014[INDICATES]\u2192 Respiratory distress') and interventions like catheter ablation or anticoagulation that suggest atrial fibrillation is being managed in an acute setting. However, 'atrial fibrillation' as extracted does not inherently convey the urgency implied by other findings such as respiratory distress."
+    ]
+  },
+  {
+    "entity_id": "19442119-DS-15-ef18a65ff0e",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Lab Test",
+    "original_text": "systolic",
+    "top1_concept_name": "Systole",
+    "top1_score": 1.0,
+    "gold_span": "chronic systolic CHF",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'systolic' refers to blood pressure measurement, specifically the top number in a blood pressure reading. The Stage 2 candidate concept 'Systole (OMOP 4008099, SNOMED/Measurement)' is related to cardiac function and not directly to systolic blood pressure. Therefore, the entity label should be corrected from Lab Test to Blood Pressure Measurement.",
+      "The extracted entity 'systolic' refers to the systolic blood pressure reading, which is a common lab test result in clinical settings. The Stage 2 candidate concept 'Systole (OMOP 4008099)' matches this meaning as it describes the contraction phase of cardiac function. There is no clear contradiction between these two meanings based on my knowledge and the provided context.",
+      "(1) The extracted term 'systolic' refers to measurements related to blood pressure or heart function; (2) Systole as the candidate concept means one phase of cardiac cycle when ventricles contract and pump out blood, which aligns with systolic measurement contextually in cardiology. (3) No contradiction between these meanings."
+    ]
+  },
+  {
+    "entity_id": "19442119-DS-15-e548b519259",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Qualifier",
+    "original_text": "LCx",
+    "top1_concept_name": "Left",
+    "top1_score": 1.0,
+    "gold_span": "LCx",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'LCx' refers to the left circumflex coronary artery, which is described in the context as a lesion on the left circumflex (coronary artery). The Stage 2 candidate concept 'Left' does not match this clinical description. A more appropriate entity label would be 'left circumflex', aligning with the anatomical context provided.",
+      "The extracted 'left' refers to the left coronary artery, which is a common abbreviation in medical texts. The candidate concept 'Left (OMOP 4300877)' matches this meaning, as it corresponds to SNOMED/Meas Value and has an exact match score of 1.0. There is no guideline evidence retrieved for this record, but the OMOP ID suggests that it is a valid concept in the context of medical terminology.",
+      "(1) The extracted text 'LCx' refers to the left circumflex artery in clinical context; (2) The stage two candidate concept, Left, correctly expands and matches with LCx as it denotes directionality which fits anatomically within a coronary description. There is no contradiction between these meanings."
+    ]
+  },
+  {
+    "entity_id": "19442119-DS-15-ed8fbca6228",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Qualifier",
+    "original_text": "R",
+    "top1_concept_name": "Right",
+    "top1_score": 1.0,
+    "gold_span": "R IJ",
+    "old_verdicts": [
+      "CORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'R' refers to the right side of the body, which is described in the context as 'right Internal Jugular'. The Stage 2 candidate concept 'Right (OMOP 4080761, SNOMED/Meas Value)' does not align with this clinical description. It appears to be a general anatomical qualifier rather than specifying right side.",
+      "The extracted 'right' refers to the side of the neck (as indicated by the context), not an attribute or characteristic of something in that location. The Stage 2 candidate concept 'Right' seems to be a literal match, but it doesn't fit the clinical context. A more fitting label would be 'Right', as in 'the right side of the neck'.",
+      "(1) The extracted text 'R' refers to something being in place or correctly positioned; (2) Right as per SNOMED/Meas Value means the Internal Jugular vein's position should be correct and not displaced, which aligns with clinical expectations for a jugular venous pressure assessment lying flat. (3) There is no contradiction between these meanings."
+    ]
+  },
+  {
+    "entity_id": "19442119-DS-15-e95ce4d6eac",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Qualifier",
+    "original_text": "heart",
+    "top1_concept_name": "Initial",
+    "top1_score": 1.0,
+    "gold_span": "valvular heart disease",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "new_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "ENTITY_LABEL_INCORRECT"
+    ],
+    "new_assessment_ensemble": null,
+    "new_reasonings": [
+      "The extracted text 'heart' actually refers to the initial Troponin failure, which is part of the patient's medical history and not an entity related to the heart itself. The Stage 2 candidate concept 'Initial' (OMOP 4228832) does not align with this context as it appears to be a general qualifier or measurement value rather than a specific clinical finding or condition.",
+      "The extracted 'initial' likely refers to an initial troponin test result, given the context of exertional dyspnea and the mention of 'Troponin failure'. The Stage 2 candidate concept 'Initial' seems to match the literal meaning of the word 'initial', but it does not align with the clinical context. Therefore, I believe the entity label should be corrected to reflect a troponin test result, rather than an initial value in general.",
+      "(1) The extracted text 'heart' refers to an organ or part of anatomy; (2) the stage 2 candidate concept, Initial, denotes something that occurs at first instance and not necessarily related directly as a qualifier for heart but could be referring broadly in context like initial symptoms/disease onset. These meanings do NOT contradict each other strictly semantically."
+    ]
+  }
+]

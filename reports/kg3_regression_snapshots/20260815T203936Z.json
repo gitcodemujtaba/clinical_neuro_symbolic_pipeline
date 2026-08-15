@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-08-15T20:39:36.271564+00:00",
+  "note_ids": [
+    "17751158-DS-19",
+    "19442119-DS-15",
+    "14490470-DS-11"
+  ],
+  "gold_recall_combined": {
+    "gold_annotations": 844,
+    "predicted_entities": 380,
+    "span_covered": 204,
+    "span_recall": 0.24170616113744076,
+    "linked_correct": 101,
+    "linked_recall": 0.11966824644549763,
+    "uncrosswalked_misses": 2
+  },
+  "kg3_observation_counts_by_label": {}
+}

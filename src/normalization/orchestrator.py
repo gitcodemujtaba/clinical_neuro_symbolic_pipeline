@@ -197,24 +197,51 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
     cands = _prefer_lab_procedure_over_observable(conn, cands, gliner_label)
     top = cands[0]["similarity_score"]
 
-    # Below the floor, the top hit is reported as a FAILED match but the
-    # candidates are still forwarded: "close but not close enough" is exactly
-    # the case Stage 3's deeper-resolution mode exists for, and discarding the
-    # near-misses would leave it nothing to reason about.
+    # HARD CUTOFF below TIER3_SIMILARITY_FLOOR (2026-08-15, user decision after
+    # being shown the counter-evidence below -- see
+    # docs/2026-08-15_Contradiction_Detection_Analysis.md for the full
+    # discussion this originated from). Previously the below-floor top hit was
+    # reported as a FAILED match but candidates were still forwarded, on the
+    # theory that Stage 3's deeper-resolution mode could sort out a "close but
+    # not close enough" match. Changed to a genuine drop: below the floor,
+    # Stage 2b now reports NO_CANDIDATE (empty list) rather than forwarding
+    # weak matches downstream.
+    #
+    # WHY THIS IS A DELIBERATE, INFORMED TRADE-OFF, NOT A CLEAN WIN. The
+    # 2026-08-13 calibration session (docs/2026-08-13_Calibration_Diagnostics_And_Fixes.md
+    # S5.3) measured Tier 3 accuracy by similarity bin on real gold data:
+    # [0.7,0.8) 18.69%, [0.8,0.9) 29.80%, even [0.9,1.0) only 54.87% --
+    # "TIER3_SIMILARITY_FLOOR=0.72 cannot be fixed by raising it; the signal
+    # itself doesn't discriminate well enough at any point on this curve."
+    # 0.72 is not a clean boundary between garbage and good matches -- some
+    # genuinely correct low-score matches will now be lost as NO_CANDIDATE
+    # instead of being forwarded to Stage 3 as a last resort (this WILL move
+    # GOLD_MISSING upward; re-measure with scripts/score_gold_recall.py before
+    # trusting this in production). The trade being made: fewer low-quality
+    # candidates reach Stage 3/HITL where an anchoring-biased model or a
+    # rushed reviewer might rubber-stamp one (e.g. galea->"Gale" at 0.7686,
+    # this exact fix's motivating case -- note 0.7686 is ABOVE 0.72, so this
+    # SPECIFIC case is not caught by this cutoff either; it was already an
+    # argument the user weighed before choosing to proceed anyway).
     if top < TIER3_SIMILARITY_FLOOR:
         # A weak in-domain match may still be beaten by a strong out-of-domain
         # one, which is itself the signal that the label was wrong -- so the
-        # conflict check runs here too, not only on a total miss.
+        # conflict check runs here too, not only on a total miss. Kept even
+        # under the hard cutoff: this is a different, independent signal
+        # (GLiNER mislabeling) from Tier 3's own vector-similarity quality,
+        # not a rescue of the low-score match itself.
         conflict = _detect_domain_conflict(conn, search_text, vocabs, domains, entity_text,
                                            vector, gliner_label=gliner_label)
         if conflict:
             return _result(conflict["candidates"], ambiguous=True,
                            reason="label_domain_conflict", failed=True, conflict=conflict,
                            trace=trace)
-        cands, fuzzy_added = _merge_fuzzy(conn, search_text, vocabs, domains, cands, trace)
-        reason = "tier3_below_similarity_floor_fuzzy_added" if fuzzy_added else \
-            "tier3_below_similarity_floor"
-        return _result(cands, ambiguous=True, reason=reason, failed=True, trace=trace)
+        # No fuzzy-merge rescue here (unlike the margin-ambiguity branch
+        # below, which is unaffected by this change) -- adding a
+        # lower-confidence supplemental candidate back in after a hard
+        # cutoff would defeat the purpose of cutting at all.
+        return _result([], ambiguous=True, reason="tier3_below_similarity_floor_rejected",
+                       failed=True, trace=trace)
 
     if len(cands) > 1 and (top - cands[1]["similarity_score"]) < TIER3_AMBIGUITY_MARGIN:
         # Record 3, docs/Stage3_Open_Issues.md Issue 3: three semantically-close
@@ -587,7 +614,26 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
         # entities can share (text, label) yet carry different overrides --
         # e.g. the SAME bare qualifier word split off two different parent
         # labels in one note.
-        cache_key = (expanded_text, label,
+        #
+        # CACHE-KEY CANONICALIZATION ONLY (2026-08-15, Implementation_Checklist.md
+        # Stage 2b item: near-duplicate spans like "abd distension" /
+        # "ABD distension" / "abd  distension" being independently normalized
+        # and landing on different concepts -- a real bug, since the exact-string
+        # cache_key treated them as three unrelated lookups). Whitespace is
+        # collapsed and case is folded for the KEY ONLY -- the actual
+        # normalize_entity() call two lines below is still passed the
+        # UNMODIFIED expanded_text. Deliberately not touching what
+        # normalize_entity()/Tier 1-2's SQL actually matches on: this
+        # corpus's Tier 1/2 queries are case-sensitive by design, and
+        # docs/2026-08-14_GOLD_MISSING_RootCause_Fixes.md already documents a
+        # real case-sensitivity collision (CTA vs cTa) as a DELIBERATELY
+        # DEFERRED trade-off precisely because folding case there risks
+        # regressions without corpus-wide A/B data. Folding only the cache
+        # key means near-duplicate mentions now share one computation (fixing
+        # the inconsistency bug) without silently re-deciding that separate,
+        # already-weighed trade-off.
+        canonical_text = re.sub(r"\s+", " ", expanded_text).strip().lower()
+        cache_key = (canonical_text, label,
                     tuple(domain_override) if domain_override else None)
         if cache_key not in cache:
             mapping = normalize_entity(expanded_text, conn, gliner_label=label,

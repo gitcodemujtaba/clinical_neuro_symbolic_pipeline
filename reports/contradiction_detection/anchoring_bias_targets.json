@@ -1,0 +1,342 @@
+[
+  {
+    "entity_id": "17751158-DS-19-e472e2ead6a",
+    "note_id": "17751158-DS-19",
+    "entity_label": "Anatomy",
+    "original_text": "HEENT",
+    "top1_concept_name": "Structure of anterior portion of neck",
+    "top1_score": 1.0,
+    "top1_basis": null,
+    "gold_span": "HEENT",
+    "gold_concept_id": "5880005",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "19442119-DS-15-e41d2fe0263",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Anatomy",
+    "original_text": "S2",
+    "top1_concept_name": "Structure of second sacral vertebra",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "S2",
+    "gold_concept_id": "111974005",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "19442119-DS-15-e30ce984141",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Condition",
+    "original_text": "AFib",
+    "top1_concept_name": "Atrial fibrillation",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "AFib w/ RVR",
+    "gold_concept_id": "120041000119109",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "17751158-DS-19-e220b189e4a",
+    "note_id": "17751158-DS-19",
+    "entity_label": "Anatomy",
+    "original_text": "mesocolon",
+    "top1_concept_name": "Structure of mesentery of colon",
+    "top1_score": 1.0,
+    "top1_basis": null,
+    "gold_span": "transverse mesocolon",
+    "gold_concept_id": "35346007",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "14490470-DS-11-e7dad9859ed",
+    "note_id": "14490470-DS-11",
+    "entity_label": "Anatomy",
+    "original_text": "chest",
+    "top1_concept_name": "Thoracic structure",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "chest tube placement",
+    "gold_concept_id": "264957007",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "19442119-DS-15-ef18a65ff0e",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Lab Test",
+    "original_text": "systolic",
+    "top1_concept_name": "Systole",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "chronic systolic CHF",
+    "gold_concept_id": "443253003",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "14490470-DS-11-e8fc723a44c",
+    "note_id": "14490470-DS-11",
+    "entity_label": "Qualifier",
+    "original_text": "PTT",
+    "top1_concept_name": "Partial",
+    "top1_score": 1.0,
+    "top1_basis": null,
+    "gold_span": "PTT was consistently elevated",
+    "gold_concept_id": "42525009",
+    "old_verdicts": [
+      "CORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "19442119-DS-15-e548b519259",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Qualifier",
+    "original_text": "LCx",
+    "top1_concept_name": "Left",
+    "top1_score": 1.0,
+    "top1_basis": null,
+    "gold_span": "LCx",
+    "gold_concept_id": "57396003",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "19442119-DS-15-ed8fbca6228",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Qualifier",
+    "original_text": "R",
+    "top1_concept_name": "Right",
+    "top1_score": 1.0,
+    "top1_basis": null,
+    "gold_span": "R IJ",
+    "gold_concept_id": "771195007",
+    "old_verdicts": [
+      "CORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "19442119-DS-15-e95ce4d6eac",
+    "note_id": "19442119-DS-15",
+    "entity_label": "Qualifier",
+    "original_text": "heart",
+    "top1_concept_name": "Initial",
+    "top1_score": 1.0,
+    "top1_basis": null,
+    "gold_span": "valvular heart disease",
+    "gold_concept_id": "368009",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10043750-DS-6-e865d5b3d75",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "diverticulosis",
+    "top1_concept_name": "Diverticular disease",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "diverticulosis",
+    "gold_concept_id": "724538004",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10043750-DS-6-e38d9769290",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "CKD",
+    "top1_concept_name": "Chronic kidney disease",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "CKD III",
+    "gold_concept_id": "433144002",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10043750-DS-6-eefaa3b31ee",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Anatomy",
+    "original_text": "sclera",
+    "top1_concept_name": "Scleral structure",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "anicteric sclera",
+    "gold_concept_id": "427801009",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10043750-DS-6-e866ee33301",
+    "note_id": "10043750-DS-6",
+    "entity_label": "Condition",
+    "original_text": "cancer",
+    "top1_concept_name": "Malignant neoplastic disease",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "colon cancer",
+    "gold_concept_id": "363406005",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10912090-DS-33-e1d0febd239",
+    "note_id": "10912090-DS-33",
+    "entity_label": "Condition",
+    "original_text": "RA",
+    "top1_concept_name": "Rheumatoid arthritis",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "RA",
+    "gold_concept_id": "722742002",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10912090-DS-33-e62844286c2",
+    "note_id": "10912090-DS-33",
+    "entity_label": "Anatomy",
+    "original_text": "LAD",
+    "top1_concept_name": "Structure of left anterior descending artery",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "LAD",
+    "gold_concept_id": "30746006",
+    "old_verdicts": [
+      "CORRECT",
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10912090-DS-33-ee14d1e5e83",
+    "note_id": "10912090-DS-33",
+    "entity_label": "Anatomy",
+    "original_text": "S1",
+    "top1_concept_name": "Structure of first sacral vertebra",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "normal S1",
+    "gold_concept_id": "26198000",
+    "old_verdicts": [
+      "CORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "10912090-DS-33-e6e842544d8",
+    "note_id": "10912090-DS-33",
+    "entity_label": "Anatomy",
+    "original_text": "S2",
+    "top1_concept_name": "Structure of second sacral vertebra",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "S2",
+    "gold_concept_id": "111974005",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "11532659-DS-11-e3530452d2d",
+    "note_id": "11532659-DS-11",
+    "entity_label": "Anatomy",
+    "original_text": "S3",
+    "top1_concept_name": "Structure of third sacral vertebra",
+    "top1_score": 1.0,
+    "top1_basis": "synonym",
+    "gold_span": "+S3",
+    "gold_concept_id": "277455002",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  },
+  {
+    "entity_id": "11532659-DS-11-ebe208a5bac",
+    "note_id": "11532659-DS-11",
+    "entity_label": "Condition",
+    "original_text": "TTP",
+    "top1_concept_name": "Thrombotic thrombocytopenic purpura",
+    "top1_score": 1.0,
+    "top1_basis": "exact_text",
+    "gold_span": "TTP",
+    "gold_concept_id": "247348008",
+    "old_verdicts": [
+      "ENTITY_LABEL_INCORRECT",
+      "CORRECT",
+      "CORRECT"
+    ],
+    "name_word_overlap": 0.0
+  }
+]

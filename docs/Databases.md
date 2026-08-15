@@ -118,6 +118,8 @@ To trace any fact in the graph back to its extraction and validation source, Sta
 
 *Benefit*: This design allows a re-audit query to traverse the entire provenance chain for any given triple in a single graph traversal rather than executing costly joins across separate systems.
 
+**Implementation note (2026-08-15, `docs/2026-08-15_Stage4_Stage5_Build.md`)**: as built, the *pre-review* HITL queue state lives in a DuckDB table (`hitl_review_queue`, `src/hitl_queue.py`), not the graph — this deliberately narrows "Stages 2b through 4 are stored natively in the graph database" above. Only a case that has actually been reviewed (`reviewer_decision` in `APPROVED`/`CORRECTED`) gets written to Memgraph as the `:PatientObservation`→`:MoLLMDecision`→`:HITLReview` chain (`src/kg3_ingestion.py`); a `REJECTED` case is never written to the graph at all. Reasoning: the queue itself churns constantly (every Stage 3 decision is queued regardless of tier, per the pseudo-labeling risk noted in `docs/Implementation_Checklist.md`'s Stage 4 section) and reuses this codebase's already-proven DuckDB read/write conventions for that high-churn, pre-commit state; Memgraph is reserved for what it's actually good at and what this design doc already scopes it for — a durable, queryable provenance ledger of *finished* decisions.
+
 ---
 
 ### 4. Stage-to-Database Operation Matrix

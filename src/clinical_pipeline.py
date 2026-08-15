@@ -333,7 +333,7 @@ def run_pipeline(note_id: str, raw_text: str, conn, is_test: bool = False) -> di
     )
 
     entities = extract_and_store_entities(
-        note_id, expanded_text, raw_text, conn, is_test=is_test
+        note_id, expanded_text, raw_text, stage1_provenance, conn, is_test=is_test
     )
 
     # GLiNER-relex does its own internal entity detection and cannot accept

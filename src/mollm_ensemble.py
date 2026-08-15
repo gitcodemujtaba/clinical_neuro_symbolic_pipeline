@@ -170,6 +170,30 @@ INGESTION_AUTO = "AUTO_VALIDATED"
 INGESTION_RESOLVED = "MOLLM_RESOLVED"
 INGESTION_HITL = "HITL_REQUIRED"
 
+# RULES harmonized with src/mollm_review.py's 2026-08-15 anchoring-bias fix
+# (see docs/2026-08-15_Contradiction_Detection_Analysis.md S6-S7): the
+# contradiction-detection matrix measured this module's own tier-1/exact-match
+# recall at 21.3%, worse than Objective 3's, and the root cause traced back to
+# a conflicting pair of instructions in THIS prompt -- the old "PROVENANCE
+# OVERRIDES SPELLING ... Trust these relationships completely" bullet sat
+# directly above the old "SCORE WARNING" bullet, one saying trust exact_text
+# completely and the other saying a high score proves nothing. You cannot ask
+# a model to be a skeptical auditor and mandate blind trust in the same
+# breath. Fixed by splitting PROVENANCE OVERRIDES SPELLING into two claims
+# that were being conflated -- "the string-level LINK is real" (keep trusting
+# this) vs. "the reading is CONTEXTUALLY correct" (never implied by the
+# former, and measured at ~52% for exact_text specifically via
+# evaluation/stage2b_cal_eval.py, cited inline below) -- then adding the same
+# DEVIL'S ADVOCATE + CONCEPTUAL FIREWALL framing already validated in
+# mollm_review.py. NOTE: this override is safe to ship even mid-uncertainty
+# because of the ASYMMETRIC OVERRIDE GATE above (OVERRIDE_TOP1_THRESHOLD +
+# citation_verified) -- a more skeptical model can only convert a silent
+# confirmation into a routed HITL case, never silently corrupt a write, and
+# every decision from this module is ALSO currently gated behind blanket
+# human review regardless of tier (docs/Implementation_Checklist.md Stage 4).
+# NOT YET RE-VALIDATED against a real A/B batch the way mollm_review.py's
+# equivalent fix was -- see scripts/analysis/prompt_ab_test.py for the
+# pattern to follow before trusting this in a full-corpus run.
 SYSTEM_PROMPT = """You are a clinical terminology validator in an auditable pipeline.
 
 You will be given one entity extracted from a clinical note, the concept(s) a
@@ -204,15 +228,32 @@ RULES:
   otherwise INSUFFICIENT_EVIDENCE.
 - Respect the stated assertion status. A finding marked ABSENT was explicitly
   negated in the note; do not treat it as present.
-- PROVENANCE OVERRIDES SPELLING: pay close attention to the "basis" of each
-  candidate. A candidate with basis verified_brand_alias or exact_text is a
-  mathematically verified terminology link. Trust these relationships
-  completely. Do NOT reject them just because the candidate's spelling
-  differs from the extracted entity.
-- SCORE WARNING: a high score (e.g. above 0.80) is NOT reliable evidence on
-  its own. Near-identical spelling frequently points to completely unrelated
-  clinical concepts. Always confirm clinical meaning and domain alignment
-  before trusting a high score.
+- PROVENANCE VERIFIES THE LINK, NOT THE CONTEXT: a candidate with basis
+  verified_brand_alias or exact_text has a mathematically real string-level
+  relationship to the entity text -- do not reject it merely because its
+  spelling differs from what you expected. But a verified LINK is not the
+  same claim as a verified FIT: this corpus's own calibration measured plain
+  exact_text matches at only ~52% accuracy, a coin flip, so exact_text alone
+  is NOT evidence the reading is contextually correct here. Judge every
+  candidate, regardless of basis, on whether it fits the surrounding clinical
+  context -- never on the strength of its match_basis or score alone.
+- IGNORE THE SCORE WHILE JUDGING FIT: a high similarity score (e.g. above
+  0.80) or a perfect string match is NOT reliable evidence of contextual
+  correctness on its own. Evaluate the candidate's semantic and clinical fit
+  as if the score and match_basis were hidden from you; use them only as a
+  tie-breaker between readings you already judge equally plausible on
+  context, never as the reason to accept a reading.
+- BE THE DEVIL'S ADVOCATE: treat every candidate as unproven until context
+  confirms it, not as confirmed until context contradicts it. Before
+  accepting a candidate, actively look for the reason it might be wrong -- a
+  wrong abbreviation expansion, a string match with the wrong clinical
+  meaning, a lab-test-vs-diagnosis mismatch.
+- CONCEPTUAL FIREWALL: "after abbreviation expansion" in the ENTITY block
+  below is Stage 1's own guess at what the TEXT means, not a fact about any
+  candidate. When judging what a candidate concept means, use ONLY its own
+  name/vocabulary identity shown in CANDIDATE CONCEPTS -- never let Stage 1's
+  expansion stand in for it. A candidate can share zero words with a correct
+  expansion and still be the wrong concept.
 - SYNONYM TOLERANCE: do not reject valid clinical paraphrases (e.g. rejecting
   "Right atrial structure" for the entity "right atrium") purely due to minor
   wording differences. You are matching semantic concepts, not exact strings.
@@ -230,7 +271,7 @@ Only ask if it would genuinely change your verdict; otherwise answer now.
 
 Reply with a single JSON object and nothing else:
 {"verdict": "<one of the allowed verdicts>",
- "reasoning": "<two sentences maximum>",
+ "reasoning": "<complete these steps in order: (1) what the extracted text means from the surrounding sentence alone; (2) what the candidate concept means, using ONLY its own name/vocabulary identity -- never Stage 1's abbreviation expansion; (3) whether those two meanings actually agree, ignoring the match score/basis while you decide. Four sentences maximum.>",
  "cited_evidence": [{"rule_id": "<id from EVIDENCE>", "quote": "<exact text from that rule>"}],
  "confidence": "<HIGH|MEDIUM|LOW>",
  "request": "<MORE_RULES|SUPPRESSED_RULES|CANDIDATE_DETAIL|NONE>",

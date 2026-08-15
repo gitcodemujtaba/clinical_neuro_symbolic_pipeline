@@ -1,0 +1,844 @@
+{
+  "matrix": {
+    "('CORRECT', 'FLAGS')": 24,
+    "('WRONG', 'FLAGS')": 23,
+    "('CORRECT', 'CONFIRMS')": 7,
+    "('CORRECT', 'NO_CONSENSUS')": 2,
+    "('WRONG', 'CONFIRMS')": 4,
+    "('WRONG', 'NO_CONSENSUS')": 6
+  },
+  "per_entity": {
+    "19442119-DS-15-e2fc1721f10": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Dyspnea on exertion",
+      "top1_concept_name": "Dyspnea on exertion",
+      "gold_span": "Dyspnea on exertion",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-eb41cff38e9": {
+      "note_id": "19442119-DS-15",
+      "original_text": "type 2 diabetes",
+      "top1_concept_name": "Type 2 diabetes mellitus",
+      "gold_span": "type 2 diabetes",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ed05f464b01": {
+      "note_id": "19442119-DS-15",
+      "original_text": "type",
+      "top1_concept_name": "Type",
+      "gold_span": "type 2 diabetes",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e4bc987568b": {
+      "note_id": "19442119-DS-15",
+      "original_text": "2 diabetes",
+      "top1_concept_name": "Type 2 diabetes mellitus",
+      "gold_span": "type 2 diabetes",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e9e6b6df630": {
+      "note_id": "19442119-DS-15",
+      "original_text": "heart \ndisease",
+      "top1_concept_name": "Heart disease",
+      "gold_span": "valvular heart \ndisease",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e483a609252": {
+      "note_id": "19442119-DS-15",
+      "original_text": "diuretics",
+      "top1_concept_name": "Diuretic therapy",
+      "gold_span": "diuretics",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ef7508b8c81": {
+      "note_id": "19442119-DS-15",
+      "original_text": "aortic",
+      "top1_concept_name": "Finding of aorta",
+      "gold_span": "aortic stenosis",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "BOTH_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e00cfb72dfc": {
+      "note_id": "19442119-DS-15",
+      "original_text": "aortic stenosis",
+      "top1_concept_name": "Aortic valve stenosis",
+      "gold_span": "aortic stenosis",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e1a8dc6a5f6": {
+      "note_id": "19442119-DS-15",
+      "original_text": "stenosis",
+      "top1_concept_name": "Stenosis",
+      "gold_span": "aortic stenosis",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e3b138cb85a": {
+      "note_id": "19442119-DS-15",
+      "original_text": "mitral stenosis",
+      "top1_concept_name": "Mitral valve stenosis",
+      "gold_span": "mitral stenosis",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e2ee15d7a32": {
+      "note_id": "19442119-DS-15",
+      "original_text": "mitral stenosis",
+      "top1_concept_name": "Mitral valve stenosis",
+      "gold_span": "mitral stenosis",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e33743ae40f": {
+      "note_id": "19442119-DS-15",
+      "original_text": "pulmonary hypertension",
+      "top1_concept_name": "Pulmonary hypertension",
+      "gold_span": "pulmonary hypertension",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-eb994e3126b": {
+      "note_id": "19442119-DS-15",
+      "original_text": "cardiac catheterization",
+      "top1_concept_name": "Cardiac catheterization",
+      "gold_span": "cardiac catheterization",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "NO_CONSENSUS"
+    },
+    "19442119-DS-15-e7b6ce2170f": {
+      "note_id": "19442119-DS-15",
+      "original_text": "midcircumflex",
+      "top1_concept_name": "Midclavicular",
+      "gold_span": "stenosis of the midcircumflex",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-e3339e4f0a6": {
+      "note_id": "19442119-DS-15",
+      "original_text": "third obtuse marginal ostial",
+      "top1_concept_name": "Structure of third obtuse marginal branch of circumflex branch of left coronary artery",
+      "gold_span": "obtuse marginal",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-e35b9863af0": {
+      "note_id": "19442119-DS-15",
+      "original_text": "obtuse marginal ostial",
+      "top1_concept_name": "Entire obtuse marginal branch of circumflex branch of left coronary artery",
+      "gold_span": "obtuse marginal",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "NO_CONSENSUS"
+    },
+    "19442119-DS-15-edf45e6b5d7": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Neo infusion",
+      "top1_concept_name": "Infusion chemotherapy for malignant neoplasm",
+      "gold_span": "infusion",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "NO_CONSENSUS"
+    },
+    "19442119-DS-15-e1ad22c515f": {
+      "note_id": "19442119-DS-15",
+      "original_text": "dopamine infusion",
+      "top1_concept_name": "dopamine Injection",
+      "gold_span": "infusion",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "NO_CONSENSUS"
+    },
+    "19442119-DS-15-e02ea232de0": {
+      "note_id": "19442119-DS-15",
+      "original_text": "UTI",
+      "top1_concept_name": "Urinary tract infectious disease",
+      "gold_span": "UTI",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-e0b0bf515c6": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Vancomycin",
+      "top1_concept_name": "vancomycin",
+      "gold_span": "Vancomycin",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-e70a07b61ac": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Dobutamine infusion",
+      "top1_concept_name": "dobutamine Injection",
+      "gold_span": "infusion",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-eaf4a971f98": {
+      "note_id": "19442119-DS-15",
+      "original_text": "infusion",
+      "top1_concept_name": "material specification Injection",
+      "gold_span": "infusion",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e0162809561": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Dyslipidemia",
+      "top1_concept_name": "Dyslipidemia",
+      "gold_span": "Dyslipidemia",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-ea1e24ae472": {
+      "note_id": "19442119-DS-15",
+      "original_text": "RCA",
+      "top1_concept_name": "Right coronary artery structure",
+      "gold_span": "RCA",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-e020ce51bd5": {
+      "note_id": "19442119-DS-15",
+      "original_text": "LCx",
+      "top1_concept_name": "Structure of circumflex coronary artery",
+      "gold_span": "LCx",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-e548b519259": {
+      "note_id": "19442119-DS-15",
+      "original_text": "LCx",
+      "top1_concept_name": "Left",
+      "gold_span": "LCx",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "BOTH_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "NO_CONSENSUS"
+    },
+    "19442119-DS-15-e9e9994507f": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Hypertension",
+      "top1_concept_name": "Hypertensive disorder",
+      "gold_span": "Hypertension",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "BOTH_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ebd26b30ab3": {
+      "note_id": "19442119-DS-15",
+      "original_text": "NECK",
+      "top1_concept_name": "Neck structure",
+      "gold_span": "NECK",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-e3443c0f129": {
+      "note_id": "19442119-DS-15",
+      "original_text": "R IJ",
+      "top1_concept_name": "Structure of right internal jugular vein",
+      "gold_span": "R IJ",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-ed8fbca6228": {
+      "note_id": "19442119-DS-15",
+      "original_text": "R",
+      "top1_concept_name": "Right",
+      "gold_span": "R IJ",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "BOTH_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e9dc8c6f76b": {
+      "note_id": "19442119-DS-15",
+      "original_text": "intercostal space",
+      "top1_concept_name": "Structure of intercostal space",
+      "gold_span": "intercostal space",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "BOTH_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "NO_CONSENSUS"
+    },
+    "19442119-DS-15-e08be394d2a": {
+      "note_id": "19442119-DS-15",
+      "original_text": "midclavicular \nline",
+      "top1_concept_name": "Midclavicular line",
+      "gold_span": "midclavicular \nline",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "BOTH_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "CONFIRMS"
+    },
+    "19442119-DS-15-e41d2fe0263": {
+      "note_id": "19442119-DS-15",
+      "original_text": "S2",
+      "top1_concept_name": "Structure of second sacral vertebra",
+      "gold_span": "S2",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e6b919a10e2": {
+      "note_id": "19442119-DS-15",
+      "original_text": "heparin",
+      "top1_concept_name": "heparin",
+      "gold_span": "Bruise at sites of heparin injections",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ef31ae574fb": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Right IJ",
+      "top1_concept_name": "Structure of right internal jugular vein",
+      "gold_span": "Right IJ",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e85fedbf9b0": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Right",
+      "top1_concept_name": "Right",
+      "gold_span": "Right IJ",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e839add80ec": {
+      "note_id": "19442119-DS-15",
+      "original_text": "IJ",
+      "top1_concept_name": "Internal jugular vein structure",
+      "gold_span": "Right IJ",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-eb75dc7f6d9": {
+      "note_id": "19442119-DS-15",
+      "original_text": "ALT",
+      "top1_concept_name": "Alanine transaminase activity measurement",
+      "gold_span": "ALT",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-eb27bc0ab4a": {
+      "note_id": "19442119-DS-15",
+      "original_text": "AST",
+      "top1_concept_name": "Aspartate aminotransferase measurement",
+      "gold_span": "AST",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e1bcf96cd30": {
+      "note_id": "19442119-DS-15",
+      "original_text": "ALT-736",
+      "top1_concept_name": "Alanine transaminase activity measurement",
+      "gold_span": "ALT",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e2d99dd5a79": {
+      "note_id": "19442119-DS-15",
+      "original_text": "AST-956",
+      "top1_concept_name": "Aspartate aminotransferase measurement",
+      "gold_span": "AST",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e950a636b27": {
+      "note_id": "19442119-DS-15",
+      "original_text": "LD(LDH)",
+      "top1_concept_name": "Lactate dehydrogenase measurement",
+      "gold_span": "LDH",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e694c10204f": {
+      "note_id": "19442119-DS-15",
+      "original_text": "hypertension",
+      "top1_concept_name": "Hypertensive disorder",
+      "gold_span": "hypertension",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e769d2d894b": {
+      "note_id": "19442119-DS-15",
+      "original_text": "hyperlipidemia",
+      "top1_concept_name": "Hyperlipidemia",
+      "gold_span": "hyperlipidemia",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e8afa8c896a": {
+      "note_id": "19442119-DS-15",
+      "original_text": "chronic systolic heart",
+      "top1_concept_name": "Chronic systolic heart failure",
+      "gold_span": "chronic systolic heart failure",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ebd86dd02bd": {
+      "note_id": "19442119-DS-15",
+      "original_text": "systolic heart",
+      "top1_concept_name": "Systolic hypertension",
+      "gold_span": "chronic systolic heart failure",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ee4760f1798": {
+      "note_id": "19442119-DS-15",
+      "original_text": "heart failure",
+      "top1_concept_name": "Heart failure",
+      "gold_span": "chronic systolic heart failure",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ee94fb015b9": {
+      "note_id": "19442119-DS-15",
+      "original_text": "heart disease",
+      "top1_concept_name": "Heart disease",
+      "gold_span": "valvular heart disease",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e95ce4d6eac": {
+      "note_id": "19442119-DS-15",
+      "original_text": "heart",
+      "top1_concept_name": "Initial",
+      "gold_span": "valvular heart disease",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ea62580580a": {
+      "note_id": "19442119-DS-15",
+      "original_text": "exertional dyspnea",
+      "top1_concept_name": "Dyspnea on exertion",
+      "gold_span": "exertional dyspnea",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e6e20d78f7f": {
+      "note_id": "19442119-DS-15",
+      "original_text": "pulmonary edema",
+      "top1_concept_name": "Pulmonary edema",
+      "gold_span": "pulmonary edema",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e10a982e234": {
+      "note_id": "19442119-DS-15",
+      "original_text": "PCI",
+      "top1_concept_name": "Percutaneous coronary intervention",
+      "gold_span": "PCI",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e7be815da86": {
+      "note_id": "19442119-DS-15",
+      "original_text": "LAD",
+      "top1_concept_name": "Structure of left anterior descending artery",
+      "gold_span": "LAD",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-eec3895166a": {
+      "note_id": "19442119-DS-15",
+      "original_text": "broad spectrum \nantibiotics",
+      "top1_concept_name": "methicillin",
+      "gold_span": "antibiotics",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e5a16462fbd": {
+      "note_id": "19442119-DS-15",
+      "original_text": "diuresis",
+      "top1_concept_name": "Diuresis",
+      "gold_span": "diuresis",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "NO_CONSENSUS"
+    },
+    "19442119-DS-15-e0944baed1a": {
+      "note_id": "19442119-DS-15",
+      "original_text": "atrial \nfibrillation",
+      "top1_concept_name": "Atrial fibrillation",
+      "gold_span": "atrial \nfibrillation",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e5c60ffd71f": {
+      "note_id": "19442119-DS-15",
+      "original_text": "chronic",
+      "top1_concept_name": "Chronic",
+      "gold_span": "chronic systolic CHF",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ed71f1b0d54": {
+      "note_id": "19442119-DS-15",
+      "original_text": "systolic CHF",
+      "top1_concept_name": "Systolic heart failure",
+      "gold_span": "chronic systolic CHF",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ef18a65ff0e": {
+      "note_id": "19442119-DS-15",
+      "original_text": "systolic",
+      "top1_concept_name": "Systole",
+      "gold_span": "chronic systolic CHF",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "NO_CONSENSUS"
+    },
+    "19442119-DS-15-e1858469473": {
+      "note_id": "19442119-DS-15",
+      "original_text": "CHF",
+      "top1_concept_name": "Congestive heart failure",
+      "gold_span": "chronic systolic CHF",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "CORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-ee53b96c3e7": {
+      "note_id": "19442119-DS-15",
+      "original_text": "MR",
+      "top1_concept_name": "Mitral valve regurgitation",
+      "gold_span": "MR",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "CONCEPT_MAPPING_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e5c86e27f72": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Toxic metabolic encephalopathy",
+      "top1_concept_name": "Toxic metabolic encephalopathy",
+      "gold_span": "Toxic metabolic encephalopathy",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "ENTITY_LABEL_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e66e01c9105": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Hyponatremia",
+      "top1_concept_name": "Hyponatremia",
+      "gold_span": "Hyponatremia",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "ENTITY_LABEL_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e77a89e8998": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Congestive Hepatopathy",
+      "top1_concept_name": "Acute passive congestion of liver",
+      "gold_span": "Hepatopathy",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "ENTITY_LABEL_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e3a039810ab": {
+      "note_id": "19442119-DS-15",
+      "original_text": "Hepatopathy",
+      "top1_concept_name": "Disease of liver",
+      "gold_span": "Hepatopathy",
+      "ground_truth": "CORRECT",
+      "verdicts": [
+        "ENTITY_LABEL_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "CORRECT"
+      ],
+      "judgment": "FLAGS"
+    },
+    "19442119-DS-15-e30ce984141": {
+      "note_id": "19442119-DS-15",
+      "original_text": "AFib",
+      "top1_concept_name": "Atrial fibrillation",
+      "gold_span": "AFib w/ RVR",
+      "ground_truth": "WRONG",
+      "verdicts": [
+        "ENTITY_LABEL_INCORRECT",
+        "CONCEPT_MAPPING_INCORRECT",
+        "ENTITY_LABEL_INCORRECT"
+      ],
+      "judgment": "FLAGS"
+    }
+  }
+}

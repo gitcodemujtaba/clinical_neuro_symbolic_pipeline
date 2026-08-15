@@ -34,7 +34,7 @@ def run_test():
         expanded_text, provenance = process_and_store_note(note_id, raw_text, conn, is_test=True)
 
         print("2. Running Stage 2a (GLiNER Extraction)...")
-        entities = extract_and_store_entities(note_id, expanded_text, raw_text, conn, is_test=True)
+        entities = extract_and_store_entities(note_id, expanded_text, raw_text, provenance, conn, is_test=True)
 
         print("\n" + "=" * 60)
         print(f"✅ Extracted {len(entities)} clinical entities.")

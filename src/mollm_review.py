@@ -176,6 +176,35 @@ AL_ACCEPTED = "AL_ACCEPTED"
 AL_ACCEPTED_PROVISIONAL = "AL_ACCEPTED_PROVISIONAL"
 AL_HITL_REQUIRED = "AL_HITL_REQUIRED"
 
+# CRITICAL AUDIT INSTRUCTIONS block + the 3-step reasoning sequence (added
+# 2026-08-15, see docs/2026-08-15_Contradiction_Detection_Analysis.md): the
+# contradiction-detection confusion matrix measured this reviewer rubber-
+# stamping ~70% of genuine Stage 2 errors, with recall on score=1.0/exact_text
+# top-1s (21-24%) roughly a third of recall on low-confidence matches
+# (63-82%) -- the models were anchoring on Stage 2's own confidence signal as
+# if it were evidence of contextual correctness. This prompt block directly
+# targets that: it tells the model to evaluate as if the score were hidden,
+# reframes the baseline posture from "agree and move on" to "find the hidden
+# error", and forces context-first reasoning (define what the text means,
+# THEN look at the candidate) so the verdict can't be rationalized backwards
+# from a plausible-looking string match. A/B validation on 20 curated
+# anchoring-bias FN cases (scripts/analysis/prompt_ab_test.py, real Ollama
+# calls, retrieval held fixed): ensemble CONFIRM->FLAG flip rate 50% (10/20),
+# per-model flag rate 23.3%->51.7% -- see the analysis doc S6.
+#
+# Point 4 (CONCEPTUAL FIREWALL) added same day, after that same A/B test
+# surfaced a regression on 'PTT' -> 'Partial': reading the model's own
+# reasoning trace showed it was defining the CANDIDATE's meaning by restating
+# Stage 1's expanded_text ("partial thromboplastin time") instead of the
+# candidate's own actual identity (a bare "Partial" qualifier concept) --
+# anchoring on Stage 1's guess rather than Stage 2's score, same underlying
+# failure shape, different upstream field. Re-validate this addition the same
+# way before trusting it: rerun scripts/analysis/prompt_ab_test.py and check
+# 'PTT' specifically, not just the aggregate flip rate.
+#
+# Validate any further prompt change here against
+# scripts/analysis/contradiction_matrix.py + scripts/analysis/fn_breakdown.py
+# + scripts/analysis/prompt_ab_test.py, not just spot-checked examples.
 SYSTEM_PROMPT = """You are a clinical terminology reviewer in a semi-automatic, \
 active-learning labeling pipeline. Your review sits downstream of an automatic \
 extractor and normalizer; your job is uncertainty-sampling triage — decide \
@@ -228,9 +257,33 @@ Respect the stated assertion status: a finding marked ABSENT was explicitly \
 negated in the note and should not be judged as though it were a present, \
 current finding.
 
+=== CRITICAL AUDIT INSTRUCTIONS ===
+Your role is a strict semantic auditor, not a passive validator. Stage 2 \
+retrieval is context-blind and relies purely on lexical string-matching. It \
+frequently makes critical clinical errors.
+1. IGNORE THE CONFIDENCE SCORE: a high match score (e.g. 1.0) or an \
+'exact_text' match basis DOES NOT mean the concept is contextually correct. \
+Do not trust it. Evaluate the candidate's semantic fit as if the score and \
+match basis were completely hidden from you.
+2. BE THE DEVIL'S ADVOCATE: assume the Stage 2 candidate is a trap (e.g. a \
+wrong abbreviation expansion, a string match with the wrong clinical meaning, \
+or a lab-test-vs-diagnosis mismatch).
+3. CONTEXT IS SUPREME: if the candidate concept fundamentally clashes with \
+the surrounding text (medications present, section headers, anatomical \
+logic), flag it as INCORRECT regardless of how perfect the string match \
+appears.
+4. CONCEPTUAL FIREWALL — DO NOT LET STAGE 1 GRADE STAGE 2: "after abbreviation \
+expansion" below is Stage 1's own guess at what the TEXT means, not a fact \
+about the CANDIDATE. When you define the candidate's meaning, use ONLY its \
+own name/vocabulary identity shown in CANDIDATE CONCEPTS — never restate or \
+inherit Stage 1's expansion as if it were evidence the candidate is right. A \
+candidate can share zero words with a correct expansion and still be the \
+wrong concept (e.g. a bare qualifier like "Partial" is NOT "partial \
+thromboplastin time" just because Stage 1 expanded the abbreviation that way).
+
 Reply with a single JSON object and nothing else:
 {"assessment": "<one of the five values above>",
- "reasoning": "<two sentences maximum>",
+ "reasoning": "<complete these three steps in order, one clause each: (1) what the extracted text actually means based ONLY on the surrounding clinical sentence; (2) what the Stage 2 candidate concept means, using ONLY its own name/vocabulary identity — do not reuse or reference Stage 1's abbreviation expansion here; (3) whether those two meanings contradict each other. Ignore the match score while doing this. Four sentences maximum.>",
  "proposed_entity_label": "<text, or empty string if not proposing one>",
  "proposed_concept_name": "<text, or empty string if not proposing one>",
  "basis_notes": "<what you leaned on: a specific shown fact, or 'own medical knowledge'>",
