@@ -81,6 +81,15 @@ def main():
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--note-ids", default="10000032-DS-21", help="comma-separated note_ids")
     ap.add_argument("--limit-per-note", type=int, default=None)
+    ap.add_argument("--tier", default="LOW",
+                    help="confidence_tier_in filter passed to load_validation_records "
+                         "(HIGH/MEDIUM/LOW), or 'ALL' to load every tier -- 2026-08-15 "
+                         "follow-up: production Stage 3 (and this script's own default) "
+                         "has only ever tested LOW, which is Stage 2b's own hardest, "
+                         "pre-filtered-toward-disagreement subset. The spec's 70/15/5/5/5 "
+                         "target almost certainly describes the FULL entity population, "
+                         "where HIGH/MEDIUM-tier confirmations make up most of Tier 1's "
+                         "~70%% -- see docs/2026-08-15_Phase2_TierGate_Validation.md.")
     ap.add_argument("--db", default=DB_PATH)
     args = ap.parse_args()
 
@@ -88,10 +97,11 @@ def main():
     conn = duckdb.connect(args.db, read_only=True)
     vocab = VocabularyRetriever(conn)
 
+    tier_filter = None if args.tier.upper() == "ALL" else args.tier.upper()
     records = []
     for note_id in note_ids:
         records.extend(load_validation_records(conn, note_id, limit=args.limit_per_note,
-                                                tier="LOW"))
+                                                tier=tier_filter))
     # route_tier() expects >=1 candidate to be worth evaluating (0 candidates
     # is Tier 5's own "no_candidates" precheck, which needs no filtering
     # here -- kept in the sample deliberately so that precheck path is
@@ -116,7 +126,8 @@ def main():
         results.append({"record": record, "decision": decision, "outcome": outcome})
         elapsed = time.time() - t0
         n_calls = sum(1 for m in (decision.get("models") or []) if m.get("verdict"))
-        print(f"[{i}/{len(records)}] [{elapsed:.0f}s] {record['original_text']!r} "
+        print(f"[{i}/{len(records)}] [{elapsed:.0f}s] "
+              f"in_tier={record.get('confidence_tier_in')} {record['original_text']!r} "
               f"({len(record.get('candidates') or [])} cands) -> "
               f"tier={decision.get('tier')} routing={decision['mollm_routing_decision']} "
               f"reason={decision.get('queue_reason')} outcome={outcome} "
@@ -146,6 +157,16 @@ def main():
     print(f"\nAUTO coverage (Tier 1+2+3, fraction skipping human review): "
           f"{auto_count / len(results) * 100:.1f}% (target ~90%)")
 
+    print()
+    print("=" * 78)
+    print("AUTO COVERAGE BY INPUT (Stage 2b) CONFIDENCE TIER")
+    print("=" * 78)
+    in_tier_counts = collections.Counter(r["record"].get("confidence_tier_in") for r in results)
+    for in_tier in sorted(in_tier_counts):
+        rows = [r for r in results if r["record"].get("confidence_tier_in") == in_tier]
+        auto = sum(1 for r in rows if r["decision"].get("tier") in AUTO_TIERS)
+        print(f"  {in_tier}: {auto}/{len(rows)} auto ({auto / len(rows) * 100:.1f}%)")
+
     reasons = collections.Counter(r["decision"].get("queue_reason") for r in results
                                   if r["decision"].get("queue_reason"))
     print(f"\nHITL queue_reason breakdown: {dict(reasons)}")
@@ -153,6 +174,7 @@ def main():
     out_path = os.path.join(PROJECT_DIR, "reports", "tier_gate_batch_results.json")
     with open(out_path, "w") as f:
         json.dump([{"note_id": r["record"]["note_id"], "text": r["record"]["original_text"],
+                    "confidence_tier_in": r["record"].get("confidence_tier_in"),
                     "tier": r["decision"].get("tier"),
                     "routing": r["decision"]["mollm_routing_decision"],
                     "queue_reason": r["decision"].get("queue_reason"),

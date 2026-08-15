@@ -1,72 +1,65 @@
 [
   {
     "note_id": "17751158-DS-19",
-    "text": "gunshot wound",
+    "text": "HEENT",
+    "confidence_tier_in": "HIGH",
     "tier": "TIER_4_ENSEMBLE_SPLIT",
     "routing": "HITL_REQUIRED",
     "queue_reason": "ensemble_split",
-    "composite_confidence": 0.755127,
+    "composite_confidence": null,
     "final_candidate_index": null,
     "outcome": null,
     "models": [
       {
-        "model": "qwen2.5:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "This refers to a gunshot injury that has caused damage to the patient's abdomen, which is a serious and traumatic medical condition.",
-        "reasoning": "The term 'gunshot wound' is too specific and does not capture the broader context of a gunshot injury causing damage to the abdomen.",
-        "logprob_confidence": null,
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a normal examination of their head, eyes, ears, nose, and throat.",
+        "reasoning": "The candidate concept 'Structure of anterior portion of neck' matches the clinical meaning because it refers to a specific anatomical site (head, eyes, ears, nose, and throat) without including additional details that would change its distinct concept identity.",
+        "logprob_confidence": 0.765999,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Gunshot wound",
-            "match": false,
-            "reasoning": "The candidate concept 'Gunshot wound' is too broad and does not specifically indicate that it has caused damage to the patient's abdomen.",
-            "confidence": 0.970896,
-            "degenerate_generation": false
-          },
-          {
-            "candidate_index": 2,
-            "concept_name": "Gunshot wound",
-            "match": false,
-            "reasoning": "The term 'gunshot wound' is too specific and does not capture the broader context of a gunshot injury causing damage to the abdomen.",
-            "confidence": 0.909401,
+            "concept_name": "Structure of anterior portion of neck",
+            "match": true,
+            "reasoning": "The candidate concept 'Structure of anterior portion of neck' matches the clinical meaning because it refers to a specific anatomical site (head, eyes, ears, nose, and throat) without including additional details that would change its distinct concept identity.",
+            "confidence": 0.765999,
             "degenerate_generation": false
           }
         ]
       },
       {
-        "model": "llama3.2:3b",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "The patient has a physical injury caused by a gunshot that penetrated their abdomen.",
-        "reasoning": "The candidate concept 'Gunshot wound' matches the clinical meaning because its name is identical to the entity text and it belongs to the same domain (Condition) with a verified terminology-database link, indicating that it accurately labels the described physical injury.",
-        "logprob_confidence": 0.596253,
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The note describes a normal examination of the head, eyes, ears, nose, and throat including pupils that are equal in size and reactive to light with intact extraocular movements.",
+        "reasoning": "The provided candidate concept 'Structure of anterior portion of neck' does not align with the clinical meaning described in the independent statement about a normal examination of the head, eyes, ears, nose and throat including pupils that are equal in size and reactive to light.",
+        "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Gunshot wound",
-            "match": true,
-            "reasoning": "The candidate concept 'Gunshot wound' matches the clinical meaning because its name is identical to the entity text and it belongs to the same domain (Condition) with a verified terminology-database link, indicating that it accurately labels the described physical injury.",
-            "confidence": 0.596253,
+            "concept_name": "Structure of anterior portion of neck",
+            "match": false,
+            "reasoning": "The provided candidate concept 'Structure of anterior portion of neck' does not align with the clinical meaning described in the independent statement about a normal examination of the head, eyes, ears, nose and throat including pupils that are equal in size and reactive to light.",
+            "confidence": 0.999102,
             "degenerate_generation": false
           }
         ]
       },
       {
         "model": "phi4-mini",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A gunshot wound to the abdomen is a physical injury caused by being shot, which can involve penetration of tissues or organs in that area.",
-        "reasoning": "The 'gunshot wound' directly corresponds to physical injury caused by being shot as described in the provided clinical definition.",
-        "logprob_confidence": 0.914001,
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The entity refers to an anatomical region encompassing parts of a patient's head, eyes, ears, nose, and throat.",
+        "reasoning": "The entity 'HEENT' refers to an anatomical region encompassing parts of a patient's head (eyes), ears, nose and throat; however, the candidate concept describes only part of this area ('Structure of anterior portion of neck'), missing other components like eyes.",
+        "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Gunshot wound",
-            "match": true,
-            "reasoning": "The 'gunshot wound' directly corresponds to physical injury caused by being shot as described in the provided clinical definition.",
-            "confidence": 0.914001,
+            "concept_name": "Structure of anterior portion of neck",
+            "match": false,
+            "reasoning": "The entity 'HEENT' refers to an anatomical region encompassing parts of a patient's head (eyes), ears, nose and throat; however, the candidate concept describes only part of this area ('Structure of anterior portion of neck'), missing other components like eyes.",
+            "confidence": 0.52898,
             "degenerate_generation": false
           }
         ]
@@ -75,28 +68,47 @@
   },
   {
     "note_id": "17751158-DS-19",
-    "text": "Exploratory laparotomy",
+    "text": "transverse",
+    "confidence_tier_in": "HIGH",
     "tier": "TIER_4_ENSEMBLE_SPLIT",
     "routing": "HITL_REQUIRED",
     "queue_reason": "ensemble_split",
-    "composite_confidence": 0.838497,
+    "composite_confidence": null,
     "final_candidate_index": null,
     "outcome": null,
     "models": [
       {
-        "model": "phi4-mini",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A surgical procedure where an incision is made into the abdominal cavity to explore internal organs, particularly after a gunshot wound has damaged parts of the stomach and small intestine.",
-        "reasoning": "The term 'Exploratory laparotomy' directly corresponds to the surgical procedure described in the independent statement.",
-        "logprob_confidence": 0.979796,
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The transverse mesocolon is injured in this patient, which is part of the gastrointestinal tract and plays a role in supporting abdominal organs like the intestines.",
+        "reasoning": "The candidate concept 'Transverse plane' does not directly correspond to the specific anatomical term 'transverse mesocolon' mentioned in the clinical context.",
+        "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Exploratory laparotomy",
-            "match": true,
-            "reasoning": "The term 'Exploratory laparotomy' directly corresponds to the surgical procedure described in the independent statement.",
-            "confidence": 0.979796,
+            "concept_name": "Transverse plane",
+            "match": false,
+            "reasoning": "The candidate concept 'Transverse plane' does not directly correspond to the specific anatomical term 'transverse mesocolon' mentioned in the clinical context.",
+            "confidence": 0.890482,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The transverse mesocolon is a peritoneal fold that attaches to the posterior abdominal wall, supporting organs like part of the small intestine.",
+        "reasoning": "The 'transverse plane' refers to an anatomical orientation rather than a specific peritoneal fold supporting organs.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Transverse plane",
+            "match": false,
+            "reasoning": "The 'transverse plane' refers to an anatomical orientation rather than a specific peritoneal fold supporting organs.",
+            "confidence": 0.882283,
             "degenerate_generation": false
           }
         ]
@@ -104,35 +116,17 @@
       {
         "model": "llama3.2:3b",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A surgical procedure where a surgeon makes an incision in the abdomen to explore and examine the internal organs",
-        "reasoning": "The candidate concept 'Exploratory laparotomy' matches the clinical meaning because its name exactly matches the entity text and it is classified under Procedure with SNOMED vocabulary.",
-        "logprob_confidence": 0.697198,
+        "clinical_meaning": "Damage to the tissue that attaches the jejunum (part of the small intestine) to the back of the abdominal wall",
+        "reasoning": "The candidate concept 'Transverse plane' matches the clinical meaning of 'Damage to the tissue that attaches the jejunum (part of the small intestine) to the back of the abdominal wall' as it refers to a specific anatomical location, despite minor spelling differences and additional context information.",
+        "logprob_confidence": 0.834277,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Exploratory laparotomy",
+            "concept_name": "Transverse plane",
             "match": true,
-            "reasoning": "The candidate concept 'Exploratory laparotomy' matches the clinical meaning because its name exactly matches the entity text and it is classified under Procedure with SNOMED vocabulary.",
-            "confidence": 0.697198,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "qwen2.5:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "This refers to a surgical procedure where doctors perform an exploratory laparotomy, which is looking inside the belly cavity to examine organs and tissues, along with repairing damage from a gunshot wound in the stomach and small intestine.",
-        "reasoning": "The candidate concept 'Exploratory laparotomy' does not fully capture the full procedure described in the independent statement. It only mentions an exploratory laparotomy and repair of gunshot wound to the stomach and jejunum, but it misses other details such as looking inside the belly cavity to examine organs and tissues.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Exploratory laparotomy",
-            "match": false,
-            "reasoning": "The candidate concept 'Exploratory laparotomy' does not fully capture the full procedure described in the independent statement. It only mentions an exploratory laparotomy and repair of gunshot wound to the stomach and jejunum, but it misses other details such as looking inside the belly cavity to examine organs and tissues.",
-            "confidence": 0.986898,
+            "reasoning": "The candidate concept 'Transverse plane' matches the clinical meaning of 'Damage to the tissue that attaches the jejunum (part of the small intestine) to the back of the abdominal wall' as it refers to a specific anatomical location, despite minor spelling differences and additional context information.",
+            "confidence": 0.834277,
             "degenerate_generation": false
           }
         ]
@@ -141,64 +135,65 @@
   },
   {
     "note_id": "17751158-DS-19",
-    "text": "LLQ",
+    "text": "mesocolon",
+    "confidence_tier_in": "HIGH",
     "tier": "TIER_4_ENSEMBLE_SPLIT",
     "routing": "HITL_REQUIRED",
     "queue_reason": "ensemble_split",
-    "composite_confidence": 0.743822,
+    "composite_confidence": null,
     "final_candidate_index": null,
     "outcome": null,
     "models": [
       {
-        "model": "llama3.2:3b",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "a gunshot wound to the abdomen",
-        "reasoning": "The candidate concept 'Structure of left lower quadrant of abdomen' matches the clinical meaning because it is a verified brand alias and accurately labels the anatomical site referred to in the text.",
-        "logprob_confidence": 0.618943,
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The mesocolon is injured, which means part of the abdominal wall that holds in the intestines has been damaged by a gunshot wound.",
+        "reasoning": "The provided candidate 'Structure of mesentery of colon' does not align with the clinical meaning which describes an injury to part of the abdominal wall that holds in intestines (mesocolon) due to a gunshot wound.",
+        "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Structure of left lower quadrant of abdomen",
+            "concept_name": "Structure of mesentery of colon",
+            "match": false,
+            "reasoning": "The provided candidate 'Structure of mesentery of colon' does not align with the clinical meaning which describes an injury to part of the abdominal wall that holds in intestines (mesocolon) due to a gunshot wound.",
+            "confidence": 0.60418,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Injury to a part of the tissue that attaches the intestine to the back of the abdominal wall",
+        "reasoning": "The candidate concept 'Structure of mesentery of colon' matches the clinical meaning because it accurately describes a specific anatomical structure related to the intestine and abdominal wall, as indicated by its semantic similarity basis.",
+        "logprob_confidence": 0.972011,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Structure of mesentery of colon",
             "match": true,
-            "reasoning": "The candidate concept 'Structure of left lower quadrant of abdomen' matches the clinical meaning because it is a verified brand alias and accurately labels the anatomical site referred to in the text.",
-            "confidence": 0.618943,
+            "reasoning": "The candidate concept 'Structure of mesentery of colon' matches the clinical meaning because it accurately describes a specific anatomical structure related to the intestine and abdominal wall, as indicated by its semantic similarity basis.",
+            "confidence": 0.972011,
             "degenerate_generation": false
           }
         ]
       },
       {
         "model": "phi4-mini",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "The patient sustained an injury to his left lower abdomen area.",
-        "reasoning": "The term 'LLQ' refers specifically to the left lower quadrant of the abdomen which aligns directly with the injury location described in the text.",
-        "logprob_confidence": 0.868701,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Structure of left lower quadrant of abdomen",
-            "match": true,
-            "reasoning": "The term 'LLQ' refers specifically to the left lower quadrant of the abdomen which aligns directly with the injury location described in the text.",
-            "confidence": 0.868701,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "qwen2.5:3b",
         "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The left lower quadrant refers to a specific area of the abdomen where a gunshot wound could be located, clinically indicating injury to that part of the body.",
-        "reasoning": "The LLQ (left lower quadrant) is anatomical information about the body but does not describe a gunshot wound specifically. The candidate concept 'Structure of left lower quadrant of abdomen' is too broad and unrelated to the specific clinical context provided.",
+        "clinical_meaning": "The patient has sustained an injury to a part of their abdominal cavity that connects organs like intestines, specifically involving structures such as the transverse mesocolon and jejunum.",
+        "reasoning": "The entity 'mesocolon' refers to a specific part of abdominal anatomy but does not encompass all aspects mentioned in the provided text such as injury involving intestines and structures like transverse mesocolon.",
         "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Structure of left lower quadrant of abdomen",
+            "concept_name": "Structure of mesentery of colon",
             "match": false,
-            "reasoning": "The LLQ (left lower quadrant) is anatomical information about the body but does not describe a gunshot wound specifically. The candidate concept 'Structure of left lower quadrant of abdomen' is too broad and unrelated to the specific clinical context provided.",
-            "confidence": 0.999586,
+            "reasoning": "The entity 'mesocolon' refers to a specific part of abdominal anatomy but does not encompass all aspects mentioned in the provided text such as injury involving intestines and structures like transverse mesocolon.",
+            "confidence": 0.633381,
             "degenerate_generation": false
           }
         ]
@@ -207,398 +202,583 @@
   },
   {
     "note_id": "17751158-DS-19",
-    "text": "Laparoscopic appendectomy",
+    "text": "retroperitoneal",
+    "confidence_tier_in": "HIGH",
     "tier": "TIER_1_AUTO_VALIDATED",
     "routing": "AUTO_VALIDATED",
     "queue_reason": null,
-    "composite_confidence": 0.932088,
+    "composite_confidence": 0.922584,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A small collection of blood outside the abdominal cavity, in a space called retroperitoneal.",
+        "reasoning": "The candidate concept 'Retroperitoneal' from SNOMED matches the clinical meaning of a small collection of blood outside the abdominal cavity in a retroperitoneal space.",
+        "logprob_confidence": 0.836112,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Retroperitoneal",
+            "match": true,
+            "reasoning": "The candidate concept 'Retroperitoneal' from SNOMED matches the clinical meaning of a small collection of blood outside the abdominal cavity in a retroperitoneal space.",
+            "confidence": 0.836112,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A retroperitoneal hematoma is a collection of blood that has accumulated in the space behind (retro) the peritoneum, which can cause pain and swelling.",
+        "reasoning": "The entity 'retroperitoneal' directly corresponds to a part of anatomy mentioned in both the independent statement and context provided.",
+        "logprob_confidence": 0.990267,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Retroperitoneal",
+            "match": true,
+            "reasoning": "The entity 'retroperitoneal' directly corresponds to a part of anatomy mentioned in both the independent statement and context provided.",
+            "confidence": 0.990267,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A collection of blood that has accumulated in the space between the abdominal organs and the back wall of the abdomen.",
+        "reasoning": "The candidate concept 'Retroperitoneal' matches the clinical meaning because it is a verified SNOMED terminology-database link and accurately labels the text span as referring to the space between abdominal organs and the back wall of the abdomen.",
+        "logprob_confidence": 0.941373,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Retroperitoneal",
+            "match": true,
+            "reasoning": "The candidate concept 'Retroperitoneal' matches the clinical meaning because it is a verified SNOMED terminology-database link and accurately labels the text span as referring to the space between abdominal organs and the back wall of the abdomen.",
+            "confidence": 0.941373,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "17751158-DS-19",
+    "text": "left",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.884531,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient experienced symptoms related to their left lung.",
+        "reasoning": "The 'left' entity directly corresponds to a part of anatomy (the left lung), which is related to symptoms experienced by that anatomical region.",
+        "logprob_confidence": 0.935905,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Left",
+            "match": true,
+            "reasoning": "The 'left' entity directly corresponds to a part of anatomy (the left lung), which is related to symptoms experienced by that anatomical region.",
+            "confidence": 0.935905,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The left lobe of the lung is showing signs of inflammation, likely due to fluid or food getting into the lungs from above.",
+        "reasoning": "The candidate concept 'Left' matches the core clinical concept of left lobe lung inflammation due to fluid or food aspiration as described in the provided context.",
+        "logprob_confidence": 0.780768,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Left",
+            "match": true,
+            "reasoning": "The candidate concept 'Left' matches the core clinical concept of left lobe lung inflammation due to fluid or food aspiration as described in the provided context.",
+            "confidence": 0.780768,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a lung infection in the left part of their lung.",
+        "reasoning": "The candidate concept 'Left' matches the clinical meaning because it is a verified brand alias for the SNOMED term, and its name corresponds to the left part of the lung mentioned in the context.",
+        "logprob_confidence": 0.936919,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Left",
+            "match": true,
+            "reasoning": "The candidate concept 'Left' matches the clinical meaning because it is a verified brand alias for the SNOMED term, and its name corresponds to the left part of the lung mentioned in the context.",
+            "confidence": 0.936919,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "17751158-DS-19",
+    "text": "aspiration",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.919678,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Aspiration pneumonia is a lung infection that occurs when material from the mouth or stomach enters the airways and lungs, often due to aspiration.",
+        "reasoning": "The candidate concept 'Aspiration' aligns with the clinical meaning of aspiration pneumonia as described, even though it does not specify all details mentioned in the context.",
+        "logprob_confidence": 0.871529,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Aspiration",
+            "match": true,
+            "reasoning": "The candidate concept 'Aspiration' aligns with the clinical meaning of aspiration pneumonia as described, even though it does not specify all details mentioned in the context.",
+            "confidence": 0.871529,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Aspiration refers to inhalation of foreign material into the lungs, which can lead to pneumonia.",
+        "reasoning": "The entity 'aspiration' directly corresponds to its definition as inhalation of foreign material into lungs.",
+        "logprob_confidence": 0.967299,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Aspiration",
+            "match": true,
+            "reasoning": "The entity 'aspiration' directly corresponds to its definition as inhalation of foreign material into lungs.",
+            "confidence": 0.967299,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient inhaled food or liquid into their lungs, leading to an infection.",
+        "reasoning": "The candidate concept 'Aspiration' matches the clinical meaning because it is a semantic similarity-based link to SNOMED and its name corresponds to the entity text, despite minor spelling differences.",
+        "logprob_confidence": 0.920205,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Aspiration",
+            "match": true,
+            "reasoning": "The candidate concept 'Aspiration' matches the clinical meaning because it is a semantic similarity-based link to SNOMED and its name corresponds to the entity text, despite minor spelling differences.",
+            "confidence": 0.920205,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "17751158-DS-19",
+    "text": "pneumonia",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.980576,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient developed pneumonia, which caused fever and lung inflammation in the left side of their lungs.",
+        "reasoning": "The candidate concept 'Pneumonia' from SNOMED matches the core clinical concept described in the provided context as it refers to a lung infection that caused fever and left-sided lung inflammation.",
+        "logprob_confidence": 0.980731,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Pneumonia",
+            "match": true,
+            "reasoning": "The candidate concept 'Pneumonia' from SNOMED matches the core clinical concept described in the provided context as it refers to a lung infection that caused fever and left-sided lung inflammation.",
+            "confidence": 0.980731,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Pneumonia is an infection that inflames air sacs in one or both lungs, which may fill up with fluid.",
+        "reasoning": "The entity 'pneumonia' directly corresponds to the defined condition of an infection that inflames air sacs in one or both lungs.",
+        "logprob_confidence": 0.998447,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Pneumonia",
+            "match": true,
+            "reasoning": "The entity 'pneumonia' directly corresponds to the defined condition of an infection that inflames air sacs in one or both lungs.",
+            "confidence": 0.998447,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Infection of the lungs",
+        "reasoning": "The candidate concept 'Pneumonia' matches the clinical meaning of 'Infection of the lungs' as it is a semantic similarity match and does not introduce any clinically unrelated concepts or missing specificity that would alter the distinct concept identity.",
+        "logprob_confidence": 0.962551,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Pneumonia",
+            "match": true,
+            "reasoning": "The candidate concept 'Pneumonia' matches the clinical meaning of 'Infection of the lungs' as it is a semantic similarity match and does not introduce any clinically unrelated concepts or missing specificity that would alter the distinct concept identity.",
+            "confidence": 0.962551,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "17751158-DS-19",
+    "text": "chest",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.944468,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "chest pain",
+        "reasoning": "The candidate concept 'Thoracic structure' matches the clinical meaning of 'chest pain' because it is a semantic similarity match to the text 'chest', and does not represent a distinct or clinically unrelated concept.",
+        "logprob_confidence": 0.892033,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Thoracic structure",
+            "match": true,
+            "reasoning": "The candidate concept 'Thoracic structure' matches the clinical meaning of 'chest pain' because it is a semantic similarity match to the text 'chest', and does not represent a distinct or clinically unrelated concept.",
+            "confidence": 0.892033,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The entity refers to an anatomical structure in a patient's chest that may be experiencing symptoms such as pain or discomfort.",
+        "reasoning": "The 'chest' entity refers to an anatomical structure in a patient's chest that may be experiencing symptoms such as pain or discomfort.",
+        "logprob_confidence": 0.996904,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Thoracic structure",
+            "match": true,
+            "reasoning": "The 'chest' entity refers to an anatomical structure in a patient's chest that may be experiencing symptoms such as pain or discomfort.",
+            "confidence": 0.996904,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The chest refers to the area of the body between the neck and abdomen, where symptoms like shortness of breath, chest pain, bloody cough, nausea or vomiting, fever, or other concerning new symptoms might be experienced.",
+        "reasoning": "The candidate concept 'Thoracic structure' does not directly align with the specific symptoms mentioned in the context (shortness of breath, chest pain, bloody cough, nausea or vomiting, fever). It is too broad and does not specifically refer to a symptom set.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Thoracic structure",
+            "match": false,
+            "reasoning": "The candidate concept 'Thoracic structure' does not directly align with the specific symptoms mentioned in the context (shortness of breath, chest pain, bloody cough, nausea or vomiting, fever). It is too broad and does not specifically refer to a symptom set.",
+            "confidence": 0.949802,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "17751158-DS-19",
+    "text": "pain",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.865429,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Chest pain is an urgent symptom that may indicate a serious condition requiring immediate medical attention.",
+        "reasoning": "The entity 'pain' directly corresponds to a symptom that may indicate serious conditions requiring immediate medical attention as described in the provided CLINICAL MEANING.",
+        "logprob_confidence": 0.842931,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Pain",
+            "match": true,
+            "reasoning": "The entity 'pain' directly corresponds to a symptom that may indicate serious conditions requiring immediate medical attention as described in the provided CLINICAL MEANING.",
+            "confidence": 0.842931,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "chest pain",
+        "reasoning": "The candidate concept 'Pain' matches the clinical meaning of 'chest pain' because it is a semantic similarity match to the exact phrase used in the clinical text.",
+        "logprob_confidence": 0.856948,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Pain",
+            "match": true,
+            "reasoning": "The candidate concept 'Pain' matches the clinical meaning of 'chest pain' because it is a semantic similarity match to the exact phrase used in the clinical text.",
+            "confidence": 0.856948,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The text 'pain' refers to chest pain, which is a symptom mentioned in the discharge instructions that requires immediate medical attention if it develops or worsens.",
+        "reasoning": "The candidate concept 'Pain' accurately represents the clinical meaning of 'pain' as a symptom requiring immediate medical attention mentioned in the discharge instructions.",
+        "logprob_confidence": 0.896408,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Pain",
+            "match": true,
+            "reasoning": "The candidate concept 'Pain' accurately represents the clinical meaning of 'pain' as a symptom requiring immediate medical attention mentioned in the discharge instructions.",
+            "confidence": 0.896408,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "Surgical or Invasive Procedure",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.915251,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "This refers to a major surgical procedure that caused dyspnea (difficulty breathing) during exertion, indicating significant post-operative complications or an unexpected event related to surgery.",
+        "reasoning": "The candidate concept 'Surgical procedure' does not directly align with the specific clinical meaning of a major surgical procedure that caused dyspnea (difficulty breathing) during exertion.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Surgical procedure",
+            "match": false,
+            "reasoning": "The candidate concept 'Surgical procedure' does not directly align with the specific clinical meaning of a major surgical procedure that caused dyspnea (difficulty breathing) during exertion.",
+            "confidence": 0.999701,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has undergone either surgery that involves cutting into a body part (major surgical procedure) or an invasive treatment like inserting instruments directly into organs, tissues, or vessels.",
+        "reasoning": "The entity 'Surgical procedure' aligns closely enough to represent a major surgical intervention as described in the independent determination.",
+        "logprob_confidence": 0.941868,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Surgical procedure",
+            "match": true,
+            "reasoning": "The entity 'Surgical procedure' aligns closely enough to represent a major surgical intervention as described in the independent determination.",
+            "confidence": 0.941868,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient underwent a major surgical procedure that may be related to their symptoms of dyspnea on exertion.",
+        "reasoning": "The candidate concept 'Surgical procedure' matches the clinical meaning because it is a semantic similarity match to 'Major Surgical or Invasive Procedure', and the name of the candidate concept does not imply additional specificity that would change its distinctness from the clinical meaning.",
+        "logprob_confidence": 0.888635,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Surgical procedure",
+            "match": true,
+            "reasoning": "The candidate concept 'Surgical procedure' matches the clinical meaning because it is a semantic similarity match to 'Major Surgical or Invasive Procedure', and the name of the candidate concept does not imply additional specificity that would change its distinctness from the clinical meaning.",
+            "confidence": 0.888635,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "type",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": null,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The note mentions 'type 2 diabetes', indicating that Mr. ___ has a condition characterized by high blood sugar levels, which is common in patients with type 2 diabetes.",
+        "reasoning": "The candidate concept 'Type' does not directly align with the specific condition mentioned ('type 2 diabetes') in the provided context.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Type",
+            "match": false,
+            "reasoning": "The candidate concept 'Type' does not directly align with the specific condition mentioned ('type 2 diabetes') in the provided context.",
+            "confidence": 0.900294,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A heart attack",
+        "reasoning": "The candidate concept 'Type' matches the clinical meaning of a heart attack because it is a semantic similarity match to the independent statement 'A heart attack', ignoring spelling differences and focusing on the core concept identity.",
+        "logprob_confidence": 0.763826,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Type",
+            "match": true,
+            "reasoning": "The candidate concept 'Type' matches the clinical meaning of a heart attack because it is a semantic similarity match to the independent statement 'A heart attack', ignoring spelling differences and focusing on the core concept identity.",
+            "confidence": 0.763826,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The entity refers to 'type 2 diabetes', which is a chronic condition affecting insulin production or action.",
+        "reasoning": "The entity 'type' does not specifically refer to type 2 diabetes; it is too general and could pertain to any classification.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Type",
+            "match": false,
+            "reasoning": "The entity 'type' does not specifically refer to type 2 diabetes; it is too general and could pertain to any classification.",
+            "confidence": 0.716439,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "2 diabetes",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.903337,
     "final_candidate_index": 1,
     "outcome": "correct",
     "models": [
       {
         "model": "phi4-mini",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A surgical procedure to remove an inflamed appendix through small incisions in the abdomen using a camera-guided instrument.",
-        "reasoning": "The entity 'Laparoscopic appendectomy' directly corresponds to the surgical procedure described in the independent statement.",
-        "logprob_confidence": 0.989128,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Laparoscopic appendectomy",
-            "match": true,
-            "reasoning": "The entity 'Laparoscopic appendectomy' directly corresponds to the surgical procedure described in the independent statement.",
-            "confidence": 0.989128,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "qwen2.5:3b",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "This refers to a surgical procedure where an appendectomy is performed using laparoscopic techniques, which means the appendix is removed through small incisions made in the abdomen.",
-        "reasoning": "The candidate concept 'Laparoscopic appendectomy' from SNOMED matches the clinical meaning of a surgical procedure where an appendectomy is performed using laparoscopic techniques.",
-        "logprob_confidence": 0.958118,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Laparoscopic appendectomy",
-            "match": true,
-            "reasoning": "The candidate concept 'Laparoscopic appendectomy' from SNOMED matches the clinical meaning of a surgical procedure where an appendectomy is performed using laparoscopic techniques.",
-            "confidence": 0.958118,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "llama3.2:3b",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A surgical procedure where a laparoscope is used to remove the appendix through small incisions in the abdomen.",
-        "reasoning": "The candidate concept's name matches the entity text and is verified as a brand alias in the SNOMED vocabulary, indicating a mathematically verified terminology-database link.",
-        "logprob_confidence": 0.849018,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Laparoscopic appendectomy",
-            "match": true,
-            "reasoning": "The candidate concept's name matches the entity text and is verified as a brand alias in the SNOMED vocabulary, indicating a mathematically verified terminology-database link.",
-            "confidence": 0.849018,
-            "degenerate_generation": false
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "note_id": "17751158-DS-19",
-    "text": "NC",
-    "tier": "TIER_5_TRUE_AMBIGUITY",
-    "routing": "HITL_REQUIRED",
-    "queue_reason": "unresolved_acronym",
-    "composite_confidence": null,
-    "final_candidate_index": null,
-    "outcome": null,
-    "models": []
-  },
-  {
-    "note_id": "17751158-DS-19",
-    "text": "BP",
-    "tier": "TIER_5_TRUE_AMBIGUITY",
-    "routing": "HITL_REQUIRED",
-    "queue_reason": "unresolved_acronym",
-    "composite_confidence": null,
-    "final_candidate_index": null,
-    "outcome": null,
-    "models": []
-  },
-  {
-    "note_id": "19442119-DS-15",
-    "text": "Dyspnea on exertion",
-    "tier": "TIER_4_ENSEMBLE_SPLIT",
-    "routing": "HITL_REQUIRED",
-    "queue_reason": "ensemble_split",
-    "composite_confidence": 0.830318,
-    "final_candidate_index": null,
-    "outcome": null,
-    "models": [
-      {
-        "model": "phi4-mini",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "The patient is experiencing shortness of breath when engaging in physical activity.",
-        "reasoning": "The term 'Dyspnea on exertion' directly corresponds to experiencing shortness of breath when engaging in physical activity.",
-        "logprob_confidence": 0.97346,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Dyspnea on exertion",
-            "match": true,
-            "reasoning": "The term 'Dyspnea on exertion' directly corresponds to experiencing shortness of breath when engaging in physical activity.",
-            "confidence": 0.97346,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "llama3.2:3b",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "The patient is experiencing shortness of breath when they exert themselves.",
-        "reasoning": "The candidate concept 'Dyspnea on exertion' matches the clinical meaning because its name exactly matches the entity text and it is in the same domain (Condition) with a verified brand alias basis, indicating a direct terminology-database link.",
-        "logprob_confidence": 0.687177,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Dyspnea on exertion",
-            "match": true,
-            "reasoning": "The candidate concept 'Dyspnea on exertion' matches the clinical meaning because its name exactly matches the entity text and it is in the same domain (Condition) with a verified brand alias basis, indicating a direct terminology-database link.",
-            "confidence": 0.687177,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "qwen2.5:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "Dyspnea on exertion is a symptom where a person experiences shortness of breath during physical activity, which was mentioned in the chief complaint section.",
-        "reasoning": "The candidate concept does not specify that it is a symptom. The provided clinical meaning states 'Dyspnea on exertion is a symptom where a person experiences shortness of breath during physical activity,' but the candidate only provides information about its domain and vocabulary without specifying whether it refers to a condition or symptom.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Dyspnea on exertion",
-            "match": false,
-            "reasoning": "The candidate concept does not specify that it is a symptom. The provided clinical meaning states 'Dyspnea on exertion is a symptom where a person experiences shortness of breath during physical activity,' but the candidate only provides information about its domain and vocabulary without specifying whether it refers to a condition or symptom.",
-            "confidence": 0.527574,
-            "degenerate_generation": false
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "note_id": "19442119-DS-15",
-    "text": "Major",
-    "tier": "TIER_5_TRUE_AMBIGUITY",
-    "routing": "HITL_REQUIRED",
-    "queue_reason": "verdict_none_correct",
-    "composite_confidence": null,
-    "final_candidate_index": null,
-    "outcome": null,
-    "models": [
-      {
-        "model": "phi4-mini",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The patient is experiencing shortness of breath when engaging in physical activity.",
-        "reasoning": "The term 'Major' does not specifically denote shortness of breath during physical activity; it could refer to a major surgical procedure.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Major",
-            "match": false,
-            "reasoning": "The term 'Major' does not specifically denote shortness of breath during physical activity; it could refer to a major surgical procedure.",
-            "confidence": 0.997416,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "qwen2.5:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "Major Surgical or Invasive Procedure refers to a significant surgical operation or other medical procedure that requires substantial intervention and recovery time.",
-        "reasoning": "The term 'Major' in the context of 'Dyspnea on exertion' does not align with a major surgical or invasive procedure as defined by the clinical meaning provided.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Major",
-            "match": false,
-            "reasoning": "The term 'Major' in the context of 'Dyspnea on exertion' does not align with a major surgical or invasive procedure as defined by the clinical meaning provided.",
-            "confidence": 0.999912,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "llama3.2:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The patient is experiencing a major symptom of shortness of breath during physical activity.",
-        "reasoning": "The candidate concept 'Major' does not map to the specific symptom of shortness of breath during physical activity as described in the clinical meaning, but rather appears to be a general term used for severity or importance.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Major",
-            "match": false,
-            "reasoning": "The candidate concept 'Major' does not map to the specific symptom of shortness of breath during physical activity as described in the clinical meaning, but rather appears to be a general term used for severity or importance.",
-            "confidence": 0.588127,
-            "degenerate_generation": false
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "note_id": "19442119-DS-15",
-    "text": "Surgical",
-    "tier": "TIER_5_TRUE_AMBIGUITY",
-    "routing": "HITL_REQUIRED",
-    "queue_reason": "verdict_none_correct",
-    "composite_confidence": null,
-    "final_candidate_index": null,
-    "outcome": null,
-    "models": [
-      {
-        "model": "phi4-mini",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The patient has undergone surgery.",
-        "reasoning": "The term 'Surgical' does not specifically indicate that surgery has been performed; it could refer to anything related to surgical procedures.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Surgical",
-            "match": false,
-            "reasoning": "The term 'Surgical' does not specifically indicate that surgery has been performed; it could refer to anything related to surgical procedures.",
-            "confidence": 0.82535,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "qwen2.5:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "Surgical refers to a major surgical procedure that has occurred, contributing to dyspnea on exertion.",
-        "reasoning": "The candidate concept 'Surgical' does not directly align with the provided clinical meaning which specifies a major surgical procedure contributing to dyspnea on exertion.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Surgical",
-            "match": false,
-            "reasoning": "The candidate concept 'Surgical' does not directly align with the provided clinical meaning which specifies a major surgical procedure contributing to dyspnea on exertion.",
-            "confidence": 0.998036,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "llama3.2:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The patient underwent a surgical procedure that caused breathing difficulties during physical activity.",
-        "reasoning": "The candidate concept 'Surgical' does not map to the exact entity text due to a spelling difference, but its domain and vocabulary match the clinical meaning of 'Major Surgical or Invasive Procedure', indicating it is a verified brand alias that should be accepted.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Surgical",
-            "match": false,
-            "reasoning": "The candidate concept 'Surgical' does not map to the exact entity text due to a spelling difference, but its domain and vocabulary match the clinical meaning of 'Major Surgical or Invasive Procedure', indicating it is a verified brand alias that should be accepted.",
-            "confidence": 0.583803,
-            "degenerate_generation": false
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "note_id": "19442119-DS-15",
-    "text": "Invasive Procedure",
-    "tier": "TIER_5_TRUE_AMBIGUITY",
-    "routing": "HITL_REQUIRED",
-    "queue_reason": "verdict_none_correct",
-    "composite_confidence": null,
-    "final_candidate_index": null,
-    "outcome": null,
-    "models": [
-      {
-        "model": "phi4-mini",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The patient is currently experiencing difficulty breathing when engaging in physical activity.",
-        "reasoning": "The term 'Open approach' refers specifically to surgical technique and does not describe difficulty breathing during physical activity.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Open approach",
-            "match": false,
-            "reasoning": "The term 'Open approach' refers specifically to surgical technique and does not describe difficulty breathing during physical activity.",
-            "confidence": 0.999958,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "qwen2.5:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "This refers to a major surgical or invasive procedure that has occurred, likely causing dyspnea (difficulty breathing) on exertion.",
-        "reasoning": "The candidate concept 'Open approach' does not directly align with the clinical meaning of a major surgical or invasive procedure that has occurred and likely caused dyspnea on exertion.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Open approach",
-            "match": false,
-            "reasoning": "The candidate concept 'Open approach' does not directly align with the clinical meaning of a major surgical or invasive procedure that has occurred and likely caused dyspnea on exertion.",
-            "confidence": 0.999945,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "llama3.2:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The patient underwent a surgical procedure that required entering the body to treat an underlying condition.",
-        "reasoning": "The 'Open approach' concept does not directly relate to the clinical meaning of an invasive procedure for treating an underlying condition, as it is a surgical technique rather than a procedure itself.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Open approach",
-            "match": false,
-            "reasoning": "The 'Open approach' concept does not directly relate to the clinical meaning of an invasive procedure for treating an underlying condition, as it is a surgical technique rather than a procedure itself.",
-            "confidence": 0.571068,
-            "degenerate_generation": false
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "note_id": "19442119-DS-15",
-    "text": "type 2 diabetes",
-    "tier": "TIER_4_ENSEMBLE_SPLIT",
-    "routing": "HITL_REQUIRED",
-    "queue_reason": "ensemble_split",
-    "composite_confidence": 0.803055,
-    "final_candidate_index": null,
-    "outcome": null,
-    "models": [
-      {
-        "model": "phi4-mini",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "Type 2 diabetes is an ongoing metabolic disorder characterized by high blood sugar levels due to insulin resistance or a lack of insulin production.",
-        "reasoning": "The entity 'type 2 diabetes' directly corresponds to the condition described in its clinical definition.",
-        "logprob_confidence": 0.971295,
+        "clinical_meaning": "The patient has type 2 diabetes.",
+        "reasoning": "The entity '2 diabetes' refers to type 2 diabetes mellitus which matches the clinically determined mean of having a patient diagnosed with this condition.",
+        "logprob_confidence": 0.946947,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
             "concept_name": "Type 2 diabetes mellitus",
             "match": true,
-            "reasoning": "The entity 'type 2 diabetes' directly corresponds to the condition described in its clinical definition.",
-            "confidence": 0.971295,
+            "reasoning": "The entity '2 diabetes' refers to type 2 diabetes mellitus which matches the clinically determined mean of having a patient diagnosed with this condition.",
+            "confidence": 0.946947,
             "degenerate_generation": false
           }
         ]
       },
       {
         "model": "qwen2.5:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The patient has type 2 diabetes, which is a chronic condition characterized by high blood sugar levels that can lead to various complications if not managed properly.",
-        "reasoning": "The candidate concept 'Type 2 diabetes mellitus' from SNOMED does not directly align with the specific description of type 2 diabetes provided in the clinical meaning statement.",
-        "logprob_confidence": null,
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has type 2 diabetes, which is a chronic condition characterized by high blood sugar levels that can cause various health issues.",
+        "reasoning": "The candidate concept 'Type 2 diabetes mellitus' from SNOMED accurately represents the clinical meaning of a patient having type 2 diabetes as described in the provided context.",
+        "logprob_confidence": 0.834302,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
             "concept_name": "Type 2 diabetes mellitus",
-            "match": false,
-            "reasoning": "The candidate concept 'Type 2 diabetes mellitus' from SNOMED does not directly align with the specific description of type 2 diabetes provided in the clinical meaning statement.",
-            "confidence": 0.977153,
+            "match": true,
+            "reasoning": "The candidate concept 'Type 2 diabetes mellitus' from SNOMED accurately represents the clinical meaning of a patient having type 2 diabetes as described in the provided context.",
+            "confidence": 0.834302,
             "degenerate_generation": false
           }
         ]
@@ -607,16 +787,16 @@
         "model": "llama3.2:3b",
         "verdict": "SUPPORTED_1",
         "clinical_meaning": "A chronic condition characterized by high blood sugar levels that can cause a range of health problems.",
-        "reasoning": "The candidate concept 'Type 2 diabetes mellitus' matches the clinical meaning because it is a verified brand alias in SNOMED, which indicates a mathematically verified terminology-database link, and its name closely aligns with the entity text 'type 2 diabetes', despite minor spelling differences.",
-        "logprob_confidence": 0.634815,
+        "reasoning": "The candidate concept 'Type 2 diabetes mellitus' matches the clinical meaning of '2 diabetes' as it is a verified terminology-database link with semantic similarity basis and accurately labels the chronic condition characterized by high blood sugar levels.",
+        "logprob_confidence": 0.928762,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
             "concept_name": "Type 2 diabetes mellitus",
             "match": true,
-            "reasoning": "The candidate concept 'Type 2 diabetes mellitus' matches the clinical meaning because it is a verified brand alias in SNOMED, which indicates a mathematically verified terminology-database link, and its name closely aligns with the entity text 'type 2 diabetes', despite minor spelling differences.",
-            "confidence": 0.634815,
+            "reasoning": "The candidate concept 'Type 2 diabetes mellitus' matches the clinical meaning of '2 diabetes' as it is a verified terminology-database link with semantic similarity basis and accurately labels the chronic condition characterized by high blood sugar levels.",
+            "confidence": 0.928762,
             "degenerate_generation": false
           }
         ]
@@ -625,28 +805,29 @@
   },
   {
     "note_id": "19442119-DS-15",
-    "text": "heart \ndisease",
-    "tier": "TIER_4_ENSEMBLE_SPLIT",
-    "routing": "HITL_REQUIRED",
-    "queue_reason": "ensemble_split",
-    "composite_confidence": 0.659167,
-    "final_candidate_index": null,
+    "text": "third",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.826253,
+    "final_candidate_index": 1,
     "outcome": null,
     "models": [
       {
-        "model": "phi4-mini",
+        "model": "qwen2.5:3b",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "The patient currently has heart disease as indicated by elevated troponin levels.",
-        "reasoning": "The text 'heart disease' directly corresponds to elevated troponin levels indicating heart issues as per the given clinical meaning.",
-        "logprob_confidence": 0.765979,
+        "clinical_meaning": "The third obtuse marginal refers to a specific branch of the coronary arteries that is narrowed, which could be causing symptoms or needing treatment.",
+        "reasoning": "The candidate concept 'Third' aligns with the clinical meaning of referring to a specific branch of the coronary arteries that is narrowed and could be causing symptoms or needing treatment.",
+        "logprob_confidence": 0.990199,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Heart disease",
+            "concept_name": "Third",
             "match": true,
-            "reasoning": "The text 'heart disease' directly corresponds to elevated troponin levels indicating heart issues as per the given clinical meaning.",
-            "confidence": 0.765979,
+            "reasoning": "The candidate concept 'Third' aligns with the clinical meaning of referring to a specific branch of the coronary arteries that is narrowed and could be causing symptoms or needing treatment.",
+            "confidence": 0.990199,
             "degenerate_generation": false
           }
         ]
@@ -654,35 +835,35 @@
       {
         "model": "llama3.2:3b",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A heart attack has occurred.",
-        "reasoning": "The candidate concept 'Heart disease' matches the clinical meaning because it is listed in SNOMED and its name corresponds to a condition related to heart issues, despite minor spelling differences.",
-        "logprob_confidence": 0.552356,
+        "clinical_meaning": "The patient has a blockage in their heart artery",
+        "reasoning": "The candidate concept 'Third' matches the clinical meaning because it is a verified brand alias for the SNOMED term that corresponds to the left anterior descending artery, despite minor spelling differences.",
+        "logprob_confidence": 0.637946,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Heart disease",
+            "concept_name": "Third",
             "match": true,
-            "reasoning": "The candidate concept 'Heart disease' matches the clinical meaning because it is listed in SNOMED and its name corresponds to a condition related to heart issues, despite minor spelling differences.",
-            "confidence": 0.552356,
+            "reasoning": "The candidate concept 'Third' matches the clinical meaning because it is a verified brand alias for the SNOMED term that corresponds to the left anterior descending artery, despite minor spelling differences.",
+            "confidence": 0.637946,
             "degenerate_generation": false
           }
         ]
       },
       {
-        "model": "qwen2.5:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The patient has a history of heart disease, which is indicated by his mention of chronic systolic and valvular heart diseases.",
-        "reasoning": "The provided text mentions 'heart disease' but does not specify its type (systolic vs valvular). The candidate concept only covers a general condition without specifying the types mentioned in the context.",
-        "logprob_confidence": null,
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The 'third' refers to a specific location of stenosis in an artery, indicating that it is located at or near the third branch off from another major vessel.",
+        "reasoning": "The 'third' refers to a specific location of stenosis in an artery as described.",
+        "logprob_confidence": 0.850614,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Heart disease",
-            "match": false,
-            "reasoning": "The provided text mentions 'heart disease' but does not specify its type (systolic vs valvular). The candidate concept only covers a general condition without specifying the types mentioned in the context.",
-            "confidence": 0.991161,
+            "concept_name": "Third",
+            "match": true,
+            "reasoning": "The 'third' refers to a specific location of stenosis in an artery as described.",
+            "confidence": 0.850614,
             "degenerate_generation": false
           }
         ]
@@ -690,47 +871,97 @@
     ]
   },
   {
-    "note_id": "14490470-DS-11",
-    "text": "Traumatic brain injury",
-    "tier": "TIER_4_ENSEMBLE_SPLIT",
-    "routing": "HITL_REQUIRED",
-    "queue_reason": "ensemble_split",
-    "composite_confidence": 0.791129,
-    "final_candidate_index": null,
+    "note_id": "19442119-DS-15",
+    "text": "dopamine",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.842132,
+    "final_candidate_index": 1,
     "outcome": null,
     "models": [
       {
-        "model": "phi4-mini",
+        "model": "llama3.2:3b",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A traumatic brain injury is an acute medical condition caused by external force that results in damage to a patient's brain.",
-        "reasoning": "The entity 'Traumatic brain injury' directly corresponds to the defined condition of an acute medical state caused by external force leading to damage in a patient's brain.",
-        "logprob_confidence": 0.987363,
+        "clinical_meaning": "a medication used to increase blood pressure",
+        "reasoning": "The candidate concept 'dopamine' matches the clinical meaning of increasing blood pressure due to its association with a medication used for this purpose in the context of hypotension and tachycardia.",
+        "logprob_confidence": 0.804346,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Traumatic brain injury",
+            "concept_name": "dopamine",
             "match": true,
-            "reasoning": "The entity 'Traumatic brain injury' directly corresponds to the defined condition of an acute medical state caused by external force leading to damage in a patient's brain.",
-            "confidence": 0.987363,
+            "reasoning": "The candidate concept 'dopamine' matches the clinical meaning of increasing blood pressure due to its association with a medication used for this purpose in the context of hypotension and tachycardia.",
+            "confidence": 0.804346,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Dopamine is used as a medication to treat hypotension, tachycardia, or shock.",
+        "reasoning": "The entity 'dopamine' refers to a medication used for treating hypotension and tachycardia as mentioned in the provided text.",
+        "logprob_confidence": 0.973694,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "dopamine",
+            "match": true,
+            "reasoning": "The entity 'dopamine' refers to a medication used for treating hypotension and tachycardia as mentioned in the provided text.",
+            "confidence": 0.973694,
             "degenerate_generation": false
           }
         ]
       },
       {
         "model": "qwen2.5:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "Traumatic brain injury refers to an injury caused by external physical force, such as a blow or jolt to the head or body that results in changes to brain function or structure.",
-        "reasoning": "The candidate concept is for 'Condition' but the provided clinical definition refers to an injury caused by external physical force resulting in changes to brain function or structure. This does not align with a general condition category.",
-        "logprob_confidence": null,
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient was receiving dopamine to manage his hypotension, which is a common treatment for severe low blood pressure during and after procedures like intubation.",
+        "reasoning": "The candidate concept 'dopamine' from the RxNorm vocabulary correctly labels the text span as it is mentioned in the context for managing hypotension during and after procedures like intubation.",
+        "logprob_confidence": 0.748355,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Traumatic brain injury",
-            "match": false,
-            "reasoning": "The candidate concept is for 'Condition' but the provided clinical definition refers to an injury caused by external physical force resulting in changes to brain function or structure. This does not align with a general condition category.",
-            "confidence": 0.690144,
+            "concept_name": "dopamine",
+            "match": true,
+            "reasoning": "The candidate concept 'dopamine' from the RxNorm vocabulary correctly labels the text span as it is mentioned in the context for managing hypotension during and after procedures like intubation.",
+            "confidence": 0.748355,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "LCx",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.781347,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The text refers to an anatomical structure known as a left circumflex artery, which is part of the heart's blood supply.",
+        "reasoning": "The 'Left' in 'LCx' semantically refers to a left-sided anatomical structure within its context.",
+        "logprob_confidence": 0.920787,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Left",
+            "match": true,
+            "reasoning": "The 'Left' in 'LCx' semantically refers to a left-sided anatomical structure within its context.",
+            "confidence": 0.920787,
             "degenerate_generation": false
           }
         ]
@@ -738,17 +969,35 @@
       {
         "model": "llama3.2:3b",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "The patient has suffered a head injury that caused damage to their brain.",
-        "reasoning": "The candidate concept 'Traumatic brain injury' matches the clinical meaning because its name exactly matches the entity text and it is classified under Condition in SNOMED with a basis of exact_text, indicating a direct mapping to the specified clinical meaning.",
-        "logprob_confidence": 0.594894,
+        "clinical_meaning": "A narrowing of the left coronary artery",
+        "reasoning": "The candidate concept 'Left' matches the clinical meaning of 'A narrowing of the left coronary artery' because it is a semantic similarity match to the SNOMED term for the left circumflex (coronary artery), which includes a lesion with minimal important difference culture: 30% stenosis.",
+        "logprob_confidence": 0.881521,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Traumatic brain injury",
+            "concept_name": "Left",
             "match": true,
-            "reasoning": "The candidate concept 'Traumatic brain injury' matches the clinical meaning because its name exactly matches the entity text and it is classified under Condition in SNOMED with a basis of exact_text, indicating a direct mapping to the specified clinical meaning.",
-            "confidence": 0.594894,
+            "reasoning": "The candidate concept 'Left' matches the clinical meaning of 'A narrowing of the left coronary artery' because it is a semantic similarity match to the SNOMED term for the left circumflex (coronary artery), which includes a lesion with minimal important difference culture: 30% stenosis.",
+            "confidence": 0.881521,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The left circumflex coronary artery has a lesion that is at a minimal important difference culture level of 30% stenosis, indicating it may be partially blocked.",
+        "reasoning": "The candidate concept 'Left' matches the core clinical concept of a lesion on the left circumflex coronary artery with 30% stenosis.",
+        "logprob_confidence": 0.541732,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Left",
+            "match": true,
+            "reasoning": "The candidate concept 'Left' matches the core clinical concept of a lesion on the left circumflex coronary artery with 30% stenosis.",
+            "confidence": 0.541732,
             "degenerate_generation": false
           }
         ]
@@ -756,8 +1005,277 @@
     ]
   },
   {
-    "note_id": "14490470-DS-11",
+    "note_id": "19442119-DS-15",
+    "text": "R",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.824534,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The right internal jugular vein is in its normal position, as indicated by it being 'in place'.",
+        "reasoning": "The candidate concept only specifies the side (Right) of a vein but does not confirm its position ('in place') as described in the clinical meaning.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Right",
+            "match": false,
+            "reasoning": "The candidate concept only specifies the side (Right) of a vein but does not confirm its position ('in place') as described in the clinical meaning.",
+            "confidence": 0.823395,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The entity refers to an anatomical structure known as 'right Internal Jugular vein,' which is a blood vessel located in front of and beneath each internal jugular vein.",
+        "reasoning": "The 'Right' in both instances refers to a specific anatomical structure within its context.",
+        "logprob_confidence": 0.743522,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Right",
+            "match": true,
+            "reasoning": "The 'Right' in both instances refers to a specific anatomical structure within its context.",
+            "confidence": 0.743522,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a normal right internal jugular vein",
+        "reasoning": "The candidate concept 'Right' matches the clinical meaning because it is a semantic similarity-based match and the name 'Right' refers to the laterality of the internal jugular vein mentioned in the context.",
+        "logprob_confidence": 0.905546,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Right",
+            "match": true,
+            "reasoning": "The candidate concept 'Right' matches the clinical meaning because it is a semantic similarity-based match and the name 'Right' refers to the laterality of the internal jugular vein mentioned in the context.",
+            "confidence": 0.905546,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
     "text": "Right",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.88968,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient is experiencing symptoms in their right internal jugular region, possibly indicating an issue such as swelling or discomfort.",
+        "reasoning": "The 'Right' entity correctly labels a part of the text referring to location in relation to internal jugular region.",
+        "logprob_confidence": 0.91204,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Right",
+            "match": true,
+            "reasoning": "The 'Right' entity correctly labels a part of the text referring to location in relation to internal jugular region.",
+            "confidence": 0.91204,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a right internal jugular vein that is accessible for medical procedures.",
+        "reasoning": "The candidate concept 'Right' matches the clinical meaning because it is a verified brand alias for the SNOMED term 'Right Internal Jugular Vein', which corresponds to the entity's clinical meaning.",
+        "logprob_confidence": 0.879197,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Right",
+            "match": true,
+            "reasoning": "The candidate concept 'Right' matches the clinical meaning because it is a verified brand alias for the SNOMED term 'Right Internal Jugular Vein', which corresponds to the entity's clinical meaning.",
+            "confidence": 0.879197,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The note mentions 'Right Internal Jugular', which refers to a specific anatomical structure in the neck, and it is described as being present or observed clinically.",
+        "reasoning": "The candidate concept 'Right' matches the clinical meaning of 'Right Internal Jugular', as it refers to a specific anatomical structure in the neck and is described as being present clinically.",
+        "logprob_confidence": 0.877804,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Right",
+            "match": true,
+            "reasoning": "The candidate concept 'Right' matches the clinical meaning of 'Right Internal Jugular', as it refers to a specific anatomical structure in the neck and is described as being present clinically.",
+            "confidence": 0.877804,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "heart failure",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.931203,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient experienced an initial heart failure event.",
+        "reasoning": "The term 'heart failure' directly corresponds to an initial heart-related event as described in the given context.",
+        "logprob_confidence": 0.923313,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Heart failure",
+            "match": true,
+            "reasoning": "The term 'heart failure' directly corresponds to an initial heart-related event as described in the given context.",
+            "confidence": 0.923313,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient has an initial Troponin failure, which is a sign of heart muscle damage that occurred before they presented to the hospital with shortness of breath.",
+        "reasoning": "The candidate concept 'Heart failure' does not directly align with the specific condition described ('initial Troponin failure'), which is a sign of heart muscle damage.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Heart failure",
+            "match": false,
+            "reasoning": "The candidate concept 'Heart failure' does not directly align with the specific condition described ('initial Troponin failure'), which is a sign of heart muscle damage.",
+            "confidence": 0.987412,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A serious condition where the heart is unable to pump enough blood to meet its own needs, leading to symptoms such as shortness of breath.",
+        "reasoning": "The candidate concept 'Heart failure' matches the clinical meaning of 'A serious condition where the heart is unable to pump enough blood to meet its own needs, leading to symptoms such as shortness of breath', as it shares the same domain (Condition) and vocabulary (SNOMED), with a verified brand alias basis indicating a mathematically verified terminology-database link.",
+        "logprob_confidence": 0.939093,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Heart failure",
+            "match": true,
+            "reasoning": "The candidate concept 'Heart failure' matches the clinical meaning of 'A serious condition where the heart is unable to pump enough blood to meet its own needs, leading to symptoms such as shortness of breath', as it shares the same domain (Condition) and vocabulary (SNOMED), with a verified brand alias basis indicating a mathematically verified terminology-database link.",
+            "confidence": 0.939093,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "heart",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.734306,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a heart condition that is causing damage to the heart muscle.",
+        "reasoning": "The candidate concept 'Initial' matches the clinical meaning because it refers to a measurement value related to heart damage, despite minor spelling differences and additional context that is not relevant to the core concept identity.",
+        "logprob_confidence": 0.776563,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Initial",
+            "match": true,
+            "reasoning": "The candidate concept 'Initial' matches the clinical meaning because it refers to a measurement value related to heart damage, despite minor spelling differences and additional context that is not relevant to the core concept identity.",
+            "confidence": 0.776563,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a history of heart failure, which is indicated by 'initial Troponin disease' in the medical record.",
+        "reasoning": "The candidate 'Initial' aligns with the clinical meaning of 'initial Troponin disease' mentioned in the context as part of a history of heart failure.",
+        "logprob_confidence": 0.69205,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Initial",
+            "match": true,
+            "reasoning": "The candidate 'Initial' aligns with the clinical meaning of 'initial Troponin disease' mentioned in the context as part of a history of heart failure.",
+            "confidence": 0.69205,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The entity refers to an initial heart-related event that is currently happening, such as a myocardial infarction or acute coronary syndrome.",
+        "reasoning": "The entity 'heart' does not specifically refer to an initial heart-related event like a myocardial infarction; it is too general and lacks specificity.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Initial",
+            "match": false,
+            "reasoning": "The entity 'heart' does not specifically refer to an initial heart-related event like a myocardial infarction; it is too general and lacks specificity.",
+            "confidence": 0.842697,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "heart disease",
+    "confidence_tier_in": "HIGH",
     "tier": "TIER_4_ENSEMBLE_SPLIT",
     "routing": "HITL_REQUIRED",
     "queue_reason": "ensemble_split",
@@ -766,19 +1284,37 @@
     "outcome": null,
     "models": [
       {
-        "model": "qwen2.5:3b",
+        "model": "phi4-mini",
         "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The text 'Right' refers to a surgical procedure where an external ventricular drain was placed on the right side, indicating that one of the drainage systems for cerebrospinal fluid was inserted into the patient's body on their right side.",
-        "reasoning": "The candidate concept 'Right' does not directly correspond to the specific surgical procedure described in the provided context.",
+        "clinical_meaning": "The patient has an acute heart condition characterized by elevated levels of troponin, indicating potential myocardial injury or infarction.",
+        "reasoning": "The term 'heart disease' does not specifically indicate an acute heart condition characterized by elevated levels of troponin as mentioned in the provided statement.",
         "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Right",
+            "concept_name": "Heart disease",
             "match": false,
-            "reasoning": "The candidate concept 'Right' does not directly correspond to the specific surgical procedure described in the provided context.",
-            "confidence": 0.995945,
+            "reasoning": "The term 'heart disease' does not specifically indicate an acute heart condition characterized by elevated levels of troponin as mentioned in the provided statement.",
+            "confidence": 0.856049,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient has an initial Troponin disease, which is a condition where there's abnormal troponin levels in the blood indicating possible heart damage or dysfunction.",
+        "reasoning": "The candidate concept 'Heart disease' does not directly align with the specific condition described ('initial Troponin failure') in the clinical meaning provided.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Heart disease",
+            "match": false,
+            "reasoning": "The candidate concept 'Heart disease' does not directly align with the specific condition described ('initial Troponin failure') in the clinical meaning provided.",
+            "confidence": 0.985836,
             "degenerate_generation": false
           }
         ]
@@ -786,35 +1322,17 @@
       {
         "model": "llama3.2:3b",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "The patient has a right-sided external ventricular drain",
-        "reasoning": "The candidate concept 'Right' matches the clinical meaning because it is verified as an exact text match in the SNOMED vocabulary and its domain aligns with anatomical location.",
-        "logprob_confidence": 0.635612,
+        "clinical_meaning": "A condition where the heart muscle is damaged, leading to reduced ability of the heart to pump blood effectively.",
+        "reasoning": "The candidate concept 'Heart disease' matches the clinical meaning because it accurately labels a condition where the heart muscle is damaged, leading to reduced ability of the heart to pump blood effectively.",
+        "logprob_confidence": 0.891294,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Right",
+            "concept_name": "Heart disease",
             "match": true,
-            "reasoning": "The candidate concept 'Right' matches the clinical meaning because it is verified as an exact text match in the SNOMED vocabulary and its domain aligns with anatomical location.",
-            "confidence": 0.635612,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "phi4-mini",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The entity refers to an invasive procedure involving a tube placed in the chest cavity, specifically for draining fluid or air from around the lungs.",
-        "reasoning": "The entity 'Right' does not specifically refer to any invasive procedure involving draining fluid from around the lungs; it merely denotes a direction.",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Right",
-            "match": false,
-            "reasoning": "The entity 'Right' does not specifically refer to any invasive procedure involving draining fluid from around the lungs; it merely denotes a direction.",
-            "confidence": 0.785749,
+            "reasoning": "The candidate concept 'Heart disease' matches the clinical meaning because it accurately labels a condition where the heart muscle is damaged, leading to reduced ability of the heart to pump blood effectively.",
+            "confidence": 0.891294,
             "degenerate_generation": false
           }
         ]
@@ -822,8 +1340,76 @@
     ]
   },
   {
-    "note_id": "14490470-DS-11",
-    "text": "chest",
+    "note_id": "19442119-DS-15",
+    "text": "systolic CHF",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.939353,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "a serious condition where the heart is unable to pump enough blood",
+        "reasoning": "The candidate concept 'Systolic heart failure' matches the clinical meaning of 'a serious condition where the heart is unable to pump enough blood' as it accurately labels a distinct and clinically related concept.",
+        "logprob_confidence": 0.939536,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Systolic heart failure",
+            "match": true,
+            "reasoning": "The candidate concept 'Systolic heart failure' matches the clinical meaning of 'a serious condition where the heart is unable to pump enough blood' as it accurately labels a distinct and clinically related concept.",
+            "confidence": 0.939536,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient is experiencing heart failure characterized by a reduced ejection fraction of 25%, indicating poor pumping function.",
+        "reasoning": "The term 'systolic CHF' refers to systolic heart failure which aligns closely in terms of core concepts such as reduced ejection fraction and poor pumping function.",
+        "logprob_confidence": 0.93917,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Systolic heart failure",
+            "match": true,
+            "reasoning": "The term 'systolic CHF' refers to systolic heart failure which aligns closely in terms of core concepts such as reduced ejection fraction and poor pumping function.",
+            "confidence": 0.93917,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "This refers to chronic systolic congestive heart failure, a condition where the left side of the heart cannot pump blood effectively due to weakened muscle function.",
+        "reasoning": "The candidate concept 'Systolic heart failure' does not directly align with the specific condition described ('chronic systolic congestive heart failure'). The candidate is too broad and lacks specificity regarding the severity (e.g., chronic) and the side of the heart affected (left).",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Systolic heart failure",
+            "match": false,
+            "reasoning": "The candidate concept 'Systolic heart failure' does not directly align with the specific condition described ('chronic systolic congestive heart failure'). The candidate is too broad and lacks specificity regarding the severity (e.g., chronic) and the side of the heart affected (left).",
+            "confidence": 0.537896,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "Congestive",
+    "confidence_tier_in": "HIGH",
     "tier": "TIER_4_ENSEMBLE_SPLIT",
     "routing": "HITL_REQUIRED",
     "queue_reason": "ensemble_split",
@@ -832,19 +1418,37 @@
     "outcome": null,
     "models": [
       {
-        "model": "llama3.2:3b",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "The patient has a chest injury requiring drainage of air or fluid",
-        "reasoning": "The candidate concept 'Thoracic structure' matches the clinical meaning because it is a synonym for 'chest', which is present in the entity's text and corresponds to a major surgical or invasive procedure.",
-        "logprob_confidence": 0.567221,
+        "model": "phi4-mini",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "Congestive refers to liver disease characterized by congestion due to impaired blood flow.",
+        "reasoning": "The term 'Congestive' refers to liver disease characterized by congestion due to impaired blood flow in a different context than heart failure.",
+        "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Thoracic structure",
+            "concept_name": "Congestive heart failure",
+            "match": false,
+            "reasoning": "The term 'Congestive' refers to liver disease characterized by congestion due to impaired blood flow in a different context than heart failure.",
+            "confidence": 0.846784,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a liver condition characterized by swelling of the liver due to fluid buildup.",
+        "reasoning": "The candidate concept 'Congestive heart failure' matches the clinical meaning of 'swelling of the liver due to fluid buildup', as both refer to a condition characterized by liver enlargement.",
+        "logprob_confidence": 0.767506,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Congestive heart failure",
             "match": true,
-            "reasoning": "The candidate concept 'Thoracic structure' matches the clinical meaning because it is a synonym for 'chest', which is present in the entity's text and corresponds to a major surgical or invasive procedure.",
-            "confidence": 0.567221,
+            "reasoning": "The candidate concept 'Congestive heart failure' matches the clinical meaning of 'swelling of the liver due to fluid buildup', as both refer to a condition characterized by liver enlargement.",
+            "confidence": 0.767506,
             "degenerate_generation": false
           }
         ]
@@ -852,35 +1456,84 @@
       {
         "model": "qwen2.5:3b",
         "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The chest refers to the area of the body between the neck and abdomen, where procedures such as chest tube placement and removal are performed.",
-        "reasoning": "The provided candidate concept 'Thoracic structure' does not directly align with the specific context of chest-related procedures mentioned in the independent statement.",
+        "clinical_meaning": "Congestive Hepatopathy refers to a condition where blood flow is obstructed in the liver, causing swelling and dysfunction of the organ.",
+        "reasoning": "The provided clinical meaning refers to 'Congestive Hepatopathy', which is a condition affecting the liver. The candidate concept 'Congestive heart failure' relates to conditions affecting the heart, not the liver.",
         "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Thoracic structure",
+            "concept_name": "Congestive heart failure",
             "match": false,
-            "reasoning": "The provided candidate concept 'Thoracic structure' does not directly align with the specific context of chest-related procedures mentioned in the independent statement.",
-            "confidence": 0.999523,
+            "reasoning": "The provided clinical meaning refers to 'Congestive Hepatopathy', which is a condition affecting the liver. The candidate concept 'Congestive heart failure' relates to conditions affecting the heart, not the liver.",
+            "confidence": 0.893269,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "19442119-DS-15",
+    "text": "Hepatopathy",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.867079,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Congestive Hepatopathy refers to liver disease characterized by congestion, often due to heart failure leading to poor blood flow through the hepatic veins.",
+        "reasoning": "The term 'Hepatopathy' broadly refers to liver disease and aligns closely enough in scope with Congestive Hepatopathy as a specific type of hepatopathy.",
+        "logprob_confidence": 0.857139,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Disease of liver",
+            "match": true,
+            "reasoning": "The term 'Hepatopathy' broadly refers to liver disease and aligns closely enough in scope with Congestive Hepatopathy as a specific type of hepatopathy.",
+            "confidence": 0.857139,
             "degenerate_generation": false
           }
         ]
       },
       {
-        "model": "phi4-mini",
+        "model": "qwen2.5:3b",
         "verdict": "NONE_CORRECT",
-        "clinical_meaning": "The entity refers to an invasive procedure involving a tube inserted into the chest cavity, likely for drainage or ventilation purposes.",
-        "reasoning": "The term 'thoracic structure' is too broad and does not specifically refer to an invasive procedure involving a tube inserted into the chest cavity.",
+        "clinical_meaning": "Congestive Hepatopathy refers to a condition where blood flow is obstructed in the liver, causing swelling and dysfunction.",
+        "reasoning": "The provided candidate 'Disease of liver' does not precisely align with the specific condition described ('Congestive Hepatopathy'). While both pertain to a disease affecting the liver, Congestive Hepatopathy specifically refers to blood flow obstruction and swelling in the liver, which is not captured by just stating 'Disease of liver.'",
         "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Thoracic structure",
+            "concept_name": "Disease of liver",
             "match": false,
-            "reasoning": "The term 'thoracic structure' is too broad and does not specifically refer to an invasive procedure involving a tube inserted into the chest cavity.",
-            "confidence": 0.662928,
+            "reasoning": "The provided candidate 'Disease of liver' does not precisely align with the specific condition described ('Congestive Hepatopathy'). While both pertain to a disease affecting the liver, Congestive Hepatopathy specifically refers to blood flow obstruction and swelling in the liver, which is not captured by just stating 'Disease of liver.'",
+            "confidence": 0.680741,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A liver condition characterized by inflammation of the liver",
+        "reasoning": "The candidate concept 'Disease of liver' matches the clinical meaning because it is a semantic similarity-based match and shares the same domain (Condition) as the stated entity text 'Hepatopathy', which refers to an inflammation condition, aligning with the definition of hepatopathy.",
+        "logprob_confidence": 0.877019,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Disease of liver",
+            "match": true,
+            "reasoning": "The candidate concept 'Disease of liver' matches the clinical meaning because it is a semantic similarity-based match and shares the same domain (Condition) as the stated entity text 'Hepatopathy', which refers to an inflammation condition, aligning with the definition of hepatopathy.",
+            "confidence": 0.877019,
             "degenerate_generation": false
           }
         ]
@@ -889,28 +1542,47 @@
   },
   {
     "note_id": "14490470-DS-11",
-    "text": "chest tube placement",
-    "tier": "TIER_4_ENSEMBLE_SPLIT",
-    "routing": "HITL_REQUIRED",
-    "queue_reason": "ensemble_split",
-    "composite_confidence": 0.813487,
-    "final_candidate_index": null,
-    "outcome": null,
+    "text": "Removal",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.909894,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
     "models": [
       {
-        "model": "phi4-mini",
+        "model": "qwen2.5:3b",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A chest tube is surgically placed into a patient's left side to drain air, fluid or pus from around their lungs.",
-        "reasoning": "The term 'Insertion of pleural tube drain' closely aligns semantically and clinically to describe placing chest tubes for drainage purposes.",
-        "logprob_confidence": 0.833297,
+        "clinical_meaning": "The specific clinical concept is the removal of external ventricular drains, which are medical devices used to manage excess cerebrospinal fluid in the brain.",
+        "reasoning": "The candidate concept 'Removal' from SNOMED aligns with the clinical meaning of removing external ventricular drains (EVD) as stated in the provided context.",
+        "logprob_confidence": 0.837776,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Insertion of pleural tube drain",
+            "concept_name": "Removal",
             "match": true,
-            "reasoning": "The term 'Insertion of pleural tube drain' closely aligns semantically and clinically to describe placing chest tubes for drainage purposes.",
-            "confidence": 0.833297,
+            "reasoning": "The candidate concept 'Removal' from SNOMED aligns with the clinical meaning of removing external ventricular drains (EVD) as stated in the provided context.",
+            "confidence": 0.837776,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The text refers to an invasive procedure where a previously placed external ventricular drain (EVD) is removed from the patient's body.",
+        "reasoning": "The 'Removal' entity correctly labels a text span referring to an invasive procedure where something is taken out from inside the body.",
+        "logprob_confidence": 0.972105,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Removal",
+            "match": true,
+            "reasoning": "The 'Removal' entity correctly labels a text span referring to an invasive procedure where something is taken out from inside the body.",
+            "confidence": 0.972105,
             "degenerate_generation": false
           }
         ]
@@ -918,51 +1590,17 @@
       {
         "model": "llama3.2:3b",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A medical procedure where a tube is inserted into the chest cavity to drain fluid or air",
-        "reasoning": "The candidate concept 'Insertion of pleural tube drain' matches the clinical meaning because it is a procedure that involves inserting a tube into the chest cavity to drain fluid or air, as described in the entity's text.",
-        "logprob_confidence": 0.793676,
+        "clinical_meaning": "The patient underwent a surgical procedure to remove an external ventricular drain from their right side.",
+        "reasoning": "The candidate concept 'Removal' matches the clinical meaning because it accurately labels a surgical procedure to remove an external ventricular drain from the patient's right side, despite minor spelling differences and additional context information.",
+        "logprob_confidence": 0.9198,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Insertion of pleural tube drain",
+            "concept_name": "Removal",
             "match": true,
-            "reasoning": "The candidate concept 'Insertion of pleural tube drain' matches the clinical meaning because it is a procedure that involves inserting a tube into the chest cavity to drain fluid or air, as described in the entity's text.",
-            "confidence": 0.793676,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "qwen2.5:3b",
-        "verdict": "NONE_CORRECT",
-        "clinical_meaning": "This refers to a procedure where a chest tube is inserted into the patient's chest cavity, typically for purposes of drainage or ventilation.",
-        "reasoning": "The provided candidate concept 'Drainage of pleural cavity via chest tube' does not exactly align with the specific procedure described in the clinical meaning statement ('chest tube insertion into the patient's chest cavity for drainage or ventilation purposes').",
-        "logprob_confidence": null,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Insertion of pleural tube drain",
-            "match": false,
-            "reasoning": "The proposed concept 'Insertion of pleural tube drain' does not accurately reflect the clinical meaning provided for chest tube placement.",
-            "confidence": 0.995342,
-            "degenerate_generation": false
-          },
-          {
-            "candidate_index": 2,
-            "concept_name": "Opening of chest and insertion of pleural tube drain",
-            "match": false,
-            "reasoning": "The proposed concept 'Opening of chest and insertion of pleural tube drain' does not directly correspond to the specific procedure described in the clinical meaning ('chest tube placement'). While both involve a chest intervention for drainage or ventilation, they are not semantically identical.",
-            "confidence": 0.985702,
-            "degenerate_generation": false
-          },
-          {
-            "candidate_index": 3,
-            "concept_name": "Drainage of pleural cavity via chest tube",
-            "match": false,
-            "reasoning": "The provided candidate concept 'Drainage of pleural cavity via chest tube' does not exactly align with the specific procedure described in the clinical meaning statement ('chest tube insertion into the patient's chest cavity for drainage or ventilation purposes').",
-            "confidence": 0.619133,
+            "reasoning": "The candidate concept 'Removal' matches the clinical meaning because it accurately labels a surgical procedure to remove an external ventricular drain from the patient's right side, despite minor spelling differences and additional context information.",
+            "confidence": 0.9198,
             "degenerate_generation": false
           }
         ]
@@ -971,46 +1609,29 @@
   },
   {
     "note_id": "14490470-DS-11",
-    "text": "Right EVD placement",
+    "text": "Cranial",
+    "confidence_tier_in": "HIGH",
     "tier": "TIER_4_ENSEMBLE_SPLIT",
     "routing": "HITL_REQUIRED",
     "queue_reason": "ensemble_split",
-    "composite_confidence": 0.669674,
+    "composite_confidence": 0.861776,
     "final_candidate_index": null,
     "outcome": null,
     "models": [
       {
         "model": "phi4-mini",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "The patient underwent placement of an external ventricular drain in their right chest cavity to manage intracranial pressure or cerebral edema.",
-        "reasoning": "The term 'Exteriorization of brain ventricular shunt' semantically aligns closely to an external ventricular drain placement for managing intracranial pressure.",
-        "logprob_confidence": 0.832951,
+        "clinical_meaning": "The entity refers to nerves that originate from a region near the brain, specifically those connected to it.",
+        "reasoning": "The term 'Cranial' refers to nerves originating near the brain and is semantically similar to Cephalic.",
+        "logprob_confidence": 0.901537,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Exteriorization of brain ventricular shunt",
+            "concept_name": "Cephalic",
             "match": true,
-            "reasoning": "The term 'Exteriorization of brain ventricular shunt' semantically aligns closely to an external ventricular drain placement for managing intracranial pressure.",
-            "confidence": 0.832951,
-            "degenerate_generation": false
-          }
-        ]
-      },
-      {
-        "model": "llama3.2:3b",
-        "verdict": "SUPPORTED_1",
-        "clinical_meaning": "The patient had a surgical procedure to place an external ventricular drain in their right side.",
-        "reasoning": "The candidate concept 'Exteriorization of brain ventricular shunt' matches the clinical meaning because it is a procedure that involves placing an external device to drain cerebrospinal fluid, which aligns with the description of 'Right EVD placement'.",
-        "logprob_confidence": 0.506396,
-        "degenerate_generation": false,
-        "eval_trail": [
-          {
-            "candidate_index": 1,
-            "concept_name": "Exteriorization of brain ventricular shunt",
-            "match": true,
-            "reasoning": "The candidate concept 'Exteriorization of brain ventricular shunt' matches the clinical meaning because it is a procedure that involves placing an external device to drain cerebrospinal fluid, which aligns with the description of 'Right EVD placement'.",
-            "confidence": 0.506396,
+            "reasoning": "The term 'Cranial' refers to nerves originating near the brain and is semantically similar to Cephalic.",
+            "confidence": 0.901537,
             "degenerate_generation": false
           }
         ]
@@ -1018,33 +1639,35 @@
       {
         "model": "qwen2.5:3b",
         "verdict": "NONE_CORRECT",
-        "clinical_meaning": "Right external ventricular drain placement is a procedure used to manage excess cerebrospinal fluid in the brain, often following traumatic injuries or surgeries.",
-        "reasoning": "The proposed concept 'Replacement of extracranial ventricular shunt' does not directly correspond to the specific procedure described ('Right external ventricular drain placement'), although it is related. The clinical meaning provided focuses on a right external ventricular drain placement for managing excess cerebrospinal fluid, while the candidate concept refers more generally to replacing any extracranial ventricular shunt.",
+        "clinical_meaning": "Cranial refers to nerves that originate in the brainstem and are responsible for various functions such as eye movement, facial expressions, swallowing, and more.",
+        "reasoning": "The term 'Cephalic' does not align with the clinical meaning of 'Cranial', which refers to nerves originating in the brainstem and responsible for various functions such as eye movement, facial expressions, swallowing, etc.",
         "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Exteriorization of brain ventricular shunt",
+            "concept_name": "Cephalic",
             "match": false,
-            "reasoning": "The proposed concept 'Exteriorization of brain ventricular shunt' does not directly align with the specific procedure described ('Right external ventricular drain placement'), although it is related to a type of shunt. The clinical meaning provided focuses on right external ventricular drain placement for managing cerebrospinal fluid, which is more specific than just exteriorizing any brain ventricular shunt.",
-            "confidence": 0.999914,
+            "reasoning": "The term 'Cephalic' does not align with the clinical meaning of 'Cranial', which refers to nerves originating in the brainstem and responsible for various functions such as eye movement, facial expressions, swallowing, etc.",
+            "confidence": 0.999027,
             "degenerate_generation": false
-          },
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a condition affecting their cranial nerves.",
+        "reasoning": "The candidate concept 'Cephalic' matches the clinical meaning because it is a verified SNOMED terminology-database link and its name corresponds to the entity text 'Cranial', despite minor spelling differences.",
+        "logprob_confidence": 0.822016,
+        "degenerate_generation": false,
+        "eval_trail": [
           {
-            "candidate_index": 2,
-            "concept_name": "Removal of extracranial ventricular shunt",
-            "match": false,
-            "reasoning": "The proposed concept 'Removal of extracranial ventricular shunt' does not accurately reflect the clinical meaning provided for 'Right external ventricular drain placement.' The clinical statement describes a procedure used to manage excess cerebrospinal fluid in the brain, often following traumatic injuries or surgeries. The candidate concept refers to the removal of an extracranial ventricular shunt, which is different from the right external ventricular drain placement described.",
-            "confidence": 0.999933,
-            "degenerate_generation": false
-          },
-          {
-            "candidate_index": 3,
-            "concept_name": "Replacement of extracranial ventricular shunt",
-            "match": false,
-            "reasoning": "The proposed concept 'Replacement of extracranial ventricular shunt' does not directly correspond to the specific procedure described ('Right external ventricular drain placement'), although it is related. The clinical meaning provided focuses on a right external ventricular drain placement for managing excess cerebrospinal fluid, while the candidate concept refers more generally to replacing any extracranial ventricular shunt.",
-            "confidence": 0.999951,
+            "candidate_index": 1,
+            "concept_name": "Cephalic",
+            "match": true,
+            "reasoning": "The candidate concept 'Cephalic' matches the clinical meaning because it is a verified SNOMED terminology-database link and its name corresponds to the entity text 'Cranial', despite minor spelling differences.",
+            "confidence": 0.822016,
             "degenerate_generation": false
           }
         ]
@@ -1053,46 +1676,47 @@
   },
   {
     "note_id": "14490470-DS-11",
-    "text": "Tracheostomy",
+    "text": "Nerves",
+    "confidence_tier_in": "HIGH",
     "tier": "TIER_4_ENSEMBLE_SPLIT",
     "routing": "HITL_REQUIRED",
     "queue_reason": "ensemble_split",
-    "composite_confidence": 0.898394,
+    "composite_confidence": 0.899428,
     "final_candidate_index": null,
     "outcome": null,
     "models": [
       {
-        "model": "phi4-mini",
+        "model": "llama3.2:3b",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A surgical procedure where an opening is made in the trachea to provide a direct airway for breathing when natural airways are not usable.",
-        "reasoning": "The term 'Tracheostomy' directly corresponds to the surgical procedure described in the independent statement.",
-        "logprob_confidence": 0.910728,
+        "clinical_meaning": "The patient has a problem with their nerves.",
+        "reasoning": "The candidate concept 'Nerve structure' matches the clinical meaning of 'The patient has a problem with their nerves.' because it is a semantic similarity match to the entity text and does not introduce clinically unrelated concepts.",
+        "logprob_confidence": 0.823118,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Construction of tracheostomy",
+            "concept_name": "Nerve structure",
             "match": true,
-            "reasoning": "The term 'Tracheostomy' directly corresponds to the surgical procedure described in the independent statement.",
-            "confidence": 0.910728,
+            "reasoning": "The candidate concept 'Nerve structure' matches the clinical meaning of 'The patient has a problem with their nerves.' because it is a semantic similarity match to the entity text and does not introduce clinically unrelated concepts.",
+            "confidence": 0.823118,
             "degenerate_generation": false
           }
         ]
       },
       {
-        "model": "llama3.2:3b",
+        "model": "phi4-mini",
         "verdict": "SUPPORTED_1",
-        "clinical_meaning": "A surgical procedure to create an opening in the neck for airway access",
-        "reasoning": "The candidate concept 'Construction of tracheostomy' matches the clinical meaning because its name directly corresponds to the entity text 'Tracheostomy', and it is a verified SNOMED terminology-database link.",
-        "logprob_confidence": 0.886061,
+        "clinical_meaning": "The entity refers to peripheral nerves that may be involved in a patient's symptoms or condition.",
+        "reasoning": "The entity 'Nerves' refers to peripheral nerves that may be involved in a patient's symptoms or condition.",
+        "logprob_confidence": 0.975738,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Construction of tracheostomy",
+            "concept_name": "Nerve structure",
             "match": true,
-            "reasoning": "The candidate concept 'Construction of tracheostomy' matches the clinical meaning because its name directly corresponds to the entity text 'Tracheostomy', and it is a verified SNOMED terminology-database link.",
-            "confidence": 0.886061,
+            "reasoning": "The entity 'Nerves' refers to peripheral nerves that may be involved in a patient's symptoms or condition.",
+            "confidence": 0.975738,
             "degenerate_generation": false
           }
         ]
@@ -1100,25 +1724,687 @@
       {
         "model": "qwen2.5:3b",
         "verdict": "NONE_CORRECT",
-        "clinical_meaning": "Tracheostomy is a procedure where a small hole is made in the front of the neck to allow air to reach the lungs.",
-        "reasoning": "The provided candidate concept 'Insertion of tracheostomy tube' does not precisely align with the given clinical meaning which specifies a procedure where a small hole is made in the front of the neck to allow air to reach the lungs.",
+        "clinical_meaning": "Cranial nerves are present in the patient, indicating that all cranial nerve functions are intact and no damage or abnormality is noted clinically.",
+        "reasoning": "The candidate concept 'Nerve structure' does not directly align with the clinical meaning of cranial nerves being present and intact.",
         "logprob_confidence": null,
         "degenerate_generation": false,
         "eval_trail": [
           {
             "candidate_index": 1,
-            "concept_name": "Construction of tracheostomy",
+            "concept_name": "Nerve structure",
             "match": false,
-            "reasoning": "The provided candidate concept 'Construction of tracheostomy' does not accurately reflect the independent determined clinical meaning which is about a procedure where a small hole is made in the front of the neck to allow air to reach the lungs.",
-            "confidence": 0.999749,
+            "reasoning": "The candidate concept 'Nerve structure' does not directly align with the clinical meaning of cranial nerves being present and intact.",
+            "confidence": 0.617292,
             "degenerate_generation": false
-          },
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "sodium",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.928785,
+    "final_candidate_index": 1,
+    "outcome": null,
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Sodium tablets are being used to manage a patient's sodium levels.",
+        "reasoning": "The 'sodium' entity refers to sodium tablets used for managing a patient's sodium levels as per the given CLINICAL MEANING.",
+        "logprob_confidence": 0.972224,
+        "degenerate_generation": false,
+        "eval_trail": [
           {
-            "candidate_index": 2,
-            "concept_name": "Insertion of tracheostomy tube",
+            "candidate_index": 1,
+            "concept_name": "sodium",
+            "match": true,
+            "reasoning": "The 'sodium' entity refers to sodium tablets used for managing a patient's sodium levels as per the given CLINICAL MEANING.",
+            "confidence": 0.972224,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient was prescribed sodium tablets to manage low sodium levels, which were initially detected during their hospitalization.",
+        "reasoning": "The candidate concept 'sodium' matches the clinical meaning as it refers to the medication prescribed for managing low sodium levels during the hospitalization.",
+        "logprob_confidence": 0.928731,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "sodium",
+            "match": true,
+            "reasoning": "The candidate concept 'sodium' matches the clinical meaning as it refers to the medication prescribed for managing low sodium levels during the hospitalization.",
+            "confidence": 0.928731,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient is taking a medication to manage high sodium levels in their body.",
+        "reasoning": "The candidate concept 'sodium' matches the clinical meaning because it is a verified brand alias and refers to the same entity as the text 'sodium', despite minor spelling differences.",
+        "logprob_confidence": 0.8854,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "sodium",
+            "match": true,
+            "reasoning": "The candidate concept 'sodium' matches the clinical meaning because it is a verified brand alias and refers to the same entity as the text 'sodium', despite minor spelling differences.",
+            "confidence": 0.8854,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "Multiple",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_4_ENSEMBLE_SPLIT",
+    "routing": "HITL_REQUIRED",
+    "queue_reason": "ensemble_split",
+    "composite_confidence": 0.863759,
+    "final_candidate_index": null,
+    "outcome": null,
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "NONE_CORRECT",
+        "clinical_meaning": "The patient has multiple fractures in their skull and facial bones.",
+        "reasoning": "The provided candidate 'Multiple' does not directly correspond to the specific clinical meaning of 'The patient has multiple fractures in their skull and facial bones.' The term 'Multiple' alone is too broad and lacks specificity regarding the type or location of fractures.",
+        "logprob_confidence": null,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Multiple",
             "match": false,
-            "reasoning": "The provided candidate concept 'Insertion of tracheostomy tube' does not precisely align with the given clinical meaning which specifies a procedure where a small hole is made in the front of the neck to allow air to reach the lungs.",
-            "confidence": 0.997358,
+            "reasoning": "The provided candidate 'Multiple' does not directly correspond to the specific clinical meaning of 'The patient has multiple fractures in their skull and facial bones.' The term 'Multiple' alone is too broad and lacks specificity regarding the type or location of fractures.",
+            "confidence": 0.793494,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has sustained injuries involving more than two skull fractures.",
+        "reasoning": "The term 'Multiple' directly corresponds to more than two skull fractures as indicated in the provided text.",
+        "logprob_confidence": 0.90571,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Multiple",
+            "match": true,
+            "reasoning": "The term 'Multiple' directly corresponds to more than two skull fractures as indicated in the provided text.",
+            "confidence": 0.90571,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has multiple fractures in the skull and facial area.",
+        "reasoning": "The candidate concept 'Multiple' matches the clinical meaning because it is a semantic similarity-based link to SNOMED and does not require exact spelling match, allowing for verification of brand alias.",
+        "logprob_confidence": 0.821808,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Multiple",
+            "match": true,
+            "reasoning": "The candidate concept 'Multiple' matches the clinical meaning because it is a semantic similarity-based link to SNOMED and does not require exact spelling match, allowing for verification of brand alias.",
+            "confidence": 0.821808,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "Skull and Facial Fractures",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.940345,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "This refers to multiple fractures involving the skull and facial bones, which are serious injuries that can cause significant pain and potential complications such as bleeding or infection.",
+        "reasoning": "The candidate concept 'Fracture of skull and facial bones' accurately captures the core meaning of multiple fractures involving the skull and facial bones as described in the clinical meaning statement.",
+        "logprob_confidence": 0.927669,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of skull and facial bones",
+            "match": true,
+            "reasoning": "The candidate concept 'Fracture of skull and facial bones' accurately captures the core meaning of multiple fractures involving the skull and facial bones as described in the clinical meaning statement.",
+            "confidence": 0.927669,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has sustained fractures in both their skull bones (skull) as well as facial bone structures.",
+        "reasoning": "The entity 'Skull and Facial Fractures' directly corresponds to a patient experiencing fractures in both skull bones (skull) as well as facial bone structures.",
+        "logprob_confidence": 0.998865,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of skull and facial bones",
+            "match": true,
+            "reasoning": "The entity 'Skull and Facial Fractures' directly corresponds to a patient experiencing fractures in both skull bones (skull) as well as facial bone structures.",
+            "confidence": 0.998865,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has multiple fractures in the skull and facial bones.",
+        "reasoning": "The candidate concept 'Fracture of skull and facial bones' matches the clinical meaning because it is a verified SNOMED terminology-database link with semantic similarity basis, despite minor spelling differences.",
+        "logprob_confidence": 0.894501,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of skull and facial bones",
+            "match": true,
+            "reasoning": "The candidate concept 'Fracture of skull and facial bones' matches the clinical meaning because it is a verified SNOMED terminology-database link with semantic similarity basis, despite minor spelling differences.",
+            "confidence": 0.894501,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "fixation",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.959635,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient had surgery to immobilize their jaw in a fixed position for proper alignment during healing.",
+        "reasoning": "The term 'fixation' in a medical context refers to immobilizing an area of interest for healing and alignment purposes.",
+        "logprob_confidence": 0.992274,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fixation",
+            "match": true,
+            "reasoning": "The term 'fixation' in a medical context refers to immobilizing an area of interest for healing and alignment purposes.",
+            "confidence": 0.992274,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient underwent a surgical procedure called intermaxillary fixation, which is used to stabilize broken or displaced bones in the upper jaw area.",
+        "reasoning": "The candidate concept 'Fixation' in the SNOMED vocabulary accurately represents the clinical procedure of intermaxillary fixation as described in the provided context.",
+        "logprob_confidence": 0.952096,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fixation",
+            "match": true,
+            "reasoning": "The candidate concept 'Fixation' in the SNOMED vocabulary accurately represents the clinical procedure of intermaxillary fixation as described in the provided context.",
+            "confidence": 0.952096,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a condition where their jaw is immobilized to allow for healing after surgery.",
+        "reasoning": "The candidate concept 'Fixation' matches the clinical meaning because it is a verified SNOMED terminology-database link and its name corresponds to the entity text 'fixation', which refers to a procedure where the jaw is immobilized after surgery.",
+        "logprob_confidence": 0.934534,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fixation",
+            "match": true,
+            "reasoning": "The candidate concept 'Fixation' matches the clinical meaning because it is a verified SNOMED terminology-database link and its name corresponds to the entity text 'fixation', which refers to a procedure where the jaw is immobilized after surgery.",
+            "confidence": 0.934534,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "PTT",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.886342,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient's blood clotting time was longer than normal.",
+        "reasoning": "The term 'Partial' in context refers to partial thromboplastin time (PTT), which aligns directly with a longer-than-normal blood clotting time.",
+        "logprob_confidence": 0.875453,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Partial",
+            "match": true,
+            "reasoning": "The term 'Partial' in context refers to partial thromboplastin time (PTT), which aligns directly with a longer-than-normal blood clotting time.",
+            "confidence": 0.875453,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has a bleeding disorder that affects blood clotting.",
+        "reasoning": "The 'Partial' concept in SNOMED matches the clinical meaning of a bleeding disorder affecting blood clotting due to its semantic similarity and relevance to coagulation disorders.",
+        "logprob_confidence": 0.843305,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Partial",
+            "match": true,
+            "reasoning": "The 'Partial' concept in SNOMED matches the clinical meaning of a bleeding disorder affecting blood clotting due to its semantic similarity and relevance to coagulation disorders.",
+            "confidence": 0.843305,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The PTT refers to a blood test that measures how long it takes for blood to clot, and in this case, it was elevated which is why subcutaneous heparin could not be used.",
+        "reasoning": "The candidate concept 'Partial' as a synonym for 'PTT' aligns with the clinical meaning provided, which describes the elevated PTT and its impact on using subcutaneous heparin.",
+        "logprob_confidence": 0.940267,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Partial",
+            "match": true,
+            "reasoning": "The candidate concept 'Partial' as a synonym for 'PTT' aligns with the clinical meaning provided, which describes the elevated PTT and its impact on using subcutaneous heparin.",
+            "confidence": 0.940267,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "heparin",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.943203,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Subcutaneous heparin is a medication used to prevent blood clots.",
+        "reasoning": "The entity 'heparin' directly corresponds to a medication used for preventing blood clots as described in its clinical use.",
+        "logprob_confidence": 0.968469,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "heparin",
+            "match": true,
+            "reasoning": "The entity 'heparin' directly corresponds to a medication used for preventing blood clots as described in its clinical use.",
+            "confidence": 0.968469,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient is taking a blood thinner medication called heparin.",
+        "reasoning": "The candidate concept 'heparin' matches the clinical meaning because it is a verified brand alias and its domain (Drug) aligns with the context of blood thinner medication.",
+        "logprob_confidence": 0.924155,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "heparin",
+            "match": true,
+            "reasoning": "The candidate concept 'heparin' matches the clinical meaning because it is a verified brand alias and its domain (Drug) aligns with the context of blood thinner medication.",
+            "confidence": 0.924155,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient was receiving heparin but had to stop as their blood wasn't clotting properly, indicated by an elevated partial thromboplastin time.",
+        "reasoning": "The candidate concept 'heparin' correctly labels the clinical situation described in the provided context and entity text.",
+        "logprob_confidence": 0.936986,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "heparin",
+            "match": true,
+            "reasoning": "The candidate concept 'heparin' correctly labels the clinical situation described in the provided context and entity text.",
+            "confidence": 0.936986,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "skull and facial fractures",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.938314,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "This refers to multiple fractures affecting both the skull and facial bones, which are serious injuries that require medical attention.",
+        "reasoning": "The candidate concept 'Fracture of skull and facial bones' accurately captures the core meaning of multiple fractures affecting both the skull and facial bones that require medical attention.",
+        "logprob_confidence": 0.930007,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of skull and facial bones",
+            "match": true,
+            "reasoning": "The candidate concept 'Fracture of skull and facial bones' accurately captures the core meaning of multiple fractures affecting both the skull and facial bones that require medical attention.",
+            "confidence": 0.930007,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has sustained injuries involving breaks in both their skull bones (skull fractures) as well as facial bone structures.",
+        "reasoning": "The entity text 'skull and facial fractures' directly corresponds to a condition involving breaks in both skull bones (skull fractures) as well as facial bone structures.",
+        "logprob_confidence": 0.998009,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of skull and facial bones",
+            "match": true,
+            "reasoning": "The entity text 'skull and facial fractures' directly corresponds to a condition involving breaks in both skull bones (skull fractures) as well as facial bone structures.",
+            "confidence": 0.998009,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has suffered injuries to their skull and facial bones.",
+        "reasoning": "The candidate concept 'Fracture of skull and facial bones' matches the clinical meaning because it is a verified SNOMED terminology-database link with semantic similarity basis, accurately labeling the same distinct condition as described in the entity's text.",
+        "logprob_confidence": 0.886927,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of skull and facial bones",
+            "match": true,
+            "reasoning": "The candidate concept 'Fracture of skull and facial bones' matches the clinical meaning because it is a verified SNOMED terminology-database link with semantic similarity basis, accurately labeling the same distinct condition as described in the entity's text.",
+            "confidence": 0.886927,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "clavicular fracture",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.979244,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A broken bone in the collarbone area.",
+        "reasoning": "The term 'clavicular fracture' directly corresponds to a broken bone in the collarbone area as described.",
+        "logprob_confidence": 0.999937,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of clavicle",
+            "match": true,
+            "reasoning": "The term 'clavicular fracture' directly corresponds to a broken bone in the collarbone area as described.",
+            "confidence": 0.999937,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "This refers to a fracture of the clavicle, which is a common shoulder injury often seen in accidents or falls.",
+        "reasoning": "The candidate concept 'Fracture of clavicle' accurately represents the clinical meaning provided for a fracture of the clavicle as stated in the independent statement.",
+        "logprob_confidence": 0.993545,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of clavicle",
+            "match": true,
+            "reasoning": "The candidate concept 'Fracture of clavicle' accurately represents the clinical meaning provided for a fracture of the clavicle as stated in the independent statement.",
+            "confidence": 0.993545,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "A break in the collarbone (clavicle) bone.",
+        "reasoning": "The candidate concept 'Fracture of clavicle' matches the clinical meaning because it is a verified terminology-database link and accurately labels the entity's clinical concept, despite minor spelling differences.",
+        "logprob_confidence": 0.944249,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of clavicle",
+            "match": true,
+            "reasoning": "The candidate concept 'Fracture of clavicle' matches the clinical meaning because it is a verified terminology-database link and accurately labels the entity's clinical concept, despite minor spelling differences.",
+            "confidence": 0.944249,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "multiple",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.875353,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has sustained more than two rib fractures.",
+        "reasoning": "The term 'multiple' directly corresponds to more than two rib fractures as indicated in the patient's discharge diagnosis.",
+        "logprob_confidence": 0.939794,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Multiple",
+            "match": true,
+            "reasoning": "The term 'multiple' directly corresponds to more than two rib fractures as indicated in the patient's discharge diagnosis.",
+            "confidence": 0.939794,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has multiple fractures of the ribs.",
+        "reasoning": "The candidate concept 'Multiple' matches the clinical meaning of 'multiple fractures of the ribs' because it is a semantic similarity match to the entity's name and does not introduce clinically unrelated concepts.",
+        "logprob_confidence": 0.912668,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Multiple",
+            "match": true,
+            "reasoning": "The candidate concept 'Multiple' matches the clinical meaning of 'multiple fractures of the ribs' because it is a semantic similarity match to the entity's name and does not introduce clinically unrelated concepts.",
+            "confidence": 0.912668,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "Multiple rib fractures refer to damage or injury affecting more than one of the ribs, which is a serious condition requiring medical attention and monitoring.",
+        "reasoning": "The candidate concept 'Multiple' aligns with the clinical meaning of 'multiple rib fractures', as it refers to damage affecting more than one rib, which is a serious condition requiring medical attention and monitoring.",
+        "logprob_confidence": 0.773596,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Multiple",
+            "match": true,
+            "reasoning": "The candidate concept 'Multiple' aligns with the clinical meaning of 'multiple rib fractures', as it refers to damage affecting more than one rib, which is a serious condition requiring medical attention and monitoring.",
+            "confidence": 0.773596,
+            "degenerate_generation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "note_id": "14490470-DS-11",
+    "text": "rib fractures",
+    "confidence_tier_in": "HIGH",
+    "tier": "TIER_1_AUTO_VALIDATED",
+    "routing": "AUTO_VALIDATED",
+    "queue_reason": null,
+    "composite_confidence": 0.922551,
+    "final_candidate_index": 1,
+    "outcome": "incorrect",
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has multiple rib fractures, which are broken ribs that can occur due to trauma or injury.",
+        "reasoning": "The candidate 'Fracture of rib' accurately represents the clinical concept described in the provided clinical meaning statement about multiple rib fractures.",
+        "logprob_confidence": 0.870284,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of rib",
+            "match": true,
+            "reasoning": "The candidate 'Fracture of rib' accurately represents the clinical concept described in the provided clinical meaning statement about multiple rib fractures.",
+            "confidence": 0.870284,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "phi4-mini",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient currently has multiple broken ribs.",
+        "reasoning": "The term 'Fracture of rib' semantically aligns closely enough to represent multiple broken ribs as indicated in the patient's current condition.",
+        "logprob_confidence": 0.998059,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of rib",
+            "match": true,
+            "reasoning": "The term 'Fracture of rib' semantically aligns closely enough to represent multiple broken ribs as indicated in the patient's current condition.",
+            "confidence": 0.998059,
+            "degenerate_generation": false
+          }
+        ]
+      },
+      {
+        "model": "llama3.2:3b",
+        "verdict": "SUPPORTED_1",
+        "clinical_meaning": "The patient has broken ribs.",
+        "reasoning": "The candidate concept 'Fracture of rib' matches the clinical meaning 'The patient has broken ribs' because it is a semantic similarity match and shares the same domain (Condition) with no distinct or clinically unrelated concepts.",
+        "logprob_confidence": 0.899309,
+        "degenerate_generation": false,
+        "eval_trail": [
+          {
+            "candidate_index": 1,
+            "concept_name": "Fracture of rib",
+            "match": true,
+            "reasoning": "The candidate concept 'Fracture of rib' matches the clinical meaning 'The patient has broken ribs' because it is a semantic similarity match and shares the same domain (Condition) with no distinct or clinically unrelated concepts.",
+            "confidence": 0.899309,
             "degenerate_generation": false
           }
         ]

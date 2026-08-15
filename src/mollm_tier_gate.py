@@ -189,6 +189,27 @@ def _binary_match_prompt(entity: dict, candidate: dict, clinical_meaning: str) -
         'above? Reply with JSON: {"match": true or false, "reasoning": '
         '"<one sentence>"}'
     )
+    # 2026-08-15 REJECTED EXPERIMENT, recorded rather than silently discarded
+    # (docs/2026-08-15_Phase2_TierGate_Validation.md). A 5th rule was tried
+    # here ("match the core concept, not every detail -- a plain 'Pneumonia'
+    # candidate matches even if the note adds laterality/severity") to fix a
+    # real, diagnosed problem: qwen2.5:3b was the consistent dissenting vote
+    # on obviously-correct cases (plain "pneumonia"/"heart failure"/"sodium"),
+    # demanding contextual specificity the candidate name was never going to
+    # have. On a 36-entity HIGH-tier batch it worked exactly as intended for
+    # coverage (AUTO coverage 2.8% -> 55.6%) and catastrophically for
+    # precision (Tier 1 precision 5.9%, 1/17 correct) -- the loosened rule
+    # let all three models unanimously rubber-stamp WRONG matches on bare
+    # qualifier/fragment entities that are not independently linkable
+    # concepts at all ("left", "Removal", "Multiple", "fixation" all
+    # auto-validated to some SNOMED code). This is the exact "consensus went
+    # up, precision did not" failure this codebase's own Fragile Concept Gate
+    # (src/mollm_ensemble.py route()) was built to catch, reproduced here by
+    # a different mechanism. Reverted; the stricter 4-rule prompt above is
+    # back in force. A future attempt at this same problem should test the
+    # specificity relaxation MUCH more narrowly (e.g. only for candidates
+    # whose GLiNER label is Condition/Medication/Lab Test, never for
+    # single-word qualifier-shaped spans) rather than loosening it globally.
 
 
 def _match_schema() -> dict:
