@@ -156,8 +156,56 @@ MATCH_SYSTEM_PROMPT = (
 )
 
 
-def _binary_match_prompt(entity: dict, candidate: dict, clinical_meaning: str) -> str:
+# 2026-08-16 (Option 2 of the user's 3-path proposal following the 2026-08-15
+# rejected experiment -- docs/2026-08-15_Phase2_TierGate_Validation.md).
+# ISOLATED A/B CLAUSE, qwen2.5:3b ONLY. The blanket "don't require every
+# detail" rule tried on 2026-08-15 was rejected because it let ALL THREE
+# models rubber-stamp wrong matches on qualifier/fragment spans -- but
+# qualifier_fragment_precheck() (below) now removes those spans from the
+# ensemble's job entirely, so the residual risk of a per-model relaxation is
+# narrower than it was in that experiment. This clause is deliberately
+# scoped to hierarchical subsumption specifically (a genuine parent/child
+# SNOMED relationship), not general specificity forgiveness, and is applied
+# ONLY to qwen2.5:3b's Step B prompt -- llama3.2:3b/phi4-mini's prompts are
+# UNCHANGED, since the diagnosed problem was qwen's asymmetric strictness,
+# not theirs. Because Step B evaluates candidates ONE AT A TIME (the whole
+# point of the sequential design -- see _evaluate_one_model()'s docstring),
+# the model cannot literally verify "no more specific candidate exists
+# elsewhere in the list"; the clause instead makes that tradeoff explicit
+# (rank order, no second look) rather than pretending the model has
+# information it does not.
+QWEN_SUBSUMPTION_CLAUSE = (
+    "5. HIERARCHICAL SUBSUMPTION: candidates are being checked ONE AT A TIME "
+    "in ranked order; if you reject this one, it will not be reconsidered "
+    "later. If this candidate is a correct but less-specific (broader) or "
+    "more-specific (narrower) SNOMED/RxNorm relative of the precise concept "
+    "described -- not a DIFFERENT concept entirely -- accept it as a match "
+    "rather than rejecting it purely for lacking the note's full specificity "
+    "(severity, laterality, exact subtype). Still reject a candidate that "
+    "names a different clinical concept, not merely a less-detailed one."
+)
+
+
+def _binary_match_prompt(entity: dict, candidate: dict, clinical_meaning: str,
+                         extra_rule: str = None) -> str:
     basis = candidate.get("match_basis", "semantic_similarity")
+    rules = (
+        "RULES:\n"
+        "1. Judge the candidate against the CLINICAL MEANING stated above, "
+        "not against the raw text spelling or the candidate's match score.\n"
+        "2. If basis is verified_brand_alias, it is a mathematically "
+        "verified terminology-database link -- do not reject it merely "
+        "because the spelling differs from the entity text.\n"
+        "3. Ignore assertion/negation status when judging the CONCEPT match "
+        '-- a negated entity ("denies fever") still maps to its concept '
+        '("Fever") if the name matches; you are labeling which concept the '
+        "text refers to, not diagnosing.\n"
+        "4. Reject a candidate that is a distinct or clinically unrelated "
+        "concept (e.g. mapping a symptom to a biological genus, or a lab "
+        "value to an unrelated test). Do not force a match.\n"
+    )
+    if extra_rule:
+        rules += extra_rule + "\n"
     return (
         "This entity's clinical meaning was independently determined to be:\n"
         f'  "{clinical_meaning}"\n\n'
@@ -172,44 +220,11 @@ def _binary_match_prompt(entity: dict, candidate: dict, clinical_meaning: str) -
         f"  domain: {candidate.get('domain_id')}\n"
         f"  vocabulary: {candidate.get('vocabulary_id')}\n"
         f"  basis: {basis}\n\n"
-        "RULES:\n"
-        "1. Judge the candidate against the CLINICAL MEANING stated above, "
-        "not against the raw text spelling or the candidate's match score.\n"
-        "2. If basis is verified_brand_alias, it is a mathematically "
-        "verified terminology-database link -- do not reject it merely "
-        "because the spelling differs from the entity text.\n"
-        "3. Ignore assertion/negation status when judging the CONCEPT match "
-        '-- a negated entity ("denies fever") still maps to its concept '
-        '("Fever") if the name matches; you are labeling which concept the '
-        "text refers to, not diagnosing.\n"
-        "4. Reject a candidate that is a distinct or clinically unrelated "
-        "concept (e.g. mapping a symptom to a biological genus, or a lab "
-        "value to an unrelated test). Do not force a match.\n\n"
+        f"{rules}\n"
         "Does this candidate concept match the clinical meaning stated "
         'above? Reply with JSON: {"match": true or false, "reasoning": '
         '"<one sentence>"}'
     )
-    # 2026-08-15 REJECTED EXPERIMENT, recorded rather than silently discarded
-    # (docs/2026-08-15_Phase2_TierGate_Validation.md). A 5th rule was tried
-    # here ("match the core concept, not every detail -- a plain 'Pneumonia'
-    # candidate matches even if the note adds laterality/severity") to fix a
-    # real, diagnosed problem: qwen2.5:3b was the consistent dissenting vote
-    # on obviously-correct cases (plain "pneumonia"/"heart failure"/"sodium"),
-    # demanding contextual specificity the candidate name was never going to
-    # have. On a 36-entity HIGH-tier batch it worked exactly as intended for
-    # coverage (AUTO coverage 2.8% -> 55.6%) and catastrophically for
-    # precision (Tier 1 precision 5.9%, 1/17 correct) -- the loosened rule
-    # let all three models unanimously rubber-stamp WRONG matches on bare
-    # qualifier/fragment entities that are not independently linkable
-    # concepts at all ("left", "Removal", "Multiple", "fixation" all
-    # auto-validated to some SNOMED code). This is the exact "consensus went
-    # up, precision did not" failure this codebase's own Fragile Concept Gate
-    # (src/mollm_ensemble.py route()) was built to catch, reproduced here by
-    # a different mechanism. Reverted; the stricter 4-rule prompt above is
-    # back in force. A future attempt at this same problem should test the
-    # specificity relaxation MUCH more narrowly (e.g. only for candidates
-    # whose GLiNER label is Condition/Medication/Lab Test, never for
-    # single-word qualifier-shaped spans) rather than loosening it globally.
 
 
 def _match_schema() -> dict:
@@ -256,13 +271,19 @@ def _evaluate_one_model(client, entity: dict) -> dict:
                 "degenerate_generation": bool(meaning_raw.get("degenerate_generation")),
                 "eval_trail": []}
 
+    # 2026-08-16 Option 2 A/B clause -- see QWEN_SUBSUMPTION_CLAUSE's own
+    # comment. Model-name-keyed rather than a parameter threaded through
+    # run_two_step_ensemble()/route_tier(), since this is specifically a
+    # per-model prompt difference, not a per-entity or per-run one.
+    extra_rule = QWEN_SUBSUMPTION_CLAUSE if client.model_name.startswith("qwen") else None
+
     step_a_degenerate = bool(meaning_raw.get("degenerate_generation"))
     trail = []
     for i, cand in enumerate(candidates, 1):
         try:
             raw = client.complete(
                 MATCH_SYSTEM_PROMPT,
-                _binary_match_prompt(entity, cand, clinical_meaning),
+                _binary_match_prompt(entity, cand, clinical_meaning, extra_rule=extra_rule),
                 schema=_match_schema())
             parsed = parse_json_response(raw["text"])
             matched = bool(parsed.get("match"))
@@ -306,6 +327,43 @@ def run_two_step_ensemble(entity: dict, clients: dict = None) -> list:
         for future in concurrent.futures.as_completed(futures):
             results.append(future.result())
     return results
+
+
+# ==========================================================================
+# Qualifier-fragment precheck (Option 1, 2026-08-16 user proposal)
+# ==========================================================================
+
+def qualifier_fragment_precheck(entity: dict) -> dict:
+    """HITL_REQUIRED without spending any model calls, for a standalone
+    Qualifier-labeled span -- a laterality, generic modifier, or similar
+    ("left", "right", "multiple", "third", "R", "Cranial"). These are not
+    independently linkable clinical concepts on their own, and asking the
+    ensemble to judge whether some SNOMED code IS "left" is the exact
+    question that produced both failure modes recorded in
+    docs/2026-08-15_Phase2_TierGate_Validation.md: qwen correctly refusing
+    (a split, no harm beyond lost coverage) or a loosened match prompt
+    letting all three models rubber-stamp a wrong code onto it (the 5.9%
+    precision collapse). Removing these spans from the ensemble's job
+    entirely is safer than asking any prompt to get them right.
+
+    Scoped to gliner_label == "Qualifier" specifically, confirmed against
+    real data (not a hand-rolled word list) -- a DB query for the exact
+    fragment entities that caused the 2026-08-15 collapse ('left', 'right',
+    'multiple', 'third', 'R', 'Cranial') showed all of them label Qualifier,
+    while single-word entities that ARE real, independently linkable
+    concepts ('chest' -> Anatomy, 'pain' -> Symptom) carry a different
+    label and are untouched by this check.
+    """
+    if (entity.get("gliner_label") or "").strip() == "Qualifier":
+        return {"tier": TIER_5_TRUE_AMBIGUITY, "mollm_routing_decision": "HITL_REQUIRED",
+                "queue_reason": "standalone_qualifier_span", "final_candidate_index": None,
+                "composite_confidence": None,
+                "routing_basis": (
+                    "Tier 5: gliner_label=Qualifier -- a standalone laterality/"
+                    "modifier span is not an independently linkable clinical "
+                    "concept; routed to HITL without spending an ensemble call."),
+                "models": []}
+    return None
 
 
 # ==========================================================================
@@ -391,14 +449,18 @@ def tier5_precheck(entity: dict) -> dict:
 def route_tier(entity: dict, model_results: list = None, clients: dict = None) -> dict:
     """Runs the Tier 1-5 gate for one Stage 2b LOW-tier entity record.
 
-    Order: Tier 3 fast path -> Tier 5 pre-check (both free) -> full two-step
-    ensemble -> Tier 1/2/4/5 based on the ensemble's three verdicts.
+    Order: qualifier-fragment precheck -> Tier 3 fast path -> Tier 5
+    pre-check (all three free) -> full two-step ensemble -> Tier 1/2/4/5
+    based on the ensemble's three verdicts.
 
     `model_results`, when passed, skips running the ensemble (used by
     scripts/run_tier_gate_batch.py to separate "call the models" from
     "apply the routing table" for testability and for re-scoring a stored
     run without re-paying for inference).
     """
+    qualifier = qualifier_fragment_precheck(entity)
+    if qualifier:
+        return qualifier
     fast = tier3_fast_path(entity)
     if fast:
         return fast

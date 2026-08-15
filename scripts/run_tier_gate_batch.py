@@ -44,13 +44,37 @@ from src.retrieval import VocabularyRetriever  # noqa: E402
 def grade(record, decision, gold_by_note, vocab):
     """Same crosswalk logic as scripts/experiment_3b_voting.py's grade():
     does the routed decision's chosen candidate's SNOMED code match an
-    overlapping gold span? Returns 'correct' / 'incorrect' / None (ungradable,
-    e.g. HITL decisions with no chosen candidate, or no overlapping gold)."""
+    overlapping gold span? Returns (outcome, scoring_note):
+      outcome: 'correct' / 'incorrect' / None (ungradable, e.g. HITL
+        decisions with no chosen candidate, or no overlapping gold).
+      scoring_note: None (clean 1:1 span match) / 'compound_span' / 'narrower_than_gold'.
+
+    2026-08-16 (found while diagnosing a batch of "incorrect" Tier 1 results
+    that all turned out to be genuinely correct model judgments on inspection
+    -- e.g. 'clavicular fracture' -> 'Fracture of clavicle', graded WRONG
+    because gold annotates 'left clavicular' and 'fracture' as two SEPARATE
+    spans/codes and a single-candidate entity cannot match both). This is
+    scripts/score_gold_recall.py's own documented, pre-existing caveat
+    ("COMPOUND-SPAN CASES ARE COUNTED SEPARATELY... the fix is Stage 2a
+    splitting compound spans... not normalization tuning") -- that script's
+    find_compound_spans() flags exactly this pattern; the same per-entity
+    check is reimplemented here rather than importing it, since that
+    function is batch-shaped (preds_by_note) and this script grades one
+    record at a time. 'narrower_than_gold' (e.g. entity span 'fixation'
+    inside gold span 'intermaxillary fixation') is a related but distinct
+    caveat: not a compound mismatch, but the entity's own span is a strict
+    substring of what gold annotated, so the candidate list it was ever
+    shown may not have contained the more specific concept gold expects --
+    a Stage 2a span-boundary/Stage 2b retrieval question, not necessarily a
+    Tier 1-5 gating failure. Both are surfaced, not swept under a single
+    'incorrect', so the reported precision distinguishes real gate errors
+    from these known, separately-attributable upstream limitations.
+    """
     gold = gold_by_note.get(record["note_id"], [])
     overlapping = [g for g in gold
                    if overlaps(record["orig_start"], record["orig_end"], g["start"], g["end"])]
     if not overlapping:
-        return None
+        return None, None
     gold_codes = {g["concept_id"] for g in overlapping}
 
     idx = decision.get("final_candidate_index")
@@ -61,14 +85,27 @@ def grade(record, decision, gold_by_note, vocab):
         # interesting question for these is precision of the DECISION TO
         # ROUTE HITL, which is a separate (recall-of-ambiguity) analysis
         # this script does not attempt.
-        return None
+        return None, None
     if idx < 1 or idx > len(candidates):
-        return None
+        return None, None
     concept_id = candidates[idx - 1].get("omop_concept_id")
     code = vocab.snomed_code_for_concept(concept_id) if concept_id is not None else None
     if code is None:
-        return None
-    return "correct" if code in gold_codes else "incorrect"
+        return None, None
+
+    outcome = "correct" if code in gold_codes else "incorrect"
+
+    scoring_note = None
+    if len(overlapping) > 1:
+        scoring_note = "compound_span"
+    else:
+        g = overlapping[0]
+        entity_len = record["orig_end"] - record["orig_start"]
+        gold_len = g["end"] - g["start"]
+        if entity_len < gold_len:
+            scoring_note = "narrower_than_gold"
+
+    return outcome, scoring_note
 
 
 def main():
@@ -122,15 +159,17 @@ def main():
     t0 = time.time()
     for i, record in enumerate(records, 1):
         decision = route_tier(record, clients=clients)
-        outcome = grade(record, decision, gold_by_note, vocab)
-        results.append({"record": record, "decision": decision, "outcome": outcome})
+        outcome, scoring_note = grade(record, decision, gold_by_note, vocab)
+        results.append({"record": record, "decision": decision, "outcome": outcome,
+                        "scoring_note": scoring_note})
         elapsed = time.time() - t0
         n_calls = sum(1 for m in (decision.get("models") or []) if m.get("verdict"))
+        note_flag = f" [{scoring_note}]" if scoring_note else ""
         print(f"[{i}/{len(records)}] [{elapsed:.0f}s] "
               f"in_tier={record.get('confidence_tier_in')} {record['original_text']!r} "
               f"({len(record.get('candidates') or [])} cands) -> "
               f"tier={decision.get('tier')} routing={decision['mollm_routing_decision']} "
-              f"reason={decision.get('queue_reason')} outcome={outcome} "
+              f"reason={decision.get('queue_reason')} outcome={outcome}{note_flag} "
               f"model_calls={n_calls}")
 
     print()
@@ -143,15 +182,24 @@ def main():
 
     print()
     print("=" * 78)
-    print("PER-TIER PRECISION (against gold, gradable decisions only)")
+    print("PER-TIER PRECISION (against gold; 'clean' excludes compound_span/")
+    print("narrower_than_gold cases -- see grade()'s docstring)")
     print("=" * 78)
     for tier in sorted(tier_counts):
         rows = [r for r in results if (r["decision"].get("tier") or "HITL_NO_TIER") == tier]
         graded = [r for r in rows if r["outcome"] in ("correct", "incorrect")]
         correct = sum(1 for r in graded if r["outcome"] == "correct")
         prec = f"{correct / len(graded) * 100:.1f}%" if graded else "n/a"
+        clean = [r for r in graded if r["scoring_note"] is None]
+        clean_correct = sum(1 for r in clean if r["outcome"] == "correct")
+        clean_prec = f"{clean_correct / len(clean) * 100:.1f}%" if clean else "n/a"
         print(f"  {tier}: {len(rows)} total, {len(graded)} gradable, "
-              f"{correct} correct -- precision {prec}")
+              f"{correct} correct -- precision {prec}  "
+              f"(clean-span only: {clean_correct}/{len(clean)} -- {clean_prec})")
+
+    note_counts = collections.Counter(r["scoring_note"] for r in results if r["scoring_note"])
+    if note_counts:
+        print(f"\nscoring caveats among gradable decisions: {dict(note_counts)}")
 
     auto_count = sum(1 for r in results if (r["decision"].get("tier") in AUTO_TIERS))
     print(f"\nAUTO coverage (Tier 1+2+3, fraction skipping human review): "
@@ -180,7 +228,8 @@ def main():
                     "queue_reason": r["decision"].get("queue_reason"),
                     "composite_confidence": r["decision"].get("composite_confidence"),
                     "final_candidate_index": r["decision"].get("final_candidate_index"),
-                    "outcome": r["outcome"], "models": r["decision"].get("models")}
+                    "outcome": r["outcome"], "scoring_note": r["scoring_note"],
+                    "models": r["decision"].get("models")}
                    for r in results], f, indent=2, default=str)
     print(f"\nfull results written: {out_path}")
     return 0

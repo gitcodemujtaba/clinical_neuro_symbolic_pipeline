@@ -1,136 +1,151 @@
-# Phase 2 (Pass 4 Tier 1-5 gate) — real validation, 2026-08-15
+# Phase 2 (Pass 4 Tier 1-5 gate) — real validation, 2026-08-15/16
 
-**Status: the scope-mismatch hypothesis from the first run is DISPROVEN by a
-second run. The real, actionable finding is a specific prompt-strictness
-tradeoff, and a first attempt to fix it produced a textbook "consensus went
-up, precision did not" failure -- reverted, not shipped. This is the most
-important thing to read before building Phases 3-6 on top of this gate.**
+**Status: three rounds of real-data diagnosis, each overturning part of the
+previous conclusion. The two-step CoT mechanism looks structurally sound on
+hand-inspection; the barriers to the 90% target are (a) a fixable per-model
+strictness asymmetry (partially mitigated), (b) a class of entities that
+should never have reached the ensemble at all (now filtered out), and (c) a
+measurement confound in this validation script's own grading, unrelated to
+gate quality, that has consumed the entire gradable sample so far. Net
+result: still no reliable precision read. Read this whole document before
+drawing conclusions from any single number in it.**
 
-## Run 1 — LOW-tier only (18 entities, 3 canonical gold notes)
-
-```
-TIER_1_AUTO_VALIDATED: 1  ( 5.6%) -- 1/1 gradable, 100.0% precision
-TIER_4_ENSEMBLE_SPLIT: 12 (66.7%)
-TIER_5_TRUE_AMBIGUITY: 5  (27.8%)
-AUTO coverage: 5.6%   (target ~90%)
-```
-
-Initial hypothesis: this only tested Stage 2b's LOW-confidence tier (the
-hardest, pre-filtered-toward-disagreement subset, and the only population
-production Stage 3 has ever seen) -- maybe the full entity population, where
-most entities are easy HIGH-tier confirmations, would look completely
-different.
-
-## Run 2 — HIGH-tier only (36 entities, same 3 notes) — hypothesis disproven
+## Round 1 — LOW-tier only (18 entities)
 
 ```
-TIER_1_AUTO_VALIDATED: 1  ( 2.8%) -- 1/1 gradable, 0.0% precision
-TIER_4_ENSEMBLE_SPLIT: 28 (77.8%)
-TIER_5_TRUE_AMBIGUITY: 7  (19.4%)
-AUTO coverage: 2.8%   (target ~90%)
+AUTO coverage: 5.6% (target ~90%), 66.7% Tier 4 splits
 ```
+Hypothesis: only tested Stage 2b's hardest, pre-filtered LOW tier.
 
-Even Stage 2b's OWN most-confident tier -- entities Stage 2b already believed
-it had resolved correctly -- split 77.8% of the time. The scope-mismatch
-explanation does not hold; something in the two-step CoT itself is causing
-unanimity to fail far more often than it should.
-
-## Root cause, found by reading actual model reasoning (not guessed)
-
-Pulled `eval_trail`/`clinical_meaning` for several split cases directly from
-`reports/tier_gate_batch_results.json`:
-
-- **`HEENT`**: unanimous, CORRECT rejection. Stage 2b's only candidate was
-  "Structure of anterior portion of neck" -- genuinely wrong for HEENT
-  (head/eyes/ears/nose/throat). All 3 models correctly said NONE_CORRECT.
-  The gate working as intended; just correctly declining to auto-validate a
-  bad upstream candidate, which is not free coverage but is not a bug either.
-- **`pneumonia`, `heart failure`, `sodium`**: all three are cases where 2
-  models said `SUPPORTED_1` (obviously correct) and **`qwen2.5:3b`
-  consistently dissented**, demanding the candidate's bare name also capture
-  contextual specifics the prompt never asked it to require -- rejecting
-  plain "Pneumonia" for "lack[ing] specificity regarding fever and lung
-  inflammation on the left side," rejecting plain "Heart failure" for not
-  saying "chronic systolic." A real, diagnosable prompt-calibration gap, not
-  random noise.
-
-## Attempted fix #1 (REJECTED, not shipped) — loosening the match rule
-
-Added a 5th rule to `_binary_match_prompt()`: "match the core concept, not
-every detail -- a plain 'Pneumonia' candidate matches even if the note adds
-laterality/severity." Re-ran the same 36-entity HIGH-tier batch:
+## Round 2 — HIGH-tier only (36 entities) — hypothesis disproven
 
 ```
-TIER_1_AUTO_VALIDATED: 20 (55.6%) -- 17 gradable, 1 correct, 5.9% precision
-TIER_4_ENSEMBLE_SPLIT: 16 (44.4%)
-AUTO coverage: 55.6%   (target ~90%)
+AUTO coverage: 2.8%, 77.8% Tier 4 splits
+```
+Even Stage 2b's own most-confident entities split constantly. Reading actual
+model reasoning from the stored results showed why: **`qwen2.5:3b` was the
+consistent dissenting vote** on obviously-correct cases (plain
+"pneumonia"/"heart failure"/"sodium"), demanding contextual specificity
+(laterality, subtype, severity) the candidate's bare name was never going to
+carry.
+
+## Rejected fix — loosening the match rule for all three models
+
+A 5th rule ("match the core concept, not every detail") dropped Tier 1
+precision to 5.9% (1/17) by letting all three models unanimously
+rubber-stamp WRONG matches on bare qualifier/fragment spans ('left',
+'Removal', 'Multiple') that are not independently linkable concepts at all.
+**Reverted.**
+
+## Round 3 — two targeted, narrower fixes (user's combined proposal)
+
+**Fix A — qualifier-fragment precheck** (`qualifier_fragment_precheck()`,
+`src/mollm_tier_gate.py`): confirmed against real DB data (not a guessed
+word list) that `gliner_label == "Qualifier"` is exactly the label covering
+the fragment entities that caused the precision collapse ('left', 'right',
+'multiple', 'third', 'R', 'Cranial' all label Qualifier; genuine
+single-word concepts like 'chest'→Anatomy and 'pain'→Symptom carry different
+labels and are unaffected). These now route straight to HITL
+(`queue_reason=standalone_qualifier_span`) without spending a single model
+call — removed from the ensemble's job entirely rather than asking a prompt
+to get them right.
+
+**Fix B — qwen-only subsumption clause** (`QWEN_SUBSUMPTION_CLAUSE`): a 5th
+rule about accepting a correct-but-less-specific hierarchical relative,
+applied ONLY to `qwen2.5:3b`'s Step B prompt; `llama3.2:3b`/`phi4-mini`'s
+prompts are unchanged, since they were not the ones over-rejecting.
+
+Re-ran the same 36-entity HIGH-tier batch:
+
+```
+TIER_1_AUTO_VALIDATED: 6-7 (16.7-19.4%)
+TIER_4_ENSEMBLE_SPLIT: 15 (41.7%)
+TIER_5_TRUE_AMBIGUITY: 14 (38.9%), 10 of which are standalone_qualifier_span
+AUTO coverage: 16.7-19.4% (target ~90%)
+Tier 1 precision: 16.7% (1/6 gradable)
 ```
 
-Coverage jumped from 2.8% to 55.6% -- and Tier 1 precision **collapsed to
-5.9%** (1/17 correct). The looser rule let all three models unanimously
-rubber-stamp WRONG matches on bare qualifier/fragment spans that are not
-independently linkable clinical concepts at all: `'left'`, `'Removal'`,
-`'Multiple'`, `'fixation'` were all AUTO_VALIDATED to some SNOMED code purely
-because the prompt no longer let a model object that the candidate said
-nothing distinctive. This is the exact "ensemble consensus went up, precision
-did not" failure `src/mollm_ensemble.py`'s own Fragile Concept Gate
-(`route()`, the `value_stripped_from_` cap) was built to catch on lab
-values -- reproduced here by a different mechanism, on a different entity
-class. **Reverted.** The stricter 4-rule prompt is back in force in
-`src/mollm_tier_gate.py`; the rejected rule and this reasoning are recorded
-in that file's own inline comment so it is not silently re-tried later
-without this context.
+Real, measured improvement: AUTO coverage 2.8% → ~19%, with the qualifier
+spans correctly diverted before ever reaching the ensemble. Still far short
+of target, and Tier 1 precision still looks bad at 16.7%.
 
-## What this means for the plan
+## The precision number is more confounded than it looks — a grading bug, not a gate bug
 
-The two-step CoT mechanism itself is not obviously broken -- it correctly
-rejected a genuinely-wrong candidate (HEENT) and correctly accepted a
-genuinely-right one at least once each. The problem is narrower and more
-tractable than "does the architecture work": **qwen2.5:3b's strictness
-calibration relative to the other two models is the dominant driver of
-splits on cases the other two get right**, and the naive fix (loosen the
-rule for everyone) trades that off directly against precision on a different,
-worse failure mode (fragment/qualifier spans getting confidently
-mislabeled). A future attempt should be narrower and testable in isolation,
-e.g.:
+Inspecting the "incorrect" Tier 1 cases by hand (`fixation`→`Fixation`,
+`clavicular fracture`→`Fracture of clavicle`, `pneumonia`→`Pneumonia`) showed
+**sound, defensible model reasoning in every case** — these did not look like
+errors. Checking the raw gold/candidate data directly confirmed why:
 
-- Scope any specificity relaxation to GLiNER labels where it is safe
-  (Condition/Medication/Lab Test) and never to single-word/qualifier-shaped
-  spans, rather than loosening the rule globally.
-- Investigate whether qwen2.5:3b specifically needs a different prompt, a
-  different role in the ensemble (e.g. tie-breaker rather than an equal
-  vote), or is simply a weaker fit for this task style than llama3.2:3b/
-  phi4-mini -- this codebase already made a similar per-model judgment once
-  (retiring BioMistral+OpenBioLLM for the current 3-model Ollama set).
-- Consider whether "3/3 unanimous" is too strict a bar for THIS ensemble
-  regardless of prompt wording, given `scripts/experiment_3b_voting.py`'s
-  own prior finding that 2-1 splits still carry real signal (50.0% precision,
-  not noise) -- a differently-shaped Tier 2 (e.g. "2/3 agree AND the
-  dissent is qwen2.5:3b specifically, on a Condition/Medication label")
-  might recover more coverage without the fragment-rubber-stamping failure
-  mode, but this is a hypothesis, not yet tested.
+- **`clavicular fracture`**: gold annotates `"left clavicular"` and
+  `"fracture"` as TWO SEPARATE spans with two separate SNOMED codes. The
+  entity extracted `"clavicular fracture"` as ONE span with ONE (arguably
+  *better*) candidate, `"Fracture of clavicle"`. A single candidate
+  structurally cannot match both gold codes at once. This is
+  `scripts/score_gold_recall.py`'s own **already-documented** compound-span
+  caveat ("the fix is Stage 2a splitting compound spans... not normalization
+  tuning") — my batch script's `grade()` was not accounting for it and was
+  scoring these as flatly wrong.
+- **`fixation`**: gold annotates the fuller phrase `"intermaxillary
+  fixation"`; the entity's own span is only `"fixation"`, a strict substring,
+  normalized to the more generic candidate `"Fixation"`. Not a compound
+  mismatch, but the entity was never shown the more specific concept gold
+  expects, because its own span is narrower than gold's.
+- **`pneumonia`**: same pattern — gold's span is `"aspiration \npneumonia"`
+  (a specific subtype), the entity's span is just `"pneumonia"`.
+
+Fixed `grade()` (`scripts/run_tier_gate_batch.py`) to detect and separately
+flag both patterns (`compound_span`, `narrower_than_gold`) rather than
+silently scoring them as plain wrong, and to report a "clean-span-only"
+precision figure alongside the raw one. Re-running the same batch with the
+fixed grader: **all 6 gradable Tier 1 decisions carry one of these two
+flags — zero clean, unconfounded data points (0/0 = n/a)**. The 16.7% number
+is not a measurement of the gate's judgment quality; it is a measurement of
+how often this specific 36-entity HIGH-tier sample happens to have
+compound/narrow-span gold annotations, which is a Stage 2a extraction
+question this validation run cannot separate from gate quality.
+
+## Where this leaves things
+
+Three additive findings, not one:
+1. **qwen2.5:3b strictness asymmetry** — real, diagnosed, partially mitigated
+   (Fix B). Not yet re-measured cleanly due to (3) below.
+2. **Standalone qualifier/fragment spans reaching the ensemble** — real,
+   diagnosed, fully fixed (Fix A) at essentially zero cost (a free precheck).
+3. **This validation script's own grading conflated compound-span and
+   narrower-than-gold entities with genuine errors** — a measurement bug in
+   `scripts/run_tier_gate_batch.py`, not in `src/mollm_tier_gate.py`. Fixed,
+   but it consumed the ENTIRE gradable sample on this particular 36-entity
+   batch, leaving no clean signal to report yet.
+
+None of the three findings individually explains the gap to 90% AUTO
+coverage; each closes off one confound so the next run can see more clearly.
+Coverage (19.4%) is still the harder number to move — most of the remaining
+volume is Tier 4 splits (41.7%) on entities the qualifier filter correctly
+does not touch (real clinical nouns like `heart failure`, `Hepatopathy`,
+`rib fractures`), meaning the qwen mitigation (Fix B) has not yet closed the
+gap on its own.
 
 ## What is NOT yet done in Phase 2
 
-- No fix has been found and validated yet -- the state as of this doc is
-  "problem diagnosed, one candidate fix tried and rejected."
-- `src.kg3_ingestion.ingest_auto_decision()` has been verified end-to-end in
-  dry-run and one live-write-then-cleanup smoke test (commit `240796c`), but
-  the batch runner never calls it -- read-only/measurement-only throughout,
-  by design, and doubly appropriate given the 5.9% precision result above.
-- No calibration of `TIER1_CONFIDENCE_FLOOR` (0.70, placeholder) or the Tier
-  3 fast-path criteria against real data yet -- today's samples are far too
-  small and, per the above, the gate isn't trustworthy enough yet to be
-  worth calibrating a confidence floor for.
-- `src.mollm_ensemble.py`'s production `route()` is untouched; this is still
-  a standalone, additive module per the plan.
+- No batch has yet produced a clean, unconfounded precision measurement.
+  Needed: either a larger sample (so clean-span cases appear by chance) or a
+  sample deliberately restricted to entities whose span already matches a
+  gold annotation exactly, before trusting any precision number from this
+  gate.
+- Fix B's effect on qwen's dissent rate specifically has not been isolated
+  from Fix A's effect (both landed together in this round) — worth a
+  follow-up run with only one fix active if the combined effect needs
+  decomposing.
+- `src.kg3_ingestion.ingest_auto_decision()` remains verified-but-unused by
+  the batch runner (measurement only, by design) -- more true than ever
+  given (3) above.
+- `src.mollm_ensemble.py`'s production `route()` is untouched.
 
 ## Recommendation
 
-Do not proceed to Phases 3-6 (retrieval/acronym/chunking/cache) under the
-assumption that Phase 2's gate is production-ready -- it is not yet. The
-higher-leverage next step is narrowly diagnosing and fixing the qwen2.5:3b
-strictness gap (or the ensemble-composition question it points to) on a
-larger, more diverse sample, since that is what is actually gating the 90%
-target -- not upstream retrieval or acronym quality, which Phases 3/4 would
-improve.
+Do not draw a final precision conclusion from any number in this document —
+each round has been confounded by something different, and this round's
+confound (grading methodology) happened to consume 100% of the gradable
+sample. The next useful step is a larger and/or more carefully sampled batch
+run specifically to get clean-span data points, not another prompt or
+filter change on top of an unmeasured baseline.

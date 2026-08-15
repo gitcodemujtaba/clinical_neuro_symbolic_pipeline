@@ -55,10 +55,11 @@ def _load_pure_functions(module_filename: str, wanted: set, extra_globals: dict 
 
 TG = _load_pure_functions(
     "mollm_tier_gate.py",
-    {"tier3_fast_path", "tier5_precheck", "route_tier"},
+    {"qualifier_fragment_precheck", "tier3_fast_path", "tier5_precheck", "route_tier"},
     extra_globals={"TIER3_SIMILARITY_FLOOR": 0.72, "TIER1_CONFIDENCE_FLOOR": 0.70},
 )
 
+qualifier_fragment_precheck = TG["qualifier_fragment_precheck"]
 tier3_fast_path = TG["tier3_fast_path"]
 tier5_precheck = TG["tier5_precheck"]
 route_tier = TG["route_tier"]
@@ -92,6 +93,30 @@ def run():
             ok += 1
         else:
             fail.append(name)
+
+    # ======================================================================
+    # qualifier_fragment_precheck (2026-08-16, Option 1)
+    # ======================================================================
+    qualifier_entity = _entity(gliner_label="Qualifier", original_text="left",
+                               candidates=[{"concept_name": "Left", "match_basis": "exact_text",
+                                            "similarity_score": 1.0}])
+    r = qualifier_fragment_precheck(qualifier_entity)
+    check("standalone Qualifier span -> Tier 5, no model calls",
+          r is not None and r["queue_reason"] == "standalone_qualifier_span")
+
+    anatomy_entity = _entity(gliner_label="Anatomy", original_text="chest",
+                             candidates=[{"concept_name": "Chest structure"}])
+    check("Anatomy-labeled single word is NOT caught by the qualifier filter",
+          qualifier_fragment_precheck(anatomy_entity) is None)
+
+    symptom_entity = _entity(gliner_label="Symptom", original_text="pain",
+                             candidates=[{"concept_name": "Pain"}])
+    check("Symptom-labeled single word is NOT caught by the qualifier filter",
+          qualifier_fragment_precheck(symptom_entity) is None)
+
+    r = route_tier(qualifier_entity, model_results=[_vote("a", "SUPPORTED_1")])
+    check("route_tier: qualifier precheck short-circuits before model_results too",
+          r["queue_reason"] == "standalone_qualifier_span")
 
     # ======================================================================
     # tier3_fast_path
