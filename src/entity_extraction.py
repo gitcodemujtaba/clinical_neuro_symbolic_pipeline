@@ -134,6 +134,140 @@ CLINICAL_LABELS = [
 LOCAL_CONTEXT_MAX_CHARS = 800
 LOCAL_CONTEXT_MIN_CHARS = 300
 
+# 2026-08-16, Pass 2 sliding-window chunking (plan Phase 5). GLiNER silently
+# truncates any input over model.config.max_len=2048 WORD-tokens (confirmed
+# live against this checkpoint) -- extract_and_store_entities()'s own
+# 2026-08-15 comment already measured this corpus's notes running up to
+# 24,858 characters, long enough to hit that ceiling and lose every entity
+# past the cut point with no record beyond the possibly_truncated flag that
+# comment added (detection only, chunking deliberately deferred until now).
+#
+# CHUNK_WORD_BUDGET is 1800, not 2048 -- comfortably under the real ceiling
+# to leave margin for CHUNK_OVERLAP_WORDS plus any per-chunk variance in how
+# GLiNER's own tokenizer counts a given span (measured with the SAME
+# tokenizer used for the budget check, model.data_processor.words_splitter,
+# but not necessarily byte-identical to whatever internal accounting GLiNER
+# applies once a chunk is actually run -- the margin absorbs that risk
+# rather than testing the ceiling exactly).
+CHUNK_WORD_BUDGET = 1800
+CHUNK_OVERLAP_WORDS = 128
+
+
+def _build_chunks(sentences: list, words: list, budget: int = CHUNK_WORD_BUDGET,
+                  overlap: int = CHUNK_OVERLAP_WORDS) -> list:
+    """Splits a note into overlapping (start_char, end_char) windows, SNAPPED
+    TO SENTENCE BOUNDARIES -- never a raw character/word cut, which risks
+    splitting a span mid-entity or, worse, separating a finding from the
+    negation/qualifier cue that governs it (the same reasoning
+    build_local_context() above already documents for context windows).
+
+    `words` is model.data_processor.words_splitter(expanded_text)'s output
+    (a list of (word, start_char, end_char) tuples) -- GLiNER's OWN word
+    tokenization, not an approximation via .split() or character count, so
+    the budget check matches the model's real truncation math rather than
+    guessing at a conversion ratio between characters and word-tokens.
+
+    Pure function, no model/DB access -- takes pre-tokenized sentences/words
+    so it's directly unit-testable with synthetic data.
+
+    Returns a list of (start_char, end_char) tuples covering the WHOLE note
+    (the last chunk's end always equals the last sentence's end), each
+    chunk's word count <= budget except when a SINGLE sentence alone exceeds
+    it (an unavoidable, rare edge case -- logged via possibly_truncated by
+    the caller, not silently absorbed). Consecutive chunks overlap by
+    approximately `overlap` words, backed up to the nearest sentence
+    boundary at or before that point, so an entity sitting near a chunk
+    boundary is fully visible (with its own sentence-level context intact)
+    in at least one chunk.
+
+    A single-chunk result (covering the whole note) whenever the total word
+    count is already under budget -- callers should still prefer calling
+    predict_entities() directly in that (overwhelmingly common) case rather
+    than routing through this function at all; this function is only for
+    when chunking is actually needed.
+    """
+    if not sentences:
+        return [(0, words[-1][2] if words else 0)]
+
+    sent_word_counts = []
+    for s in sentences:
+        n = sum(1 for _w, ws, we in words if ws >= s["start"] and we <= s["end"])
+        sent_word_counts.append(n)
+
+    chunks = []
+    n_sent = len(sentences)
+    i = 0
+    while i < n_sent:
+        cum = 0
+        j = i
+        while j < n_sent and (cum + sent_word_counts[j] <= budget or j == i):
+            cum += sent_word_counts[j]
+            j += 1
+        chunks.append((sentences[i]["start"], sentences[j - 1]["end"]))
+        if j >= n_sent:
+            break
+        # Back up from the chunk's end to include ~overlap words of it at
+        # the START of the next chunk, snapped to a sentence boundary.
+        back = j - 1
+        overlap_words = 0
+        while back > i and overlap_words < overlap:
+            overlap_words += sent_word_counts[back]
+            back -= 1
+        i = max(back + 1, i + 1)  # always move forward at least one sentence
+    return chunks
+
+
+def _extract_entities_chunked(expanded_text: str, sentences: list, floor: float) -> tuple:
+    """Runs predict_entities() per chunk (see _build_chunks()) and merges
+    the results back into ONE entity list in expanded_text's GLOBAL
+    coordinates -- a drop-in replacement for a single whole-note
+    predict_entities() call's return shape, so nothing downstream of the
+    call site (assertion detection, offset mapping to original text,
+    storage) needs to know chunking happened at all.
+
+    Returns (merged_entities, possibly_truncated, gliner_input_token_count)
+    -- possibly_truncated stays False in the normal case (every chunk built
+    under CHUNK_WORD_BUDGET), but can still fire per-chunk (a single
+    sentence alone exceeding the budget, the one case _build_chunks() can't
+    avoid) -- logged rather than silently dropped, same discipline as the
+    non-chunked path's existing truncation catch.
+
+    DEDUP: entities extracted identically (same start/end/label) by two
+    consecutive chunks' overlap region collapse to ONE, keeping the
+    higher-confidence score -- exact-match only, deliberately not
+    attempting to merge/reconcile two DIFFERENT boundary-adjacent
+    predictions (a harder problem out of scope here; downstream
+    normalization's own cache-key dedup is the existing safety net for
+    near-duplicate spans).
+    """
+    words = list(model.data_processor.words_splitter(expanded_text))
+    chunk_spans = _build_chunks(sentences, words)
+
+    merged = {}  # (start, end, label) -> entity dict, highest score wins
+    any_truncated = False
+    total_input_tokens = len(words)
+
+    for chunk_start, chunk_end in chunk_spans:
+        chunk_text = expanded_text[chunk_start:chunk_end]
+        with warnings.catch_warnings(record=True) as caught:
+            warnings.simplefilter("always")
+            chunk_entities = model.predict_entities(
+                chunk_text, CLINICAL_LABELS, threshold=floor, flat_ner=FLAT_NER)
+        for w in caught:
+            if re.search(r"Sentence of length (\d+) has been truncated to (\d+)", str(w.message)):
+                any_truncated = True
+        for e in chunk_entities:
+            global_e = dict(e)
+            global_e["start"] = e["start"] + chunk_start
+            global_e["end"] = e["end"] + chunk_start
+            key = (global_e["start"], global_e["end"], global_e["label"])
+            existing = merged.get(key)
+            if existing is None or global_e.get("score", 0) > existing.get("score", 0):
+                merged[key] = global_e
+
+    merged_entities = sorted(merged.values(), key=lambda e: e["start"])
+    return merged_entities, any_truncated, total_input_tokens
+
 
 def map_offsets_to_original(exp_start_idx, exp_end_idx, expansions):
     """
@@ -512,32 +646,45 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str,
 
     # 2. Run Zero-Shot Extraction
     # Extracted at the LOWER floor; the split into accepted vs below-threshold
-    # happens per-entity below. One model call, not two.
+    # happens per-entity below. One model call, not two (per note that
+    # doesn't need chunking -- see below for the ones that do).
     floor = SUBTHRESHOLD_FLOOR if RETAIN_SUBTHRESHOLD else EXTRACTION_THRESHOLD
-    # 2026-08-15: catch GLiNER's own truncation UserWarning
-    # ("Sentence of length {num_tokens} has been truncated to {max_len}",
+    # 2026-08-15, extended 2026-08-16 (plan Phase 5, sliding-window
+    # chunking): catch GLiNER's own truncation UserWarning ("Sentence of
+    # length {num_tokens} has been truncated to {max_len}",
     # gliner/data_processing/processor.py) explicitly, scoped to just this
     # call -- NOT by touching the module-level warnings.filterwarnings(
     # "ignore") above, which suppresses other, unrelated library warnings
-    # this module has no reason to newly surface. Long notes (mean ~10,257
+    # this module has no reason to newly surface.
+    #
+    # WORD-COUNT PRE-CHECK, NOT "TRY THEN RETRY". Long notes (mean ~10,257
     # chars, max 24,858) can exceed model.config.max_len=2048 word-tokens for
-    # this checkpoint and were being silently truncated with zero record of
-    # it. This does not fix truncation (that needs chunk-and-merge extraction,
-    # a bigger feature deliberately not built here -- see
-    # Implementation_Checklist.md) -- it makes it measurable.
-    with warnings.catch_warnings(record=True) as caught:
-        warnings.simplefilter("always")
-        raw_entities = model.predict_entities(
-            expanded_text, CLINICAL_LABELS, threshold=floor, flat_ner=FLAT_NER
-        )
-    possibly_truncated = False
-    gliner_input_token_count = None
-    for w in caught:
-        m = re.search(r"Sentence of length (\d+) has been truncated to (\d+)", str(w.message))
-        if m:
-            possibly_truncated = True
-            gliner_input_token_count = int(m.group(1))
-            break
+    # this checkpoint. Tokenizing via model.data_processor.words_splitter
+    # (GLiNER's own tokenizer, no model inference, cheap) BEFORE ever
+    # calling predict_entities() lets this decide chunked-vs-single up
+    # front, rather than always paying for one full-text model call first
+    # and only retrying via chunks after the fact -- the pre-check is nearly
+    # free; a wasted full forward pass on a note already known to truncate
+    # is not, and 2026-08-15's version paid it on every long note as a
+    # matter of course.
+    all_words = list(model.data_processor.words_splitter(expanded_text))
+    if len(all_words) > CHUNK_WORD_BUDGET:
+        raw_entities, possibly_truncated, gliner_input_token_count = (
+            _extract_entities_chunked(expanded_text, sentences, floor))
+    else:
+        with warnings.catch_warnings(record=True) as caught:
+            warnings.simplefilter("always")
+            raw_entities = model.predict_entities(
+                expanded_text, CLINICAL_LABELS, threshold=floor, flat_ner=FLAT_NER
+            )
+        possibly_truncated = False
+        gliner_input_token_count = None
+        for w in caught:
+            m = re.search(r"Sentence of length (\d+) has been truncated to (\d+)", str(w.message))
+            if m:
+                possibly_truncated = True
+                gliner_input_token_count = int(m.group(1))
+                break
 
     # 3. Assertion detection over the SAME text and coordinate system GLiNER
     #    produced the spans in -- no offset mapping happens inside
