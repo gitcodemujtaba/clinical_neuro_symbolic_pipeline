@@ -59,26 +59,35 @@ concept pairs, not a case where the model or gate reasoned incorrectly --
 worth checking against `athena_concept_relationship` for a formal
 duplicate/SAME_AS marker before concluding either way, not yet done here.
 
-**One genuinely concerning case, unresolved**: `'RCA occlusion'` resolved
-to "Right coronary artery occlusion"; gold expects "Right carotid artery
-occlusion" -- a real anatomical-site difference (heart vs. neck blood
-supply), not a naming quirk. "RCA" near-universally means "right coronary
-artery" in cardiology, so this could be a genuine resolution error or an
-unusual gold label -- needs the source note's context to adjudicate, not
-attempted here.
+**`'RCA occlusion'` — ADJUDICATED, gold annotation error.** Pulled the
+entity's actual `local_context` (`extracted_entities.local_context`, note
+`11649745-DS-4`): "...status post cardiac Catheterization and ___ for
+**right coronary artery occlusion** ___. Pre and post cath he received
+Antiplatelet therapy... as well as intraprocedural heparin continuous
+infusion." Unambiguously a coronary-PCI note (catheterization, antiplatelet
+therapy, heparin infusion) with no carotid/neurology/vascular-surgery
+context anywhere nearby. The gate's prediction ("Right coronary artery
+occlusion") is correct; gold's code (`285171000119104`, "Right carotid
+artery occlusion") is the error here, not the system. **Recomputed
+clean-span precision with this one case corrected: 36/46 = 78.3%**
+(up from 76.1%) -- still a real, substantial gap from 94.4%, but confirms
+at least one "error" was actually a correct output penalized by a bad
+label, not evidence the gate reasoned incorrectly.
 
 ## What this means for the deploy decision
 
 **Precision does not hold at the scale/generality this shadow run tested.**
-The honest, corrected number is ~76%, not 94.4%. Roughly half the gap
-traces to one identifiable, fixable pattern (allergy-context mishandling)
-and vocabulary-level ambiguity rather than random unreliability -- which is
-useful, actionable signal -- but "half of our errors are explainable" is
-not the same claim as "safe to write unreviewed." `dry_run=False` remains
-correctly withheld. The earlier decision to keep `enqueue_pending_cases()`
-queuing every AUTO-tier decision for human review (rather than excluding
-them per the original plan) is now directly validated by this data, not
-just a cautious default.
+The honest, corrected number is ~78%, not 94.4% (adjudicating the RCA
+occlusion case as a gold error recovers one point, 76.1%→78.3%). Most of
+the remaining gap traces to identifiable causes rather than random
+unreliability -- one real, fixable bug (allergy-context mishandling), likely
+vocabulary-level ambiguity (SNOMED duplicate concepts), and at least one
+gold-labeling error -- which is useful, actionable signal, but "most of our
+errors are explainable" is not the same claim as "safe to write
+unreviewed." `dry_run=False` remains correctly withheld. The earlier
+decision to keep `enqueue_pending_cases()` queuing every AUTO-tier decision
+for human review (rather than excluding them per the original plan) is now
+directly validated by this data, not just a cautious default.
 
 ## Recommended next steps (not done this session)
 
