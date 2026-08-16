@@ -572,7 +572,43 @@ def compute_confidence_tier(gliner_confidence: float, normalization_ambiguous: b
 
 
 
-def _apply_allergy_nonstandard_exact_override(mapping: dict, conn, search_text: str) -> dict:
+def _exact_snomed_lookup(conn, search_text: str):
+    """One case-insensitive exact concept_name match against SNOMED,
+    standard or not -- the shared primitive both
+    _apply_allergy_nonstandard_exact_override()'s direct lookup and its
+    brand->generic retry use. Returns the raw row tuple or None."""
+    rows = conn.execute("""
+        SELECT concept_id, concept_name, domain_id, vocabulary_id
+        FROM athena_concept
+        WHERE lower(concept_name) = lower(?) AND vocabulary_id = 'SNOMED'
+        LIMIT 1
+    """, [search_text]).fetchall()
+    return rows[0] if rows else None
+
+
+def _brand_to_generic_names(conn, brand_text: str) -> list:
+    """Brand name -> generic ingredient name(s), reusing
+    _alias_expand_brand_to_generic()'s already-proven 3-hop KG walk
+    (src/normalization/tier_retrieval.py, the "Lasix problem" fix) rather
+    than re-deriving it -- that function returns concept_ids (what Tier 3's
+    candidate filter needs), this wraps it with one more lookup to get the
+    concept_name string(s) the allergy override's synthesized "Allergy to
+    {name}" search pattern needs instead. Empty whenever brand_text isn't an
+    exact RxNorm Brand Name, same as the wrapped function -- free on every
+    non-brand entity.
+    """
+    ids = _alias_expand_brand_to_generic(conn, (brand_text or "").lower())
+    if not ids:
+        return []
+    placeholders = ",".join("?" * len(ids))
+    rows = conn.execute(
+        f"SELECT concept_name FROM athena_concept WHERE concept_id IN ({placeholders})",
+        list(ids)).fetchall()
+    return [r[0] for r in rows]
+
+
+def _apply_allergy_nonstandard_exact_override(mapping: dict, conn, search_text: str,
+                                              drug_text: str = None) -> dict:
     """OMOP boundary decision (2026-08-16,
     docs/2026-08-16_Shadow_Run_Precision_At_Scale.md's "Update, same
     session" entry). Every tier of this pipeline's normal retrieval filters
@@ -604,26 +640,41 @@ def _apply_allergy_nonstandard_exact_override(mapping: dict, conn, search_text: 
     module constructed the search text itself -- it was never extracted
     from free clinical narrative.
 
+    BRAND-NAME RETRY (2026-08-16, closing the "7/16 no_candidates" gap
+    docs/2026-08-16_Shadow_Run_Precision_At_Scale.md's recommended-next-
+    steps flagged): a bare brand mention like "Elavil" or "Reglan" never
+    exact-matches "Allergy to Elavil" -- SNOMED's own allergy concepts are
+    written against the GENERIC ingredient name ("Allergy to amitriptyline"),
+    not the brand. When the direct match fails and `drug_text` is given,
+    retry against every brand->generic name _brand_to_generic_names()
+    resolves, stopping at the first hit. A no-op (same as before) for
+    generic mentions, multi-drug combination names with no single brand-
+    concept match, and any drug genuinely without a specific SNOMED allergy
+    concept at all (e.g. levetiracetam, lisinopril per that same
+    investigation) -- this closes ONE real gap in the 7/16, not all of them.
+
     If found, this concept is PREPENDED as candidates[0], overriding
     whatever the standard-only cascade (and its fallbacks) produced -- a
     specific, correct non-standard match beats a generic standard one for
     this narrow case. Returns `mapping` unchanged if no exact non-standard
     match exists (the generic standard concept, if any, is left as-is).
     """
-    rows = conn.execute("""
-        SELECT concept_id, concept_name, domain_id, vocabulary_id
-        FROM athena_concept
-        WHERE lower(concept_name) = lower(?) AND vocabulary_id = 'SNOMED'
-        LIMIT 1
-    """, [search_text]).fetchall()
-    if not rows:
+    row = _exact_snomed_lookup(conn, search_text)
+    matched_via = "allergy_nonstandard_exact"
+    if row is None and drug_text:
+        for generic_name in _brand_to_generic_names(conn, drug_text):
+            row = _exact_snomed_lookup(conn, f"Allergy to {generic_name}")
+            if row is not None:
+                matched_via = "allergy_nonstandard_exact_brand_to_generic"
+                break
+    if row is None:
         return mapping
-    concept_id, concept_name, domain_id, vocabulary_id = rows[0]
+    concept_id, concept_name, domain_id, vocabulary_id = row
     exact_candidate = {
         "omop_concept_id": concept_id, "concept_name": concept_name,
         "domain_id": domain_id, "vocabulary_id": vocabulary_id,
         "match_tier": "1 (Exact, non-standard allergy override)",
-        "similarity_score": 1.0, "match_basis": "allergy_nonstandard_exact",
+        "similarity_score": 1.0, "match_basis": matched_via,
     }
     mapping = dict(mapping)
     mapping["candidates"] = [exact_candidate] + [
@@ -963,20 +1014,72 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
                 best_mapping = mapping
                 best_source = None
                 confirmed = False
+
+                # 2026-08-16 PERFORMANCE OPTIMIZATION (explicitly deferred
+                # earlier this session -- "log it, don't touch it yet" --
+                # now revisited on direct instruction). normalize_entity()
+                # already short-circuits before ever computing a SapBERT
+                # embedding when Tier 1/2 hits internally (see its own Tier
+                # 1/2 SQL blocks above, before the "vector =
+                # get_sapbert_embedding(...)" line) -- so the real waste
+                # here was never "redundant Tier 1/2 work", it was calling
+                # the FULL normalize_entity() (and therefore paying for a
+                # fresh SapBERT embedding) for every stripped candidate that
+                # DOESN'T hit Tier 1/2, even after an earlier candidate in
+                # the same loop already confirmed a match and made every
+                # later one moot. _lookup_tier12() (src/normalization/
+                # compound_span.py) is the SAME Tier 1/2 SQL, pure query, no
+                # embedding -- cheap enough to run across every stripped
+                # candidate FIRST. If any of them hits, nothing else in this
+                # loop could ever have beaten it anyway (a confirmed Tier
+                # 1/2 match always wins the rank comparison below, and the
+                # ORIGINAL loop already stopped searching the instant it
+                # found one -- see "2026-08-12 ACCEPTANCE RULE" above), so
+                # call the full normalize_entity() ONLY for that one
+                # winning candidate. Falls through to the EXACT original
+                # exhaustive loop, completely unchanged, whenever no
+                # candidate clears Tier 1/2 at all -- that path genuinely
+                # needs each candidate's real Tier 3 score to keep the best
+                # near-miss (the whole point of the 2026-08-12 fix above),
+                # so nothing is skipped there. Zero precision change on
+                # either path: this only removes SapBERT calls that were
+                # always going to be thrown away.
+                vocabs_for_precheck = VOCAB_BY_LABEL.get(label, DEFAULT_VOCAB)
+                tier12_winner = None
                 for candidate_text, source_name in (
                         (expanded_text, "expanded"), (orig_text, "original")):
                     for stripped in strip_lab_value_suffix(candidate_text or ""):
-                        retry = normalize_entity(stripped, conn, gliner_label=label,
-                                                 domain_override=domain_override)
-                        if _LAB_TIER_RANK.get(retry["match_tier"], 9) < \
-                                _LAB_TIER_RANK.get(best_mapping["match_tier"], 9):
-                            best_mapping = retry
-                            best_source = f"value_stripped_from_{source_name}:{stripped}"
-                        if retry["match_tier"] in ("1 (Exact)", "2 (Synonym)"):
-                            confirmed = True
+                        precheck = _lookup_tier12(conn, stripped, vocabs_for_precheck,
+                                                  domains=domain_override, gliner_label=label)
+                        if precheck is not None:
+                            tier12_winner = (stripped, source_name)
                             break
-                    if confirmed:
+                    if tier12_winner:
                         break
+
+                if tier12_winner:
+                    stripped, source_name = tier12_winner
+                    retry = normalize_entity(stripped, conn, gliner_label=label,
+                                             domain_override=domain_override)
+                    if _LAB_TIER_RANK.get(retry["match_tier"], 9) < \
+                            _LAB_TIER_RANK.get(best_mapping["match_tier"], 9):
+                        best_mapping = retry
+                        best_source = f"value_stripped_from_{source_name}:{stripped}"
+                else:
+                    for candidate_text, source_name in (
+                            (expanded_text, "expanded"), (orig_text, "original")):
+                        for stripped in strip_lab_value_suffix(candidate_text or ""):
+                            retry = normalize_entity(stripped, conn, gliner_label=label,
+                                                     domain_override=domain_override)
+                            if _LAB_TIER_RANK.get(retry["match_tier"], 9) < \
+                                    _LAB_TIER_RANK.get(best_mapping["match_tier"], 9):
+                                best_mapping = retry
+                                best_source = f"value_stripped_from_{source_name}:{stripped}"
+                            if retry["match_tier"] in ("1 (Exact)", "2 (Synonym)"):
+                                confirmed = True
+                                break
+                        if confirmed:
+                            break
                 if best_source:
                     mapping = best_mapping
                     # Records the winning candidate string AND what tier it
@@ -1012,7 +1115,7 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
                         mollm_resolved["expansion"], mollm_resolved.get("omop_domain"))
             if is_allergy_context:
                 mapping = _apply_allergy_nonstandard_exact_override(
-                    mapping, conn, search_expanded_text)
+                    mapping, conn, search_expanded_text, drug_text=acronym_resolved_text)
                 mapping = _apply_allergy_domain_tiebreak(mapping)
             cache[cache_key] = mapping
         mapping = cache[cache_key]
