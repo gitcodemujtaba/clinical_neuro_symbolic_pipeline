@@ -572,6 +572,73 @@ def compute_confidence_tier(gliner_confidence: float, normalization_ambiguous: b
 
 
 
+def _apply_allergy_nonstandard_exact_override(mapping: dict, conn, search_text: str) -> dict:
+    """OMOP boundary decision (2026-08-16,
+    docs/2026-08-16_Shadow_Run_Precision_At_Scale.md's "Update, same
+    session" entry). Every tier of this pipeline's normal retrieval filters
+    standard_concept = 'S' -- a deliberate, pipeline-wide convention (see
+    e.g. _tier_queries()) that keeps out-of-hierarchy/duplicate concepts
+    from ever being candidates. For most entities this is correct. For the
+    specific "Allergy to {drug}" search the allergy-context fix
+    (process_and_normalize_entities()'s is_allergy_context branch)
+    constructs, it is TOO restrictive: SNOMED's own "Allergy to X" concepts
+    are frequently non-standard (standard_concept IS NULL), mapping only to
+    a generic standard "Allergy to drug" via OMOP's Maps-to hierarchy --
+    confirmed directly against this DB for "Allergy to morphine"/"Allergy
+    to trazodone" (concept_id 4164683/4163633 -> Maps to only 439224
+    "Allergy to drug", nothing more specific).
+
+    DECISION (of the three options considered -- build a general
+    non-standard<->standard crosswalk, relax the filter narrowly, or accept
+    the generic concept as the ceiling): relax the filter, but ONLY for this
+    one, narrow, deliberately-constructed search pattern -- NOT a global
+    change to Tier 1/2/3, which stays standard-only for every other entity
+    in this pipeline. A general crosswalk was rejected because the standard
+    equivalent here is strictly LESS specific (there is nothing to cross
+    TO that recovers the lost specificity); accepting the generic ceiling
+    was rejected because it leaves the allergy-context fix unable to ever
+    match gold's specific code for this error class. An exact
+    (case-insensitive) match on a SYNTHESIZED "Allergy to X" string against
+    any SNOMED concept (standard or not) carries little of the ambiguity
+    risk standard_concept filtering elsewhere guards against, because this
+    module constructed the search text itself -- it was never extracted
+    from free clinical narrative.
+
+    If found, this concept is PREPENDED as candidates[0], overriding
+    whatever the standard-only cascade (and its fallbacks) produced -- a
+    specific, correct non-standard match beats a generic standard one for
+    this narrow case. Returns `mapping` unchanged if no exact non-standard
+    match exists (the generic standard concept, if any, is left as-is).
+    """
+    rows = conn.execute("""
+        SELECT concept_id, concept_name, domain_id, vocabulary_id
+        FROM athena_concept
+        WHERE lower(concept_name) = lower(?) AND vocabulary_id = 'SNOMED'
+        LIMIT 1
+    """, [search_text]).fetchall()
+    if not rows:
+        return mapping
+    concept_id, concept_name, domain_id, vocabulary_id = rows[0]
+    exact_candidate = {
+        "omop_concept_id": concept_id, "concept_name": concept_name,
+        "domain_id": domain_id, "vocabulary_id": vocabulary_id,
+        "match_tier": "1 (Exact, non-standard allergy override)",
+        "similarity_score": 1.0, "match_basis": "allergy_nonstandard_exact",
+    }
+    mapping = dict(mapping)
+    mapping["candidates"] = [exact_candidate] + [
+        c for c in (mapping.get("candidates") or [])
+        if c.get("omop_concept_id") != concept_id
+    ]
+    mapping["match_tier"] = exact_candidate["match_tier"]
+    mapping["concept_id"] = concept_id
+    mapping["concept_name"] = concept_name
+    mapping["domain_id"] = domain_id
+    mapping["vocab"] = vocabulary_id
+    mapping["score"] = 1.0
+    return mapping
+
+
 def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool = False) -> list:
     """Normalizes Stage 2a entities against OMOP and persists results.
 
@@ -817,6 +884,9 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
 
             mapping = dict(mapping)
             mapping["normalized_from"] = normalized_from
+            if is_allergy_context:
+                mapping = _apply_allergy_nonstandard_exact_override(
+                    mapping, conn, search_expanded_text)
             cache[cache_key] = mapping
         mapping = cache[cache_key]
 

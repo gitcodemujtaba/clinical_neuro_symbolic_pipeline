@@ -135,17 +135,47 @@ which this pipeline's standard-concept-only convention cannot reach at any
 tier. Whether to relax that convention (a bigger, cross-cutting question
 well beyond this one bug) is unresolved and not attempted here.
 
+## Update, same session: the OMOP boundary decision was made and implemented
+
+Of the three options considered for the standard-concept-only limitation
+(build a general non-standard<->standard crosswalk, relax the filter
+narrowly, or accept the generic "Allergy to drug" ceiling), implemented the
+middle option: `_apply_allergy_nonstandard_exact_override()`
+(`src/normalization/orchestrator.py`). An exact, case-insensitive match on
+the synthesized `"Allergy to {drug}"` string is looked up directly against
+`athena_concept` WITHOUT the `standard_concept = 'S'` filter -- scoped ONLY
+to this one deliberately-constructed search pattern, not a global relaxation
+of Tier 1/2/3 for every entity. Verified correct in isolation (direct
+function call and a full `process_and_normalize_entities()` call both
+return `"Allergy to morphine"`, concept_id 4164683, as intended). Full
+pipeline-level validation (does this actually land correctly when driven by
+`test_pipeline_e2e.py` end to end) is in progress -- see below.
+
+**A known, pre-existing performance sink found along the way, logged but
+NOT touched (out of scope for this fix, deferred to a future optimization
+phase / plan Phase 6)**: `process_and_normalize_entities()`'s Lab Value
+Suffix Fallback (`orchestrator.py`, guarded by `label == "Lab Test"`) runs a
+nested double loop where EVERY iteration calls `normalize_entity()` again --
+a fresh SapBERT embedding computation and full Tier 1/2/3 search per
+stripped candidate. This is pre-existing code, unrelated to the allergy fix,
+but it measurably slows any batch containing several Lab Test entities with
+multiple `strip_lab_value_suffix()` candidates. Confirmed via `ps` during a
+stalled-looking re-run: 878% CPU (heavy multi-threaded model inference, not
+a hung loop) is consistent with this fallback legitimately churning through
+several embedding calls in sequence, not a bug in the new allergy-context
+code (which has no loops at all -- reviewed line-by-line, see commit
+history). Worth a future optimization (e.g. try DuckDB Tier 1/2 for each
+stripped candidate before ever paying for a SapBERT call), not attempted
+here to avoid scope creep on top of the allergy investigation.
+
 ## Recommended next steps (not done this session)
 
-1. Re-run Stage 1/2a/2b + the shadow run on the 19 affected entities (or the
-   full corpus) to measure the ALLERGY fix's real effect, now that it's
-   implemented -- not yet done, since it requires re-extracting already-
-   processed notes, a bigger action than this investigation.
-2. Decide whether/how to handle the standard-concept-only limitation just
-   found: relax `standard_concept = 'S'` for allergy-domain searches
-   specifically, add a non-standard-to-standard crosswalk step, or accept
-   resolving to the generic "Allergy to drug" as the ceiling for this
-   pipeline's current architecture.
+1. Complete the in-progress re-run of Stage 1/2a/2b + the shadow run on the
+   6 notes containing the 19 affected entities, to get the ALLERGY fix's
+   real, final measured effect (mechanism verified correct in isolation;
+   end-to-end pipeline validation still running as of this doc update).
+2. Optimize the Lab Value Suffix Fallback's nested normalize_entity() calls
+   (see above) -- logged as a real performance issue, explicitly deferred.
 3. Check `athena_concept_relationship` for a formal duplicate-concept
    marker to distinguish genuine vocabulary duplicates (safe to treat as
    correct either way, e.g. 'gunshot wound'/'blurred vision') from real
