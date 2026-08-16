@@ -1,0 +1,1145 @@
+{
+  "mode": "dense",
+  "n": 113,
+  "top1_accuracy": 0.4778761061946903,
+  "oracle_accuracy": 0.5575221238938053,
+  "tier3_n": 53,
+  "tier3_top1_accuracy": 0.32075471698113206,
+  "tier3_oracle_accuracy": 0.49056603773584906,
+  "rank_distribution": {
+    "1": 54,
+    "2": 9
+  },
+  "results": [
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Traumatic brain injury",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "right EVD placement",
+      "entity_label": "Procedure",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Right EVD removal",
+      "entity_label": "Procedure",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Right EVD placement",
+      "entity_label": "Procedure",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Tracheostomy",
+      "entity_label": "Procedure",
+      "n_candidates": 3,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Intermaxillary fixation",
+      "entity_label": "Procedure",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": true,
+      "gold_rank": 2
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Removal of chest tubes",
+      "entity_label": "Procedure",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": true,
+      "gold_rank": 2
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Right EVD replacement",
+      "entity_label": "Procedure",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Right EVD removal",
+      "entity_label": "Procedure",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "extra-axial, subarachnoid, \nintraparenchymal, and intraventricular hemorrhage",
+      "entity_label": "Condition",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "cerebral \ncompression",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "multiple skull and facial fractures",
+      "entity_label": "Condition",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": true,
+      "gold_rank": 2
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "galea",
+      "entity_label": "Anatomy",
+      "n_candidates": 1,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "BP",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "O2Sat",
+      "entity_label": "Lab Test",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "tracheostomy",
+      "entity_label": "Procedure",
+      "n_candidates": 3,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "traumatic brain injury",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "cerebral compression",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "multiple skull and facial fractures",
+      "entity_label": "Condition",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": true,
+      "gold_rank": 2
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "left clavicular fracture",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "multiple rib fractures",
+      "entity_label": "Condition",
+      "n_candidates": 3,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "pulmonary \ncontusion",
+      "entity_label": "Condition",
+      "n_candidates": 2,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "hemothorax",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Traumatic Brain Injury",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "right EVD placement",
+      "entity_label": "Procedure",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "external hydrocephalus",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "external hydrocephalus",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Multiple Skull and Facial Fractures",
+      "entity_label": "Condition",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": true,
+      "gold_rank": 2
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "intermaxillary fixation",
+      "entity_label": "Procedure",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": true,
+      "gold_rank": 2
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Left Clavicular Fracture",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Left clavicular fracture",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "tracheostomy",
+      "entity_label": "Procedure",
+      "n_candidates": 3,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "tracheostomy",
+      "entity_label": "Procedure",
+      "n_candidates": 3,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "ventilator \nassociated pneumonia",
+      "entity_label": "Condition",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "pulmonary embolism",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "right brachial, basilic \nthrombus",
+      "entity_label": "Condition",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Loose Stools",
+      "entity_label": "Symptom",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "diarrhea",
+      "entity_label": "Symptom",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Clostridium difficile colitis",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "loose stools",
+      "entity_label": "Symptom",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Anemia",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "hemoglobin",
+      "entity_label": "Lab Test",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "hematocrit",
+      "entity_label": "Lab Test",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "PTT",
+      "entity_label": "Lab Test",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": true,
+      "gold_rank": 2
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "PTT",
+      "entity_label": "Lab Test",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": true,
+      "gold_rank": 2
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "subcutaneous \nheparin",
+      "entity_label": "Medication",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "traumatic brain injury",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "cerebral compression",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "multiple skull and facial fractures",
+      "entity_label": "Condition",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": true,
+      "gold_rank": 2
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "external hydrocephalus",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "left clavicular fracture",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "multiple rib fractures",
+      "entity_label": "Condition",
+      "n_candidates": 3,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "pulmonary contusion",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "hemothorax",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "right brachial, basilic thrombus",
+      "entity_label": "Condition",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "Clostridium difficile colitis",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "14490470-DS-11",
+      "text": "fever",
+      "entity_label": "Symptom",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "gunshot wound to abdomen",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "Exploratory laparotomy",
+      "entity_label": "Procedure",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "stomach",
+      "entity_label": "Anatomy",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "jejunum",
+      "entity_label": "Anatomy",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "gunshot wound",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "LLQ",
+      "entity_label": "Anatomy",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "Laparoscopic appendectomy",
+      "entity_label": "Procedure",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "BP",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "NAD",
+      "entity_label": "Lab Test",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "HEENT",
+      "entity_label": "Anatomy",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "sclera",
+      "entity_label": "Anatomy",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "left \nbase\nAbd",
+      "entity_label": "Anatomy",
+      "n_candidates": 4,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "WBC-13.0",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "RBC-4.28",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "Hgb-12.5",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "Hct-36.9",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "Hct-33.1",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "PTT-29.0",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "Glucose-117",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "UreaN-12 Creat-0.8 Na-146",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "AnGap-19",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "Glucose-128",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "AnGap-13",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "Calcium-8.9 Phos-5.2* Mg-1.5",
+      "entity_label": "Lab Test",
+      "n_candidates": 0,
+      "match_tier": null,
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "stomach",
+      "entity_label": "Anatomy",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "jejunum",
+      "entity_label": "Anatomy",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "transverse mesocolon",
+      "entity_label": "Anatomy",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "jejunum",
+      "entity_label": "Anatomy",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "ligament of treitz",
+      "entity_label": "Anatomy",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "retroperitoneal \nhematoma",
+      "entity_label": "Condition",
+      "n_candidates": 3,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "jejunostomy",
+      "entity_label": "Procedure",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "retroperitoneal hematoma",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "left renal pseudoaneurysm",
+      "entity_label": "Condition",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "fevers",
+      "entity_label": "Symptom",
+      "n_candidates": 8,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "left lobe consolidation",
+      "entity_label": "Symptom",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "aspiration \npneumonia",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "shortness of breath",
+      "entity_label": "Symptom",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "chest pain",
+      "entity_label": "Symptom",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "17751158-DS-19",
+      "text": "fever",
+      "entity_label": "Symptom",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "Dyspnea on exertion",
+      "entity_label": "Symptom",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "hypertension",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "hyperlipidemia",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "chronic systolic heart",
+      "entity_label": "Condition",
+      "n_candidates": 3,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "heart failure",
+      "entity_label": "Condition",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "type 2 diabetes",
+      "entity_label": "Condition",
+      "n_candidates": 2,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "heart \ndisease",
+      "entity_label": "Condition",
+      "n_candidates": 3,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "UTI",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "exertional dyspnea",
+      "entity_label": "Symptom",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "heart failure",
+      "entity_label": "Condition",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "pulmonary edema",
+      "entity_label": "Condition",
+      "n_candidates": 1,
+      "match_tier": "1 (Exact)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "diuretics",
+      "entity_label": "Medication",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "diuresis",
+      "entity_label": "Medication",
+      "n_candidates": 2,
+      "match_tier": "1 (Exact)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "heart failure",
+      "entity_label": "Condition",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "global \nhypokinesis",
+      "entity_label": "Condition",
+      "n_candidates": 5,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": false,
+      "oracle_correct": false,
+      "gold_rank": null
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "aortic stenosis",
+      "entity_label": "Condition",
+      "n_candidates": 2,
+      "match_tier": "3 (Semantic)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    },
+    {
+      "note_id": "19442119-DS-15",
+      "text": "mitral stenosis",
+      "entity_label": "Anatomy",
+      "n_candidates": 1,
+      "match_tier": "2 (Synonym)",
+      "top1_correct": true,
+      "oracle_correct": true,
+      "gold_rank": 1
+    }
+  ]
+}
