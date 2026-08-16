@@ -112,7 +112,18 @@ TIER3_SIMILARITY_FLOOR = 0.72
 # Stage 3 routing parameters. All three are calibration targets against the
 # validation slice (docs/Evaluation_Criteria.md) rather than settled values --
 # see docs/MoLLM_Stage3_Retrieval_Design.md S8.
-CANDIDATE_LIMIT = 3
+#
+# 2026-08-16 (plan Phase 3): bumped 3 -> 5, matching the blueprint's "Top-5
+# candidate pool >98% of the time" target. This is a real behavior change,
+# not a cosmetic one -- it changes what every existing normalized_entities
+# row's `candidates` list looks like going forward, so any comparison against
+# rows written before this change should account for the differing list
+# length (same caution RANKED_TIER12's own docstring gives for the tiebreak
+# change below). Downstream consumers were checked before this change:
+# src/mollm_ensemble.py's build_prompt() and src/mollm_tier_gate.py's Step B
+# both already iterate `range(1, len(candidates) + 1)` dynamically rather
+# than assuming exactly 3, so neither needed a code change for this bump.
+CANDIDATE_LIMIT = 5
 
 
 TIER3_AMBIGUITY_MARGIN = 0.05

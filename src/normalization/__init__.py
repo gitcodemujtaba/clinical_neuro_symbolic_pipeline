@@ -127,8 +127,16 @@ from .tier_retrieval import (
     _alias_expand_brand_to_generic,
     _collapse_hierarchy_duplicates,
     _tier3_semantic_rows,
+    _tier3_hybrid_rows,
+    _rrf_scores,
     _tier_queries,
     _detect_domain_conflict,
+    HYBRID_RETRIEVAL_ENABLED,
+    RRF_K,
+    RRF_WEIGHT_DENSE,
+    RRF_WEIGHT_SPARSE,
+    RRF_WEIGHT_PRIOR,
+    RRF_POOL_SIZE,
 )
 from .orchestrator import (
     normalize_entity,

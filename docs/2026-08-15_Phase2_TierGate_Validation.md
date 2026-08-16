@@ -1,5 +1,22 @@
 # Phase 2 (Pass 4 Tier 1-5 gate) — real validation, 2026-08-15/16
 
+**PHASE 2 LOCKED, 2026-08-16.** 50.0% AUTO coverage / 94.4% Tier 1 precision
+(clean-span, curated atomic-only sample) accepted as the Phase 2 milestone.
+Decision rationale: the two-step CoT + Tier 1-5 gate is calibrated -- pushing
+the match prompt further to force consensus on the remaining
+`ensemble_split` cases without first improving what the ensemble is shown
+risks reproducing the 2026-08-15 precision-collapse failure mode for no
+real gain, since Tier 4/5 already route safely to human review regardless of
+coverage. The bottleneck has shifted from the ensemble's judgment to the
+quality of what it's judging: the one measured error class
+(`'Bilateral rib fractures'`) and a share of the `ensemble_split`/
+`unresolved_acronym` volume are retrieval- and acronym-quality problems, not
+gating problems. `src/mollm_tier_gate.py` is frozen as of commit `8424377`
+pending real data from Phase 3 (hybrid retrieval) and Phase 4 (Pass 1 MoLLM
+acronym escalation) -- both expected to convert `ensemble_split`/
+`unresolved_acronym` volume into Tier 1/2 coverage without any further
+prompt changes.
+
 **Status (updated after Round 4): a clean, unconfounded measurement finally
 landed. Tier 1 precision 94.4% (17/18) on a curated atomic-only sample,
 AUTO coverage 50.0% (up from 2.8% at the start of this diagnosis). The one

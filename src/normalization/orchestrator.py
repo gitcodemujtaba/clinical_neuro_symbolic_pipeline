@@ -18,7 +18,7 @@ from .tier_retrieval import (
     _candidate, _rank_tier12_candidates, _fuzzy_typo_candidates,
     _alias_expand_brand_to_generic, _collapse_hierarchy_duplicates,
     _prefer_lab_procedure_over_observable, _tier3_semantic_rows,
-    _detect_domain_conflict,
+    _tier3_hybrid_rows, _detect_domain_conflict, HYBRID_RETRIEVAL_ENABLED,
 )
 
 
@@ -167,32 +167,62 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
         )
 
     # ==========================================
-    # TIER 3: Semantic Vector Match (SapBERT)
+    # TIER 3: Semantic Vector Match (SapBERT), or Hybrid (SapBERT + BM25 +
+    # prior RRF) when HYBRID_RETRIEVAL_ENABLED (2026-08-16, plan Phase 3)
     # ==========================================
+    #
+    # WHY THIS BRANCH EXISTS HERE, NOT ONLY IN _tier_queries(). This is
+    # normalize_entity()'s OWN primary Tier 3 call -- the one that actually
+    # produces normalized_entities.candidates for the common case.
+    # _tier_queries() (tier_retrieval.py) reimplements the same three tiers
+    # but is only ever invoked from _detect_domain_conflict()'s
+    # domain-relaxed re-check, a secondary path. Wiring the hybrid flag into
+    # ONLY _tier_queries() (as first done) would have left it dead for every
+    # normal Tier 3 fallback -- caught before any evaluation run relied on it.
     vector = get_sapbert_embedding(entity_text)
     alias_ids = _alias_expand_brand_to_generic(conn, search_text)
-    rows = _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=alias_ids)
-    trace.append({
-        "tier": "3 (Semantic)", "attempted": True, "hits": len(rows),
-        "top_score": round(rows[0][4], 4) if rows else None,
-        "runner_up_score": round(rows[1][4], 4) if len(rows) > 1 else None,
-        "floor": TIER3_SIMILARITY_FLOOR,
-        "alias_expanded": bool(alias_ids),
-    })
-
-    if not rows:
-        conflict = _detect_domain_conflict(conn, search_text, vocabs, domains, entity_text,
-                                           vector, gliner_label=gliner_label)
-        if conflict:
-            return _result(conflict["candidates"], ambiguous=True,
-                           reason="label_domain_conflict", failed=True, conflict=conflict,
+    if HYBRID_RETRIEVAL_ENABLED:
+        cands = _tier3_hybrid_rows(conn, entity_text, vector, vocabs, domains,
+                                   alias_ids=alias_ids)
+        trace.append({
+            "tier": "3 (Hybrid)", "attempted": True, "hits": len(cands),
+            "top_score": cands[0]["similarity_score"] if cands else None,
+            "runner_up_score": cands[1]["similarity_score"] if len(cands) > 1 else None,
+            "floor": TIER3_SIMILARITY_FLOOR,
+            "alias_expanded": bool(alias_ids),
+        })
+        if not cands:
+            conflict = _detect_domain_conflict(conn, search_text, vocabs, domains, entity_text,
+                                               vector, gliner_label=gliner_label)
+            if conflict:
+                return _result(conflict["candidates"], ambiguous=True,
+                               reason="label_domain_conflict", failed=True, conflict=conflict,
+                               trace=trace)
+            return _result([], ambiguous=True, reason="no_candidates_at_any_tier", failed=True,
                            trace=trace)
-        return _result([], ambiguous=True, reason="no_candidates_at_any_tier", failed=True,
-                       trace=trace)
+    else:
+        rows = _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=alias_ids)
+        trace.append({
+            "tier": "3 (Semantic)", "attempted": True, "hits": len(rows),
+            "top_score": round(rows[0][4], 4) if rows else None,
+            "runner_up_score": round(rows[1][4], 4) if len(rows) > 1 else None,
+            "floor": TIER3_SIMILARITY_FLOOR,
+            "alias_expanded": bool(alias_ids),
+        })
 
-    cands = [_candidate(r, "3 (Semantic)", round(r[4], 4),
-                       match_basis="verified_brand_alias" if r[0] in alias_ids else None)
-            for r in rows]
+        if not rows:
+            conflict = _detect_domain_conflict(conn, search_text, vocabs, domains, entity_text,
+                                               vector, gliner_label=gliner_label)
+            if conflict:
+                return _result(conflict["candidates"], ambiguous=True,
+                               reason="label_domain_conflict", failed=True, conflict=conflict,
+                               trace=trace)
+            return _result([], ambiguous=True, reason="no_candidates_at_any_tier", failed=True,
+                           trace=trace)
+
+        cands = [_candidate(r, "3 (Semantic)", round(r[4], 4),
+                           match_basis="verified_brand_alias" if r[0] in alias_ids else None)
+                for r in rows]
     cands = _collapse_hierarchy_duplicates(conn, cands)
     cands = _prefer_lab_procedure_over_observable(conn, cands, gliner_label)
     top = cands[0]["similarity_score"]

@@ -1,4 +1,5 @@
 """src/normalization/tier_retrieval.py — Tier 1-4 candidate retrieval, ranking, alias expansion, hierarchy collapse (split from src/normalization.py, 2026-08-14)."""
+import os
 import re
 import math
 import duckdb
@@ -513,7 +514,7 @@ def _prefer_lab_procedure_over_observable(conn, cands, gliner_label):
     return sorted(cands, key=_sort_key, reverse=True)
 
 
-def _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=None):
+def _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=None, limit=None):
     """The Tier 3 SapBERT top-K query, plus force-including any alias_ids
     (see _alias_expand_brand_to_generic) regardless of where they land in the
     similarity ranking. Without this, a real cosine-similarity gap between a
@@ -523,7 +524,14 @@ def _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=None):
     alias_ids are scored by their own cosine similarity (not pinned to 1.0),
     so Stage 3 still sees the true semantic distance -- only their presence
     in the candidate list is guaranteed, not their rank.
+
+    `limit` (2026-08-16, Pass 3 hybrid retrieval): defaults to CANDIDATE_LIMIT
+    for every existing caller, unchanged. _tier3_hybrid_rows() passes a wider
+    pool size (RRF_POOL_SIZE) here, since RRF fusion needs enough ranked
+    candidates PER SIGNAL to be meaningful before truncating to
+    CANDIDATE_LIMIT after fusion, not before.
     """
+    limit = limit or CANDIDATE_LIMIT
     domain_clause = f" AND domain_id IN ({_in_clause(domains)})" if domains else ""
     alias_ids = list(alias_ids or [])
     try:
@@ -536,7 +544,7 @@ def _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=None):
                     FROM athena_concept
                     WHERE embedding IS NOT NULL AND standard_concept = 'S'
                     AND vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause}
-                    ORDER BY similarity DESC, concept_id ASC LIMIT {CANDIDATE_LIMIT}
+                    ORDER BY similarity DESC, concept_id ASC LIMIT {int(limit)}
                 ),
                 alias AS (
                     SELECT concept_id, concept_name, domain_id, vocabulary_id,
@@ -557,11 +565,149 @@ def _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=None):
                 FROM athena_concept
                 WHERE embedding IS NOT NULL AND standard_concept = 'S'
                 AND vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause}
-                ORDER BY similarity DESC, concept_id ASC LIMIT {CANDIDATE_LIMIT};
+                ORDER BY similarity DESC, concept_id ASC LIMIT {int(limit)};
             """, params=[vector, *vocabs, *(domains or [])]).fetchall()
     except duckdb.Error:
         return []
     return rows
+
+
+# ==========================================================================
+# HYBRID (BM25 + SapBERT + empirical prior) RETRIEVAL, RECIPROCAL RANK FUSION
+# (2026-08-16, plan Phase 3). DEFAULT OFF -- see HYBRID_RETRIEVAL_ENABLED.
+# ==========================================================================
+#
+# Score(c) = w_dense * RRF_dense(c) + w_sparse * RRF_sparse(c) + w_prior * P(c|Mention)
+# RRF_x(c) = 1 / (RRF_K + rank_x(c))    -- standard Reciprocal Rank Fusion,
+# rank-based rather than raw-score-based specifically because SapBERT cosine
+# and BM25 scores do not live on comparable scales (cosine in [0,1]-ish;
+# BM25 here measured in the 0-10 range with no fixed ceiling) -- averaging
+# raw scores would let whichever signal happens to have the larger numeric
+# range dominate for no principled reason.
+#
+# WEIGHTS ARE CALIBRATION TARGETS, NOT SETTLED VALUES -- named here so there
+# is one place to change them after measuring against
+# evaluation/stage2b_cal_eval.py's ranking harness, same discipline every
+# other threshold in this codebase follows (see e.g.
+# src/mollm_ensemble.py's AUTO_VALIDATE_THRESHOLD). Starting point: dense
+# weighted highest since SapBERT is the currently-validated, working signal;
+# prior weighted lowest since Phase 4's Empirical Prior Matrix (which alone
+# populates P(c|Mention) with anything beyond 0) does not exist yet.
+RRF_K = 60
+RRF_WEIGHT_DENSE = 0.5
+RRF_WEIGHT_SPARSE = 0.3
+RRF_WEIGHT_PRIOR = 0.2
+
+# Candidates considered PER SIGNAL before fusion and truncation to
+# CANDIDATE_LIMIT -- must exceed CANDIDATE_LIMIT for RRF to have room to
+# reorder based on the OTHER signal (a dense-only top-CANDIDATE_LIMIT pool
+# fused with a sparse-only top-CANDIDATE_LIMIT pool would just be the same
+# two short lists interleaved, not a real fusion).
+RRF_POOL_SIZE = 20
+
+HYBRID_RETRIEVAL_ENABLED = os.environ.get(
+    "CNSP_HYBRID_RETRIEVAL", "").strip() in ("1", "true", "yes")
+
+
+def _rrf_scores(ranked_ids: list) -> dict:
+    return {cid: 1.0 / (RRF_K + rank) for rank, cid in enumerate(ranked_ids, 1)}
+
+
+def _tier3_hybrid_rows(conn, entity_text, vector, vocabs, domains, prior_lookup=None,
+                       alias_ids=None):
+    """Additive alternative to _tier3_semantic_rows() -- ADDITIVE, not a
+    replacement: _tier_queries() still calls the dense-only path by default
+    (see that function), and this is wired in only where a caller explicitly
+    opts in behind HYBRID_RETRIEVAL_ENABLED. Fuses:
+      - dense: SapBERT cosine ranking (reuses _tier3_semantic_rows() itself,
+        just with a wider pool -- no separate dense-query implementation).
+      - sparse: BM25 ranking (src.normalization.bm25_index.query_bm25()).
+      - prior: `prior_lookup`, a caller-supplied {concept_id: P(c|Mention)}
+        dict. None (the default) means every prior term is 0 -- an explicit
+        code path via .get(cid, 0.0), not a silent division-by-zero risk --
+        since Phase 4's Empirical Prior Matrix, the only thing that would
+        ever populate this meaningfully, does not exist yet.
+
+    TIER3_SIMILARITY_FLOOR stays anchored to the DENSE cosine specifically
+    (`similarity_score` in the returned candidate dicts), not the fused RRF
+    score, which lives on a different, unbounded scale -- per the plan's own
+    design note. A concept found only via BM25 (no dense score in the
+    RRF_POOL_SIZE dense pool) gets its cosine looked up in a small, targeted
+    follow-up query rather than left None, so the floor check downstream
+    never silently skips a sparse-only hit for lack of a comparable score.
+    """
+    from .bm25_index import query_bm25  # local import: avoids a hard,
+    # always-paid dependency on the bm25_index module (and its FTS LOAD) for
+    # every caller of this file that never uses the hybrid path.
+
+    dense_rows = _tier3_semantic_rows(conn, vector, vocabs, domains, limit=RRF_POOL_SIZE)
+    sparse_rows = query_bm25(conn, entity_text, vocabs=vocabs, domains=domains,
+                             limit=RRF_POOL_SIZE)
+
+    dense_by_id = {r[0]: r for r in dense_rows}
+    sparse_by_id = {r[0]: r for r in sparse_rows}
+    dense_rrf = _rrf_scores([r[0] for r in dense_rows])
+    sparse_rrf = _rrf_scores([r[0] for r in sparse_rows])
+    prior_lookup = prior_lookup or {}
+    alias_ids = set(alias_ids or [])
+
+    # alias_ids (verified_brand_alias, see _alias_expand_brand_to_generic)
+    # are force-included the same way _tier3_semantic_rows() force-includes
+    # them for the dense-only path -- a real, walked KG relationship should
+    # not depend on making either ranked pool by chance.
+    all_ids = set(dense_by_id) | set(sparse_by_id) | alias_ids
+    missing_dense_ids = [cid for cid in all_ids if cid not in dense_by_id]
+    dense_lookup = {}
+    if missing_dense_ids and vector is not None:
+        placeholders = ",".join("?" * len(missing_dense_ids))
+        try:
+            rows = conn.sql(f"""
+                SELECT concept_id, concept_name, domain_id, vocabulary_id,
+                       list_cosine_similarity(embedding, ?::FLOAT[]) AS similarity
+                FROM athena_concept
+                WHERE concept_id IN ({placeholders}) AND embedding IS NOT NULL
+            """, params=[vector, *missing_dense_ids]).fetchall()
+            dense_lookup = {r[0]: r for r in rows}
+        except duckdb.Error:
+            dense_lookup = {}
+
+    fused = []
+    for cid in all_ids:
+        rrf = (RRF_WEIGHT_DENSE * dense_rrf.get(cid, 0.0)
+               + RRF_WEIGHT_SPARSE * sparse_rrf.get(cid, 0.0)
+               + RRF_WEIGHT_PRIOR * prior_lookup.get(cid, 0.0))
+        row = dense_by_id.get(cid) or sparse_by_id.get(cid) or dense_lookup.get(cid)
+        if row is None:
+            continue  # alias id whose embedding lookup itself failed -- nothing to show
+        dense_row = dense_by_id.get(cid) or dense_lookup.get(cid)
+        dense_score = dense_row[4] if dense_row else None
+        fused.append((cid, row, dense_score, rrf))
+
+    fused.sort(key=lambda t: t[3], reverse=True)
+    # alias_ids are GUARANTEED inclusion regardless of RRF rank -- same
+    # guarantee _tier3_semantic_rows() gives them via its SQL UNION, kept
+    # here rather than left to chance now that they're one signal among
+    # three instead of unconditionally unioned in.
+    alias_entries = [t for t in fused if t[0] in alias_ids]
+    other_entries = [t for t in fused if t[0] not in alias_ids]
+    slots_for_others = max(0, CANDIDATE_LIMIT - len(alias_entries))
+    top = alias_entries + other_entries[:slots_for_others]
+    top.sort(key=lambda t: t[3], reverse=True)
+
+    out = []
+    for cid, row, dense_score, rrf in top:
+        # 0.0, never None: every existing consumer of similarity_score
+        # (_collapse_hierarchy_duplicates, _prefer_lab_procedure_over_observable,
+        # the TIER3_SIMILARITY_FLOOR check) does numeric comparisons/arithmetic
+        # on this field and was written assuming a float is always present --
+        # a rare missing-embedding edge case should read as "score unmeasurably
+        # low", not crash those callers.
+        c = _candidate(row, "3 (Hybrid)", round(dense_score, 4) if dense_score is not None else 0.0,
+                       match_basis="verified_brand_alias" if cid in alias_ids else None)
+        c["rrf_score"] = round(rrf, 6)
+        c["retrieval_method"] = "hybrid_rrf"
+        out.append(c)
+    return out
 
 
 
@@ -612,12 +758,18 @@ def _tier_queries(conn, search_text, vocabs, domains, entity_text, vector=None,
     if vector is None:
         vector = get_sapbert_embedding(entity_text)
     alias_ids = _alias_expand_brand_to_generic(conn, search_text)
-    rows = _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=alias_ids)
-    if not rows:
-        return None, None, 0.0
-    cands = [_candidate(r, "3 (Semantic)", round(r[4], 4),
-                       match_basis="verified_brand_alias" if r[0] in alias_ids else None)
-            for r in rows]
+    if HYBRID_RETRIEVAL_ENABLED:
+        cands = _tier3_hybrid_rows(conn, entity_text, vector, vocabs, domains,
+                                   alias_ids=alias_ids)
+        if not cands:
+            return None, None, 0.0
+    else:
+        rows = _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=alias_ids)
+        if not rows:
+            return None, None, 0.0
+        cands = [_candidate(r, "3 (Semantic)", round(r[4], 4),
+                           match_basis="verified_brand_alias" if r[0] in alias_ids else None)
+                for r in rows]
     cands = _collapse_hierarchy_duplicates(conn, cands)
     cands = _prefer_lab_procedure_over_observable(conn, cands, gliner_label)
     return cands, "3", cands[0]["similarity_score"]
