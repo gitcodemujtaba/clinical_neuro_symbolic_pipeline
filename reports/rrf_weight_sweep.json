@@ -1,0 +1,65 @@
+[
+  {
+    "w_dense": 1.0,
+    "w_sparse": 0.0,
+    "top1_acc": 61.29032258064516,
+    "oracle_acc": 74.19354838709677,
+    "n_gradable": 155
+  },
+  {
+    "w_dense": 0.8,
+    "w_sparse": 0.2,
+    "top1_acc": 49.03225806451613,
+    "oracle_acc": 63.87096774193548,
+    "n_gradable": 155
+  },
+  {
+    "w_dense": 0.7,
+    "w_sparse": 0.3,
+    "top1_acc": 47.096774193548384,
+    "oracle_acc": 63.87096774193548,
+    "n_gradable": 155
+  },
+  {
+    "w_dense": 0.6,
+    "w_sparse": 0.4,
+    "top1_acc": 45.16129032258064,
+    "oracle_acc": 63.87096774193548,
+    "n_gradable": 155
+  },
+  {
+    "w_dense": 0.5,
+    "w_sparse": 0.5,
+    "top1_acc": 43.225806451612904,
+    "oracle_acc": 62.58064516129033,
+    "n_gradable": 155
+  },
+  {
+    "w_dense": 0.4,
+    "w_sparse": 0.6,
+    "top1_acc": 40.78947368421053,
+    "oracle_acc": 57.89473684210527,
+    "n_gradable": 152
+  },
+  {
+    "w_dense": 0.3,
+    "w_sparse": 0.7,
+    "top1_acc": 39.473684210526315,
+    "oracle_acc": 57.23684210526315,
+    "n_gradable": 152
+  },
+  {
+    "w_dense": 0.2,
+    "w_sparse": 0.8,
+    "top1_acc": 40.131578947368425,
+    "oracle_acc": 56.57894736842105,
+    "n_gradable": 152
+  },
+  {
+    "w_dense": 0.0,
+    "w_sparse": 1.0,
+    "top1_acc": 37.66233766233766,
+    "oracle_acc": 48.05194805194805,
+    "n_gradable": 154
+  }
+]

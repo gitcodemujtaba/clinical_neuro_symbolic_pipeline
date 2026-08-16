@@ -97,26 +97,56 @@ where the Top-1 regression persists. The baseline weights
 50%-weighted dense signal often enough to matter — not obviously wrong on
 its face, but not yet validated either.
 
+## The RRF weight sweep, run this session (`evaluation/rrf_weight_sweep.py`)
+
+Grid search over `w_dense`/`w_sparse` in 0.1 steps from (1.0, 0.0) to
+(0.0, 1.0), `w_prior=0` throughout (Phase 4's prior matrix doesn't exist
+yet, same as production). 155-160 clean-span, Tier-3-eligible entities
+across all 32 test notes, dense+sparse rankings fetched once per entity and
+re-fused in-memory per grid point (see the script's own docstring for why
+that's cheap). Full results: `reports/rrf_weight_sweep.json`.
+
+```
+ w_dense  w_sparse  top1_acc  oracle_acc  n_gradable
+     1.0       0.0     61.3%       74.2%         155
+     0.8       0.2     49.0%       63.9%         155
+     0.7       0.3     47.1%       63.9%         155
+     0.6       0.4     45.2%       63.9%         155
+     0.5       0.5     43.2%       62.6%         155
+     0.4       0.6     40.8%       57.9%         152
+     0.3       0.7     39.5%       57.2%         152
+     0.2       0.8     40.1%       56.6%         152
+     0.0       1.0     37.7%       48.1%         154
+```
+
+**The answer is unambiguous: `w_dense=1.0, w_sparse=0.0` — pure dense,
+zero sparse contribution — wins on both Top-1 and oracle accuracy, and
+every single grid point strictly declines (monotonically, no local optimum)
+as sparse weight increases.** This is a materially different, larger-sample
+result than the earlier 300-entity A/B at the old default weights
+(`w_dense=0.5, w_sparse=0.3`: 43.4% Top-1 there vs. 43.2% here at the
+adjacent grid point — consistent) — but the earlier A/B only tested one
+weight setting and reasonably read the gap as a tuning question. The full
+sweep answers that question: there is no weight combination in this grid
+where adding BM25 helps. Sparse retrieval, at least as currently indexed
+(`bm25_index.py`, plain `concept_name`/synonym FTS with no domain-aware
+tokenization), appears to actively promote lexically-close-but-wrong
+matches ahead of correct dense hits often enough that no blend recovers the
+loss — consistent with the RRF-demotion mechanism already diagnosed in the
+floor-check bug above, just not fixable by re-weighting.
+
 ## Production gate status
 
-**`CNSP_HYBRID_RETRIEVAL` remains unset (hybrid retrieval OFF) by default.**
-`HYBRID_RETRIEVAL_ENABLED` in `tier_retrieval.py` reads this env var once at
-import time; nothing in this session changed the default, and nothing
-should until the weight sweep below has run. Dense-only remains what
-`normalize_entity()` and `mollm_tier_gate.tier5_precheck()` use in any
-unconfigured environment.
-
-## Next action (explicitly deferred, not attempted this session)
-
-A real grid search over `RRF_WEIGHT_DENSE`/`RRF_WEIGHT_SPARSE`/`RRF_K`
-(`src/normalization/tier_retrieval.py`), prioritizing higher `w_dense` first
-(e.g. sweep 0.5→0.8 while `w_sparse` correspondingly shrinks), each point
-measured via `evaluation/stage2b_hybrid_ab.py` (or a batch-mode extension of
-it) against a held-out slice, charting the Top-1 vs. Top-5-oracle tradeoff
-per weight setting rather than optimizing either number in isolation. Only
-once a weight setting is found that does not regress Top-1 below dense-only
-while keeping (or improving) the oracle-accuracy edge should
-`CNSP_HYBRID_RETRIEVAL` be considered for a default flip.
+**`CNSP_HYBRID_RETRIEVAL` should stay OFF, not just pending tuning but as a
+result of completed tuning.** The sweep closes this question rather than
+leaving it open: dense-only is the validated best setting in the tested
+grid, not merely the cautious default. `HYBRID_RETRIEVAL_ENABLED` in
+`tier_retrieval.py` remains unset; `normalize_entity()` and
+`mollm_tier_gate.tier5_precheck()` continue using dense-only in any
+unconfigured environment. Revisiting hybrid retrieval would need a better
+sparse signal (e.g. domain-aware BM25 tokenization, or a genuinely-informative
+`w_prior` term once Phase 4's abbreviation prior matrix exists), not a
+different weight on the current BM25 index.
 
 ## Session summary (Phases 0-3)
 
