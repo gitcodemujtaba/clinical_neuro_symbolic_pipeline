@@ -168,17 +168,80 @@ history). Worth a future optimization (e.g. try DuckDB Tier 1/2 for each
 stripped candidate before ever paying for a SapBERT call), not attempted
 here to avoid scope creep on top of the allergy investigation.
 
+## Update, same session: the allergy fix's final, measured effect
+
+Re-ran Stage 1/2a/2b (`test_pipeline_e2e.py`, 522 entities, 0 errors) and the
+new Stage 3 tier gate (`run_stage3_tier_gate.py`, 391 entities, 0 errors, 32.6
+min) on all 6 notes containing the 19 allergy-context entities, with both
+fixes (`STATUS_ALLERGY` + `_apply_allergy_nonstandard_exact_override()`)
+live. Two separate numbers came out of this, and they tell different parts
+of the story:
+
+**AUTO-tier precision on this 6-note population: 43/52 clean-span = 82.7%**
+(up from 78.3% on the earlier, larger, differently-sampled 155-entity run --
+not a strict apples-to-apples comparison, different notes/entities, but
+directionally consistent with a real improvement, not a regression). 9
+clean-span misses inspected -- all distinct-vocabulary-duplicate-style
+Anatomy/Lab-Test/Condition mismatches (e.g. 'STEMI'->'ST elevation' vs.
+gold's own STEMI code, 'Abdomen'->generic vs. gold's more specific code),
+same shape as the 'gunshot wound'/'blurred vision' class already flagged as
+Recommended-next-step #3 below, not evidence of new problems from this
+session's fixes.
+
+**But zero of the 19 allergy entities reached AUTO tier at all** -- graded
+their retrieval-layer top candidate directly against gold instead (bypassing
+the tier gate, since none were gated AUTO): of 16 re-extracted this run (3
+were not re-extracted, GLiNER non-determinism, unrelated to this fix):
+
+```
+6/9 gradable = 66.7% -- exact match via the override:
+  aspirin, fluconazole, morphine, trazodone, prochlorperazine (both aspirin
+  mentions) all resolve to the EXACT gold SNOMED code
+  ('Allergy to aspirin'=293586001, 'Allergy to morphine'=293601001, etc.)
+3/9 wrong -- NSAIDS, Penicillins, Phenergan resolve to a semantically-related
+  but non-matching Allergy concept (different SNOMED extension code, or a
+  dense-retrieval semantic neighbor when the exact override found no hit)
+7/16 no_candidates -- brand/combination names ('Reglan', 'Elavil',
+  'Tylenol-Codeine', 'Spiriva with HandiHaler', 'Abacavir Sulfate',
+  'levetiracetam', 'lisinopril') where no exact "Allergy to {name}" SNOMED
+  string exists and the semantic/hybrid Tier 3 fallback also comes up empty
+```
+
+**This is a real, verified fix at the retrieval layer** -- morphine and
+trazodone, the two originally-diagnosed failures, are now both exact
+matches, and the fix generalizes cleanly to 4 more entities in this batch.
+**It does not yet show up as an AUTO-tier precision gain**, because every
+one of these 16 entities routes to TIER_4_ENSEMBLE_SPLIT or
+TIER_5_TRUE_AMBIGUITY (HITL_REQUIRED), never TIER_1. For the 7 cases where
+the top candidate is exactly correct, the MoLLM ensemble still splits votes
+rather than unanimously accepting Candidate #1 -- plausibly because the
+gate's prompt still frames the entity by its original Medication label/text,
+not the section-driven "this is an allergy, not a current medication"
+reframing the retrieval fix applies internally, so models may be relitigating
+whether "Allergy to aspirin" is a correct read of a bare "Aspirin" mention
+without that context. Not investigated further this session -- flagged as a
+concrete next step below rather than guessed at.
+
 ## Recommended next steps (not done this session)
 
-1. Complete the in-progress re-run of Stage 1/2a/2b + the shadow run on the
-   6 notes containing the 19 affected entities, to get the ALLERGY fix's
-   real, final measured effect (mechanism verified correct in isolation;
-   end-to-end pipeline validation still running as of this doc update).
+1. ~~Complete the in-progress re-run...~~ DONE above.
 2. Optimize the Lab Value Suffix Fallback's nested normalize_entity() calls
    (see above) -- logged as a real performance issue, explicitly deferred.
 3. Check `athena_concept_relationship` for a formal duplicate-concept
    marker to distinguish genuine vocabulary duplicates (safe to treat as
-   correct either way, e.g. 'gunshot wound'/'blurred vision') from real
-   errors, rather than eyeballing name similarity as done so far.
-4. Re-run this same shadow-run methodology on a larger sample once (1)-(2)
-   are addressed, to measure whether precision recovers.
+   correct either way, e.g. 'gunshot wound'/'blurred vision', 'STEMI'/
+   'Abdomen' from this run's clean-span misses) from real errors, rather
+   than eyeballing name similarity as done so far.
+4. **New, surfaced this update**: investigate why the MoLLM ensemble splits
+   votes on the 7 allergy-context entities whose top candidate is exactly
+   correct -- likely a prompt-context gap (Step A's "define meaning" prompt
+   may need the section/assertion-status context the retrieval fix already
+   uses, not just the bare entity text), so these can actually reach TIER_1
+   instead of permanently routing to HITL despite having the right answer.
+5. Consider a broader (not just exact-match) non-standard-concept fallback
+   for the 7/16 "no_candidates" brand/combination-name allergy entities --
+   the current override requires an exact string match on the synthesized
+   "Allergy to {text}" pattern, which brand names and multi-drug combos
+   never satisfy.
+6. Re-run this same shadow-run methodology on a larger sample once (2) is
+   addressed, to measure whether precision recovers at scale.
