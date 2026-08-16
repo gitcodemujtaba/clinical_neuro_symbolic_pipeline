@@ -57,6 +57,7 @@ from src.normalization import (
     find_span_growth,
     DOMAIN_TO_GLINER_LABEL,
 )
+from src.acronym_escalation import ACRONYM_ESCALATION_ENABLED, resolve_ambiguous_acronyms
 
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
@@ -374,6 +375,24 @@ def run_pipeline(note_id: str, raw_text: str, conn, is_test: bool = False) -> di
         accepted, conn, note_id, raw_text, expanded_text, stage1_provenance,
         is_test=is_test,
     )
+
+    # Phase 4 (Pass 1 acronym escalation), build-order step 4, 2026-08-16.
+    # Gated behind ACRONYM_ESCALATION_ENABLED -- see src/acronym_escalation.py's
+    # own docstring for why this stays off by default (only measured on ~16
+    # entities so far). raw_text here is this function's own parameter, the
+    # actual unexpanded note -- resolve_ambiguous_acronyms() needs that, not
+    # expanded_text, so the model reads the note's literal wording rather
+    # than Stage 1's own (possibly wrong) guess. Attaches
+    # `mollm_resolved_expansion` onto each entity dict BEFORE
+    # process_and_normalize_entities() runs -- that function's own
+    # interceptor (is_allergy_context's sibling) reads it from there; no
+    # further plumbing needed.
+    if ACRONYM_ESCALATION_ENABLED:
+        resolved_acronyms = resolve_ambiguous_acronyms(accepted, raw_text, note_id, conn)
+        for ent in accepted:
+            resolution = resolved_acronyms.get(ent.get("entity_id"))
+            if resolution is not None:
+                ent["mollm_resolved_expansion"] = resolution
 
     normalized = process_and_normalize_entities(accepted, conn, is_test=is_test)
 

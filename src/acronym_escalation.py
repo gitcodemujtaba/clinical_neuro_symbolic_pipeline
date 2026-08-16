@@ -82,8 +82,34 @@ and -- because its search reached Tier 3 -- upserts; a second "ED" entity in
 the same note/section then resolves from the cache alone, confirmed zero
 model calls.
 
-Not yet wired into run_pipeline() (step 4).
+BUILD-ORDER STEP 4 (current state, all 4 steps now built): wired into
+src/clinical_pipeline.py's run_pipeline(), gated behind
+ACRONYM_ESCALATION_ENABLED (env var CNSP_ACRONYM_ESCALATION), same
+off-by-default convention as Phase 3's HYBRID_RETRIEVAL_ENABLED
+(src/normalization/tier_retrieval.py). Unset/off reproduces today's
+behavior exactly: run_pipeline() does not call resolve_ambiguous_acronyms()
+at all, so expansion_ambiguous entities keep resolving via Stage 1's
+alphabetical-default guess, unchanged.
+
+Verified with a REAL full end-to-end run_pipeline() call (not a hand-
+assembled entity list) on note 11134545-DS-21 with the flag on: Stage
+1->2a->2b ran in full, 109 entities extracted and normalized, 14 touched by
+acronym escalation. 13/14 correct: CAD->Coronary arteriosclerosis (x5),
+CVA->Cerebrovascular accident (x3), LAD->Structure of left anterior
+descending artery, IVF->Administration of intravenous fluids (x2, correctly
+avoiding the "in vitro fertilization" reading) -- and RA disambiguated TWO
+DIFFERENT ways in the SAME note (Rheumatoid arthritis vs. Right atrial
+structure), real per-mention context sensitivity, not a blanket answer. The
+one wrong case is "PDA" -> patent ductus arteriosus, the same documented
+reasoning/verdict-mismatch limitation from build-order step 2 -- consistent,
+not a new regression.
+
+This corpus-scale validation is still small (one note, 14 entities) --
+enabling ACRONYM_ESCALATION_ENABLED by default for the whole corpus is a
+separate, deliberate decision for later, not implied by this being wired.
 """
+
+import os
 
 from src.llm_client import LLMUnavailable, build_clients, parse_json_response
 from src.preprocessing import _omop_domain_for_meaning
@@ -94,6 +120,12 @@ from src.preprocessing import _omop_domain_for_meaning
 # qwen2.5:3b chosen as the fastest of the three models measured this session
 # (docs/2026-08-16_Shadow_Run_Precision_At_Scale.md's Stage 3 timing data).
 ESCALATION_MODEL = "qwen2.5:3b"
+
+# Same off-by-default convention as HYBRID_RETRIEVAL_ENABLED
+# (src/normalization/tier_retrieval.py) -- see this module's own docstring,
+# "BUILD-ORDER STEP 4", for why this stays unset until measured at scale.
+ACRONYM_ESCALATION_ENABLED = os.environ.get(
+    "CNSP_ACRONYM_ESCALATION", "").strip() in ("1", "true", "yes")
 
 SYSTEM_PROMPT = (
     "You are a clinical terminology expert reading a clinical note. You are "
