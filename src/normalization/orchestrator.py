@@ -786,6 +786,35 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
         # such key, so .get() returns None and behavior is unchanged.
         domain_override = ent.get("domain_override")
 
+        # Phase 4 (Pass 1 acronym escalation), 2026-08-16 -- see
+        # src/acronym_escalation.py and the plan's Phase 4 section.
+        # `mollm_resolved_expansion` is attached onto the entity dict by
+        # run_pipeline() (once wired -- build-order step 4) BEFORE this
+        # function ever sees it, the same upstream-attaches-a-field pattern
+        # is_allergy_context below already relies on for assertion_status.
+        #
+        # acronym_resolved_text feeds the SEARCH only (via search_expanded_text
+        # below), exactly like is_allergy_context's search_expanded_text --
+        # NOT a reassignment of `expanded_text` itself. Learned the hard way
+        # during this phase's own smoke test: `expanded_text` is part of
+        # normalized_entities' UNIQUE(note_id, original_text, expanded_text,
+        # gliner_label) key. Reassigning it changes what gets INSERTED, which
+        # changes the composite key, which means a resolved entity no longer
+        # updates its own existing row -- it inserts a SECOND row sharing the
+        # same entity_id, silently breaking every downstream consumer that
+        # joins normalized_entities on entity_id expecting exactly one row
+        # (confirmed directly: load_validation_records() does exactly this
+        # join). The stored `expanded_text` -- Stage 1's original, possibly-
+        # wrong expansion -- must stay exactly what extracted_entities itself
+        # has, for storage/dedup-key purposes only, same discipline
+        # is_allergy_context already documents for `label` below.
+        mollm_resolved = ent.get("mollm_resolved_expansion")
+        acronym_resolved_text = expanded_text
+        if mollm_resolved and mollm_resolved.get("expansion"):
+            acronym_resolved_text = mollm_resolved["expansion"]
+            if mollm_resolved.get("omop_domain"):
+                domain_override = domain_override or [mollm_resolved["omop_domain"]]
+
         # 2026-08-16 (allergy-context fix, docs/2026-08-16_Shadow_Run_Precision_At_Scale.md).
         # A Medication-labeled entity whose assertion_status is
         # src.assertion.STATUS_ALLERGY (set by apply_allergy_context_override()
@@ -816,7 +845,8 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
         # remaining near-tie case (NSAIDS, 0.8078 vs 0.7867) that widening
         # alone doesn't resolve.
         is_allergy_context = ent.get("assertion_status") == STATUS_ALLERGY and label == "Medication"
-        search_expanded_text = f"Allergy to {expanded_text}" if is_allergy_context else expanded_text
+        search_expanded_text = (
+            f"Allergy to {acronym_resolved_text}" if is_allergy_context else acronym_resolved_text)
         search_orig_text = f"Allergy to {orig_text}" if is_allergy_context else orig_text
         search_label = "Condition" if is_allergy_context else label
         search_domain_override = (
@@ -960,6 +990,9 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
 
             mapping = dict(mapping)
             mapping["normalized_from"] = normalized_from
+            if mollm_resolved and mollm_resolved.get("expansion"):
+                mapping["normalized_from"] = (
+                    f"{mapping['normalized_from']}+acronym_{mollm_resolved.get('source', 'unknown')}")
             if is_allergy_context:
                 mapping = _apply_allergy_nonstandard_exact_override(
                     mapping, conn, search_expanded_text)
