@@ -320,6 +320,69 @@ def run():
           "does not mention the allergy exception",
           "ALLERGY EXCEPTION" not in step_b_without_clause)
 
+    # ======================================================================
+    # 2026-08-17: ConsensusCalibrator escape hatch for TIER_4_ENSEMBLE_SPLIT.
+    # ======================================================================
+    class _FakeCalibrator:
+        def __init__(self, fixed_score):
+            self.fixed_score = fixed_score
+            self.calls = []
+
+        def score(self, context):
+            self.calls.append(context)
+            return self.fixed_score
+
+    calibrator_entity = _entity(candidates=[
+        {"concept_name": "X", "similarity_score": 0.9, "omop_concept_id": 111}])
+    split_votes = [_vote("a", "SUPPORTED_1", 0.9), _vote("b", "SUPPORTED_1", 0.85),
+                  _vote("c", "RE_RANK_TO_CANDIDATE_2", 0.9)]
+
+    r = route_tier(calibrator_entity, model_results=split_votes)
+    check("calibrator=None, conn=None (default) reproduces existing Tier 4 "
+          "behavior exactly, no signature-change regression",
+          r["tier"] == "TIER_4_ENSEMBLE_SPLIT")
+
+    high_calibrator = _FakeCalibrator(0.95)
+    r = route_tier(calibrator_entity, model_results=split_votes,
+                   calibrator=high_calibrator, conn="FAKE_CONN")
+    check("a high-scoring calibrator promotes a SUPPORTED_1-plurality split "
+          "to TIER_1B_CALIBRATED_AUTO_VALIDATED",
+          r["tier"] == "TIER_1B_CALIBRATED_AUTO_VALIDATED"
+          and r["mollm_routing_decision"] == "AUTO_VALIDATED")
+    check("the promoted decision's final_candidate_index follows the "
+          "plurality verdict (SUPPORTED_1 -> candidate 1)",
+          r["final_candidate_index"] == 1)
+    check("routing_basis records the calibrator's own contribution, auditable",
+          "ConsensusCalibrator" in r["routing_basis"]
+          or "calibrat" in r["routing_basis"].lower())
+
+    low_calibrator = _FakeCalibrator(0.40)
+    r = route_tier(calibrator_entity, model_results=split_votes,
+                   calibrator=low_calibrator, conn="FAKE_CONN")
+    check("a low-scoring calibrator leaves the split at Tier 4, unpromoted",
+          r["tier"] == "TIER_4_ENSEMBLE_SPLIT")
+
+    check("supplying a calibrator WITHOUT a conn is still a no-op (both required)",
+          route_tier(calibrator_entity, model_results=split_votes,
+                    calibrator=high_calibrator, conn=None)["tier"] == "TIER_4_ENSEMBLE_SPLIT")
+    check("supplying a conn WITHOUT a calibrator is still a no-op (both required)",
+          route_tier(calibrator_entity, model_results=split_votes,
+                    calibrator=None, conn="FAKE_CONN")["tier"] == "TIER_4_ENSEMBLE_SPLIT")
+
+    # A plurality of NONE_CORRECT has no candidate to promote -- the
+    # calibrator must never be consulted for this shape, regardless of what
+    # it would have scored.
+    none_correct_votes = [_vote("a", "NONE_CORRECT", 0.9), _vote("b", "NONE_CORRECT", 0.85),
+                          _vote("c", "SUPPORTED_1", 0.9)]
+    never_called_calibrator = _FakeCalibrator(0.99)
+    r = route_tier(calibrator_entity, model_results=none_correct_votes,
+                   calibrator=never_called_calibrator, conn="FAKE_CONN")
+    check("NONE_CORRECT plurality stays Tier 4 even with a high-scoring "
+          "calibrator available -- there is no candidate to promote",
+          r["tier"] == "TIER_4_ENSEMBLE_SPLIT")
+    check("the calibrator is never even called for a NONE_CORRECT plurality",
+          never_called_calibrator.calls == [])
+
     print(f"tier-gate tests: {ok} passed, {len(fail)} failed")
     for f in fail:
         print(f"  FAILED: {f}")

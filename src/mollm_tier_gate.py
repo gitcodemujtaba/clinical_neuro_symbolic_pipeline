@@ -100,13 +100,29 @@ TIER_2_AUTO_RESOLVED = "TIER_2_AUTO_RESOLVED"
 TIER_3_AUTO_VALIDATED = "TIER_3_AUTO_VALIDATED"
 TIER_4_ENSEMBLE_SPLIT = "TIER_4_ENSEMBLE_SPLIT"
 TIER_5_TRUE_AMBIGUITY = "TIER_5_TRUE_AMBIGUITY"
+# 2026-08-17 (plan Phase 6). A split-vote entity a fitted ConsensusCalibrator
+# (src/mollm_tier_calibrator.py) scores as likely-correct promotes here --
+# deliberately NOT merged into TIER_1_AUTO_VALIDATED, so every downstream
+# count (precision measurement, audit, "how much of AUTO tier came from a
+# genuine unanimous vote vs a calibrated guess") can tell the two apart.
+TIER_1B_CALIBRATED_AUTO_VALIDATED = "TIER_1B_CALIBRATED_AUTO_VALIDATED"
 
-AUTO_TIERS = {TIER_1_AUTO_VALIDATED, TIER_2_AUTO_RESOLVED, TIER_3_AUTO_VALIDATED}
+AUTO_TIERS = {TIER_1_AUTO_VALIDATED, TIER_2_AUTO_RESOLVED, TIER_3_AUTO_VALIDATED,
+             TIER_1B_CALIBRATED_AUTO_VALIDATED}
 
 # CALIBRATION-PENDING, same discipline as src/mollm_ensemble.py's
 # AUTO_VALIDATE_THRESHOLD/MOLLM_RESOLVE_THRESHOLD: a placeholder until there
 # is real Tier 1 decision data to check it against, not a measured value.
 TIER1_CONFIDENCE_FLOOR = 0.70
+
+# CALIBRATION-PENDING -- a placeholder, not yet fit/validated against a
+# held-out split. Deliberately NOT reusing TIER1_CONFIDENCE_FLOOR: this
+# threshold applies to a differently-scaled, differently-sourced probability
+# (a trained model's P(correct) over the whole disagreement pattern, not a
+# raw mean logprob confidence on an already-unanimous vote), and conflating
+# the two would silently let one threshold's tuning drag the other's meaning
+# along with it.
+CALIBRATED_AUTO_THRESHOLD = 0.90
 
 
 # ==========================================================================
@@ -519,7 +535,8 @@ def tier5_precheck(entity: dict) -> dict:
 # Full Tier 1-5 gate
 # ==========================================================================
 
-def route_tier(entity: dict, model_results: list = None, clients: dict = None) -> dict:
+def route_tier(entity: dict, model_results: list = None, clients: dict = None,
+               calibrator=None, conn=None) -> dict:
     """Runs the Tier 1-5 gate for one Stage 2b LOW-tier entity record.
 
     Order: qualifier-fragment precheck -> Tier 3 fast path -> Tier 5
@@ -530,6 +547,15 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None) -
     scripts/run_tier_gate_batch.py to separate "call the models" from
     "apply the routing table" for testability and for re-scoring a stored
     run without re-paying for inference).
+
+    `calibrator`/`conn` (2026-08-17, plan Phase 6): both default to None,
+    which reproduces every existing behavior exactly -- a non-unanimous
+    vote always falls through to TIER_4_ENSEMBLE_SPLIT, unchanged. Passing
+    a fitted src.mollm_tier_calibrator.ConsensusCalibrator (and a DuckDB
+    connection for its prior-confirmation-count feature) is what activates
+    the new TIER_1B_CALIBRATED_AUTO_VALIDATED escape hatch below -- and even
+    then, ONLY for entities that already failed every existing Tier 1/2/3
+    rule; nothing above this point in the function changes at all.
     """
     qualifier = qualifier_fragment_precheck(entity)
     if qualifier:
@@ -594,6 +620,46 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None) -
                 "composite_confidence": composite_confidence,
                 "routing_basis": "3/3 unanimous NONE_CORRECT -- no usable resolution produced",
                 "models": model_results}
+
+    # 2026-08-17 (plan Phase 6). Every non-unanimous case reaches here.
+    # Before falling through to the unconditional HITL routing below, give
+    # a fitted calibrator one chance to say this specific split is likely
+    # correct anyway -- ONLY when calibrator/conn were both actually
+    # supplied (None/None reproduces prior behavior exactly, see this
+    # function's own docstring) and ONLY when the plurality verdict names an
+    # actual candidate (SUPPORTED_1 or a RE_RANK target) -- a plurality of
+    # NONE_CORRECT has no candidate to promote, so the calibrator is never
+    # consulted for that shape regardless of score.
+    if calibrator is not None and conn is not None:
+        candidate_index = None
+        if top_verdict == "SUPPORTED_1":
+            candidate_index = 1
+        elif top_verdict.startswith("RE_RANK_TO_CANDIDATE_"):
+            candidate_index = int(top_verdict.rsplit("_", 1)[1])
+
+        if candidate_index is not None:
+            from src.mollm_tier_calibrator import (
+                build_feature_context, count_prior_confirmations)
+            candidates = entity.get("candidates") or []
+            chosen_concept_id = None
+            if 0 < candidate_index <= len(candidates):
+                chosen_concept_id = candidates[candidate_index - 1].get("omop_concept_id")
+            prior_count = count_prior_confirmations(
+                conn, entity.get("original_text"), chosen_concept_id)
+            context = build_feature_context(entity, model_results, prior_count)
+            calibrated_score = calibrator.score(context)
+
+            if calibrated_score is not None and calibrated_score >= CALIBRATED_AUTO_THRESHOLD:
+                return {"tier": TIER_1B_CALIBRATED_AUTO_VALIDATED,
+                        "mollm_routing_decision": "AUTO_VALIDATED", "queue_reason": None,
+                        "final_candidate_index": candidate_index,
+                        "composite_confidence": composite_confidence,
+                        "routing_basis": (
+                            f"non-unanimous verdicts {dict(vote_counts)}, but "
+                            f"ConsensusCalibrator scored {calibrated_score} >= "
+                            f"{CALIBRATED_AUTO_THRESHOLD} (prior_confirmation_count="
+                            f"{prior_count})"),
+                        "models": model_results}
 
     return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",
             "queue_reason": "ensemble_split", "final_candidate_index": None,
