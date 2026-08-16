@@ -222,26 +222,98 @@ whether "Allergy to aspirin" is a correct read of a bare "Aspirin" mention
 without that context. Not investigated further this session -- flagged as a
 concrete next step below rather than guessed at.
 
+## Update, same session: the ensemble-split root cause fixed, with a real caveat
+
+Traced the "0/19 reach AUTO tier" finding above to its root cause by reading
+the actual stored `mollm_tier_gate_decisions.models` trail JSON for
+Aspirin/fluconazole/morphine, rather than guessing. Both prompts already
+carried `assertion_status` -- the actual defect was narrower: Step A gave no
+guidance on what an ALLERGY assertion means (phi4-mini's Step A output for
+'morphine' never mentioned allergy at all: "Morphine is an opioid medication
+used for pain relief"), and Step B's rule 3 ("ignore assertion/negation
+status when judging the CONCEPT match") is correct for negation -- a denied
+entity still names the same concept -- but wrong for ALLERGY, where the
+correct concept genuinely IS a different one (the allergic-disposition
+finding, not the substance). Rule 3 as written pushed models toward
+rejecting the exactly-correct "Allergy to X" candidate under rule 4 ("reject
+a distinct concept").
+
+**Fix** (`src/mollm_tier_gate.py`): an `ALLERGY_MEANING_INSTRUCTION` added to
+Step A's prompt when `assertion_status == "ALLERGY"`, explicitly stating the
+entity represents a documented allergy, not current medication use; and an
+`ALLERGY_CONTEXT_CLAUSE` added to Step B's rules (all three models, not just
+qwen) carving out the allergy exception to rule 3. 4 new unit tests
+(`tests/test_tier_gate.py`), full suite 50/50.
+
+**Micro-test on Note 1 confirmed the hypothesis immediately**: Aspirin,
+fluconazole, morphine all moved TIER_4_ENSEMBLE_SPLIT -> TIER_1_AUTO_VALIDATED
+in one re-run, each writing the exact correct concept. Extended to the other
+5 notes: 5 more moved off HITL (trazodone, a second aspirin mention,
+Prochlorperazine, NSAIDS, and 'Penicillins' in `17739994-DS-31` -- the last
+jumping straight from TIER_5 to TIER_1).
+
+**The honest final number, graded against gold: 6/8 = 75% precision on the
+allergy entities that now reach AUTO tier** (Aspirin x2, fluconazole,
+morphine, trazodone, Prochlorperazine all exactly correct; NSAIDS and
+'Penicillins' wrong). Both wrong cases were checked directly against
+`athena_concept` and are a **genuine SNOMED near-duplicate concept pair**,
+the same class already flagged above ('gunshot wound'/'blurred vision'):
+
+```
+NSAIDS:      chosen 'Allergic reaction caused by nonsteroidal antiinflammatory
+             agent' (Condition/Disorder) vs gold 'Allergy to non-steroidal
+             anti-inflammatory agent' (Observation/Clinical Finding)
+Penicillins: chosen 'Allergic reaction caused by penicillin'
+             (Condition/Disorder) vs gold 'Allergy to penicillin'
+             (Observation/Clinical Finding)
+```
+
+Both pairs are standard SNOMED concepts describing the same clinical fact
+under two different concept classes. This is not a defect in the new prompt
+clause -- the clause explicitly asks "does this candidate name an allergy/
+reaction concept for this same substance," and both chosen candidates
+correctly do. The gap is upstream, in which of two near-duplicate SNOMED
+concepts retrieval ranks first, and the ensemble-split fix's real effect is
+that once ensemble votes stop splitting, this class of ambiguity now writes
+to AUTO tier instead of stalling at HITL. **This is a genuine, if narrow,
+new false-positive-risk path introduced by fixing the split-vote problem**,
+not free -- worth weighing directly, not glossed over.
+
+**Combined with the 8/16 already-processed allergy entities' final states**:
+6 correct AUTO, 2 wrong AUTO, 1 still TIER_4 (Phenergan -- its top candidate,
+'Allergy to ergoline derivative', is itself wrong, so it correctly still
+contests), 8 TIER_5 no_candidates (brand/combo names the exact override
+can't reach), 3 not re-extracted this run (GLiNER non-determinism, tracked
+separately).
+
 ## Recommended next steps (not done this session)
 
 1. ~~Complete the in-progress re-run...~~ DONE above.
 2. Optimize the Lab Value Suffix Fallback's nested normalize_entity() calls
    (see above) -- logged as a real performance issue, explicitly deferred.
-3. Check `athena_concept_relationship` for a formal duplicate-concept
-   marker to distinguish genuine vocabulary duplicates (safe to treat as
-   correct either way, e.g. 'gunshot wound'/'blurred vision', 'STEMI'/
-   'Abdomen' from this run's clean-span misses) from real errors, rather
-   than eyeballing name similarity as done so far.
-4. **New, surfaced this update**: investigate why the MoLLM ensemble splits
-   votes on the 7 allergy-context entities whose top candidate is exactly
-   correct -- likely a prompt-context gap (Step A's "define meaning" prompt
-   may need the section/assertion-status context the retrieval fix already
-   uses, not just the bare entity text), so these can actually reach TIER_1
-   instead of permanently routing to HITL despite having the right answer.
+3. **Now higher-priority, not just a grading-harness nicety.** Check
+   `athena_concept_relationship` for a formal duplicate-concept marker to
+   distinguish genuine vocabulary duplicates from real errors. This started
+   as a grading-methodology question ('gunshot wound'/'blurred vision',
+   'STEMI'/'Abdomen') but the ensemble-split fix below just turned it into a
+   live false-positive-risk path: NSAIDS and 'Penicillins' now AUTO-validate
+   to the wrong member of a genuine SNOMED near-duplicate pair
+   (Condition/Disorder 'Allergic reaction caused by X' vs Observation/
+   Clinical Finding 'Allergy to X'). A concrete fix candidate worth
+   evaluating: prefer the Observation/Clinical Finding member over the
+   Condition/Disorder member when multiple near-identical allergy concepts
+   tie, rather than relying on retrieval's un-tie-broken rank-1 pick.
+4. ~~Investigate why the MoLLM ensemble splits votes...~~ DONE: root-caused
+   (Step B rule 3 told models to ignore assertion status, correct for
+   negation but wrong for ALLERGY) and fixed
+   (`ALLERGY_MEANING_INSTRUCTION`/`ALLERGY_CONTEXT_CLAUSE`,
+   `src/mollm_tier_gate.py`). 6/8 of the entities this unstuck are correct;
+   2/8 are the SNOMED duplicate-pair issue in (3) above -- not a clean win,
+   a real trade needing that follow-up before considering `dry_run=False`.
 5. Consider a broader (not just exact-match) non-standard-concept fallback
    for the 7/16 "no_candidates" brand/combination-name allergy entities --
    the current override requires an exact string match on the synthesized
    "Allergy to {text}" pattern, which brand names and multi-drug combos
    never satisfy.
-6. Re-run this same shadow-run methodology on a larger sample once (2) is
-   addressed, to measure whether precision recovers at scale.
+6. Re-run this same shadow-run methodology on a larger sample once (2) and
+   (3) are addressed, to measure whether precision recovers at scale.

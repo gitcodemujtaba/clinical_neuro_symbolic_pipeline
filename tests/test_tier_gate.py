@@ -55,7 +55,8 @@ def _load_pure_functions(module_filename: str, wanted: set, extra_globals: dict 
 
 TG = _load_pure_functions(
     "mollm_tier_gate.py",
-    {"qualifier_fragment_precheck", "tier3_fast_path", "tier5_precheck", "route_tier"},
+    {"qualifier_fragment_precheck", "tier3_fast_path", "tier5_precheck", "route_tier",
+     "_clinical_meaning_prompt", "_binary_match_prompt"},
     extra_globals={"TIER3_SIMILARITY_FLOOR": 0.72, "TIER1_CONFIDENCE_FLOOR": 0.70},
 )
 
@@ -63,6 +64,10 @@ qualifier_fragment_precheck = TG["qualifier_fragment_precheck"]
 tier3_fast_path = TG["tier3_fast_path"]
 tier5_precheck = TG["tier5_precheck"]
 route_tier = TG["route_tier"]
+_clinical_meaning_prompt = TG["_clinical_meaning_prompt"]
+_binary_match_prompt = TG["_binary_match_prompt"]
+ALLERGY_MEANING_INSTRUCTION = TG["ALLERGY_MEANING_INSTRUCTION"]
+ALLERGY_CONTEXT_CLAUSE = TG["ALLERGY_CONTEXT_CLAUSE"]
 
 
 def _entity(**overrides):
@@ -272,6 +277,48 @@ def run():
     r = route_tier(alias_entity, model_results=[_vote("a", "NONE_CORRECT")])
     check("Tier 3 fast path short-circuits before model_results is even consulted",
           r["tier"] == "TIER_3_AUTO_VALIDATED")
+
+    # ======================================================================
+    # 2026-08-16: allergy-context ensemble-split fix. Empirically diagnosed
+    # via mollm_tier_gate_decisions.models trail data (see
+    # ALLERGY_CONTEXT_CLAUSE's own docstring/comment) -- assertion_status
+    # was already in both prompts, but Step B's rule 3 told models to ignore
+    # it, and Step A gave no guidance on what ALLERGY status means. Both
+    # gaps are entity-content, not routing-logic, so these are prompt-text
+    # assertions rather than route_tier() aggregation checks.
+    # ======================================================================
+    allergy_entity = _entity(assertion_status="ALLERGY", original_text="morphine",
+                             candidates=[{"concept_name": "Allergy to morphine",
+                                          "match_basis": "allergy_nonstandard_exact"}])
+    present_entity = _entity(assertion_status="PRESENT", original_text="morphine",
+                             candidates=[{"concept_name": "Morphine"}])
+
+    check("Step A prompt includes the ALLERGY meaning instruction for an "
+          "ALLERGY-status entity",
+          "documenting a known or reported patient allergy" in
+          _clinical_meaning_prompt(allergy_entity))
+    check("Step A prompt omits the ALLERGY instruction for a PRESENT-status entity",
+          "documenting a known or reported patient allergy" not in
+          _clinical_meaning_prompt(present_entity))
+
+    step_b_with_clause = _binary_match_prompt(
+        allergy_entity, allergy_entity["candidates"][0],
+        "the patient has a documented allergy to morphine",
+        extra_rule=ALLERGY_CONTEXT_CLAUSE)
+    check("Step B prompt, with the allergy clause supplied, tells the model NOT "
+          "to reject an allergy candidate as 'a different concept'",
+          "Do NOT reject it under rule 4" in step_b_with_clause)
+    check("Step B base rule 3 (ignore assertion for concept match) is still "
+          "present alongside the allergy exception -- clause augments, doesn't "
+          "replace, the base rules",
+          "Ignore assertion/negation status when judging the CONCEPT match"
+          in step_b_with_clause)
+
+    step_b_without_clause = _binary_match_prompt(
+        present_entity, present_entity["candidates"][0], "morphine, an opioid medication")
+    check("Step B prompt for a non-ALLERGY entity (no extra_rule passed) "
+          "does not mention the allergy exception",
+          "ALLERGY EXCEPTION" not in step_b_without_clause)
 
     print(f"tier-gate tests: {ok} passed, {len(fail)} failed")
     for f in fail:

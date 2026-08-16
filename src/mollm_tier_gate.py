@@ -121,16 +121,30 @@ MEANING_SYSTEM_PROMPT = (
 )
 
 
+ALLERGY_MEANING_INSTRUCTION = (
+    "ALLERGY NOTE: this entity's assertion status is ALLERGY. That means the "
+    "note is documenting a known or reported patient allergy/adverse "
+    "reaction to this substance -- NOT that the patient is currently taking "
+    "or being prescribed it. State the clinical meaning as the patient's "
+    "allergic disposition or reaction to the substance (e.g. \"the patient "
+    "has a documented allergy to X\"), not as the substance's use as a "
+    "medication.\n\n"
+)
+
+
 def _clinical_meaning_prompt(entity: dict) -> str:
+    assertion = entity.get("assertion_status", "PRESENT")
+    allergy_instruction = ALLERGY_MEANING_INSTRUCTION if assertion == "ALLERGY" else ""
     return (
         "ENTITY:\n"
         f"  text as written: {entity.get('original_text')!r}\n"
         f"  after abbreviation expansion: {entity.get('expanded_text')!r}\n"
         f"  extractor label: {entity.get('gliner_label')}\n"
-        f"  assertion: {entity.get('assertion_status', 'PRESENT')} / "
+        f"  assertion: {assertion} / "
         f"experiencer: {entity.get('experiencer', 'PATIENT')}\n\n"
         f"SECTION: {entity.get('section_name') or 'unknown'}\n"
         f"CONTEXT: ...{entity.get('local_context', '')}...\n\n"
+        f"{allergy_instruction}"
         "TASK: Based ONLY on the note text above, state in one or two "
         "sentences what specific clinical concept (a diagnosis, medication, "
         "lab test, procedure, anatomical structure, symptom, or similar) this "
@@ -191,6 +205,38 @@ QWEN_SUBSUMPTION_CLAUSE = (
     "rather than rejecting it purely for lacking the note's full specificity "
     "(severity, laterality, exact subtype). Still reject a candidate that "
     "names a different clinical concept, not merely a less-detailed one."
+)
+
+# 2026-08-16, same session as the allergy-context retrieval fix
+# (src/assertion.py's STATUS_ALLERGY, src/normalization/orchestrator.py's
+# _apply_allergy_nonstandard_exact_override()). Empirically diagnosed via
+# mollm_tier_gate_decisions.models trail data on the 6-note allergy re-run
+# (docs/2026-08-16_Shadow_Run_Precision_At_Scale.md): with the RETRIEVAL fix
+# landed and correctly surfacing "Allergy to X" as candidate #1, the
+# ENSEMBLE still split votes on it, 0/19 reaching Tier 1. Root cause was in
+# rule 3 below, not a missing-context problem -- assertion_status was
+# already in both prompts. Rule 3 tells models to ignore assertion status
+# when judging concept identity, which is correct for negation (a denied
+# entity still names the same concept) but actively WRONG for ALLERGY: the
+# correct concept for an allergy-context substance mention IS a different
+# concept (the allergic-disposition finding), not the substance itself, and
+# stock rule 3 pushed models toward rejecting the (correct) allergy
+# candidate as "a different concept" per rule 4. Confirmed in the raw trail:
+# phi4-mini's Step A never even mentioned allergy ("Morphine is an opioid
+# medication..."), and qwen2.5:3b rejected "Allergy to morphine" as "too
+# specific" after its own Step A hedged into a generic "may cause an
+# allergy" framing instead of stating the patient's actual disposition.
+ALLERGY_CONTEXT_CLAUSE = (
+    "ALLERGY EXCEPTION TO RULE 3: this entity's assertion status is ALLERGY. "
+    "Unlike negation, an ALLERGY assertion means the CORRECT concept is the "
+    "patient's allergic disposition/reaction to the substance, not the "
+    "substance itself -- these are genuinely different concepts here, and "
+    "that is expected, not an error. If the candidate names an allergy or "
+    "adverse-reaction concept for this same substance (e.g. 'Allergy to X', "
+    "'X allergy', 'Allergic reaction caused by X'), treat that as the "
+    "correct match. Do NOT reject it under rule 4 on the grounds that it "
+    "names a 'different concept' from the substance itself -- for an "
+    "ALLERGY-status entity, the allergy/reaction concept IS the correct one."
 )
 
 
@@ -283,7 +329,14 @@ def _evaluate_one_model(client, entity: dict) -> dict:
     # comment. Model-name-keyed rather than a parameter threaded through
     # run_two_step_ensemble()/route_tier(), since this is specifically a
     # per-model prompt difference, not a per-entity or per-run one.
-    extra_rule = QWEN_SUBSUMPTION_CLAUSE if client.model_name.startswith("qwen") else None
+    extra_rules = []
+    if client.model_name.startswith("qwen"):
+        extra_rules.append(QWEN_SUBSUMPTION_CLAUSE)
+    # ALLERGY_CONTEXT_CLAUSE applies to every model (see its own comment) --
+    # all three models showed the split-vote failure, not just qwen.
+    if entity.get("assertion_status") == "ALLERGY":
+        extra_rules.append(ALLERGY_CONTEXT_CLAUSE)
+    extra_rule = "\n".join(extra_rules) if extra_rules else None
 
     step_a_degenerate = bool(meaning_raw.get("degenerate_generation"))
     trail = []
