@@ -108,21 +108,22 @@ This corpus-scale validation is still small (one note, 14 entities) --
 enabling ACRONYM_ESCALATION_ENABLED by default for the whole corpus is a
 separate, deliberate decision for later, not implied by this being wired.
 
-KNOWN OPEN RISK, surfaced by this same test run: the "PDA" mention upserted
-into acronym_priors as a CONFIRMED resolution (its search reached a real
-tier, so the "only count a success" gate let it through) despite being
-clinically wrong. "Only count a success" protects against unmappable
-garbage; it does NOT protect against a confidently-wrong-but-still-mappable
-resolution -- a future "PDA" mention in a similarly-sectioned note would
-have hit the cache and returned the SAME wrong answer with ZERO further
-model calls, entrenching rather than merely repeating the error. The bad
-row was removed manually after this test (not automatically -- no
-mechanism does that yet). Not fixed this session; a real gap for whoever
-next tunes this cache (candidates: require a minimum hit_count > 1 -- i.e.
-the SAME resolution confirmed independently more than once -- before ever
-trusting a cache hit as authoritative, or route a cache-sourced resolution
-through some lighter downstream check rather than treating it as
-equivalent to a fresh mollm resolution).
+CACHE-ENTRENCHMENT RISK, PARTIALLY CLOSED (2026-08-16): build-order step 4's
+live test upserted the wrong "PDA" resolution into acronym_priors as a
+CONFIRMED row on its very FIRST occurrence -- "only count a success"
+protects against unmappable garbage, not against a confidently-wrong-but-
+still-mappable resolution. Left as-is, a future "PDA" mention in a
+similarly-sectioned note would have hit the cache and returned the SAME
+wrong answer with ZERO further model calls, entrenching rather than merely
+repeating the error. Fixed via MIN_CACHE_HIT_COUNT (see that constant's own
+comment): a row is never trusted as a cache hit until independently
+reconfirmed at least twice. HONEST LIMIT, not fully closed: this raises the
+bar from "any single wrong resolution entrenches" to "the model must be
+wrong at least twice in a row for the same (abbreviation, context)" -- it
+does not protect against a genuinely systematic model bias (exactly PDA's
+own failure mode, reproducible across all 3 models) reconfirming the same
+wrong answer twice. A fully robust fix (e.g. routing cache hits through a
+lighter downstream check) remains a real, separate piece of future work.
 """
 
 import os
@@ -282,12 +283,36 @@ def clinical_context_for(ent: dict) -> str:
     return ent.get("section_name") or "General"
 
 
+# 2026-08-16, closing the cache-entrenchment risk this module's own
+# docstring flagged (build-order step 4's live test: the wrong "PDA"
+# resolution passed the "only count a success" upsert gate on its very
+# FIRST confirmation, and would have poisoned every future similarly-
+# sectioned "PDA" mention with zero further model calls). Requiring
+# hit_count >= MIN_CACHE_HIT_COUNT before a row is trusted as a cache hit
+# means a single occurrence is never authoritative -- it must be
+# independently reconfirmed (a SEPARATE entity, a SEPARATE fresh mollm
+# call, since only a non-cache-hit resolution ever re-triggers escalation)
+# before the cache will ever short-circuit the model for it. HONEST LIMIT,
+# not a silver bullet: this raises the bar from "any single wrong
+# resolution entrenches" to "the model must be wrong AT LEAST TWICE in a
+# row for the same (abbreviation, context)" -- it does NOT protect against
+# a model with a genuinely systematic, consistent bias (exactly PDA's own
+# failure mode, confirmed reproducible across all 3 models in build-order
+# step 2's testing) reconfirming the same wrong answer twice. A fully
+# robust fix (e.g. routing cache hits through a lighter downstream check)
+# is a real, separate piece of work, not attempted here.
+MIN_CACHE_HIT_COUNT = 2
+
+
 def lookup_acronym_prior(conn, abbreviation: str, clinical_context: str,
                          candidate_expansions: list) -> dict:
     """Returns {"expansion": str, "omop_domain": str|None, "source": "cache"}
     for the highest-hit_count PREVIOUSLY-CONFIRMED resolution of
     (abbreviation, clinical_context), or None on a cache miss -- including
-    when conn is None (no DB, e.g. a unit test with no cache to check).
+    when conn is None (no DB, e.g. a unit test with no cache to check), or
+    when the best row on file hasn't reached MIN_CACHE_HIT_COUNT yet (see
+    that constant's own comment -- a single confirmation is never enough to
+    trust on its own).
 
     Only trusts a cache row whose expansion is still present in the
     entity's OWN current candidate_expansions list: guards against a stale
@@ -301,9 +326,9 @@ def lookup_acronym_prior(conn, abbreviation: str, clinical_context: str,
     conn.sql(ACRONYM_PRIORS_DDL)
     row = conn.execute("""
         SELECT expansion, omop_domain FROM acronym_priors
-        WHERE abbreviation = ? AND clinical_context = ?
+        WHERE abbreviation = ? AND clinical_context = ? AND hit_count >= ?
         ORDER BY hit_count DESC LIMIT 1
-    """, [abbreviation, clinical_context]).fetchone()
+    """, [abbreviation, clinical_context, MIN_CACHE_HIT_COUNT]).fetchone()
     if row is None:
         return None
     expansion, omop_domain = row

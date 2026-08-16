@@ -101,11 +101,12 @@ class FakeConn:
     def execute(self, query, params):
         q = " ".join(query.split())
         if q.startswith("SELECT expansion, omop_domain FROM acronym_priors"):
-            abbreviation, clinical_context = params
+            abbreviation, clinical_context, min_hit_count = params
             candidates = [
                 (key[2], v["omop_domain"], v["hit_count"])
                 for key, v in self.rows.items()
                 if key[0] == abbreviation and key[1] == clinical_context
+                and v["hit_count"] >= min_hit_count
             ]
             if not candidates:
                 return self
@@ -278,24 +279,38 @@ def run():
           lookup_acronym_prior(fake_conn, "ED", "HPI", ["eating disorder", "emergency department"])
           is None)
 
+    # 2026-08-16 cache-entrenchment fix: a SINGLE confirmation must NOT be
+    # trusted -- see MIN_CACHE_HIT_COUNT's own comment. This is the actual
+    # bug this test is guarding against (the "PDA" case: one wrong
+    # confirmation would otherwise have been immediately cached as fact).
+    upsert_acronym_prior(fake_conn, "ED", "HPI", "emergency department", "Meas Value")
+    check("hit_count=1 (a single confirmation) is NOT yet trusted as a cache hit",
+          lookup_acronym_prior(fake_conn, "ED", "HPI",
+                               ["eating disorder", "emergency department"]) is None)
+
+    # A second, independent confirmation of the SAME resolution crosses
+    # MIN_CACHE_HIT_COUNT -- now it's trusted.
     upsert_acronym_prior(fake_conn, "ED", "HPI", "emergency department", "Meas Value")
     hit = lookup_acronym_prior(fake_conn, "ED", "HPI",
                                ["eating disorder", "emergency department"])
-    check("a single upsert is immediately visible to lookup",
+    check("hit_count=2 (independently reconfirmed) IS trusted as a cache hit",
           hit == {"expansion": "emergency department", "omop_domain": "Meas Value",
                   "source": "cache"})
 
     check("lookup rejects a cached expansion no longer in the CURRENT candidate list "
-          "(e.g. a dictionary edit removed it)",
+          "(e.g. a dictionary edit removed it), even once above the hit_count threshold",
           lookup_acronym_prior(fake_conn, "ED", "HPI", ["eating disorder"]) is None)
 
     # Highest hit_count wins when multiple expansions were ever confirmed
-    # for the same (abbreviation, clinical_context).
+    # for the same (abbreviation, clinical_context) -- but only among those
+    # that individually cleared MIN_CACHE_HIT_COUNT. "multiple sclerosis"
+    # here has only 1 confirmation and must never win or even qualify,
+    # regardless of what "mental status" reaches.
     upsert_acronym_prior(fake_conn, "MS", "Neuro", "multiple sclerosis", "Condition")
     upsert_acronym_prior(fake_conn, "MS", "Neuro", "mental status", "Observation")
     upsert_acronym_prior(fake_conn, "MS", "Neuro", "mental status", "Observation")
     hit = lookup_acronym_prior(fake_conn, "MS", "Neuro", ["multiple sclerosis", "mental status"])
-    check("the expansion with the higher hit_count wins the lookup",
+    check("only the expansion that cleared MIN_CACHE_HIT_COUNT wins the lookup",
           hit["expansion"] == "mental status")
 
     # conn=None -- both functions must no-op cleanly, never raise.
@@ -336,6 +351,10 @@ def run():
     # framing) and so a batch that hits the cache for every entity never
     # even needs a working Ollama connection.
     cache_conn = FakeConn()
+    # Two upserts -- MIN_CACHE_HIT_COUNT requires independent reconfirmation
+    # before a row is trusted; see the cache-entrenchment-fix tests above.
+    upsert_acronym_prior(cache_conn, "ED", "Brief Hospital Course", "emergency department",
+                         "Meas Value")
     upsert_acronym_prior(cache_conn, "ED", "Brief Hospital Course", "emergency department",
                          "Meas Value")
     client_must_not_be_called = FakeClient(response_text="SHOULD NEVER BE CALLED")
