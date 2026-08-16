@@ -639,6 +639,68 @@ def _apply_allergy_nonstandard_exact_override(mapping: dict, conn, search_text: 
     return mapping
 
 
+ALLERGY_DOMAIN_TIEBREAK_MARGIN = 0.03
+
+
+def _apply_allergy_domain_tiebreak(mapping: dict) -> dict:
+    """Second half of the 2026-08-16 allergy-context OMOP fix (docs/2026-08-16_
+    Shadow_Run_Precision_At_Scale.md's NSAIDS/Penicillins finding). Widening
+    is_allergy_context's search_domain_override to ['Condition', 'Observation']
+    (process_and_normalize_entities(), above) lets Tier 3 see SNOMED's own
+    "Allergy to X" (Observation/Clinical Finding) concepts alongside
+    "Allergic reaction caused by X" (Condition/Disorder) ones -- but for
+    genuinely near-tied scores (empirically 0.8078 vs 0.7867 for NSAIDS, a
+    0.021 gap) ranking alone doesn't reliably prefer the Observation-domain
+    concept gold consistently expects across this corpus's allergy
+    population. This is a narrow, allergy-context-only, small-margin
+    preference, not a general domain-preference rule: when the top candidate
+    is NOT Observation-domain but an Observation-domain candidate exists
+    within ALLERGY_DOMAIN_TIEBREAK_MARGIN of its score, promote it.
+
+    A no-op in the common case: when _apply_allergy_nonstandard_exact_override()
+    already found an exact match (candidates[0] is already Observation-domain
+    for every verified case -- aspirin/morphine/fluconazole/trazodone/
+    prochlorperazine), when the top candidate is already Observation-domain
+    on its own merit, when no Observation candidate is within margin
+    (Penicillins didn't need this -- its correct concept already outranked
+    the wrong one by 0.07 once the domain filter alone widened), or when
+    there are fewer than 2 candidates.
+    """
+    candidates = mapping.get("candidates") or []
+    if len(candidates) < 2:
+        return mapping
+    top = candidates[0]
+    if top.get("domain_id") == "Observation":
+        return mapping
+    top_score = top.get("similarity_score")
+    if top_score is None:
+        return mapping
+
+    best_observation = None
+    for c in candidates[1:]:
+        if c.get("domain_id") != "Observation":
+            continue
+        score = c.get("similarity_score")
+        if score is None or top_score - score > ALLERGY_DOMAIN_TIEBREAK_MARGIN:
+            continue
+        if best_observation is None or score > best_observation.get("similarity_score", -1):
+            best_observation = c
+    if best_observation is None:
+        return mapping
+
+    mapping = dict(mapping)
+    promoted = dict(best_observation)
+    basis = promoted.get("match_basis") or ""
+    promoted["match_basis"] = f"{basis}+allergy_domain_tiebreak".lstrip("+")
+    mapping["candidates"] = [promoted] + [c for c in candidates if c is not best_observation]
+    mapping["concept_id"] = promoted.get("omop_concept_id")
+    mapping["concept_name"] = promoted.get("concept_name")
+    mapping["domain_id"] = promoted.get("domain_id")
+    mapping["vocab"] = promoted.get("vocabulary_id")
+    mapping["score"] = promoted.get("similarity_score")
+    return mapping
+
+
 def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool = False) -> list:
     """Normalizes Stage 2a entities against OMOP and persists results.
 
@@ -740,12 +802,26 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
         # below for storage/dedup-key purposes) stays "Medication",
         # unchanged from what GLiNER actually extracted; only how the text
         # gets CONCEPT-RESOLVED changes, not its extraction type.
+        # 2026-08-16 (part 2, docs/2026-08-16_Shadow_Run_Precision_At_Scale.md's
+        # NSAIDS/Penicillins finding). Restricting the search to domain_id=
+        # 'Condition' ONLY (the original version of this line) structurally
+        # excluded SNOMED's OWN "Allergy to X" concepts, which live under
+        # domain_id='Observation' (concept_class_id='Clinical Finding') --
+        # not a ranking/tiebreak problem, a visibility one. Confirmed
+        # directly: with the restriction removed, "Allergy to penicillin"
+        # (Observation) already outscores "Allergic reaction caused by
+        # penicillin" (Condition) 0.9880 to 0.9165 -- it simply couldn't be
+        # seen before. Widening to both domains lets Tier 3 see what SNOMED
+        # actually has; _apply_allergy_domain_tiebreak() below handles the
+        # remaining near-tie case (NSAIDS, 0.8078 vs 0.7867) that widening
+        # alone doesn't resolve.
         is_allergy_context = ent.get("assertion_status") == STATUS_ALLERGY and label == "Medication"
         search_expanded_text = f"Allergy to {expanded_text}" if is_allergy_context else expanded_text
         search_orig_text = f"Allergy to {orig_text}" if is_allergy_context else orig_text
         search_label = "Condition" if is_allergy_context else label
         search_domain_override = (
-            (domain_override or ["Condition"]) if is_allergy_context else domain_override)
+            (domain_override or ["Condition", "Observation"]) if is_allergy_context
+            else domain_override)
 
         # Normalization is a pure function of (text, label, domain_override)
         # within a note, so the cache is the fan-out mechanism: identical
@@ -887,6 +963,7 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
             if is_allergy_context:
                 mapping = _apply_allergy_nonstandard_exact_override(
                     mapping, conn, search_expanded_text)
+                mapping = _apply_allergy_domain_tiebreak(mapping)
             cache[cache_key] = mapping
         mapping = cache[cache_key]
 

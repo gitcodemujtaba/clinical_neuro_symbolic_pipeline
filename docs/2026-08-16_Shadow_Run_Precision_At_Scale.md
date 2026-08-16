@@ -286,30 +286,70 @@ contests), 8 TIER_5 no_candidates (brand/combo names the exact override
 can't reach), 3 not re-extracted this run (GLiNER non-determinism, tracked
 separately).
 
+## Update, same session: the SNOMED domain restriction bug fixed — 8/8 AUTO-tier precision
+
+Root-caused NSAIDS/Penicillins precisely, empirically, before touching any code:
+`is_allergy_context`'s `search_domain_override` restricted Tier 3's semantic
+fallback to `domain_id='Condition'` ONLY -- not a ranking/tiebreak problem,
+a *visibility* one. SNOMED's own "Allergy to X" concepts live under
+`domain_id='Observation'` (`concept_class_id='Clinical Finding'`), which the
+`['Condition']` restriction excluded from the candidate pool entirely.
+Tested directly against the live DB with the restriction removed:
+
+```
+"Allergy to Penicillins": 0.9880 'Allergy to penicillin' (Observation, GOLD-CORRECT)
+                           0.9165 'Allergic reaction caused by penicillin' (Condition, was chosen)
+"Allergy to NSAIDS":      0.8078 'Allergic reaction caused by nonsteroidal antiinflammatory agent' (Condition, was chosen)
+                           0.7867 'Allergy to non-steroidal anti-inflammatory agent' (Observation, GOLD-CORRECT)
+```
+
+Penicillins: the correct concept already outscored the wrong one once
+visible (0.9880 vs 0.9165) -- widening the domain filter alone was
+sufficient, no tiebreak needed. NSAIDS: a genuine near-tie (0.021 gap) even
+once visible -- needed an actual preference rule.
+
+**Fix, `src/normalization/orchestrator.py`**: (1) `search_domain_override`
+widened to `['Condition', 'Observation']` for `is_allergy_context`; (2) new
+`_apply_allergy_domain_tiebreak()`, a narrow allergy-context-only rule --
+when the top candidate isn't `Observation`-domain but one is within 0.03 of
+its score, promote it. A no-op for every case that doesn't need it (already-
+Observation top hit, no close Observation candidate, wide-margin confident
+wrong-domain hit). 9 new unit tests (`tests/test_allergy_domain_tiebreak.py`,
+pure logic, same AST-extraction technique as `test_tier_gate.py`), full
+suite 51/51.
+
+**Re-validated end-to-end**: re-extracted the two affected notes, re-ran the
+Stage 3 tier gate, re-graded the full 6-note allergy population against
+gold. **AUTO-tier precision on the allergy population: 8/8 = 100%** (up from
+6/8) -- NSAIDS and Penicillins now resolve to the exact gold SNOMED concept
+and land at `TIER_1_AUTO_VALIDATED`. Nothing else in the previously-correct
+6 regressed. The SNOMED-duplicate-concept false-positive path flagged as
+the top open item is closed for this population; `dry_run=False` no longer
+has this specific blocker (other open items below still apply before
+considering it).
+
 ## Recommended next steps (not done this session)
 
 1. ~~Complete the in-progress re-run...~~ DONE above.
 2. Optimize the Lab Value Suffix Fallback's nested normalize_entity() calls
    (see above) -- logged as a real performance issue, explicitly deferred.
-3. **Now higher-priority, not just a grading-harness nicety.** Check
-   `athena_concept_relationship` for a formal duplicate-concept marker to
-   distinguish genuine vocabulary duplicates from real errors. This started
-   as a grading-methodology question ('gunshot wound'/'blurred vision',
-   'STEMI'/'Abdomen') but the ensemble-split fix below just turned it into a
-   live false-positive-risk path: NSAIDS and 'Penicillins' now AUTO-validate
-   to the wrong member of a genuine SNOMED near-duplicate pair
-   (Condition/Disorder 'Allergic reaction caused by X' vs Observation/
-   Clinical Finding 'Allergy to X'). A concrete fix candidate worth
-   evaluating: prefer the Observation/Clinical Finding member over the
-   Condition/Disorder member when multiple near-identical allergy concepts
-   tie, rather than relying on retrieval's un-tie-broken rank-1 pick.
+3. ~~Check `athena_concept_relationship` for a formal duplicate-concept
+   marker...~~ **DONE for the allergy population specifically** (still open
+   for the general grading-harness question, 'gunshot wound'/'blurred
+   vision', 'STEMI'/'Abdomen'). Root cause for NSAIDS/'Penicillins' turned
+   out narrower than "duplicate concepts, need a crosswalk": it was a
+   domain-restriction visibility bug (`search_domain_override=['Condition']`
+   excluded SNOMED's own `Observation`-domain "Allergy to X" concepts from
+   the candidate pool entirely), fixed directly rather than needing a
+   crosswalk table -- see "the SNOMED domain restriction bug fixed" above.
+   8/8 = 100% AUTO-tier precision on the allergy population now.
 4. ~~Investigate why the MoLLM ensemble splits votes...~~ DONE: root-caused
    (Step B rule 3 told models to ignore assertion status, correct for
    negation but wrong for ALLERGY) and fixed
    (`ALLERGY_MEANING_INSTRUCTION`/`ALLERGY_CONTEXT_CLAUSE`,
-   `src/mollm_tier_gate.py`). 6/8 of the entities this unstuck are correct;
-   2/8 are the SNOMED duplicate-pair issue in (3) above -- not a clean win,
-   a real trade needing that follow-up before considering `dry_run=False`.
+   `src/mollm_tier_gate.py`). Combined with (3) above, all 8 AUTO-tier
+   allergy entities are now correct -- `dry_run=False` no longer has this
+   class of blocker (other open items still apply before considering it).
 5. Consider a broader (not just exact-match) non-standard-concept fallback
    for the 7/16 "no_candidates" brand/combination-name allergy entities --
    the current override requires an exact string match on the synthesized
