@@ -66,7 +66,23 @@ EMPIRICAL FINDINGS FROM BUILDING THIS STEP (2026-08-16):
   a wiring bug -- logged honestly rather than papered over by only
   reporting the 15/15 success.
 
-Still no cache (step 3) and not yet wired into run_pipeline() (step 4).
+BUILD-ORDER STEP 3 (current state): acronym_priors cache added
+(lookup_acronym_prior()/upsert_acronym_prior()). resolve_ambiguous_acronyms()
+checks the cache FIRST for every ambiguous entity -- a hit resolves with
+ZERO model calls, lazily building an Ollama client only on the first actual
+cache miss (a batch that hits the cache for every entity never even needs a
+working Ollama connection). The upsert itself lives in
+src/normalization/orchestrator.py's process_and_normalize_entities(), not
+here: "only count a success" (the spec's own Step 2.4 framing) requires
+knowing whether the resolved expansion's search actually reached a real
+tier, which resolve_ambiguous_acronyms() cannot know -- it runs before
+normalization happens at all. Verified live end-to-end against the real DB:
+a first "ED" entity (cache miss) triggers a real MoLLM call, resolves,
+and -- because its search reached Tier 3 -- upserts; a second "ED" entity in
+the same note/section then resolves from the cache alone, confirmed zero
+model calls.
+
+Not yet wired into run_pipeline() (step 4).
 """
 
 from src.llm_client import LLMUnavailable, build_clients, parse_json_response
@@ -196,29 +212,105 @@ def escalate_one_entity(client, raw_text: str, ent: dict) -> dict:
     return {"chosen_expansion": chosen, "reasoning": parsed.get("reasoning")}
 
 
+ACRONYM_PRIORS_DDL = """
+CREATE TABLE IF NOT EXISTS acronym_priors (
+    abbreviation VARCHAR,
+    clinical_context VARCHAR,
+    expansion VARCHAR,
+    omop_domain VARCHAR,
+    hit_count INTEGER DEFAULT 1,
+    last_updated TIMESTAMP DEFAULT now(),
+    PRIMARY KEY (abbreviation, clinical_context, expansion)
+);
+"""
+
+
+def clinical_context_for(ent: dict) -> str:
+    """section_name is already tracked per entity -- reused as the cache's
+    context dimension rather than inventing new taxonomy (see the plan's
+    Phase 4 section). 'General' when a note has no section structure, so the
+    cache still functions (never a NULL key, which would defeat the
+    PRIMARY KEY's dedup)."""
+    return ent.get("section_name") or "General"
+
+
+def lookup_acronym_prior(conn, abbreviation: str, clinical_context: str,
+                         candidate_expansions: list) -> dict:
+    """Returns {"expansion": str, "omop_domain": str|None, "source": "cache"}
+    for the highest-hit_count PREVIOUSLY-CONFIRMED resolution of
+    (abbreviation, clinical_context), or None on a cache miss -- including
+    when conn is None (no DB, e.g. a unit test with no cache to check).
+
+    Only trusts a cache row whose expansion is still present in the
+    entity's OWN current candidate_expansions list: guards against a stale
+    row surviving a kg2a_abbreviations dictionary edit that removed or
+    renamed the meaning it once referred to, rather than silently applying
+    an expansion that is no longer a recognized candidate for this
+    abbreviation at all.
+    """
+    if conn is None:
+        return None
+    conn.sql(ACRONYM_PRIORS_DDL)
+    row = conn.execute("""
+        SELECT expansion, omop_domain FROM acronym_priors
+        WHERE abbreviation = ? AND clinical_context = ?
+        ORDER BY hit_count DESC LIMIT 1
+    """, [abbreviation, clinical_context]).fetchone()
+    if row is None:
+        return None
+    expansion, omop_domain = row
+    if expansion not in candidate_expansions:
+        return None
+    return {"expansion": expansion, "omop_domain": omop_domain, "source": "cache"}
+
+
+def upsert_acronym_prior(conn, abbreviation: str, clinical_context: str,
+                         expansion: str, omop_domain: str) -> None:
+    """Records a CONFIRMED-successful MoLLM resolution. Called ONLY from
+    src/normalization/orchestrator.py's process_and_normalize_entities(),
+    ONLY when the resolution's search subsequently reached Tier 1/2/3 (never
+    on '0 (Failed)') and ONLY for source='mollm' resolutions -- a cache hit
+    re-confirming itself would inflate hit_count without adding any new
+    evidence. This is the "only count a success" gate the plan's Phase 4
+    section calls for; resolve_ambiguous_acronyms() itself never calls this,
+    since it runs before normalization even happens and cannot yet know
+    whether the search will succeed.
+
+    No-op when conn is None, same defensive contract as lookup_acronym_prior().
+    """
+    if conn is None:
+        return
+    conn.sql(ACRONYM_PRIORS_DDL)
+    conn.execute("""
+        INSERT INTO acronym_priors
+            (abbreviation, clinical_context, expansion, omop_domain, hit_count, last_updated)
+        VALUES (?, ?, ?, ?, 1, now())
+        ON CONFLICT (abbreviation, clinical_context, expansion) DO UPDATE SET
+            hit_count = acronym_priors.hit_count + 1, last_updated = now()
+    """, [abbreviation, clinical_context, expansion, omop_domain])
+
+
 def resolve_ambiguous_acronyms(entities: list, raw_text: str, note_id: str, conn,
                                client=None) -> dict:
     """Returns {entity_id: {"expansion": str, "omop_domain": str|None,
-    "source": "mollm"}} for every expansion_ambiguous=TRUE entity in
-    `entities` that a real MoLLM call successfully resolved. An entity that
-    is not ambiguous, has fewer than 2 candidates, or whose escalation call
-    fails for any reason is simply absent from the returned dict -- it falls
-    through to today's Stage 1 alphabetical-default expansion unchanged,
-    same fallback contract as build-order step 1's mock had.
+    "source": "cache"|"mollm"}} for every expansion_ambiguous=TRUE entity in
+    `entities` that resolved, either from acronym_priors (a cache hit --
+    zero model calls) or a real MoLLM escalation call (a cache miss). An
+    entity that is not ambiguous, has fewer than 2 candidates, or whose
+    escalation call fails for any reason is simply absent from the returned
+    dict -- it falls through to today's Stage 1 alphabetical-default
+    expansion unchanged, same fallback contract as build-order step 1's
+    mock had.
 
     `client`: an already-built src.llm_client.LLMClient (reuse one across a
     batch rather than reconnecting per note/entity). None (default) builds
-    ESCALATION_MODEL's own client for this call only -- convenient for a
-    single ad hoc call, wasteful for a real batch; batch callers (run_pipeline()
-    once step 4 wires this in) should build once and pass it in.
+    ESCALATION_MODEL's own client lazily -- ONLY on the first actual cache
+    miss, not up front, since a batch that hits the cache for every entity
+    should never pay Ollama connection cost at all.
     """
     resolved = {}
     own_client = client is None
-    if own_client:
-        clients = build_clients()
-        client = clients.get(ESCALATION_MODEL)
-        if client is None:
-            return resolved  # ESCALATION_MODEL not available in this environment
+    client_build_attempted = False
 
     for ent in entities:
         if not ent.get("expansion_ambiguous"):
@@ -226,6 +318,20 @@ def resolve_ambiguous_acronyms(entities: list, raw_text: str, note_id: str, conn
         entity_id = ent.get("entity_id")
         if entity_id is None:
             continue
+        candidate_expansions = ent.get("candidate_expansions") or []
+        abbreviation = ent.get("original_text")
+        clinical_context = clinical_context_for(ent)
+
+        cached = lookup_acronym_prior(conn, abbreviation, clinical_context, candidate_expansions)
+        if cached is not None:
+            resolved[entity_id] = cached
+            continue
+
+        if own_client and not client_build_attempted:
+            client_build_attempted = True
+            client = build_clients().get(ESCALATION_MODEL)
+        if client is None:
+            continue  # no model available and no cache hit -- fall through, same as any failure
 
         result = escalate_one_entity(client, raw_text, ent)
         if result is None:

@@ -993,6 +993,23 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
             if mollm_resolved and mollm_resolved.get("expansion"):
                 mapping["normalized_from"] = (
                     f"{mapping['normalized_from']}+acronym_{mollm_resolved.get('source', 'unknown')}")
+                # Phase 4 build-order step 3 -- src/acronym_escalation.py's
+                # acronym_priors cache. "Only count a success": upsert ONLY
+                # for a fresh MoLLM resolution (never a cache hit re-
+                # confirming itself, which would inflate hit_count without
+                # new evidence) whose search actually reached a real tier,
+                # not '0 (Failed)'. This is the ONE place in the whole
+                # pipeline that knows both what Pass 1 chose AND whether
+                # Stage 2b's search actually confirmed it -- resolve_
+                # ambiguous_acronyms() itself runs before normalization and
+                # cannot know this yet.
+                if (mollm_resolved.get("source") == "mollm"
+                        and mapping.get("match_tier") != "0 (Failed)"):
+                    from src.acronym_escalation import (
+                        clinical_context_for, upsert_acronym_prior)
+                    upsert_acronym_prior(
+                        conn, orig_text, clinical_context_for(ent),
+                        mollm_resolved["expansion"], mollm_resolved.get("omop_domain"))
             if is_allergy_context:
                 mapping = _apply_allergy_nonstandard_exact_override(
                     mapping, conn, search_expanded_text)

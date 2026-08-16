@@ -60,7 +60,8 @@ def _stub_omop_domain_for_meaning(conn, meaning):
 AE = _load_pure_functions(
     "acronym_escalation.py",
     {"build_escalation_prompt", "build_escalation_schema", "raw_local_context",
-     "escalate_one_entity", "resolve_ambiguous_acronyms"},
+     "escalate_one_entity", "resolve_ambiguous_acronyms", "clinical_context_for",
+     "lookup_acronym_prior", "upsert_acronym_prior"},
     extra_globals={
         "LLMUnavailable": LLMUnavailable,
         "parse_json_response": parse_json_response,
@@ -78,6 +79,54 @@ build_escalation_schema = AE["build_escalation_schema"]
 raw_local_context = AE["raw_local_context"]
 escalate_one_entity = AE["escalate_one_entity"]
 resolve_ambiguous_acronyms = AE["resolve_ambiguous_acronyms"]
+clinical_context_for = AE["clinical_context_for"]
+lookup_acronym_prior = AE["lookup_acronym_prior"]
+upsert_acronym_prior = AE["upsert_acronym_prior"]
+
+
+class FakeConn:
+    """Stands in for a DuckDB connection, backing acronym_priors with a
+    plain in-memory dict keyed (abbreviation, clinical_context, expansion)
+    -- just enough to exercise lookup_acronym_prior()/upsert_acronym_prior()'s
+    own logic (highest-hit_count-wins lookup, upsert-increments-hit_count)
+    without a real DB."""
+
+    def __init__(self):
+        self.rows = {}  # (abbreviation, clinical_context, expansion) -> {"omop_domain":..., "hit_count":...}
+        self.ddl_calls = 0
+
+    def sql(self, _query):
+        self.ddl_calls += 1  # just proves the DDL guard fires; no real schema to create
+
+    def execute(self, query, params):
+        q = " ".join(query.split())
+        if q.startswith("SELECT expansion, omop_domain FROM acronym_priors"):
+            abbreviation, clinical_context = params
+            candidates = [
+                (key[2], v["omop_domain"], v["hit_count"])
+                for key, v in self.rows.items()
+                if key[0] == abbreviation and key[1] == clinical_context
+            ]
+            if not candidates:
+                return self
+            candidates.sort(key=lambda t: -t[2])
+            self._fetchone_result = (candidates[0][0], candidates[0][1])
+            return self
+        if q.startswith("INSERT INTO acronym_priors"):
+            abbreviation, clinical_context, expansion, omop_domain = params
+            key = (abbreviation, clinical_context, expansion)
+            if key in self.rows:
+                self.rows[key]["hit_count"] += 1
+            else:
+                self.rows[key] = {"omop_domain": omop_domain, "hit_count": 1}
+            self._fetchone_result = None
+            return self
+        raise AssertionError(f"FakeConn got an unexpected query: {q!r}")
+
+    def fetchone(self):
+        result = getattr(self, "_fetchone_result", None)
+        self._fetchone_result = None
+        return result
 
 
 class FakeClient:
@@ -217,6 +266,44 @@ def run():
           and client_unused.calls == [])
 
     # ======================================================================
+    # clinical_context_for / lookup_acronym_prior / upsert_acronym_prior
+    # ======================================================================
+    check("clinical_context_for uses section_name when present",
+          clinical_context_for(_entity(section_name="Allergies")) == "Allergies")
+    check("clinical_context_for falls back to 'General' when section_name is absent",
+          clinical_context_for(_entity(section_name=None)) == "General")
+
+    fake_conn = FakeConn()
+    check("lookup_acronym_prior is a clean miss against an empty cache",
+          lookup_acronym_prior(fake_conn, "ED", "HPI", ["eating disorder", "emergency department"])
+          is None)
+
+    upsert_acronym_prior(fake_conn, "ED", "HPI", "emergency department", "Meas Value")
+    hit = lookup_acronym_prior(fake_conn, "ED", "HPI",
+                               ["eating disorder", "emergency department"])
+    check("a single upsert is immediately visible to lookup",
+          hit == {"expansion": "emergency department", "omop_domain": "Meas Value",
+                  "source": "cache"})
+
+    check("lookup rejects a cached expansion no longer in the CURRENT candidate list "
+          "(e.g. a dictionary edit removed it)",
+          lookup_acronym_prior(fake_conn, "ED", "HPI", ["eating disorder"]) is None)
+
+    # Highest hit_count wins when multiple expansions were ever confirmed
+    # for the same (abbreviation, clinical_context).
+    upsert_acronym_prior(fake_conn, "MS", "Neuro", "multiple sclerosis", "Condition")
+    upsert_acronym_prior(fake_conn, "MS", "Neuro", "mental status", "Observation")
+    upsert_acronym_prior(fake_conn, "MS", "Neuro", "mental status", "Observation")
+    hit = lookup_acronym_prior(fake_conn, "MS", "Neuro", ["multiple sclerosis", "mental status"])
+    check("the expansion with the higher hit_count wins the lookup",
+          hit["expansion"] == "mental status")
+
+    # conn=None -- both functions must no-op cleanly, never raise.
+    check("lookup_acronym_prior(conn=None) is a clean no-op",
+          lookup_acronym_prior(None, "ED", "HPI", ["emergency department"]) is None)
+    upsert_acronym_prior(None, "ED", "HPI", "emergency department", "Meas Value")  # must not raise
+
+    # ======================================================================
     # resolve_ambiguous_acronyms -- end-to-end over a small batch
     # ======================================================================
     _domain_lookups.clear()
@@ -231,7 +318,8 @@ def run():
     # Same FakeClient returns the SAME text for every call in this test --
     # fine for e1 (valid candidate), but for e2 "emergency department" is
     # NOT among e2's own candidates, so e2 should be rejected and absent.
-    resolved = resolve_ambiguous_acronyms(entities, "raw note", "note1", conn="FAKE_CONN",
+    conn_for_batch = FakeConn()
+    resolved = resolve_ambiguous_acronyms(entities, "raw note", "note1", conn=conn_for_batch,
                                           client=client)
     check("e1 (valid response) resolves", "e1" in resolved)
     check("e1's resolution includes the domain classification (via conn)",
@@ -241,7 +329,23 @@ def run():
     check("e3 (not ambiguous) never even reaches escalation",
           "e3" not in resolved)
     check("domain lookup was passed the real conn value through",
-          any(c == "FAKE_CONN" for c, _ in _domain_lookups))
+          any(c is conn_for_batch for c, _ in _domain_lookups))
+
+    # A cache hit must skip the model call entirely -- both for cost
+    # ("don't spam the LLM for common acronyms", the original spec's own
+    # framing) and so a batch that hits the cache for every entity never
+    # even needs a working Ollama connection.
+    cache_conn = FakeConn()
+    upsert_acronym_prior(cache_conn, "ED", "Brief Hospital Course", "emergency department",
+                         "Meas Value")
+    client_must_not_be_called = FakeClient(response_text="SHOULD NEVER BE CALLED")
+    resolved_cached = resolve_ambiguous_acronyms(
+        [_entity(entity_id="e1", original_text="ED")], "raw note", "note1",
+        conn=cache_conn, client=client_must_not_be_called)
+    check("cache hit resolves without ever calling the model",
+          resolved_cached["e1"]["source"] == "cache"
+          and resolved_cached["e1"]["expansion"] == "emergency department"
+          and client_must_not_be_called.calls == [])
 
     # conn=None -- omop_domain must be None, not attempt a lookup that would
     # crash on a None connection.
