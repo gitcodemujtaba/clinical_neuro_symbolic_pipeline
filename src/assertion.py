@@ -71,12 +71,63 @@ STATUS_ABSENT = "ABSENT"
 STATUS_POSSIBLE = "POSSIBLE"
 STATUS_CONDITIONAL = "CONDITIONAL"
 
+# 2026-08-16 (shadow-run finding, docs/2026-08-16_Shadow_Run_Precision_At_Scale.md).
+# Not a negation/temporality/experiencer variant -- a DIFFERENT clinical
+# assertion entirely. A Medication-labeled span under an "Allergies" header
+# is not a claim the patient is taking the drug (STATUS_PRESENT would say
+# that); it is an adverse-reaction FINDING about the drug ("Allergy to
+# morphine" is a Condition, not evidence of morphine administration). This
+# codebase's own preprocessing.py module docstring named exactly this case
+# ("Allergies drug mentions are emphatically NOT administered medications")
+# as a target for the section-prior machinery back on 2026-08-08, but no
+# override was ever actually implemented for it -- SECTION_EXPERIENCER_OVERRIDE/
+# SECTION_TEMPORALITY_OVERRIDE (below) have no "allergies" entry. Measured
+# impact: of a 155-entity real-corpus shadow run, 2 of ~10 gradable errors
+# traced directly to this gap ('morphine'/'trazodone' resolved as active
+# medications when gold expected the allergy finding).
+STATUS_ALLERGY = "ALLERGY"
+
 EXPERIENCER_PATIENT = "PATIENT"
 EXPERIENCER_FAMILY = "FAMILY"
 EXPERIENCER_OTHER = "OTHER"
 
 TEMPORALITY_CURRENT = "CURRENT"
 TEMPORALITY_HISTORICAL = "HISTORICAL"
+
+# Section names (normalized, i.e. .lower()) whose Medication-labeled
+# entities are allergy findings, not administered drugs. A set rather than
+# a dict like SECTION_EXPERIENCER_OVERRIDE/SECTION_TEMPORALITY_OVERRIDE
+# below, since there is only one possible override value here (there is no
+# "allergic reaction to X, but a different kind of allergy" axis the way
+# temporality/experiencer have multiple override targets).
+ALLERGY_SECTION_NAMES = {"allergies"}
+
+
+def apply_allergy_context_override(assertion: dict, section_name_norm: str,
+                                   gliner_label: str) -> dict:
+    """Sets assertion_status=STATUS_ALLERGY for a Medication-labeled entity
+    found under an Allergies-type section header. Kept as its own function
+    rather than folded into apply_section_priors() (which only ever touches
+    experiencer/temporality, never assertion_status, by that function's own
+    documented contract) -- this needs BOTH the section AND the entity's
+    GLiNER label to fire (a Condition already correctly labeled inside
+    "Allergies", e.g. "anaphylaxis", must NOT be touched), while
+    apply_section_priors()'s two existing overrides only ever look at
+    section name.
+
+    Called AFTER apply_section_priors() and AFTER ConText/cue-based
+    detection, same ordering discipline this module already applies to
+    is_structured_result()'s override: a structural fact about the document
+    (which header a span physically falls under, combined with what GLiNER
+    called it) outranks a cue-based read of nearby words.
+    """
+    if (section_name_norm in ALLERGY_SECTION_NAMES) and gliner_label == "Medication":
+        assertion = dict(assertion)
+        assertion["assertion_status"] = STATUS_ALLERGY
+        assertion["assertion_engine"] = (
+            f"{assertion.get('assertion_engine', '')}+allergy_section_override"
+        )
+    return assertion
 
 _nlp = None
 _context = None

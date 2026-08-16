@@ -89,19 +89,66 @@ decision to keep `enqueue_pending_cases()` queuing every AUTO-tier decision
 for human review (rather than excluding them per the original plan) is now
 directly validated by this data, not just a cautious default.
 
+## Update, same session: allergy-context bug fixed, and a deeper limit found
+
+Implemented the fix. Confirmed `SECTION_EXPERIENCER_OVERRIDE`/
+`SECTION_TEMPORALITY_OVERRIDE` (`src/preprocessing.py`) don't cover this --
+neither dict has an "allergies" entry, despite `preprocessing.py`'s own
+module docstring naming this exact case as a 2026-08-08 target that was
+apparently never implemented. Sized the population precisely: **19 entities**
+across the 32 processed notes fall in an "Allergies" section, **100% labeled
+Medication with `assertion_status=PRESENT`** -- a small, completely
+systematic, 100%-affected population.
+
+**Built**: `src.assertion.STATUS_ALLERGY` + `apply_allergy_context_override()`
+(wired into `entity_extraction.py` right after `apply_section_priors()`),
+plus the retrieval-side fix in `orchestrator.py`'s
+`process_and_normalize_entities()`: when `assertion_status == STATUS_ALLERGY`
+and the entity is Medication-labeled, the SEARCH (not the entity's own
+stored label) becomes `"Allergy to {text}"` against the Condition domain
+(reusing the existing `domain_override` mechanism, `gliner_label="Condition"`
+for the search only -- so `VOCAB_BY_LABEL`'s Medication->RxNorm restriction
+doesn't wrongly apply). 6 new unit tests
+(`tests/test_allergy_context_override.py`), full suite still 49/49 [55/55
+after this addition].
+
+**A deeper, separate limitation surfaced while verifying this end-to-end.**
+Live-tested `normalize_entity("Allergy to morphine", ..., domain_override=
+["Condition"])` against the real DB: it does NOT find SNOMED's own
+"Allergy to morphine" concept (id 4164683) -- because that concept has
+`standard_concept = NULL`, and EVERY tier of this pipeline's retrieval
+(Tier 1/2/3, not just this fix) filters `WHERE standard_concept = 'S'`
+everywhere, as a pre-existing, pipeline-wide convention unrelated to this
+fix. Checked `athena_concept_relationship`: `4164683` "Maps to" only a
+single, generic standard concept, `439224` "Allergy to drug" -- OMOP
+collapses every specific-drug allergy to that one generic concept in its
+standard hierarchy. So even with this fix, morphine/trazodone allergy
+entities will resolve to the generic "Allergy to drug" or a semantically
+nearby standard concept (Tier 3 found "Poisoning by morphine" 0.72,
+"Morphine dependence" 0.64, "Trazodone poisoning" 0.73 -- real ADR-adjacent
+concepts, not exact allergy matches), not gold's specific SNOMED code. **The
+fix is directionally correct and real** (Condition-domain allergy search
+instead of Medication-domain drug-product search), **but will not by itself
+fully close the precision gap for this error class** -- gold apparently
+expects non-standard-OMOP SNOMED codes for at least some allergy findings,
+which this pipeline's standard-concept-only convention cannot reach at any
+tier. Whether to relax that convention (a bigger, cross-cutting question
+well beyond this one bug) is unresolved and not attempted here.
+
 ## Recommended next steps (not done this session)
 
-1. Investigate the allergy-context mishandling pattern specifically:
-   check how many Medication-labeled entities in this corpus fall inside an
-   Allergies/Adverse Reactions section, and whether `src/assertion.py`'s
-   existing section-based priors (`SECTION_EXPERIENCER_OVERRIDE`/
-   `SECTION_TEMPORALITY_OVERRIDE`, `preprocessing.py`) already cover this
-   case or need extending -- this looks like exactly the kind of section
-   context that machinery exists to handle, worth checking before building
-   something new.
-2. Check `athena_concept_relationship` for a formal duplicate-concept
+1. Re-run Stage 1/2a/2b + the shadow run on the 19 affected entities (or the
+   full corpus) to measure the ALLERGY fix's real effect, now that it's
+   implemented -- not yet done, since it requires re-extracting already-
+   processed notes, a bigger action than this investigation.
+2. Decide whether/how to handle the standard-concept-only limitation just
+   found: relax `standard_concept = 'S'` for allergy-domain searches
+   specifically, add a non-standard-to-standard crosswalk step, or accept
+   resolving to the generic "Allergy to drug" as the ceiling for this
+   pipeline's current architecture.
+3. Check `athena_concept_relationship` for a formal duplicate-concept
    marker to distinguish genuine vocabulary duplicates (safe to treat as
-   correct either way) from real errors, rather than eyeballing name
-   similarity as done here.
-3. Re-run this same shadow-run methodology on a larger sample once (1) is
-   addressed, to measure whether precision recovers.
+   correct either way, e.g. 'gunshot wound'/'blurred vision') from real
+   errors, rather than eyeballing name similarity as done so far.
+4. Re-run this same shadow-run methodology on a larger sample once (1)-(2)
+   are addressed, to measure whether precision recovers.

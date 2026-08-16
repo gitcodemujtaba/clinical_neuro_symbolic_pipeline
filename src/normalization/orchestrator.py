@@ -8,6 +8,7 @@ from src.provenance import (
     provenance_params,
     provenance_placeholders,
 )
+from src.assertion import STATUS_ALLERGY
 
 from .constants import *  # noqa: F401,F403
 from .text_utils import _in_clause
@@ -656,6 +657,29 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
         # such key, so .get() returns None and behavior is unchanged.
         domain_override = ent.get("domain_override")
 
+        # 2026-08-16 (allergy-context fix, docs/2026-08-16_Shadow_Run_Precision_At_Scale.md).
+        # A Medication-labeled entity whose assertion_status is
+        # src.assertion.STATUS_ALLERGY (set by apply_allergy_context_override()
+        # for Allergies-section entries) is clinically an adverse-reaction
+        # FINDING, not a drug the patient is taking -- "morphine" under an
+        # Allergies header should resolve to "Allergy to morphine" (a SNOMED
+        # Condition), not to a Medication/RxNorm drug-product concept.
+        # Reuses the EXISTING domain_override mechanism (src/clinical_pipeline.py's
+        # compound-split detectors already pass one) rather than adding a new
+        # normalize_entity() parameter: gliner_label is substituted with
+        # "Condition" for the SEARCH only, so VOCAB_BY_LABEL's
+        # Medication->RxNorm restriction doesn't apply (SNOMED lives outside
+        # RxNorm) -- the entity's OWN stored entity_label (`label`, used
+        # below for storage/dedup-key purposes) stays "Medication",
+        # unchanged from what GLiNER actually extracted; only how the text
+        # gets CONCEPT-RESOLVED changes, not its extraction type.
+        is_allergy_context = ent.get("assertion_status") == STATUS_ALLERGY and label == "Medication"
+        search_expanded_text = f"Allergy to {expanded_text}" if is_allergy_context else expanded_text
+        search_orig_text = f"Allergy to {orig_text}" if is_allergy_context else orig_text
+        search_label = "Condition" if is_allergy_context else label
+        search_domain_override = (
+            (domain_override or ["Condition"]) if is_allergy_context else domain_override)
+
         # Normalization is a pure function of (text, label, domain_override)
         # within a note, so the cache is the fan-out mechanism: identical
         # mentions share one computation but each still gets its own row
@@ -681,12 +705,12 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
         # key means near-duplicate mentions now share one computation (fixing
         # the inconsistency bug) without silently re-deciding that separate,
         # already-weighed trade-off.
-        canonical_text = re.sub(r"\s+", " ", expanded_text).strip().lower()
-        cache_key = (canonical_text, label,
-                    tuple(domain_override) if domain_override else None)
+        canonical_text = re.sub(r"\s+", " ", search_expanded_text).strip().lower()
+        cache_key = (canonical_text, search_label,
+                    tuple(search_domain_override) if search_domain_override else None)
         if cache_key not in cache:
-            mapping = normalize_entity(expanded_text, conn, gliner_label=label,
-                                       domain_override=domain_override)
+            mapping = normalize_entity(search_expanded_text, conn, gliner_label=search_label,
+                                       domain_override=search_domain_override)
             normalized_from = "expanded"
 
             # ORIGINAL-FORM FALLBACK. Normalisation runs on expanded_text, so a
@@ -705,8 +729,8 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
             # the expansion was bypassed rather than having to infer it.
             if (mapping["match_tier"] == "0 (Failed)"
                     and orig_text and orig_text.strip().lower() != expanded_text.strip().lower()):
-                retry = normalize_entity(orig_text, conn, gliner_label=label,
-                                         domain_override=domain_override)
+                retry = normalize_entity(search_orig_text, conn, gliner_label=search_label,
+                                         domain_override=search_domain_override)
                 if retry["match_tier"] != "0 (Failed)":
                     mapping = retry
                     normalized_from = "original_after_expanded_failed"

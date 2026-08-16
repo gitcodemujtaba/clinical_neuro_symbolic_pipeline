@@ -62,6 +62,7 @@ import warnings
 from src.assertion import (
     annotate_assertions,
     apply_section_priors,
+    apply_allergy_context_override,
     is_structured_result,
     _default_assertion,
 )
@@ -583,6 +584,7 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str,
             assertion, section_norm,
             SECTION_EXPERIENCER_OVERRIDE, SECTION_TEMPORALITY_OVERRIDE,
         )
+        assertion = apply_allergy_context_override(assertion, section_norm, label)
 
         context = build_local_context(expanded_text, sentences, exp_start, exp_end)
 
