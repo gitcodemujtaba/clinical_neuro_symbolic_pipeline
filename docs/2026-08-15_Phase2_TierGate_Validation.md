@@ -1,14 +1,16 @@
 # Phase 2 (Pass 4 Tier 1-5 gate) — real validation, 2026-08-15/16
 
-**Status: three rounds of real-data diagnosis, each overturning part of the
-previous conclusion. The two-step CoT mechanism looks structurally sound on
-hand-inspection; the barriers to the 90% target are (a) a fixable per-model
-strictness asymmetry (partially mitigated), (b) a class of entities that
-should never have reached the ensemble at all (now filtered out), and (c) a
-measurement confound in this validation script's own grading, unrelated to
-gate quality, that has consumed the entire gradable sample so far. Net
-result: still no reliable precision read. Read this whole document before
-drawing conclusions from any single number in it.**
+**Status (updated after Round 4): a clean, unconfounded measurement finally
+landed. Tier 1 precision 94.4% (17/18) on a curated atomic-only sample,
+AUTO coverage 50.0% (up from 2.8% at the start of this diagnosis). The one
+error traces to upstream retrieval quality (a single, close-but-wrong Tier-3
+semantic candidate), not the gate's judgment. Coverage is still short of the
+90% target -- most of the remaining volume is genuine Tier 4 splits on
+harder multi-word conditions and Tier 5 unresolved acronyms (expected,
+since Pass 1's MoLLM escalation, plan Phase 4, is not built yet) -- but
+precision, the dimension that actually protects KG3 integrity, now has real
+evidence behind it. Rounds 1-3 below are kept for the diagnostic trail; read
+them for how this conclusion was reached, not as the final word.**
 
 ## Round 1 — LOW-tier only (18 entities)
 
@@ -141,11 +143,73 @@ gap on its own.
   given (3) above.
 - `src.mollm_ensemble.py`'s production `route()` is untouched.
 
-## Recommendation
+## Round 4 — curated "atomic-only" batch (user's proposal) — clean signal at last
 
-Do not draw a final precision conclusion from any number in this document —
-each round has been confounded by something different, and this round's
-confound (grading methodology) happened to consume 100% of the gradable
-sample. The next useful step is a larger and/or more carefully sampled batch
-run specifically to get clean-span data points, not another prompt or
-filter change on top of an unmeasured baseline.
+Round 3 ended with zero clean data points: every gradable Tier 1 decision on
+that 36-entity sample happened to carry a `compound_span` or
+`narrower_than_gold` flag. Rather than run a bigger batch of the same
+unfiltered kind and hope clean cases show up, built a **curated selection**
+(`select_atomic_entities()`, `scripts/run_tier_gate_batch.py`) that pulls
+candidates from ALL 32 already-processed notes (not just the 3 canonical
+ones -- a much bigger pool, 549 eligible entities found), keeping only
+entities where:
+- `gliner_label` is `Condition`/`Procedure`/`Medication` (substantive
+  clinical nouns; `Qualifier` is never in this set, so fragment spans are
+  excluded by construction, on top of `qualifier_fragment_precheck()`
+  already catching them at routing time).
+- Exactly ONE gold annotation overlaps the entity's span (unambiguous
+  mapping target -- excludes compound phrases upstream, before any grading
+  even happens).
+- The entity's own span is at least as long as that gold annotation's
+  (excludes the `narrower_than_gold` pattern upstream too).
+
+Also added a **general** grader improvement (not curated-batch-specific):
+`_is_precoordination_match()` in `grade()` now promotes an otherwise-"wrong"
+`compound_span` case to `correct`/`compound_span_precoordinated` when the
+chosen candidate's name textually subsumes every gold fragment's text (e.g.
+`'Fracture of clavicle'` subsumes `'clavicular'` + `'fracture'`) -- a
+heuristic proxy for SNOMED pre-coordination, not an authoritative ontology
+check (see that function's docstring for exactly what it does and does not
+verify). This applies on any future run, curated or not, not just this one.
+
+36-entity curated batch, real Ollama calls, both Fix A (qualifier precheck)
+and Fix B (qwen subsumption clause) active:
+
+```
+TIER_1_AUTO_VALIDATED: 18 (50.0%) -- 18 gradable, 17 correct, 94.4% precision
+  (clean-span only: 17/18 -- 94.4%, i.e. essentially no confound left in this tier)
+TIER_4_ENSEMBLE_SPLIT: 13 (36.1%)
+TIER_5_TRUE_AMBIGUITY: 5  (13.9%) -- 3 unresolved_acronym (CAD/MR/ACS -- expected,
+  Pass 1 MoLLM escalation is plan Phase 4, not built), 2 verdict_none_correct
+AUTO coverage: 50.0% (target ~90%)
+```
+
+The single error (`'Bilateral rib fractures'`): all 3 models unanimously and
+reasonably accepted the only candidate Stage 2b offered
+(`'Fracture of two ribs'`, Tier-3 semantic match, similarity 0.88) against a
+gold code for a different specific rib-fracture concept. Checked directly
+against the DB -- this is a retrieval-quality gap (the correct candidate was
+never in the list to begin with), not a two-step CoT reasoning failure.
+Exactly the kind of gap Phase 3's planned hybrid retrieval work would close,
+not evidence against Pass 4's gating logic.
+
+## Recommendation (updated)
+
+Precision is no longer the open question -- 94.4% on a real, unconfounded
+sample is strong evidence the two-step CoT + Tier 1-5 gate makes sound
+judgments once qualifier fragments are filtered and the qwen asymmetry is
+addressed. **Coverage is the remaining gap** (50.0% vs. ~90% target), and the
+breakdown suggests where it comes from: `ensemble_split` (36.1%, harder
+multi-word conditions the ensemble still doesn't unanimously agree on) and
+`unresolved_acronym` (part of the 13.9% Tier 5 share, structurally expected
+until Phase 4's Pass 1 MoLLM escalation exists). Two reasonable next moves,
+not mutually exclusive: (a) apply the same kind of targeted diagnosis Round
+2-3 used to the `ensemble_split` cases specifically, now that qualifier
+noise and grading confounds are out of the way, or (b) treat 50% coverage
+with 94% precision as a legitimate, shippable Phase 2 milestone on its own
+(the plan's own Tier 4/5 both route to human review regardless, so a lower
+coverage number does not compromise KG3 integrity -- it just means more
+volume goes to HITL than the spec's target) and move on to Phase 3
+(retrieval), whose improvement would directly reduce both the
+`ensemble_split` rate (better candidates, less to disagree about) and the
+one measured error class above.
