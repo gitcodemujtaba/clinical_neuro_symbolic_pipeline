@@ -24,13 +24,14 @@ regardless of its own routing tier -- queue_reason records the SOURCE row's
 own tier/reason for a reviewer's context, but does not gate queuing itself.
 This is a deliberate, temporary conservatism, not the final design.
 
-WHY BOTH mollm_decisions AND mollm_review_decisions FEED ONE QUEUE.
+WHY THREE SOURCE TABLES FEED ONE QUEUE.
 src/mollm_review.py's own docstring: this module "produces the CANDIDATE
 rows a future Stage 4 job would consume." mollm_decisions (Objective 2,
-citation-gated) and mollm_review_decisions (Objective 3, confidence-driven,
-all-tier) are two independent judgments over often-overlapping entities; a
-human reviewer benefits from seeing both where they exist, tagged by
-source_table so the UI/analysis can tell them apart.
+citation-gated), mollm_review_decisions (Objective 3, confidence-driven,
+all-tier), and mollm_tier_gate_decisions (2026-08-16, Pass 4's two-step CoT
++ Tier 1-5 gate, src/mollm_tier_gate.py) are independent judgments over
+often-overlapping entities; a human reviewer benefits from seeing all that
+exist, tagged by source_table so the UI/analysis can tell them apart.
 """
 import json
 import re
@@ -291,6 +292,40 @@ def _presented_suggestion_from_review(row: dict) -> dict:
     }
 
 
+def _presented_suggestion_from_tier_gate_decision(row: dict) -> dict:
+    """Same shape as _presented_suggestion_from_decision()/
+    _presented_suggestion_from_review(), sourced from
+    mollm_tier_gate_decisions (src/mollm_tier_gate.py's route_tier(), Pass 4
+    two-step CoT + Tier 1-5 gate) instead.
+
+    suggested_omop_concept_id resolution is simpler here than the other two
+    sources' string-matching/parsing: route_tier() already records exactly
+    which candidate it picked as `final_candidate_index` (1-based, or None
+    for a Tier 4/5 decision with no chosen candidate), so this is a direct
+    list index rather than a name/id extracted from free text.
+    """
+    candidates = row.get("candidates") or []
+    idx = row.get("final_candidate_index")
+    suggested_id = None
+    if idx and 1 <= idx <= len(candidates):
+        suggested_id = candidates[idx - 1].get("omop_concept_id")
+    return {
+        "source": "mollm_tier_gate_decisions",
+        "original_text": row.get("original_text"),
+        "entity_label": row.get("entity_label"),
+        "candidates": candidates,
+        "routing_decision": row.get("mollm_routing_decision"),
+        "tier": row.get("tier"),
+        "composite_confidence": row.get("composite_confidence"),
+        "models": row.get("models"),
+        "suggested_omop_concept_id": suggested_id,
+        "local_context": row.get("local_context"),
+        "section_name": row.get("section_name"),
+        "assertion_status": row.get("assertion_status"),
+        "experiencer": row.get("experiencer"),
+    }
+
+
 def enqueue_pending_cases(conn, is_test: bool = True) -> int:
     """Inserts one PENDING hitl_review_queue row for every mollm_decisions
     and mollm_review_decisions row (error IS NULL, matching
@@ -396,6 +431,75 @@ def enqueue_pending_cases(conn, is_test: bool = True) -> int:
             ON CONFLICT (hitl_case_id) DO NOTHING;
         """.format(provenance_cols=provenance_column_sql(), provenance_ph=provenance_placeholders()),
         [f"hitl_mollm_review_decisions_{row['review_call_id']}", row["review_call_id"],
+         row["entity_id"], row["note_id"], row["queue_reason"],
+         json.dumps(suggestion, default=str), is_test] + provenance_params())
+        inserted += 1
+
+    # mollm_tier_gate_decisions (2026-08-16, production deploy of
+    # src/mollm_tier_gate.py's Tier 1-5 gate). Table may not exist yet in a
+    # DB that has never had store_tier_decision() called against it --
+    # created here too (same DDL that function uses) rather than letting
+    # this query fail on a fresh DB.
+    conn.sql("""
+    CREATE TABLE IF NOT EXISTS mollm_tier_gate_decisions (
+        mollm_call_id VARCHAR PRIMARY KEY,
+        entity_id VARCHAR,
+        note_id VARCHAR,
+        tier VARCHAR,
+        mollm_routing_decision VARCHAR,
+        queue_reason VARCHAR,
+        final_candidate_index INTEGER,
+        composite_confidence DOUBLE,
+        routing_basis VARCHAR,
+        models JSON,
+        is_test BOOLEAN DEFAULT FALSE
+    );
+    """)
+    # EVERY tier-gate decision is queued too, same "deliberate, temporary
+    # conservatism" this module's docstring already establishes for the
+    # other two sources -- including Tier 1/2/3 (AUTO_VALIDATED/
+    # AUTO_RESOLVED) ones. src.kg3_ingestion.ingest_auto_decision() exists
+    # and is exercised (dry_run=True) for those tiers by the production
+    # runner, but nothing here skips queuing them for human review just
+    # because their tier is "auto" -- that gate is a future, deliberate
+    # change once precision is validated at real scale, not a side effect
+    # of wiring the new gate in.
+    tier_gate_rows = conn.execute("""
+        SELECT g.mollm_call_id, g.entity_id, g.note_id, g.queue_reason,
+               g.mollm_routing_decision, g.tier, g.composite_confidence,
+               g.final_candidate_index, g.models, e.original_text, e.entity_label,
+               n.candidates, e.local_context, e.section_name, e.assertion_status,
+               e.experiencer
+        FROM mollm_tier_gate_decisions g
+        LEFT JOIN extracted_entities e ON e.entity_id = g.entity_id
+        LEFT JOIN normalized_entities n ON n.entity_id = g.entity_id
+        WHERE g.is_test = ?
+          AND NOT EXISTS (
+              SELECT 1 FROM hitl_review_queue q
+              WHERE q.source_table = 'mollm_tier_gate_decisions'
+                AND q.source_call_id = g.mollm_call_id
+          )
+    """, [is_test]).fetchall()
+    tier_gate_cols = ["mollm_call_id", "entity_id", "note_id", "queue_reason",
+                      "mollm_routing_decision", "tier", "composite_confidence",
+                      "final_candidate_index", "models", "original_text", "entity_label",
+                      "candidates", "local_context", "section_name", "assertion_status",
+                      "experiencer"]
+
+    for raw in tier_gate_rows:
+        row = dict(zip(tier_gate_cols, raw))
+        row["models"] = _json_field(row["models"])
+        row["candidates"] = _json_field(row["candidates"])
+        suggestion = _presented_suggestion_from_tier_gate_decision(row)
+        conn.execute("""
+            INSERT INTO hitl_review_queue
+            (hitl_case_id, source_table, source_call_id, entity_id, note_id,
+             queue_reason, presented_suggestion, reviewer_decision, is_test,
+             {provenance_cols})
+            VALUES (?, 'mollm_tier_gate_decisions', ?, ?, ?, ?, ?, 'PENDING', ?, {provenance_ph})
+            ON CONFLICT (hitl_case_id) DO NOTHING;
+        """.format(provenance_cols=provenance_column_sql(), provenance_ph=provenance_placeholders()),
+        [f"hitl_mollm_tier_gate_decisions_{row['mollm_call_id']}", row["mollm_call_id"],
          row["entity_id"], row["note_id"], row["queue_reason"],
          json.dumps(suggestion, default=str), is_test] + provenance_params())
         inserted += 1

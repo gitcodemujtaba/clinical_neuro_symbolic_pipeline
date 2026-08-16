@@ -78,6 +78,8 @@ feature-flagged and log-only first.
 
 import collections
 import concurrent.futures
+import json
+import uuid
 
 from src.llm_client import (
     LLMUnavailable,
@@ -86,6 +88,12 @@ from src.llm_client import (
     parse_json_response,
 )
 from src.normalization.constants import TIER3_SIMILARITY_FLOOR
+from src.provenance import (
+    provenance_alter_statements,
+    provenance_column_sql,
+    provenance_params,
+    provenance_placeholders,
+)
 
 TIER_1_AUTO_VALIDATED = "TIER_1_AUTO_VALIDATED"
 TIER_2_AUTO_RESOLVED = "TIER_2_AUTO_RESOLVED"
@@ -541,3 +549,70 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None) -
                               + (f" ({n_excluded} model(s) excluded as "
                                  f"degenerate/errored)" if n_excluded else "")),
             "models": model_results}
+
+
+# ==========================================================================
+# Persistence (2026-08-16, production deploy -- gate wired in, KG3 writes
+# stay dry-run per user decision)
+# ==========================================================================
+
+def store_tier_decision(decision: dict, entity_id: str, note_id: str, conn,
+                        is_test: bool = False) -> dict:
+    """Persists one route_tier() decision to its own table,
+    mollm_tier_gate_decisions -- deliberately SEPARATE from
+    src.mollm_ensemble.store_decision()'s mollm_decisions table rather than
+    shoehorned into it: the two artifacts have different shapes (route_tier()
+    has no ensemble_agreement/citation_verified/mode -- those are
+    contradiction-audit concepts the two-step CoT doesn't use) and mixing
+    them would make every downstream reader (evaluation/cal_eval.py,
+    src/hitl_queue.py) guess which schema a given row follows.
+
+    Mutates a COPY of `decision` with a freshly generated mollm_call_id (plus
+    entity_id/note_id) and returns it -- callers pass the returned dict
+    straight to src.kg3_ingestion.ingest_auto_decision() for Tier 1/2/3
+    decisions, so the call_id that got written here is the same one that
+    would appear in a KG3 write (real or dry-run).
+
+    `is_test` mirrors store_decision()'s own flag: True for smoke-test/
+    diagnostic runs against synthetic or held-out data, False for real
+    corpus processing -- kept as an explicit parameter (not inferred) so a
+    caller can never write a real-looking row by accident.
+    """
+    decision = dict(decision)
+    decision["mollm_call_id"] = decision.get("mollm_call_id") or str(uuid.uuid4())
+    decision["entity_id"] = entity_id
+    decision["note_id"] = note_id
+
+    conn.sql("""
+    CREATE TABLE IF NOT EXISTS mollm_tier_gate_decisions (
+        mollm_call_id VARCHAR PRIMARY KEY,
+        entity_id VARCHAR,
+        note_id VARCHAR,
+        tier VARCHAR,
+        mollm_routing_decision VARCHAR,
+        queue_reason VARCHAR,
+        final_candidate_index INTEGER,
+        composite_confidence DOUBLE,
+        routing_basis VARCHAR,
+        models JSON,
+        is_test BOOLEAN DEFAULT FALSE
+    );
+    """)
+    for stmt in provenance_alter_statements("mollm_tier_gate_decisions"):
+        conn.sql(stmt)
+    conn.sql(f"""
+    INSERT INTO mollm_tier_gate_decisions
+    (mollm_call_id, entity_id, note_id, tier, mollm_routing_decision,
+     queue_reason, final_candidate_index, composite_confidence,
+     routing_basis, models, is_test, {provenance_column_sql()})
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, {provenance_placeholders()})
+    ON CONFLICT (mollm_call_id) DO NOTHING;
+    """, params=[
+        decision["mollm_call_id"], entity_id, note_id, decision.get("tier"),
+        decision.get("mollm_routing_decision"), decision.get("queue_reason"),
+        decision.get("final_candidate_index"), decision.get("composite_confidence"),
+        decision.get("routing_basis"),
+        json.dumps(decision.get("models"), default=str), is_test,
+        *provenance_params(),
+    ])
+    return decision
