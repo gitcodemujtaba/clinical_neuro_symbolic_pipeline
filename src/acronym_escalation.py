@@ -107,6 +107,22 @@ not a new regression.
 This corpus-scale validation is still small (one note, 14 entities) --
 enabling ACRONYM_ESCALATION_ENABLED by default for the whole corpus is a
 separate, deliberate decision for later, not implied by this being wired.
+
+KNOWN OPEN RISK, surfaced by this same test run: the "PDA" mention upserted
+into acronym_priors as a CONFIRMED resolution (its search reached a real
+tier, so the "only count a success" gate let it through) despite being
+clinically wrong. "Only count a success" protects against unmappable
+garbage; it does NOT protect against a confidently-wrong-but-still-mappable
+resolution -- a future "PDA" mention in a similarly-sectioned note would
+have hit the cache and returned the SAME wrong answer with ZERO further
+model calls, entrenching rather than merely repeating the error. The bad
+row was removed manually after this test (not automatically -- no
+mechanism does that yet). Not fixed this session; a real gap for whoever
+next tunes this cache (candidates: require a minimum hit_count > 1 -- i.e.
+the SAME resolution confirmed independently more than once -- before ever
+trusting a cache hit as authoritative, or route a cache-sourced resolution
+through some lighter downstream check rather than treating it as
+equivalent to a fresh mollm resolution).
 """
 
 import os
