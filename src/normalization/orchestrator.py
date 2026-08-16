@@ -227,6 +227,25 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
     cands = _prefer_lab_procedure_over_observable(conn, cands, gliner_label)
     top = cands[0]["similarity_score"]
 
+    # 2026-08-16 (Phase 3 hybrid-retrieval A/B, user-diagnosed bug). Under
+    # HYBRID_RETRIEVAL_ENABLED, cands[0] is whichever concept RRF fusion
+    # ranked first, NOT whichever concept has the best dense score -- BM25
+    # can promote a lexically-close-but-semantically-weaker match ahead of a
+    # strong dense hit. Checking the FLOOR against cands[0]["similarity_score"]
+    # therefore floor-rejects entities whose pool genuinely contains a
+    # passing dense match, just because RRF put a weaker one at rank 0.
+    # Measured directly: a 300-entity A/B run showed hybrid mode producing 10
+    # MORE zero-candidate rejections than dense-only on the exact same
+    # entities (27 vs 17), with the "improved" Tier-3 oracle accuracy this
+    # caused being entirely a shrinking-denominator artifact -- the raw count
+    # of entities with the correct concept somewhere in top-5 was identical
+    # (26) in both arms. pool_max_dense is used ONLY for the floor check
+    # below; `top` keeps its original meaning (cands[0]'s own score) for the
+    # margin-ambiguity check two blocks down, which is legitimately asking
+    # "is Stage 2b's OWN top pick ambiguous against its runner-up", a
+    # rank-order question the floor's pool-wide question is not.
+    pool_max_dense = max((c["similarity_score"] for c in cands), default=top)
+
     # HARD CUTOFF below TIER3_SIMILARITY_FLOOR (2026-08-15, user decision after
     # being shown the counter-evidence below -- see
     # docs/2026-08-15_Contradiction_Detection_Analysis.md for the full
@@ -253,7 +272,7 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
     # this exact fix's motivating case -- note 0.7686 is ABOVE 0.72, so this
     # SPECIFIC case is not caught by this cutoff either; it was already an
     # argument the user weighed before choosing to proceed anyway).
-    if top < TIER3_SIMILARITY_FLOOR:
+    if pool_max_dense < TIER3_SIMILARITY_FLOOR:
         # A weak in-domain match may still be beaten by a strong out-of-domain
         # one, which is itself the signal that the label was wrong -- so the
         # conflict check runs here too, not only on a total miss. Kept even

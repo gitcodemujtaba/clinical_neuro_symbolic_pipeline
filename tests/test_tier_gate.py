@@ -163,6 +163,19 @@ def run():
     check("above floor, no ambiguity -> no precheck fires",
           tier5_precheck(high_score) is None)
 
+    # 2026-08-16 (Phase 3 hybrid-retrieval A/B, user-diagnosed bug): under
+    # RRF fusion, candidates[0] can be a WEAKER dense match than one further
+    # down the list (BM25 promoted it). The floor must check the POOL's best
+    # dense score, not just candidates[0]'s -- otherwise a genuinely passing
+    # match gets floor-rejected purely because fusion ranked it 2nd.
+    rrf_demoted_good_match = _entity(candidates=[
+        {"concept_name": "BM25-favored but weak dense match", "similarity_score": 0.65},
+        {"concept_name": "True match, demoted by RRF", "similarity_score": 0.90},
+    ])
+    check("a passing dense score elsewhere in the pool prevents floor-rejection "
+          "even when candidates[0]'s own score is below floor",
+          tier5_precheck(rrf_demoted_good_match) is None)
+
     unresolved_acronym = _entity(expansion_ambiguous=True,
                                  candidates=[{"concept_name": "X", "similarity_score": 0.9}])
     r = tier5_precheck(unresolved_acronym)

@@ -417,12 +417,24 @@ def tier5_precheck(entity: dict) -> dict:
                 "composite_confidence": None,
                 "routing_basis": "Tier 5: Stage 2 produced no candidates to evaluate.",
                 "models": []}
-    top_score = candidates[0].get("similarity_score")
-    if isinstance(top_score, (int, float)) and top_score < TIER3_SIMILARITY_FLOOR:
+    # 2026-08-16 (same fix as src/normalization/orchestrator.py's
+    # normalize_entity(), same root cause): under hybrid retrieval,
+    # candidates[0] is whichever concept RRF fusion ranked first, not
+    # whichever has the best dense score -- checking the floor against only
+    # candidates[0] would re-reject entities normalize_entity()'s own
+    # (already-fixed) floor check just let through, undoing that fix at the
+    # one place it actually matters for routing. Checked against the pool's
+    # best dense score instead; entities with no numeric similarity_score at
+    # all (e.g. Tier 1/2 exact/synonym hits, similarity_score=1.0 by
+    # convention) are unaffected since 1.0 is always >= any real floor.
+    scored = [c.get("similarity_score") for c in candidates
+              if isinstance(c.get("similarity_score"), (int, float))]
+    pool_max_dense = max(scored) if scored else None
+    if pool_max_dense is not None and pool_max_dense < TIER3_SIMILARITY_FLOOR:
         return {"tier": TIER_5_TRUE_AMBIGUITY, "mollm_routing_decision": "HITL_REQUIRED",
                 "queue_reason": "below_similarity_floor", "final_candidate_index": None,
                 "composite_confidence": None,
-                "routing_basis": (f"Tier 5: top candidate similarity {top_score} < "
+                "routing_basis": (f"Tier 5: best candidate similarity {pool_max_dense} < "
                                   f"{TIER3_SIMILARITY_FLOOR} (TIER3_SIMILARITY_FLOOR)"),
                 "models": []}
     # Pass 1 (MoLLM acronym escalation, plan Phase 4) is not built yet in
