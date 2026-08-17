@@ -27,6 +27,8 @@ import streamlit as st
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 sys.path.insert(0, PROJECT_DIR)
 
+from ui.components.db_status import render_locked_db_status  # noqa: E402
+
 DB_PATH = os.environ.get("CNSP_DB_PATH", os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb"))
 
 st.set_page_config(page_title="Pipeline Runner", page_icon="🚀", layout="wide")
@@ -50,14 +52,7 @@ def get_conn():
 try:
     conn = get_conn()
 except duckdb.IOException as exc:
-    st.error(
-        "**Could not open the database.** It's most likely held open by a "
-        "background batch job (Stage 1→2b or Stage 3 hold an exclusive "
-        "write lock for their *entire* run — this is normal, expected "
-        "DuckDB behavior, not a bug). Try again once that job finishes."
-    )
-    st.caption(f"Underlying error: {exc}")
-    st.stop()
+    render_locked_db_status(exc)
 
 
 def _json_field(v):

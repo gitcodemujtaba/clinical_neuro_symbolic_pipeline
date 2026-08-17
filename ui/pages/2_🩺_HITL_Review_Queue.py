@@ -26,6 +26,7 @@ sys.path.insert(0, PROJECT_DIR)
 from src.hitl_queue import (  # noqa: E402
     ensure_hitl_queue_table, enqueue_pending_cases, load_hitl_queue, submit_review,
 )
+from ui.components.db_status import render_locked_db_status  # noqa: E402
 
 # CNSP_DB_PATH override matches the OLLAMA_HOST/NEO4J_URI/MEMGRAPH_URI
 # env-var pattern already used elsewhere in this codebase -- lets this page
@@ -48,7 +49,10 @@ def get_conn():
     return duckdb.connect(DB_PATH, read_only=False)
 
 
-conn = get_conn()
+try:
+    conn = get_conn()
+except duckdb.IOException as exc:
+    render_locked_db_status(exc)
 ensure_hitl_queue_table(conn)
 
 with st.sidebar:

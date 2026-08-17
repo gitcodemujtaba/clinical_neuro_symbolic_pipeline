@@ -4,6 +4,7 @@ import duckdb
 import csv
 import json
 import argparse
+import time
 
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 sys.path.append(PROJECT_DIR)
@@ -15,6 +16,7 @@ sys.path.append(PROJECT_DIR)
 # empty file -- Stage 1 -> 2a -> 2b only ever got chained together here, ad
 # hoc) instead of duplicating its own copy of the wiring.
 from src.clinical_pipeline import run_pipeline
+from src.batch_status import clear_status, write_status
 
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
 NOTES_PATH = os.path.join(PROJECT_DIR, "data", "raw_notes", "discharge.csv")
@@ -95,6 +97,7 @@ def run_e2e(num_notes: int = 1, note_ids=None, input_path: str = None):
     # duplicate mentions (see run_pipeline's docstring).
     total_normalized = 0
     notes_processed = 0
+    start_time = time.time()
 
     try:
         with open(notes_path, mode='r', encoding='utf-8') as file:
@@ -124,6 +127,14 @@ def run_e2e(num_notes: int = 1, note_ids=None, input_path: str = None):
                 # cost multiplies by --notes. Named notes (--note-ids) are
                 # always full -- see the flag's help text for why.
                 raw_text = full_text if (wanted is not None or i == 0) else full_text[:1000]
+
+                # 2026-08-17: DB-independent progress -- see
+                # src.batch_status's own docstring for why this matters
+                # (DuckDB's write lock blocks even a read-only connection
+                # for this whole run, so a UI can't ask the DB itself).
+                write_status("stage1_2b", started_at=start_time,
+                            notes_done=notes_processed, notes_total=target_count,
+                            entities_done=total_entities, current_note_id=note_id)
 
                 print(f"\n[{notes_processed + 1}/{target_count}] Running Stage 1 -> "
                       f"Stage 2a -> Stage 2b via src.clinical_pipeline.run_pipeline() "
@@ -188,6 +199,10 @@ def run_e2e(num_notes: int = 1, note_ids=None, input_path: str = None):
             print(f"\n⚠️  Requested {num_notes} note(s) but {notes_path} only had "
                   f"{notes_processed} available.")
 
+        write_status("stage1_2b", started_at=start_time,
+                    notes_done=notes_processed, notes_total=target_count,
+                    entities_done=total_entities, current_note_id=None)
+
         print("\n" + "=" * 80)
         print(f"📊 SUMMARY ACROSS {notes_processed} NOTE(S)")
         print("=" * 80)
@@ -195,6 +210,7 @@ def run_e2e(num_notes: int = 1, note_ids=None, input_path: str = None):
         print(f"Total normalized:         {total_normalized}")
 
     finally:
+        clear_status("stage1_2b")
         conn.close()
 
 

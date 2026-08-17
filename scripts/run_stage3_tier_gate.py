@@ -112,6 +112,7 @@ def main():
     from src.mollm_tier_calibrator import ConsensusCalibrator, DEFAULT_MODEL_PATH
     from src.kg3_ingestion import UningestibleCase, get_memgraph_driver, ingest_auto_decision
     from src.normalization.tier_retrieval import HYBRID_RETRIEVAL_ENABLED
+    from src.batch_status import clear_status, write_status
 
     print(f"\nHYBRID_RETRIEVAL_ENABLED: {HYBRID_RETRIEVAL_ENABLED} "
           f"(should be False -- see this script's own docstring)")
@@ -171,6 +172,15 @@ def main():
             print(f"[note {note_idx}/{len(note_ids)}] {note_id}: {len(records)} "
                   f"record(s), {len(todo)} remaining after resume-skip")
 
+            # 2026-08-17: DB-independent progress, so a UI/monitor (e.g.
+            # ui/pages/1_🚀_Pipeline_Runner.py) can show real status/ETA even
+            # though DuckDB's single-writer lock means it can't open the DB
+            # itself while this script runs. Once per NOTE, not per entity --
+            # see src.batch_status.write_status()'s own docstring for why.
+            write_status("stage3_tier_gate", started_at=start_time,
+                        notes_done=note_idx - 1, notes_total=len(note_ids),
+                        entities_done=n_processed, current_note_id=note_id, errors=n_errors)
+
             for rec_idx, rec in enumerate(todo, 1):
                 elapsed_min = (time.time() - start_time) / 60
                 print(f"  [{rec_idx}/{len(todo)}] {rec['original_text']!r} "
@@ -223,6 +233,10 @@ def main():
                         dry_run_write_blocked += 1
                         print(f"    [dry-run KG3 write BLOCKED] {exc}")
 
+        write_status("stage3_tier_gate", started_at=start_time,
+                    notes_done=len(note_ids), notes_total=len(note_ids),
+                    entities_done=n_processed, current_note_id=None, errors=n_errors)
+
         elapsed_min = (time.time() - start_time) / 60
         print("\n" + "=" * 78)
         print("BATCH COMPLETE")
@@ -238,6 +252,7 @@ def main():
               f"{dry_run_write_blocked} blocked (UningestibleCase) -- "
               f"NOTHING was actually written to Memgraph this run")
     finally:
+        clear_status("stage3_tier_gate")
         conn.close()
         if memgraph_driver is not None:
             memgraph_driver.close()
