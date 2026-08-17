@@ -759,11 +759,25 @@ class VocabularyRetriever:
         without this every Medication entity would be structurally unable to
         reach guideline evidence.
 
-        UNVERIFIED against real data: code/data/athena_omop/ is still a
-        .gitkeep, so whether 'Maps to' actually links RxNorm to SNOMED in your
-        Athena download has not been confirmed. Returns None on a miss and the
-        caller degrades to the text-only path -- measure the real hit rate once
-        scripts/import_athena.py has run rather than assuming it.
+        A single OMOP concept can carry MANY relationship rows to SNOMED --
+        for RxNorm "warfarin" alone there are 18, spanning Drug, Observation,
+        and Procedure domains (a "warfarin therapy" Procedure concept and a
+        "H/O: warfarin allergy" Observation concept both legitimately link
+        back to the drug concept). 2026-08-17 fix: picking the lowest
+        concept_id among ALL of them (the original ordering) is an arbitrary
+        choice with no semantic grounding -- caught live when it crosswalked
+        RxNorm "warfarin" to a SNOMED *procedure* concept ("Warfarin
+        prophylaxis") instead of the actual drug-substance/product concept,
+        silently corrupting every Medication-domain precision/recall number
+        that used this crosswalk for comparison against gold (independent of
+        whether the pipeline's own candidate selection was correct). Now
+        prefers, in order: (1) the 'RxNorm - SNOMED eq' relationship type --
+        an explicit equivalence mapping, not just "some concept references
+        this one"; (2) a SNOMED domain matching the source concept's own
+        domain (a Drug-domain source should crosswalk to a Drug-domain
+        SNOMED concept, not a same-named Procedure/Observation one); (3)
+        lowest concept_id, purely for determinism once the first two ties
+        are broken on real signal.
         """
         if omop_concept_id is None:
             return None
@@ -782,6 +796,7 @@ class VocabularyRetriever:
                 xrow = self.conn.sql("""
                     SELECT c2.concept_code
                     FROM athena_concept_relationship r
+                    JOIN athena_concept c1 ON c1.concept_id = r.concept_id_1
                     JOIN athena_concept c2 ON c2.concept_id = r.concept_id_2
                     WHERE r.concept_id_1 = ?
                       AND c2.vocabulary_id = 'SNOMED'
@@ -802,7 +817,10 @@ class VocabularyRetriever:
                       AND r.relationship_id IN ('Mapped from', 'RxNorm - SNOMED eq',
                                                 'Value mapped from', 'Maps to')
                       AND r.invalid_reason IS NULL
-                    ORDER BY c2.concept_id ASC
+                    ORDER BY
+                      CASE WHEN r.relationship_id = 'RxNorm - SNOMED eq' THEN 0 ELSE 1 END,
+                      CASE WHEN c2.domain_id = c1.domain_id THEN 0 ELSE 1 END,
+                      c2.concept_id ASC
                     LIMIT 1
                 """, params=[omop_concept_id]).fetchone()
                 if xrow:
