@@ -344,6 +344,9 @@ def run():
     check("calibrator=None, conn=None (default) reproduces existing Tier 4 "
           "behavior exactly, no signature-change regression",
           r["tier"] == "TIER_4_ENSEMBLE_SPLIT")
+    check("2026-08-18: calibrated_score is explicitly None (not just absent) "
+          "when the calibrator was never supplied at all",
+          r["calibrated_score"] is None)
 
     high_calibrator = _FakeCalibrator(0.95)
     r = route_tier(calibrator_entity, model_results=split_votes,
@@ -358,12 +361,21 @@ def run():
     check("routing_basis records the calibrator's own contribution, auditable",
           "ConsensusCalibrator" in r["routing_basis"]
           or "calibrat" in r["routing_basis"].lower())
+    check("2026-08-18: calibrated_score is persisted on the promoted decision "
+          "itself, not just embedded in routing_basis text",
+          r["calibrated_score"] == 0.95)
 
     low_calibrator = _FakeCalibrator(0.40)
     r = route_tier(calibrator_entity, model_results=split_votes,
                    calibrator=low_calibrator, conn="FAKE_CONN")
     check("a low-scoring calibrator leaves the split at Tier 4, unpromoted",
           r["tier"] == "TIER_4_ENSEMBLE_SPLIT")
+    check("2026-08-18 (tier-gate audit fix #2): the calibrator's real score "
+          "is STILL persisted even when it does NOT clear the threshold -- "
+          "previously this exact case computed calibrated_score then threw "
+          "it away, making 'never consulted' indistinguishable from "
+          "'consulted and scored low' after the fact",
+          r["calibrated_score"] == 0.40)
 
     check("supplying a calibrator WITHOUT a conn is still a no-op (both required)",
           route_tier(calibrator_entity, model_results=split_votes,
@@ -400,6 +412,10 @@ def run():
     check("a coronary-abbreviation mention text stays Tier 4 even with a "
           "high-scoring calibrator available",
           r["tier"] == "TIER_4_ENSEMBLE_SPLIT")
+    check("2026-08-18: calibrated_score is None for a trapped entity -- "
+          "calibrator.score() genuinely never runs for it (not just "
+          "overridden after the fact), so there's nothing to persist",
+          r["calibrated_score"] is None and trap_calibrator.calls == [])
     check("queue_reason records the coronary trap specifically, distinguishable "
           "from a plain unpromoted split",
           r["queue_reason"] == "coronary_segment_trap")

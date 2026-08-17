@@ -669,6 +669,7 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
         return {"tier": None, "mollm_routing_decision": "HITL_REQUIRED",
                 "queue_reason": "model_unavailable_or_degenerate",
                 "final_candidate_index": None, "composite_confidence": None,
+                "calibrated_score": None,
                 "routing_basis": "every ensemble member errored or degenerated; no usable vote",
                 "models": model_results}
 
@@ -687,12 +688,14 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
             return {"tier": None, "mollm_routing_decision": "HITL_REQUIRED",
                     "queue_reason": "below_confidence_threshold", "final_candidate_index": 1,
                     "composite_confidence": composite_confidence,
+                    "calibrated_score": None,
                     "routing_basis": (f"unanimous SUPPORTED_1 but composite_confidence "
                                       f"{composite_confidence} < {TIER1_CONFIDENCE_FLOOR}"),
                     "models": model_results}
         return {"tier": TIER_1_AUTO_VALIDATED, "mollm_routing_decision": "AUTO_VALIDATED",
                 "queue_reason": None, "final_candidate_index": 1,
                 "composite_confidence": composite_confidence,
+                "calibrated_score": None,
                 "routing_basis": (f"3/3 unanimous SUPPORTED_1, "
                                   f"composite_confidence {composite_confidence}"),
                 "models": model_results}
@@ -702,6 +705,7 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
         return {"tier": TIER_2_AUTO_RESOLVED, "mollm_routing_decision": "AUTO_RESOLVED",
                 "queue_reason": None, "final_candidate_index": n,
                 "composite_confidence": composite_confidence,
+                "calibrated_score": None,
                 "routing_basis": (f"3/3 unanimous re-rank to candidate {n}, "
                                   f"composite_confidence {composite_confidence}"),
                 "models": model_results}
@@ -710,6 +714,7 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
         return {"tier": TIER_5_TRUE_AMBIGUITY, "mollm_routing_decision": "HITL_REQUIRED",
                 "queue_reason": "verdict_none_correct", "final_candidate_index": None,
                 "composite_confidence": composite_confidence,
+                "calibrated_score": None,
                 "routing_basis": "3/3 unanimous NONE_CORRECT -- no usable resolution produced",
                 "models": model_results}
 
@@ -722,6 +727,17 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
     # actual candidate (SUPPORTED_1 or a RE_RANK target) -- a plurality of
     # NONE_CORRECT has no candidate to promote, so the calibrator is never
     # consulted for that shape regardless of score.
+    # 2026-08-18 (tier-gate audit fix #2): tracked at this scope (not just
+    # inside the `if candidate_index is not None:` block below) so the final
+    # fallback return can report it accurately either way -- None when the
+    # calibrator was never reached at all (candidate_index was None, or
+    # calibrator/conn weren't supplied), the real computed value when it
+    # was consulted but didn't clear CALIBRATED_AUTO_THRESHOLD. Previously
+    # this second case computed the score then discarded it entirely,
+    # making "never consulted" indistinguishable from "consulted and
+    # scored low" after the fact.
+    calibrated_score = None
+
     if calibrator is not None and conn is not None:
         candidate_index = None
         if top_verdict == "SUPPORTED_1":
@@ -742,6 +758,7 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
                 return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",
                         "queue_reason": "coronary_segment_trap", "final_candidate_index": None,
                         "composite_confidence": composite_confidence,
+                        "calibrated_score": None,  # bypassed BEFORE calibrator.score() is called
                         "routing_basis": (
                             f"non-unanimous verdicts {dict(vote_counts)}; calibrator bypassed -- "
                             f"coronary-artery-segment trap (known SapBERT embedding-collapse "
@@ -756,6 +773,7 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
                         "queue_reason": "short_alphanumeric_code_trap",
                         "final_candidate_index": None,
                         "composite_confidence": composite_confidence,
+                        "calibrated_score": None,  # bypassed BEFORE calibrator.score() is called
                         "routing_basis": (
                             f"non-unanimous verdicts {dict(vote_counts)}; calibrator bypassed -- "
                             f"short alphanumeric code trap (known SapBERT embedding-collapse "
@@ -777,6 +795,7 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
                         "mollm_routing_decision": "AUTO_VALIDATED", "queue_reason": None,
                         "final_candidate_index": candidate_index,
                         "composite_confidence": composite_confidence,
+                        "calibrated_score": calibrated_score,
                         "routing_basis": (
                             f"non-unanimous verdicts {dict(vote_counts)}, but "
                             f"ConsensusCalibrator scored {calibrated_score} >= "
@@ -787,9 +806,12 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
     return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",
             "queue_reason": "ensemble_split", "final_candidate_index": None,
             "composite_confidence": composite_confidence,
+            "calibrated_score": calibrated_score,
             "routing_basis": (f"non-unanimous verdicts: {dict(vote_counts)}"
                               + (f" ({n_excluded} model(s) excluded as "
-                                 f"degenerate/errored)" if n_excluded else "")),
+                                 f"degenerate/errored)" if n_excluded else "")
+                              + (f"; calibrator scored {calibrated_score} < "
+                                 f"{CALIBRATED_AUTO_THRESHOLD}" if calibrated_score is not None else "")),
             "models": model_results}
 
 
@@ -840,14 +862,26 @@ def store_tier_decision(decision: dict, entity_id: str, note_id: str, conn,
         is_test BOOLEAN DEFAULT FALSE
     );
     """)
+    # 2026-08-18 (tier-gate audit fix #2): calibrator.score() was being
+    # computed for every non-unanimous, non-trapped entity but only ever
+    # surfacing in routing_basis TEXT when it cleared CALIBRATED_AUTO_THRESHOLD
+    # -- for anything that scored below the threshold (i.e. every entity that
+    # STAYED in TIER_4_ENSEMBLE_SPLIT after calibrator consultation), the
+    # score was computed then silently discarded, making it impossible to
+    # tell "the calibrator wasn't consulted" apart from "the calibrator
+    # scored it low" after the fact. ADD COLUMN IF NOT EXISTS because
+    # CREATE TABLE IF NOT EXISTS above is a no-op against the real,
+    # already-existing production table.
+    conn.sql("ALTER TABLE mollm_tier_gate_decisions "
+            "ADD COLUMN IF NOT EXISTS calibrated_score DOUBLE;")
     for stmt in provenance_alter_statements("mollm_tier_gate_decisions"):
         conn.sql(stmt)
     conn.sql(f"""
     INSERT INTO mollm_tier_gate_decisions
     (mollm_call_id, entity_id, note_id, tier, mollm_routing_decision,
      queue_reason, final_candidate_index, composite_confidence,
-     routing_basis, models, is_test, {provenance_column_sql()})
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, {provenance_placeholders()})
+     routing_basis, models, is_test, calibrated_score, {provenance_column_sql()})
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, {provenance_placeholders()})
     ON CONFLICT (mollm_call_id) DO NOTHING;
     """, params=[
         decision["mollm_call_id"], entity_id, note_id, decision.get("tier"),
@@ -855,6 +889,7 @@ def store_tier_decision(decision: dict, entity_id: str, note_id: str, conn,
         decision.get("final_candidate_index"), decision.get("composite_confidence"),
         decision.get("routing_basis"),
         json.dumps(decision.get("models"), default=str), is_test,
+        decision.get("calibrated_score"),
         *provenance_params(),
     ])
     return decision
