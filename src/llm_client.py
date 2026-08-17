@@ -74,8 +74,10 @@ import json
 import math
 import os
 import re
+import time
 import warnings
 
+import httpx
 import ollama
 
 warnings.filterwarnings("ignore")
@@ -158,6 +160,24 @@ DEGENERATE_RETRY_PENALTY = 1.0
 # Number of alternatives requested per token position. Only needed so the
 # chosen token's own logprob is reliably present in the response payload.
 TOP_LOGPROBS = 5
+
+# 2026-08-17. Every real run so far (overnight 31-note corpus, the 5- and
+# 20-note calibrator validation runs) has shown zero transport failures --
+# these constants are defensive, not a response to an observed problem.
+# Added after confirming a real, latent gap by reading ollama's client
+# source directly rather than assuming: httpx.ConnectError is translated by
+# ollama._client.Client._request_raw() into a bare builtin ConnectionError,
+# and httpx.TimeoutException is not translated (or caught) at all -- neither
+# was in _run()'s except clause below, so a genuine connection drop or
+# timeout would previously propagate uncaught, with zero retry, straight
+# past this module into the caller's broad per-entity except block. Distinct
+# from is_degenerate()'s existing retry (that one retries a MALFORMED
+# response that DID come back; this one retries when nothing came back at
+# all) and unrelated to temperature (TEMPERATURE is 0.0 unconditionally,
+# always, for the audit-trail-reproducibility reason documented above --
+# there is no temperature step to take on a transport retry here).
+TRANSPORT_MAX_RETRIES = 2
+TRANSPORT_RETRY_BACKOFF_SECONDS = 1.0
 
 
 def verdict_schema(allowed_verdicts, require_citation: bool = True) -> dict:
@@ -310,14 +330,28 @@ class LLMClient:
                         "guided_json_schema" if i == 0 and schema else "json_object_unguided"
                     )
                     return resp, None
-                except (ollama.RequestError, ollama.ResponseError) as exc:
+                # ollama.RequestError/ResponseError: a malformed request or an
+                # HTTP error status -- retrying won't help, these are caught
+                # here only so _run() can fall through to the next attempt
+                # (schema -> plain json) rather than propagating immediately.
+                # ConnectionError/httpx.TransportError: see TRANSPORT_MAX_RETRIES's
+                # comment above -- genuinely transient, worth a bounded retry.
+                except (ollama.RequestError, ollama.ResponseError,
+                        ConnectionError, httpx.TransportError) as exc:
                     last = exc
             return None, last
 
         response, last_exc = _run(_build_attempts())
+        transport_retries = 0
+        while response is None and isinstance(last_exc, (ConnectionError, httpx.TransportError)) \
+                and transport_retries < TRANSPORT_MAX_RETRIES:
+            transport_retries += 1
+            time.sleep(TRANSPORT_RETRY_BACKOFF_SECONDS)
+            response, last_exc = _run(_build_attempts())
         if response is None:
             raise LLMUnavailable(
-                f"{self.model_name} at {self.host}: {last_exc}") from last_exc
+                f"{self.model_name} at {self.host}: {last_exc} "
+                f"(after {transport_retries} transport retry attempt(s))") from last_exc
 
         # 2026-08-13 (P4), carried forward: one deterministic retry at a
         # harder frequency penalty when the first generation degenerated into
@@ -362,6 +396,10 @@ class LLMClient:
             "degenerate_generation": degenerate,
             "degenerate_retried": degenerate_retried,
             "degenerate_detail": degenerate_detail,
+            # 0 on the common path (no transport failure at all) -- present
+            # unconditionally, not just when >0, so its absence can never be
+            # misread as "not measured" the way a missing key would be.
+            "transport_retries": transport_retries,
         }
 
 
