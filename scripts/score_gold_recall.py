@@ -187,7 +187,7 @@ def load_predictions(conn, note_ids):
     rows = conn.execute("""
         SELECT e.note_id, e.orig_start, e.orig_end, e.entity_label,
                e.original_text, e.expanded_text, e.assertion_status,
-               e.entity_id,
+               e.entity_id, e.expansion_ambiguous, e.selection_basis,
                n.omop_concept_id, n.omop_concept_name, n.omop_vocab,
                n.match_tier
         FROM extracted_entities e
@@ -205,8 +205,9 @@ def load_predictions(conn, note_ids):
     """.format(",".join("?" * len(note_ids))), note_ids).fetchall()
 
     cols = ["note_id", "orig_start", "orig_end", "entity_label", "original_text",
-            "expanded_text", "assertion_status", "entity_id", "omop_concept_id",
-            "omop_concept_name", "omop_vocab", "match_tier"]
+            "expanded_text", "assertion_status", "entity_id", "expansion_ambiguous",
+            "selection_basis", "omop_concept_id", "omop_concept_name", "omop_vocab",
+            "match_tier"]
     return [dict(zip(cols, r)) for r in rows]
 
 
@@ -306,6 +307,20 @@ def score(gold_rows, predictions):
     missed_span_examples = []
     uncrosswalked = 0
 
+    # 2026-08-17 (abbreviation flywheel follow-up): does the WINNING
+    # tiebreak (src.preprocessing.expand_text_and_track_offsets()'s
+    # selection_basis -- alphabetical_default/numeric_context/
+    # omop_groundability/observed_frequency_priority/context_pattern_rule)
+    # correlate with linked-recall correctness? This is the direct,
+    # concrete answer to "is the flywheel actually helping completeness",
+    # not just "is AUTO-tier precision holding up" -- a different question
+    # this script otherwise has no way to answer, since it never looked at
+    # expansion_ambiguous/selection_basis at all before. Keyed by
+    # selection_basis directly (not just "ambiguous vs not") so the two new
+    # flywheel tiebreaks can be compared against the three pre-existing
+    # heuristics on equal footing, not lumped into one bucket.
+    selection_basis_stats = collections.defaultdict(lambda: {"correct": 0, "total": 0})
+
     for note_id, gold in gold_by_note.items():
         preds = preds_by_note.get(note_id, [])
         span_covered = 0
@@ -326,11 +341,17 @@ def score(gold_rows, predictions):
             if hit:
                 linked_correct += 1
                 tier_of_correct[hit["match_tier"]] += 1
+                if hit.get("expansion_ambiguous") and hit.get("selection_basis"):
+                    bucket = selection_basis_stats[hit["selection_basis"]]
+                    bucket["correct"] += 1
+                    bucket["total"] += 1
             else:
                 # Report the most-confident attempt among the overlapping
                 # predictions as the representative miss.
                 best = best_tier(overlapping)
                 tier_of_wrong[best["match_tier"]] += 1
+                if best.get("expansion_ambiguous") and best.get("selection_basis"):
+                    selection_basis_stats[best["selection_basis"]]["total"] += 1
                 if best["omop_vocab"] and best["omop_vocab"] != "SNOMED" and not best["snomed_code"]:
                     uncrosswalked += 1
                 elif len(wrong_concept_examples) < 15:
@@ -370,12 +391,30 @@ def score(gold_rows, predictions):
         "uncrosswalked_misses": uncrosswalked,
     }
 
+    # "accuracy", not "recall": scoped to gold spans that already HAD an
+    # overlapping ambiguous-abbreviation prediction (span-recall's job, not
+    # this breakdown's) -- this answers "when this tiebreak picked an
+    # expansion and got a chance to compete for a gold span, how often was
+    # the resulting concept actually right", which is what tells you
+    # whether observed_frequency_priority/context_pattern_rule (the new
+    # flywheel tiebreaks) are doing better than the three pre-existing
+    # heuristics, not a recall figure in the same sense as span/linked
+    # recall above.
+    ambiguous_abbreviation_breakdown = {
+        basis: {
+            "correct": v["correct"], "total": v["total"],
+            "accuracy": v["correct"] / v["total"] if v["total"] else 0.0,
+        }
+        for basis, v in sorted(selection_basis_stats.items())
+    }
+
     return {
         "per_note": per_note,
         "combined": combined,
         "wrong_concept_examples": wrong_concept_examples,
         "missed_span_examples": missed_span_examples,
         "compound_spans": compound_spans,
+        "ambiguous_abbreviation_breakdown": ambiguous_abbreviation_breakdown,
     }
 
 
@@ -559,6 +598,26 @@ def print_report(report, note_ids):
           f"{c['uncrosswalked_misses']}")
     print("These are excluded from 'wrong concept' below -- they failed on")
     print("crosswalk coverage, not on the model picking the wrong concept.")
+
+    ab = report.get("ambiguous_abbreviation_breakdown") or {}
+    if ab:
+        print(f"\n--- Ambiguous-abbreviation accuracy by winning tiebreak "
+              f"(abbreviation flywheel) ---")
+        print("Of gold spans whose overlapping prediction came from an ambiguous")
+        print("abbreviation, how often was the resulting concept actually correct --")
+        print("broken down by WHICH tiebreak won. observed_frequency_priority and")
+        print("context_pattern_rule are the new flywheel mechanisms (2026-08-17);")
+        print("the other three are the pre-existing static heuristics.")
+        print(f"{'selection_basis':<32} | {'CORRECT':>8} | {'TOTAL':>6} | {'ACCURACY':>9}")
+        print("-" * 62)
+        for basis, v in ab.items():
+            print(f"{basis:<32} | {v['correct']:>8} | {v['total']:>6} | "
+                  f"{v['accuracy']*100:>8.2f}%")
+    else:
+        print(f"\n--- Ambiguous-abbreviation accuracy by winning tiebreak "
+              f"(abbreviation flywheel) ---")
+        print("No ambiguous-abbreviation gold spans overlapping a prediction in "
+              "this sample.")
 
     print(f"\n--- Sample wrong-concept links (span found, concept incorrect) ---")
     for e in report["wrong_concept_examples"]:
