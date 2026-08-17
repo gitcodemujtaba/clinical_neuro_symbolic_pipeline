@@ -51,7 +51,7 @@ from src.retrieval import VocabularyRetriever  # noqa: E402
 from src.mollm_tier_calibrator import (  # noqa: E402
     ConsensusCalibrator, DEFAULT_MODEL_PATH, FEATURE_NAMES, build_feature_context,
     count_prior_confirmations, featurize)
-from src.mollm_tier_gate import _is_coronary_segment_trap  # noqa: E402
+from src.mollm_tier_gate import _is_coronary_segment_trap, _is_short_alphanumeric_code  # noqa: E402
 
 
 def _code_version():
@@ -147,7 +147,8 @@ def build_labeled_examples(conn, vocab, gold_by_note):
             "note_id": note_id, "text": d["original_text"], "label": label,
             "vector": featurize(context), "top_verdict": top_verdict,
             "vote_counts": dict(vote_counts or {}), "prior_confirmation_count": prior_count,
-            "is_coronary_trap": _is_coronary_segment_trap(entity, idx, candidates),
+            "is_trapped": (_is_coronary_segment_trap(entity, idx, candidates)
+                          or _is_short_alphanumeric_code(entity)),
         })
 
     print(f"labeled examples built: {len(examples)}  (skipped: {dict(skipped)})")
@@ -167,21 +168,22 @@ def split_by_note(examples, holdout_every=4):
     return train, val, sorted(train_notes), sorted(val_notes)
 
 
-def threshold_sweep(val, thresholds, respect_coronary_trap=False):
+def threshold_sweep(val, thresholds, respect_hard_traps=False):
     """For each threshold: how many val examples score >= it (coverage of
     the val Tier-4 population), and precision among those. This is exactly
     what CALIBRATED_AUTO_THRESHOLD trades off in route_tier().
 
-    respect_coronary_trap=True mirrors src.mollm_tier_gate.route_tier()'s
-    actual production behavior: a trapped entity is never promoted
-    regardless of score, since the real gate bypasses calibrator.score()
-    for it entirely -- this reproduces that exclusion for the val sweep
-    rather than just filtering by score after the fact.
+    respect_hard_traps=True mirrors src.mollm_tier_gate.route_tier()'s
+    actual production behavior: a trapped entity (coronary-segment OR
+    short-alphanumeric-code) is never promoted regardless of score, since
+    the real gate bypasses calibrator.score() for it entirely -- this
+    reproduces that exclusion for the val sweep rather than just filtering
+    by score after the fact.
     """
     rows = []
     for t in thresholds:
         promoted = [e for e in val if e["score"] is not None and e["score"] >= t
-                   and not (respect_coronary_trap and e.get("is_coronary_trap"))]
+                   and not (respect_hard_traps and e.get("is_trapped"))]
         n = len(promoted)
         correct = sum(1 for e in promoted if e["label"] == 1)
         rows.append({
@@ -193,7 +195,7 @@ def threshold_sweep(val, thresholds, respect_coronary_trap=False):
 
 
 def fit_and_report(train, val, train_notes, ablate_indices=(), label="FULL",
-                   save_path=None, fp_threshold=0.65, respect_coronary_trap=False):
+                   save_path=None, fp_threshold=0.65, respect_hard_traps=False):
     """Fits one ConsensusCalibrator and prints its val report. ablate_indices
     zeroes those feature positions in every vector before fit/score -- for a
     linear model this is equivalent to dropping the feature entirely (a
@@ -239,19 +241,19 @@ def fit_and_report(train, val, train_notes, ablate_indices=(), label="FULL",
     print("=" * 78)
     print(f"MODEL: {label}  (fitted on {calibrator.n_training_examples} train examples, "
           f"ablated feature indices={list(ablate_indices)}, "
-          f"coronary_trap={'ON' if respect_coronary_trap else 'off'})")
+          f"hard_traps={'ON' if respect_hard_traps else 'off'})")
     print("=" * 78)
     print(f"val AUROC: {auc}")
     print(f"{'thresh':>8s} {'n_promoted':>11s} {'coverage%':>10s} {'precision%':>11s}")
     for row in threshold_sweep(val, [round(0.5 + 0.05 * i, 2) for i in range(10)],
-                              respect_coronary_trap=respect_coronary_trap):
+                              respect_hard_traps=respect_hard_traps):
         print(f"{row['threshold']:>8.2f} {row['n_promoted']:>11d} "
               f"{row['coverage_pct']:>9.1f}% {row['precision_pct']!s:>11s}")
 
     print(f"\n--- {label}: false positives at threshold={fp_threshold} ---")
     fps = [e for e in val if e["score"] is not None and e["score"] >= fp_threshold
            and e["label"] == 0
-           and not (respect_coronary_trap and e.get("is_coronary_trap"))]
+           and not (respect_hard_traps and e.get("is_trapped"))]
     if not fps:
         print("  (none)")
     for e in fps:
@@ -291,11 +293,11 @@ def main():
     print(f"  train base rate: {n_pos_train}/{len(train)} = {n_pos_train/len(train)*100:.1f}%")
     print(f"  val base rate:   {n_pos_val}/{len(val)} = {n_pos_val/len(val)*100:.1f}%\n")
 
-    n_trapped_val = sum(1 for e in val if e["is_coronary_trap"])
-    print(f"coronary-segment-trap entities in val: {n_trapped_val}/{len(val)}\n")
+    n_trapped_val = sum(1 for e in val if e["is_trapped"])
+    print(f"hard-trap (coronary + short-code) entities in val: {n_trapped_val}/{len(val)}\n")
 
     calibrator, val_full, auc = fit_and_report(
-        train, val, train_notes, ablate_indices=(), label="FULL (16 features), trap OFF")
+        train, val, train_notes, ablate_indices=(), label="FULL (16 features), hard traps OFF")
 
     prior_idx = FEATURE_NAMES.index("prior_confirmation_count")
     fit_and_report(
@@ -310,17 +312,17 @@ def main():
     # scores and just re-sweeps with the trap's exclusion applied, exactly
     # mirroring what route_tier() itself now does.
     print("\n" + "=" * 78)
-    print("FULL MODEL + CORONARY SAFETY GATE (the production candidate)")
+    print("FULL MODEL + HARD SAFETY TRAPS (coronary + short-code) -- the production candidate")
     print("=" * 78)
     print(f"{'thresh':>8s} {'n_promoted':>11s} {'coverage%':>10s} {'precision%':>11s}")
     for row in threshold_sweep(val_full, [round(0.5 + 0.05 * i, 2) for i in range(10)],
-                              respect_coronary_trap=True):
+                              respect_hard_traps=True):
         print(f"{row['threshold']:>8.2f} {row['n_promoted']:>11d} "
               f"{row['coverage_pct']:>9.1f}% {row['precision_pct']!s:>11s}")
 
     print("\n--- projected corpus-wide impact (1,629 Tier-4 entities), trap ON ---")
     for t in [0.55, 0.60, 0.65, 0.70]:
-        row = [r for r in threshold_sweep(val_full, [t], respect_coronary_trap=True)][0]
+        row = [r for r in threshold_sweep(val_full, [t], respect_hard_traps=True)][0]
         if row["coverage_pct"] is not None:
             projected = round(1629 * row["coverage_pct"] / 100)
             print(f"  threshold={t}: val coverage {row['coverage_pct']}%, precision "

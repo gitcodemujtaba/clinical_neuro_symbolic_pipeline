@@ -23,6 +23,7 @@ Run: python3 -m pytest tests/test_tier_gate.py -v
 import ast
 import collections
 import os
+import re
 import sys
 
 SRC_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src")
@@ -56,8 +57,10 @@ def _load_pure_functions(module_filename: str, wanted: set, extra_globals: dict 
 TG = _load_pure_functions(
     "mollm_tier_gate.py",
     {"qualifier_fragment_precheck", "tier3_fast_path", "tier5_precheck", "route_tier",
-     "_clinical_meaning_prompt", "_binary_match_prompt", "_is_coronary_segment_trap"},
-    extra_globals={"TIER3_SIMILARITY_FLOOR": 0.72, "TIER1_CONFIDENCE_FLOOR": 0.70},
+     "_clinical_meaning_prompt", "_binary_match_prompt", "_is_coronary_segment_trap",
+     "_is_short_alphanumeric_code"},
+    extra_globals={"TIER3_SIMILARITY_FLOOR": 0.72, "TIER1_CONFIDENCE_FLOOR": 0.70,
+                  "SHORT_ALPHANUMERIC_CODE_RE": re.compile(r"^[A-Za-z]{1,2}[0-9]{1,2}$")},
 )
 
 qualifier_fragment_precheck = TG["qualifier_fragment_precheck"]
@@ -422,6 +425,32 @@ def run():
           route_tier(calibrator_entity, model_results=split_votes,
                     calibrator=_FakeCalibrator(0.95), conn="FAKE_CONN")["tier"]
           == "TIER_1B_CALIBRATED_AUTO_VALIDATED")
+
+    # ======================================================================
+    # 2026-08-17: short alphanumeric code trap (S2/T1/V12-shaped mentions).
+    # ======================================================================
+    for text in ["S2", "T1", "v12", "AB99"]:
+        code_entity = _entity(original_text=text, candidates=[
+            {"concept_name": "Some ambiguous concept", "similarity_score": 0.9,
+             "omop_concept_id": 444}])
+        trap_calibrator_3 = _FakeCalibrator(0.99)
+        r = route_tier(code_entity, model_results=split_votes,
+                       calibrator=trap_calibrator_3, conn="FAKE_CONN")
+        check(f"a short alphanumeric code mention ({text!r}) stays Tier 4 even "
+              f"with a high-scoring calibrator available",
+              r["tier"] == "TIER_4_ENSEMBLE_SPLIT"
+              and r["queue_reason"] == "short_alphanumeric_code_trap")
+        check(f"the calibrator is never even called for {text!r}",
+              trap_calibrator_3.calls == [])
+
+    for text in ["hemoglobin", "S", "12", "S200", "ABC1"]:
+        non_code_entity = _entity(original_text=text, candidates=[
+            {"concept_name": "X", "similarity_score": 0.9, "omop_concept_id": 555}])
+        r = route_tier(non_code_entity, model_results=split_votes,
+                       calibrator=_FakeCalibrator(0.95), conn="FAKE_CONN")
+        check(f"{text!r} does not match the short-code shape -- unaffected by "
+              f"this trap, the calibrator promotion still fires",
+              r["tier"] == "TIER_1B_CALIBRATED_AUTO_VALIDATED")
 
     print(f"tier-gate tests: {ok} passed, {len(fail)} failed")
     for f in fail:

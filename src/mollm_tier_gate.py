@@ -79,6 +79,7 @@ feature-flagged and log-only first.
 import collections
 import concurrent.futures
 import json
+import re
 import uuid
 
 from src.llm_client import (
@@ -115,26 +116,38 @@ AUTO_TIERS = {TIER_1_AUTO_VALIDATED, TIER_2_AUTO_RESOLVED, TIER_3_AUTO_VALIDATED
 # is real Tier 1 decision data to check it against, not a measured value.
 TIER1_CONFIDENCE_FLOOR = 0.70
 
-# Fit and validated 2026-08-17 (evaluation/tier_gate_cal_eval.py, Phase 6
-# steps 3-4) against a note-disjoint held-out split of the overnight 31-note
-# corpus run's TIER_4_ENSEMBLE_SPLIT population (668 labeled examples, 70.4%
-# base rate). Swept 0.50-0.95 WITH the coronary-segment trap active (see
-# CORONARY_SEGMENT_TRAP_ABBREVIATIONS above -- without it, precision tops
-# out around 89% at any threshold, the trap is load-bearing for this
-# number): 0.65 measured 98.0% precision at 38.9% val coverage (49/126
-# promoted), a large step up from 0.60's 94.7%/45.2% for a modest coverage
-# cost, chosen over 0.60 given this tier still feeds real (if currently
-# dry-run) KG3 writes. Projected corpus-wide: ~634 of the 1,629 TIER_4_
-# ENSEMBLE_SPLIT entities become promotable, taking overall AUTO coverage
-# from 21.3% toward ~42%. Deliberately NOT reusing TIER1_CONFIDENCE_FLOOR:
-# this threshold applies to a differently-scaled, differently-sourced
-# probability (a trained model's P(correct) over the whole disagreement
-# pattern, not a raw mean logprob confidence on an already-unanimous vote),
-# and conflating the two would silently let one threshold's tuning drag the
-# other's meaning along with it. Re-validate before ever changing this: a
-# refit on new data or a different held-out split can shift where 0.65
-# actually sits on the precision/coverage curve.
-CALIBRATED_AUTO_THRESHOLD = 0.65
+# Fit 2026-08-17 (evaluation/tier_gate_cal_eval.py, Phase 6 steps 3-4)
+# against a note-disjoint held-out split of the overnight 31-note corpus
+# run's TIER_4_ENSEMBLE_SPLIT population (668 labeled examples, 70.4% base
+# rate), WITH both hard traps active (without them, precision tops out
+# around 89% at any threshold -- they're load-bearing for every number
+# below). Originally locked at 0.65 (98.0% precision / 38.9% coverage on
+# that val set), then bumped after a genuinely fresh 5-note run (outside
+# both the calibrator's training AND its val notes) surfaced 3 false
+# positives -- 'Tenotomy' (0.6997), 'S2' (0.704), 'incontinence' (0.70698)
+# -- clustered in a narrow 0.699-0.707 band just above the old threshold.
+# 'S2' is now independently caught by the alphanumeric-short-code trap
+# below regardless of score, but 'Tenotomy'/'incontinence' are plain words,
+# not short codes -- only a threshold bump catches those two.
+# RE-MEASURED on the original held-out val set WITH the new alphanumeric
+# trap also active: 0.70 already reaches 100% precision at 17.5% coverage
+# (22/126); 0.72 still 100% precision but coverage drops sharply to 7.9%
+# (10/126) -- a real, measured cost, not a vague "a few points." 0.72 (not
+# 0.70) was chosen specifically because 'incontinence' (0.70698) is a
+# non-alphanumeric word the short-code trap can't catch, and 0.70 alone
+# would still have promoted it. Projected corpus-wide at 0.72: ~129 of the
+# 1,629 TIER_4_ENSEMBLE_SPLIT entities promotable (down from ~634 at the
+# old 0.65) -- a materially smaller coverage win than the original Phase 6
+# estimate; re-confirm this trade-off is still wanted at production scale.
+# Deliberately NOT reusing TIER1_CONFIDENCE_FLOOR: this threshold applies to
+# a differently-scaled, differently-sourced probability (a trained model's
+# P(correct) over the whole disagreement pattern, not a raw mean logprob
+# confidence on an already-unanimous vote), and conflating the two would
+# silently let one threshold's tuning drag the other's meaning along with
+# it. Re-validate before ever changing this: a refit on new data or a
+# different held-out split can shift where 0.72 actually sits on the
+# precision/coverage curve.
+CALIBRATED_AUTO_THRESHOLD = 0.72
 
 # 2026-08-17 (plan Phase 6, coronary safety gate). The calibrator's own
 # val-set false positives (evaluation/tier_gate_cal_eval.py) cluster on
@@ -175,6 +188,33 @@ def _is_coronary_segment_trap(entity: dict, candidate_index, candidates: list) -
         if name in CORONARY_SEGMENT_TRAP_GENERIC_CONCEPTS:
             return True
     return False
+
+
+# 2026-08-17 (5-fresh-note validation run). One of that run's 3 TIER_1B
+# false positives was 'S2', scored 0.704 -- the SAME embedding-collapse
+# shape as the coronary trap (a short code with multiple unrelated clinical
+# readings SapBERT can't reliably separate: S2 as a cardiac exam finding
+# ["heart sound S2"] vs. a spinal level ["second sacral vertebra"]), just a
+# different, more general vocabulary than named coronary branches. This
+# pattern generalizes structurally: S1-S4 (heart sounds vs. sacral
+# vertebrae), T1/T2 (thoracic vertebrae vs. MRI relaxation times vs. tumor
+# stage), V1-V6 (ECG leads vs. cranial nerves) are all the same 1-2-letter-
+# plus-1-2-digit shape colliding across unrelated clinical domains. Caught
+# structurally via regex rather than an enumerated set (unlike the coronary
+# trap, whose abbreviations are a small closed list) -- the SHAPE is the
+# risk signal here, not a specific enumerable vocabulary.
+SHORT_ALPHANUMERIC_CODE_RE = re.compile(r"^[A-Za-z]{1,2}[0-9]{1,2}$")
+
+
+def _is_short_alphanumeric_code(entity: dict) -> bool:
+    """True when the mention's own text is a bare short alphanumeric code
+    (S2, T1, V12, ...) -- see the constant's docstring above. Deliberately
+    does not also check candidate concept names (unlike the coronary trap):
+    the risk here is inherent to the mention's SHAPE, independent of which
+    domain the top candidate happened to land in.
+    """
+    text = (entity.get("original_text") or "").strip()
+    return bool(SHORT_ALPHANUMERIC_CODE_RE.match(text))
 
 
 # ==========================================================================
@@ -706,6 +746,20 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
                             f"non-unanimous verdicts {dict(vote_counts)}; calibrator bypassed -- "
                             f"coronary-artery-segment trap (known SapBERT embedding-collapse "
                             f"pattern, see CORONARY_SEGMENT_TRAP_ABBREVIATIONS)"),
+                        "models": model_results}
+
+            # Short alphanumeric code trap (see constant block above): same
+            # bypass-before-scoring discipline as the coronary trap, for the
+            # structurally similar S2/T1/V12-shaped collision pattern.
+            if _is_short_alphanumeric_code(entity):
+                return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",
+                        "queue_reason": "short_alphanumeric_code_trap",
+                        "final_candidate_index": None,
+                        "composite_confidence": composite_confidence,
+                        "routing_basis": (
+                            f"non-unanimous verdicts {dict(vote_counts)}; calibrator bypassed -- "
+                            f"short alphanumeric code trap (known SapBERT embedding-collapse "
+                            f"pattern, see SHORT_ALPHANUMERIC_CODE_RE)"),
                         "models": model_results}
 
             from src.mollm_tier_calibrator import (
