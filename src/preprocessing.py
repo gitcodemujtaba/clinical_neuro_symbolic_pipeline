@@ -336,24 +336,31 @@ def expand_text_and_track_offsets(text: str, abbrev_dict: dict, conn=None):
     """Expands known abbreviations, tracking original<->expanded offsets.
 
     abbrev_dict maps abbreviation -> LIST of meanings. When an abbreviation
-    has more than one known meaning, three tiebreaks are tried in order: (1)
+    has more than one known meaning, five tiebreaks are tried in order,
+    each only consulted when every one before it declined to pick (returned
+    None): (1) a mined context-pattern rule from real reviewer-confirmed
+    data (src.abbreviation_flywheel.select_by_context_pattern() -- 2026-08-17,
+    empty/no-op until real HITL/SME review data exists to mine from), (2)
     numeric context around the token (_numeric_context_kind/
-    _select_by_numeric_context above), (2) OMOP groundability when numeric
-    context didn't apply or didn't resolve anything (_select_by_groundability
-    above -- prefers a candidate that resolves to a real OMOP concept over
-    one that doesn't, when exactly one does), (3) if neither resolves
-    anything, the first (sorted) meaning is applied so the expansion is still
-    deterministic. Either way, the expansion record carries `ambiguous: True`
-    plus the full `candidate_expansions` list so Stage 3 can reconsider the
-    choice with context the dictionary lookup never had. This is the point:
-    Stage 1 should not be silently resolving a genuine clinical ambiguity by
-    row order (or by numeric-context/groundability guessing either -- all
-    three are a prior, not a verdict).
+    _select_by_numeric_context above), (3) the pipeline's own observed-
+    frequency prior, excluding abbreviations with known systematic bias
+    (src.abbreviation_flywheel.compute_frequency_priority(), 2026-08-17), (4)
+    OMOP groundability when nothing above resolved anything
+    (_select_by_groundability above -- prefers a candidate that resolves to
+    a real OMOP concept over one that doesn't, when exactly one does), (5)
+    if nothing resolves anything, the first (sorted) meaning is applied so
+    the expansion is still deterministic. Either way, the expansion record
+    carries `ambiguous: True` plus the full `candidate_expansions` list so
+    Stage 3 can reconsider the choice with context the dictionary lookup
+    never had. This is the point: Stage 1 should not be silently resolving
+    a genuine clinical ambiguity by row order (or by any of these five
+    tiebreaks either -- every one of them is a prior, not a verdict, except
+    (1) which is grounded in actual confirmed outcomes).
 
     conn is optional (default None): passing it enables the numeric-context
-    OMOP lookup; omitting it preserves the pre-2026-08-13 pure-alphabetical
-    behavior unchanged, so any other caller that hasn't been updated keeps
-    working exactly as before.
+    OMOP lookup and the two flywheel tiebreaks; omitting it preserves the
+    pre-2026-08-13 pure-alphabetical behavior unchanged, so any other caller
+    that hasn't been updated keeps working exactly as before.
     """
     doc = nlp(text)
     expanded_text = text
@@ -377,12 +384,44 @@ def expand_text_and_track_offsets(text: str, abbrev_dict: dict, conn=None):
         orig_end = token.idx + len(token.text)
 
         if is_ambiguous:
-            kind = _numeric_context_kind(text, orig_start, orig_end)
-            if kind is not None:
-                preferred = _select_by_numeric_context(conn, meanings, kind)
+            # 2026-08-17 (abbreviation flywheel, checked FIRST): a
+            # deterministic pre-filter from real reviewer-confirmed context
+            # patterns outranks every heuristic below it, including
+            # numeric-context -- it's the only one of these five actually
+            # grounded in confirmed outcomes for THIS specific occurrence's
+            # wording, not a general-purpose guess. Returns None (falls
+            # through unchanged) until real HITL/SME review data exists to
+            # mine rules from -- see src.abbreviation_flywheel's module
+            # docstring for why this one, unlike the frequency-priority
+            # check below, is intentionally allowed to apply even to
+            # abbreviations known to have systematic model bias.
+            from src.abbreviation_flywheel import (
+                compute_frequency_priority, select_by_context_pattern)
+            preferred = select_by_context_pattern(
+                conn, meanings, token_lower, text, orig_start, orig_end)
+            if preferred is not None:
+                expansion = preferred
+                selection_basis = "context_pattern_rule"
+
+            if selection_basis == "alphabetical_default":
+                kind = _numeric_context_kind(text, orig_start, orig_end)
+                if kind is not None:
+                    preferred = _select_by_numeric_context(conn, meanings, kind)
+                    if preferred is not None:
+                        expansion = preferred
+                        selection_basis = f"numeric_context:{kind}"
+            if selection_basis == "alphabetical_default":
+                # 2026-08-17 (abbreviation flywheel): the pipeline's own
+                # accumulated observed-frequency prior, EXCLUDING
+                # abbreviations already known to have systematic bias (see
+                # src.abbreviation_flywheel.compute_frequency_priority()'s
+                # own docstring) -- checked before groundability since a
+                # data-driven empirical preference is stronger evidence
+                # than "resolves to some real concept or doesn't."
+                preferred = compute_frequency_priority(conn, token_lower, meanings)
                 if preferred is not None:
                     expansion = preferred
-                    selection_basis = f"numeric_context:{kind}"
+                    selection_basis = "observed_frequency_priority"
             if selection_basis == "alphabetical_default":
                 preferred = _select_by_groundability(conn, meanings)
                 if preferred is not None:

@@ -1113,6 +1113,24 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
                     upsert_acronym_prior(
                         conn, orig_text, clinical_context_for(ent),
                         mollm_resolved["expansion"], mollm_resolved.get("omop_domain"))
+
+            # 2026-08-17 (abbreviation flywheel, src/abbreviation_flywheel.py).
+            # Generalizes the SAME "only count a success" gate above to
+            # EVERY ambiguous-expansion entity, not just ones Phase 4's
+            # (currently gated off) MoLLM escalation touched -- this is the
+            # data source src.preprocessing.expand_text_and_track_offsets()'s
+            # new observed-frequency-priority tiebreak reads back from.
+            # Deliberately a SEPARATE table from acronym_priors (see that
+            # module's own docstring): this is a weaker signal -- "Stage
+            # 1's picked expansion reached a real tier" -- not a model's
+            # independent confirmation, and must not dilute Phase 4's
+            # already-validated cache.
+            if ent.get("expansion_ambiguous") and mapping.get("match_tier") != "0 (Failed)":
+                from src.abbreviation_flywheel import record_ambiguous_expansion_outcome
+                from src.acronym_escalation import clinical_context_for
+                record_ambiguous_expansion_outcome(
+                    conn, orig_text, clinical_context_for(ent), expanded_text,
+                    mapping.get("domain_id"), ent.get("selection_basis", "unknown"))
             if is_allergy_context:
                 mapping = _apply_allergy_nonstandard_exact_override(
                     mapping, conn, search_expanded_text, drug_text=acronym_resolved_text)
