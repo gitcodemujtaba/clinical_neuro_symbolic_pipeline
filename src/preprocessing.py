@@ -332,6 +332,79 @@ def _select_by_groundability(conn, meanings: list):
     return None
 
 
+def _find_soft_linewrap_regions(text: str) -> list:
+    """Finds SINGLE mid-phrase line-wrap newlines -- MIMIC's own fixed-width
+    wrapping cutting through a continuous phrase ("portal  \\nhypertension")
+    -- as (start, end) regions in TRUE ORIGINAL text coordinates, each
+    covering the \\n plus any leading whitespace on the next line, meant to
+    be collapsed to a single space by the caller.
+
+    WHY THIS EXISTS (2026-08-17/18). 4.2% of all extracted entities (869/
+    20,578) carried a literal newline mid-span. Measured directly: these
+    entities landed at Tier 1 (Exact) only 5.3% of the time vs. 39.8%
+    corpus-wide, because `lower(concept_name) = ?` exact/synonym lookups
+    require lexical equality that an embedded newline breaks. A first
+    version of this fix lived only inside normalize_entity() as a
+    search-key cleanup and recovered 173/538 (32.2%) to a better tier --
+    moved to Stage 1 instead (this function, consumed by
+    expand_text_and_track_offsets() below) so GLiNER's OWN extraction sees
+    clean text too, not just Stage 2b's search key.
+
+    NOT a blanket "\\n -> space" collapse -- that was tried and directly
+    measured to make 15/538 (2.8%) WORSE, and looking at exactly which ones
+    revealed why: 'chloride \\n110' (a lab name glued to its value from the
+    next line), 'DM \\nHTN', 'Diabetes\\nGERD' (separate problem-list items
+    merged into one entity) are genuine SPAN-BOUNDARY bugs upstream of this
+    function, not word-wraps -- collapsing them manufactures a fake-coherent
+    phrase that matches nothing real, which is worse than leaving the
+    newline in place. The empirical signal that separates the two cases,
+    checked directly against all 538: every genuine wrap continues in
+    lowercase ('\\nhypertension', '\\nassociated', '\\nheparin'); every bad
+    case starts the next line uppercase or with a digit ('\\n110', '\\nHTN',
+    '\\nGERD', '\\nAbd'). So a newline only qualifies when: (1) it is not
+    part of a blank-line paragraph gap on either side (a real boundary,
+    e.g. between sections or list stanzas), (2) the next line is not a
+    SECTION_HEADER_RE match, and (3) the first non-whitespace character
+    after it is lowercase. Not perfect -- a wrapped proper noun would be
+    missed -- but a large, evidenced improvement over collapsing
+    everything. Doesn't touch the text itself or section detection:
+    segment_sections() runs on the untouched raw_text separately, in true
+    original coordinates, completely unaffected by anything here.
+    """
+    n = len(text)
+    regions = []
+    for m in re.finditer(r"\n", text):
+        p = m.start()
+        i = p - 1
+        while i >= 0 and text[i] in " \t":
+            i -= 1
+        if i >= 0 and text[i] == "\n":
+            continue  # blank-line gap before this newline -- a real boundary
+        j = p + 1
+        while j < n and text[j] in " \t":
+            j += 1
+        if j >= n or text[j] == "\n":
+            continue  # end of note, or a blank-line gap after -- keep it
+        if not text[j].islower():
+            continue  # next line starts uppercase/digit -- likely a new
+                     # list item / lab value / diagnosis, not a word-wrap
+        line_end = text.find("\n", j)
+        line = text[j:line_end if line_end != -1 else n]
+        if SECTION_HEADER_RE.match(line):
+            continue
+        # Collapse text[i+1:j] -- the \n PLUS any trailing whitespace before
+        # it (i+1 is one past the backward scan's stopping point above) AND
+        # any leading whitespace on the next line -- to exactly one space.
+        # Using [p:j] alone (just the \n and what follows) was a real bug:
+        # "portal  \nhypertension" (two trailing spaces before the \n) would
+        # collapse to "portal   hypertension" (three spaces total), which
+        # still fails the Tier 1 `lower(concept_name) = ?` exact-match this
+        # whole fix exists for -- caught by checking offset self-consistency
+        # against real note text, not assumed correct from the regex alone.
+        regions.append((i + 1, j))
+    return regions
+
+
 def expand_text_and_track_offsets(text: str, abbrev_dict: dict, conn=None):
     """Expands known abbreviations, tracking original<->expanded offsets.
 
@@ -376,9 +449,44 @@ def expand_text_and_track_offsets(text: str, abbrev_dict: dict, conn=None):
     expansions_log = []
     offset_shift = 0
 
-    for token in doc:
-        if token.is_stop or token.is_punct or token.is_space:
+    # Soft line-wrap collapses (2026-08-17/18, _find_soft_linewrap_regions())
+    # are merged into the SAME left-to-right, single-offset_shift pass as
+    # abbreviation tokens below, keyed by their true-original start position
+    # -- not run as a separate pre-pass on its own copy of the text. Doing it
+    # as a separate pass would mean computing two independent offset shifts
+    # against two different intermediate texts and composing them, which is
+    # exactly the kind of two-stage coordinate math this codebase's own
+    # "Time Machine" (entity_extraction.map_offsets_to_original()) already
+    # gets right in ONE pass for abbreviations; reusing that same discipline
+    # here instead of re-deriving a second, parallel one is the point.
+    linewrap_events = [
+        {"kind": "linewrap", "orig_start": start, "orig_end": end}
+        for start, end in _find_soft_linewrap_regions(text)
+    ]
+    token_events = [
+        {"kind": "token", "token": token, "orig_start": token.idx,
+         "orig_end": token.idx + len(token.text)}
+        for token in doc
+        if not (token.is_stop or token.is_punct or token.is_space)
+    ]
+    events = sorted(linewrap_events + token_events, key=lambda e: e["orig_start"])
+
+    for event in events:
+        if event["kind"] == "linewrap":
+            orig_start, orig_end = event["orig_start"], event["orig_end"]
+            old_len = orig_end - orig_start
+            exp_start = orig_start + offset_shift
+            exp_end = exp_start + 1
+            expansions_log.append({
+                "abbrev": text[orig_start:orig_end], "expansion": " ",
+                "orig_start": orig_start, "orig_end": orig_end,
+                "exp_start": exp_start, "exp_end": exp_end, "ambiguous": False,
+            })
+            expanded_text = expanded_text[:exp_start] + " " + expanded_text[exp_start + old_len:]
+            offset_shift += 1 - old_len
             continue
+
+        token = event["token"]
 
         token_lower = token.text.lower()
         meanings = abbrev_dict.get(token_lower)

@@ -99,7 +99,13 @@ PRE = _load_pure_functions(
     # conn=None and return early), so extracting them costs nothing.
     {"segment_sections", "section_for_offset", "expand_text_and_track_offsets",
      "_numeric_context_kind", "_select_by_numeric_context",
-     "_select_by_groundability", "_omop_domain_for_meaning"},
+     "_select_by_groundability", "_omop_domain_for_meaning",
+     # 2026-08-18: soft-line-wrap collapse, folded into
+     # expand_text_and_track_offsets()'s own merged-event loop -- same
+     # "every helper it calls must be in this set" lesson as the comment
+     # above, added proactively this time instead of discovered via a
+     # silently-red suite.
+     "_find_soft_linewrap_regions"},
 )
 EXT = _load_pure_functions(
     "entity_extraction.py",

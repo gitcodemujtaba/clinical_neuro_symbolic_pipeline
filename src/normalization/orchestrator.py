@@ -78,6 +78,25 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
     domain set lets that existing ambiguity-detection machinery do its job
     instead of being starved of the evidence it needs.
     """
+    # 2026-08-17: 869/20,578 entities (4.2% of the whole corpus) carry a
+    # literal newline mid-span -- MIMIC's own fixed-width line wrapping cuts
+    # straight through a continuous phrase ("portal  \nhypertension"), not a
+    # section/list boundary in most cases. Measured directly: these entities
+    # land at Tier 1 (Exact) only 5.3% of the time vs. 39.8% corpus-wide, and
+    # Tier 3 (Semantic, the weakest tier that still matches) 43.5% of the
+    # time vs. 32.8% corpus-wide -- lower-confidence outcomes driven purely
+    # by whitespace noise breaking `lower(concept_name) = ?` exact/synonym
+    # equality, not genuine ambiguity. Every one of this function's 9 uses
+    # of entity_text is for search/ranking/embedding, none for
+    # display/provenance (that's the caller's original_text/expanded_text,
+    # untouched by this), so collapsing whitespace here once is safe for
+    # the whole function. Does NOT fix the separate, rarer case where a
+    # span crosses a genuine content boundary (e.g. two distinct diagnosis-
+    # list line items merged into one entity, "abdomen\nPneumonia") --
+    # that's an extraction/span-boundary problem this can't and shouldn't
+    # paper over by collapsing the newline into a nonsense phrase.
+    entity_text = re.sub(r"\s+", " ", entity_text).strip()
+
     search_text = entity_text.lower().strip()
     vocabs = VOCAB_BY_LABEL.get(gliner_label, DEFAULT_VOCAB)
     domains = domain_override if domain_override is not None else GLINER_LABEL_TO_DOMAIN.get(gliner_label)
