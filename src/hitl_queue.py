@@ -36,6 +36,8 @@ exist, tagged by source_table so the UI/analysis can tell them apart.
 import json
 import re
 
+import duckdb
+
 from src.provenance import (
     provenance_alter_statements,
     provenance_column_sql,
@@ -76,6 +78,16 @@ def ensure_hitl_queue_table(conn):
     # candidates for the next batch, same "additive ALTER, never destructive"
     # pattern as every other migration in this codebase.
     conn.sql("ALTER TABLE hitl_review_queue ADD COLUMN IF NOT EXISTS ingested_at TIMESTAMP;")
+    # 2026-08-17 (UI build): a free-text field a reviewer can fill in
+    # regardless of decision (APPROVED/CORRECTED/REJECTED alike) -- unlike
+    # rejection_reason, which only makes sense on a REJECTED case, this is
+    # for anything worth flagging for future pipeline improvement (e.g. "the
+    # context clearly says X, a context-pattern rule for this abbreviation
+    # would have caught it"). This is also the real, independent ground
+    # truth src.abbreviation_flywheel.mine_context_rules() reads from
+    # hitl_review_queue -- until reviewers actually use this field, that
+    # mechanism has nothing to mine, by design.
+    conn.sql("ALTER TABLE hitl_review_queue ADD COLUMN IF NOT EXISTS reviewer_comment VARCHAR;")
     for stmt in provenance_alter_statements("hitl_review_queue"):
         conn.sql(stmt)
 
@@ -316,7 +328,17 @@ def _presented_suggestion_from_tier_gate_decision(row: dict) -> dict:
         "candidates": candidates,
         "routing_decision": row.get("mollm_routing_decision"),
         "tier": row.get("tier"),
+        "confidence_tier_in": row.get("tier"),  # UI compat: see this dict's own field docs below
         "composite_confidence": row.get("composite_confidence"),
+        # 2026-08-17 (UI build): route_tier()'s own plain-language explanation
+        # of why this tier -- "3/3 unanimous SUPPORTED_1, composite_confidence
+        # 0.85", "non-unanimous verdicts {...}; calibrator bypassed --
+        # coronary-artery-segment trap", etc. This is the single field that
+        # answers "how did the pipeline reach this conclusion", which nothing
+        # else in this dict (candidates, models) states directly in plain
+        # language -- a reviewer previously had to infer it from the raw
+        # verdict list.
+        "routing_basis": row.get("routing_basis"),
         "models": row.get("models"),
         "suggested_omop_concept_id": suggested_id,
         "local_context": row.get("local_context"),
@@ -339,20 +361,34 @@ def enqueue_pending_cases(conn, is_test: bool = True) -> int:
     """
     ensure_hitl_queue_table(conn)
 
-    decision_rows = conn.execute("""
-        SELECT d.mollm_call_id, d.entity_id, d.note_id, d.queue_reason,
-               d.mollm_routing_decision, d.confidence_tier_in, d.composite_confidence,
-               d.models, e.original_text, e.entity_label, n.candidates,
-               e.local_context, e.section_name, e.assertion_status, e.experiencer
-        FROM mollm_decisions d
-        LEFT JOIN extracted_entities e ON e.entity_id = d.entity_id
-        LEFT JOIN normalized_entities n ON n.entity_id = d.entity_id
-        WHERE d.is_test = ? AND d.error IS NULL
-          AND NOT EXISTS (
-              SELECT 1 FROM hitl_review_queue q
-              WHERE q.source_table = 'mollm_decisions' AND q.source_call_id = d.mollm_call_id
-          )
-    """, [is_test]).fetchall()
+    # 2026-08-17 (found live, while UI-testing against a throwaway DB that
+    # only ever exercised the tier-gate path): mollm_decisions and
+    # mollm_review_decisions, unlike mollm_tier_gate_decisions below, had no
+    # guard for "this table doesn't exist yet on this DB" -- a fresh/test DB
+    # crashed here instead of degrading to "nothing to queue from this
+    # source", the exact failure mode
+    # scripts/run_stage3_tier_gate.py's already_processed_entity_ids() (and
+    # the tier-gate table's own CREATE TABLE IF NOT EXISTS just below) both
+    # already guard against. Same fix, same reasoning: this codebase's own
+    # 4 source-table history is real (Objective 2/3/Pass 4), but a DB that
+    # only ever ran the current pipeline shouldn't need to know that.
+    try:
+        decision_rows = conn.execute("""
+            SELECT d.mollm_call_id, d.entity_id, d.note_id, d.queue_reason,
+                   d.mollm_routing_decision, d.confidence_tier_in, d.composite_confidence,
+                   d.models, e.original_text, e.entity_label, n.candidates,
+                   e.local_context, e.section_name, e.assertion_status, e.experiencer
+            FROM mollm_decisions d
+            LEFT JOIN extracted_entities e ON e.entity_id = d.entity_id
+            LEFT JOIN normalized_entities n ON n.entity_id = d.entity_id
+            WHERE d.is_test = ? AND d.error IS NULL
+              AND NOT EXISTS (
+                  SELECT 1 FROM hitl_review_queue q
+                  WHERE q.source_table = 'mollm_decisions' AND q.source_call_id = d.mollm_call_id
+              )
+        """, [is_test]).fetchall()
+    except duckdb.CatalogException:
+        decision_rows = []
     decision_cols = ["mollm_call_id", "entity_id", "note_id", "queue_reason",
                      "mollm_routing_decision", "confidence_tier_in", "composite_confidence",
                      "models", "original_text", "entity_label", "candidates",
@@ -371,22 +407,25 @@ def enqueue_pending_cases(conn, is_test: bool = True) -> int:
     # queue wasn't showing which OMOP/SNOMED code the entity was mapped to
     # at all for this source -- the concept_id existed only buried inside a
     # model's free-text reasoning.
-    review_rows = conn.execute("""
-        SELECT r.review_call_id, r.entity_id, r.note_id, r.queue_reason,
-               r.al_routing_decision, r.confidence_tier_in, r.composite_confidence,
-               r.models, r.original_text, r.proposed_entity_label, r.proposed_concept_name,
-               r.assessment,
-               e.local_context, e.section_name, e.assertion_status, e.experiencer,
-               n.candidates
-        FROM mollm_review_decisions r
-        LEFT JOIN extracted_entities e ON e.entity_id = r.entity_id
-        LEFT JOIN normalized_entities n ON n.entity_id = r.entity_id
-        WHERE r.is_test = ? AND r.error IS NULL
-          AND NOT EXISTS (
-              SELECT 1 FROM hitl_review_queue q
-              WHERE q.source_table = 'mollm_review_decisions' AND q.source_call_id = r.review_call_id
-          )
-    """, [is_test]).fetchall()
+    try:
+        review_rows = conn.execute("""
+            SELECT r.review_call_id, r.entity_id, r.note_id, r.queue_reason,
+                   r.al_routing_decision, r.confidence_tier_in, r.composite_confidence,
+                   r.models, r.original_text, r.proposed_entity_label, r.proposed_concept_name,
+                   r.assessment,
+                   e.local_context, e.section_name, e.assertion_status, e.experiencer,
+                   n.candidates
+            FROM mollm_review_decisions r
+            LEFT JOIN extracted_entities e ON e.entity_id = r.entity_id
+            LEFT JOIN normalized_entities n ON n.entity_id = r.entity_id
+            WHERE r.is_test = ? AND r.error IS NULL
+              AND NOT EXISTS (
+                  SELECT 1 FROM hitl_review_queue q
+                  WHERE q.source_table = 'mollm_review_decisions' AND q.source_call_id = r.review_call_id
+              )
+        """, [is_test]).fetchall()
+    except duckdb.CatalogException:
+        review_rows = []
     review_cols = ["review_call_id", "entity_id", "note_id", "queue_reason",
                   "al_routing_decision", "confidence_tier_in", "composite_confidence",
                   "models", "original_text", "proposed_entity_label", "proposed_concept_name",
@@ -467,9 +506,9 @@ def enqueue_pending_cases(conn, is_test: bool = True) -> int:
     tier_gate_rows = conn.execute("""
         SELECT g.mollm_call_id, g.entity_id, g.note_id, g.queue_reason,
                g.mollm_routing_decision, g.tier, g.composite_confidence,
-               g.final_candidate_index, g.models, e.original_text, e.entity_label,
-               n.candidates, e.local_context, e.section_name, e.assertion_status,
-               e.experiencer
+               g.final_candidate_index, g.models, g.routing_basis, e.original_text,
+               e.entity_label, n.candidates, e.local_context, e.section_name,
+               e.assertion_status, e.experiencer
         FROM mollm_tier_gate_decisions g
         LEFT JOIN extracted_entities e ON e.entity_id = g.entity_id
         LEFT JOIN normalized_entities n ON n.entity_id = g.entity_id
@@ -482,9 +521,9 @@ def enqueue_pending_cases(conn, is_test: bool = True) -> int:
     """, [is_test]).fetchall()
     tier_gate_cols = ["mollm_call_id", "entity_id", "note_id", "queue_reason",
                       "mollm_routing_decision", "tier", "composite_confidence",
-                      "final_candidate_index", "models", "original_text", "entity_label",
-                      "candidates", "local_context", "section_name", "assertion_status",
-                      "experiencer"]
+                      "final_candidate_index", "models", "routing_basis", "original_text",
+                      "entity_label", "candidates", "local_context", "section_name",
+                      "assertion_status", "experiencer"]
 
     for raw in tier_gate_rows:
         row = dict(zip(tier_gate_cols, raw))
@@ -531,7 +570,7 @@ def load_hitl_queue(conn, status: str = None, note_id: str = None,
         SELECT hitl_case_id, source_table, source_call_id, entity_id, note_id,
                queue_reason, presented_suggestion, reviewer_decision,
                corrected_concept_id, rejection_reason, review_duration,
-               final_ingestion_path, created_at
+               final_ingestion_path, created_at, reviewer_comment
         FROM hitl_review_queue
         WHERE {' AND '.join(where)}
         ORDER BY created_at DESC
@@ -548,14 +587,14 @@ def load_hitl_queue(conn, status: str = None, note_id: str = None,
             "presented_suggestion": suggestion, "reviewer_decision": r[7],
             "corrected_concept_id": r[8], "rejection_reason": r[9],
             "review_duration": r[10], "final_ingestion_path": r[11],
-            "created_at": r[12],
+            "created_at": r[12], "reviewer_comment": r[13],
         })
     return out
 
 
 def submit_review(conn, hitl_case_id: str, reviewer_decision: str,
                   corrected_concept_id: int = None, rejection_reason: str = None,
-                  review_duration: float = None):
+                  review_duration: float = None, reviewer_comment: str = None):
     """Records a human reviewer's verdict on one queued case.
 
     reviewer_decision must be one of 'APPROVED' / 'CORRECTED' / 'REJECTED'
@@ -565,6 +604,14 @@ def submit_review(conn, hitl_case_id: str, reviewer_decision: str,
     the only two outcomes Step 4's KG3 write-back (src/kg3_ingestion.py)
     will ever read as ingestible. REJECTED leaves final_ingestion_path NULL:
     a rejected case is not written to KG3 at all, by design.
+
+    reviewer_comment (2026-08-17): free text, independent of
+    rejection_reason -- available regardless of decision, not just on
+    REJECTED. This is the real ground truth
+    src.abbreviation_flywheel.mine_context_rules() reads back from
+    hitl_review_queue; a reviewer explaining WHY (not just WHAT) is what
+    eventually lets that mechanism -- or any other future analysis --
+    improve the pipeline from real cases instead of guessing.
     """
     if reviewer_decision not in ("APPROVED", "CORRECTED", "REJECTED"):
         raise ValueError(f"reviewer_decision must be APPROVED/CORRECTED/REJECTED, got {reviewer_decision!r}")
@@ -572,7 +619,7 @@ def submit_review(conn, hitl_case_id: str, reviewer_decision: str,
     conn.execute("""
         UPDATE hitl_review_queue
         SET reviewer_decision = ?, corrected_concept_id = ?, rejection_reason = ?,
-            review_duration = ?, final_ingestion_path = ?
+            review_duration = ?, final_ingestion_path = ?, reviewer_comment = ?
         WHERE hitl_case_id = ?
     """, [reviewer_decision, corrected_concept_id, rejection_reason,
-          review_duration, final_ingestion_path, hitl_case_id])
+          review_duration, final_ingestion_path, reviewer_comment, hitl_case_id])

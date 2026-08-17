@@ -129,6 +129,8 @@ with col1:
             f"Already reviewed: **{case['reviewer_decision']}**"
             + (f" — {case['rejection_reason']}" if case.get("rejection_reason") else "")
         )
+        if case.get("reviewer_comment"):
+            st.caption(f"💬 {case['reviewer_comment']}")
     else:
         st.warning(
             "Queued for human review regardless of this decision's own confidence tier "
@@ -141,6 +143,16 @@ with col1:
     st.markdown(f"**Routing decision:** `{routing}`  **Tier:** `{tier}`  **Confidence:** `{conf}`")
     if case["queue_reason"]:
         st.markdown(f"**Queue reason:** `{case['queue_reason']}`")
+
+    # 2026-08-17: route_tier()'s own plain-language explanation -- "how did
+    # the pipeline reach this conclusion", the thing a reviewer previously
+    # had to reconstruct by reading raw model verdicts. Only present for
+    # mollm_tier_gate_decisions-sourced cases (the current production gate);
+    # absent for the two older sources, which is expected, not a bug.
+    routing_basis = suggestion.get("routing_basis")
+    if routing_basis:
+        st.markdown("**How the pipeline reached this conclusion:**")
+        st.info(routing_basis)
 
     candidates = suggestion.get("candidates") or []
     if candidates:
@@ -184,6 +196,19 @@ with col2:
         if decision == "REJECTED":
             rejection_reason = st.text_area("Rejection reason")
 
+        # 2026-08-17: independent of rejection_reason -- available on every
+        # decision, not just REJECTED. This is the real ground truth
+        # src.abbreviation_flywheel.mine_context_rules() (and any future
+        # pipeline-improvement analysis) reads back from hitl_review_queue;
+        # a reviewer explaining WHY, not just WHAT, is what actually
+        # accumulates into something the pipeline can learn from later.
+        comment = st.text_area(
+            "Comments (optional) — notes for future pipeline improvement",
+            placeholder="e.g. 'context clearly says X, a rule for this "
+                        "abbreviation would have caught it' or 'candidate "
+                        "#2 was closer but still not quite right'",
+        )
+
         submitted = st.form_submit_button("Submit")
         if submitted:
             duration = time.time() - st.session_state.hitl_case_started_at
@@ -192,6 +217,7 @@ with col2:
                 corrected_concept_id=corrected_id,
                 rejection_reason=rejection_reason,
                 review_duration=round(duration, 1),
+                reviewer_comment=comment.strip() or None,
             )
             st.session_state.hitl_index = min(idx + 1, len(queue) - 1)
             st.session_state.hitl_case_started_at = time.time()
