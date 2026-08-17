@@ -49,7 +49,7 @@ prediction overlapping >=2 distinct gold annotations so this failure mode is
 counted automatically instead of found by eye in the wrong-concept examples.
 
 MEDICATION CROSSWALK. Stage 2b normalizes Medication entities against RxNorm,
-not SNOMED (src/normalization.py VOCAB_BY_LABEL), so a bare concept_id
+not SNOMED (src/normalization/constants.py's VOCAB_BY_LABEL), so a bare concept_id
 comparison against gold's SNOMED concept_id would score every correct
 medication link as wrong purely on vocabulary mismatch. This script reuses
 VocabularyRetriever.snomed_code_for_concept() from src/retrieval.py -- the
