@@ -23,6 +23,17 @@ sys.path.insert(0, PROJECT_DIR)
 
 
 def _install_stubs():
+    """Returns the list of module names this call actually stubbed (i.e.
+    weren't already real, present modules). 2026-08-17 fix: this used to
+    leave a fake `duckdb` module permanently in sys.modules with no
+    cleanup -- caught live when it made tests/test_tier_gate_grading.py
+    fail with "module 'duckdb' has no attribute 'connect'" ONLY when run
+    as part of the full suite (this file runs earlier, alphabetically),
+    never standalone. Same bug, same fix, as
+    tests/test_tier12_ranking.py's identical _install_stubs().
+    """
+    installed = []
+
     if "torch" not in sys.modules:
         torch = types.ModuleType("torch")
 
@@ -32,6 +43,7 @@ def _install_stubs():
 
         torch.no_grad = _NoGrad
         sys.modules["torch"] = torch
+        installed.append("torch")
 
     if "transformers" not in sys.modules:
         transformers = types.ModuleType("transformers")
@@ -48,16 +60,26 @@ def _install_stubs():
         transformers.AutoTokenizer = _FromPretrained
         transformers.AutoModel = _FromPretrained
         sys.modules["transformers"] = transformers
+        installed.append("transformers")
 
     if "duckdb" not in sys.modules:
         duckdb_stub = types.ModuleType("duckdb")
         duckdb_stub.Error = Exception
         sys.modules["duckdb"] = duckdb_stub
+        installed.append("duckdb")
+
+    return installed
 
 
-_install_stubs()
+_stubbed_modules = _install_stubs()
 
 import src.normalization as N  # noqa: E402
+
+# See tests/test_tier12_ranking.py's identical cleanup for why this matters:
+# only remove the stubs THIS file installed, so a later test file's real
+# import gets the genuine library, not a leaked stand-in.
+for _name in _stubbed_modules:
+    sys.modules.pop(_name, None)
 
 
 class _FakeResult:

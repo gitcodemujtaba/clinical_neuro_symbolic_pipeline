@@ -25,9 +25,17 @@ sys.path.insert(0, PROJECT_DIR)
 sys.path.insert(0, os.path.join(PROJECT_DIR, "tests"))
 from test_tier12_ranking import _install_stubs  # noqa: E402
 
-_install_stubs()
+_stubbed_modules = _install_stubs()
 
 import src.normalization as N  # noqa: E402
+
+# 2026-08-17 fix: this call used to leave a fake `duckdb` (and possibly
+# torch/transformers) permanently in sys.modules with no cleanup -- the same
+# bug already fixed in test_tier12_ranking.py's and test_hybrid_retrieval.py's
+# own internal calls, just reached here via the imported helper instead of a
+# local copy. Only remove what THIS call actually stubbed.
+for _name in _stubbed_modules:
+    sys.modules.pop(_name, None)
 
 
 def run():

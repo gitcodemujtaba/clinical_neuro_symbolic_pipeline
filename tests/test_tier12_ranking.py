@@ -31,7 +31,21 @@ def _install_stubs():
     download or load a model. Only the names normalization.py touches at
     import time are provided; anything else it reaches for should fail loudly
     rather than be silently faked.
+
+    Returns the list of module names THIS CALL actually stubbed (i.e. that
+    weren't already real, present modules) -- the caller uses this to clean
+    up afterward. 2026-08-17 fix: this used to leave a fake `duckdb` module
+    permanently installed in sys.modules with no cleanup at all, so any test
+    FILE that happened to run later in the same pytest session (alphabetical
+    collection order can put this file before one that needs a real
+    duckdb.connect()) would silently get the empty stub instead of the real
+    library -- caught live via tests/test_tier_gate_grading.py failing with
+    "module 'duckdb' has no attribute 'connect'" only when run as part of
+    the full suite, never standalone. Real test-isolation bug, not
+    specific to that one new test.
     """
+    installed = []
+
     if "torch" not in sys.modules:
         torch = types.ModuleType("torch")
 
@@ -41,6 +55,7 @@ def _install_stubs():
 
         torch.no_grad = _NoGrad
         sys.modules["torch"] = torch
+        installed.append("torch")
 
     if "transformers" not in sys.modules:
         transformers = types.ModuleType("transformers")
@@ -57,14 +72,28 @@ def _install_stubs():
         transformers.AutoTokenizer = _FromPretrained
         transformers.AutoModel = _FromPretrained
         sys.modules["transformers"] = transformers
+        installed.append("transformers")
 
     if "duckdb" not in sys.modules:
         sys.modules["duckdb"] = types.ModuleType("duckdb")
+        installed.append("duckdb")
+
+    return installed
 
 
-_install_stubs()
+_stubbed_modules = _install_stubs()
 
 import src.normalization as N  # noqa: E402
+
+# Remove exactly the stubs THIS FILE installed, now that the one import that
+# needed them has completed -- any other test file (this one or a later one
+# in the same pytest session) that does a real `import torch`/`transformers`/
+# `duckdb` must get the genuine library, not this file's throwaway stand-in.
+# Modules that were ALREADY real before _install_stubs() ran are untouched
+# (never in _stubbed_modules), so this can't accidentally evict a real,
+# already-loaded module some earlier test file depended on.
+for _name in _stubbed_modules:
+    sys.modules.pop(_name, None)
 
 
 class FakeConn:
