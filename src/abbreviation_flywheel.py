@@ -10,8 +10,13 @@ consult the pipeline's own accumulated output instead:
 1. OBSERVED-FREQUENCY PRIORITY. Every ambiguous-expansion entity whose
    Stage 2b normalization reaches a real tier (not '0 (Failed)') is a weak
    observation: "this meaning, in this section, led somewhere real."
-   record_ambiguous_expansion_outcome() logs it; compute_frequency_priority()
-   aggregates enough of them into a per-abbreviation preferred meaning.
+   record_ambiguous_expansion_outcome() logs it unconditionally -- the
+   ledger (abbreviation_observed_expansions) is a passive analytics/audit
+   table, always populated, never itself gating anything.
+   compute_frequency_priority() is a SEPARATE, much stricter consumer of
+   that ledger: see "2026-08-17 POSTURE INVERSION" below for why it now
+   requires explicit allow-listing before it will ever return a real
+   ledger-derived answer.
 
 2. CONTEXT-PATTERN RULES. Once dry_run=False and real SME/HITL review flows
    through hitl_review_queue, mine_context_rules() turns confirmed
@@ -55,6 +60,32 @@ SAFE BY DEFAULT, same discipline as every other feature added this session:
 every lookup function returns None on a miss, a missing table, a DB error,
 or conn=None -- the caller's existing tiebreak chain is the fallback, never
 interrupted by this module's own failure.
+
+2026-08-17 POSTURE INVERSION -- mechanism 1 flipped from a block-list to an
+allow-list, after the FIRST real production-data run (50 train-split notes,
+Stage 1->2b) gold-checked 7/7 non-excluded abbreviations as WRONG (DM,
+IVF, air, CP, SBP, NC, ACS -- see
+docs/2026-08-17_Crosswalk_Fix_And_Flywheel_Production_Run.md). Worse: for
+several of those, `selection_basis='observed_frequency_priority'` had
+already started appearing in the ledger mid-batch -- i.e. the mechanism was
+actively re-selecting its own earlier wrong guesses within the SAME run,
+the exact circularity failure mode this module's design was meant to guard
+against, just far more widespread than the original ~20-abbreviation
+_ADDITIONAL_BIAS_ABBREVIATIONS list anticipated. A 7/7 real-data failure
+rate means "block the known-bad ones" was the wrong shape of gate entirely:
+compute_frequency_priority() now requires an abbreviation to be explicitly
+in VERIFIED_ALLOW_LIST before it will ever return a ledger-derived answer,
+full stop -- absence of known bias is no longer sufficient, presence of
+verified-safe evidence is required. VERIFIED_ALLOW_LIST starts EMPTY: no
+abbreviation from this session's ledger has actually been gold-verified
+correct yet (the 7 checked were all wrong; the rest were never checked).
+Populate it only from real gold verification, the same discipline that
+caught this failure in the first place -- never from "wasn't on the old
+exclusion list," which is exactly the reasoning that just failed.
+_is_bias_excluded() and _ADDITIONAL_BIAS_ABBREVIATIONS are kept, not
+removed, as a second, redundant safety layer: even an abbreviation
+mistakenly added to VERIFIED_ALLOW_LIST later still can't win if it matches
+a known-bias pattern.
 """
 import re
 
@@ -63,7 +94,17 @@ FREQUENCY_PRIORITY_MARGIN = 0.20  # winning meaning must lead the runner-up by t
 MIN_CONTEXT_RULE_SUPPORT = 5
 CONTEXT_WINDOW_CHARS = 60  # generous char slice, tokenized down to whole words below
 
-# See module docstring's "BOTH MECHANISMS EXCLUDE..." paragraph -- sourced
+# Allow-list gate for mechanism 1 (compute_frequency_priority()) -- see the
+# module docstring's "2026-08-17 POSTURE INVERSION" section. Starts EMPTY.
+# An abbreviation belongs here only after its dominant ledger meaning has
+# been checked against real gold annotations and confirmed correct -- never
+# added speculatively or because it "seems safe" or "wasn't flagged."
+# Lowercase, matching expand_text_and_track_offsets()'s token_lower lookup.
+VERIFIED_ALLOW_LIST = set()
+
+# See module docstring's "POSTURE INVERSION" paragraph -- this list is now a
+# secondary, redundant safety net (mechanism 1 requires VERIFIED_ALLOW_LIST
+# membership first), kept rather than removed as defense in depth. Sourced
 # directly from this session's own confirmed-wrong findings, not guessed.
 # Lowercase, matching expand_text_and_track_offsets()'s token_lower lookup.
 _ADDITIONAL_BIAS_ABBREVIATIONS = {
@@ -146,12 +187,18 @@ def record_ambiguous_expansion_outcome(conn, abbreviation: str, clinical_context
 
 def compute_frequency_priority(conn, abbreviation: str, meanings: list):
     """Returns the meaning with a clearly-dominant observed hit-count share
-    among `meanings`, or None when the abbreviation is bias-excluded, there
-    isn't enough data, or no single meaning clearly dominates (a real,
-    close ambiguity -- same conservatism as
-    src.preprocessing._select_by_groundability(), which also returns None
-    rather than force a pick when the evidence doesn't clearly separate the
-    candidates).
+    among `meanings`, or None when the abbreviation isn't on
+    VERIFIED_ALLOW_LIST, is bias-excluded, there isn't enough data, or no
+    single meaning clearly dominates (a real, close ambiguity -- same
+    conservatism as src.preprocessing._select_by_groundability(), which
+    also returns None rather than force a pick when the evidence doesn't
+    clearly separate the candidates).
+
+    ALLOW-LIST GATE (checked first, before any DB query): see the module
+    docstring's "2026-08-17 POSTURE INVERSION" section. An abbreviation
+    must be explicitly verified-safe to ever get a real answer here -- the
+    ledger can accumulate arbitrarily much data for anything else and it
+    still returns None, by design, until a human promotes it.
 
     "Clearly dominant" = total hit_count >= MIN_FREQUENCY_PRIORITY_SUPPORT
     AND the winner's share of the total exceeds the runner-up's share by at
@@ -160,6 +207,8 @@ def compute_frequency_priority(conn, abbreviation: str, meanings: list):
     lead is not enough to trust as a production tiebreak.
     """
     if conn is None or not abbreviation or not meanings:
+        return None
+    if (abbreviation or "").strip().lower() not in VERIFIED_ALLOW_LIST:
         return None
     if _is_bias_excluded(abbreviation):
         return None

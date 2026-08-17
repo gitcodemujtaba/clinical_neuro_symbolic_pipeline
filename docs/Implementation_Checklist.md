@@ -115,7 +115,9 @@ Supports: Objective 3
 
 - [x] `ui/app.py` — Streamlit entrypoint. **Built 2026-08-15** (minimal landing page + sidebar nav; `streamlit` was pinned in `requirements.txt` but not actually installed until this session).
 - [x] `2_🩺_HITL_Review_Queue.py` — **Built 2026-08-15**, the first real Streamlit page in this repo. See Stage 4 above.
-- [ ] `1_🚀_Pipeline_Runner.py`, `3_🔍_Troubleshooting.py`, `4_📊_Evaluation_Metrics.py` — still 0 lines
+- [x] `1_🚀_Pipeline_Runner.py` — **Built 2026-08-17**. Per-note, per-tracked-entity trace across all 4 stages (Stage 1 confidence/assertion/section, Stage 2a expansion/ambiguity, Stage 2b match tier + ranked candidates, Stage 3 routing basis + per-model verdicts + final tier badge). Verified via `streamlit.testing.v1.AppTest` against fixture data including an ambiguous entity case.
+- [x] `4_📊_Evaluation_Metrics.py` — **Built 2026-08-17**. 4 tabs, every number computed live against the current DB selection, nothing pre-baked: tier distribution, precision vs. gold (via new `evaluation/tier_gate_grading.py`), recall/completeness (via `scripts/score_gold_recall.py`, includes the ambiguous-abbreviation-tiebreak breakdown), calibrator status (training metadata + a leakage check against the currently-selected notes). See `docs/2026-08-17_Crosswalk_Fix_And_Flywheel_Production_Run.md`.
+- [ ] `3_🔍_Troubleshooting.py` — still 0 lines
 - [ ] `ui/components/graph_visualizer.py`, `json_tree_view.py`, `offset_highlighter.py` — still 0 lines
 
 ## Housekeeping / Cross-Cutting

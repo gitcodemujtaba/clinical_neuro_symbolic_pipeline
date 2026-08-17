@@ -12,6 +12,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import src.abbreviation_flywheel as flywheel  # noqa: E402
 from src.abbreviation_flywheel import (  # noqa: E402
     _is_bias_excluded, compute_frequency_priority, context_window,
     mine_context_rules, record_ambiguous_expansion_outcome, select_by_context_pattern)
@@ -95,7 +96,10 @@ def run():
     check("empty/None text is excluded (safe default)", _is_bias_excluded(""))
 
     # ======================================================================
-    # Mechanism 1: observed-frequency priority
+    # Mechanism 1: observed-frequency priority, gated by VERIFIED_ALLOW_LIST
+    # (2026-08-17 posture inversion -- see module docstring). Tests must not
+    # leak allow-list membership across each other, so each one adds/removes
+    # its own entry.
     # ======================================================================
     conn = FakeConn()
     check("no data -> None, not a forced pick",
@@ -108,29 +112,56 @@ def run():
             "Condition", "alphabetical_default")
     record_ambiguous_expansion_outcome(
         conn, "copd", "General", "cyclophosphamide", "Drug", "alphabetical_default")
-    winner = compute_frequency_priority(
-        conn, "copd", ["chronic obstructive pulmonary disease", "cyclophosphamide"])
-    check("a clearly dominant meaning (4 vs 1) is returned",
-          winner == "chronic obstructive pulmonary disease")
+
+    check("a clearly dominant meaning (4 vs 1) is NOT returned when the "
+          "abbreviation is not on VERIFIED_ALLOW_LIST, no matter how "
+          "dominant the ledger signal is",
+          compute_frequency_priority(
+              conn, "copd", ["chronic obstructive pulmonary disease", "cyclophosphamide"]
+          ) is None)
+
+    flywheel.VERIFIED_ALLOW_LIST.add("copd")
+    try:
+        winner = compute_frequency_priority(
+            conn, "copd", ["chronic obstructive pulmonary disease", "cyclophosphamide"])
+        check("the SAME dominant ledger data IS returned once explicitly "
+              "allow-listed",
+              winner == "chronic obstructive pulmonary disease")
+    finally:
+        flywheel.VERIFIED_ALLOW_LIST.discard("copd")
 
     conn2 = FakeConn()
     record_ambiguous_expansion_outcome(conn2, "ms", "General", "multiple sclerosis",
                                        "Condition", "alphabetical_default")
     record_ambiguous_expansion_outcome(conn2, "ms", "General", "morphine sulfate",
                                        "Drug", "alphabetical_default")
-    check("a genuine near-tie (1 vs 1) returns None -- not enough support anyway",
-          compute_frequency_priority(conn2, "ms", ["multiple sclerosis", "morphine sulfate"])
-          is None)
+    flywheel.VERIFIED_ALLOW_LIST.add("ms")
+    try:
+        check("a genuine near-tie (1 vs 1) returns None -- not enough support "
+              "anyway, even when allow-listed",
+              compute_frequency_priority(conn2, "ms", ["multiple sclerosis", "morphine sulfate"])
+              is None)
+    finally:
+        flywheel.VERIFIED_ALLOW_LIST.discard("ms")
 
     conn3 = FakeConn()
     for _ in range(3):
         record_ambiguous_expansion_outcome(conn3, "lad", "General",
                                            "left anterior descending artery",
                                            "Spec Anatomic Site", "alphabetical_default")
-    check("a bias-excluded abbreviation NEVER returns a frequency-priority pick, "
-          "no matter how much (self-reinforcing) data exists",
-          compute_frequency_priority(conn3, "lad", ["left anterior descending artery",
-                                                     "lymphadenopathy"]) is None)
+    flywheel.VERIFIED_ALLOW_LIST.add("lad")
+    try:
+        check("a bias-excluded abbreviation NEVER returns a frequency-priority "
+              "pick even if mistakenly allow-listed -- the bias check is a "
+              "second, redundant gate, not a replacement for the allow-list",
+              compute_frequency_priority(conn3, "lad", ["left anterior descending artery",
+                                                         "lymphadenopathy"]) is None)
+    finally:
+        flywheel.VERIFIED_ALLOW_LIST.discard("lad")
+
+    check("VERIFIED_ALLOW_LIST starts empty in the real module (no "
+          "speculative pre-seeding)",
+          len(flywheel.VERIFIED_ALLOW_LIST) == 0)
 
     # ======================================================================
     # context_window()

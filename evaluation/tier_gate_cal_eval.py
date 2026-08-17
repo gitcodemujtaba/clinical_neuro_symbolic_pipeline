@@ -64,12 +64,23 @@ def _code_version():
         return None
 
 
-def build_labeled_examples(conn, vocab, gold_by_note):
+def build_labeled_examples(conn, vocab, gold_by_note, note_ids=None):
     """Returns a list of dicts: note_id, text, label (1/0), feature_context,
     vector (pre-featurized, so fitting doesn't re-run featurize() per split),
     plus diagnostic fields (top_verdict, vote_counts) for the printed report.
+
+    note_ids defaults to the module-level NOTE_IDS (the 2026-08-17 overnight
+    31-note corpus) -- unchanged behavior for every existing caller. Added
+    2026-08-17 (same day, later) so a caller can pass a different/expanded
+    note population (e.g. the overnight corpus plus proof20's 20 notes) to
+    test whether more volume moves the AUROC, without duplicating this
+    function's SQL/labeling logic a second time. KNOWN_GOLD_ERRORS below is
+    still only curated for the original 31 notes -- any gold-annotation
+    quirk specific to a newly-added note isn't corrected here, a known,
+    stated limitation rather than a silent one.
     """
-    note_ph = ",".join("?" * len(NOTE_IDS))
+    note_ids = note_ids if note_ids is not None else NOTE_IDS
+    note_ph = ",".join("?" * len(note_ids))
     rows = conn.execute(f"""
         SELECT d.entity_id, d.note_id, d.models,
                e.original_text, e.expanded_text, e.entity_label,
@@ -80,7 +91,7 @@ def build_labeled_examples(conn, vocab, gold_by_note):
         JOIN extracted_entities e ON e.entity_id = d.entity_id
         JOIN normalized_entities n ON n.entity_id = d.entity_id
         WHERE d.note_id IN ({note_ph}) AND d.tier = 'TIER_4_ENSEMBLE_SPLIT'
-    """, NOTE_IDS).fetchall()
+    """, note_ids).fetchall()
     cols = [c[0] for c in conn.description]
     decisions = [dict(zip(cols, row)) for row in rows]
 

@@ -169,7 +169,14 @@ def test_section_for_offset_returns_none_before_first_header():
 
 def test_ambiguous_abbreviation_is_flagged_and_keeps_all_candidates():
     """The regression this guards: the old dict comprehension silently kept one
-    meaning per abbreviation, so 'MS' resolved to whichever row came last."""
+    meaning per abbreviation, so 'MS' resolved to whichever row came last.
+
+    2026-08-17 posture inversion: an ambiguous abbreviation not on
+    VERIFIED_ALLOW_LIST is no longer silently guessed at all -- it's left
+    unexpanded and routed downstream to fail safely (Tier 4/5/HITL) rather
+    than risk a confident wrong answer. 'ms' is not allow-listed (the list
+    starts empty), so this now asserts the FAIL-SAFE behavior, not the old
+    always-guess-alphabetically one."""
     abbrevs = {"ms": ["mitral stenosis", "morphine sulfate", "multiple sclerosis"],
                "sob": ["shortness of breath"]}
     raw = "Pt has MS and SOB today"
@@ -179,10 +186,33 @@ def test_ambiguous_abbreviation_is_flagged_and_keeps_all_candidates():
 
     assert log[0]["ambiguous"] is True
     assert len(log[0]["candidate_expansions"]) == 3
-    assert log[0]["expansion"] == "mitral stenosis", "expansion choice must be deterministic (sorted)"
+    assert log[0]["expansion"] == "MS", "not allow-listed -> left unexpanded, not guessed"
+    assert log[0]["selection_basis"] == "unvetted_ambiguous_unexpanded"
     assert log[1]["ambiguous"] is False
     assert "candidate_expansions" not in log[1]
-    assert expanded == "Pt has mitral stenosis and shortness of breath today"
+    assert expanded == "Pt has MS and shortness of breath today"
+
+
+def test_allow_listed_ambiguous_abbreviation_still_expands():
+    """The other side of the same gate: once an abbreviation is explicitly
+    verified-safe (VERIFIED_ALLOW_LIST), the pre-2026-08-17 behavior --
+    deterministic alphabetical-default expansion -- still applies. Proves
+    the gate is a real gate (both directions), not an accidental full stop."""
+    import src.abbreviation_flywheel as flywheel
+
+    abbrevs = {"ms": ["mitral stenosis", "morphine sulfate", "multiple sclerosis"]}
+    raw = "Pt has MS today"
+    PRE["nlp"] = lambda _t: [_FakeToken("Pt", 0), _FakeToken("has", 3), _FakeToken("MS", 7),
+                             _FakeToken("today", 10)]
+    flywheel.VERIFIED_ALLOW_LIST.add("ms")
+    try:
+        expanded, log = PRE["expand_text_and_track_offsets"](raw, abbrevs)
+    finally:
+        flywheel.VERIFIED_ALLOW_LIST.discard("ms")
+
+    assert log[0]["ambiguous"] is True
+    assert log[0]["expansion"] == "mitral stenosis"
+    assert expanded == "Pt has mitral stenosis today"
 
 
 def test_expansion_offsets_are_correct_on_both_sides():

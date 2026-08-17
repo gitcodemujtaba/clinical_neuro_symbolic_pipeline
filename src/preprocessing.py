@@ -336,26 +336,35 @@ def expand_text_and_track_offsets(text: str, abbrev_dict: dict, conn=None):
     """Expands known abbreviations, tracking original<->expanded offsets.
 
     abbrev_dict maps abbreviation -> LIST of meanings. When an abbreviation
-    has more than one known meaning, five tiebreaks are tried in order,
-    each only consulted when every one before it declined to pick (returned
-    None): (1) a mined context-pattern rule from real reviewer-confirmed
-    data (src.abbreviation_flywheel.select_by_context_pattern() -- 2026-08-17,
-    empty/no-op until real HITL/SME review data exists to mine from), (2)
-    numeric context around the token (_numeric_context_kind/
+    has more than one known meaning, up to four tiebreaks are tried in
+    order, each only consulted when every one before it declined to pick
+    (returned None): (1) a mined context-pattern rule from real reviewer-
+    confirmed data (src.abbreviation_flywheel.select_by_context_pattern() --
+    2026-08-17, empty/no-op until real HITL/SME review data exists to mine
+    from), (2) numeric context around the token (_numeric_context_kind/
     _select_by_numeric_context above), (3) the pipeline's own observed-
     frequency prior, excluding abbreviations with known systematic bias
     (src.abbreviation_flywheel.compute_frequency_priority(), 2026-08-17), (4)
-    OMOP groundability when nothing above resolved anything
-    (_select_by_groundability above -- prefers a candidate that resolves to
-    a real OMOP concept over one that doesn't, when exactly one does), (5)
-    if nothing resolves anything, the first (sorted) meaning is applied so
-    the expansion is still deterministic. Either way, the expansion record
-    carries `ambiguous: True` plus the full `candidate_expansions` list so
-    Stage 3 can reconsider the choice with context the dictionary lookup
-    never had. This is the point: Stage 1 should not be silently resolving
-    a genuine clinical ambiguity by row order (or by any of these five
-    tiebreaks either -- every one of them is a prior, not a verdict, except
-    (1) which is grounded in actual confirmed outcomes).
+    OMOP groundability (_select_by_groundability above -- prefers a
+    candidate that resolves to a real OMOP concept over one that doesn't,
+    when exactly one does) -- BUT ONLY if the abbreviation is on
+    VERIFIED_ALLOW_LIST (2026-08-17 posture inversion, part 2: real
+    gold-checked data measured alphabetical_default correct only 20.1% of
+    the time and omop_groundability only 53.1%, neither safe as a silent
+    default). If none of (1)-(3) resolve it AND the abbreviation isn't
+    allow-listed, the token is left UNEXPANDED (selection_basis
+    "unvetted_ambiguous_unexpanded") rather than guessed at -- the raw
+    abbreviation passes through to Stage 2b, which will very likely fail to
+    find a confident match for a bare short token, routing it to HITL
+    exactly as intended rather than silently writing a wrong answer. Only
+    when the abbreviation IS allow-listed does this fall through to (4) and
+    finally to the first (sorted) meaning as a last resort. Either way, the
+    expansion record carries `ambiguous: True` plus the full
+    `candidate_expansions` list so Stage 3 (or a human reviewer) can
+    reconsider with context the dictionary lookup never had -- this is the
+    point: Stage 1 should not be silently resolving a genuine clinical
+    ambiguity by row order, or by any unverified heuristic, when nothing
+    grounded in real confirmed outcomes was able to.
 
     conn is optional (default None): passing it enables the numeric-context
     OMOP lookup and the two flywheel tiebreaks; omitting it preserves the
@@ -396,7 +405,7 @@ def expand_text_and_track_offsets(text: str, abbrev_dict: dict, conn=None):
             # check below, is intentionally allowed to apply even to
             # abbreviations known to have systematic model bias.
             from src.abbreviation_flywheel import (
-                compute_frequency_priority, select_by_context_pattern)
+                VERIFIED_ALLOW_LIST, compute_frequency_priority, select_by_context_pattern)
             preferred = select_by_context_pattern(
                 conn, meanings, token_lower, text, orig_start, orig_end)
             if preferred is not None:
@@ -422,11 +431,37 @@ def expand_text_and_track_offsets(text: str, abbrev_dict: dict, conn=None):
                 if preferred is not None:
                     expansion = preferred
                     selection_basis = "observed_frequency_priority"
+
+            # 2026-08-17 (posture inversion, part 2): nothing grounded in
+            # confirmed outcomes (context_pattern_rule) or gated real data
+            # (observed_frequency_priority) resolved this one -- what's left
+            # is omop_groundability and the bare alphabetical-default pick,
+            # and both are now REQUIRED to be on VERIFIED_ALLOW_LIST before
+            # either can fire, same discipline as compute_frequency_priority()
+            # itself (see src.abbreviation_flywheel's module docstring). Real
+            # gold-checked data this session found alphabetical_default
+            # correct only 20.1% of the time and omop_groundability only
+            # 53.1% -- neither is a safe silent default for an abbreviation
+            # nobody has actually verified. An unvetted ambiguous token is
+            # now left UNEXPANDED (the raw abbreviation passes through
+            # unchanged) rather than guessed at: Stage 2b's dense retriever
+            # will very likely fail to find a confident match for a bare
+            # 2-4 character token, which is the intended outcome here --
+            # Tier 0/Tier 4/Tier 5, routed to a human, not a silent wrong
+            # answer. `ambiguous`/`candidate_expansions` are still recorded
+            # below so this stays fully auditable and HITL-visible, and the
+            # allow-list can be built organically from real reviewed cases
+            # over time via mine_context_rules(), the one mechanism that was
+            # always exempt from this gating in the first place.
             if selection_basis == "alphabetical_default":
-                preferred = _select_by_groundability(conn, meanings)
-                if preferred is not None:
-                    expansion = preferred
-                    selection_basis = "omop_groundability"
+                if token_lower in VERIFIED_ALLOW_LIST:
+                    preferred = _select_by_groundability(conn, meanings)
+                    if preferred is not None:
+                        expansion = preferred
+                        selection_basis = "omop_groundability"
+                else:
+                    expansion = token.text
+                    selection_basis = "unvetted_ambiguous_unexpanded"
 
         exp_start = orig_start + offset_shift
         exp_end = exp_start + len(expansion)
