@@ -246,12 +246,21 @@ def ingest_auto_decision(driver, decision: dict, entity_fields: dict,
     function without a resolvable concept -- a Tier 4/5 decision, a missing
     final_candidate_index, or an out-of-range one.
     """
+    # 2026-08-17 fix: this used to be its own hardcoded ("TIER_1_AUTO_VALIDATED",
+    # "TIER_2_AUTO_RESOLVED", "TIER_3_AUTO_VALIDATED") tuple, a second,
+    # independent copy of route_tier()'s AUTO_TIERS set -- silently missed
+    # TIER_1B_CALIBRATED_AUTO_VALIDATED when Phase 6 added it, so every
+    # calibrator-promoted decision was rejected here as UningestibleCase even
+    # though it's a genuine AUTO tier (caught live: 6/6 TIER_1B decisions on
+    # the first fresh-note validation run were blocked this way). Imported
+    # from src.mollm_tier_gate now so the two can never drift apart again.
+    from src.mollm_tier_gate import AUTO_TIERS
     tier = decision.get("tier")
-    if tier not in ("TIER_1_AUTO_VALIDATED", "TIER_2_AUTO_RESOLVED", "TIER_3_AUTO_VALIDATED"):
+    if tier not in AUTO_TIERS:
         raise UningestibleCase(
             f"{decision.get('mollm_call_id', '?')}: tier={tier!r} is not an "
-            f"auto-write tier -- only TIER_1/2/3 (route_tier()'s AUTO_TIERS) "
-            f"ever reach this function; Tier 4/5 decisions belong in "
+            f"auto-write tier -- only route_tier()'s AUTO_TIERS ever reach "
+            f"this function; Tier 4/5 decisions belong in "
             f"src/hitl_queue.py's review workflow instead")
 
     final_candidate_index = decision.get("final_candidate_index")
