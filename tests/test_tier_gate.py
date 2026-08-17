@@ -56,7 +56,7 @@ def _load_pure_functions(module_filename: str, wanted: set, extra_globals: dict 
 TG = _load_pure_functions(
     "mollm_tier_gate.py",
     {"qualifier_fragment_precheck", "tier3_fast_path", "tier5_precheck", "route_tier",
-     "_clinical_meaning_prompt", "_binary_match_prompt"},
+     "_clinical_meaning_prompt", "_binary_match_prompt", "_is_coronary_segment_trap"},
     extra_globals={"TIER3_SIMILARITY_FLOOR": 0.72, "TIER1_CONFIDENCE_FLOOR": 0.70},
 )
 
@@ -382,6 +382,46 @@ def run():
           r["tier"] == "TIER_4_ENSEMBLE_SPLIT")
     check("the calibrator is never even called for a NONE_CORRECT plurality",
           never_called_calibrator.calls == [])
+
+    # ======================================================================
+    # 2026-08-17: coronary-artery-segment trap -- bypasses the calibrator
+    # entirely (not merely overrides its score) for a known-fragile pattern.
+    # ======================================================================
+    coronary_abbrev_entity = _entity(
+        original_text="LCX",
+        candidates=[{"concept_name": "Structure of circumflex coronary artery",
+                     "similarity_score": 0.9, "omop_concept_id": 222}])
+    trap_calibrator = _FakeCalibrator(0.99)
+    r = route_tier(coronary_abbrev_entity, model_results=split_votes,
+                   calibrator=trap_calibrator, conn="FAKE_CONN")
+    check("a coronary-abbreviation mention text stays Tier 4 even with a "
+          "high-scoring calibrator available",
+          r["tier"] == "TIER_4_ENSEMBLE_SPLIT")
+    check("queue_reason records the coronary trap specifically, distinguishable "
+          "from a plain unpromoted split",
+          r["queue_reason"] == "coronary_segment_trap")
+    check("the calibrator is never even called for a trapped coronary abbreviation",
+          trap_calibrator.calls == [])
+
+    generic_coronary_entity = _entity(
+        original_text="the vessel",
+        candidates=[{"concept_name": "Coronary artery structure",
+                     "similarity_score": 0.9, "omop_concept_id": 333}])
+    trap_calibrator_2 = _FakeCalibrator(0.99)
+    r = route_tier(generic_coronary_entity, model_results=split_votes,
+                   calibrator=trap_calibrator_2, conn="FAKE_CONN")
+    check("a top candidate resolving to the generic 'Coronary artery structure' "
+          "parent concept also trips the trap, independent of mention text",
+          r["tier"] == "TIER_4_ENSEMBLE_SPLIT"
+          and r["queue_reason"] == "coronary_segment_trap")
+    check("the calibrator is never even called when the generic-concept trap fires",
+          trap_calibrator_2.calls == [])
+
+    check("an ordinary (non-coronary) entity is unaffected by the trap -- "
+          "the earlier high-scoring-calibrator promotion still fires",
+          route_tier(calibrator_entity, model_results=split_votes,
+                    calibrator=_FakeCalibrator(0.95), conn="FAKE_CONN")["tier"]
+          == "TIER_1B_CALIBRATED_AUTO_VALIDATED")
 
     print(f"tier-gate tests: {ok} passed, {len(fail)} failed")
     for f in fail:

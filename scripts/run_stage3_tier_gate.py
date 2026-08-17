@@ -29,6 +29,17 @@ scripts/run_stage3_batch.py for the new gate.
     Tier 3, per the Phase 3 findings doc's explicit recommendation to keep
     hybrid retrieval off pending an RRF-weight grid search.
 
+2026-08-17 (plan Phase 6, build-order step 4): route_tier() now gets a
+  fitted src.mollm_tier_calibrator.ConsensusCalibrator + this script's own
+  DuckDB connection, loaded once before the note loop via
+  ConsensusCalibrator.load(..., scoring_note_ids=note_ids) -- passing the
+  actual note_ids being processed lets the load-time leakage guard refuse
+  the model (falling back to untrained/no-op, never raising) if any of them
+  were in its own training set. A missing or corrupt .pkl degrades to the
+  same untrained no-op, so this wiring can never make a batch run fail that
+  would otherwise have succeeded -- see ConsensusCalibrator.load()'s own
+  docstring for the full degrade-gracefully contract.
+
 Run:  python3 scripts/run_stage3_tier_gate.py --note-ids 17739994-DS-31,10043750-DS-6,...
       python3 scripts/run_stage3_tier_gate.py --note-ids ... --limit-per-note 2   # light touch first
 """
@@ -98,6 +109,7 @@ def main():
 
     from src.mollm_ensemble import load_validation_records
     from src.mollm_tier_gate import AUTO_TIERS, build_clients, route_tier, store_tier_decision
+    from src.mollm_tier_calibrator import ConsensusCalibrator, DEFAULT_MODEL_PATH
     from src.kg3_ingestion import UningestibleCase, get_memgraph_driver, ingest_auto_decision
     from src.normalization.tier_retrieval import HYBRID_RETRIEVAL_ENABLED
 
@@ -129,6 +141,10 @@ def main():
 
         print(f"db:    {args.db}")
         print(f"notes: {len(note_ids)}")
+
+        calibrator = ConsensusCalibrator.load(DEFAULT_MODEL_PATH, scoring_note_ids=note_ids)
+        print(f"calibrator: {'fitted' if calibrator.model is not None else 'untrained (no-op)'}"
+              f", loaded from {DEFAULT_MODEL_PATH}")
 
         clients = build_clients()
         already_done = already_processed_entity_ids(conn, note_ids)
@@ -163,7 +179,7 @@ def main():
                       f"skipped {n_skipped} | errors {n_errors}]")
 
                 try:
-                    decision = route_tier(rec, clients=clients)
+                    decision = route_tier(rec, clients=clients, calibrator=calibrator, conn=conn)
                     decision = store_tier_decision(decision, rec["entity_id"], note_id,
                                                    conn, is_test=args.is_test)
                 except Exception as exc:

@@ -115,14 +115,66 @@ AUTO_TIERS = {TIER_1_AUTO_VALIDATED, TIER_2_AUTO_RESOLVED, TIER_3_AUTO_VALIDATED
 # is real Tier 1 decision data to check it against, not a measured value.
 TIER1_CONFIDENCE_FLOOR = 0.70
 
-# CALIBRATION-PENDING -- a placeholder, not yet fit/validated against a
-# held-out split. Deliberately NOT reusing TIER1_CONFIDENCE_FLOOR: this
-# threshold applies to a differently-scaled, differently-sourced probability
-# (a trained model's P(correct) over the whole disagreement pattern, not a
-# raw mean logprob confidence on an already-unanimous vote), and conflating
-# the two would silently let one threshold's tuning drag the other's meaning
-# along with it.
-CALIBRATED_AUTO_THRESHOLD = 0.90
+# Fit and validated 2026-08-17 (evaluation/tier_gate_cal_eval.py, Phase 6
+# steps 3-4) against a note-disjoint held-out split of the overnight 31-note
+# corpus run's TIER_4_ENSEMBLE_SPLIT population (668 labeled examples, 70.4%
+# base rate). Swept 0.50-0.95 WITH the coronary-segment trap active (see
+# CORONARY_SEGMENT_TRAP_ABBREVIATIONS above -- without it, precision tops
+# out around 89% at any threshold, the trap is load-bearing for this
+# number): 0.65 measured 98.0% precision at 38.9% val coverage (49/126
+# promoted), a large step up from 0.60's 94.7%/45.2% for a modest coverage
+# cost, chosen over 0.60 given this tier still feeds real (if currently
+# dry-run) KG3 writes. Projected corpus-wide: ~634 of the 1,629 TIER_4_
+# ENSEMBLE_SPLIT entities become promotable, taking overall AUTO coverage
+# from 21.3% toward ~42%. Deliberately NOT reusing TIER1_CONFIDENCE_FLOOR:
+# this threshold applies to a differently-scaled, differently-sourced
+# probability (a trained model's P(correct) over the whole disagreement
+# pattern, not a raw mean logprob confidence on an already-unanimous vote),
+# and conflating the two would silently let one threshold's tuning drag the
+# other's meaning along with it. Re-validate before ever changing this: a
+# refit on new data or a different held-out split can shift where 0.65
+# actually sits on the precision/coverage curve.
+CALIBRATED_AUTO_THRESHOLD = 0.65
+
+# 2026-08-17 (plan Phase 6, coronary safety gate). The calibrator's own
+# val-set false positives (evaluation/tier_gate_cal_eval.py) cluster on
+# coronary-artery-SEGMENT abbreviations -- LCX/LCx/LMCA repeatedly split-
+# voted wrong even after prior_confirmation_count was ablated out, meaning
+# the cause isn't a calibrator-feature bug but a retrieval-layer one:
+# SapBERT's embedding space doesn't reliably separate a specific named
+# branch ("Left circumflex coronary artery") from the generic parent
+# concept ("Coronary artery structure"), so the ensemble gets handed a
+# muddy candidate list and splits. Same failure shape independently
+# confirmed twice more this session -- Phase 4's acronym-escalation grading
+# (LAD -> wrong every time) and the plain AUTO-tier grading pass (LCx twice
+# resolved to the generic parent instead of its specific segment) -- so this
+# is a structural retrieval weak spot, not calibrator noise, and no amount
+# of feature engineering on THIS calibrator fixes it. Quarantined here
+# rather than left for the calibrator to (over)learn: matches
+# TIER3_SIMILARITY_FLOOR/the Lab Value Fragile Concept Gate's own precedent
+# of a narrow, evidence-scoped hard exclusion for a known-fragile pattern.
+CORONARY_SEGMENT_TRAP_ABBREVIATIONS = {
+    "lad", "lcx", "lmca", "rca", "pda", "om", "plv",
+}
+CORONARY_SEGMENT_TRAP_GENERIC_CONCEPTS = {"coronary artery structure"}
+
+
+def _is_coronary_segment_trap(entity: dict, candidate_index, candidates: list) -> bool:
+    """True when this entity matches the coronary-segment-abbreviation
+    pattern above -- either the mention's own text IS one of the known
+    abbreviations, or the candidate the calibrator would be asked to score
+    resolved to the generic "Coronary artery structure" parent concept
+    (the specific failure shape observed: a specific segment mention
+    resolving to its own generic parent instead of the named branch).
+    """
+    text = (entity.get("original_text") or "").strip().lower()
+    if text in CORONARY_SEGMENT_TRAP_ABBREVIATIONS:
+        return True
+    if candidate_index and candidates and 0 < candidate_index <= len(candidates):
+        name = (candidates[candidate_index - 1].get("concept_name") or "").strip().lower()
+        if name in CORONARY_SEGMENT_TRAP_GENERIC_CONCEPTS:
+            return True
+    return False
 
 
 # ==========================================================================
@@ -638,9 +690,26 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
             candidate_index = int(top_verdict.rsplit("_", 1)[1])
 
         if candidate_index is not None:
+            candidates = entity.get("candidates") or []
+
+            # Coronary segment trap (see constant block above): a known-
+            # fragile retrieval pattern, quarantined BEFORE the calibrator
+            # ever sees it -- calibrator.score() is not called at all for a
+            # trapped entity, not merely overridden after the fact, so no
+            # training data (evaluation/tier_gate_cal_eval.py) or future fit
+            # can accidentally re-learn its way around this gate.
+            if _is_coronary_segment_trap(entity, candidate_index, candidates):
+                return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",
+                        "queue_reason": "coronary_segment_trap", "final_candidate_index": None,
+                        "composite_confidence": composite_confidence,
+                        "routing_basis": (
+                            f"non-unanimous verdicts {dict(vote_counts)}; calibrator bypassed -- "
+                            f"coronary-artery-segment trap (known SapBERT embedding-collapse "
+                            f"pattern, see CORONARY_SEGMENT_TRAP_ABBREVIATIONS)"),
+                        "models": model_results}
+
             from src.mollm_tier_calibrator import (
                 build_feature_context, count_prior_confirmations)
-            candidates = entity.get("candidates") or []
             chosen_concept_id = None
             if 0 < candidate_index <= len(candidates):
                 chosen_concept_id = candidates[candidate_index - 1].get("omop_concept_id")

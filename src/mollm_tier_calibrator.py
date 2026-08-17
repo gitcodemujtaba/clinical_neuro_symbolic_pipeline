@@ -39,9 +39,19 @@ scoring exception) change routing behavior; every failure path here
 degrades to None rather than raising.
 """
 
+import os
 import warnings
 
 FEATURE_SET_VERSION = 1
+
+# Canonical save/load path -- defined once here (the module that owns the
+# class) rather than duplicated as a string literal in both the fitting
+# script (evaluation/tier_gate_cal_eval.py) and every production call site
+# (scripts/run_stage3_tier_gate.py), so the two can never silently point at
+# different files.
+DEFAULT_MODEL_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "models", "consensus_calibrator_v1.pkl")
 
 # Each entry: (name, one-line meaning). Order is fixed -- a saved model's
 # learned weights are only meaningful paired with this exact order, so
