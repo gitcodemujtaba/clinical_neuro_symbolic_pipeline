@@ -56,8 +56,9 @@ with st.sidebar:
         st.info("Select at least one note.")
         st.stop()
 
-tab_tiers, tab_precision, tab_recall, tab_calibrator = st.tabs(
-    ["Tier distribution", "Precision vs. gold", "Recall / completeness", "Calibrator status"])
+tab_tiers, tab_precision, tab_recall, tab_calibration, tab_calibrator = st.tabs(
+    ["Tier distribution", "Precision vs. gold", "Recall / completeness",
+     "ECE & IoU (per stage)", "Calibrator status"])
 
 # ==========================================================================
 # TAB 1 — tier distribution (of what we processed, where did it land)
@@ -176,7 +177,89 @@ with tab_recall:
                                    f"at [{g['start']}:{g['end']}]")
 
 # ==========================================================================
-# TAB 4 — calibrator status (static .pkl metadata, no live fit/scoring here)
+# TAB 4 — per-stage ECE (calibration) + IoU (overlap), computed live
+# ==========================================================================
+with tab_calibration:
+    st.caption("ECE: does confidence X actually mean 'correct' X% of the time, per stage "
+              "(evaluation/stage_calibration.py). IoU: TP/(TP+FP+FN) at the decision level for "
+              "each stage, plus the DrivenData SNOMED-CT benchmark's own character-level IoU "
+              "definition for Stage 2a (https://www.drivendata.org/benchmarks/310/"
+              "benchmark-snomed-ct/page/983/). Three different 'correct's per stage -- see "
+              "evaluation/stage_calibration.py's module docstring -- don't compare ECE values "
+              "across stages directly, only each stage's curve against its own threshold.")
+    if st.button("Run ECE + IoU analysis"):
+        import collections as _collections
+
+        from evaluation import iou_metrics
+        from evaluation.stage_calibration import (
+            AUTO_VALIDATE_THRESHOLD, EXTRACTION_THRESHOLD, TIER3_SIMILARITY_FLOOR,
+            grade_stage2a, grade_stage2b_candidates, load_stage2a_rows, load_stage2b_candidates,
+            stage3_tier_gate_confidences,
+        )
+        from evaluation.metrics import compute_ece_report
+        from evaluation.cal_eval import GOLD_CANDIDATES, _first_existing
+        from scripts.score_gold_recall import load_gold
+        from src.retrieval import VocabularyRetriever
+
+        with st.spinner("Loading gold + computing per-stage ECE/IoU..."):
+            gold_path = _first_existing(GOLD_CANDIDATES, "gold")
+            gold_rows = load_gold(gold_path, note_ids)
+            gold_by_note = _collections.defaultdict(list)
+            for g in gold_rows:
+                gold_by_note[g["note_id"]].append(g)
+
+            if not gold_rows:
+                st.warning("No gold annotations found for the selected note(s).")
+            else:
+                vocab = VocabularyRetriever(conn)
+
+                def _show_ece(title, graded, threshold):
+                    if not graded:
+                        st.caption(f"**{title}**: no gradable data")
+                        return
+                    report = compute_ece_report(graded)
+                    ec1, ec2 = st.columns(2)
+                    ec1.metric(f"{title} — ECE", report["ece"])
+                    ec2.metric("n", report["n"])
+                    with st.expander(f"{title} — reliability table"):
+                        for row in report["table"]:
+                            if row["n"] == 0:
+                                continue
+                            st.text(f"  {row['bin']:<16} n={row['n']:>4}  "
+                                   f"mean_conf={row['mean_confidence']:.3f}  acc={row['accuracy']:.3f}")
+
+                st.markdown("### Stage 2a — extraction (span is real)")
+                s2a_rows = load_stage2a_rows(conn, note_ids)
+                s2a_graded = grade_stage2a(s2a_rows, gold_by_note)
+                _show_ece("Stage 2a", s2a_graded, EXTRACTION_THRESHOLD)
+                s2a_iou = iou_metrics.stage2a_iou(conn, note_ids, gold_by_note)
+                ic1, ic2, ic3 = st.columns(3)
+                ic1.metric("Set IoU", s2a_iou["set_iou"])
+                ic2.metric("Benchmark char IoU", s2a_iou["char_iou"],
+                          help="DrivenData SNOMED-CT benchmark definition; aggregate bucket since "
+                               "this project's gold has no per-class label field.")
+                ic3.metric("TP / FP / FN", f"{s2a_iou['tp']} / {s2a_iou['fp']} / {s2a_iou['fn']}")
+
+                st.markdown("### Stage 2b — normalization / linking (concept is right)")
+                s2b_candidates = load_stage2b_candidates(conn, note_ids)
+                s2b_graded, _ = grade_stage2b_candidates(s2b_candidates, "3 (Semantic)", gold_by_note, vocab)
+                _show_ece("Stage 2b (Tier 3 SapBERT)", s2b_graded, TIER3_SIMILARITY_FLOOR)
+                s2b_iou = iou_metrics.stage2b_iou(conn, note_ids, gold_by_note, vocab)
+                jc1, jc2 = st.columns(2)
+                jc1.metric("Set IoU", s2b_iou["set_iou"])
+                jc2.metric("TP / FP / FN", f"{s2b_iou['tp']} / {s2b_iou['fp']} / {s2b_iou['fn']}")
+
+                st.markdown("### Stage 3 — tier gate (AUTO-tier decision is right)")
+                s3_graded, s3_n = stage3_tier_gate_confidences(conn, note_ids, gold_by_note, vocab)
+                _show_ece("Stage 3 (AUTO tiers)", s3_graded, AUTO_VALIDATE_THRESHOLD)
+                s3_iou = iou_metrics.stage3_iou(conn, note_ids, gold_by_note, vocab)
+                kc1, kc2, kc3 = st.columns(3)
+                kc1.metric("Set IoU", s3_iou["set_iou"])
+                kc2.metric("AUTO coverage", f"{s3_iou['n_auto']}/{s3_iou['n_decisions']}")
+                kc3.metric("TP / FP / FN", f"{s3_iou['tp']} / {s3_iou['fp']} / {s3_iou['fn']}")
+
+# ==========================================================================
+# TAB 5 — calibrator status (static .pkl metadata, no live fit/scoring here)
 # ==========================================================================
 with tab_calibrator:
     st.caption("Static metadata from the saved model file — this tab never fits or scores "

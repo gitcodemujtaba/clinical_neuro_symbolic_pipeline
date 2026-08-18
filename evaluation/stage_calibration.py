@@ -231,7 +231,13 @@ def stage3_confidences(conn, note_ids, gold_by_note, vocab):
     decisions, computed by calling cal_eval.py's own load_gradable_decisions()
     and grade() rather than re-deriving that logic -- if cal_eval.py's
     grading rules change, this follows automatically instead of silently
-    diverging."""
+    diverging.
+
+    NOTE: this targets mollm_decisions, the SUPERSEDED single-pass route()
+    gate (see docs/2026-08-16_.. Phase 2 build notes) -- kept for anyone
+    still holding pre-Phase-2 dry-run data. New callers wanting the current
+    production gate (route_tier() / mollm_tier_gate_decisions) should use
+    stage3_tier_gate_confidences() below instead."""
     decisions = stage3_load_decisions(conn, note_ids)
     graded = []
     for d in decisions:
@@ -240,6 +246,49 @@ def stage3_confidences(conn, note_ids, gold_by_note, vocab):
             continue
         graded.append((d["composite_confidence"], outcome == "correct"))
     return graded, len(decisions)
+
+
+def stage3_tier_gate_confidences(conn, note_ids, gold_by_note, vocab):
+    """(confidence, is_correct) pairs for AUTO-tier mollm_tier_gate_decisions
+    rows (the CURRENT production gate, route_tier()) -- the tier-gate
+    counterpart of stage3_confidences() above, added 2026-08-18 alongside
+    evaluation/iou_metrics.py since the old function targets the superseded
+    mollm_decisions table and would silently miss every decision made by
+    the pipeline as it's actually run today. TIER_1B_CALIBRATED_AUTO_VALIDATED
+    uses calibrated_score (its own scoring basis) when present, everything
+    else uses composite_confidence, matching how each tier actually decided.
+    Non-AUTO (HITL-routed) decisions are excluded -- no confidence value was
+    ever asserted as "trustworthy" for those, so there's nothing to
+    calibrate."""
+    from src.mollm_tier_gate import AUTO_TIERS
+
+    rows = conn.execute("""
+        SELECT d.tier, d.final_candidate_index, d.composite_confidence, d.calibrated_score,
+               e.orig_start, e.orig_end, e.note_id, nm.candidates
+        FROM mollm_tier_gate_decisions d
+        JOIN extracted_entities e ON e.entity_id = d.entity_id AND e.is_test = TRUE
+        JOIN normalized_entities nm ON nm.entity_id = d.entity_id AND nm.is_test = TRUE
+        WHERE d.note_id IN ({}) AND d.is_test = TRUE
+    """.format(",".join("?" * len(note_ids))), note_ids).fetchall()
+
+    graded = []
+    for tier, final_idx, comp_conf, cal_score, s, e, note_id, cand_json in rows:
+        if tier not in AUTO_TIERS:
+            continue
+        gold = gold_by_note.get(note_id, [])
+        overlapping = [g for g in gold if overlaps(s, e, g["start"], g["end"])]
+        if not overlapping:
+            continue
+        candidates = _json(cand_json, [])
+        code = None
+        if final_idx is not None and 1 <= final_idx <= len(candidates):
+            code = vocab.snomed_code_for_concept(candidates[final_idx - 1].get("omop_concept_id"))
+        correct = any(str(code) == str(g["concept_id"]) for g in overlapping)
+        conf = cal_score if (tier == "TIER_1B_CALIBRATED_AUTO_VALIDATED" and cal_score is not None) else comp_conf
+        if conf is None:
+            continue
+        graded.append((conf, correct))
+    return graded, len(rows)
 
 
 # ==========================================================================
