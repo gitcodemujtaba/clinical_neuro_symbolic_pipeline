@@ -34,7 +34,7 @@ import streamlit as st
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 sys.path.insert(0, PROJECT_DIR)
 
-from scripts.score_gold_recall import overlaps  # noqa: E402
+from scripts.score_gold_recall import best_tier, overlaps  # noqa: E402
 from ui.components.db_status import render_locked_db_status  # noqa: E402
 
 DB_PATH = os.environ.get("CNSP_DB_PATH", os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb"))
@@ -316,7 +316,8 @@ with left_col:
         "🟧 ambiguous abbreviation &nbsp; 🟦 abbreviation (single meaning) &nbsp; "
     )
     if gold_report:
-        legend += "🟥 gold entity we missed entirely &nbsp; 🟨 found, but wrong SNOMED concept"
+        legend += ("🟥 gold entity we missed entirely &nbsp; 🟨 found, but wrong SNOMED concept "
+                   "&nbsp; ⬜ pipeline extra (no gold annotation here at all)")
     else:
         legend += "<i>(run Step 3 to also see missed/wrong-concept gold spans here)</i>"
     st.markdown(f"<small>{legend}</small>", unsafe_allow_html=True)
@@ -365,6 +366,10 @@ with left_col:
                 spans.append((e["start"], e["end"], 9, "#fff176",
                               f"WRONG CONCEPT: gold wanted {e['gold_concept_id']}, "
                               f"we predicted {e['predicted_concept']!r}"))
+            for p in gold_report["extra"]:
+                spans.append((p["orig_start"], p["orig_end"], 8, "#b0bec5",
+                              f"PIPELINE EXTRA (no gold overlap): {p['original_text']!r} "
+                              f"[{p['entity_label']}] -> {p['omop_concept_name'] or 'Unmapped'}"))
         render_highlighted_note(raw_text, spans)
 
 with right_col:
@@ -421,8 +426,10 @@ with right_col:
                 st.text(f"  {text!r:<40s} [{label}]  confidence={conf:.3f}  span=[{start}:{end}]")
 
     with tab3:
-        st.caption("Missed spans highlight 🟥, wrong-concept spans highlight 🟨 "
-                  "in the note once this runs.")
+        st.caption("The FULL picture: every gold annotation classified as correct/wrong/missed, "
+                  "plus every pipeline entity gold has nothing to say about at all. "
+                  "🟨 wrong-concept, 🟥 missed, ⬜ extra highlight in the note once this runs "
+                  "(correct matches are already 🟩 in tab 2's highlighting).")
         if st.button("Run gold comparison (may take a moment)"):
             from evaluation.cal_eval import GOLD_CANDIDATES, _first_existing
             from scripts.score_gold_recall import (
@@ -438,25 +445,52 @@ with right_col:
                     attach_snomed_codes(conn, predictions)
                     report = score(gold_rows, predictions)
 
-                    all_spans = [(r[3], r[4]) for r in entity_rows]
                     below_spans = [(r[3], r[4], r[2]) for r in below]
-                    missed = [g for g in gold_rows
-                             if not any(overlaps(s, e, g["start"], g["end"]) for s, e in all_spans)]
-                    # wrong_concept_examples doesn't carry offsets by default;
-                    # re-derive them from gold_rows by matching span+concept_id
-                    # so the note highlighter can place them precisely.
-                    wrong_with_offsets = []
-                    for e in report["wrong_concept_examples"]:
-                        match = next((g for g in gold_rows
-                                     if g["span"] == e["gold_span"]
-                                     and g["concept_id"] == e["gold_concept_id"]), None)
-                        if match:
-                            wrong_with_offsets.append({**e, "start": match["start"], "end": match["end"]})
+
+                    # Full, uncapped classification of every gold annotation --
+                    # score()'s own wrong_concept_examples/missed_span_examples
+                    # cap at 15 for its own printed report, which silently drops
+                    # entries on any note with more misses than that. Re-derived
+                    # here directly from the same overlap+snomed_code match logic
+                    # so this view is complete, not a truncated sample.
+                    correct, wrong, missed = [], [], []
+                    for g in gold_rows:
+                        overlapping = [p for p in predictions
+                                      if overlaps(p["orig_start"], p["orig_end"], g["start"], g["end"])]
+                        if not overlapping:
+                            missed.append(g)
+                            continue
+                        hit = next((p for p in overlapping if p["snomed_code"] == g["concept_id"]), None)
+                        if hit:
+                            correct.append({**g, "predicted_text": hit["original_text"],
+                                           "predicted_concept": hit["omop_concept_name"],
+                                           "match_tier": hit["match_tier"]})
+                        else:
+                            best = best_tier(overlapping)
+                            wrong.append({**g, "gold_span": g["span"], "gold_concept_id": g["concept_id"],
+                                         "predicted_text": best["original_text"],
+                                         "predicted_concept": best["omop_concept_name"],
+                                         "predicted_snomed_code": best["snomed_code"],
+                                         "match_tier": best["match_tier"],
+                                         "start": g["start"], "end": g["end"]})
+
+                    # The other direction: pipeline entities gold says NOTHING
+                    # about (no overlapping gold span at all) -- not covered by
+                    # recall at all, since recall only ever looks FROM gold
+                    # outward. Needed for a genuinely "total" comparison, not
+                    # just a miss/wrong-concept breakdown.
+                    gold_spans_list = [(g["start"], g["end"]) for g in gold_rows]
+                    extra = [p for p in predictions
+                            if not any(overlaps(p["orig_start"], p["orig_end"], s, e)
+                                      for s, e in gold_spans_list)]
 
                     st.session_state.gold_report_by_note[note_id] = {
                         "combined": report["combined"],
+                        "correct": correct,
                         "missed": missed,
-                        "wrong_concept": wrong_with_offsets,
+                        "wrong_concept": wrong,
+                        "extra": extra,
+                        "predicted_total": len(predictions),
                         "n_recoverable": sum(
                             1 for g in missed
                             if any(overlaps(b[0], b[1], g["start"], g["end"]) for b in below_spans)),
@@ -464,14 +498,48 @@ with right_col:
                     st.rerun()
         elif gold_report:
             c = gold_report["combined"]
-            rc1, rc2, rc3 = st.columns(3)
-            rc1.metric("Gold annotations", c["gold_annotations"])
-            rc2.metric("Span recall", f"{c['span_recall']*100:.1f}%")
-            rc3.metric("Linked recall", f"{c['linked_recall']*100:.1f}%")
+            n_gold = c["gold_annotations"]
+            n_correct = len(gold_report["correct"])
+            n_wrong = len(gold_report["wrong_concept"])
+            n_missed = len(gold_report["missed"])
+            n_extra = len(gold_report["extra"])
+
+            st.markdown(f"#### Note `{note_id}`: {n_gold} gold entities, "
+                        f"{gold_report['predicted_total']} pipeline entities")
+            rc1, rc2, rc3, rc4 = st.columns(4)
+            rc1.metric("✅ Correct", n_correct, f"{n_correct/n_gold*100:.0f}% of gold" if n_gold else None)
+            rc2.metric("🟨 Wrong concept", n_wrong, f"{n_wrong/n_gold*100:.0f}% of gold" if n_gold else None)
+            rc3.metric("🟥 Missed entirely", n_missed, f"{n_missed/n_gold*100:.0f}% of gold" if n_gold else None)
+            rc4.metric("⬜ Pipeline extra", n_extra, "no gold overlap")
+            st.caption(f"Every gold entity lands in exactly one of correct/wrong/missed "
+                      f"({n_correct} + {n_wrong} + {n_missed} = {n_gold}). Separately, "
+                      f"{n_extra} pipeline entities have no gold counterpart at all -- this "
+                      f"corpus's gold annotation is itself partial, so 'extra' is not "
+                      f"automatically a false positive, just unverifiable against gold. "
+                      f"(A compound span -- one predicted concept overlapping 2+ gold "
+                      f"spans, e.g. 'gunshot wound to abdomen' -- can satisfy at most one "
+                      f"of them, so it still lands as correct-for-one, wrong-for-the-rest "
+                      f"here, not a separate bucket.)")
 
             below_spans = [(r[3], r[4], r[2]) for r in below]
-            with st.expander(f"Missed spans ({len(gold_report['missed'])}) — with root cause",
-                            expanded=True):
+            with st.expander(f"✅ Correctly linked ({n_correct})"):
+                if not gold_report["correct"]:
+                    st.caption("None for this note.")
+                for e in gold_report["correct"]:
+                    st.text(f"  {e['span']!r:<35s} ({e['concept_id']}) -> "
+                           f"{e['predicted_concept']!r}  tier={e['match_tier']}")
+
+            with st.expander(f"🟨 Wrong-concept ({n_wrong})"):
+                if not gold_report["wrong_concept"]:
+                    st.caption("None for this note.")
+                for e in gold_report["wrong_concept"]:
+                    st.text(f"  gold {e['gold_span']!r} ({e['gold_concept_id']}) -> "
+                           f"predicted {e['predicted_concept']!r} ({e['predicted_snomed_code']})  "
+                           f"tier={e['match_tier']}")
+
+            with st.expander(f"🟥 Missed spans ({n_missed}) — with root cause", expanded=True):
+                if not gold_report["missed"]:
+                    st.caption("None for this note.")
                 for g in gold_report["missed"]:
                     hit = [b for b in below_spans if overlaps(b[0], b[1], g["start"], g["end"])]
                     reason = (f"🟡 GLiNER proposed it at confidence {hit[0][2]:.3f} (below threshold)"
@@ -480,10 +548,17 @@ with right_col:
                 if gold_report["missed"]:
                     st.info(f"{gold_report['n_recoverable']}/{len(gold_report['missed'])} recoverable "
                            f"just by accepting below-threshold candidates.")
-            with st.expander(f"Wrong-concept examples ({len(gold_report['wrong_concept'])})"):
-                for e in gold_report["wrong_concept"]:
-                    st.text(f"  gold {e['gold_span']!r} ({e['gold_concept_id']}) -> "
-                           f"predicted {e['predicted_concept']!r} ({e['predicted_snomed_code']})")
+
+            with st.expander(f"⬜ Pipeline extra, no gold overlap ({n_extra})"):
+                st.caption("Entities the pipeline confidently extracted and linked, that gold "
+                          "doesn't annotate at all here -- either genuine over-extraction, or "
+                          "simply outside this corpus's (partial) annotation coverage.")
+                if not gold_report["extra"]:
+                    st.caption("None for this note.")
+                for p in gold_report["extra"]:
+                    st.text(f"  {p['original_text']!r:<35s} [{p['entity_label']}] -> "
+                           f"{p['omop_concept_name'] or 'Unmapped'}  "
+                           f"span=[{p['orig_start']}:{p['orig_end']}]")
         else:
             st.caption("Not run yet for this note.")
 
