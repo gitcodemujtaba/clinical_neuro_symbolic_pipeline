@@ -74,7 +74,6 @@ of the trade-off assumed when this was written.
 import os
 import json
 import hashlib
-import duckdb
 import warnings
 
 warnings.filterwarnings("ignore")

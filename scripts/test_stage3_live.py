@@ -30,11 +30,8 @@ Run:
 
 import argparse
 import collections
-import json
 import os
 import sys
-import urllib.error
-import urllib.request
 
 import duckdb
 
@@ -127,8 +124,7 @@ def main():
         return 1
 
     from src.mollm_ensemble import (
-        SYSTEM_PROMPT, build_prompt, load_validation_records, store_decision,
-        validate_record,
+        build_prompt, load_validation_records, store_decision, validate_record,
     )
     from src.retrieval import (
         DuckDBHierarchy, GroundingRetriever, GuidelineIndex, VocabularyRetriever,
@@ -157,7 +153,7 @@ def main():
     vocab = VocabularyRetriever(conn)
     retriever = GroundingRetriever(index, vocab, hierarchy=DuckDBHierarchy(conn))
     print(f"  guideline KG: {index.stats['nodes']} nodes, {index.stats['rules']} rules")
-    print(f"  hierarchy: DuckDBHierarchy (athena_concept_ancestor)")
+    print("  hierarchy: DuckDBHierarchy (athena_concept_ancestor)")
 
     artifacts = []
     for i, rec in enumerate(records, 1):

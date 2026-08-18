@@ -2,7 +2,6 @@ import os
 import sys
 import duckdb
 import csv
-import json
 import argparse
 import time
 

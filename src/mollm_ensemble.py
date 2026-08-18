@@ -53,7 +53,6 @@ from src.llm_client import (
     verdict_schema,
 )
 from src.normalization.compound_span import strip_lab_value_suffix
-from src.retrieval import CITABLE_TYPES
 from src.provenance import (
     candidates_hash,
     provenance_alter_statements,
