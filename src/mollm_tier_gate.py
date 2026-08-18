@@ -206,16 +206,59 @@ def _is_coronary_segment_trap(entity: dict, candidate_index, candidates: list) -
 # risk signal here, not a specific enumerable vocabulary.
 SHORT_ALPHANUMERIC_CODE_RE = re.compile(r"^[A-Za-z]{1,2}[0-9]{1,2}$")
 
+# 2026-08-18 (5-note validation run, 'LMCA' finding). 'LMCA' reached 3/3
+# unanimous TIER_1_AUTO_VALIDATED on the WRONG candidate ("Coronary artery
+# stenosis" instead of "Structure of left main coronary artery") --
+# CORONARY_SEGMENT_TRAP_ABBREVIATIONS already lists "lmca", but at the time
+# neither trap ran on the unanimous path at all (see the elevated gate
+# below). This regex is the complementary, forward-looking half of that
+# fix: a short (3-4 letter), ALL-CAPS, pure-alphabetic mention is the same
+# SapBERT-collapse risk shape as the digit-suffixed one above, for
+# abbreviations NOT yet on the coronary list (a new segment name, a
+# different organ system's shorthand) -- caught structurally rather than
+# requiring every future collision to be found the hard way and manually
+# enumerated first. Deliberately case-sensitive (upper only): a lowercase
+# or Title-Case 3-4 letter word is far more likely to be ordinary prose
+# than clinical shorthand, and the note-writing convention for these
+# abbreviations is consistently all-caps in this corpus.
+SHORT_ALPHA_CODE_RE = re.compile(r"^[A-Z]{3,4}$")
+
 
 def _is_short_alphanumeric_code(entity: dict) -> bool:
     """True when the mention's own text is a bare short alphanumeric code
-    (S2, T1, V12, ...) -- see the constant's docstring above. Deliberately
-    does not also check candidate concept names (unlike the coronary trap):
-    the risk here is inherent to the mention's SHAPE, independent of which
-    domain the top candidate happened to land in.
+    (S2, T1, V12, ...) OR a short, ALL-CAPS pure-alphabetic clinical
+    shorthand (LAD, LCX, RCA, PDA, LMCA, ...) -- see the constants'
+    docstrings above. Deliberately does not also check candidate concept
+    names (unlike the coronary trap): the risk here is inherent to the
+    mention's SHAPE, independent of which domain the top candidate happened
+    to land in.
     """
     text = (entity.get("original_text") or "").strip()
-    return bool(SHORT_ALPHANUMERIC_CODE_RE.match(text))
+    return bool(SHORT_ALPHANUMERIC_CODE_RE.match(text) or SHORT_ALPHA_CODE_RE.match(text))
+
+
+def _fragile_shorthand_trap(entity: dict, candidate_index, candidates: list):
+    """Checks the coronary-segment trap and the short-code trap together,
+    returning (True, queue_reason) on whichever fires first, else
+    (False, None).
+
+    Factored out 2026-08-18 ("elevate the gate" fix, 5-note validation run)
+    so the SAME check guards every AUTO-tier grant this fragile-shorthand
+    pattern can reach -- TIER_1_AUTO_VALIDATED (unanimous SUPPORTED_1) and
+    TIER_1B_CALIBRATED_AUTO_VALIDATED (calibrator-rescued split) -- without
+    the two call sites drifting out of sync. Previously only the calibrator
+    path ran these checks at all, so a genuinely unanimous 3/3 vote (LMCA ->
+    "Coronary artery stenosis") sailed straight into TIER_1_AUTO_VALIDATED
+    with zero trap protection: unanimity was treated as proof the models
+    got it right, but the failure mode here is that all three models see
+    the SAME muddy, SapBERT-collapsed candidate list -- unanimous agreement
+    on a bad candidate list is not evidence the candidate is correct.
+    """
+    if _is_coronary_segment_trap(entity, candidate_index, candidates):
+        return True, "coronary_segment_trap"
+    if _is_short_alphanumeric_code(entity):
+        return True, "short_alphanumeric_code_trap"
+    return False, None
 
 
 # ==========================================================================
@@ -967,6 +1010,21 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
     unanimous = len(usable) == 3 and top_count == 3
 
     if unanimous and top_verdict == "SUPPORTED_1":
+        # 2026-08-18 ("elevate the gate" fix): checked BEFORE the confidence
+        # floor and BEFORE granting TIER_1_AUTO_VALIDATED -- unanimity does
+        # not protect against a known-fragile candidate list, so a trapped
+        # entity is forced to HITL regardless of how confident all three
+        # models claim to be. See _fragile_shorthand_trap()'s own docstring.
+        trapped, trap_reason = _fragile_shorthand_trap(entity, 1, entity.get("candidates") or [])
+        if trapped:
+            return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",
+                    "queue_reason": trap_reason, "final_candidate_index": None,
+                    "composite_confidence": composite_confidence,
+                    "calibrated_score": None,
+                    "routing_basis": (
+                        f"3/3 unanimous SUPPORTED_1 but bypassed -- fragile-shorthand trap "
+                        f"({trap_reason}), see _fragile_shorthand_trap()"),
+                    "models": model_results}
         if composite_confidence is not None and composite_confidence < TIER1_CONFIDENCE_FLOOR:
             return {"tier": None, "mollm_routing_decision": "HITL_REQUIRED",
                     "queue_reason": "below_confidence_threshold", "final_candidate_index": 1,
@@ -1031,36 +1089,24 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
         if candidate_index is not None:
             candidates = entity.get("candidates") or []
 
-            # Coronary segment trap (see constant block above): a known-
-            # fragile retrieval pattern, quarantined BEFORE the calibrator
-            # ever sees it -- calibrator.score() is not called at all for a
-            # trapped entity, not merely overridden after the fact, so no
-            # training data (evaluation/tier_gate_cal_eval.py) or future fit
-            # can accidentally re-learn its way around this gate.
-            if _is_coronary_segment_trap(entity, candidate_index, candidates):
+            # Fragile-shorthand trap (coronary-segment enumerated list +
+            # short-code shape regex, see _fragile_shorthand_trap()): a
+            # known-fragile retrieval pattern, quarantined BEFORE the
+            # calibrator ever sees it -- calibrator.score() is not called at
+            # all for a trapped entity, not merely overridden after the
+            # fact, so no training data (evaluation/tier_gate_cal_eval.py)
+            # or future fit can accidentally re-learn its way around this
+            # gate. Same helper used by the unanimous SUPPORTED_1 branch
+            # above, so both AUTO-tier paths stay in sync.
+            trapped, trap_reason = _fragile_shorthand_trap(entity, candidate_index, candidates)
+            if trapped:
                 return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",
-                        "queue_reason": "coronary_segment_trap", "final_candidate_index": None,
+                        "queue_reason": trap_reason, "final_candidate_index": None,
                         "composite_confidence": composite_confidence,
                         "calibrated_score": None,  # bypassed BEFORE calibrator.score() is called
                         "routing_basis": (
                             f"non-unanimous verdicts {dict(vote_counts)}; calibrator bypassed -- "
-                            f"coronary-artery-segment trap (known SapBERT embedding-collapse "
-                            f"pattern, see CORONARY_SEGMENT_TRAP_ABBREVIATIONS)"),
-                        "models": model_results}
-
-            # Short alphanumeric code trap (see constant block above): same
-            # bypass-before-scoring discipline as the coronary trap, for the
-            # structurally similar S2/T1/V12-shaped collision pattern.
-            if _is_short_alphanumeric_code(entity):
-                return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",
-                        "queue_reason": "short_alphanumeric_code_trap",
-                        "final_candidate_index": None,
-                        "composite_confidence": composite_confidence,
-                        "calibrated_score": None,  # bypassed BEFORE calibrator.score() is called
-                        "routing_basis": (
-                            f"non-unanimous verdicts {dict(vote_counts)}; calibrator bypassed -- "
-                            f"short alphanumeric code trap (known SapBERT embedding-collapse "
-                            f"pattern, see SHORT_ALPHANUMERIC_CODE_RE)"),
+                            f"fragile-shorthand trap ({trap_reason})"),
                         "models": model_results}
 
             from src.mollm_tier_calibrator import (

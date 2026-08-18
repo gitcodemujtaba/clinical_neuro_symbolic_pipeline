@@ -61,9 +61,10 @@ TG = _load_pure_functions(
     "mollm_tier_gate.py",
     {"qualifier_fragment_precheck", "tier3_fast_path", "tier5_precheck", "route_tier",
      "_clinical_meaning_prompt", "_binary_match_prompt", "_is_coronary_segment_trap",
-     "_is_short_alphanumeric_code"},
+     "_is_short_alphanumeric_code", "_fragile_shorthand_trap"},
     extra_globals={"TIER3_SIMILARITY_FLOOR": 0.72, "TIER1_CONFIDENCE_FLOOR": 0.70,
-                  "SHORT_ALPHANUMERIC_CODE_RE": re.compile(r"^[A-Za-z]{1,2}[0-9]{1,2}$")},
+                  "SHORT_ALPHANUMERIC_CODE_RE": re.compile(r"^[A-Za-z]{1,2}[0-9]{1,2}$"),
+                  "SHORT_ALPHA_CODE_RE": re.compile(r"^[A-Z]{3,4}$")},
 )
 
 qualifier_fragment_precheck = TG["qualifier_fragment_precheck"]
@@ -72,6 +73,8 @@ tier5_precheck = TG["tier5_precheck"]
 route_tier = TG["route_tier"]
 _clinical_meaning_prompt = TG["_clinical_meaning_prompt"]
 _binary_match_prompt = TG["_binary_match_prompt"]
+_is_short_alphanumeric_code = TG["_is_short_alphanumeric_code"]
+_fragile_shorthand_trap = TG["_fragile_shorthand_trap"]
 ALLERGY_MEANING_INSTRUCTION = TG["ALLERGY_MEANING_INSTRUCTION"]
 ALLERGY_CONTEXT_CLAUSE = TG["ALLERGY_CONTEXT_CLAUSE"]
 
@@ -586,6 +589,88 @@ def run():
         check(f"{text!r} does not match the short-code shape -- unaffected by "
               f"this trap, the calibrator promotion still fires",
               r["tier"] == "TIER_1B_CALIBRATED_AUTO_VALIDATED")
+
+    # ======================================================================
+    # 2026-08-18 (5-note validation run, 'LMCA' finding): widened short-code
+    # regex (pure-alpha 3-4 letter ALL-CAPS shapes) + elevated gate (trap
+    # now guards the UNANIMOUS TIER_1_AUTO_VALIDATED path too, not just the
+    # calibrator's TIER_1B path).
+    # ======================================================================
+
+    # -- _is_short_alphanumeric_code() unit-level: the new pure-alpha shape.
+    for text in ["LAD", "LCX", "RCA", "PDA", "LMCA", "XYZ", "WXYZ"]:
+        check(f"_is_short_alphanumeric_code({text!r}) -- pure-alpha 3-4 "
+             f"letter ALL-CAPS shape is caught even for an abbreviation "
+             f"NOT on the coronary enumerated list (XYZ/WXYZ)",
+              _is_short_alphanumeric_code(_entity(original_text=text)))
+    for text in ["lad", "Lad", "AB", "ABCDE", "hemoglobin"]:
+        check(f"_is_short_alphanumeric_code({text!r}) -- lowercase/mixed-case, "
+             f"too short, too long, or an ordinary word does not match the "
+             f"pure-alpha shape",
+              not _is_short_alphanumeric_code(_entity(original_text=text)))
+
+    # -- _fragile_shorthand_trap() unit-level: reason string is specific to
+    # which trap fired, and (False, None) when neither does.
+    check("_fragile_shorthand_trap: coronary-enumerated text wins even "
+         "without a matching candidate concept name",
+          _fragile_shorthand_trap(_entity(original_text="lmca"), 1, [])
+          == (True, "coronary_segment_trap"))
+    check("_fragile_shorthand_trap: a not-on-the-list pure-alpha code falls "
+         "through to the short-code reason",
+          _fragile_shorthand_trap(_entity(original_text="XYZ"), 1, [])
+          == (True, "short_alphanumeric_code_trap"))
+    check("_fragile_shorthand_trap: an ordinary entity is untrapped",
+          _fragile_shorthand_trap(_entity(original_text="hemoglobin"), 1, [])
+          == (False, None))
+
+    # -- elevated gate: a genuinely UNANIMOUS 3/3 SUPPORTED_1 vote on a
+    # trapped mention must NOT reach TIER_1_AUTO_VALIDATED -- this is the
+    # actual LMCA production case (all 3 models agreed on the wrong
+    # candidate; unanimity is not evidence the candidate list was sound).
+    # No calibrator/conn supplied at all here, proving the elevated check
+    # runs independently of the calibrator machinery.
+    # NOTE: `votes` (the module-level name) has been reassigned several
+    # times since its original "3/3 unanimous SUPPORTED_1" definition
+    # around line 283 -- a fresh, locally-named fixture is used here rather
+    # than relying on `votes` still holding that value.
+    unanimous_supported_votes = [_vote("a", "SUPPORTED_1", 0.9), _vote("b", "SUPPORTED_1", 0.85),
+                                 _vote("c", "SUPPORTED_1", 0.95)]
+    lmca_entity = _entity(original_text="LMCA", candidates=[
+        {"concept_name": "Coronary artery stenosis", "similarity_score": 0.9,
+         "omop_concept_id": 666}])
+    r = route_tier(lmca_entity, model_results=unanimous_supported_votes)
+    check("unanimous 3/3 SUPPORTED_1 on 'LMCA' (coronary-enumerated) does "
+         "NOT reach Tier 1 -- forced to Tier 4 HITL despite full agreement",
+          r["tier"] == "TIER_4_ENSEMBLE_SPLIT"
+          and r["mollm_routing_decision"] == "HITL_REQUIRED"
+          and r["queue_reason"] == "coronary_segment_trap")
+
+    s2_entity_unanimous = _entity(original_text="S2", candidates=[
+        {"concept_name": "Some ambiguous concept", "similarity_score": 0.9,
+         "omop_concept_id": 777}])
+    r = route_tier(s2_entity_unanimous, model_results=unanimous_supported_votes)
+    check("unanimous 3/3 SUPPORTED_1 on 'S2' (short-code shape) does NOT "
+         "reach Tier 1 either -- same elevated gate, other trap",
+          r["tier"] == "TIER_4_ENSEMBLE_SPLIT"
+          and r["queue_reason"] == "short_alphanumeric_code_trap")
+
+    xyz_entity_unanimous = _entity(original_text="XYZ", candidates=[
+        {"concept_name": "Some concept", "similarity_score": 0.9, "omop_concept_id": 888}])
+    r = route_tier(xyz_entity_unanimous, model_results=unanimous_supported_votes)
+    check("unanimous 3/3 SUPPORTED_1 on a not-yet-enumerated pure-alpha "
+         "code ('XYZ') is ALSO caught by the widened regex -- forward-"
+         "looking coverage, not dependent on the coronary list",
+          r["tier"] == "TIER_4_ENSEMBLE_SPLIT"
+          and r["queue_reason"] == "short_alphanumeric_code_trap")
+
+    # -- regression: an ordinary unanimous entity is completely unaffected
+    # by the elevated gate -- Tier 1 still fires normally (same as the
+    # pre-existing "3/3 SUPPORTED_1 -> Tier 1" check above, re-asserted
+    # here for locality with the new trap tests).
+    r = route_tier(plain, model_results=unanimous_supported_votes)
+    check("elevated gate does not disturb an ordinary (non-trapped) "
+         "unanimous SUPPORTED_1 -- still reaches Tier 1 normally",
+          r["tier"] == "TIER_1_AUTO_VALIDATED")
 
     # ======================================================================
     # 2026-08-18: exhaustive candidate evaluation + comparative tiebreak
