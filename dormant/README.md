@@ -34,3 +34,19 @@ by name across multiple dated docs as evidence for specific findings).
 `_reorder` suffix), which still exists as a stale sibling copy — running them today would
 silently read/write against that stale copy instead of erroring. Not fixed as part of this
 move; flagged in the same doc above.
+
+**2026-08-18**: `scripts/gliner_linker_score.py` — a working, tested integration with
+Knowledgator's GLiNER-Linker (both the `large` bi-encoder and `rerank` cross-encoder
+variants), built as a candidate Stage 2b Tier-3 reranking signal for the SNOMED same-name
+duplicate-concept problem (Condition/Disorder vs. Observation/Morphologic-Abnormality, e.g.
+`wound dehiscence`). Moved here not because it's broken -- it works correctly, confirmed with
+real scores against real note context -- but because a proper validation against the 10
+known duplicate-concept cases measured it performing near chance (`large`: 4/10, `rerank`:
+5/10), well below the existing MoLLM tiebreak mechanism (7/7 on the same population). See
+`docs/2026-08-18_GLiNER_Linker_Reranker_Evaluation.md` for the full investigation, including
+the environment-compatibility work required to run it at all (needs Python >=3.10 and
+`transformers==5.x`, both incompatible with this project's main Python 3.9 environment --
+built as a subprocess-callable script for `.venv_gliner_linker`, an isolated venv NOT
+committed to this repo; recreation instructions are in that doc). Kept as a documented
+negative result and reusable script, in case a better-fitting use case or an improved
+candidate-phrasing approach is worth revisiting later.
