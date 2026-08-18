@@ -109,7 +109,15 @@ PRE = _load_pure_functions(
 )
 EXT = _load_pure_functions(
     "entity_extraction.py",
-    {"map_offsets_to_original", "make_entity_id", "find_sentence", "build_local_context"},
+    {"map_offsets_to_original", "make_entity_id", "find_sentence", "build_local_context",
+     "_is_credential_citation", "_is_section_header_text", "_is_placeholder_none"},
+    # _CREDENTIAL_MD_RE/_PLACEHOLDER_NONE_RE are re.compile() calls, not
+    # literals -- _is_literal_assign can't extract them (same reason
+    # SHORT_ALPHANUMERIC_CODE_RE is injected this way in
+    # tests/test_tier_gate.py), so they're built here identically to the
+    # real module-level patterns instead.
+    extra_globals={"_CREDENTIAL_MD_RE": re.compile(r"^md$", re.IGNORECASE),
+                  "_PLACEHOLDER_NONE_RE": re.compile(r"^none$", re.IGNORECASE)},
 )
 REL = _load_pure_functions(
     "extraction.py",
@@ -262,6 +270,111 @@ def test_entity_id_is_deterministic_and_span_sensitive():
     assert a != EXT["make_entity_id"]("note1", 10, 20, "Symptom")
     assert a != EXT["make_entity_id"]("note2", 10, 20, "Condition")
     assert a.startswith("note1-e")
+
+
+# ------------------------------------------------------- credential citation
+
+def test_credential_citation_suppresses_comma_preceded_md():
+    """2026-08-18: 'Fax to ___, MD at ___' should not become a Muscular
+    Dystrophy entity -- confirmed live this session (Tier 1 exact match,
+    note 10302979-DS-5)."""
+    text = "Fax to ___, MD at ___"
+    orig_start = text.index("MD")
+    assert EXT["_is_credential_citation"]("MD", text, orig_start) is True
+
+
+def test_credential_citation_handles_whitespace_before_comma():
+    text = "Last Verified ___ by ___,\nMD):\nSurgical History"
+    orig_start = text.index("MD")
+    assert EXT["_is_credential_citation"]("MD", text, orig_start) is True
+
+
+def test_credential_citation_is_case_insensitive():
+    text = "seen by Dr. Smith, md today"
+    orig_start = text.index("md")
+    assert EXT["_is_credential_citation"]("md", text, orig_start) is True
+
+
+def test_credential_citation_does_not_fire_without_a_preceding_comma():
+    """A genuine diagnosis mention -- 'patient has MD' -- must not be
+    suppressed just because the text happens to be 'MD'."""
+    text = "family history significant for MD (muscular dystrophy)"
+    orig_start = text.index("MD")
+    assert EXT["_is_credential_citation"]("MD", text, orig_start) is False
+
+
+def test_credential_citation_does_not_fire_for_other_text():
+    text = "diagnosed with MD, severe"
+    orig_start = text.index("MD")
+    assert EXT["_is_credential_citation"]("MDS", text, orig_start) is False
+    assert EXT["_is_credential_citation"]("Muscular dystrophy", text, 0) is False
+
+
+def test_section_header_text_suppresses_whole_header_span():
+    """2026-08-18: GLiNER extracting 'Major Surgical or Invasive Procedure'
+    itself as a [Procedure] entity -- confirmed live, and confirmed NOT a
+    one-off (this header appears in 272/272 notes in the real corpus)."""
+    text = "wound dehiscence\n \nMajor Surgical or Invasive Procedure:\nNone\n"
+    sections = PRE["segment_sections"](text)
+    header_start = text.index("Major Surgical")
+    header_end = text.index(":", header_start) + 1
+    assert EXT["_is_section_header_text"](header_start, header_end, sections) is True
+
+
+def test_section_header_text_suppresses_fragments_too():
+    """The live failure actually split the header word-by-word (Major /
+    Surgical / Invasive Procedure) rather than extracting it whole -- each
+    fragment must also be caught, since it's still entirely inside the
+    header span."""
+    text = "wound dehiscence\n \nMajor Surgical or Invasive Procedure:\nNone\n"
+    sections = PRE["segment_sections"](text)
+    for fragment in ["Major", "Surgical", "Invasive Procedure"]:
+        s = text.index(fragment)
+        e = s + len(fragment)
+        assert EXT["_is_section_header_text"](s, e, sections) is True, fragment
+
+
+def test_section_header_text_does_not_suppress_real_content_in_the_body():
+    """The header span ends at the body start -- real clinical content
+    inside the section (not the header line itself) must not be caught."""
+    text = "wound dehiscence\n \nMajor Surgical or Invasive Procedure:\nRight knee arthroplasty\n"
+    sections = PRE["segment_sections"](text)
+    s = text.index("Right knee arthroplasty")
+    e = s + len("Right knee arthroplasty")
+    assert EXT["_is_section_header_text"](s, e, sections) is False
+
+
+def test_section_header_text_does_not_suppress_content_before_any_header():
+    text = "wound dehiscence\n \nMajor Surgical or Invasive Procedure:\nNone\n"
+    sections = PRE["segment_sections"](text)
+    s = text.index("wound dehiscence")
+    e = s + len("wound dehiscence")
+    assert EXT["_is_section_header_text"](s, e, sections) is False
+
+
+# --------------------------------------------------------- placeholder "None"
+
+def test_placeholder_none_is_suppressed():
+    assert EXT["_is_placeholder_none"]("None") is True
+    assert EXT["_is_placeholder_none"](" none ") is True
+    assert EXT["_is_placeholder_none"]("NONE") is True
+
+
+def test_placeholder_none_does_not_fire_on_real_content_containing_the_word():
+    """Scoped to the WHOLE entity text, not a substring check -- a real
+    entity that merely contains 'none' as part of a longer phrase must not
+    be suppressed."""
+    assert EXT["_is_placeholder_none"]("None known") is False
+    assert EXT["_is_placeholder_none"]("nonetheless") is False
+
+
+def test_credential_citation_ignores_non_whitespace_punctuation_before_comma_gap():
+    """Only whitespace is skipped when walking back to the comma -- a comma
+    separated from MD by anything else (not just spaces/newlines) should not
+    match, to keep this narrowly scoped to the actual observed shape."""
+    text = "some text, (extra) MD"
+    orig_start = text.index("MD")
+    assert EXT["_is_credential_citation"]("MD", text, orig_start) is False
 
 
 # ------------------------------------------------------------ local context

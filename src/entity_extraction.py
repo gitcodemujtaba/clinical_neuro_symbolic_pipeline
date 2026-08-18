@@ -55,7 +55,6 @@ import os
 import json
 import hashlib
 import re
-import duckdb
 from gliner import GLiNER
 import warnings
 
@@ -151,6 +150,83 @@ LOCAL_CONTEXT_MIN_CHARS = 300
 # rather than testing the ceiling exactly).
 CHUNK_WORD_BUDGET = 1800
 CHUNK_OVERLAP_WORDS = 128
+
+
+# 2026-08-18 (credential-citation false positive). GLiNER's own multi-purpose
+# label set has no "not clinical content" category, so a physician-credential
+# citation ("Fax to ___, MD at ___", "Last Verified ___ by ___, MD") gets
+# extracted as a Condition span and Tier 1 exact-matches straight to
+# "Muscular dystrophy" -- confirmed live this session on note 10302979-DS-5.
+# Scoped narrowly to exactly this evidence, not a general "administrative
+# section" filter: measured directly against the 272-note corpus (data/
+# snomed-ct-entity-linking-challenge-1.2.0/train_notes.csv), the pattern
+# "<comma><whitespace>MD" appears in only 6/272 notes, and in every sampled
+# occurrence (7 checked) it was unambiguously a credential citation, never a
+# diagnosis. A broader "Fax to"/"Attn:" line-level filter was considered and
+# rejected -- "Fax to" alone appears in only 1/272 notes, too rare a trigger
+# to justify new machinery, and a line-based filter risks suppressing real
+# clinical content that happens to share a line with routing text. This
+# narrow, comma-anchored check has no such risk: nothing that precedes "MD"
+# with a comma in this corpus was ever a genuine Muscular Dystrophy mention.
+_CREDENTIAL_MD_RE = re.compile(r"^md$", re.IGNORECASE)
+
+
+def _is_credential_citation(orig_text: str, raw_text: str, orig_start: int) -> bool:
+    """True when `orig_text` is exactly "MD" and immediately preceded (
+    skipping whitespace only, not other punctuation) by a comma in
+    `raw_text` -- the credential-citation shape ("___, MD"), not a genuine
+    Muscular Dystrophy mention."""
+    if not _CREDENTIAL_MD_RE.match(orig_text.strip()):
+        return False
+    i = orig_start - 1
+    while i >= 0 and raw_text[i].isspace():
+        i -= 1
+    return i >= 0 and raw_text[i] == ","
+
+
+# 2026-08-18 (section-header leak). GLiNER has no "this is a document
+# structure label, not clinical content" signal, so a section header itself
+# gets extracted as an entity -- confirmed live this session on note
+# 10513485-DS-7, where "Major Surgical or Invasive Procedure:" was split
+# word-by-word into three false entities (Major/Surgical/Invasive Procedure).
+# Direct re-testing confirmed this is not a one-off: GLiNER extracts the
+# header (whole or fragmented, depending on surrounding text) across every
+# variant tried. This is corpus-wide, not rare -- unlike the narrow MD fix,
+# "Major Surgical or Invasive Procedure" alone appears in 272/272 (100%) of
+# the 272-note corpus, and every standard MIMIC section header measured
+# (History of Present Illness, Past Medical History, Physical Exam, ...)
+# appears in 86-100% of notes.
+#
+# Reuses src.preprocessing.segment_sections()'s EXISTING header-span
+# provenance (`header_start`, `start` = body start) rather than a hardcoded
+# header-string list -- SECTION_HEADER_RE is already a generic "Capitalized
+# Words:" pattern, not tied to specific known headers, so this generalizes
+# to every section header the note actually has, not just the one case that
+# was caught live.
+def _is_section_header_text(orig_start: int, orig_end: int, sections: list) -> bool:
+    """True when [orig_start, orig_end) falls entirely within some
+    section's own header span (the header line itself, e.g. "Major
+    Surgical or Invasive Procedure:"), not its body content."""
+    return any(s["header_start"] <= orig_start and orig_end <= s["start"]
+              for s in sections)
+
+
+# 2026-08-18 (structured-placeholder false positive). "None" is MIMIC's
+# standard placeholder for an empty section ("Major Surgical or Invasive
+# Procedure:\nNone", "Pending Results:\nNone") -- GLiNER extracts it as a
+# [Condition] entity (confirmed live, score 0.731). Measured directly
+# against the 272-note corpus: a standalone "None" line appears in 93/272
+# notes (34%) and every sampled occurrence (10 checked) was a section
+# placeholder, never a genuine clinical statement. Scoped to the exact
+# standalone-token shape (whole entity text, stripped, case-insensitive)
+# rather than substring matching, so a real sentence merely containing the
+# word "none" is unaffected -- GLiNER would have to extract "none" alone as
+# its own labeled span for this to fire at all.
+_PLACEHOLDER_NONE_RE = re.compile(r"^none$", re.IGNORECASE)
+
+
+def _is_placeholder_none(orig_text: str) -> bool:
+    return bool(_PLACEHOLDER_NONE_RE.match(orig_text.strip()))
 
 
 def _build_chunks(sentences: list, words: list, budget: int = CHUNK_WORD_BUDGET,
@@ -718,6 +794,13 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str,
 
         orig_start, orig_end = map_offsets_to_original(exp_start, exp_end, expansions)
         orig_text = raw_text[orig_start:orig_end]
+
+        if _is_credential_citation(orig_text, raw_text, orig_start):
+            continue
+        if _is_section_header_text(orig_start, orig_end, sections):
+            continue
+        if _is_placeholder_none(orig_text):
+            continue
 
         entity_id = make_entity_id(note_id, orig_start, orig_end, label)
 
