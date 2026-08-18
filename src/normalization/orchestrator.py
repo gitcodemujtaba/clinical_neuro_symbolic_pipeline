@@ -771,6 +771,62 @@ def _apply_allergy_domain_tiebreak(mapping: dict) -> dict:
     return mapping
 
 
+# 2026-08-18 (physical-exam-header context, found while investigating the
+# "Abdomen" wrong-concept case). An Anatomy-labeled entity that is itself
+# acting as a physical-exam sub-header ("Abdomen: soft, non-tender") is
+# coded by this gold corpus to the EXAMINATION of that body region (a SNOMED
+# Procedure, "Examination of abdomen") rather than to the body region itself
+# (an Anatomy/Body Structure concept) -- confirmed at real scale, not a
+# one-off: 1,374 gold annotations across the corpus resolve to an
+# "Examination of X" concept. Same underlying architecture as
+# is_allergy_context below (a context signal overrides label/domain for the
+# SEARCH only), but needs an actual text rewrite, not just a domain widen --
+# "abdomen" and "examination of abdomen" are different strings, so a domain-
+# only override (the wound-dehiscence fix's shape) cannot reach this concept
+# no matter how it's widened. Confirmed directly: "examination of {text}"
+# resolves via plain Tier 1 exact match once domain is set to Procedure --
+# SNOMED's "Examination of X" concepts are standard (unlike the allergy
+# case's non-standard "Allergy to X" concepts), so no special non-standard-
+# concept override is needed here, just the rewritten search text.
+#
+# SCOPED TO ':' ONLY -- '-' and '/' were both tried and dropped after
+# checking the REVERSE direction too (precision on ALL 2,809 Anatomy-labeled
+# entities, not just recall on the known 1,374): '/' hits included narrative
+# compound anatomical references ("liver/spleen edge", "left atrium/right
+# atrium" -- "X and Y", not "exam of X"); '-' hits included spine-level
+# ranges ("L4" before "-L5", meaning "L4-L5", not a header) and echo-report
+# measurement labels ("Left Ventricle" before "- Ejection Fraction", a
+# structured report field of uncertain target, not a physical-exam bullet).
+# Colon alone covers 81.4% of the known population (1,118/1,374) with no
+# false positive spotted in a full manual review of its own precision
+# sample -- a materially cleaner signal than either alternative, and the
+# same "narrow, evidence-scoped beats broad" trade this session already
+# made for the coronary-segment and short-alphanumeric-code traps.
+_EXAM_HEADER_TRAILING_RE = re.compile(r"^\s*:")
+
+
+def _is_physical_exam_header_context(ent: dict, label: str) -> bool:
+    """True when an Anatomy-labeled entity is immediately followed (in its
+    own local context, skipping whitespace) by ':' -- the measured shape of
+    a physical-exam sub-header, not a narrative anatomical reference.
+    Pragmatic text search rather than an exact offset slice: local_context
+    has no separately-stored absolute start offset to compute a precise
+    relative position from, and for the short (1-2 word) entities this
+    fires on, a repeat occurrence within one ~300-800 char context window
+    is rare enough that the first match is reliable in practice."""
+    if label != "Anatomy":
+        return False
+    local_context = ent.get("local_context") or ""
+    orig_text = ent.get("original_text") or ""
+    if not orig_text:
+        return False
+    idx = local_context.find(orig_text)
+    if idx < 0:
+        return False
+    tail = local_context[idx + len(orig_text):idx + len(orig_text) + 3]
+    return bool(_EXAM_HEADER_TRAILING_RE.match(tail))
+
+
 def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool = False) -> list:
     """Normalizes Stage 2a entities against OMOP and persists results.
 
@@ -915,13 +971,26 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
         # remaining near-tie case (NSAIDS, 0.8078 vs 0.7867) that widening
         # alone doesn't resolve.
         is_allergy_context = ent.get("assertion_status") == STATUS_ALLERGY and label == "Medication"
-        search_expanded_text = (
-            f"Allergy to {acronym_resolved_text}" if is_allergy_context else acronym_resolved_text)
-        search_orig_text = f"Allergy to {orig_text}" if is_allergy_context else orig_text
-        search_label = "Condition" if is_allergy_context else label
-        search_domain_override = (
-            (domain_override or ["Condition", "Observation"]) if is_allergy_context
-            else domain_override)
+        # Mutually exclusive with is_allergy_context (Medication vs. Anatomy
+        # label), so no ordering/precedence question between the two -- see
+        # _is_physical_exam_header_context()'s own comment for the finding.
+        is_exam_header_context = (not is_allergy_context
+                                  and _is_physical_exam_header_context(ent, label))
+        if is_allergy_context:
+            search_expanded_text = f"Allergy to {acronym_resolved_text}"
+            search_orig_text = f"Allergy to {orig_text}"
+            search_label = "Condition"
+            search_domain_override = domain_override or ["Condition", "Observation"]
+        elif is_exam_header_context:
+            search_expanded_text = f"Examination of {acronym_resolved_text}"
+            search_orig_text = f"Examination of {orig_text}"
+            search_label = "Procedure"
+            search_domain_override = domain_override or ["Procedure"]
+        else:
+            search_expanded_text = acronym_resolved_text
+            search_orig_text = orig_text
+            search_label = label
+            search_domain_override = domain_override
 
         # Normalization is a pure function of (text, label, domain_override)
         # within a note, so the cache is the fan-out mechanism: identical

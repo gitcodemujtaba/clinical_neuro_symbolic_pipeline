@@ -1,7 +1,6 @@
 """src/normalization/tier_retrieval.py — Tier 1-4 candidate retrieval, ranking, alias expansion, hierarchy collapse (split from src/normalization.py, 2026-08-14)."""
 import os
 import re
-import math
 import duckdb
 
 from .constants import *  # noqa: F401,F403
@@ -191,7 +190,7 @@ def _rank_tier12_candidates(conn, rows, gliner_label, entity_text, domains=None,
         wanted_domains = set(domains or GLINER_LABEL_TO_DOMAIN.get(gliner_label) or [])
 
         def key(r):
-            cid, name, domain_id = r[0], r[1], r[2]
+            cid, domain_id = r[0], r[2]
             return (
                 _class_rank(classes.get(cid), gliner_label),      # asc, lower better
                 0 if (not wanted_domains or domain_id in wanted_domains) else 1,
@@ -339,6 +338,61 @@ def _alias_expand_brand_to_generic(conn, search_text):
         return set()
 
 
+# 2026-08-18, "CHEM-7" investigation, GENERALIZED to "SGPT" (same session,
+# same mechanism). Confirmed directly against athena_concept_synonym for
+# both: neither "CHEM-7"/"Chem 7"/"chem7" nor "SGPT" appear as a clean,
+# standalone-matchable synonym string anywhere in this dump. "SGPT" DOES
+# appear, but only inside LOINC's packed multi-synonym cells that mix
+# several distinct-test abbreviations together in one string (e.g. one real
+# row's synonym cell is literally "...ALT; ...AST; ...SGOT; SGPT; ..." all
+# together, for a concept that isn't even the plain ALT concept) -- Tier
+# 2's exact-match requires the WHOLE cell to equal the search text, so a
+# packed cell can never match "sgpt" alone. This is a genuine vocabulary
+# gap, not a normalization/lookup bug -- Tier 1/2 structurally cannot find
+# something that isn't cleanly there, no matter how the search text is
+# normalized. Same fix shape as _alias_expand_brand_to_generic()
+# (force-include a verified id into Tier 3 regardless of cosine rank), but
+# a flat curated dict instead of a live KG walk, since there is no ontology
+# relationship to traverse for informal/historical lab shorthand -- this IS
+# the ontology-external knowledge.
+#
+# Confirmed root cause for SGPT specifically: it's a genuine Tier 3
+# semantic-drift case, same family as tylenol->tylosin/coumadin->coumaran/
+# metop->METOPON this session -- SapBERT ranks "Aspartate transaminase
+# activity measurement" (WRONG; that's AST, i.e. SGOT's meaning) at 0.739
+# vs. the correct "Alanine transaminase activity measurement" (SGPT's
+# actual meaning) at 0.7239, a narrow but wrong-direction margin. SGPT
+# (Serum Glutamic-Pyruvic Transaminase) is unambiguously ALT's old name;
+# SGOT (Serum Glutamic-Oxaloacetic Transaminase) is unambiguously AST's --
+# standard, fixed clinical terminology, not context-dependent, so a curated
+# alias is safe here the same way it's safe for a brand name. SGOT is
+# included for symmetry (same fixed-terminology basis) even though it
+# already resolves correctly today -- insurance against Tier 3 ranking
+# noise, not a fix for an independently measured wrong case the way SGPT is.
+#
+# Deliberately narrow otherwise: only the two cases with a specific,
+# verified root cause. Other lab shorthand (CHEM-20, BMP, CMP, CBC, LFTs)
+# was raised as plausible analogues in this session but NOT individually
+# verified against real data the way these were -- adding them on
+# guesswork would repeat the exact mistake this project's own history
+# already learned from (the abbreviation flywheel's block-list-to-allow-
+# list reversal, 2026-08-17): a plausible-sounding entry is not the same as
+# a measured one. Extend this dict only after the same direct verification
+# these entries got.
+_LAB_TEST_ALIASES = {
+    "chem-7": 3041230, "chem 7": 3041230, "chem7": 3041230,
+    # -> 'Basic metabolic panel, Blood' (LOINC, Measurement/Lab Test) --
+    # the plain/unqualified panel concept, not one of its dated (1998/2000/
+    # 2008) or add-on (with Hgb/Hct, with albumin, with ionized calcium)
+    # variants, since bare "CHEM-7" implies none of those extra qualifiers.
+    "sgpt": 44810789,   # -> 'Alanine transaminase activity measurement' (= ALT)
+    "sgot": 44810795,   # -> 'Aspartate transaminase activity measurement' (= AST)
+}
+
+
+def _lab_test_alias(search_text: str) -> set:
+    concept_id = _LAB_TEST_ALIASES.get(search_text.strip().lower())
+    return {concept_id} if concept_id else set()
 
 
 _COMPOUND_NAME_RE = re.compile(r"\b(and|&)\b", re.IGNORECASE)
@@ -758,17 +812,24 @@ def _tier_queries(conn, search_text, vocabs, domains, entity_text, vector=None,
     if vector is None:
         vector = get_sapbert_embedding(entity_text)
     alias_ids = _alias_expand_brand_to_generic(conn, search_text)
+    panel_ids = _lab_test_alias(search_text)
+    force_include_ids = alias_ids | panel_ids
     if HYBRID_RETRIEVAL_ENABLED:
         cands = _tier3_hybrid_rows(conn, entity_text, vector, vocabs, domains,
-                                   alias_ids=alias_ids)
+                                   alias_ids=force_include_ids)
         if not cands:
             return None, None, 0.0
     else:
-        rows = _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=alias_ids)
+        rows = _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=force_include_ids)
         if not rows:
             return None, None, 0.0
-        cands = [_candidate(r, "3 (Semantic)", round(r[4], 4),
-                           match_basis="verified_brand_alias" if r[0] in alias_ids else None)
+        def _match_basis(concept_id):
+            if concept_id in alias_ids:
+                return "verified_brand_alias"
+            if concept_id in panel_ids:
+                return "verified_lab_test_alias"
+            return None
+        cands = [_candidate(r, "3 (Semantic)", round(r[4], 4), match_basis=_match_basis(r[0]))
                 for r in rows]
     cands = _collapse_hierarchy_duplicates(conn, cands)
     cands = _prefer_lab_procedure_over_observable(conn, cands, gliner_label)

@@ -79,6 +79,30 @@ _MIN_SPLIT_HALF_CHARS = 3
 _SHORT_LATERALITY_TOKENS = {"l", "r", "b"}  # left / right / bilateral
 
 
+# 2026-08-18, confirmed root cause of a real production bug: "Metoprolol
+# Succinate" (and "Metoprolol Tartrate") were being split into two separate
+# entities ("Metoprolol" + "Succinate"), each independently normalized and
+# auto-written to KG3 as unrelated facts. GLiNER itself extracts the phrase
+# correctly as ONE span (confirmed via direct re-test) -- the split happens
+# here, because "metoprolol succinate" as a bare two-word string has no
+# exact/synonym Tier 1/2 hit in this RxNorm dump (it only appears combined
+# with dose/form, e.g. as part of a longer Clinical Drug name), so the
+# WHOLE-PHRASE GUARD above doesn't fire, the partition search runs, and
+# "succinate" alone independently resolves as a real chemical/ingredient
+# concept -- passing this function's own "every part must resolve" bar even
+# though a drug and its salt form are never two separate clinical facts.
+# Scoped to Medication-labeled spans only, and to a closed, well-known set of
+# salt/ester suffixes -- not a general veto on short resolvable parts, which
+# would reopen the over-atomization risk this function's own REVERT NOTICE
+# already documents.
+_DRUG_SALT_SUFFIXES = {
+    "succinate", "tartrate", "hydrochloride", "sulfate", "sulphate",
+    "maleate", "fumarate", "besylate", "mesylate", "citrate", "acetate",
+    "phosphate", "bitartrate", "hydrobromide", "nitrate", "gluconate",
+    "chloride", "sodium", "potassium", "calcium", "magnesium",
+}
+
+
 
 # 2026-08-10, gap 1 (docs/Stage2_Compound_And_Qualifier_Gaps.md): the large
 # gold note's laterality+device+action procedures ("right EVD placement" ->
@@ -312,6 +336,14 @@ def find_compound_split(conn, text: str, gliner_label: str) -> dict:
             g_text = text[g_start:g_end]
             if (len(g_text) < _MIN_SPLIT_HALF_CHARS
                     and g_text.strip().lower() not in _SHORT_LATERALITY_TOKENS):
+                parts = None
+                break
+            # Drug + salt-suffix guard -- see _DRUG_SALT_SUFFIXES' own
+            # comment above. Checked here, before the Tier 1/2 lookup below,
+            # since a salt suffix is never a meaningless fragment -- it
+            # independently resolves as a real chemical/ingredient concept,
+            # which is exactly why it would otherwise pass every check here.
+            if gliner_label == "Medication" and g_text.strip().lower() in _DRUG_SALT_SUFFIXES:
                 parts = None
                 break
             # 2026-08-12 LAB-VALUE-SUFFIXED PARTS ("Triglyc-97 HDL-34" ->
