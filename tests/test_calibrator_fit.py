@@ -107,6 +107,41 @@ class FakeStratifiedKFold:
 
 
 def _install_fake_sklearn():
+    """Installs a fake sklearn into sys.modules so _new_estimator()'s lazy
+    `from sklearn.linear_model import LogisticRegression` (src/mollm_
+    calibrator.py) succeeds during this file's own tests, without the real
+    dependency (see the module docstring).
+
+    NOT called at module import time -- see setup_module()/teardown_module()
+    below, which scope this to exactly this file's OWN test-execution window
+    instead. That distinction matters and was not the first fix tried.
+    pytest COLLECTS every test file (running each one's module-level code)
+    before RUNNING any test function in any file, so a module-level
+    `_install_fake_sklearn()` call leaves the fake module sitting in
+    sys.modules throughout the ENTIRE collection phase across every other
+    file too -- confirmed live 2026-08-18, two different broken states
+    depending on the stub's shape:
+      1. Bare types.ModuleType (no __spec__): a later file that imports the
+         real `transformers` (tests/test_compound_span_salt_suffix.py) fails
+         at COLLECTION with `ValueError: sklearn.__spec__ is None` --
+         importlib.util.find_spec() treats an already-cached module with
+         __spec__=None as a hard error, not "not found".
+      2. Giving each stub a real __spec__ (importlib.machinery.ModuleSpec)
+         "fixes" #1 but is WORSE: transformers' own `_sklearn_available =
+         find_spec("sklearn") is not None` check then reports True, so its
+         generation/candidate_generator.py unconditionally runs `from
+         sklearn.metrics import roc_curve` against this fake module, which
+         has no `metrics` submodule -> ModuleNotFoundError, cascading into
+         GenerationMixin/AutoTokenizer import failures across 8 test files.
+    Neither is fixable by tuning the stub's shape -- the stub's only correct
+    *lifetime* is this file's own test-execution window, not the whole
+    process. Installing/removing it around that window means find_spec(
+    "sklearn") correctly returns None during every other file's collection
+    AND execution, which is both what transformers expects and the true
+    state of this sandbox (sklearn really is absent here, per this file's
+    own docstring) -- not a workaround, the honest state, just scoped
+    correctly this time.
+    """
     sk = types.ModuleType("sklearn")
     lm = types.ModuleType("sklearn.linear_model")
     ms = types.ModuleType("sklearn.model_selection")
@@ -119,7 +154,23 @@ def _install_fake_sklearn():
     sys.modules["sklearn.model_selection"] = ms
 
 
-_install_fake_sklearn()
+def _uninstall_fake_sklearn():
+    for name in ("sklearn", "sklearn.linear_model", "sklearn.model_selection"):
+        sys.modules.pop(name, None)
+
+
+def setup_module(module):
+    """pytest hook: runs once, right before this file's first test CALL
+    (i.e. after every file's collection is already done) -- see
+    _install_fake_sklearn()'s docstring for why timing this to the
+    execution window, not collection, is what actually fixes the isolation
+    bug rather than just relocating it."""
+    _install_fake_sklearn()
+
+
+def teardown_module(module):
+    _uninstall_fake_sklearn()
+
 
 from src.mollm_calibrator import (  # noqa: E402
     FEATURE_NAMES, MoLLMCalibrator, _new_estimator,
@@ -448,6 +499,20 @@ def run():
     for f in fail:
         print(f"  FAILED: {f}")
     return 1 if fail else 0
+
+
+def test_calibrator_fit():
+    """2026-08-18: this file previously had no pytest-discoverable test
+    function at all -- only the run()/__main__ pattern below, meaning its
+    60+ real checks silently never executed as part of `pytest tests/`
+    despite looking like a normal suite member. Every other custom-runner
+    file in this suite (test_tier_gate.py, test_offset_mapping.py, ...) has
+    this same thin wrapper; this file was the one exception. run()'s own
+    return convention here is a shell-exit-code style int (0 == all passed,
+    1 == some failed), NOT the `not fail` bool style those other files use
+    -- assert run() == 0, not assert run(), or a passing run would read as
+    a failed assertion."""
+    assert run() == 0
 
 
 if __name__ == "__main__":
