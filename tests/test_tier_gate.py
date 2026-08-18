@@ -22,9 +22,12 @@ Run: python3 -m pytest tests/test_tier_gate.py -v
 
 import ast
 import collections
+import json
 import os
 import re
 import sys
+
+from src.llm_client import LLMUnavailable, extract_verdict_confidence, parse_json_response
 
 SRC_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src")
 
@@ -71,6 +74,78 @@ _clinical_meaning_prompt = TG["_clinical_meaning_prompt"]
 _binary_match_prompt = TG["_binary_match_prompt"]
 ALLERGY_MEANING_INSTRUCTION = TG["ALLERGY_MEANING_INSTRUCTION"]
 ALLERGY_CONTEXT_CLAUSE = TG["ALLERGY_CONTEXT_CLAUSE"]
+
+
+# Separate extraction, EXHAUSTIVE_CANDIDATE_EVAL_ENABLED forced True (2026-08-18,
+# "cold start" fix) -- _evaluate_one_model()/_resolve_tiebreak() actually call an
+# LLM client, so real src.llm_client helpers (fast import, no SapBERT/GLiNER --
+# confirmed ~0.3s, unlike src.normalization.constants) are injected for real
+# rather than faked, same discipline as everything else in this file.
+TG_EXHAUSTIVE = _load_pure_functions(
+    "mollm_tier_gate.py",
+    {"_evaluate_one_model", "_resolve_tiebreak", "_tiebreak_prompt", "_tiebreak_schema",
+     "_condition_vs_observation_duplicate",
+     "_clinical_meaning_prompt", "_binary_match_prompt", "_meaning_schema", "_match_schema"},
+    extra_globals={"EXHAUSTIVE_CANDIDATE_EVAL_ENABLED": True,
+                  "LLMUnavailable": LLMUnavailable,
+                  "extract_verdict_confidence": extract_verdict_confidence,
+                  "parse_json_response": parse_json_response},
+)
+_evaluate_one_model_exhaustive = TG_EXHAUSTIVE["_evaluate_one_model"]
+
+# Second copy of the same functions with the flag False, to prove the default
+# (legacy stop-at-first) behavior is untouched when the flag is off.
+TG_SEQUENTIAL = _load_pure_functions(
+    "mollm_tier_gate.py",
+    {"_evaluate_one_model", "_resolve_tiebreak", "_tiebreak_prompt", "_tiebreak_schema",
+     "_condition_vs_observation_duplicate",
+     "_clinical_meaning_prompt", "_binary_match_prompt", "_meaning_schema", "_match_schema"},
+    extra_globals={"EXHAUSTIVE_CANDIDATE_EVAL_ENABLED": False,
+                  "LLMUnavailable": LLMUnavailable,
+                  "extract_verdict_confidence": extract_verdict_confidence,
+                  "parse_json_response": parse_json_response},
+)
+_evaluate_one_model_sequential = TG_SEQUENTIAL["_evaluate_one_model"]
+
+
+class _FakeClient:
+    """Scripted client.complete() -- returns each entry in `responses` in
+    order, raising if the script runs out (a test bug, not a real failure
+    path) or if that specific entry says to raise."""
+
+    def __init__(self, responses, model_name="fake-model"):
+        self.responses = list(responses)
+        self.calls = []
+        self.model_name = model_name
+
+    def complete(self, system_prompt, user_prompt, schema=None, max_tokens=None):
+        self.calls.append({"system": system_prompt, "user": user_prompt, "schema": schema})
+        if not self.responses:
+            raise AssertionError("FakeClient script exhausted -- test wired up too few responses")
+        resp = self.responses.pop(0)
+        if "raise" in resp:
+            raise resp["raise"]
+        return {"text": json.dumps(resp["json"]), "tokens": resp.get("tokens", []),
+                "degenerate_generation": resp.get("degenerate", False)}
+
+
+def _token(text, logprob):
+    return [{"token": text, "logprob": logprob}]
+
+
+_WOUND_DEHISCENCE_ENTITY = {
+    "original_text": "wound dehiscence", "expanded_text": "wound dehiscence",
+    "gliner_label": "Condition", "assertion_status": "PRESENT", "experiencer": "PATIENT",
+    "section_name": "Hospital Course", "local_context": "noted to have wound dehiscence",
+    "candidates": [
+        {"concept_name": "Wound dehiscence", "domain_id": "Condition",
+         "concept_class_id": "Disorder", "vocabulary_id": "SNOMED",
+         "match_basis": "exact_text", "similarity_score": 1.0, "omop_concept_id": 111},
+        {"concept_name": "Wound dehiscence", "domain_id": "Observation",
+         "concept_class_id": "Morph Abnormality", "vocabulary_id": "SNOMED",
+         "match_basis": "exact_text", "similarity_score": 1.0, "omop_concept_id": 222},
+    ],
+}
 
 
 def _entity(**overrides):
@@ -324,6 +399,50 @@ def run():
           "ALLERGY EXCEPTION" not in step_b_without_clause)
 
     # ======================================================================
+    # 2026-08-18: rule 2 (brand alias) is now conditional on THIS candidate's
+    # own match_basis, not printed unconditionally -- the prompt-bleed fix
+    # (live hallucination caught this session: a exact_text candidate got
+    # justified in a model's reasoning as "verified to be a brand alias"
+    # purely because the rule text was always present regardless of basis).
+    # ======================================================================
+    brand_alias_candidate = {"concept_name": "Furosemide", "match_basis": "verified_brand_alias"}
+    exact_text_candidate = {"concept_name": "Wound dehiscence", "match_basis": "exact_text"}
+
+    prompt_with_alias = _binary_match_prompt(present_entity, brand_alias_candidate, "furosemide")
+    check("Step B prompt DOES mention verified_brand_alias when the candidate's "
+          "own basis actually is verified_brand_alias",
+          "verified_brand_alias" in prompt_with_alias)
+
+    prompt_without_alias = _binary_match_prompt(present_entity, exact_text_candidate, "wound dehiscence")
+    check("Step B prompt does NOT mention verified_brand_alias when the candidate's "
+          "own basis is exact_text -- no rule for the model to misattribute",
+          "verified_brand_alias" not in prompt_without_alias)
+    check("base rules 1/3/4 are still present even when rule 2 is omitted",
+          "SEMANTIC MATCH" in prompt_without_alias
+          and "Ignore assertion/negation status" in prompt_without_alias
+          and "STRICT DOMAIN MISMATCH" in prompt_without_alias)
+
+    # -- 2026-08-18: verified_lab_test_alias (the "CHEM-7" fix) gets the
+    # same trust rule as verified_brand_alias, with its own basis string
+    # named explicitly rather than a generic paraphrase.
+    lab_panel_candidate = {"concept_name": "Basic metabolic panel, Blood",
+                           "match_basis": "verified_lab_test_alias"}
+    prompt_with_panel_alias = _binary_match_prompt(present_entity, lab_panel_candidate, "CHEM-7")
+    check("Step B prompt DOES mention verified_lab_test_alias when the "
+          "candidate's own basis actually is verified_lab_test_alias",
+          "verified_lab_test_alias" in prompt_with_panel_alias)
+    check("the lab-panel-alias rule does not falsely claim it's a brand alias",
+          "verified_brand_alias" not in prompt_with_panel_alias)
+
+    # ======================================================================
+    # 2026-08-18: Step A tightened to a single-phrase definition.
+    # ======================================================================
+    meaning_prompt = _clinical_meaning_prompt(present_entity)
+    check("Step A prompt asks for a single-phrase definition, not a "
+          "free sentence or two",
+          "single-phrase" in meaning_prompt and "Define the term only" in meaning_prompt)
+
+    # ======================================================================
     # 2026-08-17: ConsensusCalibrator escape hatch for TIER_4_ENSEMBLE_SPLIT.
     # ======================================================================
     class _FakeCalibrator:
@@ -467,6 +586,145 @@ def run():
         check(f"{text!r} does not match the short-code shape -- unaffected by "
               f"this trap, the calibrator promotion still fires",
               r["tier"] == "TIER_1B_CALIBRATED_AUTO_VALIDATED")
+
+    # ======================================================================
+    # 2026-08-18: exhaustive candidate evaluation + comparative tiebreak
+    # ("cold start" fix -- see EXHAUSTIVE_CANDIDATE_EVAL_ENABLED's own
+    # comment in src/mollm_tier_gate.py for the full rationale).
+    # ======================================================================
+
+    # -- default (flag off) behavior is untouched: stops at the FIRST
+    # accepted candidate, never even calls the client about candidate 2.
+    seq_client = _FakeClient([
+        {"json": {"clinical_meaning": "surgical wound has separated",
+                  "reasoning": "documented in hospital course"}},
+        {"json": {"match": True, "reasoning": "matches"}, "tokens": _token("true", -0.1)},
+    ])
+    r = _evaluate_one_model_sequential(seq_client, _WOUND_DEHISCENCE_ENTITY)
+    check("flag OFF: stops at first accept, verdict is SUPPORTED_1",
+          r["verdict"] == "SUPPORTED_1")
+    check("flag OFF: only 2 calls made (meaning + candidate 1) -- candidate 2 "
+          "never evaluated, exact legacy behavior",
+          len(seq_client.calls) == 2)
+
+    # -- exhaustive mode, 0 accepted -> NONE_CORRECT, same as before.
+    none_client = _FakeClient([
+        {"json": {"clinical_meaning": "an unrelated finding", "reasoning": "x"}},
+        {"json": {"match": False, "reasoning": "no"}, "tokens": _token("false", -0.1)},
+        {"json": {"match": False, "reasoning": "no"}, "tokens": _token("false", -0.1)},
+    ])
+    r = _evaluate_one_model_exhaustive(none_client, _WOUND_DEHISCENCE_ENTITY)
+    check("exhaustive mode, 0 accepted -> NONE_CORRECT",
+          r["verdict"] == "NONE_CORRECT")
+    check("exhaustive mode, 0 accepted -> all candidates were actually checked",
+          len(none_client.calls) == 3)
+
+    # -- exhaustive mode, exactly 1 accepted -> normal verdict, no tiebreak
+    # call spent (only candidate 2 accepted here).
+    one_client = _FakeClient([
+        {"json": {"clinical_meaning": "surgical wound has separated", "reasoning": "x"}},
+        {"json": {"match": False, "reasoning": "wrong domain"}, "tokens": _token("false", -0.1)},
+        {"json": {"match": True, "reasoning": "matches"}, "tokens": _token("true", -0.1)},
+    ])
+    r = _evaluate_one_model_exhaustive(one_client, _WOUND_DEHISCENCE_ENTITY)
+    check("exhaustive mode, exactly 1 accepted -> RE_RANK_TO_CANDIDATE_2, no "
+          "tiebreak call spent",
+          r["verdict"] == "RE_RANK_TO_CANDIDATE_2" and len(one_client.calls) == 3)
+
+    # -- exhaustive mode, BOTH accepted -> genuine tiebreak, model picks
+    # candidate 2 (the Observation/Morph-Abnormality one) using context.
+    tie_client = _FakeClient([
+        {"json": {"clinical_meaning": "surgical wound has separated",
+                  "reasoning": "hospital course documents this"}},
+        {"json": {"match": True, "reasoning": "plausible"}, "tokens": _token("true", -0.1)},
+        {"json": {"match": True, "reasoning": "also plausible"}, "tokens": _token("true", -0.1)},
+        {"json": {"best_index": "2",
+                  "reasoning": "documentation style matches a morphologic finding"},
+         "tokens": _token("2", -0.05)},
+    ])
+    r = _evaluate_one_model_exhaustive(tie_client, _WOUND_DEHISCENCE_ENTITY)
+    check("exhaustive mode, both accepted -> tiebreak call is actually made "
+          "(4 total calls: meaning + 2 candidate checks + 1 tiebreak)",
+          len(tie_client.calls) == 4)
+    check("tiebreak result is honored: verdict is RE_RANK_TO_CANDIDATE_2, "
+          "not the lower-indexed candidate 1",
+          r["verdict"] == "RE_RANK_TO_CANDIDATE_2")
+    check("tiebreak eval_trail entry is recorded for audit",
+          any(t.get("tiebreak") for t in r["eval_trail"]))
+
+    # -- 2026-08-18: the data-grounded CONDITION_VS_OBSERVATION_PRIOR fires
+    # for exactly the pattern it was measured against (Condition/Disorder vs
+    # Observation/Morph Abnormality, same name), and stays silent otherwise.
+    _condition_vs_observation_duplicate = TG_EXHAUSTIVE["_condition_vs_observation_duplicate"]
+    _tiebreak_prompt_fn = TG_EXHAUSTIVE["_tiebreak_prompt"]
+    wound_accepted = [
+        {"index": 1, "candidate": _WOUND_DEHISCENCE_ENTITY["candidates"][0], "reasoning": "x"},
+        {"index": 2, "candidate": _WOUND_DEHISCENCE_ENTITY["candidates"][1], "reasoning": "y"},
+    ]
+    check("Condition/Disorder vs Observation/Morph-Abnormality pattern is detected",
+          _condition_vs_observation_duplicate(wound_accepted) is True)
+    check("the measured prior text is actually injected into the tiebreak prompt "
+          "for this pattern",
+          "STRICT CORPUS CONVENTION" in _tiebreak_prompt_fn(
+              _WOUND_DEHISCENCE_ENTITY, wound_accepted, "a wound that reopened"))
+
+    unrelated_accepted = [
+        {"index": 1, "candidate": {"concept_name": "Furosemide", "domain_id": "Drug",
+                                   "concept_class_id": "Ingredient"}, "reasoning": "x"},
+        {"index": 2, "candidate": {"concept_name": "Lasix", "domain_id": "Drug",
+                                   "concept_class_id": "Branded Drug"}, "reasoning": "y"},
+    ]
+    check("the pattern is NOT detected for an unrelated tie (different names/domains)",
+          _condition_vs_observation_duplicate(unrelated_accepted) is False)
+    check("the prior is NOT injected into the prompt for an unrelated tie -- "
+          "conditional, not blanket, injection",
+          "STRICT CORPUS CONVENTION" not in _tiebreak_prompt_fn(
+              _entity(), unrelated_accepted, "furosemide"))
+
+    # -- tiebreak call itself picks candidate 1 -> SUPPORTED_1, proving the
+    # tiebreak genuinely decides rather than always preferring the higher
+    # index either.
+    tie_client_2 = _FakeClient([
+        {"json": {"clinical_meaning": "surgical wound has separated", "reasoning": "x"}},
+        {"json": {"match": True, "reasoning": "plausible"}, "tokens": _token("true", -0.1)},
+        {"json": {"match": True, "reasoning": "also plausible"}, "tokens": _token("true", -0.1)},
+        {"json": {"best_index": "1", "reasoning": "context favors the disorder sense"},
+         "tokens": _token("1", -0.05)},
+    ])
+    r = _evaluate_one_model_exhaustive(tie_client_2, _WOUND_DEHISCENCE_ENTITY)
+    check("tiebreak can also legitimately choose candidate 1 -> SUPPORTED_1",
+          r["verdict"] == "SUPPORTED_1")
+
+    # -- tiebreak call fails (LLMUnavailable) -> falls back to the HIGHEST-
+    # CONFIDENCE accepted candidate, not the lowest index (that would just
+    # reintroduce the arbitrary-pick bug this mode exists to remove).
+    # Candidate 1 is scripted with a much higher token confidence than
+    # candidate 2 here.
+    fallback_client = _FakeClient([
+        {"json": {"clinical_meaning": "surgical wound has separated", "reasoning": "x"}},
+        {"json": {"match": True, "reasoning": "plausible"}, "tokens": _token("true", -0.05)},
+        {"json": {"match": True, "reasoning": "also plausible"}, "tokens": _token("true", -2.0)},
+        {"raise": LLMUnavailable("simulated transport failure")},
+    ])
+    r = _evaluate_one_model_exhaustive(fallback_client, _WOUND_DEHISCENCE_ENTITY)
+    check("tiebreak transport failure falls back to the HIGHER-confidence "
+          "accepted candidate (1), not just candidate order",
+          r["verdict"] == "SUPPORTED_1")
+    check("fallback path is recorded in eval_trail for audit, not silent",
+          any(t.get("fallback_reason") for t in r["eval_trail"]))
+
+    # -- tiebreak call returns an out-of-set index -> same fallback path,
+    # not a crash and not a silently-accepted invalid answer.
+    badindex_client = _FakeClient([
+        {"json": {"clinical_meaning": "surgical wound has separated", "reasoning": "x"}},
+        {"json": {"match": True, "reasoning": "plausible"}, "tokens": _token("true", -2.0)},
+        {"json": {"match": True, "reasoning": "also plausible"}, "tokens": _token("true", -0.05)},
+        {"json": {"best_index": "5", "reasoning": "hallucinated index"}},
+    ])
+    r = _evaluate_one_model_exhaustive(badindex_client, _WOUND_DEHISCENCE_ENTITY)
+    check("tiebreak out-of-set response falls back safely (higher-confidence "
+          "candidate 2 here) instead of trusting the invalid index",
+          r["verdict"] == "RE_RANK_TO_CANDIDATE_2")
 
     print(f"tier-gate tests: {ok} passed, {len(fail)} failed")
     for f in fail:

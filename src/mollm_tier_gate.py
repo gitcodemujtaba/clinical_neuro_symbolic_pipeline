@@ -79,6 +79,7 @@ feature-flagged and log-only first.
 import collections
 import concurrent.futures
 import json
+import os
 import re
 import uuid
 
@@ -253,14 +254,21 @@ def _clinical_meaning_prompt(entity: dict) -> str:
         f"SECTION: {entity.get('section_name') or 'unknown'}\n"
         f"CONTEXT: ...{entity.get('local_context', '')}...\n\n"
         f"{allergy_instruction}"
-        "TASK: Based ONLY on the note text above, state in one or two "
-        "sentences what specific clinical concept (a diagnosis, medication, "
-        "lab test, procedure, anatomical structure, symptom, or similar) this "
-        "entity refers to. Describe the clinical meaning in plain language; "
-        "do not name a database code, ontology term, or vocabulary identity -- "
-        "you have not been shown any and must not invent one.\n\n"
-        'Reply with JSON: {"clinical_meaning": "<plain-language statement>", '
-        '"reasoning": "<one sentence on how the context supports this>"}'
+        # 2026-08-18 (user proposal, "cold start" prompt tightening): a
+        # single-phrase definition rather than a free sentence or two gives
+        # Step B a tighter, more atomic string to compare each candidate
+        # against -- "a beta-blocker medication" is less ambiguous to judge
+        # a candidate against than a paragraph that drifts into patient
+        # history. Kept to one field, same schema, same downstream contract
+        # -- every existing consumer of clinical_meaning is unaffected.
+        "TASK: Based ONLY on the note text above, provide a concise, "
+        "single-phrase clinical definition of what this entity refers to "
+        '(e.g. "a beta-blocker medication", "a diagnosis of high blood '
+        'pressure", "a surgical procedure on the knee"). Do not name a '
+        "database code, ontology term, or vocabulary identity. Do not "
+        "explain the patient's history. Define the term only.\n\n"
+        'Reply with JSON: {"clinical_meaning": "<single-phrase definition>", '
+        '"reasoning": "<one short sentence>"}'
     )
 
 
@@ -353,18 +361,56 @@ def _binary_match_prompt(entity: dict, candidate: dict, clinical_meaning: str,
     basis = candidate.get("match_basis", "semantic_similarity")
     rules = (
         "RULES:\n"
-        "1. Judge the candidate against the CLINICAL MEANING stated above, "
-        "not against the raw text spelling or the candidate's match score.\n"
-        "2. If basis is verified_brand_alias, it is a mathematically "
-        "verified terminology-database link -- do not reject it merely "
-        "because the spelling differs from the entity text.\n"
+        "1. SEMANTIC MATCH: judge the candidate strictly against the CLINICAL "
+        "MEANING stated above, not the raw text spelling or the candidate's "
+        "match score -- does it represent the exact same clinical idea, even "
+        "if spelled completely differently? Do not reject a candidate just "
+        "because the words do not match the original text.\n"
+    )
+    # 2026-08-18 (user proposal, "cold start" prompt-bleed fix): rule 2 used
+    # to be printed for EVERY candidate regardless of its own match_basis --
+    # confirmed live to cause exactly the bleed this guards against: a
+    # candidate whose real basis was exact_text got justified in a model's
+    # own reasoning as "verified to be a brand alias in the SNOMED
+    # vocabulary", language borrowed straight from this rule's text despite
+    # not applying to that candidate at all. Only ever include it now when
+    # THIS candidate's own basis is one of the verified-alias kinds.
+    # Numbering intentionally stays 1/[2]/3/4/5 rather than renumbering when
+    # omitted -- ALLERGY_CONTEXT_CLAUSE hardcodes "RULE 3" and
+    # QWEN_SUBSUMPTION_CLAUSE hardcodes "5.", both must keep referring to the
+    # same rules whether or not rule 2 is present.
+    #
+    # 2026-08-18, extended beyond verified_brand_alias to also cover
+    # verified_lab_test_alias (src.normalization.tier_retrieval's
+    # _LAB_TEST_ALIASES -- panel shorthand like "CHEM-7" -> the Basic
+    # Metabolic Panel LOINC concept, and historical single-test synonyms
+    # like "SGPT" -> ALT's concept) -- same underlying shape (a curated,
+    # verified lookup that legitimately differs from the raw entity text),
+    # so it gets the same trust instruction rather than being silently
+    # treated as an unverified semantic_similarity guess. The rule names
+    # the SPECIFIC basis string rather than a generic "trust this" so the
+    # model sees the real value, not a paraphrase it could misattribute to
+    # a different candidate.
+    _VERIFIED_ALIAS_BASES = {
+        "verified_brand_alias": "a mathematically verified terminology-database link",
+        "verified_lab_test_alias": "a curated, human-verified lab-test-shorthand mapping "
+                                   "(a panel abbreviation or a historical single-test synonym)",
+    }
+    if basis in _VERIFIED_ALIAS_BASES:
+        rules += (
+            f"2. This candidate's basis is {basis} -- {_VERIFIED_ALIAS_BASES[basis]}. "
+            "Do not reject it merely because the spelling differs from the "
+            "entity text.\n"
+        )
+    rules += (
         "3. Ignore assertion/negation status when judging the CONCEPT match "
         '-- a negated entity ("denies fever") still maps to its concept '
         '("Fever") if the name matches; you are labeling which concept the '
         "text refers to, not diagnosing.\n"
-        "4. Reject a candidate that is a distinct or clinically unrelated "
-        "concept (e.g. mapping a symptom to a biological genus, or a lab "
-        "value to an unrelated test). Do not force a match.\n"
+        "4. STRICT DOMAIN MISMATCH: reject a candidate that is a distinct or "
+        "clinically unrelated concept (e.g. mapping a symptom to a "
+        "biological genus, or a medication to a surgical tool). Do not "
+        "force a match.\n"
     )
     if extra_rule:
         rules += extra_rule + "\n"
@@ -400,6 +446,160 @@ def _match_schema() -> dict:
     }
 
 
+# ==========================================================================
+# Contextual candidate disambiguation (2026-08-18, "cold start" fix). See
+# src.normalization.constants.CONTEXTUAL_CANDIDATES_ENABLED (its own comment
+# there) -- the two flags share one env var and must be enabled together:
+# widening the SNOMED domain restriction without this evaluation change just
+# hands Step B a bigger list to blindly accept-first from, which can make the
+# arbitrary-pick problem WORSE (more candidates, still no real comparison).
+#
+# WHY NOT A SINGLE 1-TO-N COMPARATIVE PROMPT (the naive version of "let
+# MoLLM see everything"). Already tried and rejected in this exact codebase,
+# 2026-08-14 (scripts/experiment_3b_voting.py's _format_candidates()/
+# evaluate_candidates_sequentially() docstrings): a dense 1-to-N candidate
+# list measurably let 3B models detach a candidate's evidence tag from its
+# own bracket index and misattribute it to the highest-scored candidate
+# instead (two real 'lasix' cases both moved to the highest-scored
+# LASCUFLOXACIN candidate instead of the correctly-tagged furosemide one) --
+# a formatting fix (isolating each tag on its own line) was tried and still
+# not reliable enough. That is why Step B asks about exactly ONE candidate
+# per call: no bracket index for the model to mis-track.
+#
+# THE FIX HERE keeps that one-candidate-per-call isolation for every
+# individual judgment (unchanged, same measured-safe shape), but stops
+# discarding information: instead of returning at the FIRST accepted
+# candidate, every candidate is evaluated independently. Only when 2+ come
+# back independently accepted (the genuine "cold start" case -- Stage 2b
+# handed over real ambiguity it couldn't resolve on its own, e.g. two SNOMED
+# concepts sharing an identical name across the Condition/Disorder vs.
+# Observation/Morph-Abnormality axes) does a SEPARATE, small comparative
+# call run, scoped to just that short accepted subset (usually 2, rarely 3
+# candidates) rather than the full original list -- far less surface for the
+# same index-confusion failure mode, and it only fires when actually needed,
+# so the common (already-unambiguous) case pays no extra cost.
+EXHAUSTIVE_CANDIDATE_EVAL_ENABLED = os.environ.get(
+    "CNSP_CONTEXTUAL_CANDIDATES", "").strip() in ("1", "true", "yes")
+
+
+TIEBREAK_SYSTEM_PROMPT = (
+    "You are a clinical terminology validator. Several candidate concept "
+    "codes have each independently been judged a plausible match for the "
+    "same text span -- your job now is to pick the single best one using "
+    "the note's own context, not to re-decide whether any of them match."
+)
+
+
+# 2026-08-18 ("cold start" tiebreak, data-grounded version). A user-proposed
+# hard rule ("PREFER CONDITIONS ... if context implies a diagnosis") was
+# evaluated against this corpus's own sizing data BEFORE being adopted, per
+# this codebase's own "verify hypotheses against real data first" discipline
+# -- and rejected as-is: of 14 known Condition/Disorder-vs-Observation/Morph-
+# Abnormality same-name pairs (measured across the 109-note test corpus,
+# 2026-08-18), 11 go the OPPOSITE direction (gold prefers Observation/Morph-
+# Abnormality), confirmed live by an unprompted 3/3 unanimous WRONG
+# auto-resolve on 'Osteopenia' the very session this was found. This constant
+# encodes only the WEAK, corpus-measured prior (11/14 = 78.6%, not the
+# 78/78-exceptionless bar _prefer_lab_procedure_over_observable was held to)
+# -- injected as a tie-breaking HINT the model can still override with real
+# context, never as an absolute rule, and only when the actual pattern (same
+# name, Condition/Disorder vs Observation/Morph-Abnormality) is present in
+# THIS candidate set specifically, not a blanket addition to every tiebreak.
+# 2026-08-18, v2 ("sledgehammer" strengthening). v1's softly-worded, stats-
+# cited prior ("11 of 14... treat as a weak prior") measurably UNDER-powered
+# against a 3B model's pretraining association between disease-sounding
+# terms ("Carcinoma") and Condition/Disorder framing: live-tested on
+# 'Metastatic Renal Cell Cancer', all 3 models cited "diagnosis"/
+# "documentation style" to override the prior toward the WRONG (Condition)
+# answer, despite gold wanting Observation. A follow-up section_name check
+# across all 11 known cases also killed the section-conditioned rule
+# proposed as an alternative: the only two Chief Complaint cases both want
+# Observation, and 10/11 want Observation regardless of section -- the
+# signal is not section-dependent, it is just strongly one-directional.
+# v2 replaces the statistic (a number small models don't weigh probabilistically)
+# with an imperative default plus a specific, high-bar override condition,
+# instead of a low-bar one ("clearly supports diagnosis") a model could
+# talk itself into from thin/generic context alone.
+CONDITION_VS_OBSERVATION_PRIOR = (
+    "STRICT CORPUS CONVENTION: when evaluating SNOMED near-duplicates where "
+    "one candidate is a Condition/Disorder and the other is an Observation/"
+    "Morphologic-Abnormality classification of the identical concept name, "
+    "this dataset's strict convention is to prefer the Observation/"
+    "Morphologic-Abnormality concept. You MUST default to the Observation/"
+    "Morphologic-Abnormality candidate. Do not override this and choose the "
+    "Condition/Disorder candidate unless the surrounding text contains "
+    "overwhelming, explicit evidence that it is being coded as a formal "
+    "disease state rather than a clinical finding -- the section heading "
+    "alone (e.g. 'Chief Complaint', 'Problem List') is NOT sufficient "
+    "evidence on its own; that heading appears on both kinds of cases in "
+    "this corpus. Only override on specific language in the entity's own "
+    "sentence, not on section type or general medical association."
+)
+
+
+def _condition_vs_observation_duplicate(accepted: list) -> bool:
+    """True when `accepted` is exactly the same-name Condition/Disorder vs.
+    Observation/Morph-Abnormality pattern CONDITION_VS_OBSERVATION_PRIOR was
+    measured against -- scoped narrowly (exact name match, exact class
+    match on both sides) so the hint is never injected for an unrelated
+    tie where the measured 11/14 statistic says nothing useful."""
+    if len(accepted) != 2:
+        return False
+    names = {(a["candidate"].get("concept_name") or "").strip().lower() for a in accepted}
+    if len(names) != 1:
+        return False
+    pairs = {(a["candidate"].get("domain_id"), a["candidate"].get("concept_class_id"))
+             for a in accepted}
+    return pairs == {("Condition", "Disorder"), ("Observation", "Morph Abnormality")}
+
+
+def _tiebreak_prompt(entity: dict, accepted: list, clinical_meaning: str) -> str:
+    indices = [a["index"] for a in accepted]
+    block = "\n\n".join(
+        f"[{a['index']}] name: {a['candidate'].get('concept_name')}\n"
+        f"    domain: {a['candidate'].get('domain_id')}\n"
+        f"    concept class: {a['candidate'].get('concept_class_id') or 'unknown'}\n"
+        f"    vocabulary: {a['candidate'].get('vocabulary_id')}\n"
+        f"    basis: {a['candidate'].get('match_basis', 'semantic_similarity')}\n"
+        f"    your own earlier independent judgment: MATCH "
+        f"(\"{a.get('reasoning') or ''}\")"
+        for a in accepted
+    )
+    return (
+        "This entity's clinical meaning was independently determined to be:\n"
+        f'  "{clinical_meaning}"\n\n'
+        "ENTITY:\n"
+        f"  text as written: {entity.get('original_text')!r}\n"
+        f"  section: {entity.get('section_name') or 'unknown'}\n"
+        f"  assertion: {entity.get('assertion_status', 'PRESENT')} / "
+        f"experiencer: {entity.get('experiencer', 'PATIENT')}\n"
+        f"  context: ...{entity.get('local_context', '')}...\n\n"
+        f"CANDIDATES THAT EACH INDEPENDENTLY MATCHED:\n{block}\n\n"
+        "Multiple candidates can independently look correct when they are "
+        "SNOMED near-duplicates -- most commonly the same clinical idea "
+        "filed once as a Condition/Disorder concept and once as an "
+        "Observation/Morphologic-Abnormality concept. Use the domain/class "
+        "distinction shown above plus the note's own documentation style "
+        "and context to pick the single better fit. Do not default to the "
+        f"lowest-numbered candidate without a reason. Valid indices: {indices}.\n\n"
+        + (CONDITION_VS_OBSERVATION_PRIOR + "\n\n"
+           if _condition_vs_observation_duplicate(accepted) else "")
+        + 'Reply with JSON: {"best_index": "<one of the valid indices, as a '
+        'string>", "reasoning": "<one sentence>"}'
+    )
+
+
+def _tiebreak_schema(indices: list) -> dict:
+    return {
+        "type": "object",
+        "properties": {
+            "best_index": {"type": "string", "enum": [str(i) for i in indices]},
+            "reasoning": {"type": "string"},
+        },
+        "required": ["best_index", "reasoning"],
+    }
+
+
 def _evaluate_one_model(client, entity: dict) -> dict:
     """Runs the full two-step CoT for one ensemble model against one entity.
 
@@ -412,6 +612,14 @@ def _evaluate_one_model(client, entity: dict) -> dict:
     `degenerate_generation` (True if any call in the trail degenerated, so
     the aggregator in route_tier() can exclude this model's vote the same
     way src.mollm_ensemble.combine() does).
+
+    Default behavior stops Step B at the first accepted candidate (unchanged
+    since this module's original build). When EXHAUSTIVE_CANDIDATE_EVAL_ENABLED
+    is set, every candidate is evaluated instead, and a genuine 2+-way tie is
+    resolved by _resolve_tiebreak() rather than silently keeping whichever
+    candidate happened to be checked first -- see that flag's own comment
+    block above for why this exists and why it is not just a full-list
+    comparative prompt.
     """
     candidates = entity.get("candidates") or []
     try:
@@ -448,6 +656,7 @@ def _evaluate_one_model(client, entity: dict) -> dict:
 
     step_a_degenerate = bool(meaning_raw.get("degenerate_generation"))
     trail = []
+    accepted = []  # only populated/used when EXHAUSTIVE_CANDIDATE_EVAL_ENABLED
     for i, cand in enumerate(candidates, 1):
         try:
             raw = client.complete(
@@ -463,22 +672,96 @@ def _evaluate_one_model(client, entity: dict) -> dict:
                           "match": matched, "reasoning": parsed.get("reasoning"),
                           "confidence": confidence, "degenerate_generation": step_degenerate})
             if matched:
-                verdict = "SUPPORTED_1" if i == 1 else f"RE_RANK_TO_CANDIDATE_{i}"
-                return {"model": client.model_name, "verdict": verdict,
-                        "clinical_meaning": clinical_meaning,
-                        "reasoning": parsed.get("reasoning"),
-                        "logprob_confidence": confidence,
-                        "degenerate_generation": step_a_degenerate or step_degenerate,
-                        "eval_trail": trail}
+                if not EXHAUSTIVE_CANDIDATE_EVAL_ENABLED:
+                    verdict = "SUPPORTED_1" if i == 1 else f"RE_RANK_TO_CANDIDATE_{i}"
+                    return {"model": client.model_name, "verdict": verdict,
+                            "clinical_meaning": clinical_meaning,
+                            "reasoning": parsed.get("reasoning"),
+                            "logprob_confidence": confidence,
+                            "degenerate_generation": step_a_degenerate or step_degenerate,
+                            "eval_trail": trail}
+                # Exhaustive mode: record the accept and keep going -- do NOT
+                # return here. Stopping at the first "yes" is exactly the bug
+                # this mode exists to fix (see the module comment above
+                # EXHAUSTIVE_CANDIDATE_EVAL_ENABLED).
+                accepted.append({"index": i, "candidate": cand, "confidence": confidence,
+                                 "reasoning": parsed.get("reasoning"),
+                                 "degenerate": step_a_degenerate or step_degenerate})
         except (LLMUnavailable, ValueError) as exc:
             trail.append({"candidate_index": i, "error": f"{type(exc).__name__}: {exc}"})
 
     any_degenerate = step_a_degenerate or any(t.get("degenerate_generation") for t in trail)
+
+    if EXHAUSTIVE_CANDIDATE_EVAL_ENABLED and accepted:
+        if len(accepted) == 1:
+            a = accepted[0]
+            verdict = "SUPPORTED_1" if a["index"] == 1 else f"RE_RANK_TO_CANDIDATE_{a['index']}"
+            return {"model": client.model_name, "verdict": verdict,
+                    "clinical_meaning": clinical_meaning, "reasoning": a["reasoning"],
+                    "logprob_confidence": a["confidence"],
+                    "degenerate_generation": a["degenerate"], "eval_trail": trail}
+        # 2+ independently accepted -- genuine ambiguity Stage 2b/Step B's
+        # own per-candidate judgment could not resolve on its own. Run a
+        # single comparative call scoped to just this short accepted subset
+        # (see _tiebreak_prompt's own docstring for why this is safe where a
+        # full-list comparative prompt was measured NOT to be).
+        return _resolve_tiebreak(client, entity, accepted, clinical_meaning,
+                                 trail, any_degenerate)
+
     return {"model": client.model_name, "verdict": "NONE_CORRECT",
             "clinical_meaning": clinical_meaning,
             "reasoning": trail[-1].get("reasoning") if trail and "reasoning" in trail[-1] else None,
             "logprob_confidence": None,
             "degenerate_generation": any_degenerate, "eval_trail": trail}
+
+
+def _resolve_tiebreak(client, entity: dict, accepted: list, clinical_meaning: str,
+                      trail: list, any_degenerate: bool) -> dict:
+    """The comparative call for EXHAUSTIVE_CANDIDATE_EVAL_ENABLED's 2+-accepted
+    case. On any transport/parse failure, or a response outside the valid
+    index set, falls back to the accepted candidate with the HIGHEST
+    individual logprob_confidence (never the lowest index -- defaulting to
+    list order is the exact arbitrary-pick behavior this mode exists to
+    remove) rather than raising, so a single flaky tiebreak call degrades to
+    a defensible answer instead of losing the entity's vote entirely.
+    """
+    indices = [a["index"] for a in accepted]
+
+    def _fallback(reason):
+        best = max(accepted, key=lambda a: (a["confidence"] if a["confidence"] is not None else -1))
+        verdict = "SUPPORTED_1" if best["index"] == 1 else f"RE_RANK_TO_CANDIDATE_{best['index']}"
+        trail.append({"tiebreak": True, "candidates_considered": indices,
+                      "fallback_reason": reason, "chosen_index": best["index"]})
+        return {"model": client.model_name, "verdict": verdict,
+                "clinical_meaning": clinical_meaning,
+                "reasoning": f"tiebreak fallback ({reason}): highest-confidence "
+                            f"accepted candidate was [{best['index']}]",
+                "logprob_confidence": best["confidence"],
+                "degenerate_generation": any_degenerate, "eval_trail": trail}
+
+    try:
+        raw = client.complete(
+            TIEBREAK_SYSTEM_PROMPT,
+            _tiebreak_prompt(entity, accepted, clinical_meaning),
+            schema=_tiebreak_schema(indices))
+        parsed = parse_json_response(raw["text"])
+        chosen_str = str(parsed.get("best_index"))
+        if chosen_str not in {str(i) for i in indices}:
+            return _fallback(f"model returned out-of-set index {chosen_str!r}")
+        chosen = int(chosen_str)
+        confidence = extract_verdict_confidence(raw["tokens"], chosen_str)
+        step_degenerate = bool(raw.get("degenerate_generation"))
+        trail.append({"tiebreak": True, "candidates_considered": indices,
+                      "chosen_index": chosen, "reasoning": parsed.get("reasoning"),
+                      "confidence": confidence, "degenerate_generation": step_degenerate})
+        verdict = "SUPPORTED_1" if chosen == 1 else f"RE_RANK_TO_CANDIDATE_{chosen}"
+        return {"model": client.model_name, "verdict": verdict,
+                "clinical_meaning": clinical_meaning, "reasoning": parsed.get("reasoning"),
+                "logprob_confidence": confidence,
+                "degenerate_generation": any_degenerate or step_degenerate,
+                "eval_trail": trail}
+    except (LLMUnavailable, ValueError) as exc:
+        return _fallback(f"{type(exc).__name__}: {exc}")
 
 
 def run_two_step_ensemble(entity: dict, clients: dict = None) -> list:

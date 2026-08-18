@@ -11,6 +11,7 @@ __all__ = [
     "RANKED_TIER12", "TIER12_RANK_SEMANTIC", "TIER12_CLASS_PREFERENCE", "TIER12_CLASS_DEMOTED",
     "TIER12_TIE_EPSILON", "HIGH_GLINER_RISK_FLOOR", "SHORT_TOKEN_MAX_LEN", "ISUPPER_MAX_LEN",
     "_ALNUM_MIX_RE", "FUZZY_MAX_EDIT_DISTANCE", "FUZZY_MIN_TEXT_LENGTH",
+    "CONTEXTUAL_CANDIDATES_ENABLED",
 ]
 
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
@@ -49,6 +50,30 @@ GLINER_LABEL_TO_DOMAIN = {
     # display friendliness on a fallback path.
     "Qualifier": ["Qualifier Value", "Meas Value"],
 }
+
+
+# 2026-08-18 ("cold start" fix, paired with src.mollm_tier_gate's
+# EXHAUSTIVE_CANDIDATE_EVAL_ENABLED -- same env var, must be enabled
+# together, see that flag's own comment for why). Sized directly against
+# this corpus: of 4,580 wrong-concept cases (span found, SNOMED code wrong)
+# across the 109-note test corpus, 41 share an IDENTICAL concept_name with
+# gold's own answer but a different code and domain -- e.g. "wound
+# dehiscence" resolving to 225553008 (Condition/Disorder) when gold wants
+# 410723003 (Observation/Morphologic Abnormality). 11 of those 14
+# domain-mismatch pairs point the SAME direction: gold prefers the
+# Observation/Morph-Abnormality sense, we pick the Condition/Disorder
+# sibling, because GLINER_LABEL_TO_DOMAIN["Condition"] = ["Condition"]
+# above excludes the Observation-domain concept from ever reaching Stage 2b's
+# candidate pool -- Stage 3 (MoLLM) never gets a chance to judge it
+# contextually because it never sees it at all. Widening the pool alone is
+# NOT safe without also fixing route_tier()'s "stop at first accept" Step B
+# behavior (see EXHAUSTIVE_CANDIDATE_EVAL_ENABLED) -- otherwise a bigger
+# candidate list just gives the arbitrary-pick problem more room, not less.
+CONTEXTUAL_CANDIDATES_ENABLED = os.environ.get(
+    "CNSP_CONTEXTUAL_CANDIDATES", "").strip() in ("1", "true", "yes")
+
+if CONTEXTUAL_CANDIDATES_ENABLED:
+    GLINER_LABEL_TO_DOMAIN["Condition"] = ["Condition", "Observation"]
 
 
 
