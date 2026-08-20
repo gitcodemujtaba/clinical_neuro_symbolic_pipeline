@@ -39,7 +39,14 @@ st.set_page_config(page_title="HITL Review Queue", page_icon="🩺", layout="wid
 st.title("🩺 HITL Review Queue")
 
 
-@st.cache_resource
+# 2026-08-18: deliberately NOT @st.cache_resource -- a cached connection
+# here is a WRITE connection held open for the server's entire lifetime,
+# which would exclude EVERY other connection (reader or writer, this
+# project's own or a background batch job's) for as long as the Streamlit
+# server keeps running, not just while this page is actively being used.
+# A fresh, uncached connection is released once superseded by the next
+# script rerun, so the exclusive lock is only held for one page
+# render/interaction at a time.
 def get_conn():
     # read_only=False: this page writes reviewer decisions. DuckDB allows
     # many readers OR one writer -- if a batch job (scripts/run_stage3_batch.py,

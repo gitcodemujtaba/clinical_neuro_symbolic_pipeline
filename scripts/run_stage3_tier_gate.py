@@ -113,11 +113,34 @@ def main():
     from src.kg3_ingestion import UningestibleCase, get_memgraph_driver, ingest_auto_decision
     from src.normalization.tier_retrieval import HYBRID_RETRIEVAL_ENABLED
     from src.batch_status import clear_status, write_status
+    from src.db_utils import connect_with_retry as _connect_with_retry_base
+
+    # 2026-08-19: db_utils.connect_with_retry()'s own 300s default assumes
+    # the OTHER side of a lock collision is also a short-lived, cycled
+    # connection (its own docstring says so explicitly) -- true for another
+    # Stage 3 run or Streamlit, but NOT true when this script is deliberately
+    # run in parallel with Stage 1-2b (scripts/test_pipeline_e2e.py), which
+    # holds ONE connection per NOTE for that note's whole processing time.
+    # Proven live: two entities (MCH-30, PLT in note 10993096-DS-12) lost
+    # their tier-gate decision entirely when a parallel Stage 1-2b note ran
+    # longer than 300s and this script's write connection gave up instead of
+    # waiting it out. 1800s (30 min) comfortably covers even a slow note
+    # (GLiNER/SapBERT are GPU-accelerated now, but Tier 1-3 normalization
+    # with CONTEXTUAL_CANDIDATES_ENABLED can still take several minutes of
+    # genuine DB-holding time) while still failing loudly, not silently
+    # hanging forever, if something is genuinely deadlocked rather than just
+    # slow. Scoped to this script only -- other connect_with_retry() callers
+    # (Streamlit, etc.) keep the original 300s, where a long wait would be
+    # the wrong tradeoff (a stuck UI, not an unattended batch).
+    STAGE3_LOCK_WAIT_SECONDS = 1800
+
+    def connect_with_retry(db_path, read_only=False):
+        return _connect_with_retry_base(db_path, read_only=read_only,
+                                        max_wait_seconds=STAGE3_LOCK_WAIT_SECONDS)
 
     print(f"\nHYBRID_RETRIEVAL_ENABLED: {HYBRID_RETRIEVAL_ENABLED} "
           f"(should be False -- see this script's own docstring)")
 
-    conn = duckdb.connect(args.db, read_only=False)
     memgraph_driver = None
     try:
         memgraph_driver = get_memgraph_driver()
@@ -130,6 +153,22 @@ def main():
               f"will be skipped for this run, everything else proceeds normally")
         memgraph_driver = None
 
+    # 2026-08-18 ("don't lock Streamlit out for 10-45 minutes" fix). This
+    # used to be one duckdb.connect() held open for the entire batch --
+    # every note, every entity -- even though the actual DB reads/writes
+    # inside that window are each well under a second; the rest is
+    # GLiNER/SapBERT/3-model LLM inference that never touches the
+    # connection. DuckDB's single-writer lock doesn't care how much of
+    # that time is spent actually querying -- it excludes every other
+    # connection (including Streamlit's) for the connection's WHOLE
+    # lifetime. Below, a connection is opened fresh right before each
+    # DB-touching operation and closed immediately after, so the lock is
+    # only held for milliseconds at a time, not the whole run.
+    # connect_with_retry() (not a bare duckdb.connect()) since a
+    # short-lived connection can now legitimately collide with another
+    # short-lived one (Streamlit's own read, or this same pattern in a
+    # concurrently-run script) -- worth waiting out, not crashing on.
+    conn = connect_with_retry(args.db, read_only=False)
     try:
         if args.note_ids:
             note_ids = [n.strip() for n in args.note_ids.split(",") if n.strip()]
@@ -151,19 +190,29 @@ def main():
         already_done = already_processed_entity_ids(conn, note_ids)
         print(f"resume check: {len(already_done)} entity_id(s) already have a stored "
               f"tier-gate decision and will be skipped\n")
+    finally:
+        # Setup phase done -- close this connection rather than holding it
+        # through the whole note/entity loop below, which opens its own
+        # short-lived connections per operation instead.
+        conn.close()
 
-        tier_totals = collections.Counter()
-        routing_totals = collections.Counter()
-        dry_run_write_ok = 0
-        dry_run_write_blocked = 0
-        n_processed = 0
-        n_skipped = 0
-        n_errors = 0
-        consecutive_failures = 0
-        start_time = time.time()
+    tier_totals = collections.Counter()
+    routing_totals = collections.Counter()
+    dry_run_write_ok = 0
+    dry_run_write_blocked = 0
+    n_processed = 0
+    n_skipped = 0
+    n_errors = 0
+    consecutive_failures = 0
+    start_time = time.time()
 
+    try:
         for note_idx, note_id in enumerate(note_ids, 1):
-            records = load_validation_records(conn, note_id, tier=None)
+            note_conn = connect_with_retry(args.db, read_only=False)
+            try:
+                records = load_validation_records(note_conn, note_id, tier=None)
+            finally:
+                note_conn.close()
             if args.limit_per_note:
                 records = records[:args.limit_per_note]
             todo = [r for r in records if r["entity_id"] not in already_done]
@@ -188,10 +237,30 @@ def main():
                       f"[elapsed {elapsed_min:.1f}m | done {n_processed} | "
                       f"skipped {n_skipped} | errors {n_errors}]")
 
+                # 2026-08-18 (round 2 -- the first "cycle a connection
+                # around route_tier()" attempt was verified LIVE to still
+                # lock Streamlit out almost continuously, since route_tier()
+                # holds whatever connection it's given open across its own
+                # 3-model LLM ensemble call, which is the actual slow part).
+                # conn_factory is passed instead of an already-open conn --
+                # route_tier() now opens its own brief connection ONLY at
+                # the moment it actually needs the calibrator's
+                # prior-confirmation lookup (AFTER the LLM calls return),
+                # and closes it immediately. store_tier_decision()'s own
+                # write still gets its own separate short-lived connection
+                # below. Folded into the SAME try/except that already
+                # handles per-entity errors, so a connect-retry timeout is
+                # just one more entity-level failure, not a script crash.
                 try:
-                    decision = route_tier(rec, clients=clients, calibrator=calibrator, conn=conn)
-                    decision = store_tier_decision(decision, rec["entity_id"], note_id,
-                                                   conn, is_test=args.is_test)
+                    decision = route_tier(
+                        rec, clients=clients, calibrator=calibrator,
+                        conn_factory=lambda: connect_with_retry(args.db, read_only=False))
+                    write_conn = connect_with_retry(args.db, read_only=False)
+                    try:
+                        decision = store_tier_decision(decision, rec["entity_id"], note_id,
+                                                       write_conn, is_test=args.is_test)
+                    finally:
+                        write_conn.close()
                 except Exception as exc:
                     n_errors += 1
                     consecutive_failures += 1
@@ -253,7 +322,6 @@ def main():
               f"NOTHING was actually written to Memgraph this run")
     finally:
         clear_status("stage3_tier_gate")
-        conn.close()
         if memgraph_driver is not None:
             memgraph_driver.close()
 

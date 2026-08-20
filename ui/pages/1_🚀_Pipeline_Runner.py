@@ -44,7 +44,11 @@ AUTO_TIERS = {"TIER_1_AUTO_VALIDATED", "TIER_1B_CALIBRATED_AUTO_VALIDATED",
              "TIER_2_AUTO_RESOLVED", "TIER_3_AUTO_VALIDATED"}
 
 
-@st.cache_resource
+# 2026-08-18: deliberately NOT @st.cache_resource -- see
+# ui/pages/4_📊_Evaluation_Metrics.py's identical comment. A cached
+# connection stays open for the server's whole lifetime and blocks any
+# background batch job's writes for as long as this page has ever been
+# visited.
 def get_conn():
     return duckdb.connect(DB_PATH, read_only=True)
 
@@ -53,6 +57,19 @@ try:
     conn = get_conn()
 except duckdb.IOException as exc:
     render_locked_db_status(exc)
+
+
+def _stop():
+    """st.stop(), but closing `conn` first -- explicit close rather than
+    relying on GC timing, since a lingering read-only connection (even one
+    Python has already dropped its own reference to) has been confirmed to
+    block ui/pages/2_🩺_HITL_Review_Queue.py's write connection when both
+    are touched within the same Streamlit server process (streamlit.testing
+    AppTest reproduced this directly -- del+gc.collect() alone was not
+    enough without an explicit .close()). Every st.stop() call site in this
+    file goes through this instead of calling st.stop() directly."""
+    conn.close()
+    st.stop()
 
 
 def _json_field(v):
@@ -164,13 +181,22 @@ def render_entity_trace(entity: dict, norm: dict, decision: dict):
 
 with st.sidebar:
     st.header("Selection")
-    note_ids = [r[0] for r in conn.execute(
-        "SELECT DISTINCT note_id FROM extracted_entities WHERE is_test = TRUE ORDER BY note_id"
-    ).fetchall()]
+    # extracted_entities itself carries no is_stale/provenance columns
+    # (only normalized_entities and mollm_tier_gate_decisions do) -- joined
+    # here rather than filtered directly. is_stale=FALSE means "processed
+    # by current code" -- see scripts/mark_notes_stale.py for the migration.
+    note_ids = [r[0] for r in conn.execute("""
+        SELECT DISTINCT e.note_id FROM extracted_entities e
+        WHERE e.is_test = TRUE AND e.note_id IN (
+            SELECT DISTINCT note_id FROM normalized_entities
+            WHERE is_test = TRUE AND is_stale = FALSE
+        ) ORDER BY e.note_id
+    """).fetchall()]
     if not note_ids:
-        st.warning("No processed notes found (is_test=TRUE). Run the pipeline on some notes first "
-                    "(scripts/test_pipeline_e2e.py), then reload this page.")
-        st.stop()
+        st.warning("No fresh (is_stale = FALSE) notes found -- older pre-fix runs are "
+                  "deliberately hidden. Run the pipeline on some notes first "
+                  "(scripts/test_pipeline_e2e.py), then reload this page.")
+        _stop()
     note_id = st.selectbox("Note", note_ids)
     n_entities = st.number_input("Number of entities to track", min_value=1, max_value=50, value=1, step=1)
     search = st.text_input("Filter: entity text contains (optional)")
@@ -197,7 +223,7 @@ st.caption(f"**{note_id}** — {len(entities)} entit{'y' if len(entities) == 1 e
 tracked = entities[:n_entities]
 if not tracked:
     st.info("No entities match this filter in this note. Adjust the filter or pick a different note.")
-    st.stop()
+    _stop()
 
 entity_ids = [e["entity_id"] for e in tracked]
 placeholders = ",".join("?" * len(entity_ids))
@@ -221,3 +247,5 @@ decision_by_entity = {r[0]: dict(zip(decision_cols, r)) for r in decision_rows}
 
 for e in tracked:
     render_entity_trace(e, norm_by_entity.get(e["entity_id"]), decision_by_entity.get(e["entity_id"]))
+
+conn.close()

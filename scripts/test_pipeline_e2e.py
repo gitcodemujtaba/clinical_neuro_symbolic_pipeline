@@ -1,6 +1,5 @@
 import os
 import sys
-import duckdb
 import csv
 import argparse
 import time
@@ -14,7 +13,7 @@ sys.path.append(PROJECT_DIR)
 # this e2e test exercises the real reusable orchestrator (previously an
 # empty file -- Stage 1 -> 2a -> 2b only ever got chained together here, ad
 # hoc) instead of duplicating its own copy of the wiring.
-from src.clinical_pipeline import run_pipeline
+from src.clinical_pipeline import run_pipeline_for_db_path
 from src.batch_status import clear_status, write_status
 
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
@@ -89,8 +88,6 @@ def run_e2e(num_notes: int = 1, note_ids=None, input_path: str = None):
     wanted = set(note_ids) if note_ids else None
     missing = set(note_ids) if note_ids else None
 
-    conn = duckdb.connect(DB_PATH)
-
     total_entities = 0
     # total_after_dedup removed 2026-08-08 -- the orchestrator no longer drops
     # duplicate mentions (see run_pipeline's docstring).
@@ -138,10 +135,23 @@ def run_e2e(num_notes: int = 1, note_ids=None, input_path: str = None):
                 print(f"\n[{notes_processed + 1}/{target_count}] Running Stage 1 -> "
                       f"Stage 2a -> Stage 2b via src.clinical_pipeline.run_pipeline() "
                       f"on {note_id}...")
+                # 2026-08-18 ("don't lock Streamlit out" fix, same as
+                # scripts/run_stage3_tier_gate.py): connection opened fresh
+                # PER NOTE via run_pipeline_for_db_path() -- already the
+                # exact convenience wrapper this needed -- instead of one
+                # connection held open across the whole multi-note batch.
+                # A single note's Stage 1->2b run is still several minutes
+                # (GLiNER/SapBERT inference genuinely needs the DB
+                # throughout for Tier 1/2/3 candidate retrieval, unlike
+                # Stage 3's LLM ensemble), so this doesn't shrink the lock
+                # window to milliseconds the way the Stage 3 fix did -- but
+                # it does mean the DB is completely free BETWEEN notes,
+                # instead of locked for the entire batch's duration.
                 # is_test=True: this is a smoke-test script, so rows written
                 # to note_expansions/extracted_entities/normalized_entities
                 # get flagged is_test=TRUE and can be purged before production.
-                result = run_pipeline(note_id, raw_text, conn, is_test=True)
+                result = run_pipeline_for_db_path(note_id, raw_text, db_path=DB_PATH,
+                                                  is_test=True)
                 normalized = result["normalized"]
 
                 # 2026-08-08: 'entities_normalized_input' is gone -- the
@@ -210,7 +220,6 @@ def run_e2e(num_notes: int = 1, note_ids=None, input_path: str = None):
 
     finally:
         clear_status("stage1_2b")
-        conn.close()
 
 
 if __name__ == "__main__":
