@@ -19,13 +19,28 @@ TWO FORMS OF IoU, BECAUSE ONLY ONE STAGE PRODUCES SPANS.
               benchmark-snomed-ct/page/983/): IoU_class = |chars(pred) ∩
               chars(gold)| / |chars(pred) ∪ chars(gold)|, aggregated macro
               (unweighted mean per class) and support-weighted (weighted
-              by gold span count per class). Meaningful only for Stage 2a
-              (extraction is the only stage that changes span boundaries).
-              This project's gold CSV (train_annotations.csv) carries no
-              entity-label/class field -- only span + concept_id -- so
-              "class" collapses to one aggregate bucket rather than a
-              fabricated taxonomy gold doesn't provide; that's the
-              single-class case of the same formula, not a different one.
+              by gold span count per class).
+
+              2026-08-20 CORRECTION: an earlier version of this module
+              treated "class" as a fabricated single "ALL" bucket, on the
+              premise that this project's gold CSV carries no per-class
+              field. That premise was wrong -- re-read directly against
+              the benchmark page's own metric section: "class" IS the
+              SNOMED CT concept ID itself (~7,000 distinct concepts in
+              the training notes), and "the predicted concept ID must
+              match exactly; relationships between concepts are not
+              taken into account for scoring" -- i.e. a predicted span's
+              characters only ever count toward a class's predicted set
+              if that span's OWN resolved concept equals the class being
+              scored. gold's concept_id column IS that class field; it
+              was there the whole time. This means the benchmark's char
+              IoU is inherently a JOINT span+concept metric, not a pure
+              extraction metric -- it cannot be computed from Stage 2a
+              alone (spans have no resolved concept yet at that stage).
+              See benchmark_char_iou() below for the corrected, concept-
+              gated computation; stage2a_iou()'s own char_iou stays as a
+              deliberately concept-blind span-only diagnostic, relabeled
+              to stop claiming it's the benchmark number.
 
 Same conventions as every other evaluation/ script: overlaps() defines
 "any character overlap" (scripts/score_gold_recall.py), is_test=TRUE
@@ -53,20 +68,30 @@ def set_iou(tp, fp, fn):
 
 
 def char_iou_by_class(pred_spans, gold_spans):
-    """pred_spans / gold_spans: list of (label, start, end). Returns
-    (macro_iou, support_weighted_iou, per_class dict)."""
-    classes = set(l for l, _, _ in pred_spans) | set(l for l, _, _ in gold_spans)
+    """pred_spans / gold_spans: list of (label, note_id, start, end).
+    Returns (macro_iou, support_weighted_iou, per_class dict).
+
+    Character positions are keyed by (note_id, offset), not raw offset
+    alone -- offsets are only meaningful within one note, so pooling two
+    different notes' spans by raw int would let a note-A span at [10:20]
+    spuriously "overlap" a totally unrelated note-B span that happens to
+    sit at the same numeric offset. Keying by (note_id, offset) makes
+    cross-note collision structurally impossible while being identical to
+    the single-note case (all callers' typical use) when note_id is
+    constant across every span passed in.
+    """
+    classes = set(l for l, _, _, _ in pred_spans) | set(l for l, _, _, _ in gold_spans)
     per_class = {}
     for cls in classes:
         pred_chars = set()
-        for l, s, e in pred_spans:
+        for l, nid, s, e in pred_spans:
             if l == cls:
-                pred_chars.update(range(s, e))
+                pred_chars.update((nid, p) for p in range(s, e))
         gold_chars = set()
         gold_support = 0
-        for l, s, e in gold_spans:
+        for l, nid, s, e in gold_spans:
             if l == cls:
-                gold_chars.update(range(s, e))
+                gold_chars.update((nid, p) for p in range(s, e))
                 gold_support += 1
         union = pred_chars | gold_chars
         inter = pred_chars & gold_chars
@@ -81,6 +106,53 @@ def char_iou_by_class(pred_spans, gold_spans):
     return (round(macro, 4) if macro is not None else None,
             round(weighted, 4) if weighted is not None else None,
             per_class)
+
+
+def benchmark_char_iou(conn, note_ids, gold_by_note, vocab):
+    """The DrivenData SNOMED-CT benchmark's own char IoU, computed exactly
+    as specified: "class" = SNOMED CT concept ID. A predicted span's
+    characters only count toward a class's predicted set if that span's
+    OWN resolved concept equals the class; ditto gold via its concept_id
+    column. Macro = unweighted mean over classes present in pred ∪ gold;
+    support-weighted = weighted by each class's gold span count.
+
+    Uses each entity's Stage 2b top candidate (normalized_entities'
+    omop_concept_id, crosswalked to SNOMED the same way every other
+    concept-identity comparison in this file does) as "our answer" -- a
+    real benchmark submission has no HITL-deferral option, so this is the
+    faithful stand-in for "what would we submit" on every span, not just
+    the subset that happened to reach an AUTO tier in Stage 3.
+
+    Predictions whose concept can't be crosswalked to a SNOMED code are
+    bucketed under the literal class "UNMAPPED" (a value that can never
+    collide with a real numeric SNOMED code) so they still count as
+    intersection-free noise against whatever class they overlap, rather
+    than silently vanishing from the metric.
+    """
+    rows = conn.execute("""
+        SELECT e.orig_start, e.orig_end, e.note_id, n.omop_concept_id
+        FROM extracted_entities e
+        JOIN normalized_entities n
+          ON n.note_id = e.note_id AND n.original_text = e.original_text
+         AND n.expanded_text = e.expanded_text AND n.gliner_label = e.entity_label
+         AND n.is_test = TRUE
+        WHERE e.is_test = TRUE AND e.note_id IN ({})
+          AND (e.below_threshold IS NULL OR e.below_threshold = FALSE)
+          AND (e.superseded_by_split IS NULL OR e.superseded_by_split = FALSE)
+          AND (e.superseded_by_growth IS NULL OR e.superseded_by_growth = FALSE)
+    """.format(",".join("?" * len(note_ids))), note_ids).fetchall()
+
+    pred_spans = []
+    for s, e, note_id, concept_id in rows:
+        code = vocab.snomed_code_for_concept(concept_id) if concept_id else None
+        pred_spans.append((str(code) if code else "UNMAPPED", note_id, s, e))
+
+    gold_spans = [(str(g["concept_id"]), note_id, g["start"], g["end"])
+                  for note_id in note_ids for g in gold_by_note.get(note_id, [])]
+
+    macro, weighted, per_class = char_iou_by_class(pred_spans, gold_spans)
+    return {"macro_char_iou": macro, "weighted_char_iou": weighted,
+            "n_classes": len(per_class), "per_class": per_class}
 
 
 # ==========================================================================
@@ -105,20 +177,24 @@ def stage2a_iou(conn, note_ids, gold_by_note):
             tp += 1
         else:
             fp += 1
-        pred_spans.append(("ALL", s, e))
+        pred_spans.append(("ALL", note_id, s, e))
     fn = 0
     for note_id, gold in gold_by_note.items():
         if note_id not in note_ids:
             continue
         preds = [(r[0], r[1]) for r in rows if r[2] == note_id]
         for g in gold:
-            gold_spans.append(("ALL", g["start"], g["end"]))
+            gold_spans.append(("ALL", note_id, g["start"], g["end"]))
             if not any(overlaps(s, e, g["start"], g["end"]) for s, e in preds):
                 fn += 1
 
-    macro_char_iou, weighted_char_iou, _ = char_iou_by_class(pred_spans, gold_spans)
+    # Deliberately concept-blind (single "ALL" class): this is a Stage 2a
+    # -only span diagnostic, NOT the DrivenData benchmark's char IoU --
+    # that metric is concept-gated (see benchmark_char_iou() above) and
+    # can't be computed before a concept has even been resolved.
+    span_only_char_iou, _, _ = char_iou_by_class(pred_spans, gold_spans)
     return {"tp": tp, "fp": fp, "fn": fn, "set_iou": set_iou(tp, fp, fn),
-            "char_iou": macro_char_iou}
+            "span_only_char_iou": span_only_char_iou}
 
 
 # ==========================================================================

@@ -33,7 +33,14 @@ st.set_page_config(page_title="Evaluation Metrics", page_icon="📊", layout="wi
 st.title("📊 Evaluation Metrics")
 
 
-@st.cache_resource
+# 2026-08-18: deliberately NOT @st.cache_resource -- a cached connection
+# stays open for the entire Streamlit server process lifetime, which holds
+# DuckDB's single-writer lock (readers exclude a writer too, confirmed
+# empirically) and blocks any background pipeline batch job from ever
+# writing again once this page has been visited once. A fresh, uncached
+# connection here is released (via Python refcounting) once superseded by
+# the next script rerun, so the lock is only held for the duration of one
+# page render/interaction, not indefinitely.
 def get_conn():
     return duckdb.connect(DB_PATH, read_only=True)
 
@@ -43,18 +50,38 @@ try:
 except duckdb.IOException as exc:
     render_locked_db_status(exc)
 
+
+def _stop():
+    """st.stop(), but closing `conn` first -- see
+    ui/pages/1_🚀_Pipeline_Runner.py's identical helper for why an explicit
+    close (not just letting `conn` go out of scope) is needed."""
+    conn.close()
+    st.stop()
+
+
 with st.sidebar:
     st.header("Selection")
-    all_note_ids = [r[0] for r in conn.execute(
-        "SELECT DISTINCT note_id FROM extracted_entities WHERE is_test = TRUE ORDER BY note_id"
-    ).fetchall()]
+    # extracted_entities itself carries no is_stale/provenance columns
+    # (only normalized_entities and mollm_tier_gate_decisions do) -- joined
+    # here rather than filtered directly. is_stale=FALSE means "processed by
+    # current code" -- see the 2026-08-18 migration that added this column
+    # (docs in scripts/mark_notes_stale.py) rather than the earlier,
+    # fragile hand-maintained-timestamp approach this replaced.
+    all_note_ids = [r[0] for r in conn.execute("""
+        SELECT DISTINCT e.note_id FROM extracted_entities e
+        WHERE e.is_test = TRUE AND e.note_id IN (
+            SELECT DISTINCT note_id FROM normalized_entities
+            WHERE is_test = TRUE AND is_stale = FALSE
+        ) ORDER BY e.note_id
+    """).fetchall()]
     if not all_note_ids:
-        st.warning("No processed notes found (is_test=TRUE).")
-        st.stop()
+        st.warning("No fresh (is_stale = FALSE) notes found -- older pre-fix runs are "
+                  "deliberately hidden. See the is_stale column on normalized_entities.")
+        _stop()
     note_ids = st.multiselect("Notes to include", all_note_ids, default=all_note_ids)
     if not note_ids:
         st.info("Select at least one note.")
-        st.stop()
+        _stop()
 
 tab_tiers, tab_precision, tab_recall, tab_calibration, tab_calibrator = st.tabs(
     ["Tier distribution", "Precision vs. gold", "Recall / completeness",
@@ -183,10 +210,12 @@ with tab_calibration:
     st.caption("ECE: does confidence X actually mean 'correct' X% of the time, per stage "
               "(evaluation/stage_calibration.py). IoU: TP/(TP+FP+FN) at the decision level for "
               "each stage, plus the DrivenData SNOMED-CT benchmark's own character-level IoU "
-              "definition for Stage 2a (https://www.drivendata.org/benchmarks/310/"
-              "benchmark-snomed-ct/page/983/). Three different 'correct's per stage -- see "
-              "evaluation/stage_calibration.py's module docstring -- don't compare ECE values "
-              "across stages directly, only each stage's curve against its own threshold.")
+              "definition, shown under Stage 2b since that's the first stage with a resolved "
+              "concept (class = SNOMED concept ID; can't be scored before that) "
+              "(https://www.drivendata.org/benchmarks/310/benchmark-snomed-ct/page/983/). Three "
+              "different 'correct's per stage -- see evaluation/stage_calibration.py's module "
+              "docstring -- don't compare ECE values across stages directly, only each stage's "
+              "curve against its own threshold.")
     if st.button("Run ECE + IoU analysis"):
         import collections as _collections
 
@@ -235,9 +264,10 @@ with tab_calibration:
                 s2a_iou = iou_metrics.stage2a_iou(conn, note_ids, gold_by_note)
                 ic1, ic2, ic3 = st.columns(3)
                 ic1.metric("Set IoU", s2a_iou["set_iou"])
-                ic2.metric("Benchmark char IoU", s2a_iou["char_iou"],
-                          help="DrivenData SNOMED-CT benchmark definition; aggregate bucket since "
-                               "this project's gold has no per-class label field.")
+                ic2.metric("Span-only char IoU", s2a_iou["span_only_char_iou"],
+                          help="Concept-blind diagnostic (single aggregate class) -- extraction has "
+                               "no resolved concept yet, so this is NOT the DrivenData benchmark "
+                               "metric. See Stage 2b below for that.")
                 ic3.metric("TP / FP / FN", f"{s2a_iou['tp']} / {s2a_iou['fp']} / {s2a_iou['fn']}")
 
                 st.markdown("### Stage 2b — normalization / linking (concept is right)")
@@ -248,6 +278,19 @@ with tab_calibration:
                 jc1, jc2 = st.columns(2)
                 jc1.metric("Set IoU", s2b_iou["set_iou"])
                 jc2.metric("TP / FP / FN", f"{s2b_iou['tp']} / {s2b_iou['fp']} / {s2b_iou['fn']}")
+
+                bench = iou_metrics.benchmark_char_iou(conn, note_ids, gold_by_note, vocab)
+                bc1, bc2, bc3 = st.columns(3)
+                bc1.metric("Benchmark macro char IoU", bench["macro_char_iou"],
+                          help="DrivenData SNOMED-CT benchmark's own definition, confirmed directly "
+                               "against the metric section 2026-08-20: class = SNOMED concept ID, a "
+                               "predicted span's characters only count toward a class if its own "
+                               "resolved concept matches exactly (https://www.drivendata.org/"
+                               "benchmarks/310/benchmark-snomed-ct/page/983/). Uses Stage 2b's top "
+                               "candidate as the answer for every span, no HITL deferral -- a real "
+                               "benchmark submission wouldn't have one either.")
+                bc2.metric("Benchmark support-weighted char IoU", bench["weighted_char_iou"])
+                bc3.metric("Concept classes scored", bench["n_classes"])
 
                 st.markdown("### Stage 3 — tier gate (AUTO-tier decision is right)")
                 s3_graded, s3_n = stage3_tier_gate_confidences(conn, note_ids, gold_by_note, vocab)
