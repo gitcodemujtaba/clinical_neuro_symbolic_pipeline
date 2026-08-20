@@ -1,0 +1,123 @@
+
+====================================================================================================
+TIER_4_ENSEMBLE_SPLIT (5 sampled)
+====================================================================================================
+
+--- 11532659-DS-11-e00efbd6c2a  text='gall bladder'  label=Anatomy ---
+n_candidates=1  rounds=3  searches=4  error=None
+VERDICT index=None  reasoning=I need more evidence before making a decision, but I'm not sure what specific search would be helpful at this point.
+gold_concept_id=38102005  correct=False
+  [round 0] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1}
+      requested: {'type': 'name_collision', 'candidate_index': 1}
+  [round 1] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1}
+      requested: {'type': 'name_collision', 'candidate_index': 1}
+  [round 2] action=verdict  n_searches_requested=0
+
+--- 11532659-DS-11-e056edf1228  text='mitral \nvalve'  label=Anatomy ---
+n_candidates=1  rounds=3  searches=4  error=None
+VERDICT index=None  reasoning=I need more evidence, but since I have only one search round left, I'll try a text search for 'mechanical mitral valve' to see if it yields any relevant results.
+gold_concept_id=91134007  correct=False
+  [round 0] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1}
+      requested: {'type': 'name_collision', 'candidate_index': 1}
+  [round 1] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1}
+      requested: {'type': 'name_collision', 'candidate_index': 1}
+  [round 2] action=verdict  n_searches_requested=0
+
+--- 11532659-DS-11-e0aece9a99d  text='fevers'  label=Symptom ---
+n_candidates=8  rounds=3  searches=4  error=None
+VERDICT index=1  reasoning=The most specific and direct match for the mention 'fevers' is the concept Fever, which directly corresponds to a condition.
+gold_concept_id=386661006  correct=True
+  [round 0] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 2}
+      requested: {'type': 'name_collision', 'candidate_index': 3}
+  [round 1] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1}
+      requested: {'type': 'name_collision', 'candidate_index': 3}
+  [round 2] action=verdict  n_searches_requested=0
+
+--- 11532659-DS-11-e19bb69e896  text='bleeding'  label=Symptom ---
+n_candidates=1  rounds=3  searches=2  error=None
+VERDICT index=None  reasoning=The candidates are too broad and don't capture the specific context of 'bleeding' in this mention, which is related to a medical procedure.
+gold_concept_id=131148009  correct=False
+  [round 0] action=search  n_searches_requested=1
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 1}
+  [round 1] action=search  n_searches_requested=1
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 1}
+  [round 2] action=verdict  n_searches_requested=0
+
+--- 11532659-DS-11-e1cb5d76de5  text='temporary pacemaker'  label=Medication ---
+n_candidates=4  rounds=3  searches=4  error=None
+VERDICT index=1  reasoning=The mention 'temporary pacemaker' refers to a device, not a procedure, and the context suggests it's being used temporarily until a permanent one is placed.
+gold_concept_id=307280005  correct=False
+  [round 0] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 3}
+      requested: {'type': 'name_collision', 'candidate_index': 2}
+  [round 1] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 3}
+      requested: {'type': 'name_collision', 'candidate_index': 1}
+  [round 2] action=verdict  n_searches_requested=0
+
+====================================================================================================
+TIER_5_TRUE_AMBIGUITY (5 sampled)
+====================================================================================================
+
+--- 11532659-DS-11-e00ea4a0997  text='Cr'  label=Lab Test ---
+n_candidates=1  rounds=3  searches=3  error=None
+VERDICT index=None  reasoning=I need more evidence before making a decision, but I'm not sure what specific information would be helpful at this point.
+gold_concept_id=None  correct=ungradable
+  [round 0] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1}
+      requested: {'type': 'ancestor', 'candidate_index': 1}
+  [round 1] action=search  n_searches_requested=1
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 1}
+  [round 2] action=verdict  n_searches_requested=0
+
+--- 11532659-DS-11-e0ae264345b  text='BMP'  label=Lab Test ---
+n_candidates=5  rounds=3  searches=4  error=None
+VERDICT index=None  reasoning=The candidates do not clearly match the clinical mention 'BMP', and further search results are needed before making a decision.
+gold_concept_id=866146005  correct=False
+  [round 0] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 2}
+      requested: {'type': 'name_collision'}
+  [round 1] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1}
+      requested: {'type': 'text_search', 'term': "'BMP'"}
+  [round 2] action=verdict  n_searches_requested=0
+
+--- 11532659-DS-11-e138abe15b2  text='Augmentin'  label=Medication ---
+n_candidates=2  rounds=3  searches=4  error=None
+VERDICT index=None  reasoning=I need more evidence, but since the candidates are both drugs and there's no clear relationship between them or any other matching concept with the exact name 'Augmentin', I'll decide after one last search round.
+gold_concept_id=281789004  correct=False
+  [round 0] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 2}
+      requested: {'type': 'text_search', 'term': "'Augmentin'"}
+  [round 1] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 2}
+      requested: {'type': 'name_collision', 'candidate_index': 1}
+  [round 2] action=verdict  n_searches_requested=0
+
+--- 11532659-DS-11-e1c73393f74  text='Hct-31'  label=Lab Test ---
+n_candidates=1  rounds=3  searches=3  error=None
+VERDICT index=None  reasoning=I need more evidence before making a decision, but I'm not sure what specific information would be helpful at this point.
+gold_concept_id=28317006  correct=False
+  [round 0] action=search  n_searches_requested=1
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 1}
+  [round 1] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 1}
+      requested: {'type': 'name_collision', 'candidate_index': 1}
+  [round 2] action=verdict  n_searches_requested=0
+
+--- 11532659-DS-11-e25359da9b8  text='intermittent'  label=Qualifier ---
+n_candidates=1  rounds=3  searches=3  error=None
+VERDICT index=None  reasoning=I need more evidence before making a decision, but I'm not sure what specific search would be helpful at this point.
+gold_concept_id=None  correct=ungradable
+  [round 0] action=search  n_searches_requested=1
+      requested: {'type': 'relationships', 'candidate_index': 1}
+  [round 1] action=search  n_searches_requested=2
+      requested: {'type': 'relationships', 'candidate_index': 1, 'other_index': 1}
+      requested: {'type': 'text_search', 'term': "'constipation' AND 'diarrhea'"}
+  [round 2] action=verdict  n_searches_requested=0
