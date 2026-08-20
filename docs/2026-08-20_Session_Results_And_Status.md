@@ -273,6 +273,21 @@ not yet a re-processed/re-measured corpus)**: extraction recall
 missed gold spans. Verified end-to-end on the single worst-affected note
 (`10513485-DS-7`): 101/101 target-term misses recovered, 100%.
 
+**Second fix, same session**: `src/narrative_state_word_coldstart.py` --
+a small, gold-consistency-screened set of common single-word state
+descriptors (`alert`, `improved`, `baseline`, `warm`, `clinic`, all
+>=95% consistent to one concept, case-merged). Explicitly screened OUT
+several tempting but genuinely polysemous candidates (`pain` 76.7%
+across 4 concepts, `stable` 88.4%, `negative` 64.5% split ~65/28 across
+two different concepts, `procedure`/`support`/`tender`/`masses`/`wound`
+all below bar) rather than force-injecting a false-confidence majority.
+Reuses `src.physexam_shorthand`'s concept-resolution bypass via a newly
+generalized `_cold_start_mapping()` in `orchestrator.py`.
+
+**Combined measured impact**: extraction recall **46.4% -> 53.2%
+(+6.8 points total)** -- the narrative-word fix adds 493 additionally-
+recovered spans on top of the lab-abbreviation fix's 2,140.
+
 ## Open items carried forward
 
 * **Tier 2's calibrator escape hatch needs its own training data.** The
