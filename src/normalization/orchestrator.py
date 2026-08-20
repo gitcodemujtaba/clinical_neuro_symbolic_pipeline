@@ -23,16 +23,22 @@ from .tier_retrieval import (
     _tier3_hybrid_rows, _detect_domain_conflict, HYBRID_RETRIEVAL_ENABLED,
 )
 from src.physexam_shorthand import PHYSEXAM_SHORTHAND_MATCH_BASIS
+from src.narrative_state_word_coldstart import NARRATIVE_STATE_WORD_MATCH_BASIS
 
 
-def _physexam_shorthand_mapping(info: dict) -> dict:
+def _cold_start_mapping(info: dict, match_basis: str, normalized_from: str) -> dict:
     """Synthetic normalize_entity()-shaped mapping for an entity injected by
-    src.physexam_shorthand.build_physexam_shorthand_entities() -- skips the
-    Tier 1-3 search entirely, since the concept was already selected by
-    exact gold-mined text match (see that module's docstring), not
-    similarity. match_tier "1 (Exact)" / similarity_score 1.0 matches how
+    a "cold start" module (src.physexam_shorthand,
+    src.narrative_state_word_coldstart, ...) -- skips the Tier 1-3 search
+    entirely, since the concept was already selected by exact gold-mined
+    text match (see the calling module's own docstring), not similarity.
+    match_tier "1 (Exact)" / similarity_score 1.0 matches how
     verified_brand_alias / verified_lab_test_alias hits are treated
     elsewhere in this file -- a curated, pre-verified lookup, not a guess.
+    2026-08-20: generalized from the original physexam-only
+    _physexam_shorthand_mapping() so a second cold-start module doesn't
+    need to duplicate this whole block -- match_basis/normalized_from are
+    the only two things that actually differ per calling module.
     """
     candidate = {
         "omop_concept_id": info["omop_concept_id"],
@@ -41,7 +47,7 @@ def _physexam_shorthand_mapping(info: dict) -> dict:
         "vocabulary_id": "SNOMED",
         "match_tier": "1 (Exact)",
         "similarity_score": 1.0,
-        "match_basis": PHYSEXAM_SHORTHAND_MATCH_BASIS,
+        "match_basis": match_basis,
     }
     return {
         "match_tier": "1 (Exact)",
@@ -56,7 +62,7 @@ def _physexam_shorthand_mapping(info: dict) -> dict:
         "domain_conflict": None,
         "tier_trace": None,
         "tier12_rank_basis": None,
-        "normalized_from": "physexam_shorthand_cold_start",
+        "normalized_from": normalized_from,
     }
 
 
@@ -1130,10 +1136,21 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
         # have been trusted to rediscover it. Checked BEFORE the cache key
         # so a physexam entity never pollutes the cache for an ordinary
         # entity that happens to share (text, label, domain).
+        # 2026-08-20: narrative-state-word cold start (src.narrative_state_
+        # word_coldstart) checked alongside physexam -- same "pre-verified,
+        # skip the search entirely" discipline, different source module.
         physexam_info = ent.get("physexam_shorthand")
+        narrative_info = ent.get("narrative_coldstart")
         if physexam_info:
-            mapping = _physexam_shorthand_mapping(physexam_info)
-            normalized_from = "physexam_shorthand_cold_start"
+            mapping = _cold_start_mapping(physexam_info, PHYSEXAM_SHORTHAND_MATCH_BASIS,
+                                          "physexam_shorthand_cold_start")
+            canonical_text = re.sub(r"\s+", " ", search_expanded_text).strip().lower()
+            cache_key = (canonical_text, search_label,
+                        tuple(search_domain_override) if search_domain_override else None)
+            cache[cache_key] = mapping
+        elif narrative_info:
+            mapping = _cold_start_mapping(narrative_info, NARRATIVE_STATE_WORD_MATCH_BASIS,
+                                          "narrative_state_word_cold_start")
             canonical_text = re.sub(r"\s+", " ", search_expanded_text).strip().lower()
             cache_key = (canonical_text, search_label,
                         tuple(search_domain_override) if search_domain_override else None)

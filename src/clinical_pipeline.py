@@ -61,6 +61,7 @@ from src.acronym_escalation import ACRONYM_ESCALATION_ENABLED, resolve_ambiguous
 from src.db_utils import connect_with_retry
 from src.physexam_shorthand import build_physexam_shorthand_entities
 from src.lab_abbrev_coldstart import build_lab_abbrev_coldstart_entities
+from src.narrative_state_word_coldstart import build_narrative_state_word_entities
 
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
@@ -395,6 +396,19 @@ def run_pipeline(note_id: str, raw_text: str, conn, is_test: bool = False) -> di
     if lab_abbrev_entities:
         store_entities(conn, lab_abbrev_entities, is_test=is_test)
         accepted = accepted + lab_abbrev_entities
+
+    # NARRATIVE-STATE-WORD COLD START (2026-08-20). Second population from
+    # the same miss analysis -- a small, gold-consistency-screened set of
+    # common single-word state descriptors (alert/improved/baseline/warm/
+    # clinic) GLiNER never proposes. See src.narrative_state_word_coldstart
+    # for the >=95%-consistency screening that kept several tempting but
+    # genuinely polysemous candidates (pain/stable/negative/...) OUT of
+    # this dict. Passed the combined accepted list so far, same reasoning
+    # as the lab-abbreviation cold start above.
+    narrative_entities = build_narrative_state_word_entities(raw_text, note_id, accepted)
+    if narrative_entities:
+        store_entities(conn, narrative_entities, is_test=is_test)
+        accepted = accepted + narrative_entities
 
     # SPAN GROWTH, then COMPOUND-SPAN SPLIT. Both run after the sub-
     # threshold filter (only real, accepted entities are worth the

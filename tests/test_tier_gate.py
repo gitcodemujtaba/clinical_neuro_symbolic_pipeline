@@ -66,7 +66,8 @@ TG = _load_pure_functions(
     extra_globals={"TIER3_SIMILARITY_FLOOR": 0.72, "TIER1_CONFIDENCE_FLOOR": 0.70,
                   "SHORT_ALPHANUMERIC_CODE_RE": re.compile(r"^[A-Za-z]{1,2}[0-9]{1,2}$"),
                   "SHORT_ALPHA_CODE_RE": re.compile(r"^[A-Z]{3,4}$"),
-                  "PHYSEXAM_SHORTHAND_MATCH_BASIS": "verified_physexam_shorthand"},
+                  "PHYSEXAM_SHORTHAND_MATCH_BASIS": "verified_physexam_shorthand",
+                  "NARRATIVE_STATE_WORD_MATCH_BASIS": "verified_narrative_state_word"},
 )
 
 qualifier_fragment_precheck = TG["qualifier_fragment_precheck"]

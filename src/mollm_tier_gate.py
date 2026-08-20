@@ -91,6 +91,7 @@ from src.llm_client import (
 )
 from src.normalization.constants import TIER3_SIMILARITY_FLOOR
 from src.physexam_shorthand import PHYSEXAM_SHORTHAND_MATCH_BASIS
+from src.narrative_state_word_coldstart import NARRATIVE_STATE_WORD_MATCH_BASIS
 from src.provenance import (
     provenance_alter_statements,
     provenance_column_sql,
@@ -979,6 +980,31 @@ def tier3_fast_path(entity: dict) -> dict:
                 f"gold-mined physical-exam-shorthand alias, the sole such hit, "
                 f"with no ambiguous expansion -- skipped the two-step ensemble "
                 f"entirely."),
+            "models": [],
+        }
+
+    # 2026-08-20 (src.narrative_state_word_coldstart). Unlike physexam's
+    # inherently-negated NT/ND, these terms are genuinely negatable in
+    # context ("not alert") -- assertion is detected normally by that
+    # module (not force-set), so the ordinary PRESENT/None gate applies
+    # here, same as verified_brand_alias below, rather than physexam's
+    # relaxed one.
+    narrative_hits = [(i, c) for i, c in enumerate(entity.get("candidates") or [], 1)
+                      if c.get("match_basis") == NARRATIVE_STATE_WORD_MATCH_BASIS]
+    if len(narrative_hits) == 1 and not entity.get("expansion_ambiguous") \
+            and entity.get("assertion_status") in (None, "PRESENT"):
+        i, c = narrative_hits[0]
+        return {
+            "tier": TIER_3_AUTO_VALIDATED,
+            "mollm_routing_decision": "AUTO_VALIDATED",
+            "queue_reason": None,
+            "final_candidate_index": i,
+            "composite_confidence": None,
+            "routing_basis": (
+                f"Tier 3 fast path: candidate [{i}] ({c.get('concept_name')}) is a "
+                f"gold-mined narrative-state-word alias, the sole such hit, with no "
+                f"ambiguous expansion or non-PRESENT assertion -- skipped the "
+                f"two-step ensemble entirely."),
             "models": [],
         }
 
