@@ -90,6 +90,7 @@ from src.llm_client import (
     parse_json_response,
 )
 from src.normalization.constants import TIER3_SIMILARITY_FLOOR
+from src.physexam_shorthand import PHYSEXAM_SHORTHAND_MATCH_BASIS
 from src.provenance import (
     provenance_alter_statements,
     provenance_column_sql,
@@ -109,7 +110,23 @@ TIER_5_TRUE_AMBIGUITY = "TIER_5_TRUE_AMBIGUITY"
 # genuine unanimous vote vs a calibrated guess") can tell the two apart.
 TIER_1B_CALIBRATED_AUTO_VALIDATED = "TIER_1B_CALIBRATED_AUTO_VALIDATED"
 
-AUTO_TIERS = {TIER_1_AUTO_VALIDATED, TIER_2_AUTO_RESOLVED, TIER_3_AUTO_VALIDATED,
+# 2026-08-19 (temporary, conservative gating change -- see
+# docs/2026-08-19_Lab_Procedure_Vs_Observable_Entity_Finding.md).
+# TIER_2_AUTO_RESOLVED deliberately excluded from AUTO_TIERS: corpus-scale
+# grading measured 20.0% precision (115 clean-graded), and while 78% of
+# that (73/93 wrong) is the now-fixed lab-procedure-vs-observable-entity
+# bug, the remaining 20/93 span Anatomy/Condition/Medication/Procedure with
+# repeated wrong patterns of their own (e.g. "Diverticulosis"->"Diverticular
+# disease" x2, "stress test"->"Cardiovascular stress testing" x3) that have
+# NOT been root-caused yet. route_tier() still tags these decisions
+# tier=TIER_2_AUTO_RESOLVED (unchanged -- the underlying signal, a 3/3
+# unanimous re-rank, is still real and still worth distinguishing in every
+# audit/grading query) but routes them to HITL_REQUIRED rather than
+# AUTO_RESOLVED until a fresh evaluation on post-fix data confirms the
+# 20% baseline has actually recovered. Re-add TIER_2_AUTO_RESOLVED to this
+# set once that re-measurement (and ideally the residual-20 pattern) is
+# done and clears whatever bar TIER_1/TIER_3 clear today (~82%/~98%).
+AUTO_TIERS = {TIER_1_AUTO_VALIDATED, TIER_3_AUTO_VALIDATED,
              TIER_1B_CALIBRATED_AUTO_VALIDATED}
 
 # CALIBRATION-PENDING, same discipline as src/mollm_ensemble.py's
@@ -399,6 +416,25 @@ ALLERGY_CONTEXT_CLAUSE = (
 )
 
 
+# 2026-08-19 ("MCV/MCHC/RDW problem", grading-pass finding). Corpus-scale
+# grading of TIER_2_AUTO_RESOLVED (evaluation/tier_gate_grading.py) found
+# 20% precision -- traced to a specific, repeatable pattern: Stage 2b's Tier
+# 3 semantic search already ranks the correct Procedure/"determination"-
+# class concept at candidate #1 (src.normalization.tier_retrieval's
+# _prefer_lab_procedure_over_observable(), 78/78-exceptionless corpus
+# evidence for this exact class pair), but all 3 ensemble models
+# unanimously REJECT candidate #1 and RE_RANK to an Observable-Entity-class
+# sibling instead (e.g. "RDW-13" -> correct "Red cell distribution width
+# determination" at #1, rejected; wrong "Red blood cell distribution width"
+# at #2, unanimously accepted) -- every model's own reasoning cites the
+# Observable-Entity name's closer literal wording to the abbreviation as
+# the deciding factor, the same anchoring-on-surface-form failure mode
+# CONDITION_VS_OBSERVATION_PRIOR already exists to counteract for a
+# different class pair. Applied unconditionally for Lab-Test-labeled
+# entities (cheap -- a no-op instruction when this specific pattern isn't
+# present in the candidate set) rather than gated on detecting the pattern
+# first, since the check would need the model's OWN judgment of "which
+# candidate is which class" to gate on, circular for what this fixes.
 def _binary_match_prompt(entity: dict, candidate: dict, clinical_meaning: str,
                          extra_rule: str = None) -> str:
     basis = candidate.get("match_basis", "semantic_similarity")
@@ -521,8 +557,13 @@ def _match_schema() -> dict:
 # candidates) rather than the full original list -- far less surface for the
 # same index-confusion failure mode, and it only fires when actually needed,
 # so the common (already-unambiguous) case pays no extra cost.
+# 2026-08-18: promoted to default-ON alongside
+# src.normalization.constants.CONTEXTUAL_CANDIDATES_ENABLED (same env var,
+# same opt-out semantics -- see that flag's own comment for why leaving this
+# off-by-default was silently reproducing the wound-dehiscence-class bug on
+# every note that didn't manually export the var).
 EXHAUSTIVE_CANDIDATE_EVAL_ENABLED = os.environ.get(
-    "CNSP_CONTEXTUAL_CANDIDATES", "").strip() in ("1", "true", "yes")
+    "CNSP_CONTEXTUAL_CANDIDATES", "1").strip().lower() not in ("0", "false", "no")
 
 
 TIEBREAK_SYSTEM_PROMPT = (
@@ -581,19 +622,38 @@ CONDITION_VS_OBSERVATION_PRIOR = (
 
 
 def _condition_vs_observation_duplicate(accepted: list) -> bool:
-    """True when `accepted` is exactly the same-name Condition/Disorder vs.
-    Observation/Morph-Abnormality pattern CONDITION_VS_OBSERVATION_PRIOR was
-    measured against -- scoped narrowly (exact name match, exact class
-    match on both sides) so the hint is never injected for an unrelated
-    tie where the measured 11/14 statistic says nothing useful."""
+    """True when `accepted` is exactly the same-name Condition-vs-Observation
+    duplicate pattern CONDITION_VS_OBSERVATION_PRIOR was measured against.
+
+    2026-08-20 (real, previously-undetected bug, found via corpus-scale
+    grading + a direct pull of a stored decision's eval_trail). This
+    function originally also required concept_class_id to match
+    ("Disorder"/"Morph Abnormality" specifically) -- but candidate dicts
+    (src.normalization.tier_retrieval._candidate()) NEVER carry
+    concept_class_id at all; nothing populates it. That made this check
+    permanently return False regardless of input, silently disabling
+    CONDITION_VS_OBSERVATION_PRIOR's injection ENTIRELY since it was built
+    -- confirmed live on the "wound dehiscence" case (13538696-DS-11): the
+    tiebreak correctly fired for all 3 models (eval_trail shows
+    'tiebreak': True, candidates_considered: [1, 2] for every one of them),
+    but with no prior injected each model reasoned unguided ("more commonly
+    used", "aligns with documentation style") and all 3 happened to agree
+    on the wrong (Condition/Disorder) candidate.
+
+    Relaxed to match on domain_id alone (a field every candidate dict
+    actually carries) combined with the exact-name-match already required
+    below -- two DIFFERENT concept_ids sharing the EXACT SAME name string
+    while spanning Condition and Observation domains is already a narrow,
+    specific signal on its own; the concept_class_id check was extra
+    precision this codebase never actually had wired up.
+    """
     if len(accepted) != 2:
         return False
     names = {(a["candidate"].get("concept_name") or "").strip().lower() for a in accepted}
     if len(names) != 1:
         return False
-    pairs = {(a["candidate"].get("domain_id"), a["candidate"].get("concept_class_id"))
-             for a in accepted}
-    return pairs == {("Condition", "Disorder"), ("Observation", "Morph Abnormality")}
+    domains = {a["candidate"].get("domain_id") for a in accepted}
+    return domains == {"Condition", "Observation"}
 
 
 def _tiebreak_prompt(entity: dict, accepted: list, clinical_meaning: str) -> str:
@@ -874,7 +934,35 @@ def tier3_fast_path(entity: dict) -> dict:
     ambiguous-abbreviation expansion and an asserted-present entity, since
     "zero contradiction cues" in the spec's own wording rules out exactly
     those two cases. Returns None when the fast path does not apply.
+
+    2026-08-18: also recognizes PHYSEXAM_SHORTHAND_MATCH_BASIS
+    (src.physexam_shorthand) -- same "curated, pre-verified lookup, not a
+    similarity guess" trust tier as verified_brand_alias, but deliberately
+    ALLOWS assertion_status=ABSENT for this basis specifically: 'NT'/'ND'
+    are correctly tagged ABSENT (see that module's docstring on
+    inherently_negated terms), and a non-PRESENT assertion there is the
+    CORRECT, expected state, not a contradiction cue -- unlike the general
+    case, where ABSENT on an otherwise-PRESENT-shaped candidate would
+    signal something real to double-check.
     """
+    physexam_hits = [(i, c) for i, c in enumerate(entity.get("candidates") or [], 1)
+                     if c.get("match_basis") == PHYSEXAM_SHORTHAND_MATCH_BASIS]
+    if len(physexam_hits) == 1 and not entity.get("expansion_ambiguous"):
+        i, c = physexam_hits[0]
+        return {
+            "tier": TIER_3_AUTO_VALIDATED,
+            "mollm_routing_decision": "AUTO_VALIDATED",
+            "queue_reason": None,
+            "final_candidate_index": i,
+            "composite_confidence": None,
+            "routing_basis": (
+                f"Tier 3 fast path: candidate [{i}] ({c.get('concept_name')}) is a "
+                f"gold-mined physical-exam-shorthand alias, the sole such hit, "
+                f"with no ambiguous expansion -- skipped the two-step ensemble "
+                f"entirely."),
+            "models": [],
+        }
+
     alias_hits = [(i, c) for i, c in enumerate(entity.get("candidates") or [], 1)
                   if c.get("match_basis") == "verified_brand_alias"]
     if len(alias_hits) != 1:
@@ -895,6 +983,74 @@ def tier3_fast_path(entity: dict) -> dict:
             f"graph-verified brand alias, the sole such hit, with no ambiguous "
             f"expansion or non-PRESENT assertion -- skipped the two-step "
             f"ensemble entirely."),
+        "models": [],
+    }
+
+
+def _lab_procedure_fast_path(entity: dict) -> dict:
+    """AUTO_VALIDATED without spending any model calls, for a Lab-Test
+    entity whose top candidate is tagged match_basis="lab_procedure_preferred"
+    (src.normalization.tier_retrieval's _prefer_lab_procedure_over_
+    observable()). Split out from tier3_fast_path() below rather than
+    folded into its single `return`, since this pattern's own justification
+    (a corpus-measured naming CONVENTION, not a KG-verified identity fact
+    like a brand alias) is different enough to want its own docstring and
+    its own routing_basis wording, not a paraphrase of the alias branch's.
+
+    Why a deterministic bypass, after a prompt-based attempt already failed:
+    see the tag's own comment in _prefer_lab_procedure_over_observable() --
+    live-tested, all 3 models unanimously re-ranked away from this exact
+    winner regardless of instruction wording, because _binary_match_prompt()
+    judges one candidate in isolation with no visibility into the sibling it
+    would need to be told NOT to prefer. The 78/78-exceptionless corpus
+    evidence behind the tag itself is strong enough to trust directly,
+    matching this codebase's existing precedent for curated/verified trust
+    tiers (verified_brand_alias, verified_lab_test_alias,
+    PHYSEXAM_SHORTHAND_MATCH_BASIS) rather than routing every occurrence
+    through an ensemble that has already been shown not to honor it.
+    """
+    if entity.get("gliner_label") != "Lab Test":
+        return None
+    candidates = entity.get("candidates") or []
+    if not candidates or candidates[0].get("match_basis") != "lab_procedure_preferred":
+        return None
+    if entity.get("expansion_ambiguous"):
+        return None
+    # 2026-08-20 ("MCH/MCHC problem", corpus-scale grading finding). Found
+    # live: bare "MCH" force-includes the CORRECT verified_lab_test_alias
+    # candidate (4182871, "Mean corpuscular hemoglobin determination"), but
+    # _prefer_lab_procedure_over_observable()'s tagging only compares raw
+    # similarity scores among same-class candidates -- it has no way to know
+    # the alias candidate is more authoritative than a same-class sibling
+    # that merely scores higher by coincidence (here, MCHC's own
+    # "...concentration determination" concept, 0.7458 vs the correct
+    # concept's 0.7233 -- a genuine SapBERT near-miss between two
+    # closely-named tests). Stage 2b's OWN ambiguity check already catches
+    # this specific case (is_ambiguous=True, reason=
+    # tier3_top2_margin_below_threshold, since the top two scores are only
+    # 0.0225 apart) -- this fast-path just never consulted that flag before
+    # bypassing the ensemble entirely. Checking it now closes the gap
+    # without needing to fix the tagging logic's own class-blind scoring.
+    if entity.get("is_ambiguous"):
+        return None
+    if entity.get("assertion_status") not in (None, "PRESENT"):
+        return None
+    score = candidates[0].get("similarity_score")
+    if not isinstance(score, (int, float)) or score < TIER3_SIMILARITY_FLOOR:
+        return None
+    return {
+        "tier": TIER_3_AUTO_VALIDATED,
+        "mollm_routing_decision": "AUTO_VALIDATED",
+        "queue_reason": None,
+        "final_candidate_index": 1,
+        "composite_confidence": None,
+        "routing_basis": (
+            f"Tier 3 fast path: candidate [1] ({candidates[0].get('concept_name')}) "
+            f"is the determination/measurement-class concept for this lab test, "
+            f"preferred over an Observable-Entity sibling by a corpus-measured "
+            f"naming convention (78/78 exceptionless) -- skipped the two-step "
+            f"ensemble entirely after it was found to unanimously re-rank away "
+            f"from this exact pattern regardless of prompt instruction."),
         "models": [],
     }
 
@@ -954,7 +1110,7 @@ def tier5_precheck(entity: dict) -> dict:
 # ==========================================================================
 
 def route_tier(entity: dict, model_results: list = None, clients: dict = None,
-               calibrator=None, conn=None) -> dict:
+               calibrator=None, conn=None, conn_factory=None) -> dict:
     """Runs the Tier 1-5 gate for one Stage 2b LOW-tier entity record.
 
     Order: qualifier-fragment precheck -> Tier 3 fast path -> Tier 5
@@ -974,6 +1130,25 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
     the new TIER_1B_CALIBRATED_AUTO_VALIDATED escape hatch below -- and even
     then, ONLY for entities that already failed every existing Tier 1/2/3
     rule; nothing above this point in the function changes at all.
+
+    `conn_factory` (2026-08-18, "don't lock Streamlit out" fix): a zero-arg
+    callable returning a fresh connection, preferred over `conn` by callers
+    that care about lock duration (scripts/run_stage3_tier_gate.py). The
+    ONLY DB access anywhere in this function is the brief
+    count_prior_confirmations() lookup below, which happens AFTER
+    run_two_step_ensemble()'s 3 LLM calls have already returned -- passing
+    an already-OPEN `conn` (the old contract) means that connection sits
+    open, holding DuckDB's single-writer lock, for the ENTIRE ensemble call
+    too, even though the ensemble itself never touches it (confirmed live:
+    this was measured and is not hypothetical -- the entity-level
+    connection-cycling fix that preceded this one reduced average lock
+    duration but left near-zero free gaps between entities, so Streamlit
+    was still effectively always locked out during Stage 3). With
+    `conn_factory`, the connection is opened fresh and closed immediately
+    around just that one query -- milliseconds, not the whole call. `conn`
+    is kept for backward compatibility (existing tests, any caller that
+    doesn't care about lock duration); `conn_factory` takes priority when
+    both are supplied.
     """
     qualifier = qualifier_fragment_precheck(entity)
     if qualifier:
@@ -981,6 +1156,9 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
     fast = tier3_fast_path(entity)
     if fast:
         return fast
+    lab_fast = _lab_procedure_fast_path(entity)
+    if lab_fast:
+        return lab_fast
     pre = tier5_precheck(entity)
     if pre:
         return pre
@@ -1043,12 +1221,20 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
 
     if unanimous and top_verdict.startswith("RE_RANK_TO_CANDIDATE_"):
         n = int(top_verdict.rsplit("_", 1)[1])
-        return {"tier": TIER_2_AUTO_RESOLVED, "mollm_routing_decision": "AUTO_RESOLVED",
-                "queue_reason": None, "final_candidate_index": n,
+        # 2026-08-19 (temporary, see AUTO_TIERS' own comment above): still
+        # tagged TIER_2_AUTO_RESOLVED for audit/grading continuity, but
+        # routed to HITL_REQUIRED, not AUTO_RESOLVED, until a fresh
+        # post-fix evaluation confirms this tier's measured 20% precision
+        # has actually recovered.
+        return {"tier": TIER_2_AUTO_RESOLVED, "mollm_routing_decision": "HITL_REQUIRED",
+                "queue_reason": "tier2_auto_resolved_pending_revalidation",
+                "final_candidate_index": n,
                 "composite_confidence": composite_confidence,
                 "calibrated_score": None,
                 "routing_basis": (f"3/3 unanimous re-rank to candidate {n}, "
-                                  f"composite_confidence {composite_confidence}"),
+                                  f"composite_confidence {composite_confidence} -- "
+                                  f"queued for review pending TIER_2_AUTO_RESOLVED "
+                                  f"post-fix re-validation (see AUTO_TIERS comment)"),
                 "models": model_results}
 
     if unanimous and top_verdict == "NONE_CORRECT":
@@ -1079,7 +1265,7 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
     # scored low" after the fact.
     calibrated_score = None
 
-    if calibrator is not None and conn is not None:
+    if calibrator is not None and (conn is not None or conn_factory is not None):
         candidate_index = None
         if top_verdict == "SUPPORTED_1":
             candidate_index = 1
@@ -1114,8 +1300,25 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
             chosen_concept_id = None
             if 0 < candidate_index <= len(candidates):
                 chosen_concept_id = candidates[candidate_index - 1].get("omop_concept_id")
-            prior_count = count_prior_confirmations(
-                conn, entity.get("original_text"), chosen_concept_id)
+
+            # conn_factory preferred: opens a connection ONLY for this one
+            # brief lookup, closes it immediately -- this is the actual
+            # DB-touching moment, happening AFTER run_two_step_ensemble()'s
+            # 3 LLM calls have already returned, so the lock is held for
+            # milliseconds, not the whole route_tier() call. Falls back to
+            # a caller-supplied already-open `conn` for backward
+            # compatibility (existing tests, callers that don't care about
+            # lock duration).
+            if conn_factory is not None:
+                lookup_conn = conn_factory()
+                try:
+                    prior_count = count_prior_confirmations(
+                        lookup_conn, entity.get("original_text"), chosen_concept_id)
+                finally:
+                    lookup_conn.close()
+            else:
+                prior_count = count_prior_confirmations(
+                    conn, entity.get("original_text"), chosen_concept_id)
             context = build_feature_context(entity, model_results, prior_count)
             calibrated_score = calibrator.score(context)
 

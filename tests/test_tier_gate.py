@@ -59,12 +59,14 @@ def _load_pure_functions(module_filename: str, wanted: set, extra_globals: dict 
 
 TG = _load_pure_functions(
     "mollm_tier_gate.py",
-    {"qualifier_fragment_precheck", "tier3_fast_path", "tier5_precheck", "route_tier",
+    {"qualifier_fragment_precheck", "tier3_fast_path", "_lab_procedure_fast_path",
+     "tier5_precheck", "route_tier",
      "_clinical_meaning_prompt", "_binary_match_prompt", "_is_coronary_segment_trap",
      "_is_short_alphanumeric_code", "_fragile_shorthand_trap"},
     extra_globals={"TIER3_SIMILARITY_FLOOR": 0.72, "TIER1_CONFIDENCE_FLOOR": 0.70,
                   "SHORT_ALPHANUMERIC_CODE_RE": re.compile(r"^[A-Za-z]{1,2}[0-9]{1,2}$"),
-                  "SHORT_ALPHA_CODE_RE": re.compile(r"^[A-Z]{3,4}$")},
+                  "SHORT_ALPHA_CODE_RE": re.compile(r"^[A-Z]{3,4}$"),
+                  "PHYSEXAM_SHORTHAND_MATCH_BASIS": "verified_physexam_shorthand"},
 )
 
 qualifier_fragment_precheck = TG["qualifier_fragment_precheck"]
@@ -302,10 +304,14 @@ def run():
              _vote("b", "RE_RANK_TO_CANDIDATE_2", 0.8),
              _vote("c", "RE_RANK_TO_CANDIDATE_2", 0.9)]
     r = route_tier(plain, model_results=votes)
-    check("3/3 same re-rank target -> Tier 2 AUTO_RESOLVED",
+    # 2026-08-19 (temporary, conservative gating -- see AUTO_TIERS' own
+    # comment in mollm_tier_gate.py): still tagged TIER_2_AUTO_RESOLVED for
+    # audit continuity, but routed to HITL_REQUIRED, not auto-written,
+    # pending post-fix re-validation of this tier's measured 20% precision.
+    check("3/3 same re-rank target -> tier TIER_2_AUTO_RESOLVED, routed HITL pending revalidation",
           r["tier"] == "TIER_2_AUTO_RESOLVED"
-          and r["mollm_routing_decision"] == "AUTO_RESOLVED")
-    check("Tier 2 final_candidate_index follows the agreed re-rank target",
+          and r["mollm_routing_decision"] == "HITL_REQUIRED")
+    check("Tier 2 final_candidate_index still follows the agreed re-rank target",
           r["final_candidate_index"] == 2)
 
     # Tier 2 requires the SAME N, not just "all disagreed with candidate 1".
@@ -761,6 +767,30 @@ def run():
     ]
     check("the pattern is NOT detected for an unrelated tie (different names/domains)",
           _condition_vs_observation_duplicate(unrelated_accepted) is False)
+
+    # 2026-08-20 regression guard. _WOUND_DEHISCENCE_ENTITY's own candidates
+    # (above) carry concept_class_id, but src.normalization.tier_retrieval's
+    # real _candidate() NEVER populates that field -- confirmed live, this
+    # let a real bug hide behind a test fixture that didn't match production
+    # candidate shape: the ORIGINAL _condition_vs_observation_duplicate()
+    # required concept_class_id to match too, which meant it could never
+    # fire on a real candidate dict, only on this idealized fixture. Guards
+    # against that exact class of bug recurring by testing with a
+    # concept_class_id-FREE candidate pair, the shape real candidates
+    # actually have.
+    wound_accepted_no_class = [
+        {"index": 1, "candidate": {"concept_name": "Wound dehiscence", "domain_id": "Condition",
+                                   "vocabulary_id": "SNOMED", "match_basis": "exact_text",
+                                   "similarity_score": 1.0, "omop_concept_id": 111},
+         "reasoning": "x"},
+        {"index": 2, "candidate": {"concept_name": "Wound dehiscence", "domain_id": "Observation",
+                                   "vocabulary_id": "SNOMED", "match_basis": "exact_text",
+                                   "similarity_score": 1.0, "omop_concept_id": 222},
+         "reasoning": "y"},
+    ]
+    check("pattern is STILL detected with no concept_class_id at all -- the real shape "
+         "of every actual candidate dict this function is ever called with in production",
+          _condition_vs_observation_duplicate(wound_accepted_no_class) is True)
     check("the prior is NOT injected into the prompt for an unrelated tie -- "
           "conditional, not blanket, injection",
           "STRICT CORPUS CONVENTION" not in _tiebreak_prompt_fn(

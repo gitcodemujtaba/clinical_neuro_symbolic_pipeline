@@ -387,6 +387,24 @@ _LAB_TEST_ALIASES = {
     # variants, since bare "CHEM-7" implies none of those extra qualifiers.
     "sgpt": 44810789,   # -> 'Alanine transaminase activity measurement' (= ALT)
     "sgot": 44810795,   # -> 'Aspartate transaminase activity measurement' (= AST)
+    # 2026-08-18, verified against train_annotations.csv gold spans (same
+    # discipline as the entries above -- direct corpus measurement, not a
+    # plausible-sounding guess): bare "HCT" -> SNOMED 28317006 in 568/569
+    # (99.8%) of gold annotations; bare "MCH" -> SNOMED 54706004 in 408/408
+    # (100%). Both are flowsheet-style CBC differential abbreviations that
+    # strip_lab_value_suffix() reduces "HCT-32"/"MCH-28" to -- SapBERT alone
+    # was measured to place the bare abbreviation below TIER3_SIMILARITY_FLOOR
+    # against their full determination-concept names (confirmed live on note
+    # 13538696-DS-11: HCT-32 and the merged MCV-90 MCH-28 span both landed at
+    # 0 (Failed) / tier3_below_similarity_floor_rejected).
+    "hct": 4151358,   # -> 'Hematocrit determination'
+    "mch": 4182871,   # -> 'Mean corpuscular hemoglobin determination'
+    # 2026-08-18, verified against train_annotations.csv gold spans: bare
+    # "CXR" -> SNOMED 399208008 in 232/232 (100%) of gold annotations, the
+    # largest single-abbreviation sample verified for this dict so far.
+    # Confirmed live that bare Tier 1-3 search returns "0 (Failed)" for
+    # "CXR" today (below-floor semantic drift, not a domain/vocab issue).
+    "cxr": 4163872,   # -> 'Plain X-ray of chest'
 }
 
 
@@ -565,7 +583,100 @@ def _prefer_lab_procedure_over_observable(conn, cands, gliner_label):
             if classes.get(c["omop_concept_id"]) == "Observable Entity" else 0.0
         return c["similarity_score"] - penalty
 
-    return sorted(cands, key=_sort_key, reverse=True)
+    ranked = sorted(cands, key=_sort_key, reverse=True)
+
+    # 2026-08-19. A rank-only nudge wasn't enough on its own -- corpus-scale
+    # grading (evaluation/tier_gate_grading.py) found the 3-model ensemble
+    # unanimously RE-RANKING AWAY from this exact winner regardless (e.g.
+    # "RDW-13": correct "...determination" concept placed at #1 by this very
+    # function, all 3 models still rejected it for the Observable-Entity
+    # sibling at #2). Tried fixing via a prompt clause first -- proved
+    # unreliable (one model actively got WORSE, re-ranking to an unrelated
+    # 3rd candidate) because _binary_match_prompt() judges one candidate per
+    # call with zero visibility into any other candidate's text, so a
+    # clause phrased "even when a later candidate looks closer" asks the
+    # model to reason about something outside its own context window.
+    # Reverted that attempt. This tag instead lets tier3_fast_path()
+    # (src.mollm_tier_gate) skip the ensemble ENTIRELY for this pattern --
+    # same "curated, pre-verified, not a similarity guess" trust tier as
+    # verified_brand_alias/verified_lab_test_alias/physexam_shorthand,
+    # justified by the same 78/78-exceptionless corpus evidence this
+    # function's own docstring already cites for the ranking bonus above.
+    # Only tags the winner when its OWN match_basis is still the generic
+    # Tier 3 default -- never overwrites a candidate that already carries a
+    # more specific verified-alias basis.
+    if ranked and classes.get(ranked[0]["omop_concept_id"]) == "Procedure" \
+            and ranked[0].get("match_basis") in (None, "semantic_similarity"):
+        ranked[0]["match_basis"] = "lab_procedure_preferred"
+
+    return ranked
+
+
+def _lab_procedure_sibling_check(conn, cands, gliner_label):
+    """True when `cands` (a Tier 1/2 exact/synonym result) needs the
+    supplementary Procedure-class semantic lookup below -- i.e. every
+    candidate is Observable-Entity-class, for a Lab-Test-labeled entity.
+
+    2026-08-19, corpus-scale grading finding. _prefer_lab_procedure_over_
+    observable() above (78/78-exceptionless evidence for this exact
+    Observable-Entity-vs-Procedure duplicate pattern) can only ever fire
+    when BOTH classes are already present in `cands` -- true for Tier 3's
+    top-K semantic search, never true for Tier 1/2's literal exact/synonym
+    match, since the Procedure-class sibling has entirely different text
+    ("MCV - Mean corpuscular volume" [Observable Entity, exact hit] vs
+    "Erythrocyte mean corpuscular volume determination" [Procedure, gold's
+    actual target] -- no shared substring, not even case-insensitively, and
+    British/American spelling differences like "haemoglobin"/"hemoglobin"
+    rule out a plain LIKE-based rescue too). Confirmed live via
+    evaluation/tier_gate_grading.py against the corpus so far: RDW/MCV/MCHC
+    all land on the Observable-Entity concept at TIER_2_AUTO_RESOLVED with
+    zero exceptions across every occurrence graded, and no direct SNOMED
+    relationship exists between the two concepts in either case (checked
+    athena_concept_relationship directly) -- confirming this needs a
+    semantic lookup, not a graph traversal, the same way
+    _alias_expand_brand_to_generic's KG walk wasn't available for "Lasix"
+    either.
+    """
+    if gliner_label != "Lab Test" or not cands:
+        return False
+    ids = [c["omop_concept_id"] for c in cands]
+    placeholders = ",".join("?" * len(ids))
+    try:
+        classes = dict(conn.sql(
+            f"SELECT concept_id, concept_class_id FROM athena_concept "
+            f"WHERE concept_id IN ({placeholders})", params=ids).fetchall())
+    except duckdb.Error:
+        return False
+    return all(classes.get(cid) == "Observable Entity" for cid in ids)
+
+
+def _lab_procedure_sibling(conn, vector, exclude_ids):
+    """Semantic search for the best Procedure-class SNOMED Measurement
+    concept for `vector` (the entity's own SapBERT embedding) -- the
+    supplementary lookup _lab_procedure_sibling_check() gates. Scoped
+    tightly (domain_id='Measurement', concept_class_id='Procedure',
+    vocabulary_id='SNOMED', standard_concept='S') since this is a narrow
+    rescue for one specific, evidence-verified duplicate pattern, not a
+    general Tier 3 fallback -- a low-confidence match here would silently
+    override an already-confident Tier 1/2 exact hit, so the caller applies
+    its own similarity floor before trusting the result.
+    """
+    exclude_ids = set(exclude_ids or [])
+    try:
+        rows = conn.sql("""
+            SELECT concept_id, concept_name, domain_id, vocabulary_id,
+                   list_cosine_similarity(embedding, ?::FLOAT[]) AS similarity
+            FROM athena_concept
+            WHERE embedding IS NOT NULL AND standard_concept = 'S'
+            AND vocabulary_id = 'SNOMED' AND domain_id = 'Measurement'
+            AND concept_class_id = 'Procedure'
+            ORDER BY similarity DESC LIMIT 1;
+        """, params=[vector]).fetchall()
+    except duckdb.Error:
+        return None
+    if not rows or rows[0][0] in exclude_ids:
+        return None
+    return rows[0]
 
 
 def _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=None, limit=None):

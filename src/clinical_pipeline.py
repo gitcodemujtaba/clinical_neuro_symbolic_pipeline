@@ -40,7 +40,7 @@ retained-for-study spans out of every downstream stage.
 import os
 import duckdb
 
-from src.preprocessing import process_and_store_note, section_for_offset
+from src.preprocessing import process_and_store_note, section_for_offset, segment_sections
 from src.entity_extraction import (
     extract_and_store_entities,
     store_entities,
@@ -58,6 +58,8 @@ from src.normalization import (
     DOMAIN_TO_GLINER_LABEL,
 )
 from src.acronym_escalation import ACRONYM_ESCALATION_ENABLED, resolve_ambiguous_acronyms
+from src.db_utils import connect_with_retry
+from src.physexam_shorthand import build_physexam_shorthand_entities
 
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
@@ -358,6 +360,20 @@ def run_pipeline(note_id: str, raw_text: str, conn, is_test: bool = False) -> di
     accepted = [e for e in entities if not e.get("below_threshold")]
     subthreshold = [e for e in entities if e.get("below_threshold")]
 
+    # PHYSICAL-EXAM SHORTHAND COLD START (2026-08-18). GLiNER never proposes
+    # this compressed telegraphic notation (VS/BP/HEENT/NAD/S-NT-ND/...) as
+    # entities at ANY confidence -- confirmed corpus-wide, see
+    # src.physexam_shorthand's own module docstring for the sizing. Injected
+    # here (after the sub-threshold filter, so these are never confused with
+    # a low-confidence GLiNER guess; before growth/split, since these spans
+    # are already atomic and complete) directly from raw_text, skipping any
+    # span a GLiNER entity already covers.
+    physexam_entities = build_physexam_shorthand_entities(
+        raw_text, segment_sections(raw_text), note_id, entities)
+    if physexam_entities:
+        store_entities(conn, physexam_entities, is_test=is_test)
+        accepted = accepted + physexam_entities
+
     # SPAN GROWTH, then COMPOUND-SPAN SPLIT. Both run after the sub-
     # threshold filter (only real, accepted entities are worth the
     # vocabulary lookups these do) and before Stage 2b (so the grown/split
@@ -413,8 +429,16 @@ def run_pipeline(note_id: str, raw_text: str, conn, is_test: bool = False) -> di
 def run_pipeline_for_db_path(note_id: str, raw_text: str, db_path: str = DB_PATH,
                              is_test: bool = False) -> dict:
     """Convenience wrapper for callers without an open DuckDB connection --
-    opens one, runs run_pipeline(), and always closes it, including on error."""
-    conn = duckdb.connect(db_path)
+    opens one, runs run_pipeline(), and always closes it, including on error.
+
+    2026-08-18: uses src.db_utils.connect_with_retry() rather than a bare
+    duckdb.connect() -- this is now the PER-NOTE connection-cycling point
+    for scripts/test_pipeline_e2e.py's batch loop (was previously one
+    connection held open across the whole multi-note run), so a brief
+    collision with something else's own short-lived connection (Streamlit's
+    UI pages, this same pattern in a concurrently-run script) is expected
+    and worth waiting out rather than crashing the whole note on."""
+    conn = connect_with_retry(db_path, read_only=False)
     try:
         return run_pipeline(note_id, raw_text, conn, is_test=is_test)
     finally:

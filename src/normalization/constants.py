@@ -69,8 +69,14 @@ GLINER_LABEL_TO_DOMAIN = {
 # NOT safe without also fixing route_tier()'s "stop at first accept" Step B
 # behavior (see EXHAUSTIVE_CANDIDATE_EVAL_ENABLED) -- otherwise a bigger
 # candidate list just gives the arbitrary-pick problem more room, not less.
+# 2026-08-18: promoted to default-ON (opt-out, not opt-in) after the
+# wound-dehiscence case above was traced end-to-end and confirmed this exact
+# flag was the fix -- it had been sitting off-by-default since 2026-08-18,
+# meaning every note processed without manually exporting
+# CNSP_CONTEXTUAL_CANDIDATES silently kept the Condition-only pool. Set
+# CNSP_CONTEXTUAL_CANDIDATES=0 (or "false"/"no") to opt back out.
 CONTEXTUAL_CANDIDATES_ENABLED = os.environ.get(
-    "CNSP_CONTEXTUAL_CANDIDATES", "").strip() in ("1", "true", "yes")
+    "CNSP_CONTEXTUAL_CANDIDATES", "1").strip().lower() not in ("0", "false", "no")
 
 if CONTEXTUAL_CANDIDATES_ENABLED:
     GLINER_LABEL_TO_DOMAIN["Condition"] = ["Condition", "Observation"]

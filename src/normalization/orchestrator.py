@@ -17,10 +17,47 @@ from .sapbert_model import SAPBERT_POOLING
 from .compound_span import _lookup_tier12, strip_lab_value_suffix, _LAB_TIER_RANK
 from .tier_retrieval import (
     _candidate, _rank_tier12_candidates, _fuzzy_typo_candidates,
-    _alias_expand_brand_to_generic, _collapse_hierarchy_duplicates,
-    _prefer_lab_procedure_over_observable, _tier3_semantic_rows,
+    _alias_expand_brand_to_generic, _lab_test_alias, _collapse_hierarchy_duplicates,
+    _prefer_lab_procedure_over_observable, _lab_procedure_sibling_check,
+    _lab_procedure_sibling, _tier3_semantic_rows,
     _tier3_hybrid_rows, _detect_domain_conflict, HYBRID_RETRIEVAL_ENABLED,
 )
+from src.physexam_shorthand import PHYSEXAM_SHORTHAND_MATCH_BASIS
+
+
+def _physexam_shorthand_mapping(info: dict) -> dict:
+    """Synthetic normalize_entity()-shaped mapping for an entity injected by
+    src.physexam_shorthand.build_physexam_shorthand_entities() -- skips the
+    Tier 1-3 search entirely, since the concept was already selected by
+    exact gold-mined text match (see that module's docstring), not
+    similarity. match_tier "1 (Exact)" / similarity_score 1.0 matches how
+    verified_brand_alias / verified_lab_test_alias hits are treated
+    elsewhere in this file -- a curated, pre-verified lookup, not a guess.
+    """
+    candidate = {
+        "omop_concept_id": info["omop_concept_id"],
+        "concept_name": info["concept_name"],
+        "domain_id": info["omop_domain"],
+        "vocabulary_id": "SNOMED",
+        "match_tier": "1 (Exact)",
+        "similarity_score": 1.0,
+        "match_basis": PHYSEXAM_SHORTHAND_MATCH_BASIS,
+    }
+    return {
+        "match_tier": "1 (Exact)",
+        "concept_id": info["omop_concept_id"],
+        "concept_name": info["concept_name"],
+        "domain_id": info["omop_domain"],
+        "vocab": "SNOMED",
+        "score": 1.0,
+        "candidates": [candidate],
+        "ambiguous": False,
+        "ambiguity_reason": None,
+        "domain_conflict": None,
+        "tier_trace": None,
+        "tier12_rank_basis": None,
+        "normalized_from": "physexam_shorthand_cold_start",
+    }
 
 
 def get_sapbert_embedding(text):
@@ -144,6 +181,22 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
             if RANKED_TIER12 else (rows, "concept_id_asc", len(rows) > 1))
         cands = [_candidate(r, "1 (Exact)", 1.0) for r in rows]
         ambiguous = unresolved if RANKED_TIER12 else len(cands) > 1
+        # 2026-08-19 ("MCV/MCHC/RDW problem"). See _lab_procedure_sibling_
+        # check()'s own docstring: an exact/synonym hit that is ENTIRELY
+        # Observable-Entity-class for a Lab-Test entity is exactly the
+        # pattern _prefer_lab_procedure_over_observable() was built for but
+        # can never reach here, since Tier 1/2 returns before that
+        # re-ranker ever runs. Prepended (not silently substituted) so the
+        # entity is forwarded ambiguous=True and Stage 3 still gets to see
+        # both readings -- this rescue's own similarity floor is a much
+        # weaker guarantee than an exact-text hit's, so it earns a second
+        # opinion, not a blind override.
+        if _lab_procedure_sibling_check(conn, cands, gliner_label):
+            vector = get_sapbert_embedding(entity_text)
+            sibling = _lab_procedure_sibling(conn, vector, {c["omop_concept_id"] for c in cands})
+            if sibling and sibling[4] >= TIER3_SIMILARITY_FLOOR:
+                cands = [_candidate(sibling, "1 (Exact, lab-procedure-sibling)", round(sibling[4], 4))] + cands
+                ambiguous = True
         return _result(
             cands,
             ambiguous=ambiguous,
@@ -177,6 +230,14 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
             if RANKED_TIER12 else (rows, "concept_id_asc", len(rows) > 1))
         cands = [_candidate(r, "2 (Synonym)", 1.0) for r in rows]
         ambiguous = unresolved if RANKED_TIER12 else len(cands) > 1
+        # 2026-08-19 -- see the same rescue in the Tier 1 branch above for
+        # the full rationale ("MCV/MCHC/RDW problem").
+        if _lab_procedure_sibling_check(conn, cands, gliner_label):
+            vector = get_sapbert_embedding(entity_text)
+            sibling = _lab_procedure_sibling(conn, vector, {c["omop_concept_id"] for c in cands})
+            if sibling and sibling[4] >= TIER3_SIMILARITY_FLOOR:
+                cands = [_candidate(sibling, "2 (Synonym, lab-procedure-sibling)", round(sibling[4], 4))] + cands
+                ambiguous = True
         return _result(
             cands,
             ambiguous=ambiguous,
@@ -201,15 +262,27 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
     # normal Tier 3 fallback -- caught before any evaluation run relied on it.
     vector = get_sapbert_embedding(entity_text)
     alias_ids = _alias_expand_brand_to_generic(conn, search_text)
+    # 2026-08-18: _lab_test_alias() (the "verified_lab_test_alias" curated
+    # CBC/panel-shorthand dict -- chem-7/sgpt/sgot, now also hct/mch) was
+    # previously only wired into _tier_queries() (tier_retrieval.py), a
+    # SECONDARY path only reached from _detect_domain_conflict()'s
+    # domain-relaxed re-check -- not this function, normalize_entity()'s own
+    # PRIMARY Tier 3 call, which is what the Lab Value Suffix Fallback
+    # (src.normalization.orchestrator's stripped-candidate retry loop) always
+    # calls. Confirmed live: "HCT-32" strips to "HCT", retries through here,
+    # and landed at 0 (Failed) even though the panel alias existed one
+    # function away. Force-included the same way alias_ids already is.
+    panel_ids = _lab_test_alias(search_text)
+    force_include_ids = alias_ids | panel_ids
     if HYBRID_RETRIEVAL_ENABLED:
         cands = _tier3_hybrid_rows(conn, entity_text, vector, vocabs, domains,
-                                   alias_ids=alias_ids)
+                                   alias_ids=force_include_ids)
         trace.append({
             "tier": "3 (Hybrid)", "attempted": True, "hits": len(cands),
             "top_score": cands[0]["similarity_score"] if cands else None,
             "runner_up_score": cands[1]["similarity_score"] if len(cands) > 1 else None,
             "floor": TIER3_SIMILARITY_FLOOR,
-            "alias_expanded": bool(alias_ids),
+            "alias_expanded": bool(force_include_ids),
         })
         if not cands:
             conflict = _detect_domain_conflict(conn, search_text, vocabs, domains, entity_text,
@@ -221,13 +294,13 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
             return _result([], ambiguous=True, reason="no_candidates_at_any_tier", failed=True,
                            trace=trace)
     else:
-        rows = _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=alias_ids)
+        rows = _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=force_include_ids)
         trace.append({
             "tier": "3 (Semantic)", "attempted": True, "hits": len(rows),
             "top_score": round(rows[0][4], 4) if rows else None,
             "runner_up_score": round(rows[1][4], 4) if len(rows) > 1 else None,
             "floor": TIER3_SIMILARITY_FLOOR,
-            "alias_expanded": bool(alias_ids),
+            "alias_expanded": bool(force_include_ids),
         })
 
         if not rows:
@@ -240,8 +313,14 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
             return _result([], ambiguous=True, reason="no_candidates_at_any_tier", failed=True,
                            trace=trace)
 
+        def _match_basis(concept_id):
+            if concept_id in alias_ids:
+                return "verified_brand_alias"
+            if concept_id in panel_ids:
+                return "verified_lab_test_alias"
+            return None
         cands = [_candidate(r, "3 (Semantic)", round(r[4], 4),
-                           match_basis="verified_brand_alias" if r[0] in alias_ids else None)
+                           match_basis=_match_basis(r[0]))
                 for r in rows]
     cands = _collapse_hierarchy_duplicates(conn, cands)
     cands = _prefer_lab_procedure_over_observable(conn, cands, gliner_label)
@@ -293,6 +372,32 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
     # SPECIFIC case is not caught by this cutoff either; it was already an
     # argument the user weighed before choosing to proceed anyway).
     if pool_max_dense < TIER3_SIMILARITY_FLOOR:
+        # 2026-08-18 ("Lasix problem", part 2). A KG-verified brand alias
+        # (_alias_expand_brand_to_generic) is force-included into the pool
+        # regardless of its own cosine score -- that force-inclusion is the
+        # whole point (a brand name's embedding is often nowhere near its
+        # generic ingredient's, which is exactly why SapBERT alone can't find
+        # it). But the hard floor cutoff below only ever looked at
+        # pool_max_dense, so an alias candidate scoring under the floor (e.g.
+        # "lasix" -> furosemide 956874 at 0.681, corpus-confirmed) was
+        # wiped out to Unmapped by this exact check before the existing
+        # "Aldactone problem" alias-outranked branch a few lines down ever
+        # got a chance to run -- that branch only fires once the pool already
+        # clears the floor. The alias candidate's validity comes from a
+        # verified RxNorm brand->ingredient relationship walk, not from
+        # embedding similarity, so it should not be held to the same bar as
+        # an organically-discovered semantic guess. Forwarded as ambiguous
+        # (not auto-accepted) since its own score is still weak -- Stage 3
+        # gets to weigh it against context, same trust level as any other
+        # alias hit that survives the floor.
+        # Same rescue for verified_lab_test_alias (panel_ids) -- "HCT"/"MCH"
+        # score below the floor against their full "... determination"
+        # concept names the same way brand names do against their ingredient.
+        if force_include_ids and any(c["omop_concept_id"] in force_include_ids for c in cands):
+            alias_cands = [c for c in cands if c["omop_concept_id"] in force_include_ids]
+            reason = ("verified_brand_alias_below_floor" if any(c["omop_concept_id"] in alias_ids for c in alias_cands)
+                      else "verified_lab_test_alias_below_floor")
+            return _result(alias_cands, ambiguous=True, reason=reason, trace=trace)
         # A weak in-domain match may still be beaten by a strong out-of-domain
         # one, which is itself the signal that the label was wrong -- so the
         # conflict check runs here too, not only on a total miss. Kept even
@@ -335,8 +440,8 @@ def normalize_entity(entity_text: str, conn, gliner_label: str = None,
     # Stage 3's prompt small on genuinely settled matches) -- so an alias hit
     # that isn't candidates[0] must force ambiguous here, or the guarantee
     # Fix 1 exists to provide is silently undone one function later.
-    if alias_ids and cands[0]["omop_concept_id"] not in alias_ids \
-            and any(c["omop_concept_id"] in alias_ids for c in cands):
+    if force_include_ids and cands[0]["omop_concept_id"] not in force_include_ids \
+            and any(c["omop_concept_id"] in force_include_ids for c in cands):
         return _result(cands, ambiguous=True, reason="alias_candidate_outranked", trace=trace)
 
     return _result(cands, ambiguous=False, reason=None, trace=trace)
@@ -1017,213 +1122,256 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
         # key means near-duplicate mentions now share one computation (fixing
         # the inconsistency bug) without silently re-deciding that separate,
         # already-weighed trade-off.
-        canonical_text = re.sub(r"\s+", " ", search_expanded_text).strip().lower()
-        cache_key = (canonical_text, search_label,
-                    tuple(search_domain_override) if search_domain_override else None)
-        if cache_key not in cache:
-            mapping = normalize_entity(search_expanded_text, conn, gliner_label=search_label,
-                                       domain_override=search_domain_override)
-            normalized_from = "expanded"
+        # 2026-08-18 (physical-exam shorthand cold start). Entities injected
+        # by src.physexam_shorthand.build_physexam_shorthand_entities() carry
+        # a pre-verified concept (selected by exact gold-mined text match,
+        # not similarity) -- skip the whole Tier 1-3 search/cache/fallback
+        # machinery below entirely, the same way a real search would never
+        # have been trusted to rediscover it. Checked BEFORE the cache key
+        # so a physexam entity never pollutes the cache for an ordinary
+        # entity that happens to share (text, label, domain).
+        physexam_info = ent.get("physexam_shorthand")
+        if physexam_info:
+            mapping = _physexam_shorthand_mapping(physexam_info)
+            normalized_from = "physexam_shorthand_cold_start"
+            canonical_text = re.sub(r"\s+", " ", search_expanded_text).strip().lower()
+            cache_key = (canonical_text, search_label,
+                        tuple(search_domain_override) if search_domain_override else None)
+            cache[cache_key] = mapping
+        else:
+            canonical_text = re.sub(r"\s+", " ", search_expanded_text).strip().lower()
+            cache_key = (canonical_text, search_label,
+                        tuple(search_domain_override) if search_domain_override else None)
+            if cache_key not in cache:
+                mapping = normalize_entity(search_expanded_text, conn, gliner_label=search_label,
+                                           domain_override=search_domain_override)
+                normalized_from = "expanded"
 
-            # ORIGINAL-FORM FALLBACK. Normalisation runs on expanded_text, so a
-            # wrong abbreviation expansion poisons it with no way to recover --
-            # and wrong expansions are real: measured on note 10000032-DS-21,
-            # `NAD` expanded to "nicotinamide adenine dinucleotide" (the
-            # alphabetically-first meaning) rather than "no acute distress",
-            # and `TTP` to "Thrombotic Thrombocytopenic Purpura" rather than
-            # "tenderness to palpation". When the expanded form fails to map,
-            # the raw abbreviation is often the better key -- `SOB`, `EGD` and
-            # `INR` all resolve directly.
-            #
-            # Only fires on failure, and only when the two forms actually
-            # differ, so it costs nothing on the common path. `normalized_from`
-            # records which one produced the result, so a reviewer can see that
-            # the expansion was bypassed rather than having to infer it.
-            if (mapping["match_tier"] == "0 (Failed)"
-                    and orig_text and orig_text.strip().lower() != expanded_text.strip().lower()):
-                retry = normalize_entity(search_orig_text, conn, gliner_label=search_label,
-                                         domain_override=search_domain_override)
-                if retry["match_tier"] != "0 (Failed)":
-                    mapping = retry
-                    normalized_from = "original_after_expanded_failed"
+                # 2026-08-18 (stale-`mapping` cache-corruption bug, live-diagnosed
+                # via note 13538696-DS-11's "wound dehiscence" repeatedly resolving
+                # to "acetaminophen"). This entire fallback block -- ORIGINAL-FORM,
+                # LAB VALUE SUFFIX, the mollm_resolved/abbreviation-flywheel side
+                # effects, and the allergy override -- MUST stay nested inside this
+                # `if cache_key not in cache:` guard. It used to sit at the same
+                # indent level as the guard itself, so on a CACHE HIT (this exact
+                # text/label/domain already seen earlier in the note) the block
+                # still ran, reading and mutating whatever `mapping` was left over
+                # from the PREVIOUS, unrelated entity in the loop (loop-scoped
+                # Python variable, never reset) -- then wrote that stale result
+                # back into `cache[cache_key]` at the end, corrupting the cache
+                # entry every later occurrence of the SAME text would read. Proven
+                # live: this note's 4th "wound dehiscence" occurrence (offset 1944)
+                # was processed immediately after an unrelated "Acetaminophen"
+                # medication entity (offset 1635); "wound dehiscence" was already
+                # cached from an earlier occurrence, so this block ran on
+                # Acetaminophen's stale `mapping`, un-Failed, so no fallback fired
+                # to correct it, and it got written into the wound-dehiscence cache
+                # slot verbatim -- explaining why the wrong answer changed with
+                # note-processing order and never repro'd from a bare, isolated
+                # normalize_entity() call. Fixed by nesting: a cache hit now skips
+                # straight to `mapping = cache[cache_key]` two lines below the end
+                # of this whole block, exactly once per distinct cache_key, matching
+                # this function's own "computed once per distinct pair" docstring.
+                #
+                # ORIGINAL-FORM FALLBACK. Normalisation runs on expanded_text, so a
+                # wrong abbreviation expansion poisons it with no way to recover --
+                # and wrong expansions are real: measured on note 10000032-DS-21,
+                # `NAD` expanded to "nicotinamide adenine dinucleotide" (the
+                # alphabetically-first meaning) rather than "no acute distress",
+                # and `TTP` to "Thrombotic Thrombocytopenic Purpura" rather than
+                # "tenderness to palpation". When the expanded form fails to map,
+                # the raw abbreviation is often the better key -- `SOB`, `EGD` and
+                # `INR` all resolve directly.
+                #
+                # Only fires on failure, and only when the two forms actually
+                # differ, so it costs nothing on the common path. `normalized_from`
+                # records which one produced the result, so a reviewer can see that
+                # the expansion was bypassed rather than having to infer it.
+                if (mapping["match_tier"] == "0 (Failed)"
+                        and orig_text and orig_text.strip().lower() != expanded_text.strip().lower()):
+                    retry = normalize_entity(search_orig_text, conn, gliner_label=search_label,
+                                             domain_override=search_domain_override)
+                    if retry["match_tier"] != "0 (Failed)":
+                        mapping = retry
+                        normalized_from = "original_after_expanded_failed"
 
-            # LAB VALUE SUFFIX FALLBACK (2026-08-10, extended 2026-08-11 to
-            # try MULTIPLE candidates -- see strip_lab_value_suffix()'s
-            # docstring and this module's "2026-08-11 DELIMITER-LESS CASE"
-            # comment above for the full rationale). Tries whichever text
-            # form(s) actually carry the pattern -- expanded first (matching
-            # the two fallbacks above), then original, in case abbreviation
-            # expansion altered the hyphen/spacing -- and within each text
-            # form, tries every candidate strip_lab_value_suffix() returns
-            # in order.
-            #
-            # 2026-08-12 GATE WIDENED from "== 0 (Failed)" to "not in
-            # (1, 2)": a Tier 1/2 exact/synonym match on the cleanly-stripped
-            # name should always be preferred over ANY weaker result on the
-            # raw noisy text, not only over a total failure.
-            #
-            # 2026-08-12 ACCEPTANCE RULE, ATTEMPT 1 AND WHY IT REGRESSED.
-            # First tried "only adopt if the stripped candidate reaches Tier
-            # 1/2" -- reasoning that a Tier 3/4 stripped guess is not a
-            # verified improvement. Re-ingestion promptly disproved this:
-            # WBC-7, RBC-3, Hgb-9.9, MCV-97, MCHC-32, RDW-12, Glucose-72 and
-            # UreaN-15/17 all went from "Tier 3, some plausible concept" to
-            # "0 (Failed), Unmapped". Root cause: the RAW text ("WBC-7") was
-            # already below TIER3_SIMILARITY_FLOOR and reporting "0 (Failed)"
-            # even before today -- the OLD fallback (gated the same way) was
-            # ALREADY firing and adopting whatever the stripped text got
-            # (its old acceptance bar was simply "not 0 (Failed)"), which is
-            # how "WBC-7" ever showed "Leucocyte count" via Tier 3 on "WBC"
-            # in the first place. Requiring Tier 1/2 specifically rejected
-            # that stripped Tier-3 result and fell back to the ORIGINAL
-            # raw-text mapping -- itself "0 (Failed)" -- discarding a useful
-            # near-miss candidate instead of improving on it.
-            #
-            # FIXED via explicit tier-rank comparison: adopt the stripped
-            # candidate whenever its tier is STRICTLY BETTER (lower rank)
-            # than whatever mapping already has, not only when it reaches
-            # Tier 1/2. This restores the old "surface the best available
-            # near-miss to Stage 3" behavior for the Failed->Tier3 case,
-            # while still fixing the original problem this gate exists for
-            # (a Tier 1/2 match on "WBC" beating a Tier 3 guess on "WBC-7")
-            # and never adopting a same-or-worse-tier stripped guess just
-            # because it happens to be a different string. Stops searching
-            # further candidates only once Tier 1/2 is reached -- nothing
-            # can beat a confirmed match, so there is no reason to keep
-            # trying once one is found; a Tier 3/4 improvement keeps the
-            # best seen so far but keeps looking, in case a LATER candidate
-            # in the list reaches the confirmed tier instead (see strip_lab_
-            # value_suffix()'s own docstring: "a wrong candidate earlier in
-            # the list can never win over a right one later in it" -- that
-            # guarantee only holds if a merely-better-but-unconfirmed early
-            # hit does not stop the search).
-            if mapping["match_tier"] not in ("1 (Exact)", "2 (Synonym)") and label == "Lab Test":
-                pre_strip_tier = mapping["match_tier"]
-                best_mapping = mapping
-                best_source = None
-                confirmed = False
+                # LAB VALUE SUFFIX FALLBACK (2026-08-10, extended 2026-08-11 to
+                # try MULTIPLE candidates -- see strip_lab_value_suffix()'s
+                # docstring and this module's "2026-08-11 DELIMITER-LESS CASE"
+                # comment above for the full rationale). Tries whichever text
+                # form(s) actually carry the pattern -- expanded first (matching
+                # the two fallbacks above), then original, in case abbreviation
+                # expansion altered the hyphen/spacing -- and within each text
+                # form, tries every candidate strip_lab_value_suffix() returns
+                # in order.
+                #
+                # 2026-08-12 GATE WIDENED from "== 0 (Failed)" to "not in
+                # (1, 2)": a Tier 1/2 exact/synonym match on the cleanly-stripped
+                # name should always be preferred over ANY weaker result on the
+                # raw noisy text, not only over a total failure.
+                #
+                # 2026-08-12 ACCEPTANCE RULE, ATTEMPT 1 AND WHY IT REGRESSED.
+                # First tried "only adopt if the stripped candidate reaches Tier
+                # 1/2" -- reasoning that a Tier 3/4 stripped guess is not a
+                # verified improvement. Re-ingestion promptly disproved this:
+                # WBC-7, RBC-3, Hgb-9.9, MCV-97, MCHC-32, RDW-12, Glucose-72 and
+                # UreaN-15/17 all went from "Tier 3, some plausible concept" to
+                # "0 (Failed), Unmapped". Root cause: the RAW text ("WBC-7") was
+                # already below TIER3_SIMILARITY_FLOOR and reporting "0 (Failed)"
+                # even before today -- the OLD fallback (gated the same way) was
+                # ALREADY firing and adopting whatever the stripped text got
+                # (its old acceptance bar was simply "not 0 (Failed)"), which is
+                # how "WBC-7" ever showed "Leucocyte count" via Tier 3 on "WBC"
+                # in the first place. Requiring Tier 1/2 specifically rejected
+                # that stripped Tier-3 result and fell back to the ORIGINAL
+                # raw-text mapping -- itself "0 (Failed)" -- discarding a useful
+                # near-miss candidate instead of improving on it.
+                #
+                # FIXED via explicit tier-rank comparison: adopt the stripped
+                # candidate whenever its tier is STRICTLY BETTER (lower rank)
+                # than whatever mapping already has, not only when it reaches
+                # Tier 1/2. This restores the old "surface the best available
+                # near-miss to Stage 3" behavior for the Failed->Tier3 case,
+                # while still fixing the original problem this gate exists for
+                # (a Tier 1/2 match on "WBC" beating a Tier 3 guess on "WBC-7")
+                # and never adopting a same-or-worse-tier stripped guess just
+                # because it happens to be a different string. Stops searching
+                # further candidates only once Tier 1/2 is reached -- nothing
+                # can beat a confirmed match, so there is no reason to keep
+                # trying once one is found; a Tier 3/4 improvement keeps the
+                # best seen so far but keeps looking, in case a LATER candidate
+                # in the list reaches the confirmed tier instead (see strip_lab_
+                # value_suffix()'s own docstring: "a wrong candidate earlier in
+                # the list can never win over a right one later in it" -- that
+                # guarantee only holds if a merely-better-but-unconfirmed early
+                # hit does not stop the search).
+                if mapping["match_tier"] not in ("1 (Exact)", "2 (Synonym)") and label == "Lab Test":
+                    pre_strip_tier = mapping["match_tier"]
+                    best_mapping = mapping
+                    best_source = None
+                    confirmed = False
 
-                # 2026-08-16 PERFORMANCE OPTIMIZATION (explicitly deferred
-                # earlier this session -- "log it, don't touch it yet" --
-                # now revisited on direct instruction). normalize_entity()
-                # already short-circuits before ever computing a SapBERT
-                # embedding when Tier 1/2 hits internally (see its own Tier
-                # 1/2 SQL blocks above, before the "vector =
-                # get_sapbert_embedding(...)" line) -- so the real waste
-                # here was never "redundant Tier 1/2 work", it was calling
-                # the FULL normalize_entity() (and therefore paying for a
-                # fresh SapBERT embedding) for every stripped candidate that
-                # DOESN'T hit Tier 1/2, even after an earlier candidate in
-                # the same loop already confirmed a match and made every
-                # later one moot. _lookup_tier12() (src/normalization/
-                # compound_span.py) is the SAME Tier 1/2 SQL, pure query, no
-                # embedding -- cheap enough to run across every stripped
-                # candidate FIRST. If any of them hits, nothing else in this
-                # loop could ever have beaten it anyway (a confirmed Tier
-                # 1/2 match always wins the rank comparison below, and the
-                # ORIGINAL loop already stopped searching the instant it
-                # found one -- see "2026-08-12 ACCEPTANCE RULE" above), so
-                # call the full normalize_entity() ONLY for that one
-                # winning candidate. Falls through to the EXACT original
-                # exhaustive loop, completely unchanged, whenever no
-                # candidate clears Tier 1/2 at all -- that path genuinely
-                # needs each candidate's real Tier 3 score to keep the best
-                # near-miss (the whole point of the 2026-08-12 fix above),
-                # so nothing is skipped there. Zero precision change on
-                # either path: this only removes SapBERT calls that were
-                # always going to be thrown away.
-                vocabs_for_precheck = VOCAB_BY_LABEL.get(label, DEFAULT_VOCAB)
-                tier12_winner = None
-                for candidate_text, source_name in (
-                        (expanded_text, "expanded"), (orig_text, "original")):
-                    for stripped in strip_lab_value_suffix(candidate_text or ""):
-                        precheck = _lookup_tier12(conn, stripped, vocabs_for_precheck,
-                                                  domains=domain_override, gliner_label=label)
-                        if precheck is not None:
-                            tier12_winner = (stripped, source_name)
-                            break
-                    if tier12_winner:
-                        break
-
-                if tier12_winner:
-                    stripped, source_name = tier12_winner
-                    retry = normalize_entity(stripped, conn, gliner_label=label,
-                                             domain_override=domain_override)
-                    if _LAB_TIER_RANK.get(retry["match_tier"], 9) < \
-                            _LAB_TIER_RANK.get(best_mapping["match_tier"], 9):
-                        best_mapping = retry
-                        best_source = f"value_stripped_from_{source_name}:{stripped}"
-                else:
+                    # 2026-08-16 PERFORMANCE OPTIMIZATION (explicitly deferred
+                    # earlier this session -- "log it, don't touch it yet" --
+                    # now revisited on direct instruction). normalize_entity()
+                    # already short-circuits before ever computing a SapBERT
+                    # embedding when Tier 1/2 hits internally (see its own Tier
+                    # 1/2 SQL blocks above, before the "vector =
+                    # get_sapbert_embedding(...)" line) -- so the real waste
+                    # here was never "redundant Tier 1/2 work", it was calling
+                    # the FULL normalize_entity() (and therefore paying for a
+                    # fresh SapBERT embedding) for every stripped candidate that
+                    # DOESN'T hit Tier 1/2, even after an earlier candidate in
+                    # the same loop already confirmed a match and made every
+                    # later one moot. _lookup_tier12() (src/normalization/
+                    # compound_span.py) is the SAME Tier 1/2 SQL, pure query, no
+                    # embedding -- cheap enough to run across every stripped
+                    # candidate FIRST. If any of them hits, nothing else in this
+                    # loop could ever have beaten it anyway (a confirmed Tier
+                    # 1/2 match always wins the rank comparison below, and the
+                    # ORIGINAL loop already stopped searching the instant it
+                    # found one -- see "2026-08-12 ACCEPTANCE RULE" above), so
+                    # call the full normalize_entity() ONLY for that one
+                    # winning candidate. Falls through to the EXACT original
+                    # exhaustive loop, completely unchanged, whenever no
+                    # candidate clears Tier 1/2 at all -- that path genuinely
+                    # needs each candidate's real Tier 3 score to keep the best
+                    # near-miss (the whole point of the 2026-08-12 fix above),
+                    # so nothing is skipped there. Zero precision change on
+                    # either path: this only removes SapBERT calls that were
+                    # always going to be thrown away.
+                    vocabs_for_precheck = VOCAB_BY_LABEL.get(label, DEFAULT_VOCAB)
+                    tier12_winner = None
                     for candidate_text, source_name in (
                             (expanded_text, "expanded"), (orig_text, "original")):
                         for stripped in strip_lab_value_suffix(candidate_text or ""):
-                            retry = normalize_entity(stripped, conn, gliner_label=label,
-                                                     domain_override=domain_override)
-                            if _LAB_TIER_RANK.get(retry["match_tier"], 9) < \
-                                    _LAB_TIER_RANK.get(best_mapping["match_tier"], 9):
-                                best_mapping = retry
-                                best_source = f"value_stripped_from_{source_name}:{stripped}"
-                            if retry["match_tier"] in ("1 (Exact)", "2 (Synonym)"):
-                                confirmed = True
+                            precheck = _lookup_tier12(conn, stripped, vocabs_for_precheck,
+                                                      domains=domain_override, gliner_label=label)
+                            if precheck is not None:
+                                tier12_winner = (stripped, source_name)
                                 break
-                        if confirmed:
+                        if tier12_winner:
                             break
-                if best_source:
-                    mapping = best_mapping
-                    # Records the winning candidate string AND what tier it
-                    # upgraded from, not just which text form it came from --
-                    # with multiple candidates now possible per form,
-                    # "expanded" alone no longer says whether "RR" or "RR1"
-                    # was the one that won, and the upgrade note makes it
-                    # visible in an audit whether this reached a confirmed
-                    # Tier 1/2 match or only improved on a weaker guess.
-                    normalized_from = f"{best_source} (upgraded_from_{pre_strip_tier})"
 
-            mapping = dict(mapping)
-            mapping["normalized_from"] = normalized_from
-            if mollm_resolved and mollm_resolved.get("expansion"):
-                mapping["normalized_from"] = (
-                    f"{mapping['normalized_from']}+acronym_{mollm_resolved.get('source', 'unknown')}")
-                # Phase 4 build-order step 3 -- src/acronym_escalation.py's
-                # acronym_priors cache. "Only count a success": upsert ONLY
-                # for a fresh MoLLM resolution (never a cache hit re-
-                # confirming itself, which would inflate hit_count without
-                # new evidence) whose search actually reached a real tier,
-                # not '0 (Failed)'. This is the ONE place in the whole
-                # pipeline that knows both what Pass 1 chose AND whether
-                # Stage 2b's search actually confirmed it -- resolve_
-                # ambiguous_acronyms() itself runs before normalization and
-                # cannot know this yet.
-                if (mollm_resolved.get("source") == "mollm"
-                        and mapping.get("match_tier") != "0 (Failed)"):
-                    from src.acronym_escalation import (
-                        clinical_context_for, upsert_acronym_prior)
-                    upsert_acronym_prior(
-                        conn, orig_text, clinical_context_for(ent),
-                        mollm_resolved["expansion"], mollm_resolved.get("omop_domain"))
+                    if tier12_winner:
+                        stripped, source_name = tier12_winner
+                        retry = normalize_entity(stripped, conn, gliner_label=label,
+                                                 domain_override=domain_override)
+                        if _LAB_TIER_RANK.get(retry["match_tier"], 9) < \
+                                _LAB_TIER_RANK.get(best_mapping["match_tier"], 9):
+                            best_mapping = retry
+                            best_source = f"value_stripped_from_{source_name}:{stripped}"
+                    else:
+                        for candidate_text, source_name in (
+                                (expanded_text, "expanded"), (orig_text, "original")):
+                            for stripped in strip_lab_value_suffix(candidate_text or ""):
+                                retry = normalize_entity(stripped, conn, gliner_label=label,
+                                                         domain_override=domain_override)
+                                if _LAB_TIER_RANK.get(retry["match_tier"], 9) < \
+                                        _LAB_TIER_RANK.get(best_mapping["match_tier"], 9):
+                                    best_mapping = retry
+                                    best_source = f"value_stripped_from_{source_name}:{stripped}"
+                                if retry["match_tier"] in ("1 (Exact)", "2 (Synonym)"):
+                                    confirmed = True
+                                    break
+                            if confirmed:
+                                break
+                    if best_source:
+                        mapping = best_mapping
+                        # Records the winning candidate string AND what tier it
+                        # upgraded from, not just which text form it came from --
+                        # with multiple candidates now possible per form,
+                        # "expanded" alone no longer says whether "RR" or "RR1"
+                        # was the one that won, and the upgrade note makes it
+                        # visible in an audit whether this reached a confirmed
+                        # Tier 1/2 match or only improved on a weaker guess.
+                        normalized_from = f"{best_source} (upgraded_from_{pre_strip_tier})"
 
-            # 2026-08-17 (abbreviation flywheel, src/abbreviation_flywheel.py).
-            # Generalizes the SAME "only count a success" gate above to
-            # EVERY ambiguous-expansion entity, not just ones Phase 4's
-            # (currently gated off) MoLLM escalation touched -- this is the
-            # data source src.preprocessing.expand_text_and_track_offsets()'s
-            # new observed-frequency-priority tiebreak reads back from.
-            # Deliberately a SEPARATE table from acronym_priors (see that
-            # module's own docstring): this is a weaker signal -- "Stage
-            # 1's picked expansion reached a real tier" -- not a model's
-            # independent confirmation, and must not dilute Phase 4's
-            # already-validated cache.
-            if ent.get("expansion_ambiguous") and mapping.get("match_tier") != "0 (Failed)":
-                from src.abbreviation_flywheel import record_ambiguous_expansion_outcome
-                from src.acronym_escalation import clinical_context_for
-                record_ambiguous_expansion_outcome(
-                    conn, orig_text, clinical_context_for(ent), expanded_text,
-                    mapping.get("domain_id"), ent.get("selection_basis", "unknown"))
-            if is_allergy_context:
-                mapping = _apply_allergy_nonstandard_exact_override(
-                    mapping, conn, search_expanded_text, drug_text=acronym_resolved_text)
-                mapping = _apply_allergy_domain_tiebreak(mapping)
-            cache[cache_key] = mapping
+                mapping = dict(mapping)
+                mapping["normalized_from"] = normalized_from
+                if mollm_resolved and mollm_resolved.get("expansion"):
+                    mapping["normalized_from"] = (
+                        f"{mapping['normalized_from']}+acronym_{mollm_resolved.get('source', 'unknown')}")
+                    # Phase 4 build-order step 3 -- src/acronym_escalation.py's
+                    # acronym_priors cache. "Only count a success": upsert ONLY
+                    # for a fresh MoLLM resolution (never a cache hit re-
+                    # confirming itself, which would inflate hit_count without
+                    # new evidence) whose search actually reached a real tier,
+                    # not '0 (Failed)'. This is the ONE place in the whole
+                    # pipeline that knows both what Pass 1 chose AND whether
+                    # Stage 2b's search actually confirmed it -- resolve_
+                    # ambiguous_acronyms() itself runs before normalization and
+                    # cannot know this yet.
+                    if (mollm_resolved.get("source") == "mollm"
+                            and mapping.get("match_tier") != "0 (Failed)"):
+                        from src.acronym_escalation import (
+                            clinical_context_for, upsert_acronym_prior)
+                        upsert_acronym_prior(
+                            conn, orig_text, clinical_context_for(ent),
+                            mollm_resolved["expansion"], mollm_resolved.get("omop_domain"))
+
+                # 2026-08-17 (abbreviation flywheel, src/abbreviation_flywheel.py).
+                # Generalizes the SAME "only count a success" gate above to
+                # EVERY ambiguous-expansion entity, not just ones Phase 4's
+                # (currently gated off) MoLLM escalation touched -- this is the
+                # data source src.preprocessing.expand_text_and_track_offsets()'s
+                # new observed-frequency-priority tiebreak reads back from.
+                # Deliberately a SEPARATE table from acronym_priors (see that
+                # module's own docstring): this is a weaker signal -- "Stage
+                # 1's picked expansion reached a real tier" -- not a model's
+                # independent confirmation, and must not dilute Phase 4's
+                # already-validated cache.
+                if ent.get("expansion_ambiguous") and mapping.get("match_tier") != "0 (Failed)":
+                    from src.abbreviation_flywheel import record_ambiguous_expansion_outcome
+                    from src.acronym_escalation import clinical_context_for
+                    record_ambiguous_expansion_outcome(
+                        conn, orig_text, clinical_context_for(ent), expanded_text,
+                        mapping.get("domain_id"), ent.get("selection_basis", "unknown"))
+                if is_allergy_context:
+                    mapping = _apply_allergy_nonstandard_exact_override(
+                        mapping, conn, search_expanded_text, drug_text=acronym_resolved_text)
+                    mapping = _apply_allergy_domain_tiebreak(mapping)
+                cache[cache_key] = mapping
         mapping = cache[cache_key]
 
         conflict = mapping.get("domain_conflict")
