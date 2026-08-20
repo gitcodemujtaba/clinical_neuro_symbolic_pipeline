@@ -90,7 +90,7 @@ ALLERGY_CONTEXT_CLAUSE = TG["ALLERGY_CONTEXT_CLAUSE"]
 TG_EXHAUSTIVE = _load_pure_functions(
     "mollm_tier_gate.py",
     {"_evaluate_one_model", "_resolve_tiebreak", "_tiebreak_prompt", "_tiebreak_schema",
-     "_condition_vs_observation_duplicate",
+     "_condition_vs_observation_duplicate", "_guideline_evidence_block",
      "_clinical_meaning_prompt", "_binary_match_prompt", "_meaning_schema", "_match_schema"},
     extra_globals={"EXHAUSTIVE_CANDIDATE_EVAL_ENABLED": True,
                   "LLMUnavailable": LLMUnavailable,
@@ -104,7 +104,7 @@ _evaluate_one_model_exhaustive = TG_EXHAUSTIVE["_evaluate_one_model"]
 TG_SEQUENTIAL = _load_pure_functions(
     "mollm_tier_gate.py",
     {"_evaluate_one_model", "_resolve_tiebreak", "_tiebreak_prompt", "_tiebreak_schema",
-     "_condition_vs_observation_duplicate",
+     "_condition_vs_observation_duplicate", "_guideline_evidence_block",
      "_clinical_meaning_prompt", "_binary_match_prompt", "_meaning_schema", "_match_schema"},
     extra_globals={"EXHAUSTIVE_CANDIDATE_EVAL_ENABLED": False,
                   "LLMUnavailable": LLMUnavailable,
@@ -947,6 +947,28 @@ def run():
     check("tiebreak out-of-set response falls back safely (higher-confidence "
           "candidate 2 here) instead of trusting the invalid index",
           r["verdict"] == "RE_RANK_TO_CANDIDATE_2")
+
+    # ======================================================================
+    # 2026-08-20: guideline-evidence injection in the tiebreak prompt --
+    # off-by-default safety check. src.guideline_evidence.
+    # GUIDELINE_EVIDENCE_ENABLED is computed once at module import time
+    # from the environment, so this checks the REAL default state (the
+    # env var is unset in this test process) rather than trying to
+    # monkeypatch a module-level constant after import -- the underlying
+    # matching logic itself is covered directly in
+    # tests/test_guideline_evidence.py.
+    # ======================================================================
+    guideline_candidate_prompt = TG_EXHAUSTIVE["_tiebreak_prompt"](
+        _WOUND_DEHISCENCE_ENTITY,
+        [{"index": 1, "candidate": {"concept_name": "Anemia", "domain_id": "Condition"},
+          "reasoning": "x"},
+         {"index": 2, "candidate": {"concept_name": "Asthma", "domain_id": "Condition"},
+          "reasoning": "y"}],
+        "test meaning")
+    check("with GUIDELINE_EVIDENCE_ENABLED off (the real default), the "
+         "tiebreak prompt never includes guideline evidence text, even for "
+         "a candidate pair (Anemia/Asthma) that has real corpus coverage",
+          "OFFICIAL GUIDELINE EVIDENCE" not in guideline_candidate_prompt)
 
     print(f"tier-gate tests: {ok} passed, {len(fail)} failed")
     for f in fail:

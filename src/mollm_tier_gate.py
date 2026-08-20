@@ -676,6 +676,22 @@ def _condition_vs_observation_duplicate(accepted: list) -> bool:
     return domains == {"Condition", "Observation"}
 
 
+def _guideline_evidence_block(accepted: list) -> str:
+    """Real guideline-derived evidence for the tiebreak prompt, gated
+    behind GUIDELINE_EVIDENCE_ENABLED (off by default -- see
+    src.guideline_evidence's own module docstring for why this needs its
+    own validation batch before touching the live tiebreak prompt).
+    Returns "" when the flag is off OR no candidate has coverage, so the
+    caller can splice it in unconditionally without an extra branch.
+    """
+    from src.guideline_evidence import (
+        GUIDELINE_EVIDENCE_ENABLED, get_guideline_index, guideline_evidence_for_candidates)
+    if not GUIDELINE_EVIDENCE_ENABLED:
+        return ""
+    evidence = guideline_evidence_for_candidates(get_guideline_index(), accepted)
+    return evidence + "\n\n" if evidence else ""
+
+
 def _tiebreak_prompt(entity: dict, accepted: list, clinical_meaning: str) -> str:
     indices = [a["index"] for a in accepted]
     block = "\n\n".join(
@@ -707,6 +723,7 @@ def _tiebreak_prompt(entity: dict, accepted: list, clinical_meaning: str) -> str
         f"lowest-numbered candidate without a reason. Valid indices: {indices}.\n\n"
         + (CONDITION_VS_OBSERVATION_PRIOR + "\n\n"
            if _condition_vs_observation_duplicate(accepted) else "")
+        + _guideline_evidence_block(accepted)
         + 'Reply with JSON: {"best_index": "<one of the valid indices, as a '
         'string>", "reasoning": "<one sentence>"}'
     )
