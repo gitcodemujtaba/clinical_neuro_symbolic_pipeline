@@ -1,0 +1,149 @@
+Loading GLiNER-BioMed model... (this may take a moment on the first run)
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 2519.48it/s]
+Loading SapBERT model for vector normalization... (this may take a moment)
+140 notes to process
+[1/140] 10597114-DS-10: injected+normalized 1 lab + 6 narrative
+[2/140] 10813665-DS-7: injected+normalized 13 lab + 5 narrative
+[3/140] 10839721-DS-9: injected+normalized 29 lab + 3 narrative
+[4/140] 10850639-DS-7: injected+normalized 20 lab + 1 narrative
+[5/140] 12050253-DS-20: injected+normalized 2 lab + 6 narrative
+[6/140] 11021124-DS-15: injected+normalized 42 lab + 4 narrative
+[7/140] 11299687-DS-9: injected+normalized 13 lab + 3 narrative
+[8/140] 11438886-DS-9: injected+normalized 11 lab + 4 narrative
+[9/140] 11513575-DS-15: injected+normalized 4 lab + 1 narrative
+[10/140] 11799619-DS-27: injected+normalized 14 lab + 4 narrative
+[11/140] 12484093-DS-33: injected+normalized 0 lab + 1 narrative
+[12/140] 12549331-DS-3: injected+normalized 13 lab + 6 narrative
+[13/140] 11649745-DS-4: injected+normalized 9 lab + 8 narrative
+[14/140] 12969257-DS-11: injected+normalized 7 lab + 1 narrative
+[15/140] 12970259-DS-4: injected+normalized 21 lab + 3 narrative
+[16/140] 10060142-DS-9: injected+normalized 0 lab + 5 narrative
+[17/140] 11134545-DS-21: injected+normalized 28 lab + 8 narrative
+[18/140] 11161110-DS-13: injected+normalized 29 lab + 4 narrative
+[19/140] 11180362-DS-10: injected+normalized 22 lab + 4 narrative
+[20/140] 11810606-DS-7: injected+normalized 15 lab + 6 narrative
+[21/140] 12304719-DS-18: injected+normalized 3 lab + 5 narrative
+[22/140] 12984014-DS-21: injected+normalized 15 lab + 10 narrative
+[23/140] 12986424-DS-6: injected+normalized 1 lab + 2 narrative
+[24/140] 10000084-DS-17: injected+normalized 31 lab + 4 narrative
+[25/140] 10542874-DS-4: injected+normalized 11 lab + 3 narrative
+[26/140] 10653756-DS-22: injected+normalized 1 lab + 5 narrative
+[27/140] 10850358-DS-17: injected+normalized 31 lab + 9 narrative
+[28/140] 11365932-DS-23: injected+normalized 1 lab + 1 narrative
+[29/140] 11417242-DS-18: injected+normalized 40 lab + 2 narrative
+[30/140] 11922236-DS-28: injected+normalized 28 lab + 7 narrative
+[31/140] 12314513-DS-16: injected+normalized 28 lab + 5 narrative
+[32/140] 12407834-DS-17: injected+normalized 34 lab + 8 narrative
+[33/140] 12545016-DS-17: injected+normalized 14 lab + 2 narrative
+[34/140] 12730675-DS-12: injected+normalized 39 lab + 1 narrative
+[35/140] 12884747-DS-9: injected+normalized 12 lab + 3 narrative
+[36/140] 10124346-DS-4: injected+normalized 30 lab + 5 narrative
+[37/140] 10797747-DS-20: injected+normalized 10 lab + 0 narrative
+[38/140] 11050097-DS-13: injected+normalized 0 lab + 5 narrative
+[39/140] 11714071-DS-56: injected+normalized 26 lab + 5 narrative
+[40/140] 11891099-DS-13: injected+normalized 28 lab + 2 narrative
+[41/140] 12190214-DS-14: injected+normalized 23 lab + 6 narrative
+[42/140] 12465457-DS-18: injected+normalized 15 lab + 5 narrative
+[43/140] 12574098-DS-24: injected+normalized 26 lab + 3 narrative
+[44/140] 10043750-DS-6: injected+normalized 5 lab + 3 narrative
+[45/140] 10302979-DS-5: injected+normalized 29 lab + 3 narrative
+[46/140] 10575317-DS-6: injected+normalized 17 lab + 0 narrative
+[47/140] 10667959-DS-19: injected+normalized 53 lab + 8 narrative
+[48/140] 10807423-DS-19: injected+normalized 0 lab + 2 narrative
+[49/140] 11296936-DS-66: injected+normalized 7 lab + 7 narrative
+[50/140] 11515132-DS-10: injected+normalized 16 lab + 5 narrative
+[51/140] 12431768-DS-17: injected+normalized 30 lab + 7 narrative
+[52/140] 12690671-DS-19: injected+normalized 12 lab + 4 narrative
+[53/140] 12819907-DS-20: injected+normalized 9 lab + 8 narrative
+[54/140] 12880467-DS-7: injected+normalized 1 lab + 6 narrative
+[55/140] 10000032-DS-22: injected+normalized 8 lab + 7 narrative
+[56/140] 10938537-DS-20: injected+normalized 0 lab + 3 narrative
+[57/140] 11051092-DS-3: injected+normalized 19 lab + 3 narrative
+[58/140] 11524757-DS-4: injected+normalized 25 lab + 4 narrative
+[59/140] 12093726-DS-4: injected+normalized 0 lab + 3 narrative
+[60/140] 12204513-DS-26: injected+normalized 26 lab + 1 narrative
+[61/140] 12412316-DS-14: injected+normalized 26 lab + 3 narrative
+[62/140] 12582583-DS-20: injected+normalized 31 lab + 4 narrative
+[63/140] 12128814-DS-15: injected+normalized 41 lab + 2 narrative
+[64/140] 10097089-DS-8: injected+normalized 19 lab + 4 narrative
+[65/140] 10355641-DS-7: injected+normalized 27 lab + 3 narrative
+[66/140] 11198666-DS-27: injected+normalized 27 lab + 3 narrative
+[67/140] 11834909-DS-2: injected+normalized 38 lab + 0 narrative
+[68/140] 11903286-DS-2: injected+normalized 0 lab + 2 narrative
+[69/140] 12276520-DS-22: injected+normalized 75 lab + 4 narrative
+[70/140] 10000032-DS-23: injected+normalized 32 lab + 20 narrative
+[71/140] 10000032-DS-24: injected+normalized 36 lab + 5 narrative
+[72/140] 11392990-DS-6: injected+normalized 43 lab + 20 narrative
+[73/140] 11516225-DS-20: injected+normalized 0 lab + 3 narrative
+[74/140] 11576109-DS-15: injected+normalized 3 lab + 3 narrative
+[75/140] 11652327-DS-14: injected+normalized 0 lab + 2 narrative
+[76/140] 11806511-DS-10: injected+normalized 0 lab + 6 narrative
+[77/140] 12298181-DS-9: injected+normalized 0 lab + 2 narrative
+[79/140] 12642549-DS-11: injected+normalized 4 lab + 4 narrative
+[81/140] 10000032-DS-21: injected+normalized 1 lab + 4 narrative
+[82/140] 10993096-DS-12: injected+normalized 1 lab + 6 narrative
+[83/140] 11684467-DS-26: injected+normalized 4 lab + 2 narrative
+[84/140] 12018901-DS-68: injected+normalized 22 lab + 8 narrative
+[85/140] 12101085-DS-27: injected+normalized 30 lab + 11 narrative
+[86/140] 12298967-DS-22: injected+normalized 1 lab + 7 narrative
+[87/140] 12515572-DS-13: injected+normalized 28 lab + 4 narrative
+[88/140] 12626414-DS-32: injected+normalized 32 lab + 6 narrative
+[89/140] 10912090-DS-33: injected+normalized 22 lab + 6 narrative
+[90/140] 11215929-DS-4: injected+normalized 100 lab + 3 narrative
+[91/140] 12286594-DS-21: injected+normalized 0 lab + 1 narrative
+[92/140] 12831861-DS-10: injected+normalized 0 lab + 2 narrative
+[93/140] 12962702-DS-14: injected+normalized 0 lab + 2 narrative
+[94/140] 12991484-DS-15: injected+normalized 10 lab + 3 narrative
+[95/140] 13024677-DS-11: injected+normalized 30 lab + 3 narrative
+[96/140] 13030379-DS-26: injected+normalized 32 lab + 1 narrative
+[97/140] 10417827-DS-10: injected+normalized 18 lab + 4 narrative
+[98/140] 10848570-DS-12: injected+normalized 18 lab + 4 narrative
+[99/140] 10960609-DS-16: injected+normalized 13 lab + 1 narrative
+[100/140] 11026054-DS-14: injected+normalized 25 lab + 4 narrative
+[101/140] 11062354-DS-8: injected+normalized 13 lab + 2 narrative
+[102/140] 11522433-DS-6: injected+normalized 18 lab + 3 narrative
+[103/140] 11654232-DS-17: injected+normalized 22 lab + 2 narrative
+[104/140] 11838076-DS-20: injected+normalized 22 lab + 6 narrative
+[105/140] 12135369-DS-23: injected+normalized 4 lab + 7 narrative
+[106/140] 12612379-DS-23: injected+normalized 6 lab + 6 narrative
+[107/140] 11532659-DS-11: injected+normalized 2 lab + 10 narrative
+[108/140] 12247014-DS-9: injected+normalized 0 lab + 1 narrative
+[110/140] 10352433-DS-20: injected+normalized 3 lab + 8 narrative
+[111/140] 10686970-DS-21: injected+normalized 18 lab + 3 narrative
+[112/140] 10965697-DS-12: injected+normalized 23 lab + 5 narrative
+[113/140] 11436844-DS-4: injected+normalized 0 lab + 2 narrative
+[114/140] 11783215-DS-18: injected+normalized 26 lab + 9 narrative
+[115/140] 12985376-DS-217: injected+normalized 0 lab + 3 narrative
+[116/140] 10513485-DS-7: injected+normalized 101 lab + 9 narrative
+[117/140] 10860165-DS-24: injected+normalized 0 lab + 1 narrative
+[118/140] 10989002-DS-3: injected+normalized 12 lab + 5 narrative
+[119/140] 11025563-DS-7: injected+normalized 0 lab + 2 narrative
+[120/140] 11167566-DS-4: injected+normalized 25 lab + 1 narrative
+[122/140] 11386597-DS-15: injected+normalized 4 lab + 10 narrative
+[123/140] 11855597-DS-22: injected+normalized 20 lab + 8 narrative
+[124/140] 12206678-DS-17: injected+normalized 28 lab + 5 narrative
+[125/140] 12340122-DS-5: injected+normalized 19 lab + 7 narrative
+[126/140] 12860208-DS-18: injected+normalized 1 lab + 1 narrative
+[127/140] 10371195-DS-9: injected+normalized 5 lab + 0 narrative
+[128/140] 10794068-DS-18: injected+normalized 1 lab + 3 narrative
+[129/140] 11859945-DS-29: injected+normalized 13 lab + 5 narrative
+[130/140] 12204158-DS-10: injected+normalized 3 lab + 6 narrative
+[131/140] 12286975-DS-22: injected+normalized 1 lab + 2 narrative
+[132/140] 12290802-DS-3: injected+normalized 0 lab + 4 narrative
+[133/140] 10912090-DS-23: injected+normalized 6 lab + 8 narrative
+[134/140] 11250426-DS-3: injected+normalized 28 lab + 10 narrative
+[135/140] 12152043-DS-10: injected+normalized 0 lab + 4 narrative
+[136/140] 12319089-DS-12: injected+normalized 2 lab + 6 narrative
+[137/140] 12626414-DS-28: injected+normalized 45 lab + 11 narrative
+[138/140] 11997336-DS-3: injected+normalized 0 lab + 2 narrative
+[139/140] 13016981-DS-27: injected+normalized 11 lab + 4 narrative
+[140/140] 13093718-DS-4: injected+normalized 14 lab + 9 narrative
+
+==============================================================================
+BACKFILL COMPLETE
+==============================================================================
+notes touched: 136/140
+lab-abbrev entities injected: 2282
+narrative-state-word entities injected: 617
+total new entities: 2899
+errors: 0

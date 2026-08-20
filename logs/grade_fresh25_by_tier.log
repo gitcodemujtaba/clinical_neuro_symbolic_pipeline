@@ -1,0 +1,272 @@
+gold annotations loaded for 25/25 notes, 6977 total.
+
+total mollm_tier_gate_decisions rows fetched: 3541
+overall tier distribution: {'TIER_4_ENSEMBLE_SPLIT': 1008, 'TIER_1_AUTO_VALIDATED': 1248, 'TIER_1B_CALIBRATED_AUTO_VALIDATED': 197, 'TIER_5_TRUE_AMBIGUITY': 490, 'TIER_2_AUTO_RESOLVED': 94, 'TIER_3_AUTO_VALIDATED': 491, None: 13}
+
+==============================================================================
+TIER: TIER_1_AUTO_VALIDATED  (1248 decisions)
+==============================================================================
+  skipped: {'no_gold_overlap': 418, 'narrower_than_gold': 101, 'compound_span': 39}
+  ALL gradable (raw):  548/791 = 69.3%
+  CLEAN-span only:     544/690 = 78.8%
+  --- clean-span incorrect cases (first 20) ---
+    [11532659-DS-11] 'aortic valve leaflets' (Anatomy) pred='Structure of cardiac valve leaflet'/6530003 gold=81797008
+    [11532659-DS-11] 'aortic \nleaflets' (Anatomy) pred='Structure of cardiac valve leaflet'/6530003 gold=81797008
+    [11532659-DS-11] 'mitral mechanical prosthesis' (Anatomy) pred='Mitral valve prosthesis'/17107009 gold=449846007
+    [11532659-DS-11] 'UreaN-21' (Lab Test) pred='Urea measurement'/105010007 gold=105011006
+    [11532659-DS-11] 'heparin' (Medication) pred='heparin'/372877000 gold=103746007
+    [11532659-DS-11] 'warfarin' (Medication) pred='warfarin'/48603004 gold=722045009
+    [11532659-DS-11] 'prednisone' (Medication) pred='prednisone'/10312003 gold=297279009
+    [11532659-DS-11] 'no \nvomiting' (Symptom) pred='No vomiting'/162062008 gold=422400008
+    [11532659-DS-11] 'family history of hypertension' (Symptom) pred='FH: Hypertension'/160357008 gold=38341003
+    [11532659-DS-11] 'thrombin injection' (Medication) pred='Thrombin Injection'/None gold=745600007
+    [11532659-DS-11] 'hemorrhage' (Symptom) pred='Hemorrhage'/50960005 gold=234003006
+    [11649745-DS-4] 'neglect' (Symptom) pred='Neglect'/1354644008 gold=246563002
+    [11649745-DS-4] 'Hamstring' (Anatomy) pred='Hamstring muscle and/or tendon structure'/699984008 gold=128511007
+    [11649745-DS-4] 'Glucose-101' (Lab Test) pred='Glucose measurement'/36048009 gold=33747003
+    [11649745-DS-4] 'UreaN-20' (Lab Test) pred='Urea measurement'/105010007 gold=105011006
+    [11649745-DS-4] 'HCO3-26' (Lab Test) pred='Bicarbonate measurement'/88645003 gold=312471006
+    [11649745-DS-4] 'Leukocytosis' (Lab Test) pred='Blood leukocyte number above reference range'/414478003 gold=111583006
+    [11649745-DS-4] 'Stroke risk' (Lab Test) pred='Stroke risk'/135877001 gold=230690007
+    [11649745-DS-4] 'loss of vision' (Condition) pred='Loss of vision'/240311000000103 gold=105597003
+    [11997336-DS-3] 'rheumatic valvulitis \nsequelae' (Condition) pred='Chronic rheumatic valvulitis'/89456004 gold=302049001
+
+==============================================================================
+TIER: TIER_1B_CALIBRATED_AUTO_VALIDATED  (197 decisions)
+==============================================================================
+  skipped: {'no_gold_overlap': 66, 'narrower_than_gold': 23}
+  ALL gradable (raw):  100/131 = 76.3%
+  CLEAN-span only:     100/108 = 92.6%
+  --- every clean-span TIER_1B_CALIBRATED_AUTO_VALIDATED decision (show all) ---
+    [OK] [11532659-DS-11] 'aortic arch' (Anatomy) -> 'Aortic arch structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.72988
+    [OK] [11532659-DS-11] 'aortic regurgitation' (Condition) -> 'Aortic valve regurgitation'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.90535
+    [OK] [11532659-DS-11] 'pericardial effusion' (Condition) -> 'Pericardial effusion'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.90775
+    [WRONG] [11532659-DS-11] 'mild' (Procedure) -> 'Minimally invasive decompression of lumbar spine'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.89896
+    [OK] [11532659-DS-11] 'liver' (Anatomy) -> 'Liver structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.81235
+    [WRONG] [11532659-DS-11] 'hemorrhage' (Condition) -> 'Hemorrhage'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.72591
+    [OK] [11532659-DS-11] 'hepatic artery' (Anatomy) -> 'Hepatic artery'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.72548
+    [OK] [11532659-DS-11] 'Atrial fibrillation' (Condition) -> 'Atrial fibrillation'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.88620
+    [OK] [11532659-DS-11] 'constipation' (Condition) -> 'Constipation'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.90452
+    [OK] [11649745-DS-4] 'chest pain' (Symptom) -> 'Chest pain'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.89109
+    [OK] [11649745-DS-4] 'deep venous thrombosis' (Condition) -> 'Deep venous thrombosis'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.79998
+    [OK] [11649745-DS-4] 'Hypertension' (Condition) -> 'Hypertensive disorder'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.88382
+    [OK] [11649745-DS-4] 'cough' (Symptom) -> 'Cough'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.82958
+    [OK] [11649745-DS-4] 'Low back pain' (Symptom) -> 'Low back pain'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.75859
+    [OK] [11649745-DS-4] 'low back pain' (Symptom) -> 'Low back pain'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.78470
+    [OK] [11997336-DS-3] 'ultrasound' (Procedure) -> 'Ultrasonography'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.86877
+    [OK] [11997336-DS-3] 'chest discomfort' (Symptom) -> 'Chest discomfort'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.75808
+    [OK] [11997336-DS-3] 'Mitral valve prolapse' (Condition) -> 'Mitral valve prolapse'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.81425
+    [OK] [11997336-DS-3] 'mitral regurgitation' (Condition) -> 'Mitral valve regurgitation'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.91056
+    [OK] [11997336-DS-3] 'Diabetes' (Condition) -> 'Diabetes mellitus'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.83146
+    [OK] [11997336-DS-3] 'mitral stenosis' (Condition) -> 'Mitral valve stenosis'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.72062
+    [OK] [11997336-DS-3] 'chest pain' (Symptom) -> 'Chest pain'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.90034
+    [OK] [11997336-DS-3] 'chills' (Symptom) -> 'Chill'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.83562
+    [OK] [12128814-DS-15] 'carina' (Anatomy) -> 'Structure of carina of trachea'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.72700
+    [OK] [12128814-DS-15] 'stomach' (Anatomy) -> 'Stomach structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.72768
+    [OK] [12128814-DS-15] 'pneumothorax' (Condition) -> 'Pneumothorax'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.86193
+    [OK] [12247014-DS-9] 'Percutaneous Endoscopic Gastrostomy' (Procedure) -> 'Percutaneous endoscopic gastrostomy'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.72650
+    [OK] [12247014-DS-9] 'atelectasis' (Symptom) -> 'Atelectasis'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.87074
+    [OK] [12247014-DS-9] 'small vessel' (Anatomy) -> 'Structure of small blood vessel (organ)'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.72185
+    [OK] [12247014-DS-9] 'pneumonia' (Condition) -> 'Pneumonia'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.90884
+    [OK] [12545016-DS-17] 'palpitations' (Symptom) -> 'Palpitations'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.88863
+    [OK] [12545016-DS-17] 'syncope' (Symptom) -> 'Syncope'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.88500
+    [OK] [12545016-DS-17] 'stroke' (Condition) -> 'Cerebrovascular accident'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.89849
+    [OK] [12545016-DS-17] 'midclavicular \nline' (Anatomy) -> 'Midclavicular line'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.77096
+    [OK] [12545016-DS-17] 'pulmonary embolism' (Condition) -> 'Pulmonary embolism'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.88276
+    [OK] [12545016-DS-17] 'aortic regurgitation' (Condition) -> 'Aortic valve regurgitation'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.76868
+    [OK] [12545016-DS-17] 'mitral valve' (Anatomy) -> 'Mitral valve structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.78128
+    [OK] [12545016-DS-17] 'pericardial effusion' (Condition) -> 'Pericardial effusion'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.91331
+    [WRONG] [12545016-DS-17] 'mild' (Procedure) -> 'Minimally invasive decompression of lumbar spine'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.89255
+    [OK] [12545016-DS-17] 'Chest pain' (Symptom) -> 'Chest pain'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.86794
+    [WRONG] [12545016-DS-17] 'ampicillin' (Medication) -> 'ampicillin'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.83580
+    [WRONG] [12545016-DS-17] 'catheterization' (Procedure) -> 'Catheterization'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.76878
+    [OK] [12642549-DS-11] 'Fatigue' (Symptom) -> 'Fatigue'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.90546
+    [OK] [12642549-DS-11] 'lightheadedness' (Symptom) -> 'Lightheadedness'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.86593
+    [OK] [12642549-DS-11] 'Mitral Regurgitation' (Condition) -> 'Mitral valve regurgitation'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.90658
+    [OK] [12642549-DS-11] 'Gastroesophageal Reflux Disease' (Condition) -> 'Gastroesophageal reflux disease'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.76770
+    [OK] [12642549-DS-11] 'degenerative joint disease' (Condition) -> 'Osteoarthritis'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.74271
+    [OK] [12690671-DS-19] 'abdomen' (Anatomy) -> 'Abdomen'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.88298
+    [OK] [12690671-DS-19] 'weakness' (Symptom) -> 'Asthenia'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.73491
+    [OK] [12730675-DS-12] 'ultrasound' (Procedure) -> 'Ultrasonography'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.89957
+    [OK] [12730675-DS-12] 'perineum' (Anatomy) -> 'Perineal structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.72165
+    [OK] [12730675-DS-12] 'debridement' (Procedure) -> 'Debridement'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.72867
+    [OK] [12819907-DS-20] 'shortness of breath' (Symptom) -> 'Dyspnea'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.91335
+    [OK] [12819907-DS-20] 'constipation' (Symptom) -> 'Constipation'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.89851
+    [OK] [12819907-DS-20] 'breast cancer' (Condition) -> 'Malignant tumor of breast'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.89678
+    [OK] [12819907-DS-20] 'Echocardiogram' (Procedure) -> 'Echocardiography'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.83678
+    [OK] [12819907-DS-20] 'left atrium' (Anatomy) -> 'Left atrial structure'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.88844
+    [OK] [12819907-DS-20] 'cough' (Condition) -> 'Cough'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.88113
+    [OK] [12819907-DS-20] 'weakness' (Symptom) -> 'Asthenia'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.77745
+    [OK] [12831861-DS-10] 'oropharynx' (Anatomy) -> 'Oropharyngeal structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.89193
+    [OK] [12831861-DS-10] 'Trachea' (Anatomy) -> 'Tracheal structure'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.72950
+    [WRONG] [12831861-DS-10] 'Chest' (Anatomy) -> 'Thoracic structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.82309
+    [OK] [12860208-DS-18] 'nausea' (Symptom) -> 'Nausea'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.87271
+    [OK] [12860208-DS-18] 'lightheadedness' (Symptom) -> 'Lightheadedness'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.88076
+    [OK] [12860208-DS-18] 'Chest pain' (Symptom) -> 'Chest pain'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.88866
+    [OK] [12880467-DS-7] 'light-headedness' (Symptom) -> 'Lightheadedness'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.72023
+    [WRONG] [12880467-DS-7] 'radiation therapy' (Procedure) -> 'Radiotherapy'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.75140
+    [OK] [12884747-DS-9] 'headache' (Symptom) -> 'Headache'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.83693
+    [OK] [12884747-DS-9] 'dizziness' (Symptom) -> 'Dizziness'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.82733
+    [OK] [12884747-DS-9] 'nausea' (Symptom) -> 'Nausea'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.88689
+    [OK] [12884747-DS-9] 'fever' (Symptom) -> 'Fever'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.85503
+    [OK] [12884747-DS-9] 'abdominal pain' (Symptom) -> 'Abdominal pain'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.89188
+    [OK] [12884747-DS-9] 'heart \nattack' (Condition) -> 'Myocardial infarction'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.78873
+    [OK] [12962702-DS-14] 'dizziness' (Symptom) -> 'Dizziness'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.89399
+    [OK] [12962702-DS-14] 'headache' (Symptom) -> 'Headache'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.90212
+    [OK] [12969257-DS-11] 'spleen' (Anatomy) -> 'Splenic structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.77902
+    [OK] [12969257-DS-11] 'liver' (Anatomy) -> 'Liver structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.85749
+    [OK] [12969257-DS-11] 'cervical spondylosis' (Condition) -> 'Cervical spondylosis'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.83002
+    [OK] [12969257-DS-11] 'diaphragmatic hernia' (Condition) -> 'Diaphragmatic hernia'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.72668
+    [OK] [12969257-DS-11] 'vertex' (Anatomy) -> 'Vertex structure'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.72341
+    [OK] [12970259-DS-4] 'tenderness' (Symptom) -> 'Tenderness'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.80521
+    [OK] [12970259-DS-4] 'increased pain' (Symptom) -> 'Increased pain'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.78692
+    [OK] [12970259-DS-4] 'ventral hernia' (Condition) -> 'Hernia of anterior abdominal wall'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.73356
+    [OK] [12984014-DS-21] 'chest pain' (Symptom) -> 'Chest pain'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.89762
+    [OK] [12984014-DS-21] 'weakness' (Symptom) -> 'Asthenia'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.88333
+    [OK] [12984014-DS-21] 'aortic regurgitation' (Condition) -> 'Aortic valve regurgitation'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.83457
+    [OK] [12984014-DS-21] 'aortic valve' (Anatomy) -> 'Aortic valve structure'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.73492
+    [OK] [12984014-DS-21] 'mitral regurgitation' (Condition) -> 'Mitral valve regurgitation'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.90463
+    [OK] [12984014-DS-21] 'mitral valve' (Anatomy) -> 'Mitral valve structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.79705
+    [OK] [12984014-DS-21] 'pulmonic \nvalve' (Anatomy) -> 'Pulmonary valve structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.72704
+    [OK] [12984014-DS-21] 'chills' (Symptom) -> 'Chill'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.81611
+    [OK] [12985376-DS-217] 'pleural effusion' (Condition) -> 'Pleural effusion'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.91411
+    [OK] [12985376-DS-217] 'Aortic valve' (Anatomy) -> 'Aortic valve structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.75002
+    [OK] [13016981-DS-27] 'RUQ \npain' (Symptom) -> 'Right upper quadrant pain'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.72328
+    [OK] [13016981-DS-27] 'hypertension' (Condition) -> 'Hypertensive disorder'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.87731
+    [WRONG] [13016981-DS-27] 'pain' (Symptom) -> 'Pain'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.89488
+    [OK] [13016981-DS-27] 'hydronephrosis' (Condition) -> 'Hydronephrosis'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.78269
+    [OK] [13024677-DS-11] 'emphysema' (Condition) -> 'Emphysema'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.86765
+    [OK] [13024677-DS-11] 'right lung' (Anatomy) -> 'Right lung structure'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.72545
+    [OK] [13024677-DS-11] 'trauma' (Condition) -> 'Traumatic injury'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.73698
+    [OK] [13024677-DS-11] 'chest' (Anatomy) -> 'Thoracic structure'  basis=non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but ConsensusCalibrator scored 0.85885
+    [OK] [13024677-DS-11] 'increased pain' (Symptom) -> 'Increased pain'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.82484
+    [OK] [13030379-DS-26] 'hypotension' (Condition) -> 'Low blood pressure'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.90442
+    [OK] [13093718-DS-4] 'pruritus' (Symptom) -> 'Itching of skin'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.80516
+    [OK] [13093718-DS-4] 'portal hypertension' (Condition) -> 'Portal hypertension'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.74391
+    [OK] [13093718-DS-4] 'ascites' (Condition) -> 'Ascites'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.90774
+    [OK] [13093718-DS-4] 'esophageal varices' (Condition) -> 'Esophageal varices'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.76565
+    [OK] [11532659-DS-11] 'diarrhea' (Symptom) -> 'Diarrhea'  basis=non-unanimous verdicts {'SUPPORTED_1': 2, 'NONE_CORRECT': 1}, but ConsensusCalibrator scored 0.89826
+
+==============================================================================
+TIER: TIER_2_AUTO_RESOLVED  (94 decisions)
+==============================================================================
+  skipped: {'no_gold_overlap': 19, 'compound_span': 4, 'narrower_than_gold': 3}
+  ALL gradable (raw):  11/71 = 15.5%
+  CLEAN-span only:     11/68 = 16.2%
+  --- every clean-span TIER_2_AUTO_RESOLVED decision (show all) ---
+    [WRONG] [11532659-DS-11] 'Gel-Foam embolization' (Procedure) -> 'Transcatheter therapy for embolization'  basis=3/3 unanimous re-rank to candidate 5, composite_confidence 0.855394 -- queued for review pending TIE
+    [WRONG] [11532659-DS-11] 'MCV-97' (Lab Test) -> 'MCV - Mean corpuscular volume'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.826317 -- queued for review pending TIE
+    [WRONG] [11532659-DS-11] 'MCHC-31' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.909494 -- queued for review pending TIE
+    [WRONG] [11532659-DS-11] 'RDW-19' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.989586 -- queued for review pending TIE
+    [WRONG] [11532659-DS-11] 'creatinine' (Lab Test) -> 'Creatinine level - finding'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.868231 -- queued for review pending TIE
+    [WRONG] [11532659-DS-11] 'INR' (Lab Test) -> 'International normalized ratio'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.881609 -- queued for review pending TIE
+    [WRONG] [11532659-DS-11] 'pitting edema' (Condition) -> 'Pitting edema'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.928089 -- queued for review pending TIE
+    [OK] [11649745-DS-4] 'triceps' (Anatomy) -> 'Triceps brachii muscle structure'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.958558 -- queued for review pending TIE
+    [WRONG] [11649745-DS-4] 'MCH-29' (Lab Test) -> 'MCH - Mean corpuscular haemoglobin'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.893893 -- queued for review pending TIE
+    [WRONG] [11649745-DS-4] 'MCHC-32' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.931693 -- queued for review pending TIE
+    [WRONG] [11649745-DS-4] 'RDW-14' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.641308 -- queued for review pending TIE
+    [WRONG] [11649745-DS-4] 'edema' (Condition) -> 'Edema'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.959794 -- queued for review pending TIE
+    [WRONG] [11997336-DS-3] 'nuclear stress test' (Procedure) -> 'Radionuclide myocardial perfusion stress study'  basis=3/3 unanimous re-rank to candidate 3, composite_confidence 0.98432 -- queued for review pending TIER
+    [OK] [11997336-DS-3] 'osteomyletis' (Condition) -> 'Osteomyelitis'  basis=3/3 unanimous re-rank to candidate 5, composite_confidence 0.984788 -- queued for review pending TIE
+    [WRONG] [11997336-DS-3] 'atria' (Anatomy) -> 'Both cardiac atria'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.49706 -- queued for review pending TIER
+    [WRONG] [12128814-DS-15] 'RDW-14.0' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.929652 -- queued for review pending TIE
+    [OK] [12128814-DS-15] 'burning' (Symptom) -> 'Burning sensation'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.946131 -- queued for review pending TIE
+    [OK] [12128814-DS-15] 'swelling' (Symptom) -> 'Swelling'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.952592 -- queued for review pending TIE
+    [WRONG] [12247014-DS-9] 'MCHC-34' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.873714 -- queued for review pending TIE
+    [WRONG] [12247014-DS-9] 'RDW-14' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.928252 -- queued for review pending TIE
+    [WRONG] [12247014-DS-9] 'Autograft' (Procedure) -> 'Autogenous transplantation'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.814034 -- queued for review pending TIE
+    [WRONG] [12545016-DS-17] 'INR' (Lab Test) -> 'International normalized ratio'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.647212 -- queued for review pending TIE
+    [WRONG] [12545016-DS-17] 'MCV-96' (Lab Test) -> 'MCV - Mean corpuscular volume'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.851427 -- queued for review pending TIE
+    [WRONG] [12545016-DS-17] 'RDW-15' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.950027 -- queued for review pending TIE
+    [WRONG] [12545016-DS-17] 'agitated saline contrast \ninjection' (Procedure) -> 'Injection of contrast media for radiography by catheter, supraselective'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.962105 -- queued for review pending TIE
+    [OK] [12545016-DS-17] 'NSTEMI' (Condition) -> 'Acute non-ST segment elevation myocardial infarction'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.65715 -- queued for review pending TIER
+    [WRONG] [12642549-DS-11] 'RDW-16' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.948786 -- queued for review pending TIE
+    [WRONG] [12690671-DS-19] 'MCV-97' (Lab Test) -> 'MCV - Mean corpuscular volume'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.864991 -- queued for review pending TIE
+    [WRONG] [12690671-DS-19] 'MCHC-32' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.940278 -- queued for review pending TIE
+    [WRONG] [12690671-DS-19] 'MCV-90' (Lab Test) -> 'MCV - Mean corpuscular volume'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.89824 -- queued for review pending TIER
+    [OK] [12690671-DS-19] 'withdrawal symptims' (Symptom) -> 'Withdrawal symptom'  basis=3/3 unanimous re-rank to candidate 3, composite_confidence 0.872958 -- queued for review pending TIE
+    [OK] [12730675-DS-12] 'swelling' (Symptom) -> 'Swelling'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.970033 -- queued for review pending TIE
+    [WRONG] [12819907-DS-20] 'RDW-13' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.915033 -- queued for review pending TIE
+    [WRONG] [12819907-DS-20] 'MCHC-34' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.902068 -- queued for review pending TIE
+    [WRONG] [12860208-DS-18] 'MCHC-35' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.903707 -- queued for review pending TIE
+    [WRONG] [12880467-DS-7] 'RDW-12' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.979655 -- queued for review pending TIE
+    [WRONG] [12884747-DS-9] 'peripheral edema' (Symptom) -> 'Peripheral edema'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.92973 -- queued for review pending TIER
+    [WRONG] [12962702-DS-14] 'MCHC-34' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.822884 -- queued for review pending TIE
+    [WRONG] [12962702-DS-14] 'CREAT-1' (Lab Test) -> 'Creatinine level - finding'  basis=3/3 unanimous re-rank to candidate 3, composite_confidence 0.906994 -- queued for review pending TIE
+    [WRONG] [12962702-DS-14] 'blurring' (Symptom) -> 'Blurred vision'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.82492 -- queued for review pending TIER
+    [WRONG] [12969257-DS-11] 'MCV-90' (Lab Test) -> 'MCV - Mean corpuscular volume'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.768733 -- queued for review pending TIE
+    [WRONG] [12969257-DS-11] 'MCV-91' (Lab Test) -> 'MCV - Mean corpuscular volume'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.815517 -- queued for review pending TIE
+    [WRONG] [12969257-DS-11] 'RDW-13' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.981474 -- queued for review pending TIE
+    [WRONG] [12970259-DS-4] 'PH-7.45' (Lab Test) -> 'pH - finding'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.919294 -- queued for review pending TIE
+    [WRONG] [12970259-DS-4] 'calcHCT-37' (Lab Test) -> 'Calculus calcium content measurement'  basis=3/3 unanimous re-rank to candidate 5, composite_confidence 0.898941 -- queued for review pending TIE
+    [WRONG] [12986424-DS-6] 'MCHC-30' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.886379 -- queued for review pending TIE
+    [WRONG] [12986424-DS-6] 'RDW-15' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.92352 -- queued for review pending TIER
+    [WRONG] [12986424-DS-6] 'CREAT-2.6' (Lab Test) -> 'Creatinine level - finding'  basis=3/3 unanimous re-rank to candidate 3, composite_confidence 0.901255 -- queued for review pending TIE
+    [WRONG] [12986424-DS-6] 'fistula' (Anatomy) -> 'Fistula'  basis=3/3 unanimous re-rank to candidate 3, composite_confidence 0.82614 -- queued for review pending TIER
+    [WRONG] [12991484-DS-15] 'MCHC-34' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.938178 -- queued for review pending TIE
+    [WRONG] [12991484-DS-15] 'RDW-13' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.94585 -- queued for review pending TIER
+    [OK] [12991484-DS-15] 'swelling' (Condition) -> 'Swelling'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.943872 -- queued for review pending TIE
+    [WRONG] [13016981-DS-27] 'PHOS-286' (Lab Test) -> 'Phosphorus measurement'  basis=3/3 unanimous re-rank to candidate 3, composite_confidence 0.792157 -- queued for review pending TIE
+    [WRONG] [13016981-DS-27] 'MCV-104' (Lab Test) -> 'MCV - Mean corpuscular volume'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.938589 -- queued for review pending TIE
+    [WRONG] [13016981-DS-27] 'RDW-14' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.92706 -- queued for review pending TIER
+    [OK] [13016981-DS-27] 'metastatic cholangiocarcinoma' (Condition) -> 'Metastatic cholangiocarcinoma'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.937216 -- queued for review pending TIE
+    [WRONG] [13024677-DS-11] 'chronic insult' (Condition) -> 'Late effect of injury'  basis=3/3 unanimous re-rank to candidate 3, composite_confidence 0.853579 -- queued for review pending TIE
+    [WRONG] [13024677-DS-11] 'MCHC-34' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.885099 -- queued for review pending TIE
+    [WRONG] [13024677-DS-11] 'MCV-92' (Lab Test) -> 'MCV - Mean corpuscular volume'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.891226 -- queued for review pending TIE
+    [WRONG] [13030379-DS-26] 'RDW-14' (Lab Test) -> 'Red blood cell distribution width'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.594978 -- queued for review pending TIE
+    [WRONG] [13030379-DS-26] 'MCHC-34' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.932798 -- queued for review pending TIE
+    [OK] [13030379-DS-26] 'angioedema' (Condition) -> 'Angioedema'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.93819 -- queued for review pending TIER
+    [OK] [13030379-DS-26] 'Angioedema' (Condition) -> 'Angioedema'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.927442 -- queued for review pending TIE
+    [WRONG] [13093718-DS-4] 'MCV-86' (Lab Test) -> 'MCV - Mean corpuscular volume'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.923831 -- queued for review pending TIE
+    [WRONG] [13093718-DS-4] 'MCHC-35' (Lab Test) -> 'MCHC - Mean corpuscular haemoglobin concentration'  basis=3/3 unanimous re-rank to candidate 4, composite_confidence 0.847532 -- queued for review pending TIE
+    [WRONG] [11532659-DS-11] 'edema' (Condition) -> 'Edema'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.964308 -- queued for review pending TIE
+    [WRONG] [11532659-DS-11] 'MCV-92' (Lab Test) -> 'MCV - Mean corpuscular volume'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.86735 -- queued for review pending TIER
+    [WRONG] [11532659-DS-11] 'ANAEROBIC CULTURE' (Lab Test) -> 'Anaerobic culture'  basis=3/3 unanimous re-rank to candidate 2, composite_confidence 0.858295 -- queued for review pending TIE
+
+==============================================================================
+TIER: TIER_3_AUTO_VALIDATED  (491 decisions)
+==============================================================================
+  skipped: {'no_gold_overlap': 109, 'narrower_than_gold': 17, 'compound_span': 1}
+  ALL gradable (raw):  331/381 = 86.9%
+  CLEAN-span only:     323/364 = 88.7%
+  --- clean-span incorrect cases (first 20) ---
+    [11532659-DS-11] 'Calcium-8.3' (Lab Test) pred='Calcium measurement'/71878006 gold=312472004
+    [11532659-DS-11] 'coumadin' (Medication) pred='warfarin'/48603004 gold=722045009
+    [11532659-DS-11] 'Lasix' (Medication) pred='furosemide'/81609008 gold=722048006
+    [11532659-DS-11] 'lasix' (Medication) pred='furosemide'/81609008 gold=722048006
+    [11532659-DS-11] 'Coumadin' (Medication) pred='warfarin'/48603004 gold=722045009
+    [11649745-DS-4] 'ALT-43' (Lab Test) pred='Alanine transaminase activity measurement'/889391000000100 gold=34608000
+    [11649745-DS-4] 'Calcium-9' (Lab Test) pred='Calcium measurement'/71878006 gold=312472004
+    [11997336-DS-3] 'Na' (Lab Test) pred='Sodium measurement'/25197003 gold=312469006
+    [11997336-DS-3] 'lasix' (Medication) pred='furosemide'/81609008 gold=722048006
+    [12128814-DS-15] 'ALT-26' (Lab Test) pred='Alanine transaminase activity measurement'/889391000000100 gold=34608000
+    [12247014-DS-9] 'CALCIUM-8' (Lab Test) pred='Calcium measurement'/71878006 gold=312472004
+    [12545016-DS-17] 'Calcium-8' (Lab Test) pred='Calcium measurement'/71878006 gold=312472004
+    [12690671-DS-19] 'ALT' (Lab Test) pred='Alanine transaminase activity measurement'/889391000000100 gold=34608000
+    [12819907-DS-20] 'TOTAL CO2-25' (Lab Test) pred='Carbon dioxide content measurement'/31542002 gold=391396001
+    [12860208-DS-18] 'TOTAL CO2-26' (Lab Test) pred='Carbon dioxide content measurement'/31542002 gold=391396001
+    [12880467-DS-7] 'ALT-31' (Lab Test) pred='Alanine transaminase activity measurement'/889391000000100 gold=34608000
+    [12880467-DS-7] 'Calcium-9' (Lab Test) pred='Calcium measurement'/71878006 gold=312472004
+    [12884747-DS-9] 'ALT-66' (Lab Test) pred='Alanine transaminase activity measurement'/889391000000100 gold=34608000
+    [12962702-DS-14] 'TOTAL CO2-16' (Lab Test) pred='Carbon dioxide content measurement'/31542002 gold=391396001
+    [12969257-DS-11] 'Calcium-7.8' (Lab Test) pred='Calcium measurement'/71878006 gold=312472004
+
+==============================================================================
+TIER: TIER_4_ENSEMBLE_SPLIT  (1008 decisions)
+==============================================================================
+  skipped: {'no_candidate': 698, 'no_gold_overlap': 253, 'compound_span': 57}
+  ALL gradable (raw):  0/0 = n/a
+  CLEAN-span only:     0/0 = n/a
+
+==============================================================================
+SUMMARY
+==============================================================================
+TIER_1_AUTO_VALIDATED                  n=1248  clean-span: 544/690 = 78.8%
+TIER_1B_CALIBRATED_AUTO_VALIDATED      n= 197  clean-span: 100/108 = 92.6%
+TIER_2_AUTO_RESOLVED                   n=  94  clean-span: 11/68 = 16.2%
+TIER_3_AUTO_VALIDATED                  n= 491  clean-span: 323/364 = 88.7%
+TIER_4_ENSEMBLE_SPLIT                  n=1008  clean-span: 0/0 = n/a
+
+Current AUTO_TIERS combined (1+1B+3), clean-span: 967/1162 = 83.2%  (n_decisions=1936)
+
+(other tiers present, not broken out here: {'TIER_5_TRUE_AMBIGUITY': 490, None: 13})

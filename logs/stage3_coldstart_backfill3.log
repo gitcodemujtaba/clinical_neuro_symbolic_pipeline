@@ -1,0 +1,639 @@
+==============================================================================
+STAGE 3 BATCH RUN -- Pass 4 Tier 1-5 gate (src.mollm_tier_gate)
+==============================================================================
+--- 1. OLLAMA MODEL PREFLIGHT ---
+  OK   qwen2.5:3b
+  OK   llama3.2:3b
+  OK   phi4-mini
+Loading SapBERT model for vector normalization... (this may take a moment)
+
+HYBRID_RETRIEVAL_ENABLED: False (should be False -- see this script's own docstring)
+Memgraph: reachable (dry-run writes will still be exercised, nothing will be committed)
+db:    /home/ec2-user/clinical_neuro_symbolic_pipeline_reorder/db/kg2_lexical_store.duckdb
+notes: 140
+  ! leakage: trained on 82 of the note(s) about to be scored (10043750-DS-6, 10060142-DS-9, 10097089-DS-8, 10302979-DS-5, 10352433-DS-20 ...).
+    refusing to use it; falling back to existing routing.
+calibrator: untrained (no-op), loaded from /home/ec2-user/clinical_neuro_symbolic_pipeline_reorder/models/consensus_calibrator_v1.pkl
+resume check: 19139 entity_id(s) already have a stored tier-gate decision and will be skipped
+
+[note 1/140] 10597114-DS-10: 196 record(s), 3 remaining after resume-skip
+  [1/3] 'warm' (Symptom)  [elapsed 0.0m | done 0 | skipped 193 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [2/3] 'baseline' (Symptom)  [elapsed 0.0m | done 1 | skipped 193 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [3/3] 'improved' (Symptom)  [elapsed 0.0m | done 2 | skipped 193 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149524 (Patient's condition improved)
+[note 2/140] 10813665-DS-7: 204 record(s), 4 remaining after resume-skip
+  [1/4] 'baseline' (Symptom)  [elapsed 0.1m | done 3 | skipped 393 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [2/4] 'Warm' (Symptom)  [elapsed 0.1m | done 4 | skipped 393 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [3/4] 'Baseline' (Symptom)  [elapsed 0.1m | done 5 | skipped 393 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [4/4] 'improved' (Symptom)  [elapsed 0.1m | done 6 | skipped 393 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149524 (Patient's condition improved)
+[note 3/140] 10839721-DS-9: 195 record(s), 2 remaining after resume-skip
+  [1/2] 'baseline' (Symptom)  [elapsed 0.1m | done 7 | skipped 586 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [2/2] 'Alert' (Symptom)  [elapsed 0.1m | done 8 | skipped 586 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 4/140] 10850639-DS-7: 151 record(s), 1 remaining after resume-skip
+  [1/1] 'baseline' (Symptom)  [elapsed 0.1m | done 9 | skipped 736 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+[note 5/140] 12050253-DS-20: 332 record(s), 6 remaining after resume-skip
+  [1/6] 'clinic' (Procedure)  [elapsed 0.2m | done 10 | skipped 1062 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=42537845 (Outpatient care management)
+  [2/6] 'Warm' (Symptom)  [elapsed 0.2m | done 11 | skipped 1062 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [3/6] 'Baseline' (Symptom)  [elapsed 0.2m | done 12 | skipped 1062 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [4/6] 'baseline' (Symptom)  [elapsed 0.2m | done 13 | skipped 1062 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [5/6] 'improved' (Symptom)  [elapsed 0.5m | done 14 | skipped 1062 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149524 (Patient's condition improved)
+  [6/6] 'Alert' (Symptom)  [elapsed 0.5m | done 15 | skipped 1062 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 6/140] 10000032-DS-22: 28 record(s), 8 remaining after resume-skip
+  [1/8] 'baseline' (Symptom)  [elapsed 0.5m | done 16 | skipped 1082 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [2/8] 'improved' (Symptom)  [elapsed 0.6m | done 17 | skipped 1082 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149524 (Patient's condition improved)
+  [3/8] 'alert' (Symptom)  [elapsed 0.6m | done 18 | skipped 1082 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [4/8] 'WBC' (Lab Test)  [elapsed 0.6m | done 19 | skipped 1082 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [5/8] 'Na' (Lab Test)  [elapsed 0.9m | done 20 | skipped 1082 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [6/8] 'clinic' (Procedure)  [elapsed 1.2m | done 21 | skipped 1082 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=42537845 (Outpatient care management)
+  [7/8] 'Calcium' (Lab Test)  [elapsed 1.2m | done 22 | skipped 1082 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [8/8] 'Alert' (Symptom)  [elapsed 1.4m | done 23 | skipped 1082 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 7/140] 10938537-DS-20: 115 record(s), 3 remaining after resume-skip
+  [1/3] 'Warm' (Symptom)  [elapsed 1.4m | done 24 | skipped 1194 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [2/3] 'Alert' (Symptom)  [elapsed 1.4m | done 25 | skipped 1194 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [3/3] 'warm' (Symptom)  [elapsed 1.5m | done 26 | skipped 1194 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+[note 8/140] 11051092-DS-3: 136 record(s), 18 remaining after resume-skip
+  [1/18] 'baseline' (Symptom)  [elapsed 1.5m | done 27 | skipped 1312 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [2/18] 'warm' (Symptom)  [elapsed 1.5m | done 28 | skipped 1312 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [3/18] 'HGB' (Lab Test)  [elapsed 1.5m | done 29 | skipped 1312 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [4/18] 'HCT' (Lab Test)  [elapsed 1.8m | done 30 | skipped 1312 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [5/18] 'MCHC' (Lab Test)  [elapsed 1.8m | done 31 | skipped 1312 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [6/18] 'CREAT' (Lab Test)  [elapsed 2.1m | done 32 | skipped 1312 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4324383 (Creatinine measurement)
+  [7/18] 'RBC' (Lab Test)  [elapsed 2.4m | done 33 | skipped 1312 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [8/18] 'WBC' (Lab Test)  [elapsed 2.7m | done 34 | skipped 1312 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [9/18] 'Hgb' (Lab Test)  [elapsed 3.0m | done 35 | skipped 1312 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [10/18] 'Hct' (Lab Test)  [elapsed 3.4m | done 36 | skipped 1312 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [11/18] 'MCH' (Lab Test)  [elapsed 3.4m | done 37 | skipped 1312 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [12/18] 'Creat' (Lab Test)  [elapsed 3.7m | done 38 | skipped 1312 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [13/18] 'Na' (Lab Test)  [elapsed 4.0m | done 39 | skipped 1312 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [14/18] 'Cl' (Lab Test)  [elapsed 4.3m | done 40 | skipped 1312 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [15/18] 'HCO3' (Lab Test)  [elapsed 4.3m | done 41 | skipped 1312 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [16/18] 'Calcium' (Lab Test)  [elapsed 4.5m | done 42 | skipped 1312 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [17/18] 'Phos' (Lab Test)  [elapsed 4.7m | done 43 | skipped 1312 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [18/18] 'Alert' (Symptom)  [elapsed 4.9m | done 44 | skipped 1312 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 9/140] 11524757-DS-4: 182 record(s), 17 remaining after resume-skip
+  [1/17] 'WBC' (Lab Test)  [elapsed 5.0m | done 45 | skipped 1477 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [2/17] 'RBC' (Lab Test)  [elapsed 5.2m | done 46 | skipped 1477 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [3/17] 'Hgb' (Lab Test)  [elapsed 5.6m | done 47 | skipped 1477 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [4/17] 'Hct' (Lab Test)  [elapsed 5.9m | done 48 | skipped 1477 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [5/17] 'MCH' (Lab Test)  [elapsed 5.9m | done 49 | skipped 1477 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [6/17] 'MCHC' (Lab Test)  [elapsed 6.2m | done 50 | skipped 1477 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [7/17] 'RDW' (Lab Test)  [elapsed 6.6m | done 51 | skipped 1477 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [8/17] 'UreaN' (Lab Test)  [elapsed 6.9m | done 52 | skipped 1477 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [9/17] 'Creat' (Lab Test)  [elapsed 7.2m | done 53 | skipped 1477 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4324383 (Creatinine measurement)
+  [10/17] 'Na' (Lab Test)  [elapsed 7.4m | done 54 | skipped 1477 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [11/17] 'Cl' (Lab Test)  [elapsed 7.8m | done 55 | skipped 1477 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [12/17] 'HCO3' (Lab Test)  [elapsed 7.8m | done 56 | skipped 1477 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [13/17] 'Calcium' (Lab Test)  [elapsed 8.0m | done 57 | skipped 1477 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [14/17] 'Phos' (Lab Test)  [elapsed 8.2m | done 58 | skipped 1477 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [15/17] 'Baseline' (Symptom)  [elapsed 8.5m | done 59 | skipped 1477 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [16/17] 'baseline' (Symptom)  [elapsed 8.5m | done 60 | skipped 1477 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [17/17] 'Alert' (Symptom)  [elapsed 8.5m | done 61 | skipped 1477 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 10/140] 12093726-DS-4: 69 record(s), 3 remaining after resume-skip
+  [1/3] 'alert' (Symptom)  [elapsed 8.5m | done 62 | skipped 1543 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [2/3] 'improved' (Symptom)  [elapsed 8.5m | done 63 | skipped 1543 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149524 (Patient's condition improved)
+  [3/3] 'Alert' (Symptom)  [elapsed 8.5m | done 64 | skipped 1543 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 11/140] 12204513-DS-26: 137 record(s), 14 remaining after resume-skip
+  [1/14] 'WBC' (Lab Test)  [elapsed 8.5m | done 65 | skipped 1666 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [2/14] 'RBC' (Lab Test)  [elapsed 8.8m | done 66 | skipped 1666 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [3/14] 'Hgb' (Lab Test)  [elapsed 9.1m | done 67 | skipped 1666 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [4/14] 'Hct' (Lab Test)  [elapsed 9.4m | done 68 | skipped 1666 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [5/14] 'MCH' (Lab Test)  [elapsed 9.5m | done 69 | skipped 1666 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [6/14] 'MCHC' (Lab Test)  [elapsed 9.8m | done 70 | skipped 1666 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [7/14] 'RDW' (Lab Test)  [elapsed 10.1m | done 71 | skipped 1666 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [8/14] 'UreaN' (Lab Test)  [elapsed 10.4m | done 72 | skipped 1666 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [9/14] 'Creat' (Lab Test)  [elapsed 10.7m | done 73 | skipped 1666 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [10/14] 'Na' (Lab Test)  [elapsed 11.0m | done 74 | skipped 1666 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [11/14] 'Cl' (Lab Test)  [elapsed 11.3m | done 75 | skipped 1666 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [12/14] 'HCO3' (Lab Test)  [elapsed 11.3m | done 76 | skipped 1666 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [13/14] 'AnGap' (Lab Test)  [elapsed 11.5m | done 77 | skipped 1666 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [14/14] 'Alert' (Symptom)  [elapsed 11.5m | done 78 | skipped 1666 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 12/140] 12412316-DS-14: 121 record(s), 16 remaining after resume-skip
+  [1/16] 'Warm' (Symptom)  [elapsed 11.5m | done 79 | skipped 1771 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [2/16] 'WBC' (Lab Test)  [elapsed 11.6m | done 80 | skipped 1771 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [3/16] 'RBC' (Lab Test)  [elapsed 11.8m | done 81 | skipped 1771 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [4/16] 'Hgb' (Lab Test)  [elapsed 12.1m | done 82 | skipped 1771 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [5/16] 'Hct' (Lab Test)  [elapsed 12.5m | done 83 | skipped 1771 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [6/16] 'MCH' (Lab Test)  [elapsed 12.5m | done 84 | skipped 1771 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [7/16] 'MCHC' (Lab Test)  [elapsed 12.8m | done 85 | skipped 1771 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [8/16] 'RDW' (Lab Test)  [elapsed 13.1m | done 86 | skipped 1771 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [9/16] 'UreaN' (Lab Test)  [elapsed 13.5m | done 87 | skipped 1771 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [10/16] 'Creat' (Lab Test)  [elapsed 13.7m | done 88 | skipped 1771 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [11/16] 'Na' (Lab Test)  [elapsed 14.0m | done 89 | skipped 1771 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [12/16] 'Cl' (Lab Test)  [elapsed 14.3m | done 90 | skipped 1771 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [13/16] 'HCO3' (Lab Test)  [elapsed 14.3m | done 91 | skipped 1771 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [14/16] 'AnGap' (Lab Test)  [elapsed 14.6m | done 92 | skipped 1771 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [15/16] 'Phos' (Lab Test)  [elapsed 14.6m | done 93 | skipped 1771 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [16/16] 'Alert' (Symptom)  [elapsed 14.8m | done 94 | skipped 1771 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 13/140] 12582583-DS-20: 174 record(s), 18 remaining after resume-skip
+  [1/18] 'warm' (Symptom)  [elapsed 14.8m | done 95 | skipped 1927 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [2/18] 'WBC' (Lab Test)  [elapsed 14.8m | done 96 | skipped 1927 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [3/18] 'RBC' (Lab Test)  [elapsed 15.1m | done 97 | skipped 1927 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [4/18] 'Hgb' (Lab Test)  [elapsed 15.4m | done 98 | skipped 1927 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [5/18] 'Hct' (Lab Test)  [elapsed 15.8m | done 99 | skipped 1927 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [6/18] 'MCH' (Lab Test)  [elapsed 15.8m | done 100 | skipped 1927 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [7/18] 'MCHC' (Lab Test)  [elapsed 16.1m | done 101 | skipped 1927 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [8/18] 'RDW' (Lab Test)  [elapsed 16.4m | done 102 | skipped 1927 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [9/18] 'UreaN' (Lab Test)  [elapsed 16.8m | done 103 | skipped 1927 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [10/18] 'Creat' (Lab Test)  [elapsed 17.0m | done 104 | skipped 1927 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [11/18] 'Na' (Lab Test)  [elapsed 17.3m | done 105 | skipped 1927 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [12/18] 'Cl' (Lab Test)  [elapsed 17.6m | done 106 | skipped 1927 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [13/18] 'HCO3' (Lab Test)  [elapsed 17.6m | done 107 | skipped 1927 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [14/18] 'AnGap' (Lab Test)  [elapsed 17.9m | done 108 | skipped 1927 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [15/18] 'Calcium' (Lab Test)  [elapsed 17.9m | done 109 | skipped 1927 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [16/18] 'Phos' (Lab Test)  [elapsed 18.1m | done 110 | skipped 1927 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [17/18] 'Baseline' (Symptom)  [elapsed 18.4m | done 111 | skipped 1927 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [18/18] 'Alert' (Symptom)  [elapsed 18.4m | done 112 | skipped 1927 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 14/140] 12128814-DS-15: 106 record(s), 17 remaining after resume-skip
+  [1/17] 'WBC' (Lab Test)  [elapsed 18.4m | done 113 | skipped 2016 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [2/17] 'RBC' (Lab Test)  [elapsed 18.7m | done 114 | skipped 2016 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [3/17] 'Hgb' (Lab Test)  [elapsed 19.0m | done 115 | skipped 2016 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [4/17] 'Hct' (Lab Test)  [elapsed 19.3m | done 116 | skipped 2016 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [5/17] 'MCH' (Lab Test)  [elapsed 19.3m | done 117 | skipped 2016 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [6/17] 'MCHC' (Lab Test)  [elapsed 19.6m | done 118 | skipped 2016 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [7/17] 'RDW' (Lab Test)  [elapsed 20.0m | done 119 | skipped 2016 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [8/17] 'UreaN' (Lab Test)  [elapsed 20.3m | done 120 | skipped 2016 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [9/17] 'Creat' (Lab Test)  [elapsed 20.6m | done 121 | skipped 2016 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [10/17] 'Cl' (Lab Test)  [elapsed 20.9m | done 122 | skipped 2016 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [11/17] 'HCO3' (Lab Test)  [elapsed 20.9m | done 123 | skipped 2016 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [12/17] 'AnGap' (Lab Test)  [elapsed 21.1m | done 124 | skipped 2016 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [13/17] 'Calcium' (Lab Test)  [elapsed 21.1m | done 125 | skipped 2016 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [14/17] 'Phos' (Lab Test)  [elapsed 21.3m | done 126 | skipped 2016 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [15/17] 'Na' (Lab Test)  [elapsed 21.6m | done 127 | skipped 2016 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [16/17] 'Alert' (Symptom)  [elapsed 21.9m | done 128 | skipped 2016 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [17/17] 'warm' (Symptom)  [elapsed 21.9m | done 129 | skipped 2016 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+[note 15/140] 10000084-DS-17: 32 record(s), 17 remaining after resume-skip
+  [1/17] 'Warm' (Symptom)  [elapsed 21.9m | done 130 | skipped 2031 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [2/17] 'WBC' (Lab Test)  [elapsed 21.9m | done 131 | skipped 2031 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [3/17] 'RBC' (Lab Test)  [elapsed 22.2m | done 132 | skipped 2031 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [4/17] 'Hgb' (Lab Test)  [elapsed 22.5m | done 133 | skipped 2031 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [5/17] 'Hct' (Lab Test)  [elapsed 22.8m | done 134 | skipped 2031 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [6/17] 'MCH' (Lab Test)  [elapsed 22.8m | done 135 | skipped 2031 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [7/17] 'MCHC' (Lab Test)  [elapsed 23.2m | done 136 | skipped 2031 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [8/17] 'RDW' (Lab Test)  [elapsed 23.5m | done 137 | skipped 2031 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [9/17] 'UreaN' (Lab Test)  [elapsed 23.8m | done 138 | skipped 2031 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [10/17] 'Creat' (Lab Test)  [elapsed 24.1m | done 139 | skipped 2031 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4324383 (Creatinine measurement)
+  [11/17] 'Na' (Lab Test)  [elapsed 24.3m | done 140 | skipped 2031 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [12/17] 'Cl' (Lab Test)  [elapsed 24.7m | done 141 | skipped 2031 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [13/17] 'HCO3' (Lab Test)  [elapsed 24.7m | done 142 | skipped 2031 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [14/17] 'AnGap' (Lab Test)  [elapsed 24.9m | done 143 | skipped 2031 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [15/17] 'Calcium' (Lab Test)  [elapsed 24.9m | done 144 | skipped 2031 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [16/17] 'Phos' (Lab Test)  [elapsed 25.1m | done 145 | skipped 2031 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [17/17] 'Alert' (Symptom)  [elapsed 25.4m | done 146 | skipped 2031 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 16/140] 10542874-DS-4: 102 record(s), 10 remaining after resume-skip
+  [1/10] 'improved' (Symptom)  [elapsed 25.4m | done 147 | skipped 2123 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149524 (Patient's condition improved)
+  [2/10] 'Hgb' (Lab Test)  [elapsed 25.4m | done 148 | skipped 2123 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [3/10] 'Hct' (Lab Test)  [elapsed 25.7m | done 149 | skipped 2123 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [4/10] 'MCH' (Lab Test)  [elapsed 25.7m | done 150 | skipped 2123 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [5/10] 'Creat' (Lab Test)  [elapsed 26.0m | done 151 | skipped 2123 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [6/10] 'Na' (Lab Test)  [elapsed 26.3m | done 152 | skipped 2123 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [7/10] 'Cl' (Lab Test)  [elapsed 26.6m | done 153 | skipped 2123 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [8/10] 'HCO3' (Lab Test)  [elapsed 26.6m | done 154 | skipped 2123 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [9/10] 'clinic' (Procedure)  [elapsed 26.8m | done 155 | skipped 2123 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=42537845 (Outpatient care management)
+  [10/10] 'Alert' (Symptom)  [elapsed 26.8m | done 156 | skipped 2123 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 17/140] 10653756-DS-22: 147 record(s), 6 remaining after resume-skip
+  [1/6] 'clinic' (Procedure)  [elapsed 26.9m | done 157 | skipped 2264 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=42537845 (Outpatient care management)
+  [2/6] 'warm' (Symptom)  [elapsed 26.9m | done 158 | skipped 2264 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [3/6] 'Creat' (Lab Test)  [elapsed 26.9m | done 159 | skipped 2264 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [4/6] 'alert' (Symptom)  [elapsed 27.2m | done 160 | skipped 2264 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [5/6] 'Alert' (Symptom)  [elapsed 27.2m | done 161 | skipped 2264 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [6/6] 'baseline' (Symptom)  [elapsed 27.2m | done 162 | skipped 2264 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+[note 18/140] 10850358-DS-17: 125 record(s), 20 remaining after resume-skip
+  [1/20] 'alert' (Symptom)  [elapsed 27.2m | done 163 | skipped 2369 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [2/20] 'Warm' (Symptom)  [elapsed 27.2m | done 164 | skipped 2369 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [3/20] 'WBC' (Lab Test)  [elapsed 27.2m | done 165 | skipped 2369 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [4/20] 'Hgb' (Lab Test)  [elapsed 27.5m | done 166 | skipped 2369 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [5/20] 'Hct' (Lab Test)  [elapsed 27.8m | done 167 | skipped 2369 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [6/20] 'MCH' (Lab Test)  [elapsed 27.8m | done 168 | skipped 2369 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [7/20] 'MCHC' (Lab Test)  [elapsed 28.2m | done 169 | skipped 2369 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [8/20] 'RDW' (Lab Test)  [elapsed 28.5m | done 170 | skipped 2369 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [9/20] 'UreaN' (Lab Test)  [elapsed 28.8m | done 171 | skipped 2369 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [10/20] 'Creat' (Lab Test)  [elapsed 29.1m | done 172 | skipped 2369 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4324383 (Creatinine measurement)
+  [11/20] 'Na' (Lab Test)  [elapsed 29.3m | done 173 | skipped 2369 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [12/20] 'Cl' (Lab Test)  [elapsed 29.7m | done 174 | skipped 2369 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [13/20] 'HCO3' (Lab Test)  [elapsed 29.7m | done 175 | skipped 2369 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [14/20] 'AnGap' (Lab Test)  [elapsed 29.9m | done 176 | skipped 2369 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [15/20] 'Calcium' (Lab Test)  [elapsed 29.9m | done 177 | skipped 2369 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [16/20] 'Phos' (Lab Test)  [elapsed 30.1m | done 178 | skipped 2369 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [17/20] 'RBC' (Lab Test)  [elapsed 30.4m | done 179 | skipped 2369 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [18/20] 'baseline' (Symptom)  [elapsed 30.7m | done 180 | skipped 2369 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [19/20] 'clinic' (Procedure)  [elapsed 30.7m | done 181 | skipped 2369 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=42537845 (Outpatient care management)
+  [20/20] 'Alert' (Symptom)  [elapsed 30.7m | done 182 | skipped 2369 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 19/140] 11365932-DS-23: 161 record(s), 2 remaining after resume-skip
+  [1/2] 'CALCIUM' (Lab Test)  [elapsed 30.8m | done 183 | skipped 2528 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [2/2] 'Alert' (Symptom)  [elapsed 31.0m | done 184 | skipped 2528 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 20/140] 11417242-DS-18: 151 record(s), 14 remaining after resume-skip
+  [1/14] 'WBC' (Lab Test)  [elapsed 31.0m | done 185 | skipped 2665 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [2/14] 'RBC' (Lab Test)  [elapsed 31.3m | done 186 | skipped 2665 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [3/14] 'Hgb' (Lab Test)  [elapsed 31.6m | done 187 | skipped 2665 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [4/14] 'Hct' (Lab Test)  [elapsed 31.9m | done 188 | skipped 2665 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [5/14] 'MCH' (Lab Test)  [elapsed 31.9m | done 189 | skipped 2665 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [6/14] 'MCHC' (Lab Test)  [elapsed 32.2m | done 190 | skipped 2665 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [7/14] 'UreaN' (Lab Test)  [elapsed 32.6m | done 191 | skipped 2665 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [8/14] 'Creat' (Lab Test)  [elapsed 32.9m | done 192 | skipped 2665 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [9/14] 'Na' (Lab Test)  [elapsed 33.1m | done 193 | skipped 2665 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [10/14] 'Cl' (Lab Test)  [elapsed 33.4m | done 194 | skipped 2665 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [11/14] 'HCO3' (Lab Test)  [elapsed 33.5m | done 195 | skipped 2665 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [12/14] 'AnGap' (Lab Test)  [elapsed 33.7m | done 196 | skipped 2665 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [13/14] 'baseline' (Symptom)  [elapsed 33.7m | done 197 | skipped 2665 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [14/14] 'Alert' (Symptom)  [elapsed 33.7m | done 198 | skipped 2665 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 21/140] 11922236-DS-28: 139 record(s), 20 remaining after resume-skip
+  [1/20] 'Warm' (Symptom)  [elapsed 33.7m | done 199 | skipped 2784 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [2/20] 'warm' (Symptom)  [elapsed 33.7m | done 200 | skipped 2784 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [3/20] 'WBC' (Lab Test)  [elapsed 33.8m | done 201 | skipped 2784 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [4/20] 'RBC' (Lab Test)  [elapsed 34.0m | done 202 | skipped 2784 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [5/20] 'Hgb' (Lab Test)  [elapsed 34.4m | done 203 | skipped 2784 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [6/20] 'Hct' (Lab Test)  [elapsed 34.7m | done 204 | skipped 2784 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [7/20] 'MCH' (Lab Test)  [elapsed 34.7m | done 205 | skipped 2784 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [8/20] 'MCHC' (Lab Test)  [elapsed 35.0m | done 206 | skipped 2784 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [9/20] 'RDW' (Lab Test)  [elapsed 35.3m | done 207 | skipped 2784 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [10/20] 'UreaN' (Lab Test)  [elapsed 35.6m | done 208 | skipped 2784 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [11/20] 'Creat' (Lab Test)  [elapsed 35.9m | done 209 | skipped 2784 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [12/20] 'Na' (Lab Test)  [elapsed 36.2m | done 210 | skipped 2784 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [13/20] 'Cl' (Lab Test)  [elapsed 36.5m | done 211 | skipped 2784 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [14/20] 'HCO3' (Lab Test)  [elapsed 36.5m | done 212 | skipped 2784 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [15/20] 'AnGap' (Lab Test)  [elapsed 36.8m | done 213 | skipped 2784 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [16/20] 'Calcium' (Lab Test)  [elapsed 36.8m | done 214 | skipped 2784 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [17/20] 'Phos' (Lab Test)  [elapsed 37.0m | done 215 | skipped 2784 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [18/20] 'baseline' (Symptom)  [elapsed 37.2m | done 216 | skipped 2784 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [19/20] 'Alert' (Symptom)  [elapsed 37.3m | done 217 | skipped 2784 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [20/20] 'improved' (Symptom)  [elapsed 37.3m | done 218 | skipped 2784 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149524 (Patient's condition improved)
+[note 22/140] 12314513-DS-16: 121 record(s), 19 remaining after resume-skip
+  [1/19] 'clinic' (Procedure)  [elapsed 37.3m | done 219 | skipped 2886 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=42537845 (Outpatient care management)
+  [2/19] 'alert' (Symptom)  [elapsed 37.3m | done 220 | skipped 2886 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [3/19] 'warm' (Symptom)  [elapsed 37.3m | done 221 | skipped 2886 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [4/19] 'WBC' (Lab Test)  [elapsed 37.3m | done 222 | skipped 2886 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [5/19] 'RBC' (Lab Test)  [elapsed 37.6m | done 223 | skipped 2886 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [6/19] 'Hgb' (Lab Test)  [elapsed 37.9m | done 224 | skipped 2886 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [7/19] 'Hct' (Lab Test)  [elapsed 38.2m | done 225 | skipped 2886 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [8/19] 'MCH' (Lab Test)  [elapsed 38.3m | done 226 | skipped 2886 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [9/19] 'MCHC' (Lab Test)  [elapsed 38.6m | done 227 | skipped 2886 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [10/19] 'RDW' (Lab Test)  [elapsed 38.9m | done 228 | skipped 2886 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [11/19] 'UreaN' (Lab Test)  [elapsed 39.2m | done 229 | skipped 2886 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [12/19] 'Creat' (Lab Test)  [elapsed 39.5m | done 230 | skipped 2886 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [13/19] 'Na' (Lab Test)  [elapsed 39.8m | done 231 | skipped 2886 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [14/19] 'Cl' (Lab Test)  [elapsed 40.1m | done 232 | skipped 2886 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [15/19] 'HCO3' (Lab Test)  [elapsed 40.1m | done 233 | skipped 2886 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [16/19] 'AnGap' (Lab Test)  [elapsed 40.3m | done 234 | skipped 2886 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [17/19] 'Calcium' (Lab Test)  [elapsed 40.4m | done 235 | skipped 2886 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [18/19] 'Phos' (Lab Test)  [elapsed 40.6m | done 236 | skipped 2886 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [19/19] 'Alert' (Symptom)  [elapsed 40.8m | done 237 | skipped 2886 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 23/140] 12407834-DS-17: 191 record(s), 24 remaining after resume-skip
+  [1/24] 'Warm' (Symptom)  [elapsed 40.8m | done 238 | skipped 3053 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [2/24] 'CREAT' (Lab Test)  [elapsed 40.8m | done 239 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [3/24] 'Cl' (Lab Test)  [elapsed 41.1m | done 240 | skipped 3053 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [4/24] 'HCO3' (Lab Test)  [elapsed 41.1m | done 241 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [5/24] 'AnGap' (Lab Test)  [elapsed 41.4m | done 242 | skipped 3053 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [6/24] 'Calcium' (Lab Test)  [elapsed 41.4m | done 243 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [7/24] 'Phos' (Lab Test)  [elapsed 41.6m | done 244 | skipped 3053 | errors 0]
