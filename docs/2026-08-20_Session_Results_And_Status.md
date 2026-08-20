@@ -185,19 +185,67 @@ precision ceiling for common labs with multiple close SNOMED synonyms —
 distinct from anything this session's fixes targeted, and not yet
 addressed.
 
+## 7. Follow-up fixes after the fresh25 grading
+
+Three pieces of work directly targeting the fresh25 findings above:
+
+**Tier 2 calibrator escape hatch, built and shadow-validated (not yet
+useful).** `route_tier()`'s unanimous-re-rank branch now consults a
+fitted `ConsensusCalibrator` the same way the split-vote path already
+does, landing promotions in a new, structurally separate
+`TIER_2B_CALIBRATED_AUTO_RESOLVED` tier (not `TIER_1B`, since Tier 2's
+feature distribution -- 100% `is_ambiguous`, zero vote disagreement -- is
+materially different from what the calibrator was fit on). Retroactively
+shadow-validated against the fresh25 batch's 94 stored Tier 2 decisions
+(`scripts/shadow_validate_tier2b.py`, no pipeline re-run needed): every
+single decision scored 0.0-0.1, nowhere near the 0.72 threshold -- zero
+would-be promotions. This is the correct, safe outcome given how the
+calibrator was trained; the mechanism is verified to never wrongly
+promote with the current model, but needs its own Tier-2-shaped training
+data (which doesn't exist in sufficient volume yet) before it can
+actually help.
+
+**Lab Test near-duplicate-concept ceiling, fixed.** Gold-mined 12 new
+curated aliases into `_LAB_TEST_ALIASES` (calcium, alt, na, urean, ph,
+creat, phos, inr, rdw, mcv, mchc, total co2 -- each 100% consistent in
+gold, n=41-491). Also found and fixed a deeper gap: force-inclusion into
+the candidate pool alone isn't sufficient (checked raw SapBERT similarity
+directly -- the correct alias concept often doesn't rank #1, sometimes
+not even top-5), and `tier3_fast_path()`'s deterministic bypass had never
+actually checked for `match_basis == "verified_lab_test_alias"` despite
+the module's own docstring claiming it did -- confirmed this was already
+silently affecting the *existing* `hct` alias in production (`HCT-32`
+entities were landing in `TIER_5_TRUE_AMBIGUITY`, not any auto-write
+tier). Added a dedicated fast-path branch for it.
+
+**KG search-loop escalation for Tier 4/5, built, smoke-tested, NOT
+adopted.** A genuine multi-round loop (`src/kg_search_loop.py`) letting
+an 8B model request KG searches (relationships/ancestor/name-collision/
+free-text) round by round before committing to a verdict, rather than a
+one-shot pre-fetch. Found and fixed a real bug during the smoke test (the
+schema let the model decline to decide even on the forced-final round).
+Even after the fix, 7/9 smoke-tested entities still declined to commit to
+a verdict after 2-4 search rounds ("I need more evidence, but I'm not
+sure what specific search would be helpful"). Verdict: a 3-8B-class model
+doesn't reliably have the planning/executive function to drive its own
+search strategy -- the existing one-shot pre-fetch design
+(`src.tier4_kg_escalation`, specifically the arbiter architecture at
+51.0% precision) remains the reference design. Not wired in; the planned
+50-entity graded batch validation was cancelled once the smoke test's
+pattern made the direction clear.
+
 ## Open items carried forward
 
-* **Tier 2 needs a different mechanism than a deterministic fast path**
-  (see above) before it can safely re-enter `AUTO_TIERS` — the root cause
-  is now understood, the fix is not yet built.
-* **Lab Test near-duplicate-concept precision ceiling at Tier 1** (68%
-  wrong on this fresh batch) — newly surfaced, needs its own
-  investigation into whether a body-fluid/specificity-aware re-ranking or
-  a curated alias table (same pattern as the existing brand/lab-alias
-  tables) can close it.
+* **Tier 2's calibrator escape hatch needs its own training data.** The
+  mechanism (§7) is built and verified safe (never wrongly promotes with
+  the current model), but genuinely inert until a calibrator variant is
+  fit specifically on Tier-2-shaped (unanimous re-rank, is_ambiguous)
+  examples with real gold labels -- not enough volume exists yet.
 * No corrected `benchmark_char_iou` baseline yet — should be computed
   against this now-graded fresh25 batch next, not against
   calibrator-training notes.
-* The 8B arbiter (`tier4_arbiter_8b.py`) remains the strongest unwired
-  candidate for a future escalation tier, contingent on a larger
-  cross-note validation the user has not yet requested.
+* **The 8B arbiter (`tier4_arbiter_8b.py`) is confirmed the reference
+  design for future escalation-tier work** (51.0% precision) after the
+  KG search-loop alternative was tried and found inferior (§7) —
+  contingent on a larger cross-note validation the user has not yet
+  requested.
