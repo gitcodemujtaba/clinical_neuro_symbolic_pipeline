@@ -77,7 +77,19 @@ PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
 
 GLINER_MODEL_NAME = "Ihor/gliner-biomed-large-v1.0"
-EXTRACTION_THRESHOLD = 0.5
+# 2026-08-18: lowered from 0.5 to 0.35 (= SUBTHRESHOLD_FLOOR below -- i.e.
+# stop rejecting anything the extractor still retains at all), based on a
+# corpus-wide threshold sweep (evaluation/cal_eval.py's threshold_sweep(),
+# n=21,653 stored Stage 2a predictions): GLiNER's own confidence is
+# INVERTED against actual correctness in this corpus -- precision_if_admitted
+# falls monotonically from 65.0% at 0.35 down to 50.0% at 0.95, so 0.5 was
+# strictly worse than 0.35 on BOTH coverage (82.4% vs 100%) and precision
+# (62.4% vs 65.0%) at once, not a tradeoff. Answers this constant's own
+# original "gives an empirical basis for the 0.5 threshold itself, which is
+# currently an unexamined default" comment below. Not measured below 0.35 --
+# nothing is stored under SUBTHRESHOLD_FLOOR, so that direction is still
+# unexamined; revisit if this ever needs pushing further.
+EXTRACTION_THRESHOLD = 0.35
 
 # SUB-THRESHOLD RETENTION. Extraction runs at SUBTHRESHOLD_FLOOR and everything
 # between it and EXTRACTION_THRESHOLD is STORED but flagged `below_threshold`,
@@ -113,7 +125,21 @@ SUBTHRESHOLD_FLOOR = 0.35
 FLAT_NER = True
 
 print("Loading GLiNER-BioMed model... (this may take a moment on the first run)")
-model = GLiNER.from_pretrained(GLINER_MODEL_NAME)
+# 2026-08-18: this project has a real GPU (Tesla T4) that Ollama's MoLLM
+# ensemble already uses (confirmed via `ollama ps` -- 100% GPU per model) but
+# GLiNER.from_pretrained()'s own default is map_location="cpu" -- silently
+# CPU-only unless told otherwise. Live-diagnosed via py-spy against a running
+# Stage 1-2b batch: a single long note's chunked extraction pass alone took
+# 10+ minutes of pure CPU torch inference. Falls back to CPU on any failure
+# (e.g. OOM against the ~7.5GB already used by the 3 Ollama models) rather
+# than crashing extraction entirely.
+import torch as _torch
+_GLINER_DEVICE = "cuda" if _torch.cuda.is_available() else "cpu"
+try:
+    model = GLiNER.from_pretrained(GLINER_MODEL_NAME, map_location=_GLINER_DEVICE)
+except Exception:
+    _GLINER_DEVICE = "cpu"
+    model = GLiNER.from_pretrained(GLINER_MODEL_NAME, map_location="cpu")
 
 CLINICAL_LABELS = [
     "Condition",

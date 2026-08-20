@@ -86,7 +86,15 @@ from gliner import GLiNER
 from src.entity_extraction import CLINICAL_LABELS, FLAT_NER, map_offsets_to_original
 
 RELEX_MODEL_NAME = "knowledgator/gliner-relex-large-v1.0"
-model = GLiNER.from_pretrained(RELEX_MODEL_NAME)
+# Same GPU-placement fix as src/entity_extraction.py -- see that module's
+# own comment for the full rationale (GLiNER.from_pretrained() defaults to
+# CPU unless map_location is set explicitly).
+import torch as _torch
+_RELEX_DEVICE = "cuda" if _torch.cuda.is_available() else "cpu"
+try:
+    model = GLiNER.from_pretrained(RELEX_MODEL_NAME, map_location=_RELEX_DEVICE)
+except Exception:
+    model = GLiNER.from_pretrained(RELEX_MODEL_NAME, map_location="cpu")
 
 # Clinical relation vocabulary. GLiNER-relex is zero-shot -- these labels are
 # passed at inference time, so this list can be extended without retraining.
