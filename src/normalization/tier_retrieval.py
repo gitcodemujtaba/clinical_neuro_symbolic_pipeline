@@ -472,6 +472,20 @@ def _is_compound_concept_name(name: str) -> bool:
     return bool(_COMPOUND_NAME_RE.search(name or ""))
 
 
+# match_basis values representing a curated, pre-verified lookup rather
+# than a similarity guess -- see _collapse_hierarchy_duplicates()'s
+# 2026-08-20 comment for why these must win their root unconditionally.
+# String literals matched by value (not imported) since the modules that
+# assign "verified_lab_test_alias"/"verified_brand_alias"
+# (src.normalization.orchestrator) and "lab_procedure_preferred" (this
+# file, _prefer_lab_procedure_over_observable) already exist below/above
+# this point; PHYSEXAM_SHORTHAND_MATCH_BASIS/NARRATIVE_STATE_WORD_
+# MATCH_BASIS are deliberately excluded -- those two bypass Tier 1-3
+# search (and this function) entirely via a single-candidate synthetic
+# mapping, so they never reach here in the first place.
+_CURATED_MATCH_BASES = {"verified_brand_alias", "verified_lab_test_alias", "lab_procedure_preferred"}
+
+
 def _collapse_hierarchy_duplicates(conn, cands):
     """Collapses candidates connected by a direct SNOMED 'Is a'/'Subsumes'
     edge into a single entry, keeping whichever has the higher similarity
@@ -536,13 +550,35 @@ def _collapse_hierarchy_duplicates(conn, cands):
     # compound candidate sharing a root with a simple one does not change
     # which simple candidate wins that root -- the two collapses are
     # independent, matching the union-find's own per-root grouping.
+    #
+    # 2026-08-20 (real bug, found live via the lab-abbreviation/narrative-
+    # word cold-start backfill): a curated alias candidate (match_basis in
+    # _CURATED_MATCH_BASES) is scored by its OWN raw cosine similarity, not
+    # pinned to 1.0 (see _tier3_semantic_rows's own docstring for why) --
+    # "highest similarity wins" therefore silently discarded a
+    # gold-verified alias in favor of a same-hierarchy sibling with a
+    # merely higher raw score, confirmed live on "HCO3": the curated
+    # concept (4194291, "Blood bicarbonate measurement") lost to its own
+    # SNOMED parent (4227915, "Bicarbonate measurement", 0.8857 similarity)
+    # purely because the plain semantic hit happened to score higher. A
+    # curated candidate now wins its root unconditionally, regardless of
+    # raw score -- it represents verified ground truth, not a similarity
+    # guess, so it should never lose to one.
     best_for_root = {}
     for c in cands:
         if _is_compound_concept_name(c.get("concept_name")):
             continue
         root = find(c["omop_concept_id"])
         current = best_for_root.get(root)
-        if current is None or c["similarity_score"] > current["similarity_score"]:
+        c_curated = c.get("match_basis") in _CURATED_MATCH_BASES
+        current_curated = current is not None and current.get("match_basis") in _CURATED_MATCH_BASES
+        if current is None:
+            best_for_root[root] = c
+        elif c_curated and not current_curated:
+            best_for_root[root] = c
+        elif current_curated and not c_curated:
+            pass  # keep the already-curated current, regardless of raw score
+        elif c["similarity_score"] > current["similarity_score"]:
             best_for_root[root] = c
 
     seen_roots = set()
