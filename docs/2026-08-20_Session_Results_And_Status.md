@@ -234,6 +234,45 @@ search strategy -- the existing one-shot pre-fetch design
 50-entity graded batch validation was cancelled once the smoke test's
 pattern made the direction clear.
 
+## 8. Extraction recall gap — root-caused and partially closed
+
+Checked against the leaderboard comparison the user provided (DriveData
+SNOMED-CT benchmark public rankings): this pipeline's macro/support-
+weighted char IoU (0.1431 / 0.2400) currently ranks last and second-to-
+last respectively against the 5 public entries shown. Root-caused the
+single largest contributing factor: **Stage 2a extraction recall is only
+46.1%** across the full 140-note DB, and char IoU requires actual
+character overlap, so roughly half of gold's characters are
+mathematically unreachable before linking quality even enters the
+picture.
+
+Corpus-wide miss analysis (140 notes, 38,689 gold annotations) found:
+- Every missed gold concept's SNOMED domain is already inside what the
+  6 GLiNER labels target -- no missing entity-type category, this is a
+  pure extraction-quality gap.
+- **100% of misses are true zero-shot blind spots** (GLiNER proposes
+  nothing overlapping at any confidence, not just below threshold) --
+  rules out threshold tuning as a lever entirely.
+- 97.4% of misses are short (<=25 chars), 71% single-word. The
+  most-repeated missed texts are dominated by bare CBC/chemistry-panel
+  abbreviations with no attached value ("Creat trended up", not
+  "Creat-1.2"): Creat, Hgb, RBC, Na, Hct, Cl, MCH, MCHC, RDW, HCO3, WBC,
+  UreaN, Phos, Calcium, AnGap -- 2,097 misses from these 15 terms alone.
+
+**Fix built**: `src/lab_abbrev_coldstart.py`, same architecture as
+`src.physexam_shorthand` (gold-mined text->concept injection, skips
+anything GLiNER already found), reusing `_LAB_TEST_ALIASES`/
+`tier3_fast_path`'s existing mechanism for concept resolution rather than
+needing a new bypass. 21 case-sensitive terms, each independently
+verified against a live DB consistency check (caught and fixed one real
+copy-paste bug -- HCO3 was initially mapped to the wrong concept).
+
+**Measured impact (read-only simulation against real note text + gold,
+not yet a re-processed/re-measured corpus)**: extraction recall
+**46.4% -> 51.9% (+5.5 points)**, recovering 2,140 of 20,754 originally-
+missed gold spans. Verified end-to-end on the single worst-affected note
+(`10513485-DS-7`): 101/101 target-term misses recovered, 100%.
+
 ## Open items carried forward
 
 * **Tier 2's calibrator escape hatch needs its own training data.** The
