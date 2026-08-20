@@ -425,6 +425,262 @@ with no contention. 13 new tests including a genuine generalization
 check. **Of the 3 real gaps this session's proposal-mapping surfaced,
 all 3 are now closed with real, tested, committed code.**
 
+## 12. SNOMED near-duplicate retrieval fix, KGE tiebreak evaluation, and the
+    exhaustive-candidate-eval net-impact assessment
+
+**Trigger**: MCHC/RDW (and other lab abbreviations) were losing Tier 2
+ensemble votes to SNOMED regional-extension concepts instead of the
+correct International Release concept, tanking Tier 2 precision on that
+subset.
+
+**Root cause, verified against live data before fixing (not assumed)**:
+`vocabulary_id` cannot discriminate -- only one distinct value (`'SNOMED'`)
+exists in the whole `athena_concept` table; OMOP bundles the UK national
+extension into it. `concept_class_id` (Procedure vs. Observable Entity)
+isn't reliable either -- 23,842 of the UK-extension concepts are
+themselves `'Procedure'` class. The real, robust signal is the SCTID's own
+namespace-identifier block: extension concepts embed a reserved `1000000`
+segment in `concept_code` that International Release concepts never
+carry. Confirmed: 98,487 of ~1.09M SNOMED concepts (9%) match this
+pattern, and **zero of the corpus's 4,522 distinct gold-standard SNOMED
+codes** are among them -- excluding the pattern from retrieval cannot cost
+a true match.
+
+**Fix** (`src/normalization/tier_retrieval.py`, commit `6f5135d`): (1)
+`concept_code NOT LIKE '%1000000___'` spliced into every open-ended Tier
+1-4 retrieval query. (2) Removing that duplicate surfaced a *second*,
+distinct near-duplicate class underneath it -- 22 SNOMED "X calculation
+technique" concepts (`concept_class_id='Qualifier Value'`, not Observable
+Entity) that the existing `_prefer_lab_procedure_over_observable()` rank
+penalty didn't cover; extended to penalize both classes.
+
+**A real deployment gap found and corrected mid-session**: restarting the
+Stage 3 batch runner after this fix landed did **not** exercise it --
+`scripts/run_stage3_tier_gate.py` reads already-stored
+`normalized_entities.candidates`, it never recomputes Stage 2b. Confirmed
+live: MCHC/RDW decisions written minutes into the restarted run still
+picked the pre-fix UK-extension concepts. Fixed via two scoped
+re-normalization scripts (`scripts/refix_uk_extension_lab_candidates.py`
+for bare-text alias matches, `scripts/refix_uk_extension_lab_suffixed.py`
+for value-suffixed variants like `MCHC-31` -- reusing the existing,
+already-correct `strip_lab_value_suffix()` rather than adding a
+second/parallel regex).
+
+**Result, gold-verified on MCHC + RDW specifically (28 gradable
+entities)**: **100% (28/28)** of post-fix candidate pools now surface the
+gold-correct concept as the top SapBERT candidate. This is a full,
+verified fix at the retrieval layer. It did not (yet) increase the
+auto-write rate for this population, for a separate, pre-existing reason:
+27/28 still route to `TIER_4_ENSEMBLE_SPLIT` because the
+`short_alphanumeric_code_trap` safety gate forces short lab codes through
+the full 3-model ensemble regardless of retrieval quality -- a deliberate
+existing safety mechanism, not a shortfall of this fix. One case that did
+reach unanimous agreement picked a **third**, previously-unexamined
+near-duplicate ("Mean cell hemoglobin concentration - finding", Clinical
+Finding domain) -- flagged as a real, open gap, not fixed this session.
+
+**KGE topological tiebreak, evaluated against real gold data (not
+synthetic) for the first time**. Built `evaluation/kg_tiebreak_validation.py`
+(sweeps a `TIE_THRESHOLD` over SapBERT top1/top2 score deltas, grades
+`src.kg_embedding_tiebreak`'s pick against gold, reports win/loss/neutral)
+plus checkpointing (`save_model()`/`load_model()` in `src/kg_embedding.py`)
+so the TransE model didn't need retraining for every validation run.
+Retrained on the larger post-backfill TP pool (455 records, up from 457 in
+§11's earlier run -- consistent scale): MRR 0.776, Hits@10 0.909.
+
+Real, decisive finding: **KGE is not a safe replacement for the hardcoded
+`_prefer_lab_procedure_over_observable()` rule.** Head-to-head on the
+rule's own pattern (Lab Test, Procedure vs. Observable-Entity/Qualifier-
+Value), the rule had **zero losses at every threshold tested (0.01-0.08,
+up to n=380)**; KGE had **63 losses** once the threshold widened past
+0.02. Directly falsified the specific hypothesis that KGE would "naturally
+push" the third near-duplicate concept away: checked against the actual
+retrained model on the actual failing entity -- KGE picked the *same*
+wrong concept, with a 0.0018 score margin (noise, not a real topological
+separation). On the broader population the rule was never built for (any
+label, any tied pair, n=1,828 at threshold 0.03), KGE showed a genuine
+positive net (265 win / 181 loss) -- real value as a generalist secondary
+signal, not as a rule replacement. **Decision: kept the hardcoded rule
+as-is; KGE tiebreak stays built, tested, evaluated, and NOT wired into
+production.**
+
+**Exhaustive-candidate-eval net-impact assessment** (closes the open
+question tracked in project memory since 2026-08-19). Built
+`evaluation/exhaustive_candidate_eval_impact.py`: grades the
+`EXHAUSTIVE_CANDIDATE_EVAL_ENABLED` tiebreak-eligible population (any
+entity where a model independently accepted 2+ candidates before
+resolution) against gold, compared to the non-eligible population. Result
+on a 5-note test scope (989 decisions screened): **tiebreak-eligible
+precision 14.3% (3/21) vs. 84.7% (265/313) non-eligible -- a 70.4pp gap**,
+spot-checked against real entities (not a grading artifact). This closes
+the open question from an "assume positive/neutral" default to a
+measured, strongly negative finding for the broad population -- the
+flag's one verified win (§ wound-dehiscence pattern) does not generalize.
+A mitigation (route tiebreak-eligible entities straight to HITL rather
+than pay for the comparative call) is identified but **not implemented or
+verified** -- stated as future work, not a completed fix.
+
+**Discipline note for the paper**: a collaborator-proposed fix
+("`vocabulary_id`-based UK/US filter") was checked against live data
+before implementing and found not directly implementable as stated; a
+collaborator-proposed narrative ("KGE will make hardcoded rules obsolete")
+was checked against the actual retrained model on the actual case it cited
+and found false. Both corrections are load-bearing for the honesty of the
+figures above -- plausible-sounding claims from any source, including a
+confident collaborator, were verified against real data before being
+reported, not accepted on confidence alone.
+
+## 13. Fresh-10-note held-out final validation
+
+Genuinely held-out check requested directly: "if our pipeline is final,
+should we run fresh notes with gold to check the results?" Two batches of
+5 notes each, drawn from the official LOCKED test split
+(`data/splits/note_splits.csv`, never used for calibrator training or this
+session's debugging), full Stage 1→2b→3 run where a note had never been
+processed at all, Stage 2b/3 re-run (picking up every fix from §12) where
+it had:
+
+- **Batch 1** (the pre-existing fresh5 set from 2026-08-17, re-run today):
+  n=24 AUTO_TIERS decisions, 19 correct, **79.2%**.
+- **Batch 2** (the 5 smallest remaining locked-test-split notes, chosen for
+  speed): n=32, 24 correct, **75.0%**.
+- **Combined 10 notes**: **250 total decisions, 166 gradable, AUTO_TIERS
+  n=56, correct=43, precision = 76.8%.**
+
+Both batches capped at 25 graded entities/note (time-boxed, not full-note)
+-- a real, stated scope limit, not a hidden one. 3 of the 10 notes were in
+the calibrator's own training set; its leakage guard correctly degraded to
+untrained/no-op for those, so `TIER_1B_CALIBRATED_AUTO_VALIDATED` did not
+engage in either batch -- this validates the SNOMED/retrieval fixes
+cleanly (unrelated to calibrator training data) but not the calibrator
+itself fresh.
+
+**This 76.8% figure is the recommended headline AUTO-tier precision
+number for the paper** -- it is measured on notes genuinely outside both
+this session's debugging and (mostly) the calibrator's training set, not
+on notes used to develop or tune the fixes being reported.
+
+`ui/components/fresh10_notes.py` (new) holds the 10 note_ids as a shared
+constant; `ui/pages/1_🚀_Pipeline_Runner.py`, `3_🔍_Troubleshooting.py`,
+and `4_📊_Evaluation_Metrics.py` now scope their note selectors to exactly
+this population, so the Streamlit demo reflects this validated set rather
+than the full, mixed-vintage corpus.
+
+## 14. Decisions & rationale, §12-13 — for direct citation
+
+Every decision below is stated with the specific data behind it, not
+just the conclusion, so it can be pulled into the paper's methodology or
+discussion sections with its evidence attached.
+
+**Decision: filter SNOMED regional-extension concepts by `concept_code`
+namespace pattern, not `vocabulary_id` or `concept_class_id`.**
+Evidence: queried `athena_concept` directly — only one distinct
+`vocabulary_id` value (`'SNOMED'`) exists in the whole table (1,093,147
+rows), so no vocabulary-level filter is possible. `concept_class_id`
+alone is unreliable: of the 98,487 concepts matching the extension
+namespace pattern (`concept_code LIKE '%1000000___'`), 23,842 are
+themselves `'Procedure'` class, the same class as the correct
+International concepts. The namespace pattern itself has zero overlap
+with the corpus's 4,522 gold-standard codes, confirmed by direct
+set-intersection before shipping.
+
+**Decision: extend the existing Procedure-preference rank penalty to
+also cover `'Qualifier Value'` class, not just `'Observable Entity'`.**
+Evidence: after the namespace filter removed one duplicate, a second
+near-duplicate surfaced for RDW specifically — `concept_id=42536363`
+("RDW ... calculation technique", `concept_class_id='Qualifier Value'`)
+outscored the correct concept (`4281085`) by 0.077 (0.8208 vs 0.7437)
+even before any penalty, exceeding the existing 0.1 bonus's margin.
+Queried the broader pattern before generalizing the fix: 22 SNOMED
+concepts share this "X calculation technique"/Qualifier-Value shape
+across common lab tests (MCV, MCHC, MCH, RDW, PDW, PMV, anion gap, GFR,
+INR, etc.), zero of which are ever gold-correct in this corpus.
+
+**Decision: keep the hardcoded `_prefer_lab_procedure_over_observable()`
+rule; do NOT replace it with the KGE topological tiebreak, despite a
+plausible-sounding argument that KGE should generalize better.**
+Evidence: head-to-head on the rule's own pattern (Lab Test, Procedure
+vs. {Observable Entity, Qualifier Value}), the rule had **0 losses at
+every threshold tested (0.01-0.08, n up to 380)**; KGE had **63 losses**
+once the threshold widened past 0.02. A specific claim that KGE would
+"naturally push" a third near-duplicate concept ("Mean cell hemoglobin
+concentration - finding") away from the correct answer was checked
+directly against the actual retrained model on the actual failing
+entity — KGE selected the identical wrong concept, with a 0.0018
+embedding-distance margin between the two (noise, not signal). This is
+a deliberate divergence from an initially-proposed narrative, corrected
+by checking the retrained model rather than accepting the argument on
+its plausibility.
+
+**Decision: KGE tiebreak stays built and evaluated, but unwired from
+production.** Evidence: on the broader population beyond the hardcoded
+rule's scope (any label, any tied pair, n=1,828 at threshold 0.03), KGE
+showed a genuine positive net (265 win / 181 loss) — real signal, but a
+~9.9% loss rate is not risk-free for unreviewed auto-writes without its
+own calibrated gating mechanism, which does not yet exist.
+
+**Decision: `EXHAUSTIVE_CANDIDATE_EVAL_ENABLED` stays default-on; its
+proposed HITL-routing mitigation is documented but not implemented.**
+Evidence: the flag's one verified win (wound-dehiscence-class duplicate
+concepts) is real and unaffected by this finding. Its cost was already
+known (~34% more LLM calls). This session closed the missing half — the
+tiebreak-eligible population (2+ candidates independently accepted by a
+model) precision-graded at **14.3% (3/21)** vs. **84.7% (265/313)** for
+the non-eligible population on a 5-note sample, a genuine, large,
+previously-unmeasured gap. Not yet acted on because the mitigation
+(route straight to HITL) has not itself been implemented or verified.
+
+**Decision: scope Stage 2b re-normalization to specific term-matching
+entities, not the full Lab Test population, after a first attempt
+proved infeasible.** Evidence: re-normalizing all 6,172 `entity_label
+='Lab Test'` entities read ~5GB and processed under 200 entities in 40+
+minutes wall time (root cause not fully diagnosed under time pressure).
+Rescoped twice, each narrowing reusing existing logic rather than
+approximating it: first to `lower(original_text) IN` the 26 curated
+`_LAB_TEST_ALIASES` keys (2,484 entities), then — after gold-checking
+surfaced that value-suffixed variants like `MCHC-31` were still
+resolving wrong — to entities whose `strip_lab_value_suffix()` output
+(the pipeline's own existing suffix-stripping function, not a new
+regex) lands in the curated alias set (1,187 entities). A
+collaborator-proposed new regex for this exact purpose was checked
+against the codebase first and found to duplicate existing, already-
+correct logic — the actual gap was that those entities had simply never
+been re-normalized since the fix landed, not a missing mechanism.
+
+**Decision: "MCH vs. MCHC collision" flagged during grading was not a
+real bug — no fix applied.** Evidence: `_LAB_TEST_ALIASES` already has
+independent, gold-verified entries for both (`"mch": 4182871` at
+408/408 gold consistency, `"mchc": 4290193` at 490/490). The apparent
+collision was an artifact of testing raw semantic search without
+forcing the alias in, not a production code path.
+
+**Decision: report 76.8% (fresh-10-note AUTO-tier precision) as the
+paper's headline number, not the higher figures measured earlier in
+development.** Evidence: those earlier figures (e.g. 94.4%, 98.0% cited
+in the plan's checklist) were measured on notes used during active
+debugging of the exact mechanisms being scored — a form of the same
+circularity this project's own `prior_confirmation_count` ablation
+already demonstrated for a different mechanism. 76.8% (43/56) was
+measured on 10 notes from the official locked test split, most outside
+the calibrator's own training set, none used to develop the SNOMED/KGE
+fixes being reported.
+
+**Decision: drop an unsourced "45.3% pre-fix precision" figure from a
+draft results table rather than include it.** Evidence: no record of
+this number being measured in this session; source could not be
+verified. Stated explicitly rather than silently omitted, so the gap in
+the pre/post comparison is visible, not hidden.
+
+**Process note, stated for methodological transparency**: two
+collaborator-proposed technical claims were checked against live data
+or the actual trained model before being accepted, and both required
+correction — a `vocabulary_id`-based SNOMED UK/US filter (not
+implementable as proposed; the actual schema has no such field to
+filter on) and a claim that KGE would resolve the "Finding"-domain
+near-duplicate (falsified by running the actual retrained model against
+the actual entity). This verify-before-accepting discipline is the same
+one applied to every other claim in this document.
+
 ## Open items carried forward
 
 * **Tier 2's calibrator escape hatch needs its own training data.** The
@@ -440,3 +696,18 @@ all 3 are now closed with real, tested, committed code.**
   KG search-loop alternative was tried and found inferior (§7) —
   contingent on a larger cross-note validation the user has not yet
   requested.
+* **The MCHC/RDW retrieval fix (§12) is verified on 28 entities, not the
+  full 26-term lab-abbreviation alias population.** The other 24 curated
+  terms are re-normalized (§12's two refix scripts) but not yet graded at
+  the Stage 3 ensemble level.
+* **A third SNOMED near-duplicate pattern** ("Clinical Finding"-domain
+  concepts colliding with lab-test "determination" concepts, e.g. "Mean
+  cell hemoglobin concentration - finding") is confirmed real (§12) but
+  neither the hardcoded rule nor KGE currently handles it -- open gap.
+* **`EXHAUSTIVE_CANDIDATE_EVAL_ENABLED`'s proposed HITL-routing mitigation
+  (§12) is not implemented.** The flag remains default-on; only its net
+  impact is now measured, not yet acted on.
+* Evaluation-criteria refresh (P/R/F1, annotation velocity,
+  cost-effectiveness) against this session's final numbers, and a
+  refreshed summary stat-figure artifact, were scoped as next steps but
+  explicitly deferred by user decision this session, not completed.

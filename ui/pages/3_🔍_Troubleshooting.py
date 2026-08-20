@@ -37,6 +37,7 @@ sys.path.insert(0, PROJECT_DIR)
 from scripts.score_gold_recall import best_tier, overlaps  # noqa: E402
 from src.retrieval import VocabularyRetriever  # noqa: E402
 from ui.components.db_status import render_locked_db_status  # noqa: E402
+from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
 
 # Colors used by the note highlighter (render_highlighted_note below):
 # ours=green, abbreviation=blue (both pre-existing), plus the two new ones
@@ -196,16 +197,17 @@ with st.sidebar:
     # (only normalized_entities and mollm_tier_gate_decisions do) -- joined
     # here rather than filtered directly. is_stale=FALSE means "processed
     # by current code" -- see scripts/mark_notes_stale.py for the migration.
-    note_rows = conn.execute("""
+    note_ph = ",".join("?" * len(FRESH10_NOTE_IDS))
+    note_rows = conn.execute(f"""
         SELECT note_id, count(*) AS n FROM extracted_entities
-        WHERE is_test = TRUE AND note_id IN (
+        WHERE is_test = TRUE AND note_id IN ({note_ph}) AND note_id IN (
             SELECT DISTINCT note_id FROM normalized_entities
             WHERE is_test = TRUE AND is_stale = FALSE
         ) GROUP BY note_id ORDER BY n ASC
-    """).fetchall()
+    """, FRESH10_NOTE_IDS).fetchall()
     if not note_rows:
-        st.warning("No fresh (is_stale = FALSE) notes found -- older pre-fix runs are "
-                  "deliberately hidden. See the is_stale column on normalized_entities.")
+        st.warning("None of the 10 fresh-validation notes are ready (is_stale = FALSE) yet. "
+                  "See scripts/run_fresh5_final_validation.py.")
         _stop()
     note_ids_sorted = [r[0] for r in note_rows]
     counts_by_note = dict(note_rows)
@@ -664,7 +666,7 @@ with right_col:
     with tab4:
         st.caption("Stage 2b: candidate retrieval + match tier for every entity.")
         with st.expander(f"All normalized entities ({len(norm_rows)})", expanded=True):
-            for text, tier, concept, sim, is_amb, _start, _end in norm_rows:
+            for text, tier, concept, sim, is_amb, _start, _end, _concept_id in norm_rows:
                 amb_flag = " 🔀" if is_amb else ""
                 sim_str = f"{sim:.3f}" if sim is not None else "—"
                 st.text(f"  {text!r:<35s} tier={tier or '—':<14s} sim={sim_str:<6s} -> {concept}{amb_flag}")

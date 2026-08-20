@@ -1,19 +1,19 @@
 {
-  "n_touched_concepts": 7261,
-  "n_triples": 24872,
-  "n_train": 22384,
-  "n_test": 2488,
-  "n_entities": 7254,
+  "n_touched_concepts": 7276,
+  "n_triples": 24922,
+  "n_train": 22429,
+  "n_test": 2493,
+  "n_entities": 7269,
   "n_relations": 104,
   "link_prediction": {
-    "mrr": 0.7678719540764295,
-    "hits_at_10": 0.9085,
+    "mrr": 0.7757178359410913,
+    "hits_at_10": 0.909,
     "n_evaluated": 2000
   },
   "extrinsic": {
-    "n_tp_records_provided": 457,
-    "n_usable_records": 457,
-    "n_comparisons": 1623,
-    "frac_wrong_candidate_closer_than_random": 0.7017868145409735
+    "n_tp_records_provided": 455,
+    "n_usable_records": 455,
+    "n_comparisons": 1612,
+    "frac_wrong_candidate_closer_than_random": 0.6892059553349876
   }
 }

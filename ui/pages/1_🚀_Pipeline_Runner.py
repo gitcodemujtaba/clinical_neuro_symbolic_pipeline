@@ -28,6 +28,7 @@ PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 sys.path.insert(0, PROJECT_DIR)
 
 from ui.components.db_status import render_locked_db_status  # noqa: E402
+from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
 
 DB_PATH = os.environ.get("CNSP_DB_PATH", os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb"))
 
@@ -185,17 +186,18 @@ with st.sidebar:
     # (only normalized_entities and mollm_tier_gate_decisions do) -- joined
     # here rather than filtered directly. is_stale=FALSE means "processed
     # by current code" -- see scripts/mark_notes_stale.py for the migration.
-    note_ids = [r[0] for r in conn.execute("""
+    note_ph = ",".join("?" * len(FRESH10_NOTE_IDS))
+    note_ids = [r[0] for r in conn.execute(f"""
         SELECT DISTINCT e.note_id FROM extracted_entities e
-        WHERE e.is_test = TRUE AND e.note_id IN (
+        WHERE e.is_test = TRUE AND e.note_id IN ({note_ph}) AND e.note_id IN (
             SELECT DISTINCT note_id FROM normalized_entities
             WHERE is_test = TRUE AND is_stale = FALSE
         ) ORDER BY e.note_id
-    """).fetchall()]
+    """, FRESH10_NOTE_IDS).fetchall()]
     if not note_ids:
-        st.warning("No fresh (is_stale = FALSE) notes found -- older pre-fix runs are "
-                  "deliberately hidden. Run the pipeline on some notes first "
-                  "(scripts/test_pipeline_e2e.py), then reload this page.")
+        st.warning("None of the 10 fresh-validation notes are ready (is_stale = FALSE) yet. "
+                  "Run the pipeline on them first (scripts/run_fresh5_final_validation.py), "
+                  "then reload this page.")
         _stop()
     note_id = st.selectbox("Note", note_ids)
     n_entities = st.number_input("Number of entities to track", min_value=1, max_value=50, value=1, step=1)

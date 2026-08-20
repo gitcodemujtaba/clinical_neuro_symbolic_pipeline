@@ -128,6 +128,42 @@ mechanism, see below.
   block-list design after a live check found 7/7 of its highest-confidence
   ledger entries were wrong — the mechanism was re-confirming its own
   earlier mistakes).
+* **SNOMED regional-extension exclusion** (2026-08-20,
+  `_UK_EXTENSION_EXCLUSION` in `tier_retrieval.py`) — the SCTID
+  namespace-identifier block (`concept_code NOT LIKE '%1000000___'`)
+  spliced into every open-ended Tier 1-4 retrieval query. `vocabulary_id`
+  cannot make this distinction (only one distinct value exists in the
+  whole `athena_concept` table) and `concept_class_id` alone is not
+  reliable either (23,842 of the excluded concepts are themselves
+  `'Procedure'` class) — the SCTID namespace block is the actual robust
+  signal, verified against zero overlap with the corpus's 4,522
+  gold-standard SNOMED codes before shipping. Paired with an extension of
+  `_prefer_lab_procedure_over_observable()`'s rank penalty to also cover
+  `'Qualifier Value'`-class near-duplicates (22 SNOMED "X calculation
+  technique" concepts), a second, distinct duplicate pattern the exclusion
+  alone surfaced. Verified against gold on the MCHC/RDW subset: 100%
+  (28/28) of post-fix candidate pools now surface the gold-correct
+  concept as top SapBERT candidate.
+* **KG embedding (TransE) topological tiebreak** (`src/kg_embedding.py`,
+  `src/kg_embedding_tiebreak.py`) — a real TransE model (Bordes et al.
+  2013, plain PyTorch) trained on the SNOMED CT relationship subgraph this
+  pipeline's own candidate pools touch (7,269 concepts, ~24,900 edges;
+  MRR 0.776, Hits@10 0.909 on held-out link prediction). Its tiebreak
+  signal is mean embedding distance from a tied candidate to the rest of
+  that entity's OWN SapBERT-proposed candidate pool, not a GLiNER-label
+  centroid or neighboring-entity anchor (both considered and rejected:
+  the former blurs distinct concepts sharing one coarse label, the latter
+  risks error-cascading from an already-wrong neighbor).
+  **Evaluated against gold, not deployed**: head-to-head against
+  `_prefer_lab_procedure_over_observable()` on the rule's own pattern
+  showed the hardcoded rule strictly safer (0 losses at every threshold
+  0.01-0.08 vs. KGE's 63 losses past 0.02) — the rule was kept, KGE was
+  not wired into production as its replacement. On the broader tied-pair
+  population beyond the rule's scope, KGE showed a genuine positive net
+  (265 win / 181 loss at threshold 0.03) — real value as a generalist
+  secondary signal, not yet integrated pending a calibrated gating
+  mechanism (the raw win/loss rate is not risk-free enough for auto-write
+  decisions on its own).
 
 ### Stage 3 — MoLLM Tier Gate (`src/mollm_tier_gate.py`)
 Three local Ollama models — **qwen2.5:3b, llama3.2:3b, phi4-mini** — each
@@ -172,6 +208,23 @@ SapBERT embedding collapse) and `_is_short_alphanumeric_code()`
 structurally). `ConsensusCalibrator.load(..., scoring_note_ids=...)` has a
 leakage guard: it silently degrades to untrained if any scoring note
 overlaps its own training notes.
+
+**`EXHAUSTIVE_CANDIDATE_EVAL_ENABLED`'s broader population, measured
+2026-08-20**: this flag (paired with `CONTEXTUAL_CANDIDATES_ENABLED`)
+keeps Step B's per-candidate evaluation running past the first "yes"
+instead of stopping there, specifically to fix the wound-dehiscence-class
+SNOMED duplicate-concept pattern it was built for (verified working on
+that narrow pattern). Its cost was already known (~34% more LLM calls);
+its accuracy on the broader population it also touches (any entity where
+a model independently accepts 2+ candidates, not just the one pattern)
+was an open question until measured this session:
+`evaluation/exhaustive_candidate_eval_impact.py` found that population's
+precision at only **14.3%** (3/21), vs. **84.7%** (265/313) for entities
+that don't trigger it — a 70pp gap, on a 5-note test scope. The flag
+remains default-on (its narrow verified win is real); a proposed
+mitigation (route the 2+-accept population straight to HITL instead of
+paying for the comparative tiebreak call) is identified but **not
+implemented**.
 
 **Escalation experiments (built, measured, deliberately shelved as of
 2026-08-20)** — three distinct 8B-model (`llama3.1:8b`) architectures for
@@ -268,6 +321,22 @@ Stage1-2b/Stage3 execution) led to the current discipline:
 * Every batch/eval script scopes to `is_test=TRUE` and excludes
   `superseded_by_split`/`superseded_by_growth` rows (a replaced entity and
   its replacement would otherwise double-count).
+* **`evaluation/kg_tiebreak_validation.py`** (2026-08-20) — sweeps a
+  `TIE_THRESHOLD` over SapBERT top1/top2 score deltas, grades the KGE
+  tiebreak's pick against gold (win/loss/neutral, defined as: baseline
+  wrong→mechanism right = win, baseline right→mechanism wrong = loss,
+  anything else = neutral), and reports a head-to-head against the
+  hardcoded rule specifically on the subset where both apply. Reads
+  Stage 2b's already-stored candidate scores — zero live SapBERT calls,
+  deliberately, after an earlier live-recompute attempt measurably
+  stalled a concurrently-running Stage 3 batch via model-load contention.
+* **`evaluation/exhaustive_candidate_eval_impact.py`** (2026-08-20) —
+  detects the `EXHAUSTIVE_CANDIDATE_EVAL_ENABLED` tiebreak-eligible
+  population directly from a stored decision's `models[i].eval_trail`
+  (any model with `sum(1 for t in trail if t.get("match")) >= 2`), grades
+  it against gold, and compares precision to the non-eligible population
+  — the net-impact half of that flag's cost/accuracy tradeoff, which its
+  cost-only measurement (2026-08-19) had left open.
 
 ## UI (`ui/`, Streamlit)
 
@@ -287,6 +356,21 @@ authoritative — they visualize what the pipeline already computed:
    extension kept in its own color.
 4. **Evaluation Metrics** — ECE + IoU (including the benchmark char IoU
    above) per stage, plus static calibrator metadata.
+
+## Current Headline Result — Fresh-Note Held-Out Validation
+
+**AUTO-tier precision: 76.8% (43/56)**, measured 2026-08-20 on 10 notes
+from the official locked test split (`data/splits/note_splits.csv`) that
+were not used to develop or debug this session's SNOMED near-duplicate
+retrieval fix or the KGE evaluation, and were (for 7 of the 10) also
+outside the tier-gate calibrator's own training set. This is the
+recommended number to cite as the pipeline's current AUTO-tier precision
+-- not the higher figures measured on notes used during active
+development, which reflect fitting to those specific notes' failure
+modes rather than genuine generalization. Full breakdown in
+`docs/2026-08-20_Session_Results_And_Status.md` §13; the note list lives
+in `ui/components/fresh10_notes.py`, also used to scope the Streamlit
+demo pages to this validated population.
 
 ## Baseline Comparison
 

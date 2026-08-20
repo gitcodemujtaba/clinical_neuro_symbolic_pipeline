@@ -26,6 +26,7 @@ PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 sys.path.insert(0, PROJECT_DIR)
 
 from ui.components.db_status import render_locked_db_status  # noqa: E402
+from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
 
 DB_PATH = os.environ.get("CNSP_DB_PATH", os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb"))
 
@@ -67,25 +68,98 @@ with st.sidebar:
     # current code" -- see the 2026-08-18 migration that added this column
     # (docs in scripts/mark_notes_stale.py) rather than the earlier,
     # fragile hand-maintained-timestamp approach this replaced.
-    all_note_ids = [r[0] for r in conn.execute("""
+    note_ph = ",".join("?" * len(FRESH10_NOTE_IDS))
+    all_note_ids = [r[0] for r in conn.execute(f"""
         SELECT DISTINCT e.note_id FROM extracted_entities e
-        WHERE e.is_test = TRUE AND e.note_id IN (
+        WHERE e.is_test = TRUE AND e.note_id IN ({note_ph}) AND e.note_id IN (
             SELECT DISTINCT note_id FROM normalized_entities
             WHERE is_test = TRUE AND is_stale = FALSE
         ) ORDER BY e.note_id
-    """).fetchall()]
+    """, FRESH10_NOTE_IDS).fetchall()]
     if not all_note_ids:
-        st.warning("No fresh (is_stale = FALSE) notes found -- older pre-fix runs are "
-                  "deliberately hidden. See the is_stale column on normalized_entities.")
+        st.warning("None of the 10 fresh-validation notes are ready (is_stale = FALSE) yet. "
+                  "See scripts/run_fresh5_final_validation.py.")
         _stop()
     note_ids = st.multiselect("Notes to include", all_note_ids, default=all_note_ids)
     if not note_ids:
         st.info("Select at least one note.")
         _stop()
 
-tab_tiers, tab_precision, tab_recall, tab_calibration, tab_calibrator = st.tabs(
-    ["Tier distribution", "Precision vs. gold", "Recall / completeness",
+tab_overall, tab_tiers, tab_precision, tab_recall, tab_calibration, tab_calibrator = st.tabs(
+    ["Overall", "Tier distribution", "Precision vs. gold", "Recall / completeness",
      "ECE & IoU (per stage)", "Calibrator status"])
+
+# ==========================================================================
+# TAB 0 — Overall: one consolidated, cross-stage summary. The other tabs
+# each answer ONE question for ONE stage (deliberately, see this file's
+# own module docstring on why they're not merged) -- this tab exists
+# because a single "how good is the pipeline, right now, on this
+# selection" glance was still missing. Combines existing grading functions
+# rather than re-deriving any of them.
+# ==========================================================================
+with tab_overall:
+    st.caption("One consolidated view across all stages for the current note selection. "
+              "Each number still comes from its own stage's own definition of 'correct' "
+              "(see the per-stage tabs) -- this just puts them side by side.")
+    if st.button("Run overall summary (grades every stage against gold)"):
+        from evaluation.tier_gate_grading import grade_by_tier
+        from evaluation import iou_metrics
+        from evaluation.cal_eval import GOLD_CANDIDATES, _first_existing
+        from scripts.score_gold_recall import (
+            attach_snomed_codes, load_gold, load_predictions, score,
+        )
+        from src.mollm_tier_gate import AUTO_TIERS
+        from src.retrieval import VocabularyRetriever
+        import collections as _collections
+
+        with st.spinner("Grading every stage against gold..."):
+            gold_path = _first_existing(GOLD_CANDIDATES, "gold")
+            gold_rows = load_gold(gold_path, note_ids)
+            if not gold_rows:
+                st.warning("No gold annotations found for the selected note(s).")
+            else:
+                gold_by_note = _collections.defaultdict(list)
+                for g in gold_rows:
+                    gold_by_note[g["note_id"]].append(g)
+                vocab = VocabularyRetriever(conn)
+
+                # Stage 1/2 completeness
+                predictions = load_predictions(conn, note_ids)
+                attach_snomed_codes(conn, predictions)
+                recall_report = score(gold_rows, predictions)["combined"]
+
+                # Stage 3 tier distribution + AUTO precision (headline number)
+                tier_report = grade_by_tier(conn, note_ids)
+                auto_n = sum(r["clean"]["n"] for t, r in tier_report.items() if t in AUTO_TIERS)
+                auto_correct = sum(r["clean"]["n_correct"] for t, r in tier_report.items() if t in AUTO_TIERS)
+                total_decisions = sum(r["n_decisions"] for r in tier_report.values())
+
+                # Stage 2b benchmark char IoU (DrivenData definition)
+                bench = iou_metrics.benchmark_char_iou(conn, note_ids, gold_by_note, vocab)
+
+            if gold_rows:
+                st.markdown("#### Completeness (Stage 1/2 — of everything gold has, how much did we find?)")
+                oc1, oc2, oc3 = st.columns(3)
+                oc1.metric("Gold annotations", recall_report["gold_annotations"])
+                oc2.metric("Span recall", f"{recall_report['span_recall']*100:.1f}%")
+                oc3.metric("Linked recall", f"{recall_report['linked_recall']*100:.1f}%")
+
+                st.markdown("#### Auto-write precision (Stage 3 — of what we auto-wrote, how often right?)")
+                oc4, oc5, oc6 = st.columns(3)
+                oc4.metric("Total Stage 3 decisions", total_decisions)
+                oc5.metric("AUTO coverage", f"{auto_n}/{total_decisions}",
+                          f"{auto_n/total_decisions*100:.1f}%" if total_decisions else "—")
+                oc6.metric("AUTO-tier precision", f"{auto_correct}/{auto_n}" if auto_n else "n/a",
+                          f"{auto_correct/auto_n*100:.1f}%" if auto_n else None,
+                          help="THE headline number: of decisions we auto-wrote (no human review), "
+                               "how often did we pick gold's exact SNOMED concept?")
+
+                st.markdown("#### Benchmark metric (Stage 2b — DrivenData's own char-level IoU)")
+                oc7, oc8 = st.columns(2)
+                oc7.metric("Macro char IoU", bench["macro_char_iou"])
+                oc8.metric("Support-weighted char IoU", bench["weighted_char_iou"])
+    else:
+        st.info("Click the button above to grade the current note selection across every stage.")
 
 # ==========================================================================
 # TAB 1 — tier distribution (of what we processed, where did it land)
