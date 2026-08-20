@@ -1,0 +1,133 @@
+Loading SapBERT model for vector normalization... (this may take a moment)
+3591 total ensemble_split entities in DB
+2310 clean-gradable (single gold overlap) -- sampling 20
+
+--- 19895550-DS-7-ef17ffb1c9a  text='breath sounds'  label=Symptom ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The candidate concept 'Respiratory sounds' is supported by both model phi4-mini and llama3.2:3b, which correctly anchor on the clinical meaning of abnormal respiratory noises, and is also directly related to chest auscultation features in the knowledge graph.
+gold_snomed=58840004
+
+--- 19895550-DS-7-ed00bd032cc  text='CHEST'  label=Anatomy ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is Thoracic structure (index [1]) because, as model llama3.2:3b correctly noted, it represents a synonym for the same clinical idea of 'a chest X-ray examination', supported by its direct relationship to other anatomical concepts in the knowledge graph.
+gold_snomed=51185008
+
+--- 19895550-DS-7-e7cec211835  text='Chest'  label=Anatomy ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The candidate concept 'Thoracic structure' (index [1]) is supported by both the clinical meaning of 'the organ in which air is breathed' as per model llama3.2:3b's reasoning, and its direct relationship to the domain Spec Anatomic Site with a SNOMED code 51185008.
+gold_snomed=238356005
+
+--- 19895550-DS-7-e6c5383ad52  text='chest'  label=Anatomy ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The candidate concept 'Thoracic structure' (index [1]) is supported by both phi4-mini and llama3.2:3b's reasoning, which correctly identifies it as a synonym for the SNOMED concept describing this specific anatomical location, and its direct relationship to the clinical meaning stated in the findings.
+gold_snomed=51872008
+
+--- 19895550-DS-7-eb860479b0a  text='pneumothorax'  label=Condition ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct choice is Pneumothorax (index 1) because, as model qwen2.5:3b correctly pointed out, the clinical meaning refers to the absence of a condition rather than describing it itself; however, this reasoning was not leveraged by the other two models, which instead relied on surface-text similarity and domain knowledge that does not directly address the specific context of 'absence'. The KG evidence supports index 1 as well: Pneumothorax is indeed a Condition with a direct relationship to Disorder of pleura and pleural cavity.
+gold_snomed=36118008
+
+--- 19895550-DS-7-e1bd8396955  text='CXR'  label=Anatomy ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct answer is 'Bulbus cordis' because, as model llama3.2:3b correctly pointed out, it represents a distinct anatomical site that is clinically relevant to chest imaging and directly relates to the clinical meaning stated in the note.
+gold_snomed=399208008
+
+--- 19895550-DS-7-e27c7a74f1d  text='redness'  label=Symptom ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best match is concept [1] Erythema because, as model qwen2.5:3b correctly noted, the context provided in Discharge Instructions specifically mentions 'redness' related to a surgical site indicating potential infection, and SNOMED concept 'Erythema' (name: Erythema, domain: Condition) better fits this clinical meaning.
+gold_snomed=822962003
+
+--- 19895550-DS-7-ef600b33475  text='drainage'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct answer is Erythema (Condition) because, as qwen2.5:3b correctly noted, it directly matches the clinical meaning of redness and drainage from an incision site in this context, supported by its direct KG relationship to candidate [2] via ['Asso morph of', 'Has asso morph'].
+gold_snomed=239164002
+
+--- 19895550-DS-7-e164a5c5d6c  text='stool softner'  label=Medication ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The majority of models, phi4-mini and qwen2.5:3b, correctly identified 'Stool softener, oral' as the best candidate based on its direct relevance to preventing constipation in the context provided.
+gold_snomed=225948006
+
+--- 19895550-DS-7-e605fa05710  text='cyst'  label=Condition ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The qwen2.5:3b model's concern about specificity is valid, but the phi4-mini model's reasoning aligns with the clinical context and KG evidence, which shows that candidate [1] has a direct relationship to candidate [2] via 'Asso morph of' and 'Has asso morph', indicating they are closely related concepts. Additionally, the note's documentation style suggests using the more general term for conditions.
+gold_snomed=367643001
+
+--- 13538696-DS-11-e81f7b2cc9a  text='erythema'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The qwen2.5:3b model's reasoning about 'Erythema' referring to redness itself, rather than its absence, is correct and aligns with the KG evidence showing that candidate [1] has a direct relationship via ['Asso morph of', 'Has asso morph'] to another concept representing an absence of erythema.
+gold_snomed=247441003
+
+--- 10043750-DS-6-e865d5b3d75  text='diverticulosis'  label=Condition ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best-matching candidate is 'Diverticular disease' because all three models, despite some minor variations in wording, correctly identified the condition characterized by small pouches forming in parts of the digestive tract, and this conclusion aligns with the knowledge-graph evidence showing that 'Diverticular disease' has a direct SNOMED code (397881000) and is classified as a Disorder of intestine.
+gold_snomed=724538004
+
+--- 10043750-DS-6-e0da1347e5a  text='vit D \ndeficiency'  label=Condition ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The majority of models correctly identified 'vit D deficiency' as a direct match for Vitamin D deficiency (SNOMED code: 34713006), which is supported by the clinical context and has no direct KG relationship to other candidates.
+gold_snomed=34713006
+
+--- 10043750-DS-6-ed9f99518b5  text='AOx3'  label=Lab Test ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=3  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The candidate concept 'Autosomal recessive optic atrophy type 6' is supported because, although none of the models directly linked it to the clinical context, its SNOMED code and closest parent concept in the knowledge graph align with a hereditary disorder, which is consistent with the mention of 'AOx3', suggesting a genetic condition affecting vision.
+gold_snomed=426224004
+
+--- 10043750-DS-6-e563883249e  text='UreaN-17'  label=Lab Test ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Urea measurement' because, although all three models had some insight into its meaning, only the phi4-mini model correctly anchored on the clinically determined entity of blood urea nitrogen level, which is directly supported by the knowledge-graph evidence showing no direct relationships to other candidates and aligns with SNOMED code 105010007.
+gold_snomed=105011006
+
+--- 10043750-DS-6-e6112bb6623  text='muscularis propria'  label=Anatomy ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is [1] because, although none of the models provided a perfect match, model llama3.2:3b's reasoning about 'muscularis propria' being an exact match with SNOMED vocabulary and domain was closest to accurate, but ultimately still fell short due to its failure to consider the broader clinical context; meanwhile, qwen2.5:3b correctly identified the term as referring to a specific layer of muscle in hollow organs, which is supported by KG evidence showing it has no direct relationships with other candidates but does have a parent concept of 'Smooth muscle tissue'.
+gold_snomed=86915006
+
+--- 10043750-DS-6-e137fa069a1  text='lymph nodes'  label=Anatomy ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: Although two models (phi4-mini and llama3.2:3b) anchored their verdicts on a superficial similarity between the raw text and the candidate concept 'Structure of lymph node', qwen2.5:3b's more nuanced reasoning about the distinction between structure/composition vs. clinical status is supported by the knowledge-graph evidence, which shows that this concept is primarily related to anatomical site (Spec Anatomic Site) and has no direct relationship with other candidates.
+gold_snomed=59441001
+
+--- 10043750-DS-6-e028410427a  text='Colon'  label=Anatomy ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The Llama3.2:3b model's reasoning, which notes that 'Colon structure' represents a similar idea to the clinical meaning of 'A condition characterized by discoloration of the colon', is supported by the knowledge-graph evidence showing no direct relationship between this candidate and other candidates, but also aligns with the fact that melanosis coli involves changes in coloration within the colon.
+gold_snomed=71854001
+
+--- 10043750-DS-6-eccd706a393  text='ileum'  label=Anatomy ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Ileal structure' because, as qwen2.5:3b correctly pointed out, the clinical context requires a specific representation of an unremarkable appearance of the small intestine, and while all models agree that 'ileum' refers to part of the small intestine, only this candidate directly matches the SNOMED code 34516001 for Region of small intestine.
+gold_snomed=34516001
+
+--- 10043750-DS-6-e6d2fc319d3  text='appendix'  label=Anatomy ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Appendix structure' because, although all models initially seemed to agree with each other, qwen2.5:3b's reasoning about the clinical meaning of 'PRESENT appendix' correctly highlights that the presence or absence of an appendix is what matters in this context, and KG evidence supports that 'Appendix structure' refers specifically to anatomical description rather than state.
+gold_snomed=66754008
+
+====================================================================================================
+SUMMARY (n=20)
+original plurality precision: 7/20 (35.0%)
+arbiter precision:             9/20 (45.0%)
+arbiter changed the verdict: 7/20
+  of those changes: 2 made it correct (was wrong), 0 made it wrong (was correct)
+====================================================================================================
+
+Full transcript: /home/ec2-user/clinical_neuro_symbolic_pipeline_reorder/logs/batch_test_8b_arbiter.log

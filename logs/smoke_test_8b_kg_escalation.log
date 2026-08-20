@@ -1,0 +1,3255 @@
+
+====================================================================================================
+CATEGORY: tier=TIER_4_ENSEMBLE_SPLIT queue_reason=ensemble_split  (10 entities)
+====================================================================================================
+
+--- entity_id=10000032-DS-21-e0405a9f323  note=10000032-DS-21  text='PTT-30'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'PTT-30'
+SECTION: Pertinent Results
+CONTEXT: ...___ 10:25PM   GLUCOSE-109* UREA N-25* CREAT-0.3* SODIUM-138 
+POTASSIUM-3.4 CHLORIDE-105 TOTAL carbon dioxide-27 ANION GAP-9
+___ 10:25PM   estGFR-Using this
+___ 10:25PM   ALT(SGPT)-100* AST(SGOT)-114* anaplastic lymphoma kinase PHOS-114* 
+TOT BILI-1.6*
+___ 10:25PM   LIPASE-77*
+___ 10:25PM   ALBUMIN-3.3*
+___ 10:25PM   WBC-5.0# RBC-4.29 HGB-14.3 HCT-42.6 MCV-99* 
+MCH-33.3* MCHC-33.5 RDW-15.7*
+___ 10:25PM   NEUTS-70.3* LYMPHS-16.5* MONOS-8.1 EOS-4.2* 
+BASOS-0.8
+___ 10:25PM   platelets COUNT-71*
+___ 10:25PM   ___ PTT-30.9 ___
+___ 10:25PM   ___
+.
+
+chest x-ray: No Center for Eating Disorders and Severe Malnutrition at Denver Health cardiopulmonary process....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Prothrombin time
+    domain: Measurement
+    SNOMED code: 396451008 (SNOMED)
+    closest parent concept: Extrinsic coagulation pathway screening
+    direct KG relationship to: candidate [4] via ['Has interprets', 'Interprets of']
+
+[2] name: Partial thromboplastin time finding
+    domain: Measurement
+    SNOMED code: 413432001 (SNOMED)
+    closest parent concept: Intrinsic coagulation pathway finding
+    direct KG relationship to other candidates: none found
+
+[3] name: Partial thromboplastin time ratio
+    domain: Measurement
+    SNOMED code: 391087007 (SNOMED)
+    closest parent concept: Partial thromboplastin time, activated
+    direct KG relationship to other candidates: none found
+
+[4] name: Prothrombin time finding
+    domain: Measurement
+    SNOMED code: 415184000 (SNOMED)
+    closest parent concept: Extrinsic coagulation pathway finding
+    direct KG relationship to: candidate [1] via ['Has interprets', 'Interprets of']
+
+[5] name: Prothrombin time ratio
+    domain: Measurement
+    SNOMED code: 963221000000100 (SNOMED)
+    closest parent concept: Extrinsic coagulation pathway factor measurement
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4245261,
+    "concept_code": "396451008",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Extrinsic coagulation pathway screening",
+    "relationships_to_other_candidates": {
+      "4": [
+        "Has interprets",
+        "Interprets of"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 4187646,
+    "concept_code": "413432001",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Intrinsic coagulation pathway finding",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 4307180,
+    "concept_code": "391087007",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Partial thromboplastin time, activated",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 4213658,
+    "concept_code": "415184000",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Extrinsic coagulation pathway finding",
+    "relationships_to_other_candidates": {
+      "1": [
+        "Has interprets",
+        "Interprets of"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 5,
+    "concept_id": 46285118,
+    "concept_code": "963221000000100",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Extrinsic coagulation pathway factor measurement",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=2  error=None
+REASONING: The correct answer is candidate [2] because it matches the entity's text 'PTT-30' exactly and its domain is Measurement, which aligns with the context of a laboratory result in the Pertinent Results section.
+CHOSEN CONCEPT: 4187646 Partial thromboplastin time finding
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10000032-DS-21-e0ed67a801c  note=10000032-DS-21  text='distension'  label=Symptom ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'distension'
+SECTION: Discharge Instructions
+CONTEXT: ...
+Dear Ms. ___,
+It was a pleasure taking care of you! You came to us with stomach pain and worsening distension. While you were here we did a paracentesis to remove 1.5L of fluid from your belly....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Dilatation
+    domain: Observation
+    SNOMED code: 25322007 (SNOMED)
+    closest parent concept: Enlargement
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4102695,
+    "concept_code": "25322007",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Enlargement",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context describes 'distension' as an observed finding (e.g. 'we did a paracentesis to remove 1.5L of fluid from your belly...'), which aligns with the Observation domain and SNOMED code for Dilatation, supporting its selection over other possible candidates.
+CHOSEN CONCEPT: 4102695 Dilatation
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10000032-DS-21-e0edda651a3  note=10000032-DS-21  text='Aldactone'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Aldactone'
+SECTION: Discharge Instructions
+CONTEXT: ...While you were here we did a paracentesis to remove 1.5L of fluid from your belly. We also placed you on you 40 milligram of Lasix and 50 milligram of Aldactone to help you urinate the excess fluid still in your belly. As we discussed, everyone has a different dose of lasix required to make them urinate and it's likely that you weren't taking a high enough dose....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: propiolactone
+    domain: Drug
+    SNOMED code: 1311565 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[2] name: caprolactone
+    domain: Drug
+    SNOMED code: 1998122 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[3] name: gluconolactone
+    domain: Drug
+    SNOMED code: 25842 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[4] name: pyruvaldehyde
+    domain: Drug
+    SNOMED code: 1373350 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[5] name: gamma-undecalactone
+    domain: Drug
+    SNOMED code: 1376148 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[6] name: spironolactone
+    domain: Drug
+    SNOMED code: 9997 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[7] name: canrenoic acid
+    domain: Drug
+    SNOMED code: 81971 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[8] name: canrenoate
+    domain: Drug
+    SNOMED code: 618970 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[9] name: furosemide
+    domain: Drug
+    SNOMED code: 4603 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[10] name: phosphoric acid
+    domain: Drug
+    SNOMED code: 8259 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[11] name: buthiazide
+    domain: Drug
+    SNOMED code: 19882 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 42899913,
+    "concept_code": "1311565",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 963780,
+    "concept_code": "1998122",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 998392,
+    "concept_code": "25842",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 43526339,
+    "concept_code": "1373350",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 5,
+    "concept_id": 43526174,
+    "concept_code": "1376148",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 6,
+    "concept_id": 970250,
+    "concept_code": "9997",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 7,
+    "concept_id": 19132906,
+    "concept_code": "81971",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 8,
+    "concept_id": 19123864,
+    "concept_code": "618970",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 9,
+    "concept_id": 956874,
+    "concept_code": "4603",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 10,
+    "concept_id": 943030,
+    "concept_code": "8259",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 11,
+    "concept_id": 19039770,
+    "concept_code": "19882",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=6  error=None
+REASONING: The entity 'Aldactone' is matched to spironolactone (candidate 6) because it shares the same name and is documented in the context of a medication regimen, which aligns with its SNOMED code as a drug.
+CHOSEN CONCEPT: 970250 spironolactone
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10000032-DS-21-e195afd4fd3  note=10000032-DS-21  text='LIPASE-77'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'LIPASE-77'
+SECTION: Pertinent Results
+CONTEXT: ...___ 10:25PM   GLUCOSE-109* UREA N-25* CREAT-0.3* SODIUM-138 
+POTASSIUM-3.4 CHLORIDE-105 TOTAL carbon dioxide-27 ANION GAP-9
+___ 10:25PM   estGFR-Using this
+___ 10:25PM   ALT(SGPT)-100* AST(SGOT)-114* anaplastic lymphoma kinase PHOS-114* 
+TOT BILI-1.6*
+___ 10:25PM   LIPASE-77*
+___ 10:25PM   ALBUMIN-3.3*
+___ 10:25PM   WBC-5.0# RBC-4.29 HGB-14.3 HCT-42.6 MCV-99* 
+MCH-33.3* MCHC-33.5 RDW-15.7*
+___ 10:25PM   NEUTS-70.3* LYMPHS-16.5* MONOS-8.1 EOS-4.2* 
+BASOS-0.8
+___ 10:25PM   platelets COUNT-71*
+___ 10:25PM   ___ PTT-30.9 ___
+___ 10:25PM   ___
+.
+
+chest x-ray: No Center for Eating Disorders and Severe Malnutrition at Denver Health cardiopulmonary process....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Measurement of lipase activity
+    domain: Measurement
+    SNOMED code: 830501000000100 (SNOMED)
+    closest parent concept: Triacylglycerol lipase measurement
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 44808695,
+    "concept_code": "830501000000100",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Triacylglycerol lipase measurement",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context is a list of lab results, and candidate [1] matches this format with its name 'Measurement of lipase activity', indicating it represents a measured value rather than an observed condition or finding.
+CHOSEN CONCEPT: 44808695 Measurement of lipase activity
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10000032-DS-21-e1d1a0ab0a2  note=10000032-DS-21  text='melena'  label=Symptom ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'melena'
+SECTION: History of Present Illness
+CONTEXT: ...She notes that she has been noticing gum bleeding while brushing her teeth in recent weeks. she denies easy bruising, melena, bright red blood per rectum, hemetesis, hemoptysis, or hematuria.  
+...
+ASSERTION: ABSENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Melena
+    domain: Condition
+    SNOMED code: 2901004 (SNOMED)
+    closest parent concept: Disorder of digestive system
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4103703,
+    "concept_code": "2901004",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Disorder of digestive system",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's own context indicates that melena is being denied as part of a list of symptoms, which aligns with its classification as a Condition in the knowledge graph.
+CHOSEN CONCEPT: 4103703 Melena
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10000032-DS-21-e220f2fc4f2  note=10000032-DS-21  text='belly'  label=Anatomy ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'belly'
+SECTION: Discharge Instructions
+CONTEXT: ...While you were here we did a paracentesis to remove 1.5L of fluid from your belly. We also placed you on you 40 milligram of Lasix and 50 milligram of Aldactone to help you urinate the excess fluid still in your belly. As we discussed, everyone has a different dose of lasix required to make them urinate and it's likely that you weren't taking a high enough dose....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Belly of skeletal muscle
+    domain: Spec Anatomic Site
+    SNOMED code: 29823001 (SNOMED)
+    closest parent concept: Skeletal muscle part
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4106550,
+    "concept_code": "29823001",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Skeletal muscle part",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context clearly refers to 'belly' in relation to fluid accumulation and urination, which aligns with the anatomical site of interest being the abdominal cavity or belly, as opposed to a skeletal muscle part.
+CHOSEN CONCEPT: 4106550 Belly of skeletal muscle
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10000032-DS-21-e4ee44da59e  note=10000032-DS-21  text='Albuterol Inhaler'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Albuterol Inhaler'
+SECTION: Discharge Medications
+CONTEXT: ...
+1. Albuterol Inhaler 2 PUFF IH every four hours:pro re nata (as needed) wheezing, shortness of breath 
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: albuterol Metered Dose Inhaler
+    domain: Drug
+    SNOMED code: 745678 (RxNorm)
+    closest parent concept: albuterol
+    direct KG relationship to: candidate [2] via ['Has tradename', 'Tradename of']; candidate [3] via ['Has tradename', 'Tradename of']; candidate [4] via ['Has tradename', 'Tradename of']; candidate [5] via ['Has tradename', 'Tradename of']
+
+[2] name: Albuterol Metered Dose Inhaler [Salamol]
+    domain: Drug
+    SNOMED code: OMOP4733849 (RxNorm Extension)
+    closest parent concept: albuterol
+    direct KG relationship to: candidate [1] via ['Has tradename', 'Tradename of']
+
+[3] name: Albuterol Metered Dose Inhaler [Salbulair]
+    domain: Drug
+    SNOMED code: OMOP2216290 (RxNorm Extension)
+    closest parent concept: albuterol
+    direct KG relationship to: candidate [1] via ['Has tradename', 'Tradename of']
+
+[4] name: Albuterol Metered Dose Inhaler [Salbulin]
+    domain: Drug
+    SNOMED code: OMOP4733851 (RxNorm Extension)
+    closest parent concept: albuterol
+    direct KG relationship to: candidate [1] via ['Has tradename', 'Tradename of']
+
+[5] name: Albuterol Metered Dose Inhaler [Salamol Easi-Breathe]
+    domain: Drug
+    SNOMED code: OMOP4733850 (RxNorm Extension)
+    closest parent concept: albuterol
+    direct KG relationship to: candidate [1] via ['Has tradename', 'Tradename of']
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 40142703,
+    "concept_code": "745678",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": "albuterol",
+    "relationships_to_other_candidates": {
+      "2": [
+        "Has tradename",
+        "Tradename of"
+      ],
+      "3": [
+        "Has tradename",
+        "Tradename of"
+      ],
+      "4": [
+        "Has tradename",
+        "Tradename of"
+      ],
+      "5": [
+        "Has tradename",
+        "Tradename of"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 40723384,
+    "concept_code": "OMOP4733849",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": "albuterol",
+    "relationships_to_other_candidates": {
+      "1": [
+        "Has tradename",
+        "Tradename of"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 41018328,
+    "concept_code": "OMOP2216290",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": "albuterol",
+    "relationships_to_other_candidates": {
+      "1": [
+        "Has tradename",
+        "Tradename of"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 40723382,
+    "concept_code": "OMOP4733851",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": "albuterol",
+    "relationships_to_other_candidates": {
+      "1": [
+        "Has tradename",
+        "Tradename of"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 5,
+    "concept_id": 40723383,
+    "concept_code": "OMOP4733850",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": "albuterol",
+    "relationships_to_other_candidates": {
+      "1": [
+        "Has tradename",
+        "Tradename of"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=5  error=None
+REASONING: The entity's text includes 'Easi-Breathe', which is not mentioned in any other candidate's name, and this exact combination of drug name and device type (metered dose inhaler) with the specific suffix '-Easi-Breathe' matches a known variant of Salamol.
+CHOSEN CONCEPT: 40723383 Albuterol Metered Dose Inhaler [Salamol Easi-Breathe]
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10000032-DS-21-e5ba9f09b83  note=10000032-DS-21  text='flank dullness'  label=Symptom ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'flank dullness'
+SECTION: Abdomen
+CONTEXT: ... 
+Abdomen: distended, minimally invasive lumbar decompression diffuse tenderness, +flank dullness, cannot percuss liver/spleen edge ___ distension  
+genitourinary: no foley  
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Abdominal dullness finding
+    domain: Condition
+    SNOMED code: 300424000 (SNOMED)
+    closest parent concept: Abdominal percussion note - finding
+    direct KG relationship to other candidates: none found
+
+[2] name: Flank pain
+    domain: Condition
+    SNOMED code: 247355005 (SNOMED)
+    closest parent concept: Finding of abdominopelvic segment of trunk
+    direct KG relationship to other candidates: none found
+
+[3] name: Feature of abdominal dullness
+    domain: Observation
+    SNOMED code: 364454006 (SNOMED)
+    closest parent concept: Abdominal percussion note feature
+    direct KG relationship to other candidates: none found
+
+[4] name: Dullness over mass of abdomen
+    domain: Observation
+    SNOMED code: 840332001 (SNOMED)
+    closest parent concept: Finding by percussion
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4104148,
+    "concept_code": "300424000",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Abdominal percussion note - finding",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 4090433,
+    "concept_code": "247355005",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Finding of abdominopelvic segment of trunk",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 4269289,
+    "concept_code": "364454006",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Abdominal percussion note feature",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 3654830,
+    "concept_code": "840332001",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Finding by percussion",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=4  error=None
+REASONING: The entity's text 'flank dullness' is best matched with candidate [4] because it specifically describes a finding by percussion, which aligns with the SNOMED code and closest parent concept of this candidate.
+CHOSEN CONCEPT: 3654830 Dullness over mass of abdomen
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10000032-DS-21-e66b6da2fc9  note=10000032-DS-21  text='Liver'  label=Anatomy ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Liver'
+SECTION: Brief Hospital Course
+CONTEXT: ...  
+Pt was scheduled for new PCP with Dr. ___ at ___ and follow up in Liver clinic to schedule outpatient screening esophagogastroduodenoscopy and ___.   
+ 
+
+ 
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Liver structure
+    domain: Spec Anatomic Site
+    SNOMED code: 10200004 (SNOMED)
+    closest parent concept: Liver and/or biliary structure
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4009105,
+    "concept_code": "10200004",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Liver and/or biliary structure",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context mentions 'Liver clinic' and an esophagogastroduodenoscopy screening, indicating that it refers to the organ itself rather than a general anatomical site.
+CHOSEN CONCEPT: 4009105 Liver structure
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10000032-DS-21-e6910b67fb7  note=10000032-DS-21  text='excess fluid'  label=Condition ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'excess fluid'
+SECTION: Discharge Instructions
+CONTEXT: ...While you were here we did a paracentesis to remove 1.5L of fluid from your belly. We also placed you on you 40 milligram of Lasix and 50 milligram of Aldactone to help you urinate the excess fluid still in your belly. As we discussed, everyone has a different dose of lasix required to make them urinate and it's likely that you weren't taking a high enough dose....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Excessive fluid intake
+    domain: Observation
+    SNOMED code: 139104001 (SNOMED)
+    closest parent concept: Finding of pattern of fluid intake
+    direct KG relationship to other candidates: none found
+
+[2] name: Accumulation of fluid
+    domain: Observation
+    SNOMED code: 17672001 (SNOMED)
+    closest parent concept: Fluid disturbance
+    direct KG relationship to other candidates: none found
+
+[3] name: Increased fluid intake
+    domain: Observation
+    SNOMED code: 249480002 (SNOMED)
+    closest parent concept: Finding of pattern of fluid intake
+    direct KG relationship to other candidates: none found
+
+[4] name: Body fluid retention
+    domain: Observation
+    SNOMED code: 43498006 (SNOMED)
+    closest parent concept: Clinical finding
+    direct KG relationship to other candidates: none found
+
+[5] name: Fluid overload status
+    domain: Observation
+    SNOMED code: 405007002 (SNOMED)
+    closest parent concept: Fluid balance observable
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 40303312,
+    "concept_code": "139104001",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Finding of pattern of fluid intake",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 4069715,
+    "concept_code": "17672001",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Fluid disturbance",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 4091502,
+    "concept_code": "249480002",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Finding of pattern of fluid intake",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 4183738,
+    "concept_code": "43498006",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Clinical finding",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 5,
+    "concept_id": 4225718,
+    "concept_code": "405007002",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Fluid balance observable",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=5  error=None
+REASONING: The entity's context mentions 'excess fluid' in relation to a paracentesis and medication regimen aimed at reducing it, which aligns with SNOMED code 405007002 for Fluid overload status.
+CHOSEN CONCEPT: 4225718 Fluid overload status
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+====================================================================================================
+CATEGORY: tier=TIER_5_TRUE_AMBIGUITY queue_reason=verdict_none_correct  (10 entities)
+====================================================================================================
+
+--- entity_id=10060142-DS-9-e44dcb8d8cd  note=10060142-DS-9  text='drainage'  label=Symptom ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'drainage'
+SECTION: Incision Care
+CONTEXT: ...*Please call your doctor or nurse practitioner if you have increased pain, swelling, redness, or drainage from the incision site.
+*Avoid swimming and baths until your follow-up appointment.
+*You may shower, and wash surgical incisions with a minimally invasive lumbar decompression subjective, objective, assessment, plan and warm water....
+ASSERTION: CONDITIONAL
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Discharge
+    domain: Observation
+    SNOMED code: 75823008 (SNOMED)
+    closest parent concept: Effusion
+    direct KG relationship to other candidates: none found
+    NOTE: this exact name also exists as a separate concept (id=45883108, domain=Meas Value, class=Answer) -- SNOMED sometimes files the same clinical idea twice under different domain/class framings; this is informational, weigh it against the note's own context.
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4294698,
+    "concept_code": "75823008",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Effusion",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": [
+      {
+        "concept_id": 45883108,
+        "domain_id": "Meas Value",
+        "concept_class_id": "Answer",
+        "concept_code": "LA18419-4"
+      }
+    ]
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context mentions 'drainage from the incision site', which aligns with the Observation domain and closest parent concept of Effusion for candidate [1], suggesting that it refers to a documented finding rather than a separate condition or measurement.
+CHOSEN CONCEPT: 4294698 Discharge
+GOLD: 75823008  |  CORRECT: True
+
+--- entity_id=10097089-DS-8-e1d93849160  note=10097089-DS-8  text='arm'  label=Condition ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'arm'
+SECTION: History of Present Illness
+CONTEXT: ...CP recurrent ___ and once again, resolved with rest. Starting ___ at 2PM he developed left-sided and substernal CP that radiated to the left anorectal malformation.  ...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Anorectal anomaly
+    domain: Condition
+    SNOMED code: 33225004 (SNOMED)
+    closest parent concept: Congenital anomaly of lower trunk
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4140963,
+    "concept_code": "33225004",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Congenital anomaly of lower trunk",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context mentions 'radiated to the left anorectal malformation', indicating that 'arm' is being described in relation to a pre-existing condition, which aligns with candidate [1]'s domain of Condition and its parent concept Congenital anomaly of lower trunk.
+CHOSEN CONCEPT: 4140963 Anorectal anomaly
+GOLD: 425677008  |  CORRECT: False
+
+--- entity_id=10124346-DS-4-eaa6badcf5a  note=10124346-DS-4  text='heart'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'heart'
+SECTION: Discharge Instructions
+CONTEXT: ...
+
+It was a pleasure to participate in your care here at ___ 
+___!  You were admitted with chest pain that was similar to the pain that you had with your History, EKG, Age, Risk factors, initial Troponin attack in ___.  ...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Troponin measurement
+    domain: Measurement
+    SNOMED code: 105000003 (SNOMED)
+    closest parent concept: Protein measurement
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4021291,
+    "concept_code": "105000003",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Protein measurement",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context mentions 'chest pain' and an initial Troponin attack, suggesting that the heart is being discussed in relation to cardiac function or damage, which aligns with a measurement of troponin levels.
+CHOSEN CONCEPT: 4021291 Troponin measurement
+GOLD: 22298006  |  CORRECT: False
+
+--- entity_id=10352433-DS-20-e64b3db3856  note=10352433-DS-20  text='WBC-8'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'WBC-8'
+SECTION: ADMISSION LABS
+CONTEXT: ...BASOS-0.1
+___ 03:25PM   WBC-8.7 RBC-3.25* HGB-9.8* HCT-28.1* MCV-87 
+MCH-30.2 MCHC-34.9 RDW-15.2
+___ 03:25PM   ALBUMIN-3.5 CALCIUM-9.2 PHOSPHATE-3.0 
+MAGNESIUM-2.1
+___ 03:25PM   CK-MB-1 cTropnT-<0.01 ___
+___ 03:25PM   LIPASE-22
+___ 03:25PM   ALT(SGPT)-16 AST(SGOT)-34 anaplastic lymphoma kinase PHOS-52 TOT 
+BILI-0.5
+___ 03:25PM   estGFR-Using this
+___ 03:25PM   GLUCOSE-147* UREA N-47* CREAT-3.7*# 
+SODIUM-139 POTASSIUM-5.3* CHLORIDE-105 TOTAL carbon dioxide-24 ANION GAP-15
+___ 03:38PM   ___ TO  PTT-UNABLE TO  _...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: CD18 count
+    domain: Measurement
+    SNOMED code: 785441000000104 (SNOMED)
+    closest parent concept: Cluster of differentiation antigen count procedure
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 44805335,
+    "concept_code": "785441000000104",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Cluster of differentiation antigen count procedure",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity 'WBC-8' is clearly a white blood cell count result, and candidate [1] represents this measurement with its SNOMED code for CD18 count, which aligns with the expected laboratory finding in this context.
+CHOSEN CONCEPT: 44805335 CD18 count
+GOLD: 767002  |  CORRECT: False
+
+--- entity_id=10355641-DS-7-e44423c04d7  note=10355641-DS-7  text='heart'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'heart'
+SECTION: ACTIVE ISSUES
+CONTEXT: ...# Presyncope: Her episodes have some characteristics of vasovagal episodes. She describes prodromal symptoms consistent with those preceeding a neurocardiogenic/vasovagal episode, including diaphoresis, weakness, transient vision loss, and increased History, EKG, Age, Risk factors, initial Troponin rate. Episodes occurred while patient was standing, not with exercise or time of situational or emotional stress, again more consistent with a neurocardiogenic etiology....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Troponin measurement
+    domain: Measurement
+    SNOMED code: 105000003 (SNOMED)
+    closest parent concept: Protein measurement
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4021291,
+    "concept_code": "105000003",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Protein measurement",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context mentions 'initial Troponin rate', indicating that it is referring to a measurement or value, which aligns with candidate [1]'s domain of Measurement and SNOMED code for Protein measurement.
+CHOSEN CONCEPT: 4021291 Troponin measurement
+GOLD: 3424008  |  CORRECT: False
+
+--- entity_id=10355641-DS-7-e9453b91ea4  note=10355641-DS-7  text='orthostasis'  label=Condition ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'orthostasis'
+SECTION: ACTIVE ISSUES
+CONTEXT: ...
+They do not sound like orthostasis by history, nor is she orthostatic on exam. Given the lack of symptoms during exertion, arrhythmia is less likely although her brother does apparently have some form of malignant arrhythmia....
+ASSERTION: ABSENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Orthotic procedure
+    domain: Procedure
+    SNOMED code: 18157004 (SNOMED)
+    closest parent concept: Appliance procedures
+    direct KG relationship to: candidate [2] via ['Dir device of', 'Has dir device']
+
+[2] name: Orthotic device
+    domain: Device
+    SNOMED code: 224898003 (SNOMED)
+    closest parent concept: Musculoskeletal device
+    direct KG relationship to: candidate [1] via ['Dir device of', 'Has dir device']; candidate [3] via ['Dir device of', 'Has dir device']
+
+[3] name: Provision of orthosis
+    domain: Procedure
+    SNOMED code: 228595003 (SNOMED)
+    closest parent concept: Provision of appliances
+    direct KG relationship to: candidate [2] via ['Dir device of', 'Has dir device']
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4110368,
+    "concept_code": "18157004",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Appliance procedures",
+    "relationships_to_other_candidates": {
+      "2": [
+        "Dir device of",
+        "Has dir device"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 4076620,
+    "concept_code": "224898003",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Musculoskeletal device",
+    "relationships_to_other_candidates": {
+      "1": [
+        "Dir device of",
+        "Has dir device"
+      ],
+      "3": [
+        "Dir device of",
+        "Has dir device"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 4036582,
+    "concept_code": "228595003",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Provision of appliances",
+    "relationships_to_other_candidates": {
+      "2": [
+        "Dir device of",
+        "Has dir device"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=2  error=None
+REASONING: The entity's context mentions 'arrhythmia' and 'orthostasis', suggesting that orthostatic hypotension is being discussed, which aligns with candidate [2] as it refers to an orthotic device, but given the lack of symptoms during exertion, a more likely interpretation is that the note is discussing a condition related to standing or posture rather than a physical device.
+CHOSEN CONCEPT: 4076620 Orthotic device
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10653756-DS-22-eabd2cf866a  note=10653756-DS-22  text='heart beat'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'heart beat'
+SECTION: PAIN MANAGEMENT
+CONTEXT: ...
+- if you are getting dehydrated (dry mouth, rapid History, EKG, Age, Risk factors, initial Troponin beat, feeling dizzy or faint especially while standing)
+-any change in your symptoms or any symptoms that concern you
+
+...
+ASSERTION: CONDITIONAL
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Pulse
+    domain: Measurement
+    SNOMED code: 8499008 (SNOMED)
+    closest parent concept: Cardiovascular function
+    direct KG relationship to other candidates: none found
+
+[2] name: Pulse rhythm
+    domain: Measurement
+    SNOMED code: 364095004 (SNOMED)
+    closest parent concept: Pulse characteristics
+    direct KG relationship to other candidates: none found
+
+[3] name: Heart sound
+    domain: Measurement
+    SNOMED code: 23472005 (SNOMED)
+    closest parent concept: Cardiac function
+    direct KG relationship to other candidates: none found
+
+[4] name: Heart sounds
+    domain: Measurement
+    SNOMED code: 271660002 (SNOMED)
+    closest parent concept: Characteristic of heart sound
+    direct KG relationship to other candidates: none found
+    NOTE: this exact name also exists as a separate concept (id=21494971, domain=Measurement, class=Clinical Observation) -- SNOMED sometimes files the same clinical idea twice under different domain/class framings; this is informational, weigh it against the note's own context.
+
+[5] name: Pulse rate
+    domain: Measurement
+    SNOMED code: 78564009 (SNOMED)
+    closest parent concept: Pulse characteristics
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4224504,
+    "concept_code": "8499008",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Cardiovascular function",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 4239411,
+    "concept_code": "364095004",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Pulse characteristics",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 4051958,
+    "concept_code": "23472005",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Cardiac function",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 4158197,
+    "concept_code": "271660002",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Characteristic of heart sound",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": [
+      {
+        "concept_id": 21494971,
+        "domain_id": "Measurement",
+        "concept_class_id": "Clinical Observation",
+        "concept_code": "80276-9"
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "concept_id": 4301868,
+    "concept_code": "78564009",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Pulse characteristics",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's text 'heart beat' most closely matches candidate [1] Pulse because it is the only concept that directly corresponds to the colloquial term for a heartbeat, and its domain as Measurement aligns with the context of pain management where vital signs are being monitored.
+CHOSEN CONCEPT: 4224504 Pulse
+GOLD: 3424008  |  CORRECT: False
+
+--- entity_id=10794068-DS-18-ed1213203aa  note=10794068-DS-18  text='dextrose'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'dextrose'
+SECTION: Surgery/Procedure
+CONTEXT: ...Surgery/Procedure: If on glargine or detemir: give 80% of usual dose; If on NPH: give 50% of usual dose; If on premix insulin 
+(e.g. 70/30, 75/25): take total number of AM units ordered, divide by 3, and give that many units as NPH; If on sliding scale of short acting insulin: administer according to HS schedule. Hold all oral antidiabetic medications, and consider sliding scale coverage; If appropriate, give IVF with dextrose to prevent hypoglycemia. 
+
+ 
+...
+ASSERTION: CONDITIONAL
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: glucose
+    domain: Drug
+    SNOMED code: 4850 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 1560524,
+    "concept_code": "4850",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context specifies 'dextrose' as an IVF (intravenous fluid) to prevent hypoglycemia, which aligns with candidate [1] being a glucose-based medication.
+CHOSEN CONCEPT: 1560524 glucose
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10813665-DS-7-e3d5051df69  note=10813665-DS-7  text='rSVG'  label=Anatomy ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'rSVG'
+SECTION: Past Medical History
+CONTEXT: ...- Atrial fibrillation and systolic congestive heart failure. ejection fraction of 35% to 40%
+- CAD status post coronary artery bypass graft (2 vessel, left internal mammary artery to LAD, rSVG to OM) in ___
+- Rheumatic History, EKG, Age, Risk factors, initial Troponin disease status post bioprosthetic AVR in ___
+- Mitral valve prolapse
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: RSV antigen level
+    domain: Measurement
+    SNOMED code: 315184001 (SNOMED)
+    closest parent concept: Viral antigen assay
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4201161,
+    "concept_code": "315184001",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Viral antigen assay",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context mentions 'rSVG to OM' in relation to coronary artery bypass graft surgery, which suggests that rSVG refers to a saphenous vein graft, and this matches the knowledge-graph evidence for candidate [1], RSV antigen level, but given the surgical context it is more likely referring to Radial SVG (Saphenous Vein Graft) used in cardiac surgery.
+CHOSEN CONCEPT: 4201161 RSV antigen level
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10850358-DS-17-ee80f401829  note=10850358-DS-17  text='come'  label=Condition ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'come'
+SECTION: Transitional Issues
+CONTEXT: ...If he is unable to Chronic Otitis Media With Effusion off the insulin, the ___ clinic can transition him to a basal/bolus insulin regimen at his follow up appointment and if this is a barrier to returning to the memory unit, his long term residential situation will need to be re-addressed with family....
+ASSERTION: CONDITIONAL
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Chronic otitis media with effusion
+    domain: Condition
+    SNOMED code: 1343699004 (SNOMED)
+    closest parent concept: Chronic otitis media
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 1076473,
+    "concept_code": "1343699004",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Chronic otitis media",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context is discussing a condition that needs to be addressed in order for the patient to transition off insulin, and candidate [1] matches this clinical scenario as it is a chronic otitis media-related complication.
+CHOSEN CONCEPT: 1076473 Chronic otitis media with effusion
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+====================================================================================================
+CATEGORY: tier=TIER_5_TRUE_AMBIGUITY queue_reason=below_similarity_floor  (10 entities)
+====================================================================================================
+
+--- entity_id=10000032-DS-21-e1d3a9e92fe  note=10000032-DS-21  text='Truvada'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Truvada'
+SECTION: Discharge Medications
+CONTEXT: ...
+2. Emtricitabine-Tenofovir (Truvada) 1 TAB by mouth/oral DAILY 
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: tenofovir
+    domain: Drug
+    SNOMED code: 117466 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[2] name: tenofovir disoproxil
+    domain: Drug
+    SNOMED code: 300195 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[3] name: emtricitabine
+    domain: Drug
+    SNOMED code: 276237 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 19011093,
+    "concept_code": "117466",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 1710281,
+    "concept_code": "300195",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 1703069,
+    "concept_code": "276237",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=2  error=None
+REASONING: The entity 'Truvada' is documented in the context of discharge medications, and given that it's explicitly stated to be Emtricitabine-Tenofovir (Truvada), this suggests a combination product where tenofovir disoproxil is one component, making candidate [2] the best match.
+CHOSEN CONCEPT: 1710281 tenofovir disoproxil
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10000032-DS-21-ecc4ee02aaf  note=10000032-DS-21  text='HCT-42'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'HCT-42'
+SECTION: Pertinent Results
+CONTEXT: ...___ 10:25PM   GLUCOSE-109* UREA N-25* CREAT-0.3* SODIUM-138 
+POTASSIUM-3.4 CHLORIDE-105 TOTAL carbon dioxide-27 ANION GAP-9
+___ 10:25PM   estGFR-Using this
+___ 10:25PM   ALT(SGPT)-100* AST(SGOT)-114* anaplastic lymphoma kinase PHOS-114* 
+TOT BILI-1.6*
+___ 10:25PM   LIPASE-77*
+___ 10:25PM   ALBUMIN-3.3*
+___ 10:25PM   WBC-5.0# RBC-4.29 HGB-14.3 HCT-42.6 MCV-99* 
+MCH-33.3* MCHC-33.5 RDW-15.7*
+___ 10:25PM   NEUTS-70.3* LYMPHS-16.5* MONOS-8.1 EOS-4.2* 
+BASOS-0.8
+___ 10:25PM   platelets COUNT-71*
+___ 10:25PM   ___ PTT-30.9 ___
+___ 10:25PM   ___
+.
+
+chest x-ray: No Center for Eating Disorders and Severe Malnutrition at Denver Health cardiopulmonary process....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Hematocrit determination
+    domain: Measurement
+    SNOMED code: 28317006 (SNOMED)
+    closest parent concept: Hematology test
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4151358,
+    "concept_code": "28317006",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Hematology test",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's own context is a lab result report listing 'HCT-42' under various other test results, and candidate [1] matches this as a measurement of hematocrit level.
+CHOSEN CONCEPT: 4151358 Hematocrit determination
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10043750-DS-6-e961df17cb8  note=10043750-DS-6  text='Hct-30.4'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Hct-30.4'
+SECTION: Pertinent Results
+CONTEXT: ...
+___ 06:38AM BLOOD WBC-7.9 RBC-3.14* Hgb-9.9* Hct-30.4* 
+MCV-97 MCH-31.5 MCHC-32.5 RDW-12.8 platelets ___
+___ 06:38AM BLOOD Glucose-72 UreaN-17 Creat-1.0 Na-143 
+K-3.8 Cl-109* bicarbonate-22 AnGap-16
+___ 06:38AM BLOOD Calcium-8.1* Phos-3.2 Mg-1.6
+
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Hematocrit determination
+    domain: Measurement
+    SNOMED code: 28317006 (SNOMED)
+    closest parent concept: Measurement
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4151358,
+    "concept_code": "28317006",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Measurement",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context as a 'Pertinent Result' and its format (e.g., 'Hct-30.4') indicate it is reporting a measurement, which aligns with candidate [1]'s domain of Measurement.
+CHOSEN CONCEPT: 4151358 Hematocrit determination
+GOLD: 28317006  |  CORRECT: True
+
+--- entity_id=10097089-DS-8-ebf5ea7dde9  note=10097089-DS-8  text='advair'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'advair'
+SECTION: Brief Hospital Course
+CONTEXT: ...    
+ 
+# chronic obstructive pulmonary disease: Was stable on home albuterol/advair  
+  
+# Hypertension: Was stable in house; on admission, lowered lisinopril dose to accomodate the addition of beta blocker.
+
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: fluticasone
+    domain: Drug
+    SNOMED code: 41126 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[2] name: salmeterol
+    domain: Drug
+    SNOMED code: 36117 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 1149380,
+    "concept_code": "41126",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 1137529,
+    "concept_code": "36117",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context mentions 'advair' in combination with albuterol for chronic obstructive pulmonary disease (COPD), suggesting that it refers to a combination inhalation medication, which is typically composed of fluticasone and salmeterol.
+CHOSEN CONCEPT: 1149380 fluticasone
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10124346-DS-4-ed57051cc5a  note=10124346-DS-4  text='Detrol LA'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Detrol LA'
+SECTION: Tablet Refills
+CONTEXT: ...
+11. Detrol LA *NF* (tolterodine) 4 milligram Oral daily 
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: tolterodine
+    domain: Drug
+    SNOMED code: 119565 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 913782,
+    "concept_code": "119565",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context clearly indicates that 'Detrol LA' is being documented as a medication (specifically an oral tablet) with its active ingredient listed, which matches the knowledge-graph fact that candidate [1] represents tolterodine, a drug.
+CHOSEN CONCEPT: 913782 tolterodine
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10302979-DS-5-e72477b6857  note=10302979-DS-5  text='CHEM-7'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'CHEM-7'
+SECTION: Discharge Medications
+CONTEXT: ...
+Please check CHEM-7 (ICD-9 428.30) and international normalized ratio (ICD-9 427.31)
+Fax to ___, muscular dystrophy at ___
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Basic metabolic panel - Blood
+    domain: Measurement
+    SNOMED code: 51990-0 (LOINC)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 3041230,
+    "concept_code": "51990-0",
+    "vocabulary": "LOINC",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity 'CHEM-7' is documented in the context of discharge medications and includes a reference to ICD-9 codes for laboratory tests, which aligns with the knowledge-graph evidence that candidate [1] represents a measurement (Basic metabolic panel - Blood) with an associated LOINC code.
+CHOSEN CONCEPT: 3041230 Basic metabolic panel - Blood
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10352433-DS-20-e126fcb5905  note=10352433-DS-20  text='Lantus'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Lantus'
+SECTION: Past Medical History
+CONTEXT: ...
+- Diabetes, on insulin (Lantus and Humalog SS)
+- Orthostasis and possible convulsive syncope, as above
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: insulin glargine
+    domain: Drug
+    SNOMED code: 274783 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[2] name: insulin, regular, human
+    domain: Drug
+    SNOMED code: 253182 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 1502905,
+    "concept_code": "274783",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 1596977,
+    "concept_code": "253182",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity 'Lantus' is most likely referring to insulin glargine because it matches the name given in the context ('Lantus and Humalog SS'), which suggests a long-acting basal insulin, consistent with the characteristics of insulin glargine.
+CHOSEN CONCEPT: 1502905 insulin glargine
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10352433-DS-20-e9eb6669c49  note=10352433-DS-20  text='lantus'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'lantus'
+SECTION: Brief Hospital Course
+CONTEXT: ... 
+  
+#DM - Stable, patient's home lantus regimen was continued with additional insulin sliding scale while hospitalized.
+
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: insulin glargine
+    domain: Drug
+    SNOMED code: 274783 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[2] name: insulin, regular, human
+    domain: Drug
+    SNOMED code: 253182 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 1502905,
+    "concept_code": "274783",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 1596977,
+    "concept_code": "253182",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context mentions 'lantus regimen', which is a long-acting insulin formulation, and candidate [1] matches this description as it is known to be marketed under the brand name Lantus.
+CHOSEN CONCEPT: 1502905 insulin glargine
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10352433-DS-20-ee7b9a49203  note=10352433-DS-20  text='HCT-28'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'HCT-28'
+SECTION: ADMISSION LABS
+CONTEXT: ...BASOS-0.1
+___ 03:25PM   WBC-8.7 RBC-3.25* HGB-9.8* HCT-28.1* MCV-87 
+MCH-30.2 MCHC-34.9 RDW-15.2
+___ 03:25PM   ALBUMIN-3.5 CALCIUM-9.2 PHOSPHATE-3.0 
+MAGNESIUM-2.1
+___ 03:25PM   CK-MB-1 cTropnT-<0.01 ___
+___ 03:25PM   LIPASE-22
+___ 03:25PM   ALT(SGPT)-16 AST(SGOT)-34 anaplastic lymphoma kinase PHOS-52 TOT 
+BILI-0.5
+___ 03:25PM   estGFR-Using this
+___ 03:25PM   GLUCOSE-147* UREA N-47* CREAT-3.7*# 
+SODIUM-139 POTASSIUM-5.3* CHLORIDE-105 TOTAL carbon dioxide-24 ANION GAP-15
+___ 03:38PM   ___ TO  PTT-UNABLE TO  _...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Hematocrit determination
+    domain: Measurement
+    SNOMED code: 28317006 (SNOMED)
+    closest parent concept: Hematology test
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4151358,
+    "concept_code": "28317006",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Hematology test",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity 'HCT-28' is clearly a measurement result (as indicated by its context in the lab results section), and the knowledge-graph evidence confirms that it corresponds to a Hematocrit determination, which is a type of hematology test.
+CHOSEN CONCEPT: 4151358 Hematocrit determination
+GOLD: 28317006  |  CORRECT: True
+
+--- entity_id=10355641-DS-7-e5f69295a9b  note=10355641-DS-7  text='Chem 7'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Chem 7'
+SECTION: History of Present Illness
+CONTEXT: ...
+ASA 325, 1L NS, and labs were all unremarkable (complete blood count, Chem 7, troponin-t, creatine kinase). electrocardiogram as well as initial troponin were negative for any Center for Eating Disorders and Severe Malnutrition at Denver Health ischemic disease. Remainder of laboratory work was reassuring....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Basic metabolic panel - Blood
+    domain: Measurement
+    SNOMED code: 51990-0 (LOINC)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 3041230,
+    "concept_code": "51990-0",
+    "vocabulary": "LOINC",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's text 'Chem 7' matches the name of candidate [1], and given that it is listed alongside other lab results (e.g. complete blood count, troponin-t), this suggests a measurement or test result rather than a disorder or condition.
+CHOSEN CONCEPT: 3041230 Basic metabolic panel - Blood
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+====================================================================================================
+CATEGORY: tier=None queue_reason=below_confidence_threshold  (10 entities)
+====================================================================================================
+
+--- entity_id=10124346-DS-4-ef116b10a82  note=10124346-DS-4  text='mild'  label=Procedure ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'mild'
+SECTION: CHRONIC ISSUES
+CONTEXT: ...Following her cardiac cath on ___, a repeat Transthoracic Echocardiogram showed improved ejection fraction to > 55%, along with normal global/regional biventricular systolic function, minimally invasive lumbar decompression aortic regurgitation, minimally invasive lumbar decompression mitral regurgitation, moderate tricuspid regurgitation, and minimally invasive lumbar decompression pulmonary hypertension (TR gradient 32 millimeter of mercury)....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Minimally invasive decompression of lumbar spine
+    domain: Procedure
+    SNOMED code: 830198007 (SNOMED)
+    closest parent concept: Decompression of lumbar spine
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 3654363,
+    "concept_code": "830198007",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Decompression of lumbar spine",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context mentions 'minimally invasive lumbar decompression' multiple times in relation to different conditions (aortic regurgitation, mitral regurgitation, pulmonary hypertension), indicating that it is describing a procedure rather than an issue itself.
+CHOSEN CONCEPT: 3654363 Minimally invasive decompression of lumbar spine
+GOLD: 840306007  |  CORRECT: False
+
+--- entity_id=10355641-DS-7-e8028949ed9  note=10355641-DS-7  text='removal'  label=Procedure ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'removal'
+SECTION: Past Medical History
+CONTEXT: ...
+-Hypertension
+-Hyperlipidemia
+-Varicose veins
+-Bilateral cataract removal
+-Laparoscopic gastric bypass (___)
+-Hiatal hernia status post repair
+-Broke left arm/hand with crush injury? Surgical intervention with external fixation
+-Varicose vein stripping (left leg)
+ 
+Social History:...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Removal
+    domain: Procedure
+    SNOMED code: 118292001 (SNOMED)
+    closest parent concept: Procedure by method
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4042150,
+    "concept_code": "118292001",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Procedure by method",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context in 'Past Medical History' and its mention of specific surgical interventions (e.g. 'Bilateral cataract removal', 'Laparoscopic gastric bypass') supports selecting the procedure-focused candidate [1], which is also supported by its SNOMED code for a general procedure.
+CHOSEN CONCEPT: 4042150 Removal
+GOLD: 1231296008  |  CORRECT: False
+
+--- entity_id=10513485-DS-7-e9d661bd0a8  note=10513485-DS-7  text='mm'  label=Condition ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'mm'
+SECTION: Pertinent Results
+CONTEXT: ...If this study cannot be obtained, further evaluation could be performed with computed tomography. 3.  Right lower pole 15 multiple myeloma cyst or calyceal diverticulum.  ...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Multiple myeloma
+    domain: Condition
+    SNOMED code: 109989006 (SNOMED)
+    closest parent concept: Malignant tumor of lymphoid hemopoietic and related tissue
+    direct KG relationship to other candidates: none found
+    NOTE: this exact name also exists as a separate concept (id=36032641, domain=Meas Value, class=Answer) -- SNOMED sometimes files the same clinical idea twice under different domain/class framings; this is informational, weigh it against the note's own context.
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 437233,
+    "concept_code": "109989006",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Malignant tumor of lymphoid hemopoietic and related tissue",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": [
+      {
+        "concept_id": 36032641,
+        "domain_id": "Meas Value",
+        "concept_class_id": "Answer",
+        "concept_code": "LA31350-4"
+      }
+    ]
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context is clearly discussing a medical finding or diagnosis ('multiple myeloma cyst or calyceal diverticulum'), and the knowledge-graph indicates that 'Multiple myeloma' (candidate 1) is a Condition concept with a parent concept of Malignant tumor, aligning with this diagnostic discussion.
+CHOSEN CONCEPT: 437233 Multiple myeloma
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10794068-DS-18-e18e32a36cc  note=10794068-DS-18  text='chest pain, pressure, squeezing or \ntightness'  label=Symptom ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'chest pain, pressure, squeezing or \ntightness'
+SECTION: Emergency Department for any of the following
+CONTEXT: ...
+*You experience new chest pain, pressure, squeezing or tightness.
+*New or worsening cough, shortness of breath, or wheeze.
+*If you are vomiting and cannot keep down fluids or your medications.
+*You are getting dehydrated due to continued vomiting, diarrhea, or other reasons. Signs of dehydration include dry mouth, rapid heartbeat, or feeling dizzy or faint when standing.
+*You see blood or dark/black material when you vomit or have a bowel movement.
+*You experience burning when you urinate, have blood in your urine, or experience a discharge.
+*Your pain in not improving within ___ hours or is not gone within 24 hours....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Squeezing chest pain
+    domain: Condition
+    SNOMED code: 371030007 (SNOMED)
+    closest parent concept: Chest pain
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4159138,
+    "concept_code": "371030007",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Chest pain",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's own text lists 'chest pain, pressure, squeezing or tightness' as separate symptoms under Emergency Department criteria, and candidate [1] directly matches one of these exact symptom descriptions.
+CHOSEN CONCEPT: 4159138 Squeezing chest pain
+GOLD: not clean-gradable (4 overlapping gold spans)
+
+--- entity_id=10797747-DS-20-e8c671e65e6  note=10797747-DS-20  text='crack cocaine'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'crack cocaine'
+SECTION: Issues
+CONTEXT: ...
+- history of crack cocaine use w/ prior pregnancy, now clean
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: cocaine
+    domain: Drug
+    SNOMED code: 2653 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+    NOTE: this exact name also exists as a separate concept (id=45884481, domain=Meas Value, class=Answer) -- SNOMED sometimes files the same clinical idea twice under different domain/class framings; this is informational, weigh it against the note's own context.
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 1001419,
+    "concept_code": "2653",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": [
+      {
+        "concept_id": 45884481,
+        "domain_id": "Meas Value",
+        "concept_class_id": "Answer",
+        "concept_code": "LA15257-1"
+      }
+    ]
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's mention of 'crack cocaine' specifically implies a form or preparation of cocaine, which is supported by the knowledge-graph evidence that candidate [1] (cocaine) has no direct relationship to other candidates but is itself a more general concept that can be prepared in various forms.
+CHOSEN CONCEPT: 1001419 cocaine
+GOLD: 78267003  |  CORRECT: False
+
+--- entity_id=10839721-DS-9-e1b50ab4c1c  note=10839721-DS-9  text='tenderness'  label=Symptom ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'tenderness'
+SECTION: PHYSICAL EXAM
+CONTEXT: ...
+ABDOMEN - Soft, mildly distended, minimally invasive lumbar decompression tenderness to palpation greatest in lower quadrants, no rebound/guarding
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Tenderness
+    domain: Condition
+    SNOMED code: 247348008 (SNOMED)
+    closest parent concept: Finding by palpation
+    direct KG relationship to other candidates: none found
+    NOTE: this exact name also exists as a separate concept (id=45879307, domain=Meas Value, class=Answer) -- SNOMED sometimes files the same clinical idea twice under different domain/class framings; this is informational, weigh it against the note's own context.
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4082445,
+    "concept_code": "247348008",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Finding by palpation",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": [
+      {
+        "concept_id": 45879307,
+        "domain_id": "Meas Value",
+        "concept_class_id": "Answer",
+        "concept_code": "LA17709-9"
+      }
+    ]
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context in 'PHYSICAL EXAM' and description of palpation findings supports candidate [1] Tenderness, which is a Condition concept related to Finding by palpation.
+CHOSEN CONCEPT: 4082445 Tenderness
+GOLD: 43478001  |  CORRECT: False
+
+--- entity_id=10839721-DS-9-e4476e9fa12  note=10839721-DS-9  text='suprapubic region'  label=Anatomy ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'suprapubic region'
+SECTION: History of Present Illness
+CONTEXT: ...In the ED initial VS were 97.9, 88, 113/46, 16, 96%RA. On exam, abdomen diffusely tender without rebound or guarding. The pain was maximal in the suprapubic region. Rectal exam showed frank blood in the vault....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Hypogastric region structure
+    domain: Spec Anatomic Site
+    SNOMED code: 11708003 (SNOMED)
+    closest parent concept: Structure of central region of abdomen
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4035235,
+    "concept_code": "11708003",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Structure of central region of abdomen",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's own context specifies that the pain was maximal in the suprapubic region, which aligns with the knowledge-graph evidence that 'Hypogastric region structure' is a concept related to this anatomical site.
+CHOSEN CONCEPT: 4035235 Hypogastric region structure
+GOLD: 11708003  |  CORRECT: True
+
+--- entity_id=10860165-DS-24-ed0716b33cc  note=10860165-DS-24  text='Med'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Med'
+SECTION: Refills
+CONTEXT: ...RX *sennosides [senna] 8.6 milligram 1 tab by mouth twice a day Disp 
+#*50 Capsule Refills:*0
+10. Sofosbuvir/___ Study morphine equivalent dosage 1 tablet ORALLY ONCE A DAY 
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: morphine
+    domain: Drug
+    SNOMED code: 7052 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+    NOTE: this exact name also exists as a separate concept (id=36310914, domain=Meas Value, class=Answer) -- SNOMED sometimes files the same clinical idea twice under different domain/class framings; this is informational, weigh it against the note's own context.
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 1110410,
+    "concept_code": "7052",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": [
+      {
+        "concept_id": 36310914,
+        "domain_id": "Meas Value",
+        "concept_class_id": "Answer",
+        "concept_code": "LA28611-4"
+      }
+    ]
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context mentions 'Study morphine equivalent dosage', which suggests that 'morphine' is being referenced in relation to its potency or equivalence, and candidate [1] matches this interpretation as a specific drug.
+CHOSEN CONCEPT: 1110410 morphine
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10912090-DS-33-e0e74cccb75  note=10912090-DS-33  text='Alb'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Alb'
+SECTION: History of Present Illness
+CONTEXT: ...Lactate 1.0
+alanine aminotransferase 24 aspartate aminotransferase 44 AP 116 Tbili 0.3 albumin 3.6 Lipase 130 
+sodium 138 thousand 4.6 chloride 103 bicarbonate 20 blood urea nitrogen 21 Cr 1.2 Glu 92
+Ca 9.1 milligram 1.7 Phos 4.4 
+Tox screen: Serum ASA, alcohol, Acetmnphn, Benzo, Barb, Tricyc, 
+Negative...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Albumin measurement
+    domain: Measurement
+    SNOMED code: 26758005 (SNOMED)
+    closest parent concept: Protein measurement
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4097664,
+    "concept_code": "26758005",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Protein measurement",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context is clearly documenting laboratory results, and candidate [1] matches this framing with its 'Measurement' domain and SNOMED code for albumin measurement.
+CHOSEN CONCEPT: 4097664 Albumin measurement
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10912090-DS-33-e40eb1c5de8  note=10912090-DS-33  text='procedure'  label=Procedure ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'procedure'
+SECTION: Past Medical History
+CONTEXT: ...# acquired immune deficiency syndrome (cluster of differentiation 4 218, VL 7900 ___ resistant disease - followed by ID, Dr. ___ 
+ - on dolutegravir, darunavir-cobi, lamuvidine ___ on Stribild)
+# esophageal candidiasis, CMV esophagitis and colitis ___    
+# ___ esophagitis 
+ - ___
+ - ___
+ - ___ status post fluc/vori (completed ___
+# CIN II-III status post LEEP procedure  
+# Strongyloidiasis infection, treated
+# Bacterial meningitis, treated 
+# Seizure 
+# Depression  
+# Gastritis secondary to H....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Procedure
+    domain: Procedure
+    SNOMED code: 71388002 (SNOMED)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+    NOTE: this exact name also exists as a separate concept (id=706352, domain=Meas Value, class=Doc Type of Service) -- SNOMED sometimes files the same clinical idea twice under different domain/class framings; this is informational, weigh it against the note's own context.
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4322976,
+    "concept_code": "71388002",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": [
+      {
+        "concept_id": 706352,
+        "domain_id": "Meas Value",
+        "concept_class_id": "Doc Type of Service",
+        "concept_code": "LP173234-8"
+      }
+    ]
+  }
+]
+
+VERDICT: index=1  error=None
+REASONING: The entity's context in 'Past Medical History' and its mention as a 'status post LEEP procedure' suggests it refers to an event or intervention that occurred, which aligns with the Procedure domain of candidate [1].
+CHOSEN CONCEPT: 4322976 Procedure
+GOLD: 387713003  |  CORRECT: False
+
+====================================================================================================
+CATEGORY: tier=TIER_2_AUTO_RESOLVED queue_reason=tier2_auto_resolved_pending_revalidation  (10 entities)
+====================================================================================================
+
+--- entity_id=10355641-DS-7-ea57a2d11b7  note=10355641-DS-7  text='EKG'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'EKG'
+SECTION: ACTIVE ISSUES
+CONTEXT: ...The patient was observed overnight during which she was asymptomatic and no events recorded on telemetry. Her serial troponins were negative with no abnormalities seen on electrocardiogram. She was discharged with ___ of hearts and will follow up with cardiology as an outpatient....
+ASSERTION: ABSENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Electrocardiogram with exercise test
+    domain: Measurement
+    SNOMED code: 46136006 (SNOMED)
+    closest parent concept: Cardiovascular stress testing
+    direct KG relationship to other candidates: none found
+
+[2] name: ECG finding
+    domain: Measurement
+    SNOMED code: 271921002 (SNOMED)
+    closest parent concept: Specific test feature
+    direct KG relationship to other candidates: none found
+
+[3] name: ECG waveform
+    domain: Measurement
+    SNOMED code: 250865004 (SNOMED)
+    closest parent concept: ECG feature
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4261794,
+    "concept_code": "46136006",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Cardiovascular stress testing",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 4156045,
+    "concept_code": "271921002",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Specific test feature",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 4108460,
+    "concept_code": "250865004",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "ECG feature",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=3  error=None
+REASONING: The entity's context mentions 'electrocardiogram' without any reference to an exercise test or other additional features, and candidate [3] matches this exact term as its name.
+CHOSEN CONCEPT: 4108460 ECG waveform
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10912090-DS-33-e580a6f0053  note=10912090-DS-33  text='Nasal MRSA screen'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Nasal MRSA screen'
+SECTION: Note
+CONTEXT: ...- No growth (final)
+___ Toxoplasma immunoglobulin G and immunoglobulin M - negative
+___ Urine Legionella Urinary Antigen - negative
+___ Nasal methicillin-resistant Staphylococcus aureus screen negative
+___ Blood culture fungal/AFB - No growth to date (preliminary)
+___ respiratory viral panel negative
+___ blood cryptococcal antigen negative
+___ stool C....
+ASSERTION: ABSENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Multi-resistant staphylococcus aureus screening
+    domain: Measurement
+    SNOMED code: 301786007 (SNOMED)
+    closest parent concept: Evaluation procedure
+    direct KG relationship to other candidates: none found
+
+[2] name: Methicillin resistant Staphylococcus aureus screening test
+    domain: Measurement
+    SNOMED code: 401289003 (SNOMED)
+    closest parent concept: Evaluation procedure
+    direct KG relationship to: candidate [3] via ['Has interprets', 'Interprets of']
+
+[3] name: Methicillin resistant Staphylococcus aureus not detected by screening
+    domain: Measurement
+    SNOMED code: 440380006 (SNOMED)
+    closest parent concept: Evaluation finding
+    direct KG relationship to: candidate [2] via ['Has interprets', 'Interprets of']
+
+[4] name: Meticillin-resistant Staphylococcus aureus targeted genetic test
+    domain: Measurement
+    SNOMED code: 924631000000107 (SNOMED)
+    closest parent concept: Molecular genetic test
+    direct KG relationship to other candidates: none found
+
+[5] name: MRSA (methicillin resistant Staphylococcus aureus) screening test
+    domain: Measurement
+    SNOMED code: 993071000000107 (SNOMED)
+    closest parent concept: Infection screening observable
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4201099,
+    "concept_code": "301786007",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Evaluation procedure",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 4296650,
+    "concept_code": "401289003",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Evaluation procedure",
+    "relationships_to_other_candidates": {
+      "3": [
+        "Has interprets",
+        "Interprets of"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 4258130,
+    "concept_code": "440380006",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Evaluation finding",
+    "relationships_to_other_candidates": {
+      "2": [
+        "Has interprets",
+        "Interprets of"
+      ]
+    },
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 45773609,
+    "concept_code": "924631000000107",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Molecular genetic test",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 5,
+    "concept_id": 37397888,
+    "concept_code": "993071000000107",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Infection screening observable",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=5  error=None
+REASONING: The entity's text 'Nasal MRSA screen' matches candidate [5] in name and context, which is also supported by its closest parent concept being Infection screening observable, aligning with the clinical finding of a nasal MRSA screen result.
+CHOSEN CONCEPT: 37397888 MRSA (methicillin resistant Staphylococcus aureus) screening test
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=10912090-DS-33-ecc9c8620aa  note=10912090-DS-33  text='left atrial volume index'  label=Lab Test ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'left atrial volume index'
+SECTION: CONCLUSIONS
+CONTEXT: ...
+CONCLUSIONS: The left atrial volume index is moderately increased. Left ventricular wall thicknesses and cavity size are normal....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Lupus circulating anticoagulant index measurement
+    domain: Measurement
+    SNOMED code: 165875002 (SNOMED)
+    closest parent concept: Lupus anticoagulant assay
+    direct KG relationship to other candidates: none found
+
+[2] name: Left ankle brachial pressure index
+    domain: Measurement
+    SNOMED code: 751071000000105 (SNOMED)
+    closest parent concept: Cardiovascular investigation
+    direct KG relationship to other candidates: none found
+
+[3] name: Left ventricular stroke work index
+    domain: Measurement
+    SNOMED code: 276898003 (SNOMED)
+    closest parent concept: Left ventricular function
+    direct KG relationship to other candidates: none found
+    NOTE: this exact name also exists as a separate concept (id=3024841, domain=Measurement, class=Clinical Observation) -- SNOMED sometimes files the same clinical idea twice under different domain/class framings; this is informational, weigh it against the note's own context.
+
+[4] name: Left atrium systolic volume
+    domain: Measurement
+    SNOMED code: 399235004 (SNOMED)
+    closest parent concept: Left atrium cavity size
+    direct KG relationship to other candidates: none found
+
+[5] name: Left ventricular index of myocardium performance
+    domain: Measurement
+    SNOMED code: 399266005 (SNOMED)
+    closest parent concept: Feature of left ventricle
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4013365,
+    "concept_code": "165875002",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Lupus anticoagulant assay",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 44805248,
+    "concept_code": "751071000000105",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Cardiovascular investigation",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 4174898,
+    "concept_code": "276898003",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Left ventricular function",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": [
+      {
+        "concept_id": 3024841,
+        "domain_id": "Measurement",
+        "concept_class_id": "Clinical Observation",
+        "concept_code": "8863-3"
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "concept_id": 4219598,
+    "concept_code": "399235004",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Left atrium cavity size",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 5,
+    "concept_id": 4163885,
+    "concept_code": "399266005",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Feature of left ventricle",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=4  error=None
+REASONING: The entity's context mentions 'left atrial volume index' being moderately increased, which matches the closest parent concept and SNOMED code of candidate [4], indicating that it is a measurement related to left atrium cavity size.
+CHOSEN CONCEPT: 4219598 Left atrium systolic volume
+GOLD: 82471001  |  CORRECT: False
+
+--- entity_id=11513575-DS-15-eb2a2a80d4d  note=11513575-DS-15  text='motrin'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'motrin'
+SECTION: Discharge Instructions
+CONTEXT: ...
+
+ 
+
+-Resume all of your home medications, except hold nonsteroidal antiinflammatory drug(s) 
+(aspirin,  and ibuprofen containing products such as advil & motrin,) until you see your urologist in follow-up
+
+ 
+
+ ...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: MOTEXAFIN
+    domain: Drug
+    SNOMED code: OMOP5171186 (RxNorm Extension)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[2] name: MOTOLIMOD
+    domain: Drug
+    SNOMED code: OMOP5180503 (RxNorm Extension)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[3] name: alvimopan
+    domain: Drug
+    SNOMED code: 480639 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[4] name: GASTRODIN
+    domain: Drug
+    SNOMED code: OMOP5170276 (RxNorm Extension)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[5] name: cholecystokinin
+    domain: Drug
+    SNOMED code: 2420 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[6] name: ibuprofen
+    domain: Drug
+    SNOMED code: 5640 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+    NOTE: this exact name also exists as a separate concept (id=45882610, domain=Meas Value, class=Answer) -- SNOMED sometimes files the same clinical idea twice under different domain/class framings; this is informational, weigh it against the note's own context.
+
+[7] name: pseudoephedrine
+    domain: Drug
+    SNOMED code: 8896 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5, 6, 7].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 36853571,
+    "concept_code": "OMOP5171186",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 36862887,
+    "concept_code": "OMOP5180503",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 19059654,
+    "concept_code": "480639",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 36852660,
+    "concept_code": "OMOP5170276",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 5,
+    "concept_id": 19058355,
+    "concept_code": "2420",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 6,
+    "concept_id": 1177480,
+    "concept_code": "5640",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": [
+      {
+        "concept_id": 45882610,
+        "domain_id": "Meas Value",
+        "concept_class_id": "Answer",
+        "concept_code": "LA14347-1"
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "concept_id": 1154332,
+    "concept_code": "8896",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=6  error=None
+REASONING: The entity 'motrin' is mentioned alongside 'ibuprofen', and given that both are nonsteroidal anti-inflammatory drugs (NSAIDs) to be held, it's clear that 'motrin' refers to ibuprofen.
+CHOSEN CONCEPT: 1177480 ibuprofen
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=11516225-DS-20-e6487ffdf3d  note=11516225-DS-20  text='motrin'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'motrin'
+SECTION: Discharge Instructions
+CONTEXT: ...Please call your surgeon's office to schedule or confirm your follow-up appointment in two (2) weeks.
+
+ 
+6. Please DO NOT take any non-steroidal anti-inflammatory medications (NSAIDs such as celebrex, ibuprofen, advil, aleve, motrin, electron transport chain).
+
+ 
+7. ANTICOAGULATION: Please continue your lovenox for four (4) weeks to help prevent deep vein thrombosis (blood clots).  
+
+ 
+8....
+ASSERTION: ABSENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: MOTEXAFIN
+    domain: Drug
+    SNOMED code: OMOP5171186 (RxNorm Extension)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[2] name: MOTOLIMOD
+    domain: Drug
+    SNOMED code: OMOP5180503 (RxNorm Extension)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[3] name: alvimopan
+    domain: Drug
+    SNOMED code: 480639 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[4] name: GASTRODIN
+    domain: Drug
+    SNOMED code: OMOP5170276 (RxNorm Extension)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[5] name: cholecystokinin
+    domain: Drug
+    SNOMED code: 2420 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[6] name: ibuprofen
+    domain: Drug
+    SNOMED code: 5640 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+    NOTE: this exact name also exists as a separate concept (id=45882610, domain=Meas Value, class=Answer) -- SNOMED sometimes files the same clinical idea twice under different domain/class framings; this is informational, weigh it against the note's own context.
+
+[7] name: pseudoephedrine
+    domain: Drug
+    SNOMED code: 8896 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5, 6, 7].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 36853571,
+    "concept_code": "OMOP5171186",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 36862887,
+    "concept_code": "OMOP5180503",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 19059654,
+    "concept_code": "480639",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 36852660,
+    "concept_code": "OMOP5170276",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 5,
+    "concept_id": 19058355,
+    "concept_code": "2420",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 6,
+    "concept_id": 1177480,
+    "concept_code": "5640",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": [
+      {
+        "concept_id": 45882610,
+        "domain_id": "Meas Value",
+        "concept_class_id": "Answer",
+        "concept_code": "LA14347-1"
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "concept_id": 1154332,
+    "concept_code": "8896",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=6  error=None
+REASONING: The entity's own context lists 'motrin' alongside other non-steroidal anti-inflammatory medications (NSAIDs), and knowledge-graph evidence confirms that candidate [6] is indeed ibuprofen, a well-known NSAID.
+CHOSEN CONCEPT: 1177480 ibuprofen
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=11522433-DS-6-e89c0db462a  note=11522433-DS-6  text='increased abdominal girth'  label=Symptom ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'increased abdominal girth'
+SECTION: History of Present Illness
+CONTEXT: ... Pt diagnosis with nonalcoholic steatohepatitis in ___ following her gastric bypass and had no symptoms until ___ when she started to have increased abdominal girth and abd pain.  ...
+ASSERTION: ABSENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Abdominal organomegaly
+    domain: Condition
+    SNOMED code: 714254003 (SNOMED)
+    closest parent concept: Abdominal organ finding
+    direct KG relationship to other candidates: none found
+
+[2] name: Swollen abdomen
+    domain: Condition
+    SNOMED code: 60728008 (SNOMED)
+    closest parent concept: Swelling of trunk
+    direct KG relationship to other candidates: none found
+
+[3] name: Obese abdomen
+    domain: Condition
+    SNOMED code: 249533007 (SNOMED)
+    closest parent concept: Finding of contour of abdomen
+    direct KG relationship to other candidates: none found
+
+[4] name: Intraabdominal pressure above reference range
+    domain: Observation
+    SNOMED code: 445004006 (SNOMED)
+    closest parent concept: Clinical finding
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 37017896,
+    "concept_code": "714254003",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Abdominal organ finding",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 442597,
+    "concept_code": "60728008",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Swelling of trunk",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 4091964,
+    "concept_code": "249533007",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Finding of contour of abdomen",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 40481628,
+    "concept_code": "445004006",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Clinical finding",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=3  error=None
+REASONING: The entity's text 'increased abdominal girth' suggests an increase in size or circumference, which aligns with the concept of Obese abdomen (candidate 3), and this interpretation is supported by the knowledge-graph fact that candidate 3 has a closest parent concept of Finding of contour of abdomen.
+CHOSEN CONCEPT: 4091964 Obese abdomen
+GOLD: 60728008  |  CORRECT: False
+
+--- entity_id=11524757-DS-4-e50beeb4690  note=11524757-DS-4  text='Isosorbide Mononitrate'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'Isosorbide Mononitrate'
+SECTION: Discharge Medications
+CONTEXT: ... 
+8.  Isosorbide Mononitrate (Extended Release) 60 milligram by mouth/oral DAILY  
+...
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: isosorbide dinitrate
+    domain: Drug
+    SNOMED code: 6058 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[2] name: isosorbide dicaprylate
+    domain: Drug
+    SNOMED code: 2002720 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[3] name: sorbitan monocaprylate
+    domain: Drug
+    SNOMED code: 2050751 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[4] name: isosorbide
+    domain: Drug
+    SNOMED code: 6057 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[5] name: isomalt
+    domain: Drug
+    SNOMED code: 1363717 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 1383925,
+    "concept_code": "6058",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 42543821,
+    "concept_code": "2002720",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 35200042,
+    "concept_code": "2050751",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 1383815,
+    "concept_code": "6057",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 5,
+    "concept_id": 43012397,
+    "concept_code": "1363717",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=4  error=None
+REASONING: The entity's text 'Isosorbide Mononitrate' matches candidate [4] name 'isosorbide', which is also a drug and has an SNOMED code (6057) that shares the same prefix as the other candidates, suggesting it is likely to be related.
+CHOSEN CONCEPT: 1383815 isosorbide
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=11576109-DS-15-e02852a4d4c  note=11576109-DS-15  text='antibiotic'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'antibiotic'
+SECTION: Discharge Instructions
+CONTEXT: ...This could explain your pain, which has now improved. We started you on an antibiotic (levofloxacin) for 5 days. You should follow up with your outpatient cardiologist if you continue to have chest pain....
+ASSERTION: PRESENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Antibiotic measurement
+    domain: Measurement
+    SNOMED code: 58427002 (SNOMED)
+    closest parent concept: Measurement of substance
+    direct KG relationship to other candidates: none found
+
+[2] name: Antibiotic therapy
+    domain: Procedure
+    SNOMED code: 281789004 (SNOMED)
+    closest parent concept: Drug therapy
+    direct KG relationship to other candidates: none found
+
+[3] name: Antibacterial
+    domain: Observation
+    SNOMED code: 768681000 (SNOMED)
+    closest parent concept: Disposition
+    direct KG relationship to other candidates: none found
+
+[4] name: Antibiotic containing root canal medicament
+    domain: Device
+    SNOMED code: 256552009 (SNOMED)
+    closest parent concept: Root canal medicament
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4238661,
+    "concept_code": "58427002",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Measurement of substance",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 4085730,
+    "concept_code": "281789004",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Drug therapy",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 35625637,
+    "concept_code": "768681000",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Disposition",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 4104746,
+    "concept_code": "256552009",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Root canal medicament",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=2  error=None
+REASONING: The entity's context mentions 'an antibiotic (levofloxacin) for 5 days', indicating that it is referring to an ongoing treatment, which aligns with candidate [2] Antibiotic therapy being a procedure.
+CHOSEN CONCEPT: 4085730 Antibiotic therapy
+GOLD: 281789004  |  CORRECT: True
+
+--- entity_id=11576109-DS-15-ee99e1b2dd4  note=11576109-DS-15  text='levoflox'  label=Medication ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'levoflox'
+SECTION: ACUTE ISSUES
+CONTEXT: ...electrocardiogram unchanged, trops near baseline, MB flat. Patient lacking many infectious symptoms (no cough, subjective fevers at home, but no fever or leuckocyotsis here), started on levoflox for 5 days for treatment of atypial pneumonia (renally dosed; corrected QT interval not prolonged). To follow up as outpatient with Dr ___ CP persists (ischemic...
+ASSERTION: ABSENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: QUARFLOXIN
+    domain: Drug
+    SNOMED code: OMOP5555478 (RxNorm Extension)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[2] name: levofloxacin
+    domain: Drug
+    SNOMED code: 82122 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[3] name: Levonadifloxacin
+    domain: Drug
+    SNOMED code: OMOP5555492 (RxNorm Extension)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[4] name: temafloxacin
+    domain: Drug
+    SNOMED code: 37771 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+[5] name: lomefloxacin
+    domain: Drug
+    SNOMED code: 28872 (RxNorm)
+    closest parent concept: unknown
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4, 5].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 1253440,
+    "concept_code": "OMOP5555478",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 1742253,
+    "concept_code": "82122",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 1253911,
+    "concept_code": "OMOP5555492",
+    "vocabulary": "RxNorm Extension",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 19041153,
+    "concept_code": "37771",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 5,
+    "concept_id": 1707800,
+    "concept_code": "28872",
+    "vocabulary": "RxNorm",
+    "closest_ancestor": null,
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=2  error=None
+REASONING: The correct answer is levofloxacin because it matches the exact spelling and pronunciation of 'levoflox' in the entity text, which suggests a likely transcription error or abbreviation.
+CHOSEN CONCEPT: 1742253 levofloxacin
+GOLD: not clean-gradable (0 overlapping gold spans)
+
+--- entity_id=11654232-DS-17-e65da53bf99  note=11654232-DS-17  text='stress test'  label=Procedure ---
+PROMPT SENT:
+ENTITY TEXT AS WRITTEN: 'stress test'
+SECTION: Discharge Instructions
+CONTEXT: ...It was a pleasure to take care of you here at ___. You were admitted for chest pain. Fortunately, an stress test was negative for any evidence of History, EKG, Age, Risk factors, initial Troponin disease. Also, our testing revealed that you did not have a History, EKG, Age, Risk factors, initial Troponin attack....
+ASSERTION: ABSENT
+
+CANDIDATES (with knowledge-graph evidence for each):
+
+[1] name: Circulatory stress test
+    domain: Procedure
+    SNOMED code: 165092007 (SNOMED)
+    closest parent concept: Vascular function test
+    direct KG relationship to other candidates: none found
+
+[2] name: Cardiovascular stress testing
+    domain: Procedure
+    SNOMED code: 76746007 (SNOMED)
+    closest parent concept: Cardiac function testing
+    direct KG relationship to other candidates: none found
+
+[3] name: Stress protocol
+    domain: Procedure
+    SNOMED code: 129094003 (SNOMED)
+    closest parent concept: Cardiac function testing
+    direct KG relationship to other candidates: none found
+
+[4] name: Stress mapping
+    domain: Procedure
+    SNOMED code: 304639001 (SNOMED)
+    closest parent concept: Stress management
+    direct KG relationship to other candidates: none found
+
+Pick the single best-matching candidate using the entity's own context AND the knowledge-graph evidence above -- the KG facts support your reasoning, they do not replace it. Valid indices: [1, 2, 3, 4].
+Reply with JSON: {"best_index": "<one of the valid indices, as a string>", "reasoning": "<one sentence citing the specific evidence used>"}
+
+KG CONTEXT (raw): [
+  {
+    "index": 1,
+    "concept_id": 4065418,
+    "concept_code": "165092007",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Vascular function test",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 2,
+    "concept_id": 4296597,
+    "concept_code": "76746007",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Cardiac function testing",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 3,
+    "concept_id": 4043542,
+    "concept_code": "129094003",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Cardiac function testing",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  },
+  {
+    "index": 4,
+    "concept_id": 4128098,
+    "concept_code": "304639001",
+    "vocabulary": "SNOMED",
+    "closest_ancestor": "Stress management",
+    "relationships_to_other_candidates": {},
+    "name_collisions_elsewhere": []
+  }
+]
+
+VERDICT: index=2  error=None
+REASONING: The entity's context mentions 'an stress test was negative', which matches the SNOMED code and closest parent concept of candidate [2], indicating that it is the most relevant procedure in this scenario.
+CHOSEN CONCEPT: 4296597 Cardiovascular stress testing
+GOLD: 16545191000119100  |  CORRECT: False
+
+====================================================================================================
+SMOKE TEST SUMMARY: 5/18 clean-gradable correct (27.8%)  |  0 escalation errors
+====================================================================================================

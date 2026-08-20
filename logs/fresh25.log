@@ -1,0 +1,1355 @@
+=== FRESH25 STAGE1-2B START Thu Aug 20 02:12:49 BST 2026 ===
+Loading GLiNER-BioMed model... (this may take a moment on the first run)
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 2615.04it/s]
+Loading GLiNER-relex model... (this may take a moment on the first run)
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 2682.12it/s]
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+Loading SapBERT model for vector normalization... (this may take a moment)
+================================================================================
+🚀 RUNNING END-TO-END PIPELINE (STAGE 1 -> STAGE 2a -> STAGE 2b) ON 25 NAMED NOTE(S)
+================================================================================
+Reading from /home/ec2-user/clinical_neuro_symbolic_pipeline_reorder/data/raw_notes/gold_notes.csv
+
+[1/25] Running Stage 1 -> Stage 2a -> Stage 2b via src.clinical_pipeline.run_pipeline() on 11532659-DS-11...
+ℹ️ 17/26 relations in 11532659-DS-11 had at least one unlinked endpoint.
+... 478 entities accepted, 478 normalized, 478 routed LOW, 54 non-asserted, 0 retained below threshold, 11 recovered via original-form fallback.
+DOCTOR WROTE         | LABEL        | OMOP MAPPING                 | TIER           | ASSERTION  | IN
+---------------------------------------------------------------------------------------------------------
+dyspnea              | Symptom      | Dyspnea                      | 1 (Exact)      | PRESENT    | LOW
+Ultrasound-guided    | Procedure    | Ultrasonography guided cho   | 3 (Semantic)   | PRESENT    | LOW
+Trans-jugular temp   | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Hepatic artery       | Anatomy      | Hepatic artery               | 1 (Exact)      | PRESENT    | LOW
+embolization         | Procedure    | Embolization procedure       | 2 (Synonym)    | PRESENT    | LOW
+warfarin             | Medication   | warfarin                     | 1 (Exact)      | PRESENT    | LOW
+heart failure        | Condition    | Heart failure                | 1 (Exact)      | PRESENT    | LOW
+hypertension         | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+yperlipidemia        | Condition    | Endogenous hyperlipidemia    | 3 (Semantic)   | PRESENT    | LOW
+diabetes             | Condition    | Diabetes mellitus            | 3 (Semantic)   | PRESENT    | LOW
+dyspnea              | Symptom      | Dyspnea                      | 1 (Exact)      | PRESENT    | LOW
+abdominal pain       | Symptom      | Abdominal pain               | 1 (Exact)      | PRESENT    | LOW
+SOB                  | Symptom      | Dyspnea                      | 2 (Synonym)    | PRESENT    | LOW
+orthopnea            | Condition    | Orthopnea                    | 1 (Exact)      | PRESENT    | LOW
+torsemide            | Medication   | torsemide                    | 1 (Exact)      | ABSENT     | LOW
+RUQ pain             | Symptom      | Right upper quadrant pain    | 1 (Exact)      | PRESENT    | LOW
+early satiety        | Symptom      | Early satiety                | 1 (Exact)      | PRESENT    | LOW
+intermittent         | Qualifier    | Intermittent                 | 1 (Exact)      | PRESENT    | LOW
+constipation         | Condition    | Constipation                 | 1 (Exact)      | PRESENT    | LOW
+diarrhea             | Symptom      | Diarrhea                     | 1 (Exact)      | PRESENT    | LOW
+nauseous             | Symptom      | Nausea                       | 2 (Synonym)    | PRESENT    | LOW
+no  vomiting         | Symptom      | No vomiting                  | 1 (Exact)      | ABSENT     | LOW
+volume overload      | Condition    | Cardiac volume overload      | 3 (Semantic)   | PRESENT    | LOW
+Atrial fibrillatio   | Condition    | Atrial fibrillation          | 1 (Exact)      | PRESENT    | LOW
+Hypertension         | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+Hyperlipidemia       | Condition    | Hyperlipidemia               | 1 (Exact)      | PRESENT    | LOW
+Diabetes             | Condition    | Diabetes mellitus            | 3 (Semantic)   | PRESENT    | LOW
+Hyperthyroidism      | Condition    | Hyperthyroidism              | 1 (Exact)      | PRESENT    | LOW
+Asthma               | Condition    | Asthma                       | 1 (Exact)      | PRESENT    | LOW
+CHF                  | Condition    | Congestive heart failure     | 1 (Exact)      | PRESENT    | LOW
+GERD                 | Condition    | Gastroesophageal reflux di   | 1 (Exact)      | PRESENT    | LOW
+coronary artery di   | Condition    | Coronary arteriosclerosis    | 2 (Synonym)    | PRESENT    | LOW
+family history of    | Symptom      | FH: Hypertension             | 2 (Synonym)    | PRESENT    | LOW
+S1                   | Anatomy      | Structure of first sacral    | 2 (Synonym)    | PRESENT    | LOW
+S2                   | Anatomy      | Structure of second sacral   | 2 (Synonym)    | PRESENT    | LOW
+S3                   | Anatomy      | Structure of third sacral    | 2 (Synonym)    | PRESENT    | LOW
+RUQ                  | Anatomy      | Structure of right upper q   | 3 (Semantic)   | ABSENT     | LOW
+TTP                  | Lab Test     | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+pitting edema        | Condition    | Pitting edema                | 1 (Exact)      | ABSENT     | LOW
+CNII-XII             | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+S1                   | Anatomy      | Structure of first sacral    | 2 (Synonym)    | PRESENT    | LOW
+S2                   | Anatomy      | Structure of second sacral   | 2 (Synonym)    | PRESENT    | LOW
+edema                | Condition    | Edema                        | 1 (Exact)      | PRESENT    | LOW
+WBC-7                | Lab Test     | White blood cell count       | 3 (Semantic)   | PRESENT    | LOW
+RBC-3                | Lab Test     | Red blood cell count         | 3 (Semantic)   | PRESENT    | LOW
+Hgb-9.6              | Lab Test     | Measurement of total hemog   | 3 (Semantic)   | PRESENT    | LOW
+Hct-31               | Lab Test     | Hematocrit determination     | 3 (Semantic)   | PRESENT    | LOW
+MCV-92               | Lab Test     | Erythrocyte mean corpuscul   | 3 (Semantic)   | PRESENT    | LOW
+MCH-28               | Lab Test     | Mean corpuscular hemoglobi   | 3 (Semantic)   | PRESENT    | LOW
+MCHC-31              | Lab Test     | Mean corpuscular hemoglobi   | 3 (Semantic)   | PRESENT    | LOW
+RDW-16.6             | Lab Test     | Red cell distribution widt   | 3 (Semantic)   | PRESENT    | LOW
+RDWSD-56             | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Plt                  | Lab Test     | Platelet count               | 3 (Semantic)   | PRESENT    | LOW
+Neuts-70             | Lab Test     | Neutrophil count             | 3 (Semantic)   | PRESENT    | LOW
+Lymphs-18.0          | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+PTT-34               | Lab Test     | Prothrombin time             | 3 (Semantic)   | PRESENT    | LOW
+Glucose-146          | Lab Test     | Glucose measurement          | 3 (Semantic)   | PRESENT    | LOW
+UreaN-28             | Lab Test     | Urea measurement             | 3 (Semantic)   | PRESENT    | LOW
+Creat-1.6            | Lab Test     | Creatinine measurement       | 3 (Semantic)   | PRESENT    | LOW
+Na-140  K-5          | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+HCO3-23              | Lab Test     | Bicarbonate measurement      | 3 (Semantic)   | PRESENT    | LOW
+AnGap-20             | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+ALT-12               | Lab Test     | Alanine transaminase activ   | 3 (Semantic)   | PRESENT    | LOW
+AST-35               | Lab Test     | Aspartate aminotransferase   | 3 (Semantic)   | PRESENT    | LOW
+AlkPhos-64           | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+TotBili-0            | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Lipase-96            | Lab Test     | Measurement of lipase acti   | 3 (Semantic)   | PRESENT    | LOW
+cTropnT              | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+proBNP-2323          | Lab Test     | Brain natriuretic peptide    | 3 (Semantic)   | PRESENT    | LOW
+cTropnT              | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Calcium-9            | Lab Test     | Calcium measurement          | 3 (Semantic)   | PRESENT    | LOW
+Albumin-4            | Lab Test     | Albumin measurement          | 3 (Semantic)   | PRESENT    | LOW
+Hapto                | Lab Test     | Haptoglobin phenotype dete   | 3 (Semantic)   | PRESENT    | LOW
+Lactate-3.7          | Lab Test     | D-lactate measurement        | 3 (Semantic)   | PRESENT    | LOW
+Lactate-2            | Lab Test     | D-lactate measurement        | 3 (Semantic)   | PRESENT    | LOW
+Urine culture        | Lab Test     | Urine culture                | 1 (Exact)      | PRESENT    | LOW
+GRAM STAIN           | Lab Test     | Gram stain microscopy        | 3 (Semantic)   | PRESENT    | LOW
+C. difficile DNA a   | Lab Test     | Clostridium difficile dete   | 3 (Semantic)   | PRESENT    | LOW
+GRAM STAIN           | Lab Test     | Gram stain microscopy        | 3 (Semantic)   | PRESENT    | LOW
+ANAEROBIC CULTURE    | Lab Test     | Anaerobic microbial cultur   | 1 (Exact, lab-procedure-sibling) | PRESENT    | LOW
+pleural effusions    | Condition    | Pleural effusion             | 3 (Semantic)   | PRESENT    | LOW
+pulmonary edema      | Condition    | Pulmonary edema              | 1 (Exact)      | PRESENT    | LOW
+cardiomegaly         | Condition    | Cardiomegaly                 | 1 (Exact)      | PRESENT    | LOW
+CHF                  | Condition    | Congestive heart failure     | 1 (Exact)      | PRESENT    | LOW
+RUQ                  | Anatomy      | Structure of right upper q   | 3 (Semantic)   | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+Gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+hepatitis            | Condition    | Inflammatory disease of li   | 2 (Synonym)    | POSSIBLE   | LOW
+heart failure        | Condition    | Heart failure                | 1 (Exact)      | POSSIBLE   | LOW
+cholelithiasis       | Condition    | Biliary calculus             | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+cholecystitis        | Condition    | Cholecystitis                | 1 (Exact)      | ABSENT     | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+TTE                  | Symptom      | Transthoracic approach       | 2 (Synonym)    | PRESENT    | LOW
+TTE                  | Procedure    | Echocardiography             | 2 (Synonym)    | PRESENT    | LOW
+Endotracheal intub   | Procedure    | Insertion of endotracheal    | 2 (Synonym)    | PRESENT    | LOW
+propofol             | Medication   | propofol                     | 1 (Exact)      | PRESENT    | LOW
+left atrium          | Anatomy      | Left atrial structure        | 2 (Synonym)    | ABSENT     | LOW
+left atrial append   | Anatomy      | Structure of left auricula   | 3 (Semantic)   | ABSENT     | LOW
+right  atrium        | Anatomy      | Right atrial structure       | 2 (Synonym)    | ABSENT     | LOW
+right atrial appen   | Anatomy      | Structure of right auricul   | 3 (Semantic)   | ABSENT     | LOW
+left atrial append   | Anatomy      | Structure of left auricula   | 3 (Semantic)   | PRESENT    | LOW
+right atrium         | Anatomy      | Right atrial structure       | 2 (Synonym)    | ABSENT     | LOW
+right atrial appen   | Anatomy      | Structure of right auricul   | 3 (Semantic)   | ABSENT     | LOW
+right  atrial appe   | Anatomy      | Structure of right auricul   | 3 (Semantic)   | PRESENT    | LOW
+atrial septal defe   | Condition    | Atrial septal defect         | 1 (Exact)      | ABSENT     | LOW
+atheroma             | Condition    | Atheroma                     | 1 (Exact)      | PRESENT    | LOW
+ascending aorta      | Anatomy      | Ascending aorta structure    | 2 (Synonym)    | PRESENT    | LOW
+aortic arch          | Anatomy      | Aortic arch structure        | 2 (Synonym)    | PRESENT    | LOW
+descending thoraci   | Anatomy      | Structure of descending th   | 2 (Synonym)    | PRESENT    | LOW
+aortic valve leafl   | Anatomy      | Structure of cardiac valve   | 3 (Semantic)   | PRESENT    | LOW
+aortic  leaflets     | Anatomy      | Structure of cardiac valve   | 3 (Semantic)   | PRESENT    | LOW
+Lambl's excresence   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+aortic regurgitati   | Condition    | Aortic valve regurgitation   | 2 (Synonym)    | PRESENT    | LOW
+mitral prosthesis    | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+mitral prosthesis    | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | PRESENT    | LOW
+mitral regurgitati   | Condition    | Mitral valve regurgitation   | 2 (Synonym)    | PRESENT    | LOW
+pulmonary artery     | Anatomy      | Pulmonary artery structure   | 2 (Synonym)    | PRESENT    | LOW
+systolic hypertens   | Condition    | Systolic hypertension        | 1 (Exact)      | PRESENT    | LOW
+systolic hypertens   | Condition    | Systolic hypertension        | 1 (Exact)      | PRESENT    | LOW
+pericardial effusi   | Condition    | Pericardial effusion         | 1 (Exact)      | ABSENT     | LOW
+mitral mechanical    | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | PRESENT    | LOW
+mitral  regurgitat   | Condition    | Mitral valve regurgitation   | 2 (Synonym)    | PRESENT    | LOW
+tricuspid regurgit   | Condition    | Tricuspid valve regurgitat   | 2 (Synonym)    | PRESENT    | LOW
+pulmonary artery     | Anatomy      | Pulmonary artery structure   | 2 (Synonym)    | PRESENT    | LOW
+systolic hypertens   | Condition    | Systolic hypertension        | 1 (Exact)      | PRESENT    | LOW
+systolic hypertens   | Condition    | Systolic hypertension        | 1 (Exact)      | PRESENT    | LOW
+pulmonary edema      | Condition    | Pulmonary edema              | 1 (Exact)      | PRESENT    | LOW
+right upper lobe     | Anatomy      | Structure of upper lobe of   | 3 (Semantic)   | PRESENT    | LOW
+mitral  regurgitat   | Condition    | Mitral valve regurgitation   | 2 (Synonym)    | CONDITIONAL | LOW
+right upper  lobe    | Condition    | Right upper zone pneumonia   | 2 (Synonym)    | CONDITIONAL | LOW
+antibiotics          | Medication   | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+PA and LAT           | Lab Test     | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+liver                | Anatomy      | Liver structure              | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+duodenum             | Anatomy      | Duodenal structure           | 2 (Synonym)    | PRESENT    | LOW
+subcapsular branch   | Anatomy      | Unmapped                     | 0 (Failed)     | POSSIBLE   | LOW
+right                | Qualifier    | Right                        | 1 (Exact)      | POSSIBLE   | LOW
+hepatic artery       | Anatomy      | Hepatic artery               | 1 (Exact)      | POSSIBLE   | LOW
+percutaneous chole   | Procedure    | Percutaneous cholecystosto   | 1 (Exact)      | POSSIBLE   | LOW
+tube                 | Procedure    | Tube                         | 1 (Exact)      | POSSIBLE   | LOW
+Percutaneous chole   | Procedure    | Percutaneous cholecystosto   | 1 (Exact)      | PRESENT    | LOW
+tube                 | Procedure    | Tube                         | 1 (Exact)      | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+duodenum             | Anatomy      | Duodenal structure           | 2 (Synonym)    | PRESENT    | LOW
+subcapsular branch   | Anatomy      | Unmapped                     | 0 (Failed)     | POSSIBLE   | LOW
+right                | Qualifier    | Right                        | 1 (Exact)      | POSSIBLE   | LOW
+hepatic artery       | Anatomy      | Hepatic artery               | 1 (Exact)      | POSSIBLE   | LOW
+percutaneous chole   | Procedure    | Percutaneous cholecystosto   | 1 (Exact)      | POSSIBLE   | LOW
+tube                 | Procedure    | Tube                         | 1 (Exact)      | POSSIBLE   | LOW
+Percutaneous chole   | Procedure    | Percutaneous cholecystosto   | 1 (Exact)      | PRESENT    | LOW
+tube                 | Procedure    | Tube                         | 1 (Exact)      | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+coil and Gel-Foam    | Procedure    | Embolization using fluoros   | 3 (Semantic)   | PRESENT    | LOW
+segment 4B  hepati   | Anatomy      | Structure of posterior seg   | 3 (Semantic)   | PRESENT    | LOW
+hepatic pseudoaneu   | Condition    | False aneurysm of hepatic    | 3 (Semantic)   | PRESENT    | LOW
+percutaneous chole   | Procedure    | Percutaneous cholecystosto   | 1 (Exact)      | PRESENT    | LOW
+tube                 | Procedure    | Tube                         | 1 (Exact)      | PRESENT    | LOW
+pneumonia            | Condition    | Pneumonia                    | 1 (Exact)      | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+bile ducts           | Anatomy      | Bile duct structure          | 3 (Semantic)   | ABSENT     | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | ABSENT     | LOW
+percutaneous  chol   | Procedure    | Percutaneous cholecystosto   | 1 (Exact)      | PRESENT    | LOW
+tube                 | Procedure    | Tube                         | 1 (Exact)      | PRESENT    | LOW
+Gel-Foam embolizat   | Procedure    | Fogarty embolectomy of art   | 3 (Semantic)   | PRESENT    | LOW
+thrombin injection   | Medication   | Thrombin Injection           | 1 (Exact)      | PRESENT    | LOW
+Doppler interrogat   | Procedure    | Doppler ultrasonography      | 3 (Semantic)   | ABSENT     | LOW
+WBC-15               | Lab Test     | CD15 count                   | 3 (Semantic)   | PRESENT    | LOW
+RBC-2                | Lab Test     | Red blood cell count         | 3 (Semantic)   | PRESENT    | LOW
+Hgb-7                | Lab Test     | Measurement of total hemog   | 3 (Semantic)   | PRESENT    | LOW
+Hct-23               | Lab Test     | Hematocrit determination     | 3 (Semantic)   | PRESENT    | LOW
+MCV-97               | Lab Test     | Erythrocyte mean corpuscul   | 3 (Semantic)   | PRESENT    | LOW
+MCH-30               | Lab Test     | Mean corpuscular hemoglobi   | 3 (Semantic)   | PRESENT    | LOW
+MCHC-31              | Lab Test     | Mean corpuscular hemoglobi   | 3 (Semantic)   | PRESENT    | LOW
+RDW-19               | Lab Test     | Red cell distribution widt   | 3 (Semantic)   | PRESENT    | LOW
+RDWSD-59             | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Plt                  | Lab Test     | Platelet count               | 3 (Semantic)   | PRESENT    | LOW
+PTT-123              | Lab Test     | Prothrombin time             | 3 (Semantic)   | PRESENT    | LOW
+Plt                  | Lab Test     | Platelet count               | 3 (Semantic)   | PRESENT    | LOW
+PTT-55               | Lab Test     | Prothrombin time             | 3 (Semantic)   | PRESENT    | LOW
+Glucose-107          | Lab Test     | Glucose measurement          | 3 (Semantic)   | PRESENT    | LOW
+UreaN-21             | Lab Test     | Urea measurement             | 3 (Semantic)   | PRESENT    | LOW
+Creat-1              | Lab Test     | Creatinine measurement       | 3 (Semantic)   | PRESENT    | LOW
+Na-135  K-4          | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Cl-105 HCO3-22       | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+AnGap-12             | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Calcium-8.3          | Lab Test     | Calcium measurement          | 3 (Semantic)   | PRESENT    | LOW
+Phos-3.0 Mg-2        | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+heart failure        | Condition    | Heart failure                | 1 (Exact)      | PRESENT    | LOW
+hypertension         | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+hyperlipidemia       | Condition    | Hyperlipidemia               | 1 (Exact)      | PRESENT    | LOW
+diabetes             | Condition    | Diabetes mellitus            | 3 (Semantic)   | PRESENT    | LOW
+dyspnea              | Symptom      | Dyspnea                      | 1 (Exact)      | PRESENT    | LOW
+abdominal pain       | Symptom      | Abdominal pain               | 1 (Exact)      | PRESENT    | LOW
+cholecystitis        | Condition    | Cholecystitis                | 1 (Exact)      | PRESENT    | LOW
+cholecystitis        | Condition    | Cholecystitis                | 1 (Exact)      | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+percutaneous chlec   | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+coumadin             | Medication   | coumaran                     | 3 (Semantic)   | PRESENT    | LOW
+unasyn               | Medication   | sulbactam                    | 3 (Semantic)   | PRESENT    | LOW
+Zosyn                | Medication   | Zodasiran                    | 3 (Semantic)   | PRESENT    | LOW
+fevers               | Symptom      | Fever                        | 3 (Semantic)   | PRESENT    | LOW
+Zosyn                | Medication   | Zodasiran                    | 3 (Semantic)   | PRESENT    | LOW
+Unasyn               | Medication   | sulbactam                    | 3 (Semantic)   | PRESENT    | LOW
+Unasyn               | Medication   | sulbactam                    | 3 (Semantic)   | PRESENT    | LOW
+augmentin            | Medication   | clavulanate                  | 3 (Semantic)   | PRESENT    | LOW
+CCY                  | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+CCY                  | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+CCY                  | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Hypoxemic Respirat   | Condition    | Hypoxemic respiratory fail   | 1 (Exact)      | PRESENT    | LOW
+pulmonary edema      | Condition    | Pulmonary edema              | 1 (Exact)      | PRESENT    | LOW
+Lasix                | Medication   | furosemide                   | 3 (Semantic)   | PRESENT    | LOW
+nitro                | Medication   | NITRODAN                     | 3 (Semantic)   | PRESENT    | LOW
+CVVH                 | Procedure    | Continuous venovenous hemo   | 3 (Semantic)   | PRESENT    | LOW
+renal failure        | Condition    | Renal failure syndrome       | 2 (Synonym)    | PRESENT    | LOW
+pulmonary edema      | Condition    | Pulmonary edema              | 1 (Exact)      | PRESENT    | LOW
+Hypotension / Sept   | Condition    | Hypodynamic septic shock     | 3 (Semantic)   | PRESENT    | LOW
+levophed             | Medication   | levorphanol                  | 3 (Semantic)   | PRESENT    | LOW
+unasyn               | Medication   | sulbactam                    | 3 (Semantic)   | PRESENT    | LOW
+vasopressin          | Medication   | vasopressin (USP)            | 3 (Semantic)   | PRESENT    | LOW
+antibiotics          | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+zosyn                | Medication   | Zodasiran                    | 3 (Semantic)   | PRESENT    | LOW
+glucocorticoids      | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+adrenal  insuffici   | Condition    | Adrenal cortical hypofunct   | 2 (Synonym)    | POSSIBLE   | LOW
+prednisone           | Medication   | prednisone                   | 1 (Exact)      | POSSIBLE   | LOW
+PMR                  | Condition    | Unmapped                     | 0 (Failed)     | POSSIBLE   | LOW
+renal failure        | Condition    | Renal failure syndrome       | 2 (Synonym)    | PRESENT    | LOW
+Cr                   | Lab Test     | Chromium measurement         | 3 (Semantic)   | PRESENT    | LOW
+creatinine           | Lab Test     | Creatinine measurement       | 3 (Semantic)   | PRESENT    | LOW
+lasix                | Medication   | furosemide                   | 3 (Semantic)   | PRESENT    | LOW
+metolazone           | Medication   | metolazone                   | 1 (Exact)      | PRESENT    | LOW
+CVVH                 | Procedure    | Continuous venovenous hemo   | 3 (Semantic)   | PRESENT    | LOW
+CVVH                 | Procedure    | Continuous venovenous hemo   | 3 (Semantic)   | PRESENT    | LOW
+UOP                  | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Cr                   | Lab Test     | Chromium measurement         | 3 (Semantic)   | PRESENT    | LOW
+pitting edema        | Symptom      | Pitting edema                | 1 (Exact)      | PRESENT    | LOW
+JVP                  | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+basilar crackles     | Symptom      | Post-tussive crackles        | 3 (Semantic)   | PRESENT    | LOW
+torsemide            | Medication   | torsemide                    | 1 (Exact)      | PRESENT    | LOW
+cholecystitis        | Condition    | Cholecystitis                | 1 (Exact)      | PRESENT    | LOW
+CVVH                 | Procedure    | Continuous venovenous hemo   | 3 (Semantic)   | PRESENT    | LOW
+metoprolol           | Medication   | metoprolol                   | 1 (Exact)      | PRESENT    | LOW
+torsemide            | Medication   | torsemide                    | 1 (Exact)      | PRESENT    | LOW
+Atrial fibrillatio   | Condition    | Atrial fibrillation          | 1 (Exact)      | PRESENT    | LOW
+Metoprolol           | Medication   | metoprolol                   | 1 (Exact)      | PRESENT    | LOW
+heart block          | Condition    | Heart block                  | 1 (Exact)      | PRESENT    | LOW
+Warfarin             | Medication   | warfarin                     | 1 (Exact)      | PRESENT    | LOW
+hepatic  artery      | Anatomy      | Hepatic artery               | 1 (Exact)      | PRESENT    | LOW
+hemorrhage           | Symptom      | Hemorrhage                   | 1 (Exact)      | PRESENT    | LOW
+heparin              | Medication   | heparin                      | 1 (Exact)      | PRESENT    | LOW
+Warfarin             | Medication   | warfarin                     | 1 (Exact)      | PRESENT    | LOW
+warfarin             | Medication   | warfarin                     | 1 (Exact)      | PRESENT    | LOW
+INR                  | Lab Test     | Calculation of internation   | 1 (Exact, lab-procedure-sibling) | PRESENT    | LOW
+Hepatic Artery       | Anatomy      | Hepatic artery               | 1 (Exact)      | PRESENT    | LOW
+Hemorrhage           | Symptom      | Hemorrhage                   | 1 (Exact)      | PRESENT    | LOW
+Hepatic Artery       | Anatomy      | Hepatic artery               | 1 (Exact)      | PRESENT    | LOW
+Hemorrhage           | Condition    | Hemorrhage                   | 1 (Exact)      | PRESENT    | LOW
+H/H                  | Lab Test     | Hemoglobin finding           | 3 (Semantic)   | PRESENT    | LOW
+H/H                  | Lab Test     | Measurement of total hemog   | 3 (Semantic)   | PRESENT    | LOW
+H/H                  | Lab Test     | Hematocrit determination     | 2 (Synonym)    | PRESENT    | LOW
+abdominal tenderne   | Symptom      | Abdominal tenderness         | 1 (Exact)      | PRESENT    | LOW
+CT                   | Procedure    | Computed tomography          | 1 (Exact)      | PRESENT    | LOW
+A/P                  | Anatomy      | Abdomen                      | 1 (Exact)      | PRESENT    | LOW
+A/P                  | Anatomy      | Pelvic region                | 2 (Synonym)    | PRESENT    | LOW
+hemorrhage           | Condition    | Hemorrhage                   | 1 (Exact)      | PRESENT    | LOW
+hepatic artery       | Anatomy      | Hepatic artery               | 1 (Exact)      | PRESENT    | LOW
+PRBCs                | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+embolization         | Procedure    | Embolization procedure       | 2 (Synonym)    | PRESENT    | LOW
+H/H                  | Lab Test     | Hemoglobin finding           | 3 (Semantic)   | PRESENT    | LOW
+H/H                  | Lab Test     | Measurement of total hemog   | 3 (Semantic)   | PRESENT    | LOW
+H/H                  | Lab Test     | Hematocrit determination     | 2 (Synonym)    | PRESENT    | LOW
+hepatic  artery      | Anatomy      | Hepatic artery               | 1 (Exact)      | PRESENT    | LOW
+hepatic artery       | Anatomy      | Hepatic artery               | 1 (Exact)      | PRESENT    | LOW
+embolization         | Procedure    | Embolization procedure       | 2 (Synonym)    | PRESENT    | LOW
+hgb                  | Lab Test     | Hemoglobin finding           | 3 (Semantic)   | PRESENT    | LOW
+Anemia/Hemolysis     | Condition    | Hemolytic anemia             | 3 (Semantic)   | PRESENT    | LOW
+H/H                  | Lab Test     | Measurement of total hemog   | 3 (Semantic)   | PRESENT    | LOW
+Hemolysis            | Condition    | Hemolysis                    | 1 (Exact)      | PRESENT    | LOW
+haptoglobin          | Lab Test     | Measurement of haptoglobin   | 3 (Semantic)   | PRESENT    | LOW
+schistocytes         | Lab Test     | Schistocyte count in blood   | 3 (Semantic)   | PRESENT    | LOW
+LDH                  | Lab Test     | Lactate dehydrogenase meas   | 3 (Semantic)   | PRESENT    | LOW
+hemolysis            | Condition    | Hemolysis                    | 1 (Exact)      | POSSIBLE   | LOW
+mitral  valve        | Anatomy      | Mitral valve structure       | 2 (Synonym)    | POSSIBLE   | LOW
+H/H                  | Lab Test     | Measurement of total hemog   | 3 (Semantic)   | PRESENT    | LOW
+Severe MR            | Condition    | Severe mitral valve regurg   | 3 (Semantic)   | PRESENT    | LOW
+MVR                  | Anatomy      | Mitral valve structure       | 2 (Synonym)    | PRESENT    | LOW
+Coumadin             | Medication   | coumaran                     | 3 (Semantic)   | PRESENT    | LOW
+pacemaker  placeme   | Procedure    | Implantation of cardiac pa   | 3 (Semantic)   | PRESENT    | LOW
+intra-abdominal he   | Condition    | Hemorrhage of abdominal ca   | 3 (Semantic)   | PRESENT    | LOW
+heparin gtt          | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Coumadin             | Medication   | coumaran                     | 3 (Semantic)   | PRESENT    | LOW
+heparin              | Medication   | heparin                      | 1 (Exact)      | PRESENT    | LOW
+HTN                  | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+Imdur                | Medication   | Imdusiran                    | 3 (Semantic)   | PRESENT    | LOW
+hydralazine          | Medication   | hydralazine                  | 1 (Exact)      | PRESENT    | LOW
+Hyperlipidemia       | Condition    | Hyperlipidemia               | 1 (Exact)      | PRESENT    | LOW
+atorvastatin         | Medication   | atorvastatin                 | 1 (Exact)      | PRESENT    | LOW
+Diabetes             | Condition    | Diabetes mellitus            | 3 (Semantic)   | PRESENT    | LOW
+OMR                  | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+glarginine           | Medication   | insulin glargine             | 3 (Semantic)   | PRESENT    | LOW
+ISS                  | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+metformin            | Medication   | metformin                    | 1 (Exact)      | PRESENT    | LOW
+Asthma               | Condition    | Asthma                       | 1 (Exact)      | PRESENT    | LOW
+albuterol            | Medication   | albuterol                    | 1 (Exact)      | PRESENT    | LOW
+fluticasone          | Medication   | fluticasone                  | 1 (Exact)      | PRESENT    | LOW
+loratidine           | Medication   | loratadine                   | 3 (Semantic)   | PRESENT    | LOW
+GERD                 | Condition    | Gastroesophageal reflux di   | 1 (Exact)      | PRESENT    | LOW
+omeprazole           | Medication   | omeprazole                   | 1 (Exact)      | PRESENT    | LOW
+Insomnia             | Condition    | Insomnia                     | 1 (Exact)      | PRESENT    | LOW
+trazodone            | Medication   | trazodone                    | 1 (Exact)      | PRESENT    | LOW
+vitamin D            | Medication   | vitamin D                    | 1 (Exact)      | PRESENT    | LOW
+Polymalgia Rheumat   | Condition    | Polymyalgia rheumatica       | 3 (Semantic)   | PRESENT    | LOW
+prednisone           | Medication   | prednisone                   | 1 (Exact)      | PRESENT    | LOW
+PMR                  | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+prednisone           | Medication   | prednisone                   | 1 (Exact)      | PRESENT    | LOW
+prednisone           | Medication   | prednisone                   | 1 (Exact)      | PRESENT    | LOW
+prednisone           | Medication   | prednisone                   | 1 (Exact)      | PRESENT    | LOW
+Hydralazine          | Medication   | hydralazine                  | 1 (Exact)      | PRESENT    | LOW
+Imdur                | Medication   | Imdusiran                    | 3 (Semantic)   | PRESENT    | LOW
+Amoxicillin-Clavul   | Medication   | Amoxicillin / Clavulanate    | 3 (Semantic)   | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+infection            | Condition    | Infectious disease           | 2 (Synonym)    | PRESENT    | LOW
+Metoprolol           | Medication   | metoprolol                   | 1 (Exact)      | PRESENT    | LOW
+BMP                  | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+INR                  | Lab Test     | Calculation of internation   | 1 (Exact, lab-procedure-sibling) | PRESENT    | LOW
+torsemide            | Medication   | torsemide                    | 1 (Exact)      | PRESENT    | LOW
+warfarin             | Medication   | warfarin                     | 1 (Exact)      | PRESENT    | LOW
+INR                  | Lab Test     | Calculation of internation   | 1 (Exact, lab-procedure-sibling) | PRESENT    | LOW
+heparin gtt          | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+INR                  | Lab Test     | Calculation of internation   | 1 (Exact, lab-procedure-sibling) | PRESENT    | LOW
+torsemide            | Medication   | torsemide                    | 1 (Exact)      | PRESENT    | LOW
+ACS                  | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+cholecystectomy      | Procedure    | Cholecystectomy              | 1 (Exact)      | PRESENT    | LOW
+Augmentin            | Medication   | clavulanate                  | 3 (Semantic)   | PRESENT    | LOW
+PTBD                 | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+prednisone           | Medication   | prednisone                   | 1 (Exact)      | PRESENT    | LOW
+PMR                  | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Acetaminophen        | Medication   | acetaminophen                | 1 (Exact)      | PRESENT    | LOW
+Mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | CONDITIONAL | LOW
+Aspirin              | Medication   | aspirin                      | 1 (Exact)      | PRESENT    | LOW
+Alcohol Pads         | Medication   | ethanol / isopropyl alcoho   | 3 (Semantic)   | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+Warfarin             | Medication   | warfarin                     | 1 (Exact)      | PRESENT    | LOW
+Flovent HFA          | Medication   | FLOMOXEF                     | 3 (Semantic)   | PRESENT    | LOW
+fluticasone          | Medication   | fluticasone                  | 1 (Exact)      | PRESENT    | LOW
+FreeStyle Lite Str   | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Levemir FlexTouch    | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+insulin detemir      | Medication   | insulin detemir              | 1 (Exact)      | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+Omeprazole           | Medication   | omeprazole                   | 1 (Exact)      | PRESENT    | LOW
+Guaifenesin-Dextro   | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+Metoprolol           | Medication   | metoprolol                   | 1 (Exact)      | PRESENT    | LOW
+albuterol            | Medication   | albuterol                    | 1 (Exact)      | PRESENT    | LOW
+Amoxicillin          | Medication   | amoxicillin                  | 1 (Exact)      | ABSENT     | LOW
+Atorvastatin         | Medication   | atorvastatin                 | 1 (Exact)      | PRESENT    | LOW
+Vitamin D            | Medication   | vitamin D                    | 1 (Exact)      | PRESENT    | LOW
+ClonazePAM           | Medication   | clonazepam                   | 1 (Exact)      | PRESENT    | LOW
+anxiety              | Condition    | Anxiety                      | 1 (Exact)      | CONDITIONAL | LOW
+insomnia             | Condition    | Insomnia                     | 1 (Exact)      | CONDITIONAL | LOW
+Fluticasone          | Medication   | fluticasone                  | 1 (Exact)      | PRESENT    | LOW
+HydrALAZINE          | Medication   | hydralazine                  | 1 (Exact)      | PRESENT    | LOW
+Isosorbide Mononit   | Medication   | isosorbide dinitrate         | 3 (Semantic)   | PRESENT    | LOW
+Loratadine           | Medication   | loratadine                   | 1 (Exact)      | PRESENT    | LOW
+MetFORMIN            | Medication   | metformin                    | 1 (Exact)      | PRESENT    | LOW
+Glucophage           | Medication   | glucametacin                 | 3 (Semantic)   | PRESENT    | LOW
+Torsemide            | Medication   | torsemide                    | 1 (Exact)      | PRESENT    | LOW
+TraZODone            | Medication   | trazodone                    | 1 (Exact)      | PRESENT    | LOW
+Lidocaine            | Medication   | lidocaine                    | 1 (Exact)      | PRESENT    | LOW
+Amoxicillin-Clavul   | Medication   | Amoxicillin / Clavulanate    | 3 (Semantic)   | PRESENT    | LOW
+Calcium Carbonate    | Medication   | calcium carbonate            | 1 (Exact)      | PRESENT    | LOW
+Heparin              | Medication   | heparin                      | 1 (Exact)      | PRESENT    | LOW
+Heart Valve          | Anatomy      | Cardiac valve structure      | 3 (Semantic)   | PRESENT    | LOW
+Glargine             | Medication   | insulin glargine             | 3 (Semantic)   | PRESENT    | LOW
+Metoprolol Succina   | Medication   | Metoprolol Extended Releas   | 3 (Semantic)   | PRESENT    | LOW
+Acetaminophen        | Medication   | acetaminophen                | 1 (Exact)      | PRESENT    | LOW
+albuterol sulfate    | Medication   | albuterol                    | 3 (Semantic)   | PRESENT    | LOW
+Alcohol Pads         | Medication   | ethanol / isopropyl alcoho   | 3 (Semantic)   | PRESENT    | LOW
+Aspirin              | Medication   | aspirin                      | 1 (Exact)      | PRESENT    | LOW
+Atorvastatin         | Medication   | atorvastatin                 | 1 (Exact)      | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+ClonazePAM           | Medication   | clonazepam                   | 1 (Exact)      | PRESENT    | LOW
+anxiety              | Condition    | Anxiety                      | 1 (Exact)      | CONDITIONAL | LOW
+insomnia             | Condition    | Insomnia                     | 1 (Exact)      | CONDITIONAL | LOW
+Flovent HFA          | Medication   | FLOMOXEF                     | 3 (Semantic)   | PRESENT    | LOW
+fluticasone          | Medication   | fluticasone                  | 1 (Exact)      | PRESENT    | LOW
+Fluticasone          | Medication   | fluticasone                  | 1 (Exact)      | PRESENT    | LOW
+FreeStyle Lite Str   | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Guaifenesin-Dextro   | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+Levemir FlexTouch    | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+insulin detemir      | Medication   | insulin detemir              | 1 (Exact)      | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+Lidocaine            | Medication   | lidocaine                    | 1 (Exact)      | PRESENT    | LOW
+Loratadine           | Medication   | loratadine                   | 1 (Exact)      | PRESENT    | LOW
+MetFORMIN            | Medication   | metformin                    | 1 (Exact)      | PRESENT    | LOW
+Glucophage           | Medication   | glucametacin                 | 3 (Semantic)   | PRESENT    | LOW
+Omeprazole           | Medication   | omeprazole                   | 1 (Exact)      | PRESENT    | LOW
+PredniSONE           | Medication   | prednisone                   | 1 (Exact)      | PRESENT    | LOW
+Torsemide            | Medication   | torsemide                    | 1 (Exact)      | PRESENT    | LOW
+TraZODone            | Medication   | trazodone                    | 1 (Exact)      | PRESENT    | LOW
+insomnia             | Condition    | Insomnia                     | 1 (Exact)      | CONDITIONAL | LOW
+Vitamin D            | Medication   | vitamin D                    | 1 (Exact)      | PRESENT    | LOW
+Warfarin             | Medication   | warfarin                     | 1 (Exact)      | PRESENT    | LOW
+Warfarin             | Medication   | warfarin                     | 1 (Exact)      | PRESENT    | LOW
+HydrALAZINE          | Medication   | hydralazine                  | 1 (Exact)      | PRESENT    | LOW
+HydrALAZINE          | Medication   | hydralazine                  | 1 (Exact)      | ABSENT     | LOW
+Isosorbide Mononit   | Medication   | isosorbide dinitrate         | 3 (Semantic)   | ABSENT     | LOW
+Isosorbide  Mononi   | Medication   | isosorbide dinitrate         | 3 (Semantic)   | ABSENT     | LOW
+cholecystitis        | Condition    | Cholecystitis                | 1 (Exact)      | PRESENT    | LOW
+Cholelithiasis       | Condition    | Biliary calculus             | 2 (Synonym)    | PRESENT    | LOW
+heart                | Lab Test     | ECG finding                  | 3 (Semantic)   | PRESENT    | LOW
+heart block          | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+Sinus bradycardia    | Condition    | Sinus bradycardia            | 1 (Exact)      | PRESENT    | LOW
+exacerbation of HF   | Condition    | Exacerbation of congestive   | 3 (Semantic)   | PRESENT    | LOW
+kidney               | Anatomy      | Kidney structure             | 2 (Synonym)    | PRESENT    | LOW
+injury               | Condition    | Traumatic or non-traumatic   | 2 (Synonym)    | PRESENT    | LOW
+Blood loss           | Symptom      | Hemorrhage                   | 2 (Synonym)    | PRESENT    | LOW
+anemia               | Condition    | Anemia                       | 1 (Exact)      | PRESENT    | LOW
+Atrial fibrillatio   | Condition    | Atrial fibrillation          | 1 (Exact)      | PRESENT    | LOW
+Mechanical           | Symptom      | Mechanical                   | 1 (Exact)      | PRESENT    | LOW
+mitral valve         | Anatomy      | Mitral valve structure       | 2 (Synonym)    | PRESENT    | LOW
+come                 | Condition    | Chronic otitis media with    | 1 (Exact)      | PRESENT    | LOW
+shortness of breat   | Symptom      | Dyspnea                      | 2 (Synonym)    | POSSIBLE   | LOW
+abdominal pain       | Symptom      | Abdominal pain               | 1 (Exact)      | POSSIBLE   | LOW
+imaging              | Procedure    | Imaging                      | 1 (Exact)      | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+antibiotics          | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+procedure            | Procedure    | Procedure                    | 1 (Exact)      | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+bleeding             | Symptom      | Bleeding                     | 1 (Exact)      | PRESENT    | LOW
+procedure            | Procedure    | Procedure                    | 1 (Exact)      | PRESENT    | LOW
+bleeding             | Symptom      | Bleeding                     | 1 (Exact)      | PRESENT    | LOW
+heart                | Lab Test     | ECG finding                  | 3 (Semantic)   | PRESENT    | LOW
+heart rate           | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+temporary pacemake   | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+heart rate           | Lab Test     | Rate measurement             | 3 (Semantic)   | PRESENT    | LOW
+procedure            | Procedure    | Procedure                    | 1 (Exact)      | PRESENT    | LOW
+gall bladder         | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+gallbladder          | Anatomy      | Gallbladder structure        | 2 (Synonym)    | PRESENT    | LOW
+Physical Exam        | Procedure    | Physical examination         | 1 (Exact)      | PRESENT    | LOW
+VS                   | Symptom      | Vital signs finding          | 1 (Exact)      | PRESENT    | LOW
+Gen                  | Procedure    | General examination of pat   | 1 (Exact)      | PRESENT    | LOW
+HEENT                | Procedure    | Physical examination         | 1 (Exact)      | PRESENT    | LOW
+MMM                  | Symptom      | Moist oral mucosa            | 1 (Exact)      | PRESENT    | LOW
+JVD                  | Symptom      | Jugular venous engorgement   | 1 (Exact)      | PRESENT    | LOW
+RRR                  | Symptom      | Normal heart rate            | 1 (Exact)      | PRESENT    | LOW
+Pulm                 | Procedure    | Examination of respiratory   | 1 (Exact)      | PRESENT    | LOW
+BS                   | Symptom      | Normal bowel sounds          | 1 (Exact)      | PRESENT    | LOW
+Abd                  | Procedure    | Examination of abdomen       | 1 (Exact)      | PRESENT    | LOW
+soft                 | Symptom      | Abdomen soft                 | 1 (Exact)      | PRESENT    | LOW
+ND                   | Symptom      | Swollen abdomen              | 1 (Exact)      | ABSENT     | LOW
+Ext                  | Procedure    | Examination of limb          | 1 (Exact)      | PRESENT    | LOW
+Skin                 | Procedure    | Examination of skin          | 1 (Exact)      | PRESENT    | LOW
+Neuro                | Procedure    | Neurological examination     | 1 (Exact)      | PRESENT    | LOW
+VS                   | Symptom      | Vital signs finding          | 1 (Exact)      | PRESENT    | LOW
+RA                   | Symptom      | Breathing room air           | 1 (Exact)      | PRESENT    | LOW
+GENERAL              | Procedure    | General examination of pat   | 1 (Exact)      | PRESENT    | LOW
+CARDIAC              | Procedure    | Cardiovascular physical ex   | 1 (Exact)      | PRESENT    | LOW
+RRR                  | Symptom      | Normal heart rate            | 1 (Exact)      | PRESENT    | LOW
+NECK                 | Procedure    | Physical examination         | 1 (Exact)      | PRESENT    | LOW
+LUNGS                | Procedure    | Examination of respiratory   | 1 (Exact)      | PRESENT    | LOW
+distress             | Symptom      | Distress                     | 1 (Exact)      | ABSENT     | LOW
+ABDOMEN              | Procedure    | Examination of abdomen       | 1 (Exact)      | PRESENT    | LOW
+EXTREMITIES          | Procedure    | Examination of limb          | 1 (Exact)      | PRESENT    | LOW
+Mental Status        | Procedure    | Neurological mental status   | 1 (Exact)      | PRESENT    | LOW
+Activity Status      | Symptom      | Physical functional depend   | 1 (Exact)      | PRESENT    | LOW
+
+[2/25] Running Stage 1 -> Stage 2a -> Stage 2b via src.clinical_pipeline.run_pipeline() on 11649745-DS-4...
+ℹ️ 7/8 relations in 11649745-DS-4 had at least one unlinked endpoint.
+... 350 entities accepted, 350 normalized, 350 routed LOW, 77 non-asserted, 0 retained below threshold, 2 recovered via original-form fallback.
+DOCTOR WROTE         | LABEL        | OMOP MAPPING                 | TIER           | ASSERTION  | IN
+---------------------------------------------------------------------------------------------------------
+Novocain             | Medication   | Unmapped                     | 0 (Failed)     | ALLERGY    | LOW
+headache             | Symptom      | Headache                     | 1 (Exact)      | ABSENT     | LOW
+embryonal cell car   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+invasive             | Qualifier    | Invasive                     | 1 (Exact)      | PRESENT    | LOW
+breast cancer        | Condition    | Malignant tumor of breast    | 2 (Synonym)    | PRESENT    | LOW
+bilateral mastecto   | Procedure    | Excision of bilateral brea   | 2 (Synonym)    | PRESENT    | LOW
+tamoxifen            | Medication   | tamoxifen                    | 1 (Exact)      | PRESENT    | LOW
+cardiac Catheteriz   | Procedure    | Cardiac catheterization      | 1 (Exact)      | PRESENT    | LOW
+RCA occlusion        | Condition    | Right coronary artery occl   | 1 (Exact)      | PRESENT    | LOW
+Antiplatelet thera   | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Asa 81               | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+brilinta             | Medication   | ticagrelor                   | 3 (Semantic)   | PRESENT    | LOW
+cangrelor gtt        | Medication   | cangrelor                    | 3 (Semantic)   | PRESENT    | LOW
+heparin gtt          | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+HAs                  | Condition    | Has units                    | 3 (Semantic)   | PRESENT    | LOW
+left sided vision    | Symptom      | Blind left eye               | 3 (Semantic)   | PRESENT    | LOW
+neglect              | Symptom      | Neglect                      | 1 (Exact)      | PRESENT    | LOW
+Head                 | Anatomy      | Head structure               | 2 (Synonym)    | PRESENT    | LOW
+CT                   | Procedure    | Computed tomography          | 1 (Exact)      | PRESENT    | LOW
+Right parieto-occi   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+IVH                  | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+antiplatelet thera   | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+CP                   | Condition    | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+SOB                  | Symptom      | Dyspnea                      | 2 (Synonym)    | ABSENT     | LOW
+migraine             | Condition    | Migraine                     | 1 (Exact)      | PRESENT    | LOW
+headache             | Condition    | Headache                     | 1 (Exact)      | PRESENT    | LOW
+light                | Qualifier    | Light color                  | 2 (Synonym)    | PRESENT    | LOW
+sensitivity          | Symptom      | Sensitivity                  | 1 (Exact)      | PRESENT    | LOW
+chest pain           | Symptom      | Chest pain                   | 1 (Exact)      | PRESENT    | LOW
+left                 | Qualifier    | Left                         | 1 (Exact)      | PRESENT    | LOW
+arm                  | Condition    | Anorectal anomaly            | 2 (Synonym)    | PRESENT    | LOW
+ECG                  | Lab Test     | Electrocardiogram with exe   | 3 (Semantic)   | PRESENT    | LOW
+inferior             | Symptom      | Inferior                     | 1 (Exact)      | PRESENT    | LOW
+STEMI                | Lab Test     | ST elevation                 | 1 (Exact)      | PRESENT    | LOW
+STEMI                | Condition    | Myocardial infarction        | 1 (Exact)      | PRESENT    | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+ECG                  | Lab Test     | Electrocardiogram with exe   | 3 (Semantic)   | PRESENT    | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+atropine             | Medication   | atropine                     | 1 (Exact)      | PRESENT    | LOW
+Levophed             | Medication   | levorphanol                  | 3 (Semantic)   | PRESENT    | LOW
+dopamine             | Medication   | dopamine                     | 1 (Exact)      | PRESENT    | LOW
+transcutaneous pac   | Procedure    | Transthoracic cardiac paci   | 2 (Synonym)    | PRESENT    | LOW
+cardiac catheteriz   | Procedure    | Cardiac catheterization      | 1 (Exact)      | PRESENT    | LOW
+thrombotic total o   | Condition    | Acute occlusion of artery    | 3 (Semantic)   | PRESENT    | LOW
+RCA                  | Anatomy      | Right coronary artery stru   | 2 (Synonym)    | PRESENT    | LOW
+RCA                  | Anatomy      | Right coronary artery stru   | 2 (Synonym)    | PRESENT    | LOW
+thrombus             | Condition    | Thrombus                     | 1 (Exact)      | PRESENT    | LOW
+DES                  | Qualifier    | Drug-eluting                 | 1 (Exact)      | PRESENT    | LOW
+DES                  | Procedure    | Stent                        | 1 (Exact)      | PRESENT    | LOW
+RCA                  | Anatomy      | Right coronary artery stru   | 2 (Synonym)    | PRESENT    | LOW
+dopamine             | Medication   | dopamine                     | 1 (Exact)      | PRESENT    | LOW
+Levophed             | Medication   | levorphanol                  | 3 (Semantic)   | PRESENT    | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+CP                   | Condition    | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+SOB                  | Symptom      | Dyspnea                      | 2 (Synonym)    | ABSENT     | LOW
+SBPs                 | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+embryonal cell car   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+surgery              | Procedure    | Surgical procedure           | 2 (Synonym)    | PRESENT    | LOW
+invasive             | Qualifier    | Invasive                     | 1 (Exact)      | PRESENT    | LOW
+breast cancer        | Condition    | Malignant tumor of breast    | 2 (Synonym)    | PRESENT    | LOW
+bilateral mastecto   | Procedure    | Excision of bilateral brea   | 2 (Synonym)    | PRESENT    | LOW
+tamoxifen            | Medication   | tamoxifen                    | 1 (Exact)      | PRESENT    | LOW
+STEMI                | Lab Test     | ST elevation                 | 1 (Exact)      | PRESENT    | LOW
+STEMI                | Condition    | Myocardial infarction        | 1 (Exact)      | PRESENT    | LOW
+ostial RCA           | Anatomy      | Structure of ostium of rig   | 3 (Semantic)   | PRESENT    | LOW
+thrombus             | Condition    | Thrombus                     | 1 (Exact)      | PRESENT    | LOW
+RCA                  | Anatomy      | Right coronary artery stru   | 2 (Synonym)    | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+Intraventricular H   | Condition    | Ventricular hemorrhage       | 2 (Synonym)    | PRESENT    | LOW
+Infratentorial ICH   | Condition    | Intrapontine hemorrhage      | 3 (Semantic)   | PRESENT    | LOW
+Sternocleidomastoi   | Anatomy      | Structure of sternocleidom   | 3 (Semantic)   | PRESENT    | LOW
+trapezius            | Anatomy      | Structure of trapezius mus   | 3 (Semantic)   | PRESENT    | LOW
+Tongue               | Anatomy      | Tongue structure             | 2 (Synonym)    | PRESENT    | LOW
+midline              | Symptom      | Midline                      | 1 (Exact)      | PRESENT    | LOW
+headache             | Symptom      | Headache                     | 1 (Exact)      | PRESENT    | LOW
+BTT                  | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+tongue               | Anatomy      | Tongue structure             | 2 (Synonym)    | ABSENT     | LOW
+midline              | Symptom      | Midline                      | 1 (Exact)      | ABSENT     | LOW
+lift                 | Anatomy      | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+lift                 | Anatomy      | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+lift                 | Anatomy      | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+lift                 | Anatomy      | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+DSS                  | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+tongue               | Anatomy      | Tongue structure             | 2 (Synonym)    | ABSENT     | LOW
+midline              | Symptom      | Midline                      | 1 (Exact)      | ABSENT     | LOW
+delt                 | Anatomy      | Deltoid region structure     | 3 (Semantic)   | ABSENT     | LOW
+biceps               | Anatomy      | Biceps brachii muscle stru   | 3 (Semantic)   | ABSENT     | LOW
+triceps              | Anatomy      | Triceps surae muscle struc   | 3 (Semantic)   | ABSENT     | LOW
+ECR                  | Anatomy      | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+FEx                  | Anatomy      | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+IP                   | Anatomy      | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+Hamstring            | Anatomy      | Hamstring muscle and/or te   | 3 (Semantic)   | ABSENT     | LOW
+Quad                 | Anatomy      | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+TA                   | Anatomy      | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+Gastroc              | Anatomy      | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+Cerebellar           | Anatomy      | Cerebellar function test     | 3 (Semantic)   | PRESENT    | LOW
+mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | PRESENT    | LOW
+WBC-16               | Lab Test     | White blood cell count       | 3 (Semantic)   | PRESENT    | LOW
+RBC-3                | Lab Test     | Red blood cell count         | 3 (Semantic)   | PRESENT    | LOW
+Hct-33               | Lab Test     | Hematocrit determination     | 3 (Semantic)   | PRESENT    | LOW
+MCV-91               | Lab Test     | Erythrocyte mean corpuscul   | 3 (Semantic)   | PRESENT    | LOW
+MCH-29               | Lab Test     | Mean corpuscular hemoglobi   | 3 (Semantic)   | PRESENT    | LOW
+MCHC-32              | Lab Test     | Mean corpuscular hemoglobi   | 3 (Semantic)   | PRESENT    | LOW
+RDW-14               | Lab Test     | Red cell distribution widt   | 3 (Semantic)   | PRESENT    | LOW
+RDWSD-49             | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+WBC-14               | Lab Test     | White blood cell count       | 3 (Semantic)   | PRESENT    | LOW
+RBC-4                | Lab Test     | Red blood cell count         | 3 (Semantic)   | PRESENT    | LOW
+MCV-87               | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+RDW-14               | Lab Test     | Red cell distribution widt   | 3 (Semantic)   | PRESENT    | LOW
+RDWSD-44             | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Neuts-84             | Lab Test     | Neutrophil count             | 3 (Semantic)   | PRESENT    | LOW
+PTT-25               | Lab Test     | Prothrombin time             | 3 (Semantic)   | PRESENT    | LOW
+Glucose-101          | Lab Test     | Glucose measurement          | 3 (Semantic)   | PRESENT    | LOW
+UreaN-20             | Lab Test     | Urea measurement             | 3 (Semantic)   | PRESENT    | LOW
+HCO3-26              | Lab Test     | Bicarbonate measurement      | 3 (Semantic)   | PRESENT    | LOW
+AnGap-13             | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+ADP-DONE             | Lab Test     | Adenosine diphosphate meas   | 3 (Semantic)   | PRESENT    | LOW
+CK(CPK)              | Lab Test     | Creatine kinase measuremen   | 3 (Semantic)   | PRESENT    | LOW
+ALT-43               | Lab Test     | Alanine transaminase activ   | 3 (Semantic)   | PRESENT    | LOW
+AST-74               | Lab Test     | Aspartate aminotransferase   | 3 (Semantic)   | PRESENT    | LOW
+LD(LDH)              | Lab Test     | Lactate dehydrogenase meas   | 3 (Semantic)   | PRESENT    | LOW
+LD(LDH)-409          | Lab Test     | Lactate dehydrogenase meas   | 3 (Semantic)   | PRESENT    | LOW
+CK(CPK)              | Lab Test     | Creatine kinase measuremen   | 3 (Semantic)   | PRESENT    | LOW
+CK                   | Lab Test     | Creatine kinase measuremen   | 3 (Semantic)   | PRESENT    | LOW
+AlkPhos-41           | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+CK-MB-12             | Lab Test     | Creatine kinase MB measure   | 3 (Semantic)   | PRESENT    | LOW
+Calcium-9            | Lab Test     | Calcium measurement          | 3 (Semantic)   | PRESENT    | LOW
+HbA1c-5              | Lab Test     | Hemoglobin A1c measurement   | 3 (Semantic)   | PRESENT    | LOW
+eAG-108              | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Triglyc-97 HDL-34    | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+HD-4                 | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+LDLcalc-97           | Lab Test     | Calculated LDL cholesterol   | 3 (Semantic)   | PRESENT    | LOW
+TSH-0.88             | Lab Test     | Thyroid stimulating hormon   | 3 (Semantic)   | PRESENT    | LOW
+Sp                   | Condition    | Spontaneous pneumothorax     | 1 (Exact)      | PRESENT    | LOW
+Leuks-NEG            | Lab Test     | White blood cell count       | 3 (Semantic)   | PRESENT    | LOW
+RBC-4                | Lab Test     | Red blood cell count         | 3 (Semantic)   | PRESENT    | LOW
+WBC-2                | Lab Test     | White blood cell count       | 3 (Semantic)   | PRESENT    | LOW
+CastHy-1             | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+URINE                | Lab Test     | Urine examination            | 3 (Semantic)   | ABSENT     | LOW
+Venipuncture         | Procedure    | Venipuncture                 | 1 (Exact)      | PRESENT    | LOW
+right parietal/occ   | Condition    | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+intraventricular h   | Condition    | Ventricular hemorrhage       | 2 (Synonym)    | ABSENT     | LOW
+hydrocephalus        | Condition    | Hydrocephalus                | 1 (Exact)      | PRESENT    | LOW
+right parietal/occ   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+right  posterior     | Anatomy      | Structure of right posteri   | 3 (Semantic)   | PRESENT    | LOW
+occipital and  par   | Anatomy      | Occipital lobe structure     | 3 (Semantic)   | PRESENT    | LOW
+splenium of the co   | Anatomy      | Structure of splenium of c   | 3 (Semantic)   | PRESENT    | LOW
+right                | Qualifier    | Right                        | 1 (Exact)      | PRESENT    | LOW
+caudate nucleus      | Anatomy      | Caudate nucleus structure    | 2 (Synonym)    | PRESENT    | LOW
+distal P1 segment    | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+right  posterior c   | Anatomy      | Structure of right posteri   | 2 (Synonym)    | PRESENT    | LOW
+intraparenchymal     | Condition    | Intraparenchymal hemorrhag   | 3 (Semantic)   | PRESENT    | LOW
+third  and fourth    | Anatomy      | Third ventricle structure    | 3 (Semantic)   | PRESENT    | LOW
+vasospasm            | Condition    | Vasospasm                    | 1 (Exact)      | ABSENT     | LOW
+mm of leftward mid   | Condition    | Maxillary and mandibular m   | 3 (Semantic)   | ABSENT     | LOW
+internal carotid s   | Condition    | Internal carotid artery st   | 3 (Semantic)   | ABSENT     | LOW
+right                | Qualifier    | Right                        | 1 (Exact)      | PRESENT    | LOW
+internal jugular v   | Anatomy      | Internal jugular vein stru   | 2 (Synonym)    | PRESENT    | LOW
+deep venous thromb   | Condition    | Deep venous thrombosis       | 1 (Exact)      | ABSENT     | LOW
+right parieto-occi   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+CT                   | Procedure    | Computed tomography          | 1 (Exact)      | PRESENT    | LOW
+L                    | Qualifier    | Left                         | 1 (Exact)      | PRESENT    | LOW
+SPINE                | Anatomy      | Structure of vertebral col   | 2 (Synonym)    | PRESENT    | LOW
+lumbar spine         | Anatomy      | Lumbar spine structure       | 2 (Synonym)    | ABSENT     | LOW
+Mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | PRESENT    | LOW
+embryonal cell car   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+surgery              | Procedure    | Surgical procedure           | 2 (Synonym)    | PRESENT    | LOW
+invasive             | Qualifier    | Invasive                     | 1 (Exact)      | PRESENT    | LOW
+breast cancer        | Condition    | Malignant tumor of breast    | 2 (Synonym)    | PRESENT    | LOW
+bilateral  mastect   | Procedure    | Excision of bilateral brea   | 2 (Synonym)    | PRESENT    | LOW
+tamoxifen            | Medication   | tamoxifen                    | 1 (Exact)      | PRESENT    | LOW
+STEMI                | Lab Test     | ST elevation                 | 1 (Exact)      | PRESENT    | LOW
+STEMI                | Condition    | Myocardial infarction        | 1 (Exact)      | PRESENT    | LOW
+DES                  | Qualifier    | Drug-eluting                 | 1 (Exact)      | PRESENT    | LOW
+DES                  | Procedure    | Stent                        | 1 (Exact)      | PRESENT    | LOW
+RCA                  | Anatomy      | Right coronary artery stru   | 2 (Synonym)    | PRESENT    | LOW
+left                 | Qualifier    | Left                         | 1 (Exact)      | PRESENT    | LOW
+visual field         | Symptom      | Visual field                 | 1 (Exact)      | PRESENT    | LOW
+cut                  | Symptom      | Incised wound - morphology   | 2 (Synonym)    | PRESENT    | LOW
+CT                   | Procedure    | Computed tomography          | 1 (Exact)      | PRESENT    | LOW
+IPH                  | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+edema                | Condition    | Edema                        | 1 (Exact)      | PRESENT    | LOW
+MRI                  | Procedure    | Magnetic resonance imaging   | 1 (Exact)      | PRESENT    | LOW
+ischemic infarcts    | Condition    | Infarct                      | 3 (Semantic)   | PRESENT    | LOW
+PCA  territory       | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+caudate              | Anatomy      | Caudate nucleus structure    | 3 (Semantic)   | PRESENT    | LOW
+PCA territory        | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+left                 | Qualifier    | Left                         | 1 (Exact)      | PRESENT    | LOW
+hemianopia           | Condition    | Hemianopia                   | 1 (Exact)      | PRESENT    | LOW
+extinction  to dou   | Symptom      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+fatigue              | Symptom      | Fatigue                      | 1 (Exact)      | PRESENT    | LOW
+sensitivity          | Symptom      | Sensitivity                  | 1 (Exact)      | PRESENT    | LOW
+light                | Qualifier    | Light color                  | 2 (Synonym)    | PRESENT    | LOW
+Stroke               | Condition    | Cerebrovascular accident     | 2 (Synonym)    | PRESENT    | LOW
+sleep apnea          | Condition    | Sleep apnea                  | 1 (Exact)      | PRESENT    | LOW
+periprocedural inf   | Condition    | Old and recent infarct       | 3 (Semantic)   | PRESENT    | LOW
+atherosclerosis      | Condition    | Atherosclerosis              | 1 (Exact)      | CONDITIONAL | LOW
+Caudate              | Anatomy      | Caudate nucleus structure    | 3 (Semantic)   | PRESENT    | LOW
+MRI/MRA              | Procedure    | Multiparametric magnetic r   | 3 (Semantic)   | PRESENT    | LOW
+PCA territory        | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+caudate              | Anatomy      | Caudate nucleus structure    | 3 (Semantic)   | PRESENT    | LOW
+right IJ             | Anatomy      | Structure of right interna   | 3 (Semantic)   | PRESENT    | LOW
+right  IJ            | Anatomy      | Structure of right interna   | 3 (Semantic)   | PRESENT    | LOW
+Plavix               | Medication   | clopidogrel                  | 3 (Semantic)   | PRESENT    | LOW
+Plavix               | Medication   | clopidogrel                  | 3 (Semantic)   | PRESENT    | LOW
+Plavix               | Medication   | clopidogrel                  | 3 (Semantic)   | CONDITIONAL | LOW
+tamoxifen            | Medication   | tamoxifen                    | 1 (Exact)      | PRESENT    | LOW
+flushing             | Condition    | Flushing                     | 1 (Exact)      | PRESENT    | LOW
+sensation            | Qualifier    | Sensation quality            | 2 (Synonym)    | PRESENT    | LOW
+hydralazine          | Medication   | hydralazine                  | 1 (Exact)      | PRESENT    | LOW
+oxycodone            | Medication   | oxycodone                    | 1 (Exact)      | PRESENT    | LOW
+Lidocaine            | Medication   | lidocaine                    | 1 (Exact)      | PRESENT    | LOW
+Lidocaine            | Medication   | lidocaine                    | 1 (Exact)      | POSSIBLE   | LOW
+novacaine            | Medication   | butacaine                    | 3 (Semantic)   | POSSIBLE   | LOW
+flushing             | Condition    | Flushing                     | 1 (Exact)      | PRESENT    | LOW
+sensation            | Qualifier    | Sensation quality            | 2 (Synonym)    | PRESENT    | LOW
+metoprolol           | Medication   | metoprolol                   | 1 (Exact)      | PRESENT    | LOW
+acetaminophen        | Medication   | acetaminophen                | 1 (Exact)      | PRESENT    | LOW
+paresthesias         | Symptom      | Paresthesia                  | 3 (Semantic)   | PRESENT    | LOW
+paresthesias         | Symptom      | Paresthesia                  | 3 (Semantic)   | PRESENT    | LOW
+right IJ             | Anatomy      | Structure of right interna   | 3 (Semantic)   | PRESENT    | LOW
+left homonymous he   | Symptom      | Left homonymous hemianopsi   | 1 (Exact)      | PRESENT    | LOW
+Plavix               | Medication   | clopidogrel                  | 3 (Semantic)   | PRESENT    | LOW
+CT                   | Procedure    | Computed tomography          | 1 (Exact)      | PRESENT    | LOW
+aspirin              | Medication   | aspirin                      | 1 (Exact)      | CONDITIONAL | LOW
+atorvastatin         | Medication   | atorvastatin                 | 1 (Exact)      | PRESENT    | LOW
+Stroke               | Condition    | Cerebrovascular accident     | 2 (Synonym)    | PRESENT    | LOW
+tamoxifen            | Medication   | tamoxifen                    | 1 (Exact)      | PRESENT    | LOW
+venous clot          | Condition    | Venous thrombosis            | 3 (Semantic)   | PRESENT    | LOW
+R IJ                 | Anatomy      | Structure of right interna   | 3 (Semantic)   | PRESENT    | LOW
+sleep apnea          | Condition    | Sleep apnea                  | 1 (Exact)      | PRESENT    | LOW
+aortic arch          | Anatomy      | Aortic arch structure        | 2 (Synonym)    | PRESENT    | LOW
+CTA                  | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Stroke risk          | Lab Test     | Stroke risk                  | 1 (Exact)      | PRESENT    | LOW
+TSH                  | Lab Test     | Thyroid stimulating hormon   | 3 (Semantic)   | PRESENT    | LOW
+A1c                  | Lab Test     | Hemoglobin A1c measurement   | 3 (Semantic)   | PRESENT    | LOW
+LDL 97               | Lab Test     | Low density lipoprotein me   | 3 (Semantic)   | PRESENT    | LOW
+TTE                  | Symptom      | Transthoracic approach       | 2 (Synonym)    | PRESENT    | LOW
+TTE                  | Procedure    | Echocardiography             | 2 (Synonym)    | PRESENT    | LOW
+Hypertension         | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+hypertension         | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+lisinopril           | Medication   | lisinopril                   | 1 (Exact)      | PRESENT    | LOW
+cough                | Symptom      | Cough                        | 1 (Exact)      | PRESENT    | LOW
+metoprolol           | Medication   | metoprolol                   | 1 (Exact)      | PRESENT    | LOW
+orthostatic hypote   | Symptom      | Orthostatic hypotension      | 1 (Exact)      | PRESENT    | LOW
+ST-elevation MI      | Condition    | Acute ST segment elevation   | 3 (Semantic)   | PRESENT    | LOW
+STEMI                | Lab Test     | ST elevation                 | 1 (Exact)      | PRESENT    | LOW
+STEMI                | Condition    | Myocardial infarction        | 1 (Exact)      | PRESENT    | LOW
+cardiac cath         | Procedure    | Cardiac catheterization      | 3 (Semantic)   | PRESENT    | LOW
+RCA occlusion        | Condition    | Right coronary artery occl   | 1 (Exact)      | PRESENT    | LOW
+TTE                  | Symptom      | Transthoracic approach       | 2 (Synonym)    | PRESENT    | LOW
+TTE                  | Procedure    | Echocardiography             | 2 (Synonym)    | PRESENT    | LOW
+PFO                  | Anatomy      | Structure of foramen ovale   | 3 (Semantic)   | POSSIBLE   | LOW
+Plavix               | Medication   | clopidogrel                  | 3 (Semantic)   | PRESENT    | LOW
+ASA                  | Medication   | aspirin                      | 3 (Semantic)   | PRESENT    | LOW
+lisinopril           | Medication   | lisinopril                   | 1 (Exact)      | PRESENT    | LOW
+orthostatic hypote   | Symptom      | Orthostatic hypotension      | 1 (Exact)      | PRESENT    | LOW
+Leukocytosis         | Lab Test     | Blood leukocyte number abo   | 3 (Semantic)   | PRESENT    | LOW
+Leukocytosis         | Condition    | Leukocytosis                 | 1 (Exact)      | PRESENT    | LOW
+Low back pain        | Symptom      | Low back pain                | 1 (Exact)      | PRESENT    | LOW
+low back pain        | Symptom      | Low back pain                | 1 (Exact)      | PRESENT    | LOW
+CT                   | Procedure    | Computed tomography          | 1 (Exact)      | PRESENT    | LOW
+CT L-spine           | Procedure    | CT of lumbar spine           | 3 (Semantic)   | PRESENT    | LOW
+L-spine              | Anatomy      | Levels of spine              | 3 (Semantic)   | PRESENT    | LOW
+degenerative chang   | Condition    | Degenerative disorder        | 3 (Semantic)   | PRESENT    | LOW
+tramadol             | Medication   | tramadol                     | 1 (Exact)      | PRESENT    | LOW
+Tylenol              | Medication   | tylosin                      | 3 (Semantic)   | PRESENT    | LOW
+OSA                  | Condition    | Obstructive sleep apnea sy   | 2 (Synonym)    | PRESENT    | LOW
+OSA                  | Condition    | Sleep apnea                  | 1 (Exact)      | PRESENT    | LOW
+OSA                  | Condition    | Obstructive sleep apnea sy   | 2 (Synonym)    | PRESENT    | LOW
+OSA                  | Condition    | Obstructive sleep apnea sy   | 2 (Synonym)    | PRESENT    | LOW
+sleep study          | Procedure    | Sleep studies                | 3 (Semantic)   | PRESENT    | LOW
+breast cancer        | Condition    | Malignant tumor of breast    | 2 (Synonym)    | PRESENT    | LOW
+tamoxifen            | Medication   | tamoxifen                    | 1 (Exact)      | PRESENT    | LOW
+venous thrombus      | Condition    | Venous thrombosis            | 3 (Semantic)   | PRESENT    | LOW
+PFO                  | Anatomy      | Structure of foramen ovale   | 3 (Semantic)   | PRESENT    | LOW
+tamoxifen            | Medication   | tamoxifen                    | 1 (Exact)      | ABSENT     | LOW
+RIJ Thrombus         | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+right IJ clot        | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+ultrasound           | Procedure    | Ultrasonography              | 2 (Synonym)    | PRESENT    | LOW
+ultrasound           | Procedure    | Ultrasonography              | 2 (Synonym)    | PRESENT    | LOW
+aspirin              | Medication   | aspirin                      | 1 (Exact)      | CONDITIONAL | LOW
+IJ                   | Anatomy      | Internal jugular vein stru   | 3 (Semantic)   | CONDITIONAL | LOW
+Sleep study          | Procedure    | Sleep studies                | 3 (Semantic)   | CONDITIONAL | LOW
+Tamoxifen            | Medication   | tamoxifen                    | 1 (Exact)      | CONDITIONAL | LOW
+Lisinopril           | Medication   | lisinopril                   | 1 (Exact)      | PRESENT    | LOW
+orthostatic hypote   | Symptom      | Orthostatic hypotension      | 1 (Exact)      | PRESENT    | LOW
+Ischemic Stroke      | Condition    | Ischemic stroke              | 1 (Exact)      | PRESENT    | LOW
+Dysphagia            | Condition    | Dysphagia                    | 1 (Exact)      | PRESENT    | LOW
+DVT                  | Condition    | Deep venous thrombosis       | 1 (Exact)      | ABSENT     | LOW
+PCA infarct          | Condition    | Infarction of prostate       | 3 (Semantic)   | ABSENT     | LOW
+LDL                  | Lab Test     | Low density lipoprotein me   | 3 (Semantic)   | ABSENT     | LOW
+LDL                  | Lab Test     | Low density lipoprotein me   | 3 (Semantic)   | PRESENT    | LOW
+simvastatin          | Medication   | simvastatin                  | 1 (Exact)      | PRESENT    | LOW
+simvastatin          | Medication   | simvastatin                  | 1 (Exact)      | PRESENT    | LOW
+ezetemibe            | Medication   | ezetimibe                    | 3 (Semantic)   | PRESENT    | LOW
+atorvastatin         | Medication   | atorvastatin                 | 1 (Exact)      | PRESENT    | LOW
+rosuvastatin         | Medication   | rosuvastatin                 | 1 (Exact)      | PRESENT    | LOW
+LDL                  | Lab Test     | Low density lipoprotein me   | 3 (Semantic)   | PRESENT    | LOW
+LDL                  | Lab Test     | Low density lipoprotein me   | 3 (Semantic)   | ABSENT     | LOW
+LDL                  | Lab Test     | Low density lipoprotein me   | 3 (Semantic)   | ABSENT     | LOW
+LDL-c                | Lab Test     | Low density lipoprotein me   | 3 (Semantic)   | PRESENT    | LOW
+LDL                  | Lab Test     | Low density lipoprotein me   | 3 (Semantic)   | ABSENT     | LOW
+LDL-c                | Lab Test     | Low density lipoprotein me   | 3 (Semantic)   | PRESENT    | LOW
+atrial  fibrillati   | Condition    | Atrial flutter               | 3 (Semantic)   | ABSENT     | LOW
+Tamoxifen            | Medication   | tamoxifen                    | 1 (Exact)      | PRESENT    | LOW
+Lisinopril           | Medication   | lisinopril                   | 1 (Exact)      | PRESENT    | LOW
+Acetaminophen        | Medication   | acetaminophen                | 1 (Exact)      | PRESENT    | LOW
+Mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | CONDITIONAL | LOW
+Atorvastatin         | Medication   | atorvastatin                 | 1 (Exact)      | PRESENT    | LOW
+Bisacodyl            | Medication   | bisacodyl                    | 1 (Exact)      | PRESENT    | LOW
+Constipation         | Condition    | Constipation                 | 1 (Exact)      | CONDITIONAL | LOW
+Clopidogrel          | Medication   | clopidogrel                  | 1 (Exact)      | PRESENT    | LOW
+Cyclobenzaprine      | Medication   | cyclobenzaprine              | 1 (Exact)      | PRESENT    | LOW
+Metoprolol Succina   | Medication   | Metoprolol Extended Releas   | 3 (Semantic)   | PRESENT    | LOW
+Polyethylene Glyco   | Medication   | polyethylene glycols         | 3 (Semantic)   | PRESENT    | LOW
+Constipation         | Condition    | Constipation                 | 1 (Exact)      | CONDITIONAL | LOW
+ischemic             | Qualifier    | Ischemic                     | 1 (Exact)      | PRESENT    | LOW
+posterior cerebral   | Anatomy      | Structure of posterior cer   | 2 (Synonym)    | PRESENT    | LOW
+infarct              | Symptom      | Infarct                      | 1 (Exact)      | PRESENT    | LOW
+ISCHEMIC STROKE      | Condition    | Ischemic stroke              | 1 (Exact)      | PRESENT    | LOW
+HEMORRHAGIC  CONVE   | Condition    | Hemorrhagic separation       | 3 (Semantic)   | PRESENT    | LOW
+brain                | Anatomy      | Brain structure              | 2 (Synonym)    | PRESENT    | LOW
+brain                | Anatomy      | Brain structure              | 2 (Synonym)    | PRESENT    | LOW
+brain                | Anatomy      | Brain structure              | 2 (Synonym)    | PRESENT    | LOW
+heart surgery        | Procedure    | Operation on heart           | 3 (Semantic)   | PRESENT    | LOW
+patent foramen ova   | Anatomy      | Structure of foramen ovale   | 3 (Semantic)   | PRESENT    | LOW
+tamoxifen            | Medication   | tamoxifen                    | 1 (Exact)      | PRESENT    | LOW
+PLAVIX               | Medication   | clopidogrel                  | 3 (Semantic)   | PRESENT    | LOW
+aspirin              | Medication   | aspirin                      | 1 (Exact)      | ABSENT     | LOW
+Sudden               | Qualifier    | Sudden                       | 1 (Exact)      | PRESENT    | LOW
+partial              | Qualifier    | Partial                      | 1 (Exact)      | PRESENT    | LOW
+complete             | Qualifier    | Complete                     | 1 (Exact)      | PRESENT    | LOW
+loss of vision       | Condition    | Loss of vision               | 1 (Exact)      | PRESENT    | LOW
+Sudden loss of the   | Symptom      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Sudden loss of the   | Symptom      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Sudden weakness of   | Symptom      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Sudden drooping of   | Symptom      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Sudden loss of sen   | Symptom      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Physical Exam        | Procedure    | Physical examination         | 1 (Exact)      | PRESENT    | LOW
+Gen                  | Procedure    | General examination of pat   | 1 (Exact)      | PRESENT    | LOW
+NAD                  | Symptom      | No abnormality detected      | 1 (Exact)      | PRESENT    | LOW
+HEENT                | Procedure    | Physical examination         | 1 (Exact)      | PRESENT    | LOW
+Neck                 | Procedure    | Physical examination         | 1 (Exact)      | PRESENT    | LOW
+Extrem               | Procedure    | Examination of limb          | 1 (Exact)      | PRESENT    | LOW
+Neuro                | Procedure    | Neurological examination     | 1 (Exact)      | PRESENT    | LOW
+oriented             | Symptom      | Orientated                   | 1 (Exact)      | PRESENT    | LOW
+Mental Status        | Procedure    | Neurological mental status   | 1 (Exact)      | PRESENT    | LOW
+Activity Status      | Symptom      | Physical functional depend   | 1 (Exact)      | PRESENT    | LOW
+
+[3/25] Running Stage 1 -> Stage 2a -> Stage 2b via src.clinical_pipeline.run_pipeline() on 11997336-DS-3...
+... 227 entities accepted, 227 normalized, 227 routed LOW, 52 non-asserted, 0 retained below threshold, 0 recovered via original-form fallback.
+DOCTOR WROTE         | LABEL        | OMOP MAPPING                 | TIER           | ASSERTION  | IN
+---------------------------------------------------------------------------------------------------------
+shortness of breat   | Symptom      | Dyspnea                      | 2 (Synonym)    | PRESENT    | LOW
+cardiac catheteriz   | Procedure    | Cardiac catheterization      | 1 (Exact)      | PRESENT    | LOW
+hypertension         | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+diabetes             | Condition    | Diabetes mellitus            | 3 (Semantic)   | PRESENT    | LOW
+hyperlipidemia       | Condition    | Hyperlipidemia               | 1 (Exact)      | PRESENT    | LOW
+presyncope           | Symptom      | Near syncope                 | 2 (Synonym)    | PRESENT    | LOW
+shortness of breat   | Symptom      | Dyspnea                      | 2 (Synonym)    | PRESENT    | LOW
+nausea               | Symptom      | Nausea                       | 1 (Exact)      | PRESENT    | LOW
+left-sided rib pai   | Symptom      | Left sided chest pain        | 3 (Semantic)   | PRESENT    | LOW
+umbilicus            | Anatomy      | Umbilical structure          | 2 (Synonym)    | PRESENT    | LOW
+cold                 | Condition    | Chronic obstructive pulmon   | 2 (Synonym)    | PRESENT    | LOW
+chest pain           | Symptom      | Chest pain                   | 1 (Exact)      | PRESENT    | LOW
+shortness of  brea   | Symptom      | Dyspnea                      | 2 (Synonym)    | PRESENT    | LOW
+chest pain           | Symptom      | Chest pain                   | 1 (Exact)      | ABSENT     | LOW
+left ribs            | Anatomy      | Bone structure of left rib   | 3 (Semantic)   | PRESENT    | LOW
+fatigue              | Symptom      | Fatigue                      | 1 (Exact)      | PRESENT    | LOW
+shortness of breat   | Symptom      | Dyspnea                      | 2 (Synonym)    | PRESENT    | LOW
+diaphoresis          | Symptom      | Excessive sweating           | 2 (Synonym)    | PRESENT    | LOW
+shortness of breat   | Symptom      | Dyspnea                      | 2 (Synonym)    | PRESENT    | LOW
+Demerol              | Medication   | meperidine                   | 3 (Semantic)   | PRESENT    | LOW
+Reglan               | Medication   | metoclopramide               | 3 (Semantic)   | PRESENT    | LOW
+nausea               | Symptom      | Nausea                       | 1 (Exact)      | PRESENT    | LOW
+NSTEMI               | Condition    | Acute non-ST segment eleva   | 3 (Semantic)   | PRESENT    | LOW
+peak                 | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+troponin             | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+nuclear stress tes   | Procedure    | Radionuclide ventriculogra   | 3 (Semantic)   | PRESENT    | LOW
+anterior  and ante   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+LVEF                 | Anatomy      | Left cardiac ventricular s   | 2 (Synonym)    | PRESENT    | LOW
+R                    | Qualifier    | Right                        | 1 (Exact)      | PRESENT    | LOW
+calf pain            | Condition    | Pain in calf                 | 2 (Synonym)    | PRESENT    | LOW
+ultrasound           | Procedure    | Ultrasonography              | 2 (Synonym)    | PRESENT    | LOW
+no DVT               | Symptom      | No deep vein thrombosis      | 2 (Synonym)    | ABSENT     | LOW
+cardiac  catheteri   | Procedure    | Cardiac catheterization      | 1 (Exact)      | PRESENT    | LOW
+cardiac catheteriz   | Procedure    | Cardiac catheterization      | 1 (Exact)      | PRESENT    | LOW
+chest discomfort     | Symptom      | Chest discomfort             | 1 (Exact)      | ABSENT     | LOW
+shortness of breat   | Symptom      | Dyspnea                      | 2 (Synonym)    | ABSENT     | LOW
+palpitations         | Symptom      | Palpitations                 | 1 (Exact)      | ABSENT     | LOW
+stroke               | Condition    | Cerebrovascular accident     | 2 (Synonym)    | ABSENT     | LOW
+TIA                  | Condition    | Transient cerebral ischemi   | 2 (Synonym)    | ABSENT     | LOW
+deep venous thromb   | Condition    | Deep venous thrombosis       | 1 (Exact)      | ABSENT     | LOW
+pulmonary  embolis   | Condition    | Pulmonary embolism           | 1 (Exact)      | ABSENT     | LOW
+cough                | Symptom      | Cough                        | 1 (Exact)      | ABSENT     | LOW
+hemoptysis           | Symptom      | Hemoptysis                   | 1 (Exact)      | ABSENT     | LOW
+black stools         | Condition    | Dark stools                  | 2 (Synonym)    | ABSENT     | LOW
+red stools           | Condition    | Red stools                   | 1 (Exact)      | ABSENT     | LOW
+exertional buttock   | Symptom      | Pain in buttock              | 3 (Semantic)   | ABSENT     | LOW
+paroxysmal nocturn   | Symptom      | Paroxysmal nocturnal dyspn   | 1 (Exact)      | ABSENT     | LOW
+palpitations         | Symptom      | Palpitations                 | 1 (Exact)      | ABSENT     | LOW
+ankle edema          | Symptom      | Ankle edema                  | 1 (Exact)      | ABSENT     | LOW
+syncope              | Symptom      | Syncope                      | 1 (Exact)      | ABSENT     | LOW
+presyncope           | Symptom      | Near syncope                 | 2 (Synonym)    | ABSENT     | LOW
+Hypertension         | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+Hyperlipidemia       | Condition    | Hyperlipidemia               | 1 (Exact)      | PRESENT    | LOW
+Diabetes             | Condition    | Diabetes mellitus            | 3 (Semantic)   | PRESENT    | LOW
+Mitral valve prola   | Condition    | Mitral valve prolapse        | 1 (Exact)      | PRESENT    | LOW
+osteomyletis         | Condition    | Order Leptomyxida            | 3 (Semantic)   | PRESENT    | LOW
+cholecystectomy      | Procedure    | Cholecystectomy              | 1 (Exact)      | PRESENT    | LOW
+Rheumatic fever      | Symptom      | Rheumatic fever              | 1 (Exact)      | PRESENT    | LOW
+S1                   | Anatomy      | Structure of first sacral    | 2 (Synonym)    | PRESENT    | LOW
+S2                   | Anatomy      | Structure of second sacral   | 2 (Synonym)    | PRESENT    | LOW
+S3                   | Anatomy      | Structure of third sacral    | 2 (Synonym)    | ABSENT     | LOW
+S4                   | Anatomy      | Structure of fourth sacral   | 2 (Synonym)    | ABSENT     | LOW
+cyanosis             | Symptom      | Cyanosis                     | 1 (Exact)      | PRESENT    | LOW
+LMCA                 | Anatomy      | Coronary artery structure    | 2 (Synonym)    | PRESENT    | LOW
+LAD                  | Anatomy      | Structure of left anterior   | 3 (Semantic)   | PRESENT    | LOW
+LCx                  | Anatomy      | Structure of circumflex co   | 3 (Semantic)   | PRESENT    | LOW
+LCx                  | Anatomy      | Coronary artery structure    | 2 (Synonym)    | PRESENT    | LOW
+RCA                  | Anatomy      | Right coronary artery stru   | 2 (Synonym)    | PRESENT    | LOW
+systolic  hyperten   | Condition    | Systolic hypertension        | 1 (Exact)      | PRESENT    | LOW
+PASP                 | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | PRESENT    | LOW
+systolic hypertens   | Condition    | Systolic hypertension        | 1 (Exact)      | PRESENT    | LOW
+cardiac index        | Lab Test     | Cardiac index                | 1 (Exact)      | PRESENT    | LOW
+mitral regurgitati   | Condition    | Mitral valve regurgitation   | 2 (Synonym)    | PRESENT    | LOW
+LVEF                 | Anatomy      | Left cardiac ventricular s   | 2 (Synonym)    | PRESENT    | LOW
+mitral regurgitati   | Condition    | Mitral valve regurgitation   | 2 (Synonym)    | PRESENT    | LOW
+pulmonary arterial   | Condition    | Pulmonary hypertension due   | 3 (Semantic)   | PRESENT    | LOW
+atria                | Anatomy      | Atrial structure             | 3 (Semantic)   | PRESENT    | LOW
+mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | PRESENT    | LOW
+left  ventricular    | Condition    | Left ventricular hypertrop   | 1 (Exact)      | PRESENT    | LOW
+aortic valve  leaf   | Anatomy      | Structure of cardiac valve   | 3 (Semantic)   | PRESENT    | LOW
+tips                 | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+rheumatic valvulit   | Condition    | Chronic rheumatic valvulit   | 3 (Semantic)   | PRESENT    | LOW
+aortic stenosis      | Condition    | Aortic valve stenosis        | 3 (Semantic)   | PRESENT    | LOW
+aortic regurgitati   | Condition    | Aortic valve regurgitation   | 2 (Synonym)    | PRESENT    | LOW
+mitral  stenosis     | Condition    | Mitral valve stenosis        | 2 (Synonym)    | PRESENT    | LOW
+aortic regurgitati   | Condition    | Aortic valve regurgitation   | 2 (Synonym)    | PRESENT    | LOW
+mitral valve area    | Anatomy      | Cardiac auscultation mitra   | 3 (Semantic)   | POSSIBLE   | LOW
+Mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | PRESENT    | LOW
+mitral  regurgitat   | Condition    | Mitral valve regurgitation   | 2 (Synonym)    | PRESENT    | LOW
+mitral regurgitati   | Condition    | Mitral valve regurgitation   | 2 (Synonym)    | PRESENT    | LOW
+systolic hypertens   | Condition    | Systolic hypertension        | 1 (Exact)      | PRESENT    | LOW
+pericardial effusi   | Condition    | Pericardial effusion         | 1 (Exact)      | PRESENT    | LOW
+Rheumatic valvular   | Condition    | Rheumatic disease of heart   | 3 (Semantic)   | PRESENT    | LOW
+mitral  stenosis     | Condition    | Mitral valve stenosis        | 2 (Synonym)    | PRESENT    | LOW
+aortic regurgitati   | Condition    | Aortic valve regurgitation   | 2 (Synonym)    | PRESENT    | LOW
+Mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | PRESENT    | LOW
+left  ventricular    | Condition    | Left ventricular hypertrop   | 1 (Exact)      | PRESENT    | LOW
+pulmonary  hyperte   | Condition    | Pulmonary hypertension       | 1 (Exact)      | PRESENT    | LOW
+HTN                  | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+dyspnea on exertio   | Symptom      | Dyspnea on exertion          | 1 (Exact)      | PRESENT    | LOW
+chest pain           | Symptom      | Chest pain                   | 1 (Exact)      | PRESENT    | LOW
+NSTEMI               | Condition    | Acute non-ST segment eleva   | 3 (Semantic)   | ABSENT     | LOW
+cardiac catheteriz   | Procedure    | Cardiac catheterization      | 1 (Exact)      | ABSENT     | LOW
+CAD                  | Condition    | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+CAD                  | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+HTN                  | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+SOB                  | Symptom      | Dyspnea                      | 2 (Synonym)    | PRESENT    | LOW
+atypical chest pai   | Condition    | Atypical chest pain          | 1 (Exact)      | PRESENT    | LOW
+nausea               | Symptom      | Nausea                       | 1 (Exact)      | PRESENT    | LOW
+diaphoresis          | Symptom      | Excessive sweating           | 2 (Synonym)    | PRESENT    | LOW
+ACS                  | Condition    | Unmapped                     | 0 (Failed)     | POSSIBLE   | LOW
+cardiac enzymes      | Lab Test     | Cardiac enzymes/isoenzymes   | 1 (Exact, lab-procedure-sibling) | PRESENT    | LOW
+troponin             | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+coronary artery  d   | Condition    | Coronary arteriosclerosis    | 2 (Synonym)    | ABSENT     | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+troponin             | Lab Test     | Troponin measurement         | 3 (Semantic)   | ABSENT     | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | ABSENT     | LOW
+Plavix               | Medication   | clopidogrel                  | 3 (Semantic)   | ABSENT     | LOW
+heparin              | Medication   | heparin                      | 1 (Exact)      | ABSENT     | LOW
+aspirin              | Medication   | aspirin                      | 1 (Exact)      | ABSENT     | LOW
+betablocker          | Medication   | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+ACEI                 | Medication   | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+statin               | Medication   | Unmapped                     | 0 (Failed)     | ABSENT     | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+MVP                  | Condition    | Mitral valve prolapse        | 1 (Exact)      | PRESENT    | LOW
+Rheumatic fever      | Symptom      | Rheumatic fever              | 1 (Exact)      | PRESENT    | LOW
+MR                   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+Echo                 | Procedure    | Echocardiography             | 2 (Synonym)    | PRESENT    | LOW
+diastolic dysfucti   | Condition    | Diastolic dysfunction        | 3 (Semantic)   | PRESENT    | LOW
+mitral stenosis      | Condition    | Mitral valve stenosis        | 2 (Synonym)    | PRESENT    | LOW
+lasix                | Medication   | furosemide                   | 3 (Semantic)   | PRESENT    | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+pulmonary hyperten   | Condition    | Pulmonary hypertension       | 1 (Exact)      | PRESENT    | LOW
+metoprolol tartrat   | Medication   | metoprolol                   | 3 (Semantic)   | PRESENT    | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+lasix                | Medication   | furosemide                   | 3 (Semantic)   | PRESENT    | LOW
+sodium               | Lab Test     | Sodium measurement           | 3 (Semantic)   | PRESENT    | LOW
+heart                | Lab Test     | Troponin measurement         | 3 (Semantic)   | PRESENT    | LOW
+echocardiograms      | Procedure    | Echocardiography             | 3 (Semantic)   | PRESENT    | LOW
+mitral stenosis      | Condition    | Mitral valve stenosis        | 2 (Synonym)    | PRESENT    | LOW
+Diabetes             | Condition    | Diabetes mellitus            | 3 (Semantic)   | PRESENT    | LOW
+catheterization      | Procedure    | Catheterization              | 1 (Exact)      | PRESENT    | LOW
+lantus               | Medication   | insulin glargine             | 3 (Semantic)   | PRESENT    | LOW
+sliding scale humo   | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Hyperlipidemia       | Condition    | Hyperlipidemia               | 1 (Exact)      | CONDITIONAL | LOW
+lipitor              | Medication   | atorvastatin                 | 3 (Semantic)   | CONDITIONAL | LOW
+tricor               | Medication   | fenofibrate                  | 3 (Semantic)   | CONDITIONAL | LOW
+glyburide            | Medication   | glyburide                    | 1 (Exact)      | PRESENT    | LOW
+alprazolam           | Medication   | alprazolam                   | 1 (Exact)      | PRESENT    | LOW
+darvocet             | Medication   | propoxyphene                 | 3 (Semantic)   | PRESENT    | LOW
+meclizine            | Medication   | meclizine                    | 1 (Exact)      | CONDITIONAL | LOW
+lisinopril           | Medication   | lisinopril                   | 1 (Exact)      | PRESENT    | LOW
+tricor               | Medication   | fenofibrate                  | 3 (Semantic)   | PRESENT    | LOW
+buproprion           | Medication   | bupropion                    | 3 (Semantic)   | PRESENT    | LOW
+premarin             | Medication   | estrogens, conjugated (USP   | 3 (Semantic)   | PRESENT    | LOW
+fexofenadine         | Medication   | fexofenadine                 | 1 (Exact)      | PRESENT    | LOW
+lipitor              | Medication   | atorvastatin                 | 3 (Semantic)   | PRESENT    | LOW
+benedryl             | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+acetaminophen        | Medication   | acetaminophen                | 1 (Exact)      | CONDITIONAL | LOW
+Lisinopril           | Medication   | lisinopril                   | 1 (Exact)      | PRESENT    | LOW
+Fexofenadine         | Medication   | fexofenadine                 | 1 (Exact)      | PRESENT    | LOW
+Propoxyphene         | Medication   | propoxyphene                 | 1 (Exact)      | PRESENT    | LOW
+Aspirin              | Medication   | aspirin                      | 1 (Exact)      | PRESENT    | LOW
+Fenofibrate Micron   | Medication   | fenofibrate                  | 3 (Semantic)   | PRESENT    | LOW
+Acetaminophen        | Medication   | acetaminophen                | 1 (Exact)      | PRESENT    | LOW
+Bupropion            | Medication   | bupropion                    | 1 (Exact)      | PRESENT    | LOW
+Alprazolam           | Medication   | alprazolam                   | 1 (Exact)      | PRESENT    | LOW
+anxiety              | Condition    | Anxiety                      | 1 (Exact)      | CONDITIONAL | LOW
+Metoprolol Tartrat   | Medication   | metoprolol                   | 3 (Semantic)   | PRESENT    | LOW
+Furosemide           | Medication   | furosemide                   | 1 (Exact)      | PRESENT    | LOW
+Trimethoprim-Sulfa   | Medication   | sulfamethoxazole             | 3 (Semantic)   | PRESENT    | LOW
+electrolyte panel    | Lab Test     | Electrolyte levels - findi   | 3 (Semantic)   | PRESENT    | LOW
+Na                   | Lab Test     | Sodium measurement           | 3 (Semantic)   | PRESENT    | LOW
+K                    | Lab Test     | Potassium measurement        | 3 (Semantic)   | PRESENT    | LOW
+Cl                   | Lab Test     | Chloride measurement         | 3 (Semantic)   | PRESENT    | LOW
+HCO3                 | Lab Test     | Bicarbonate measurement      | 3 (Semantic)   | PRESENT    | LOW
+BUN                  | Lab Test     | Blood urea nitrogen measur   | 3 (Semantic)   | PRESENT    | LOW
+Cr                   | Lab Test     | Chromium measurement         | 3 (Semantic)   | PRESENT    | LOW
+Mg                   | Lab Test     | Magnesium measurement        | 3 (Semantic)   | PRESENT    | LOW
+Metformin            | Medication   | metformin                    | 1 (Exact)      | PRESENT    | LOW
+Glyburide            | Medication   | glyburide                    | 1 (Exact)      | PRESENT    | LOW
+diastolic CHF        | Condition    | Diastolic heart failure      | 3 (Semantic)   | PRESENT    | LOW
+mitral stenosis      | Condition    | Mitral valve stenosis        | 2 (Synonym)    | PRESENT    | LOW
+DM                   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+HTN                  | Condition    | Hypertensive disorder        | 2 (Synonym)    | PRESENT    | LOW
+HL                   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+cardiac  catheteri   | Procedure    | Cardiac catheterization      | 1 (Exact)      | PRESENT    | LOW
+catheterization      | Procedure    | Catheterization              | 1 (Exact)      | PRESENT    | LOW
+blood vessels        | Anatomy      | Blood vessel structure       | 3 (Semantic)   | ABSENT     | LOW
+echocardiogram       | Procedure    | Echocardiography             | 2 (Synonym)    | PRESENT    | LOW
+tight                | Qualifier    | Tightness sensation qualit   | 2 (Synonym)    | PRESENT    | LOW
+valve                | Anatomy      | Valve                        | 1 (Exact)      | PRESENT    | LOW
+surgical intervent   | Procedure    | Surgical procedure           | 3 (Semantic)   | ABSENT     | LOW
+bladder infection    | Condition    | Cystitis                     | 2 (Synonym)    | PRESENT    | LOW
+bladder catheter     | Procedure    | Insertion of catheter into   | 3 (Semantic)   | PRESENT    | LOW
+insulin              | Medication   | Recombinant Human Insulin    | 3 (Semantic)   | PRESENT    | LOW
+Metoprolol Tartrat   | Medication   | metoprolol                   | 3 (Semantic)   | PRESENT    | LOW
+furosemide           | Medication   | furosemide                   | 1 (Exact)      | PRESENT    | LOW
+lasix                | Medication   | furosemide                   | 3 (Semantic)   | PRESENT    | LOW
+bactrim-DS           | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Premarin             | Medication   | estrogens, conjugated (USP   | 3 (Semantic)   | PRESENT    | LOW
+shortness of breat   | Symptom      | Dyspnea                      | 2 (Synonym)    | CONDITIONAL | LOW
+chest pain           | Symptom      | Chest pain                   | 1 (Exact)      | CONDITIONAL | LOW
+palpitations         | Symptom      | Palpitations                 | 1 (Exact)      | CONDITIONAL | LOW
+loss of consciousn   | Symptom      | Loss of consciousness        | 1 (Exact)      | CONDITIONAL | LOW
+fever                | Symptom      | Fever                        | 1 (Exact)      | CONDITIONAL | LOW
+chills               | Symptom      | Chill                        | 3 (Semantic)   | CONDITIONAL | LOW
+Physical Exam        | Procedure    | Physical examination         | 1 (Exact)      | PRESENT    | LOW
+VS                   | Symptom      | Vital signs finding          | 1 (Exact)      | PRESENT    | LOW
+T                    | Symptom      | Body temperature finding     | 1 (Exact)      | PRESENT    | LOW
+BP                   | Symptom      | Blood pressure finding       | 1 (Exact)      | PRESENT    | LOW
+HR                   | Symptom      | Finding of heart rate        | 1 (Exact)      | PRESENT    | LOW
+RR                   | Symptom      | Finding of respiratory rat   | 1 (Exact)      | PRESENT    | LOW
+Gen                  | Procedure    | General examination of pat   | 1 (Exact)      | PRESENT    | LOW
+NAD                  | Symptom      | No abnormality detected      | 1 (Exact)      | PRESENT    | LOW
+HEENT                | Procedure    | Physical examination         | 1 (Exact)      | PRESENT    | LOW
+Neck                 | Procedure    | Physical examination         | 1 (Exact)      | PRESENT    | LOW
+RR                   | Symptom      | Finding of respiratory rat   | 1 (Exact)      | PRESENT    | LOW
+Chest                | Procedure    | Examination of respiratory   | 1 (Exact)      | PRESENT    | LOW
+Abd                  | Procedure    | Examination of abdomen       | 1 (Exact)      | PRESENT    | LOW
+Ext                  | Procedure    | Examination of limb          | 1 (Exact)      | PRESENT    | LOW
+edema                | Condition    | Edema                        | 1 (Exact)      | PRESENT    | LOW
+Skin                 | Procedure    | Examination of skin          | 1 (Exact)      | PRESENT    | LOW
+
+[4/25] Running Stage 1 -> Stage 2a -> Stage 2b via src.clinical_pipeline.run_pipeline() on 12128814-DS-15...
+... 102 entities accepted, 102 normalized, 102 routed LOW, 20 non-asserted, 0 retained below threshold, 0 recovered via original-form fallback.
+DOCTOR WROTE         | LABEL        | OMOP MAPPING                 | TIER           | ASSERTION  | IN
+---------------------------------------------------------------------------------------------------------
+abdomen              | Anatomy      | Abdomen                      | 1 (Exact)      | PRESENT    | LOW
+Exploratory laparo   | Procedure    | Exploratory laparotomy       | 1 (Exact)      | PRESENT    | LOW
+small bowel resect   | Procedure    | Small intestine excision     | 2 (Synonym)    | PRESENT    | LOW
+right upper quadra   | Anatomy      | Structure of right upper q   | 3 (Semantic)   | PRESENT    | LOW
+right upper quadra   | Anatomy      | Structure of right upper q   | 3 (Semantic)   | PRESENT    | LOW
+hemoperitoneum       | Condition    | Nontraumatic hemoperitoneu   | 2 (Synonym)    | PRESENT    | LOW
+WBC-11               | Lab Test     | White blood cell count       | 3 (Semantic)   | PRESENT    | LOW
+RBC-3.41             | Lab Test     | Red blood cell count         | 3 (Semantic)   | PRESENT    | LOW
+Hgb-10.3             | Lab Test     | Measurement of total hemog   | 3 (Semantic)   | PRESENT    | LOW
+Hct-30.2             | Lab Test     | Hematocrit determination     | 3 (Semantic)   | PRESENT    | LOW
+RDW-14.0             | Lab Test     | Red cell distribution widt   | 3 (Semantic)   | PRESENT    | LOW
+WBC-11               | Lab Test     | White blood cell count       | 3 (Semantic)   | PRESENT    | LOW
+Hct-28               | Lab Test     | Hematocrit determination     | 3 (Semantic)   | PRESENT    | LOW
+WBC-11               | Lab Test     | White blood cell count       | 3 (Semantic)   | PRESENT    | LOW
+Neuts-84.4           | Lab Test     | Neutrophil count             | 3 (Semantic)   | PRESENT    | LOW
+Lymphs-10.3          | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+PTT-21.9             | Lab Test     | Prothrombin time             | 3 (Semantic)   | PRESENT    | LOW
+PTT-19.7             | Lab Test     | Prothrombin time             | 3 (Semantic)   | PRESENT    | LOW
+ALT-26               | Lab Test     | Alanine transaminase activ   | 3 (Semantic)   | PRESENT    | LOW
+AST-22               | Lab Test     | Aspartate aminotransferase   | 3 (Semantic)   | PRESENT    | LOW
+AlkPhos-40 TotBili   | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Lipase-13            | Lab Test     | Measurement of lipase acti   | 3 (Semantic)   | PRESENT    | LOW
+Lipase-28            | Lab Test     | Measurement of lipase acti   | 3 (Semantic)   | PRESENT    | LOW
+Calcium-8.6 Phos-3   | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Lactate-1.8          | Lab Test     | D-lactate measurement        | 3 (Semantic)   | PRESENT    | LOW
+BLOOD Lactate-3.3    | Lab Test     | Lactate in blood             | 3 (Semantic)   | PRESENT    | LOW
+Lactate-2.6          | Lab Test     | D-lactate measurement        | 3 (Semantic)   | PRESENT    | LOW
+freeCa-1.28          | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+carina               | Anatomy      | Structure of carina of tra   | 2 (Synonym)    | PRESENT    | LOW
+thoracic inlet       | Anatomy      | Structure of thoracic inle   | 2 (Synonym)    | PRESENT    | LOW
+NG tube              | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+fundus               | Anatomy      | Structure of fundus of eye   | 2 (Synonym)    | PRESENT    | LOW
+stomach              | Anatomy      | Stomach structure            | 2 (Synonym)    | PRESENT    | LOW
+focal                | Qualifier    | Focal                        | 1 (Exact)      | ABSENT     | LOW
+consolidation        | Symptom      | Consolidation                | 1 (Exact)      | ABSENT     | LOW
+pleural effusion     | Condition    | Pleural effusion             | 1 (Exact)      | ABSENT     | LOW
+pneumothorax         | Condition    | Pneumothorax                 | 1 (Exact)      | ABSENT     | LOW
+cardiomediastinal    | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+displaced fracture   | Condition    | Fracture with displacement   | 3 (Semantic)   | ABSENT     | LOW
+thorax               | Anatomy      | Thoracic structure           | 2 (Synonym)    | ABSENT     | LOW
+ET tube              | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+carina               | Anatomy      | Structure of carina of tra   | 2 (Synonym)    | PRESENT    | LOW
+NG tube              | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+stomach              | Anatomy      | Stomach structure            | 2 (Synonym)    | PRESENT    | LOW
+Right  internal ju   | Anatomy      | Structure of right interna   | 3 (Semantic)   | PRESENT    | LOW
+SVC                  | Anatomy      | Superior vena cava structu   | 2 (Synonym)    | PRESENT    | LOW
+pneumothorax         | Condition    | Pneumothorax                 | 1 (Exact)      | ABSENT     | LOW
+bibasilar atelecta   | Condition    | Round atelectasis            | 3 (Semantic)   | PRESENT    | LOW
+contusion            | Condition    | Contusion                    | 1 (Exact)      | POSSIBLE   | LOW
+central              | Qualifier    | Central                      | 1 (Exact)      | ABSENT     | LOW
+pulmonary embolism   | Condition    | Pulmonary embolism           | 1 (Exact)      | ABSENT     | LOW
+aortic injury        | Condition    | Injury of aorta              | 3 (Semantic)   | ABSENT     | LOW
+pleural effusion     | Condition    | Pleural effusion             | 1 (Exact)      | PRESENT    | LOW
+air bronchograms     | Symptom      | Air bronchogram              | 3 (Semantic)   | PRESENT    | LOW
+compressive atelec   | Condition    | Compression atelectasis      | 3 (Semantic)   | PRESENT    | LOW
+infectious process   | Condition    | Infectious process           | 1 (Exact)      | PRESENT    | LOW
+abdomen              | Anatomy      | Abdomen                      | 1 (Exact)      | PRESENT    | LOW
+exploratory laparo   | Procedure    | Exploratory laparotomy       | 1 (Exact)      | PRESENT    | LOW
+small bowel resect   | Procedure    | Small intestine excision     | 2 (Synonym)    | PRESENT    | LOW
+Dilaudid PCA         | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+abdominal discomfo   | Symptom      | Abdominal discomfort         | 1 (Exact)      | PRESENT    | LOW
+abdominal distenti   | Symptom      | Swollen abdomen              | 2 (Synonym)    | PRESENT    | LOW
+methylnaltrexone     | Medication   | methylnaltrexone             | 1 (Exact)      | CONDITIONAL | LOW
+flatus               | Symptom      | Flatus                       | 1 (Exact)      | CONDITIONAL | LOW
+Dilaudid             | Medication   | HYDROMORPHINOL               | 3 (Semantic)   | PRESENT    | LOW
+Tylenol              | Medication   | tylosin                      | 3 (Semantic)   | PRESENT    | LOW
+Colace               | Medication   | cola extract                 | 3 (Semantic)   | PRESENT    | LOW
+acetaminophen        | Medication   | acetaminophen                | 1 (Exact)      | PRESENT    | LOW
+hydromorphone        | Medication   | hydromorphone                | 1 (Exact)      | PRESENT    | LOW
+senna                | Medication   | sennosides, USP              | 3 (Semantic)   | PRESENT    | LOW
+constipation         | Condition    | Constipation                 | 1 (Exact)      | CONDITIONAL | LOW
+abdomen              | Anatomy      | Abdomen                      | 1 (Exact)      | PRESENT    | LOW
+mesenteric vessel    | Condition    | Injury of mesenteric arter   | 3 (Semantic)   | PRESENT    | LOW
+abdomen              | Anatomy      | Abdomen                      | 1 (Exact)      | PRESENT    | LOW
+chest pain, pressu   | Symptom      | Squeezing chest pain         | 3 (Semantic)   | PRESENT    | LOW
+cough, shortness o   | Symptom      | Wheeze clears with coughin   | 3 (Semantic)   | PRESENT    | LOW
+vomiting             | Symptom      | Vomiting                     | 1 (Exact)      | CONDITIONAL | LOW
+vomiting             | Symptom      | Vomiting                     | 1 (Exact)      | PRESENT    | LOW
+diarrhea             | Symptom      | Diarrhea                     | 1 (Exact)      | PRESENT    | LOW
+dry mouth            | Symptom      | Xerostomia                   | 2 (Synonym)    | PRESENT    | LOW
+rapid  heartbeat     | Symptom      | Palpitations - rapid         | 3 (Semantic)   | PRESENT    | LOW
+feeling dizzy or f   | Symptom      | Dizziness                    | 3 (Semantic)   | PRESENT    | LOW
+burning              | Symptom      | Burn                         | 3 (Semantic)   | PRESENT    | LOW
+shaking chills       | Symptom      | Shivering or rigors          | 3 (Semantic)   | PRESENT    | LOW
+fever                | Symptom      | Fever                        | 1 (Exact)      | PRESENT    | LOW
+pain  medications    | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+increased pain       | Symptom      | Increased pain               | 1 (Exact)      | CONDITIONAL | LOW
+swelling             | Symptom      | Swelling                     | 1 (Exact)      | CONDITIONAL | LOW
+redness              | Symptom      | Erythema                     | 3 (Semantic)   | CONDITIONAL | LOW
+drainage             | Symptom      | Discharge                    | 2 (Synonym)    | CONDITIONAL | LOW
+incision  site       | Anatomy      | Unmapped                     | 0 (Failed)     | CONDITIONAL | LOW
+surgical incisions   | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+mild                 | Procedure    | Minimally invasive decompr   | 2 (Synonym)    | PRESENT    | LOW
+Physical Exam        | Procedure    | Physical examination         | 1 (Exact)      | PRESENT    | LOW
+Temp                 | Symptom      | Body temperature finding     | 1 (Exact)      | PRESENT    | LOW
+HR                   | Symptom      | Finding of heart rate        | 1 (Exact)      | PRESENT    | LOW
+BP                   | Symptom      | Blood pressure finding       | 1 (Exact)      | PRESENT    | LOW
+RR                   | Symptom      | Finding of respiratory rat   | 1 (Exact)      | PRESENT    | LOW
+O2 sat               | Lab Test     | Oxygen saturation measurem   | 1 (Exact)      | PRESENT    | LOW
+Skin                 | Procedure    | Examination of skin          | 1 (Exact)      | PRESENT    | LOW
+Mental Status        | Procedure    | Neurological mental status   | 1 (Exact)      | PRESENT    | LOW
+Activity Status      | Symptom      | Physical functional depend   | 1 (Exact)      | PRESENT    | LOW
+
+[5/25] Running Stage 1 -> Stage 2a -> Stage 2b via src.clinical_pipeline.run_pipeline() on 12247014-DS-9...
+ℹ️ 5/5 relations in 12247014-DS-9 had at least one unlinked endpoint.
+... 164 entities accepted, 164 normalized, 164 routed LOW, 12 non-asserted, 0 retained below threshold, 0 recovered via original-form fallback.
+DOCTOR WROTE         | LABEL        | OMOP MAPPING                 | TIER           | ASSERTION  | IN
+---------------------------------------------------------------------------------------------------------
+C6-7                 | Anatomy      | Level of the sixth cervica   | 3 (Semantic)   | PRESENT    | LOW
+C4-7 Tracheostomy    | Procedure    | Lateral tracheostomy         | 3 (Semantic)   | PRESENT    | LOW
+Percutaneous Endos   | Procedure    | Percutaneous endoscopic ga   | 1 (Exact)      | PRESENT    | LOW
+IVC                  | Symptom      | Inferior                     | 1 (Exact)      | PRESENT    | LOW
+IVC filter           | Procedure    | Vena cava filter             | 1 (Exact)      | PRESENT    | LOW
+CAD                  | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Htxn hypercholeste   | Condition    | Hypercholesterolemia         | 3 (Semantic)   | PRESENT    | LOW
+DM2 seizure disord   | Condition    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+allergic rhinitis    | Condition    | Allergic rhinitis            | 1 (Exact)      | PRESENT    | LOW
+prostate CA          | Condition    | Carcinoma of prostate        | 3 (Semantic)   | PRESENT    | LOW
+CPAP                 | Qualifier    | Continuous                   | 1 (Exact)      | PRESENT    | LOW
+CPAP                 | Qualifier    | Positive                     | 1 (Exact)      | PRESENT    | LOW
+CPAP                 | Symptom      | Airway pressure              | 1 (Exact)      | PRESENT    | LOW
+PEEP                 | Lab Test     | Expiratory positive airway   | 3 (Semantic)   | PRESENT    | LOW
+C5                   | Qualifier    | Fifth                        | 1 (Exact)      | PRESENT    | LOW
+C5                   | Anatomy      | Structure of cervical vert   | 2 (Synonym)    | PRESENT    | LOW
+C5                   | Anatomy      | Bone structure of vertebra   | 2 (Synonym)    | PRESENT    | LOW
+bicep/tricep stren   | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+S1                   | Anatomy      | Structure of first sacral    | 2 (Synonym)    | PRESENT    | LOW
+S2                   | Anatomy      | Structure of second sacral   | 2 (Synonym)    | PRESENT    | LOW
+m/r/g                | Symptom      | Gallop rhythm                | 3 (Semantic)   | ABSENT     | LOW
+CTA                  | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+peritonitis          | Condition    | Peritonitis                  | 1 (Exact)      | ABSENT     | LOW
+WBC-8                | Lab Test     | CD18 count                   | 3 (Semantic)   | PRESENT    | LOW
+RBC-3                | Lab Test     | Red blood cell count         | 3 (Semantic)   | PRESENT    | LOW
+HGB-10               | Lab Test     | Measurement of total hemog   | 3 (Semantic)   | PRESENT    | LOW
+HCT-29               | Lab Test     | Hematocrit determination     | 3 (Semantic)   | PRESENT    | LOW
+MCV-87               | Lab Test     | Erythrocyte mean corpuscul   | 3 (Semantic)   | PRESENT    | LOW
+MCH-30               | Lab Test     | Mean corpuscular hemoglobi   | 3 (Semantic)   | PRESENT    | LOW
+MCHC-34              | Lab Test     | Mean corpuscular hemoglobi   | 3 (Semantic)   | PRESENT    | LOW
+RDW-14               | Lab Test     | Red cell distribution widt   | 3 (Semantic)   | PRESENT    | LOW
+PLT COUNT-239        | Lab Test     | Platelet count               | 3 (Semantic)   | PRESENT    | LOW
+NEUTS-74             | Lab Test     | Neutrophil count             | 3 (Semantic)   | PRESENT    | LOW
+MONOS-4              | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+EOS-2                | Lab Test     | Eosinophil count             | 3 (Semantic)   | PRESENT    | LOW
+BASOS-0              | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+PTT-23               | Lab Test     | Prothrombin time             | 3 (Semantic)   | PRESENT    | LOW
+GLUCOSE-93           | Lab Test     | Glucose measurement          | 3 (Semantic)   | PRESENT    | LOW
+LACTATE-2            | Lab Test     | D-lactate measurement        | 3 (Semantic)   | PRESENT    | LOW
+CL                   | Lab Test     | Chlorine measurement         | 3 (Semantic)   | PRESENT    | LOW
+TCO2-23              | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+UREA N-22            | Lab Test     | Urea measurement             | 3 (Semantic)   | PRESENT    | LOW
+CREAT-1              | Lab Test     | Creatinine measurement       | 3 (Semantic)   | PRESENT    | LOW
+CALCIUM-8            | Lab Test     | Calcium measurement          | 3 (Semantic)   | PRESENT    | LOW
+PHOSPHATE-2          | Lab Test     | Phosphate measurement        | 3 (Semantic)   | PRESENT    | LOW
+MAGNESIUM-1          | Lab Test     | Magnesium measurement        | 3 (Semantic)   | PRESENT    | LOW
+CK(CPK)              | Lab Test     | Creatine kinase measuremen   | 3 (Semantic)   | PRESENT    | LOW
+AMYLASE-52           | Lab Test     | Amylase measurement          | 3 (Semantic)   | PRESENT    | LOW
+CK-MB-5              | Lab Test     | Creatine kinase MB measure   | 3 (Semantic)   | PRESENT    | LOW
+cTropnT              | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+skull base           | Anatomy      | Base of skull structure      | 3 (Semantic)   | PRESENT    | LOW
+T1                   | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+intervertebral dis   | Anatomy      | Structure of intervertebra   | 2 (Synonym)    | PRESENT    | LOW
+C6-7                 | Anatomy      | Level of the sixth cervica   | 3 (Semantic)   | PRESENT    | LOW
+spondylolisthesis    | Condition    | Spondylolisthesis            | 1 (Exact)      | ABSENT     | LOW
+paravertebral        | Symptom      | Paravertebral                | 1 (Exact)      | ABSENT     | LOW
+hematoma             | Symptom      | Hematoma                     | 1 (Exact)      | ABSENT     | LOW
+spinal canal         | Anatomy      | Spinal canal structure       | 2 (Synonym)    | PRESENT    | LOW
+posterior osteophy   | Condition    | Marginal osteophyte          | 3 (Semantic)   | PRESENT    | LOW
+C5-6                 | Anatomy      | Level of the fifth cervica   | 3 (Semantic)   | PRESENT    | LOW
+right neural foram   | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+C5-6                 | Anatomy      | Level of the fifth cervica   | 3 (Semantic)   | PRESENT    | LOW
+C6-7                 | Anatomy      | Level of the sixth cervica   | 3 (Semantic)   | PRESENT    | LOW
+intracranial hemor   | Condition    | Intracranial hemorrhage      | 1 (Exact)      | ABSENT     | LOW
+right  occipital/p   | Anatomy      | Right occipital lobe struc   | 3 (Semantic)   | PRESENT    | LOW
+chronic              | Qualifier    | Chronic                      | 1 (Exact)      | PRESENT    | LOW
+small vessel         | Anatomy      | Structure of small blood v   | 2 (Synonym)    | PRESENT    | LOW
+ischemia             | Condition    | Ischemia                     | 1 (Exact)      | PRESENT    | LOW
+carotid  bifurcati   | Anatomy      | Structure of carotid bifur   | 3 (Semantic)   | PRESENT    | LOW
+Left  vertebral ar   | Anatomy      | Structure of left vertebra   | 2 (Synonym)    | PRESENT    | LOW
+Intracranial arter   | Anatomy      | Structure of intracranial    | 3 (Semantic)   | PRESENT    | LOW
+PComs                | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+pulmonary opacitie   | Symptom      | Radiologic increased densi   | 3 (Semantic)   | PRESENT    | LOW
+atelectasis          | Symptom      | Atelectasis                  | 1 (Exact)      | PRESENT    | LOW
+C5-6                 | Anatomy      | Level of the fifth cervica   | 3 (Semantic)   | PRESENT    | LOW
+ETT/NGT              | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Multifocal pulmona   | Symptom      | Multilobar lung infiltrate   | 3 (Semantic)   | PRESENT    | LOW
+multifocal           | Qualifier    | Multifocal                   | 1 (Exact)      | POSSIBLE   | LOW
+pneumonia            | Condition    | Pneumonia                    | 1 (Exact)      | POSSIBLE   | LOW
+Atelectasis          | Symptom      | Atelectasis                  | 1 (Exact)      | PRESENT    | LOW
+ETT                  | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+T2                   | Anatomy      | Bone structure of T2         | 3 (Semantic)   | PRESENT    | LOW
+distal vertebral a   | Anatomy      | Vertebral and basilar arte   | 3 (Semantic)   | PRESENT    | LOW
+posterior communic   | Anatomy      | Structure of posterior com   | 3 (Semantic)   | PRESENT    | LOW
+atherosclerotic  d   | Condition    | Atherosclerosis              | 3 (Semantic)   | PRESENT    | LOW
+cervical spine       | Anatomy      | Structure of cervical vert   | 2 (Synonym)    | PRESENT    | LOW
+anterior  longitud   | Anatomy      | Anterior longitudinal liga   | 2 (Synonym)    | PRESENT    | LOW
+anterior longitudi   | Anatomy      | Anterior longitudinal liga   | 2 (Synonym)    | PRESENT    | LOW
+C5-6                 | Anatomy      | Level of the fifth cervica   | 3 (Semantic)   | PRESENT    | LOW
+ventral thecal sac   | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+C7                   | Qualifier    | Seventh                      | 1 (Exact)      | PRESENT    | LOW
+C7                   | Anatomy      | Structure of cervical vert   | 2 (Synonym)    | PRESENT    | LOW
+C7                   | Anatomy      | Bone structure of vertebra   | 2 (Synonym)    | PRESENT    | LOW
+C5                   | Qualifier    | Fifth                        | 1 (Exact)      | PRESENT    | LOW
+C5                   | Anatomy      | Structure of cervical vert   | 2 (Synonym)    | PRESENT    | LOW
+C5                   | Anatomy      | Bone structure of vertebra   | 2 (Synonym)    | PRESENT    | LOW
+ventral thecal sac   | Anatomy      | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+anterior longitudi   | Anatomy      | Anterior longitudinal liga   | 2 (Synonym)    | PRESENT    | LOW
+C5                   | Qualifier    | Fifth                        | 1 (Exact)      | PRESENT    | LOW
+C5                   | Anatomy      | Structure of cervical vert   | 2 (Synonym)    | PRESENT    | LOW
+C5                   | Anatomy      | Bone structure of vertebra   | 2 (Synonym)    | PRESENT    | LOW
+C6                   | Qualifier    | Sixth                        | 1 (Exact)      | PRESENT    | LOW
+C6                   | Anatomy      | Structure of cervical vert   | 2 (Synonym)    | PRESENT    | LOW
+C6                   | Anatomy      | Bone structure of vertebra   | 2 (Synonym)    | PRESENT    | LOW
+sphenoid             | Anatomy      | Sphenoid bone structure      | 3 (Semantic)   | PRESENT    | LOW
+maxillary sinuses    | Anatomy      | Maxillary sinus structure    | 3 (Semantic)   | PRESENT    | LOW
+T2                   | Anatomy      | Bone structure of T2         | 3 (Semantic)   | PRESENT    | LOW
+Fusion C4-C7         | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+C5-6                 | Anatomy      | Level of the fifth cervica   | 3 (Semantic)   | PRESENT    | LOW
+C6-7                 | Anatomy      | Level of the sixth cervica   | 3 (Semantic)   | PRESENT    | LOW
+Structural allogra   | Procedure    | Autogenous transplantation   | 3 (Semantic)   | PRESENT    | LOW
+Fusion C4-C7         | Procedure    | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+Autograft            | Procedure    | Autograft of bone            | 3 (Semantic)   | PRESENT    | LOW
+neurologic deficit   | Symptom      | Neurological deficit         | 2 (Synonym)    | PRESENT    | LOW
+C5                   | Qualifier    | Fifth                        | 1 (Exact)      | PRESENT    | LOW
+C5                   | Anatomy      | Structure of cervical vert   | 2 (Synonym)    | PRESENT    | LOW
+C5                   | Anatomy      | Bone structure of vertebra   | 2 (Synonym)    | PRESENT    | LOW
+spinal cord          | Anatomy      | Spinal cord structure        | 2 (Synonym)    | PRESENT    | LOW
+Percutaneous endos   | Procedure    | Percutaneous endoscopic ga   | 1 (Exact)      | PRESENT    | LOW
+inferior             | Symptom      | Inferior                     | 1 (Exact)      | PRESENT    | LOW
+vena cava filter     | Procedure    | Vena cava filter             | 1 (Exact)      | PRESENT    | LOW
+heparin              | Medication   | heparin                      | 1 (Exact)      | PRESENT    | LOW
+Vancomycin           | Medication   | vancomycin                   | 1 (Exact)      | PRESENT    | LOW
+Zosyn                | Medication   | Zodasiran                    | 3 (Semantic)   | PRESENT    | LOW
+Lisinopril           | Medication   | lisinopril                   | 1 (Exact)      | PRESENT    | LOW
+enalapril            | Medication   | enalapril                    | 1 (Exact)      | PRESENT    | LOW
+Simvastatin          | Medication   | simvastatin                  | 1 (Exact)      | PRESENT    | LOW
+Isosorbide           | Medication   | isosorbide                   | 1 (Exact)      | PRESENT    | LOW
+Isosorbide mono      | Medication   | isosorbide                   | 3 (Semantic)   | PRESENT    | LOW
+phenytoin            | Medication   | phenytoin                    | 1 (Exact)      | PRESENT    | LOW
+metformin            | Medication   | metformin                    | 1 (Exact)      | PRESENT    | LOW
+amlodipine           | Medication   | amlodipine                   | 1 (Exact)      | PRESENT    | LOW
+atenolol             | Medication   | atenolol                     | 1 (Exact)      | PRESENT    | LOW
+Acetaminophen        | Medication   | acetaminophen                | 1 (Exact)      | PRESENT    | LOW
+Atorvastatin         | Medication   | atorvastatin                 | 1 (Exact)      | PRESENT    | LOW
+Insulin Lispro       | Medication   | insulin lispro               | 1 (Exact)      | PRESENT    | LOW
+Albuterol            | Medication   | albuterol                    | 1 (Exact)      | PRESENT    | LOW
+Famotidine           | Medication   | famotidine                   | 1 (Exact)      | PRESENT    | LOW
+Bisacodyl            | Medication   | bisacodyl                    | 1 (Exact)      | PRESENT    | LOW
+Senna                | Medication   | sennosides, USP              | 3 (Semantic)   | PRESENT    | LOW
+Oxycodone-Acetamin   | Medication   | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+Colace               | Medication   | cola extract                 | 3 (Semantic)   | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+mL                   | Procedure    | Microlaryngoscopy            | 1 (Exact)      | PRESENT    | LOW
+Cervical             | Anatomy      | CER                          | 2 (Synonym)    | PRESENT    | LOW
+stenosis             | Symptom      | Stenosis                     | 1 (Exact)      | PRESENT    | LOW
+multi-level cervic   | Condition    | Multiple fractures of cerv   | 3 (Semantic)   | PRESENT    | LOW
+C5                   | Qualifier    | Fifth                        | 1 (Exact)      | PRESENT    | LOW
+C5                   | Anatomy      | Structure of cervical vert   | 2 (Synonym)    | PRESENT    | LOW
+C5                   | Anatomy      | Bone structure of vertebra   | 2 (Synonym)    | PRESENT    | LOW
+spinal cord injury   | Condition    | Spinal cord injury           | 1 (Exact)      | PRESENT    | LOW
+skin breakdown       | Lab Test     | Unmapped                     | 0 (Failed)     | PRESENT    | LOW
+incision             | Procedure    | Incision                     | 1 (Exact)      | PRESENT    | LOW
+wound                | Symptom      | Wound                        | 1 (Exact)      | PRESENT    | LOW
+fevers/chills        | Symptom      | Fever with chills            | 3 (Semantic)   | PRESENT    | LOW
+new  neurologic sy   | Symptom      | Neurological symptom chang   | 3 (Semantic)   | PRESENT    | LOW
+lift                 | Procedure    | Ligation                     | 1 (Exact)      | ABSENT     | LOW

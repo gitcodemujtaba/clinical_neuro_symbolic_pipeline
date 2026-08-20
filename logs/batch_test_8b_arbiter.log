@@ -1,0 +1,608 @@
+
+--- 10043750-DS-6-e865d5b3d75  text='diverticulosis'  label=Condition ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best-matching candidate is 'Diverticular disease' because all three models, despite some minor variations in wording, correctly identified the condition characterized by small pouches forming in parts of the digestive tract, and this conclusion aligns with the knowledge-graph evidence showing that 'Diverticular disease' has a direct SNOMED code (397881000) and is classified as a Disorder of intestine.
+gold_snomed=724538004
+
+--- 10060142-DS-9-ea3041188cc  text='pancreatic rest'  label=Procedure ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=4  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate is 'Region of pancreas' because, as model llama3.2:3b correctly noted, it most closely aligns with the clinical context and documentation style, using a phrase that directly relates to pancreatic enzyme replacement therapy and inactivity.
+gold_snomed=19387007
+
+--- 10097089-DS-8-e4f760587cc  text='lightheaded'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The single best-matching candidate is Lightheadedness (index [1]) because, although qwen2.5:3b's verdict of NONE_CORRECT initially raised concerns about the term's specificity, its reasoning actually highlights a key aspect that aligns with the clinical meaning - reduced blood flow leading to dizziness and fainting. This nuance is supported by the knowledge-graph evidence showing Lightheadedness as a direct child of Disturbance of consciousness (SNOMED code 386705008), making it the most accurate representation of the patient's symptoms.
+gold_snomed=386705008
+
+--- 10124346-DS-4-e019d41f6a5  text='breasts'  label=Anatomy ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The patient's experience of pain associated with a history of MI is best represented by 'Breast structure' (SNOMED code: 76752008), as the KG evidence and clinical context support that this concept encompasses anatomical parts or components, including areas where chest pain can occur.
+gold_snomed=76752008
+
+--- 10302979-DS-5-e5863a9d9d7  text='troponin 0.01'  label=Lab Test ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The qwen2.5:3b model's reasoning about the troponin level being significantly below the typically reported range for elevated troponin is supported by KG evidence, and its verdict of NONE_CORRECT should be given more weight than the majority vote.
+gold_snomed=105000003
+
+--- 10352433-DS-20-ee25bc3a79c  text='acute-onset altered mental \nstatus'  label=Symptom ---
+ORIGINAL plurality index=3  correct=False
+ARBITER index=3  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The best candidate is 'Transient altered mental status' because, although all three models initially considered this option, upon closer examination of the knowledge-graph evidence and clinical context, it most accurately reflects the patient's acute-onset altered mental status without additional details or ambiguity.
+gold_snomed=419284004
+
+--- 10355641-DS-7-eb7a191f0ec  text='palpitations'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The candidate concept 'Palpitations' (index 1) is supported by all three models, with qwen2.5:3b and llama3.2:3b reasoning that it matches the clinical meaning of 'palpitations experienced' or 'irregular heartbeats', respectively, and phi4-mini's dissenting opinion based on a narrow interpretation of the entity as an abnormality in heart rhythm rather than sensation of feeling faint.
+gold_snomed=80313002
+
+--- 10371195-DS-9-ed7a248aabb  text='atelectasis'  label=Condition ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct candidate is Atelectasis (index 1) because all three models correctly identified 'atelectasis' as a term referring to lung collapse, and the KG evidence supports this with SNOMED code 46621007 representing a Lesion of lung.
+gold_snomed=46621007
+
+--- 10417827-DS-10-e1999e379b2  text='fevers'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best-matching candidate is 'Fever' (index 1) because all three models agree on its clinical meaning, and the knowledge-graph evidence supports that it directly corresponds to an elevated body temperature indicative of infection.
+gold_snomed=386661006
+
+--- 10513485-DS-7-ea26a817f42  text='gastrointestinal illness'  label=Symptom ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The best match is Gastrointestinal infection because, although all models mentioned 'gastroenteritis' as a strong candidate, the knowledge-graph evidence shows that 'Gastrointestinal tract problem' is actually a broader term and not directly related to any other candidates, whereas 'Gastrointestinal infection' has a direct relationship with its closest parent concept of Infectious disease of digestive tract.
+gold_snomed=119292006
+
+--- 10542874-DS-4-ed3dc355d54  text='burning pain'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The single best-matching candidate is 'Burning pain' (index [1]) because, despite two models initially rejecting it as too broad or not specific enough, the KG evidence and clinical context support its match with a severe and intense type of skin pain, as described by the patient's history of present illness.
+gold_snomed=36349006
+
+--- 10575317-DS-6-e8aa95f1bc2  text='IV \nantiemetics'  label=Medication ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate concept is 'Intravenous administration of analgesia with antiemetic' because model llama3.2:3b's reasoning that specifying intravenous administration for a therapeutic purpose aligns with the context of preventing nausea and vomiting, which is supported by KG evidence showing it as a procedure related to medication administration.
+gold_snomed=386358000
+
+--- 10597114-DS-10-e4ea22c48a1  text='bileratal pleural effusions'  label=Condition ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=3  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct answer is Pneumochylothorax because, as Llama3.2:3b correctly pointed out, the clinical meaning stated in the note specifically describes fluid accumulation in the pleural space of the lungs, and this concept has a direct KG relationship to Chylothorax (15600009), which is its closest parent concept.
+gold_snomed=425802001
+
+--- 10653756-DS-22-ec1ed3012c8  text='emesis'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The best match is 'Vomiting' because, despite both phi4-mini and llama3.2:3b suggesting otherwise, the KG evidence shows that 'emesis' directly refers to vomiting (SNOMED code: 422400008), which aligns with the clinical meaning described in the note.
+gold_snomed=422400008
+
+--- 10667959-DS-19-eae4b40eda8  text='Lipitor'  label=Medication ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Allergy to atorvastatin' because, as both qwen2.5:3b and llama3.2:3b correctly noted, it represents a distinct and clinically related concept for the substance itself, supported by its direct relationship with the SNOMED code 13221000122100.
+gold_snomed=13221000122100
+
+--- 10686970-DS-21-ecb20c9913f  text='subjective fevers'  label=Symptom ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=3  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The single best-matching candidate is 'Fever' (index=3) because, as model llama3.2:3b correctly noted, despite being spelled differently than 'subjective fevers', it most closely matches the clinical meaning in terms of specificity and precision.
+gold_snomed=386661006
+
+--- 10794068-DS-18-edac7a32752  text='gout'  label=Condition ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The single best-matching candidate is 'Gout' (index 1) because all three models correctly identified its clinical meaning as a type of inflammatory arthritis, and the KG evidence supports this with SNOMED code 90560007 and closest parent concept Inflammatory disorder.
+gold_snomed=90560007
+
+--- 10797747-DS-20-e63d4d5e4ab  text='cervix'  label=Anatomy ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct candidate is Cervix uteri structure because, as model phi4-mini correctly noted, 'cervix' directly refers to the lower part of the uterus that opens into the vagina, and this matches the SNOMED code 71252005 for a specific anatomical site.
+gold_snomed=71252005
+
+--- 10807423-DS-19-ecd89a8efc0  text='fever'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct choice is [1] Fever because, despite its name suggesting presence rather than absence, the knowledge-graph evidence supports its direct relationship to 'Body temperature above reference range', which aligns with the clinical context of reviewing systems for absent symptoms.
+gold_snomed=386661006
+
+--- 10813665-DS-7-e355c0fd6ee  text='productive cough'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Productive cough' because, as model qwen2.5:3b correctly pointed out, the clinical meaning of a productive cough includes discolored sputum, which is not fully captured by the other two models' reasoning.
+gold_snomed=28743005
+
+--- 10839721-DS-9-e23d97cfb44  text='diarrhea'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is Diarrhea (index 1) because, although its name matches the text 'diarrhea', qwen2.5:3b correctly pointed out that it's too broad and doesn't capture the severity and specific symptoms mentioned in the clinical context; however, upon reviewing the KG evidence, we see that Diarrhea indeed has a direct relationship with Digestive system finding as its closest parent concept, which aligns with the patient's presentation of diarrhea and bleeding stools.
+gold_snomed=62315008
+
+--- 10848570-DS-12-ef5ac548af9  text='right \nhip'  label=Anatomy ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Right hip region structure' because, as qwen2.5:3b correctly pointed out, the clinical meaning specified includes both the anatomical site and its associated pain ('pain in the right hip'), which matches the KG evidence showing that this concept has a direct relationship with pain (though not explicitly stated), and is more specific than just being a 'right hip' without specifying it as experiencing pain.
+gold_snomed=287579007
+
+--- 10850358-DS-17-ea33bfbcd3d  text='hypertention'  label=Condition ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=3  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct candidate is Hyperemia (index 3) because, as model llama3.2:3b correctly noted, despite sharing a similar root word with 'hypertention', it represents the exact same clinical idea due to its direct KG relationship and definition of increased blood flow in tissues.
+gold_snomed=38341003
+
+--- 10850639-DS-7-ee28304fb7b  text='paresis'  label=Condition ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct answer is Paralysis present (SNOMED code: 162241004) because, as qwen2.5:3b correctly noted, it directly matches the clinical meaning described in the text ('left anorectal malformation paresis'), which indicates a neurological impairment caused by left-sided anorectal malformation.
+gold_snomed=26544005
+
+--- 10860165-DS-24-e1910e904c2  text='thrombocytopenia'  label=Condition ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The single best-matching candidate is 'Thrombocytopenic disorder' because all three models, despite some minor differences in wording, correctly identified the condition as characterized by abnormally low levels of platelets, and this is supported by the SNOMED code (302215000) which directly links to 'Platelet disorder', a parent concept that further confirms the correct clinical meaning.
+gold_snomed=302215000
+
+--- 10912090-DS-23-e9b7c28f0f1  text='Aspirin'  label=Medication ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best-matching candidate is 'Allergy to aspirin' because model qwen2.5:3b's reasoning, which aligns with the SNOMED code and clinical context, correctly identifies this concept as matching the provided text span and context within SNOMED.
+gold_snomed=293586001
+
+--- 10912090-DS-33-e9b7c28f0f1  text='Aspirin'  label=Medication ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate is 'Allergy to aspirin' because model qwen2.5:3b's reasoning, which matches the provided text span and context, aligns with the clinical meaning of a medication to which the patient has a known allergy.
+gold_snomed=293586001
+
+--- 10938537-DS-20-e7d0affe183  text='dark \ncolored urine'  label=Symptom ---
+ORIGINAL plurality index=2  correct=True
+ARBITER index=2  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate concept code is 'Urine looks dark' because all three models, despite some minor variations in wording, correctly identified this as the most precise match to the clinical meaning of 'dark colored urine', and KG evidence supports that it's a condition related to discolored urine.
+gold_snomed=39575007
+
+--- 10960609-DS-16-e91b3ddf014  text='persistent pain'  label=Symptom ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct choice is 'Chronic pain' because, although both models suggesting option 2 had a superficially plausible reason (constant pain being an exact synonym or fitting the clinical scenario), the KG evidence and context actually support that chronic pain is more accurate in this case: it's not just about constant presence but also duration.
+gold_snomed=29857009
+
+--- 10965697-DS-12-e323c74fcd8  text='Allogenic stem cell transplant'  label=Procedure ---
+ORIGINAL plurality index=4  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate concept is 'Transplantation of allogeneic hematopoietic stem cell' because, as qwen2.5:3b correctly noted, it directly matches the clinical context provided in the note for an allogenic stem cell transplant procedure involving a matched unrelated donor.
+gold_snomed=425843001
+
+--- 10989002-DS-3-e0359f5b69c  text='diaphoresis'  label=Symptom ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The model phi4-mini's reasoning about 'diaphoresis' being more accurately classified under Condition/Disorder rather than Observation/Morphologic-Abnormality, combined with the KG evidence showing that Excessive sweating (candidate [1]) has a direct relationship to Sweating (candidate [2]), supports choosing candidate [1] as the best match.
+gold_snomed=52613005
+
+--- 10993096-DS-12-e367771e658  text='rectal sparing'  label=Condition ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=3  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The Llama3.2:3b model's reasoning about 'Close rectal dissection technique' being a surgical approach that spares the rectum from inflammation aligns with the clinical meaning of 'rectal sparing', and is supported by its SNOMED code (261504003) indicating it is indeed a technique.
+gold_snomed=34402009
+
+--- 11021124-DS-15-e548a7cce0a  text='shortness of breath'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct candidate is Dyspnea (index 1) because, as noted by model qwen2.5:3b and phi4-mini, 'shortness of breath' matches the clinical meaning of 'symptoms of breathlessness', which is a symptom related to difficulty breathing, and this is supported by the knowledge-graph evidence that Dyspnea has a direct parent concept of Difficulty breathing.
+gold_snomed=267036007
+
+--- 11025563-DS-7-e4aeb52bbe6  text='bilateral calcaneus \nfractures'  label=Condition ---
+ORIGINAL plurality index=3  correct=True
+ARBITER index=3  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate is 'Fracture of calcaneus' because model phi4-mini's reasoning, which directly describes both heels being fractured without implying an acquired deformity, aligns with the knowledge-graph evidence showing that this concept has a closest parent concept of 'Fracture of tarsal bone', and is supported by the clinical context of bilateral calcaneus fractures.
+gold_snomed=263247007
+
+--- 11026054-DS-14-ed18940a9dd  text='emesis'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best match is 'Vomiting' because, despite model qwen2.5:3b's correct observation of the term 'emesis', all three models correctly identified that it refers to vomiting in clinical context, and KG evidence supports this with a direct relationship between Vomiting (Condition) and emesis.
+gold_snomed=422400008
+
+--- 11050097-DS-13-eaa5f6d681a  text='loss of vision'  label=Symptom ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The candidate concept 'Loss of vision' (index [1]) is supported by both Llama3.2:3b and Qwen2.5:3b's reasoning, which correctly identifies it as an exact synonym for 'a visual impairment', and its SNOMED code (240311000000103) directly relates to Blindness AND/OR vision impairment level in the knowledge graph.
+gold_snomed=313165001
+
+--- 11051092-DS-3-e27633cb1c6  text='diaphoresis'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct answer is candidate [2] 'Sweating' because, as model qwen2.5:3b correctly pointed out, the clinical meaning of 'absence of excessive sweating' does not directly align with a concept that represents its opposite (candidate [1]), and instead matches the direct representation of 'sweating' in its own right.
+gold_snomed=52613005
+
+--- 11062354-DS-8-ee68f4e9a52  text='heartburn symptoms'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: Although two models (phi4-mini and llama3.2:3b) supported 'Heartburn' based on its direct correspondence to the sensation of burning discomfort, qwen2.5:3b's verdict that it is too broad highlights a crucial point - the patient distinguishes her current symptoms from past heartburn, implying she is experiencing something distinct. The KG evidence supports this distinction, as 'Heartburn' has no direct relationships with other candidates and its closest parent concept is Esophageal reflux finding, which suggests it's not an exact match for the patient's current condition.
+gold_snomed=16331000
+
+--- 11134545-DS-21-ef00e9b9beb  text='fevers'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct answer is 'Disorder characterized by fever' because, as noted in the LLaMA3.2:3b model's reasoning, it accurately describes a condition that involves an increase in tissue size (fever), which is closely related to swelling, and its domain classification as Condition aligns well with the clinical meaning of 'swelling of body tissues'.
+gold_snomed=386661006
+
+--- 11161110-DS-13-e1347f260e9  text='fevers'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct answer is Fever (index 1) because all three models correctly identified 'fevers' as a clinical concept related to body temperature, and the KG evidence supports this with SNOMED code 386661006 directly linking it to Body temperature above reference range.
+gold_snomed=386661006
+
+--- 11167566-DS-4-e616f059faa  text='diaphoresis'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct answer is Excessive sweating (index 1) because, despite model llama3.2:3b's superficial reasoning about surface-text similarity, the KG evidence shows that Sweating (index 2) directly interprets Excessive sweating via 'Has interprets' relationship, and given the clinical context of chest burning with exertion almost every day without associated diaphoresis or nausea, it is more likely that the author intended to indicate an absence of excessive sweating rather than just any sweating.
+gold_snomed=52613005
+
+--- 11180362-DS-10-e819bdff88c  text='chronic systolic congestive heart'  label=Condition ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=3  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct answer is candidate [3] 'Chronic left-sided congestive heart failure' because model qwen2.5:3b's reasoning about the clinical meaning of 'chronic systolic congestive heart' aligns with this concept, and it has a direct SNOMED code (5375005) that matches its description.
+gold_snomed=426263006
+
+--- 11198666-DS-27-e2c9b50ede0  text='cold'  label=Condition ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The candidate concept 'Chronic obstructive pulmonary disease' (index 1) is supported by both model: phi4-mini and model: llama3.2:3b, which provided strong clinical reasoning that matches the KG evidence, including its SNOMED code (13645005), closest parent concept (Chronic disease of respiratory system), and direct relationship to symptoms such as cough and wheezing.
+gold_snomed=82272006
+
+--- 11215929-DS-4-ef6b2838f2a  text='appetite'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The 'Food appetite' concept in SNOMED (SNOMED code: 33911006) is supported by the ensemble's reasoning, as all three models agree that it specifically represents a reduced desire to eat, aligning with the patient's reported symptoms of having very little appetite.
+gold_snomed=64379006
+
+--- 11250426-DS-3-eb475a76dce  text='gabapentin'  label=Medication ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=3  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The best candidate concept is 'Gabapentin adverse reaction' because, as Llama3.2:3b correctly noted, it most closely aligns with the clinical meaning of a substance to which the patient has a documented allergy, despite being spelled differently.
+gold_snomed=293861001
+
+--- 11296936-DS-66-e819d732aab  text='dyspnea'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct matching candidate is 'Dyspnea' (index [1]) because, as noted by model phi4-mini and llama3.2:3b, it directly corresponds to the difficulty breathing described in its clinical context, supported by SNOMED code 267036007 and closest parent concept Difficulty breathing.
+gold_snomed=267036007
+
+--- 11299687-DS-9-e7396483966  text='diaporesis'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=3  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The Llama3.2:3b model's reasoning about 'Sweat retention' being a direct representation of abnormal increase in sweat production aligns with the clinical meaning of 'excessive sweating', and is supported by its SNOMED code (35506000) which indicates an observation related to retention.
+gold_snomed=52613005
+
+--- 11319259-DS-14-e5d3bd20fb1  text='Aspirin'  label=Medication ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate is 'Allergy to aspirin' because two out of three models correctly identified it as a direct match for the clinical meaning of an allergy to Aspirin, and KG evidence supports its domain (Observation) and SNOMED code.
+gold_snomed=293586001
+
+--- 11365932-DS-23-e01cbd6d872  text='Bactrim'  label=Medication ---
+ORIGINAL plurality index=5  correct=True
+ARBITER index=5  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate is 'Allergy to sulfamethoxazole and/or trimethoprim' because all three models agreed on this choice, and the KG evidence supports it as a direct parent of 'Allergy to trimethoprim', indicating that an allergy to both components (sulfamethoxazole and trimethoprim) is being documented.
+gold_snomed=870714005
+
+--- 11386597-DS-15-e42d36ce3a7  text='spinning sensation'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best-matching candidate is Vertigo (index 1) because all three models correctly identified 'spinning sensation' as a symptom of dizziness, and the KG evidence supports this with direct relationships to Dizziness and no relationship to Repetitive spinning movements.
+gold_snomed=399153001
+
+--- 11392990-DS-6-e5aa66efa15  text='cough'  label=Symptom ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Cough' because, as noted by llama3.2:3b, its domain ('Condition') aligns with the context and it represents an exact synonym in a different form (i.e., 'absence of cough' is equivalent to saying 'cough does not exist'), which matches the clinical meaning provided.
+gold_snomed=289115009
+
+--- 11417242-DS-18-e57c894bc37  text='Hypertension'  label=Condition ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Hypertensive disorder' because, although both phi4-mini and llama3.2:3b initially seemed to support the term 'Hypertension', their reasoning was flawed - phi4-mini simply matched surface text without considering the broader clinical context, while llama3.2:3b incorrectly assumed that 'Hypertensive disorder' is a synonym for 'Hypertension'. In contrast, qwen2.5:3b correctly pointed out the limitations of 'Hypertensive disorder', and upon closer inspection of the KG evidence, it's clear that this candidate best captures the nuances of essential hypertension with new right bundle branch block.
+gold_snomed=59621000
+
+--- 11436844-DS-4-edf2935fbb5  text='R hand'  label=Anatomy ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Structure of right hand' because, despite its broad label, it has a direct parent concept in the SNOMED hierarchy ('Structure of part of right upper limb') that aligns with the clinical context and KG evidence, whereas the ensemble's reasoning was flawed as model phi4-mini anchored on an overly narrow interpretation of 'R hand' as an imaging procedure only, while models qwen2.5:3b and llama3.2:3b mistakenly equated a structure concept with its examination or misinterpreted the clinical meaning.
+gold_snomed=3631000087109
+
+--- 11438886-DS-9-e36998c9c14  text='UREA N-22'  label=Lab Test ---
+ORIGINAL plurality index=3  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The most accurate candidate is Urea nitrogen measurement (index 2) because model qwen2.5:3b's reasoning about the specificity of urea nitrogen measurement directly related to the UREA N-22 value in the context of blood urea nitrogen level presented in the text aligns with the knowledge-graph evidence showing that this concept has a direct SNOMED code (24509005) and is closely related to non-protein nitrogen measurement.
+gold_snomed=105011006
+
+--- 11513575-DS-15-e9ba49afc5d  text='urodynamics'  label=Procedure ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct answer is Urogynecological tests because, as model qwen2.5:3b correctly noted, urodynamics refers to a diagnostic procedure examining bladder function, and the KG evidence supports this with its direct relationship to 'Urological investigation', which is a parent concept of urodynamics.
+gold_snomed=252895004
+
+--- 11515132-DS-10-e91e07bbf93  text='Nsaids'  label=Medication ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The qwen2.5:3b model's reasoning, which aligns with the clinical meaning provided in the context and describes an allergic reaction to NSAIDs, is supported by KG evidence that [1] 'Allergy to non-steroidal anti-inflammatory agent' has a direct parent concept of 'Allergy to drug', making it the most precise match for the given context.
+gold_snomed=293610009
+
+--- 11516225-DS-20-ebb56272a3f  text='tenderness'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best-matching candidate is 'Tenderness' (index [1]) because, as model llama3.2:3b correctly noted, it represents an exact semantic match to the clinical meaning of a painful or sensitive area on the ankle, despite differences in wording and domain.
+gold_snomed=247348008
+
+--- 11522433-DS-6-e0f7a7de9f1  text='HE'  label=Condition ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=3  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct answer is HEA because model llama3.2:3b's reasoning about a semantic match based on the domain Spec Anatomic Site and vocabulary SNOMED aligns with the KG evidence, which shows that HEA has an anatomical site notation for tumor staging (258346000) and matches the clinical meaning of 'a bleeding episode in the esophagus'.
+gold_snomed=13920009
+
+--- 11524757-DS-4-ef40e5c9c2b  text='metastatic \npancreatic cancer'  label=Condition ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is Metastatic islet cell carcinoma because, although all models correctly identified the spread of cancer beyond its origin site in relation to pancreas, only this concept directly matches the SNOMED code and clinical context provided.
+gold_snomed=1237473004
+
+--- 11576109-DS-15-ec42969b6df  text='neck pain'  label=Symptom ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Neck pain' (index 1) because, although all models agree on its clinical meaning, qwen2.5:3b's nuanced reasoning about the need for additional context ('neck discomfort radiating to back') highlights a limitation in the other two models' verdicts; however, upon reviewing the KG evidence and considering the provided text, 'Neck pain' is still the most accurate match as it directly corresponds to the described condition without requiring further specification.
+gold_snomed=427310006
+
+--- 11654232-DS-17-ea132cda823  text='Morphine'  label=Medication ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The majority of models correctly identified 'Allergy to morphine' as the best match due to its direct relevance in the context, which is supported by the knowledge-graph evidence showing it has a specific SNOMED code (293601001) and no other candidates have a closer parent concept or direct relationship.
+gold_snomed=293601001
+
+--- 11684467-DS-26-e90654de891  text='Augmentin'  label=Medication ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct candidate is 'Allergy to amoxicillin' because, as model qwen2.5:3b and llama3.2:3b correctly pointed out, it matches the clinical meaning of a substance to which the patient has a documented allergy, adhering to the ALLERGY EXCEPTION TO RULE 3.
+gold_snomed=281789004
+
+--- 11714071-DS-56-e2371ca31ea  text='Aspirin'  label=Medication ---
+ORIGINAL plurality index=4  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate is 'Allergy to aspirin' because model qwen2.5:3b's reasoning about the clinical meaning of 'Aspirin allergy' being an allergy concept, and the specificity of the context matching aligns with the provided text span 'Aspirin', strongly supports this choice.
+gold_snomed=293586001
+
+--- 11783215-DS-18-e0f70d57f5d  text='stiffness'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Stiffness' because, as model llama3.2:3b correctly noted, it represents an exact synonym for the original text's meaning of 'absence of joint stiffness', despite a difference in wording and context.
+gold_snomed=271587009
+
+--- 11799619-DS-27-e0d2601865f  text='Bactrim'  label=Medication ---
+ORIGINAL plurality index=5  correct=True
+ARBITER index=5  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate concept is 'Allergy to sulfamethoxazole and/or trimethoprim' because all three models agreed on this choice, and the KG evidence supports it as a direct relationship with candidate [1] via ['Is a', 'Subsumes'], indicating that it encompasses an allergy to both components of Bactrim.
+gold_snomed=870714005
+
+--- 11806511-DS-10-eb4de4d8c3c  text='WBC-8'  label=Lab Test ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The candidate concept 'CD18 count' is supported by SNOMED vocabulary and represents a measurement of a specific type of white blood cell, making it the best match despite the ensemble's unanimous verdict that none were correct.
+gold_snomed=767002
+
+--- 11810606-DS-7-e8246e028a9  text='diaphoresis'  label=Symptom ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best match is 'Sweating' because it directly represents the absence of excessive sweating in its own right, without implying an opposite concept like 'Excessive sweating', which makes it a more straightforward and accurate fit for the clinical meaning.
+gold_snomed=52613005
+
+--- 11834909-DS-2-ec4b49a54b3  text='Metastatic Renal Cell Cancer'  label=Condition ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct match is candidate [2] because, as noted by model qwen2.5:3b and llama3.2:3b, the clinical context provided describes cancer that has spread from the kidneys to other parts of the body, which aligns with the Condition concept in SNOMED (702392008), making it a more accurate classification than candidate [1].
+gold_snomed=838281000
+
+--- 11838076-DS-20-e99c4b75e4f  text='echo'  label=Lab Test ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct candidate is Echocardiography (index 1) because, as noted by model llama3.2:3b, it matches the clinical meaning of 'a medical imaging test of the heart' and represents the exact same clinical idea despite being spelled differently.
+gold_snomed=40701008
+
+--- 11855597-DS-22-e91a7e14c35  text='orthostatic'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Orthostatic body position' because, although all three models had some insight into its meaning, the knowledge-graph evidence and clinical context support that it specifically refers to a condition of feeling faint or lightheaded when standing up, which aligns with model qwen2.5:3b's reasoning.
+gold_snomed=10904000
+
+--- 11859945-DS-29-e332c0662a8  text='Aspirin'  label=Medication ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The candidate concept 'Allergy to aspirin' is supported by qwen2.5:3b's reasoning, which aligns with the given text span and describes an allergic reaction specifically to aspirin.
+gold_snomed=293586001
+
+--- 11891099-DS-13-e2c61da8937  text='Lipase \n42'  label=Lab Test ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Measurement of lipase activity' because, despite its wording difference from the clinical meaning, it directly corresponds to an elevated enzyme level in the blood as indicated by KG evidence and supported by phi4-mini's reasoning.
+gold_snomed=271232007
+
+--- 11903286-DS-2-ec512a83192  text='Anterior interbody cage placement'  label=Procedure ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate concept is 'Interbody fusion of lumbar spine by anterior approach' because it most closely matches the clinical meaning in terms of specificity and detail, accurately describing a surgical procedure to stabilize and fuse two adjacent vertebrae in the spine.
+gold_snomed=782902008
+
+--- 11922236-DS-28-ee6dc5def6c  text='HFpEF'  label=Condition ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is [1] 'Heart failure with normal ejection fraction' because, despite some models' initial reservations about the wording difference, the KG evidence and clinical context support its accurate description of heart failure where the heart pumps enough blood but doesn't move it efficiently enough.
+gold_snomed=446221000
+
+--- 12018901-DS-68-ea37bd0a77b  text='chills'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is [1] Chill, as supported by model llama3.2:3b's reasoning that 'Chill' represents a distinct and clinically related concept conveying a similar idea to the clinical meaning of 'a feeling of coldness', despite not being spelled exactly like the original text.
+gold_snomed=43724002
+
+--- 12050253-DS-20-e0ca0a31af5  text='Sulfa'  label=Medication ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best match is 'Allergy to sulfonamide' because both phi4-mini and qwen2.5:3b correctly identified this concept as the most specific and directly related to an allergic reaction caused by Sulfonamide antibiotics, supported by its direct SNOMED code (91939003) and closest parent concept of Allergic disposition.
+gold_snomed=429239002
+
+--- 12093726-DS-4-ef9167e8420  text='Non-healing foot wound'  label=Condition ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best match is 'Open wound of foot' because two out of three models correctly identified its direct correspondence to an unhealed condition on a patient's lower extremity, and the KG evidence supports this with no direct relationships found between other candidates.
+gold_snomed=10636431000119100
+
+--- 12101085-DS-27-efbdc1a3e6b  text='arthralgias'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The phi4-mini model's reasoning about 'arthralgias' referring specifically to joint pain due to inflammation of joints is supported by the KG evidence, which shows that [1] Pain of joint has a direct SNOMED code (57676002) and its closest parent concept is Finding of sensation of joint, making it a more precise match for the clinical context described.
+gold_snomed=57676002
+
+--- 12135369-DS-23-eb84b27d012  text='emesis'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The patient's symptoms of decreased appetite and nausea, combined with the note's mention of 'emesis' being synonymous with 'vomiting', strongly support that Vomiting as a Condition is the correct match, despite two models initially supporting Emesis.
+gold_snomed=422400008
+
+--- 12152043-DS-10-e0209f40ab5  text='tylenol'  label=Medication ---
+ORIGINAL plurality index=6  correct=False
+ARBITER index=6  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The best candidate concept is 'acetaminophen' (candidate 6) because, as qwen2.5:3b noted, the context indicates that 'tylenol' is being used to describe an over-the-counter pain reliever, and acetaminophen is the active ingredient in Tylenol, fitting this description better than other candidates.
+gold_snomed=52685006
+
+--- 12190214-DS-14-e43dc570760  text='lactate'  label=Lab Test ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=4  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Lactate in blood' because, although model llama3.2:3b's reasoning about documentation style and context was superficially plausible, the KG evidence shows that this concept has a direct SNOMED code (372461000119109) and is classified as an Observable entity, which aligns with the clinical context of measuring lactate levels in blood.
+gold_snomed=3926003
+
+--- 12204158-DS-10-ebd8d3ae4e3  text='right supraclavicular node'  label=Anatomy ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is [1] 'Structure of right supraclavicular lymph node' because, although all models had valid points, the KG evidence and clinical context support this concept as it directly corresponds to an anatomical location checked for cancer spread, making it a more accurate representation of the entity described in the text.
+gold_snomed=396484008
+
+--- 12204513-DS-26-e1cbc113f2d  text='white count'  label=Lab Test ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The unanimous verdict of supported_1 from models phi4-mini and qwen2.5:3b, which correctly identified the clinical context as an absence of white blood cell count in laboratory results, aligns with the KG evidence showing a direct relationship between candidate [1] 'White blood cell count' and candidate [3] via ['Has interprets', 'Interprets of'], supporting its status as the most accurate representation of this condition.
+gold_snomed=165509000
+
+--- 12206678-DS-17-e210635b4f4  text='White coat HTN'  label=Condition ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct candidate is 'Labile hypertension due to being in a clinical environment' because, although all models agree on the concept of blood pressure variability related to environmental factors, qwen2.5:3b's more nuanced reasoning about direct alignment with the specific definition provided in the text outweighs phi4-mini and llama3.2:3b's reliance on surface-text similarity.
+gold_snomed=697930002
+
+--- 12276520-DS-22-e28d6a81e77  text='cortisone injections'  label=Medication ---
+ORIGINAL plurality index=2  correct=False
+ARBITER index=2  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is Cortisone Injectable Solution [Cortisorell] because model phi4-mini's reasoning about the semantic correspondence to corticosteroid injections used for reducing inflammation and pain in joints, combined with the KG evidence showing that this concept has a direct relationship via 'Has tradename' to candidate [1], makes it the most accurate match.
+gold_snomed=432861006
+
+--- 12286594-DS-21-e8fc9efad28  text='fevers'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The candidate concept 'Fever' is supported by both model: qwen2.5:3b and phi4-mini, which correctly identify the clinical meaning of 'fevers', as well as the knowledge-graph evidence showing that it has a direct relationship to other relevant concepts such as Body temperature above reference range.
+gold_snomed=386661006
+
+--- 12286975-DS-22-ec4be210576  text='Stress MIBI'  label=Procedure ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The ensemble's reasoning, particularly phi4-mini and qwen2.5:3b's emphasis on 'Radionuclide imaging of myocardium using technetium (99m-Tc) sestamibi with cardiac stress test' matching the description in candidate [1], aligns closely with the KG evidence supporting this concept as a direct match for 'Stress MIBI'.
+gold_snomed=46136006
+
+--- 12290802-DS-3-e1efdcd5a51  text='heart sounds'  label=Lab Test ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=3  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct answer is 'High troponin I level' because, despite model llama3.2:3b's reasoning being partially correct in identifying an abnormal finding related to cardiac function, the KG evidence shows that this concept directly corresponds to a measurement of protein levels (SNOMED code: 444931001), which aligns with the clinical context and is more specific than 'Cardiac troponin positive'.
+gold_snomed=301132007
+
+--- 12298181-DS-9-e8ed1f632ca  text='celiac'  label=Anatomy ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The correct answer is candidate [1] Celiac disease, as supported by model qwen2.5:3b's reasoning that the clinical meaning specifies an individual who experiences or has celiac disease, and further reinforced by the KG evidence showing a direct relationship between candidates [1] and [2].
+gold_snomed=233270005
+
+--- 12298967-DS-22-e6a6ecb45c1  text='Diaphoresis'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The majority of models correctly identified 'Excessive sweating' as the best match due to its alignment with the clinical context and direct relationship to 'Sweating' in the knowledge graph, which supports their verdict.
+gold_snomed=52613005
+
+--- 12304719-DS-18-e8f49d1cf97  text='loss of vision'  label=Symptom ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The candidate concept 'Loss of vision' from SNOMED (SNOMED code: 240311000000103) is the best match because its definition as the inability to perceive visual information aligns with both the clinical meaning and KG evidence, making it a more specific and accurate representation than simply being an exact synonym or matching wording.
+gold_snomed=313165001
+
+--- 12314513-DS-16-eb4b2755303  text='NSAIDS'  label=Medication ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The best-matching candidate is 'Allergy to non-steroidal anti-inflammatory agent' because all three models agreed on its relevance, and the KG evidence supports it as a direct match for an allergy to NSAIDs.
+gold_snomed=293610009
+
+--- 12319089-DS-12-efc4ca083a7  text='loose \nstools'  label=Symptom ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct candidate is 'Loose stool' because, although both qwen2.5:3b and llama3.2:3b initially seemed to have a valid point, their reasoning was based on surface-text similarity rather than genuine clinical/KG support; in contrast, phi4-mini correctly noted that the term 'Loose stool' refers specifically to an abnormality in bowel movements and does not directly indicate the presence of blood.
+gold_snomed=398032003
+
+--- 12340122-DS-5-e0edf0e2d58  text='vomiting'  label=Symptom ---
+ORIGINAL plurality index=None  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=True  error=None
+ARBITER reasoning: The single best-matching candidate is 'Vomiting' because its definition directly corresponds to the act of forcibly expelling stomach contents through the mouth, as described in its definition and supported by model phi4-mini's reasoning.
+gold_snomed=422400008
+
+--- 12407834-DS-17-e5ad18d1f58  text='fevers'  label=Symptom ---
+ORIGINAL plurality index=6  correct=False
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: The correct answer is Fever (index 1) because, despite model qwen2.5:3b's superficial reasoning about 'Fives' fitting the clinical context, the KG evidence and all other models point to Fever as the most accurate representation of an elevated body temperature indicative of infection.
+gold_snomed=386661006
+
+--- 12412316-DS-14-e94128b0b4d  text='coronary artery \ndisease'  label=Condition ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=1  correct=True  agrees_with_majority=False  error=None
+ARBITER reasoning: Although two models (qwen2.5:3b and llama3.2:3b) agreed with each other, their reasoning was based on a superficial synonymy ('Coronary arteriosclerosis' is a 'synonym for coronary artery disease in SNOMED') rather than a deeper understanding of the clinical meaning or KG evidence; in contrast, phi4-mini correctly identified that 'coronary arteriosclerosis' does not specifically denote narrowed arteries reducing blood flow to heart muscle tissue as described.
+gold_snomed=53741008
+
+--- 12431768-DS-17-e36ee970182  text='urinary retention'  label=Condition ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best-matching candidate is 'Retention of urine' because, although model llama3.2:3b's reasoning about specificity and precision was compelling, the KG evidence supports [1] as a more direct match for the clinical concept of urinary retention, with no stronger relationships found in the KG to support [2].
+gold_snomed=236648008
+
+--- 12465457-DS-18-e099b8b3158  text='mantle cell lymphoma'  label=Condition ---
+ORIGINAL plurality index=1  correct=True
+ARBITER index=2  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The direct knowledge-graph relationship between candidate [1] and [2], where [1] is an 'Asso morph of' [2], suggests that the clinical context supports treating 'Mantle cell lymphoma' as a Condition, which aligns with model qwen2.5:3b's reasoning about the classification based on biopsy result and mass confirmation.
+gold_snomed=74654000
+
+--- 12484093-DS-33-eeaeb5c5941  text='arthritic joint pain'  label=Symptom ---
+ORIGINAL plurality index=4  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=False  error=None
+ARBITER reasoning: The best candidate is 'Pain due to arthritis' because model qwen2.5:3b's reasoning about SNOMED accurately representing both the condition and its symptomatic manifestation aligns with the KG evidence showing a direct relationship between this concept and 'Arthritis', making it a more accurate match for the clinical meaning of 'arthritic joint pain'.
+gold_snomed=57676002
+
+--- 12515572-DS-13-e9872d5e27c  text='PTT-32'  label=Lab Test ---
+ORIGINAL plurality index=1  correct=False
+ARBITER index=1  correct=False  agrees_with_majority=True  error=None
+ARBITER reasoning: The best candidate concept is 'Prothrombin time' because model phi4-mini's verdict of SUPPORTED_1, which directly references the clinical concept, aligns with KG evidence showing that it has a direct relationship to candidate [4] via ['Has interprets', 'Interprets of'], and its domain as Measurement supports its relevance in this context.
+gold_snomed=42525009
+
+====================================================================================================
+SUMMARY (n=100)
+original plurality precision: 38/100 (38.0%)
+arbiter precision:             51/100 (51.0%)
+arbiter changed the verdict: 37/100
+  of those changes: 14 made it correct (was wrong), 1 made it wrong (was correct)
+====================================================================================================

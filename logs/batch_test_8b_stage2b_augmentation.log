@@ -1,0 +1,148 @@
+
+====================================================================================================
+CATEGORY: TIER_4_ENSEMBLE_SPLIT/ensemble_split  (15 entities)
+====================================================================================================
+
+====================================================================================================
+CATEGORY: TIER_5_TRUE_AMBIGUITY/verdict_none_correct  (15 entities)
+====================================================================================================
+
+--- 10060142-DS-9-e44dcb8d8cd  text='drainage'  label=Symptom had_correct_before=True ---
+generated: {'standard_name': 'Wound discharge', 'concept_type': 'Symptom', 'reasoning': "The context of incision care and specific mention of 'drainage from the incision site' suggests that this is a symptom or sign, rather than a procedure or condition in itself.", 'error': None}
+NEW CANDIDATE: 4343235 Wound discharge  snomed=239164002  gold=75823008  NEW_CANDIDATE_CORRECT=False
+
+--- 10097089-DS-8-e1d93849160  text='arm'  label=Condition had_correct_before=False ---
+generated: {'standard_name': 'Left arm', 'concept_type': 'Anatomy', 'reasoning': "'Arm' is a general term that can refer to any of the four limbs; in this context, it's clear from 'left-sided and substernal CP' that we're referring specifically to the left arm.", 'error': None}
+NEW CANDIDATE: 4283159 Left upper arm structure  snomed=368208006  gold=425677008  NEW_CANDIDATE_CORRECT=False
+
+--- 10124346-DS-4-eaa6badcf5a  text='heart'  label=Lab Test had_correct_before=False ---
+generated: {'standard_name': 'Cardiac chamber', 'concept_type': 'Anatomy', 'reasoning': "The term 'heart' refers to an organ or body part, specifically a cardiac chamber, and is not related to any lab test results; the surrounding context discusses chest pain and medical history.", 'error': None}
+NEW CANDIDATE: 4237500 Cardiac chamber structure  snomed=91744000  gold=22298006  NEW_CANDIDATE_CORRECT=False
+
+--- 10352433-DS-20-e64b3db3856  text='WBC-8'  label=Lab Test had_correct_before=False ---
+generated: {'standard_name': 'White blood cell count', 'concept_type': 'Lab Test', 'reasoning': "'WBC' is a standard abbreviation for white blood cell count in lab reports, and its presence alongside other CBC measurements (RBC, HGB, HCT) confirms this interpretation.", 'error': None}
+NEW CANDIDATE: 4298431 White blood cell count  snomed=767002  gold=767002  NEW_CANDIDATE_CORRECT=True
+
+--- 10355641-DS-7-e44423c04d7  text='heart'  label=Lab Test had_correct_before=False ---
+generated: {'standard_name': 'Cardiac disorder', 'concept_type': 'Condition', 'reasoning': "The context suggests a discussion of symptoms and etiology related to heart function, indicating that 'heart' refers to a condition rather than a lab test or anatomy.", 'error': None}
+NEW CANDIDATE: 321588 Heart disease  snomed=56265001  gold=3424008  NEW_CANDIDATE_CORRECT=False
+
+--- 10653756-DS-22-eabd2cf866a  text='heart beat'  label=Lab Test had_correct_before=False ---
+generated: {'standard_name': 'Bradycardia', 'concept_type': 'Condition', 'reasoning': "'Heart beat' is likely referring to an abnormal heart rate (bradycardia), given the context of a patient's symptoms and medical history, which suggests a concern for cardiac issues; I disagree with the automated type guess (Lab Test) as this term refers to a clinical condition rather than a measurement or test result.", 'error': None}
+NEW CANDIDATE: 4169095 Bradycardia  snomed=48867003  gold=3424008  NEW_CANDIDATE_CORRECT=False
+
+--- 11050097-DS-13-e7a3e4b0d04  text='saccads'  label=Anatomy had_correct_before=False ---
+generated: {'standard_name': 'Saccadic movement disorder', 'concept_type': 'Condition', 'reasoning': "'saccads' refers to a specific type of eye movement disorder, and given the context of ophthalmological testing (extra ocular movements intact) and the patient's symptoms (difficulty finding objects in space), it is clear that this term describes a condition rather than an anatomical structure.", 'error': None}
+NEW CANDIDATE: 4080838 Abnormal saccadic eye movement  snomed=246767003  gold=400931006  NEW_CANDIDATE_CORRECT=False
+
+--- 11050097-DS-13-edd09db3cdf  text='WBC-5'  label=Lab Test had_correct_before=False ---
+generated: {'standard_name': 'White blood cell count', 'concept_type': 'Lab Test', 'reasoning': "'WBC' is a standard abbreviation for white blood cell count in lab results, and the surrounding context (other blood measurements) confirms this reading; I agree with the automated type guess.", 'error': None}
+NEW CANDIDATE: 4298431 White blood cell count  snomed=767002  gold=767002  NEW_CANDIDATE_CORRECT=True
+
+--- 11051092-DS-3-e1c4f4e1876  text='Q waves'  label=Lab Test had_correct_before=False ---
+generated: {'standard_name': 'Q wave abnormality', 'concept_type': 'Condition', 'reasoning': "'Q waves' refers to a specific electrocardiogram finding, which is being described as an abnormality in this context; I disagree with the automated type guess (Lab Test) because Q waves are not a lab test result but rather an ECG reading.", 'error': None}
+NEW CANDIDATE: 4065386 EKG: Q wave abnormal  snomed=164917005  gold=365412003  NEW_CANDIDATE_CORRECT=False
+
+--- 11062354-DS-8-e00c4edd01a  text='WBC-5'  label=Lab Test had_correct_before=False ---
+generated: {'standard_name': 'White blood cell count', 'concept_type': 'Lab Test', 'reasoning': "'WBC' is a standard abbreviation for white blood cell count in lab results, and its presence alongside other CBC measurements (RBC, HGB, HCT) confirms this interpretation; the automated type guess was correct.", 'error': None}
+NEW CANDIDATE: 4298431 White blood cell count  snomed=767002  gold=767002  NEW_CANDIDATE_CORRECT=True
+
+====================================================================================================
+CATEGORY: TIER_5_TRUE_AMBIGUITY/below_similarity_floor  (15 entities)
+====================================================================================================
+
+--- 10043750-DS-6-e961df17cb8  text='Hct-30.4'  label=Lab Test had_correct_before=True ---
+generated: {'standard_name': 'Hematocrit', 'concept_type': 'Lab Test', 'reasoning': "'Hct' is a standard abbreviation for Hematocrit, and its presence in a blood panel context alongside other lab measurements (WBC, RBC, Hgb, MCV) confirms this reading; the automated type guess was correct.", 'error': None}
+NEW CANDIDATE: none (verified={'concept_id': 4151358, 'concept_name': 'Hematocrit determination', 'domain_id': 'Measurement', 'vocabulary_id': 'SNOMED', 'match_tier': '2 (Synonym)', 'similarity_score': 1.0}, already_present=True)
+
+--- 10352433-DS-20-ee7b9a49203  text='HCT-28'  label=Lab Test had_correct_before=True ---
+generated: {'standard_name': 'Hematocrit', 'concept_type': 'Lab Test', 'reasoning': "'HCT' is a standard abbreviation for Hematocrit, and its presence in a CBC panel alongside other blood count measurements (WBC, RBC, MCV) confirms this reading; the automated type guess was correct.", 'error': None}
+NEW CANDIDATE: none (verified={'concept_id': 4151358, 'concept_name': 'Hematocrit determination', 'domain_id': 'Measurement', 'vocabulary_id': 'SNOMED', 'match_tier': '2 (Synonym)', 'similarity_score': 1.0}, already_present=True)
+
+--- 10371195-DS-9-ed87ab25c98  text='Hct-36.8'  label=Lab Test had_correct_before=True ---
+generated: {'standard_name': 'Hematocrit', 'concept_type': 'Lab Test', 'reasoning': "'Hct' is a standard abbreviation for Hematocrit, and its presence in a blood panel context alongside other hematological measurements (WBC, RBC, Hgb) confirms this reading; the automated type guess was correct.", 'error': None}
+NEW CANDIDATE: none (verified={'concept_id': 4151358, 'concept_name': 'Hematocrit determination', 'domain_id': 'Measurement', 'vocabulary_id': 'SNOMED', 'match_tier': '2 (Synonym)', 'similarity_score': 1.0}, already_present=True)
+
+====================================================================================================
+CATEGORY: None/below_confidence_threshold  (15 entities)
+====================================================================================================
+
+--- 10124346-DS-4-ef116b10a82  text='mild'  label=Procedure had_correct_before=False ---
+generated: {'standard_name': 'Tricuspid regurgitation', 'concept_type': 'Condition', 'reasoning': "The context suggests a medical diagnosis or condition (the patient has 'moderate' tricuspid regurgitation), and the term is not related to a procedure, medication, lab test, anatomy, or symptom.", 'error': None}
+NEW CANDIDATE: 4006971 Tricuspid valve regurgitation  snomed=111287006  gold=840306007  NEW_CANDIDATE_CORRECT=False
+
+--- 10355641-DS-7-e8028949ed9  text='removal'  label=Procedure had_correct_before=False ---
+generated: {'standard_name': 'Varicose vein stripping', 'concept_type': 'Procedure', 'reasoning': 'The context of past medical history and specific mention of surgical intervention for varicose veins confirms this as a procedure, rather than a condition or symptom.', 'error': None}
+NEW CANDIDATE: 4146548 Varicose vein stripping  snomed=265855005  gold=1231296008  NEW_CANDIDATE_CORRECT=False
+
+--- 10797747-DS-20-e8c671e65e6  text='crack cocaine'  label=Medication had_correct_before=False ---
+generated: {'standard_name': 'Cocaine dependence', 'concept_type': 'Condition', 'reasoning': "'Crack cocaine' is a specific form of cocaine use disorder, and its mention in the context of prior pregnancy and current clean status suggests it's being referenced as a past health issue or condition rather than a medication or substance itself.", 'error': None}
+NEW CANDIDATE: 436389 Cocaine dependence  snomed=31956009  gold=78267003  NEW_CANDIDATE_CORRECT=False
+
+--- 10839721-DS-9-e1b50ab4c1c  text='tenderness'  label=Symptom had_correct_before=False ---
+generated: {'standard_name': 'Tenderness to palpation', 'concept_type': 'Symptom', 'reasoning': 'The context of physical exam and description of tenderness to palpation greatest in lower quadrants confirms this is a symptom, which the automated type guess correctly identified.', 'error': None}
+NEW CANDIDATE: none (verified={'concept_id': 4082445, 'concept_name': 'Tenderness', 'domain_id': 'Condition', 'vocabulary_id': 'SNOMED', 'match_tier': '3 (Semantic)', 'similarity_score': 0.8819}, already_present=True)
+
+--- 10839721-DS-9-e4476e9fa12  text='suprapubic region'  label=Anatomy had_correct_before=True ---
+generated: {'standard_name': 'Suprapubic region', 'concept_type': 'Anatomy', 'reasoning': "The term 'suprapubic region' refers to a specific anatomical location on the body, and its use in this context (exam findings) confirms it as an anatomical concept.", 'error': None}
+NEW CANDIDATE: none (verified={'concept_id': 4035235, 'concept_name': 'Hypogastric region structure', 'domain_id': 'Spec Anatomic Site', 'vocabulary_id': 'SNOMED', 'match_tier': '2 (Synonym)', 'similarity_score': 1.0}, already_present=True)
+
+--- 10912090-DS-33-e40eb1c5de8  text='procedure'  label=Procedure had_correct_before=False ---
+generated: {'standard_name': 'Loop Electrosurgical Excision Procedure', 'concept_type': 'Procedure', 'reasoning': "The context is a list of past medical history, and 'procedure' is followed by 'status post LEEP', which indicates that the procedure was performed.", 'error': None}
+NEW CANDIDATE: 4285815 Loop electrosurgical excision procedure  snomed=36899001  gold=387713003  NEW_CANDIDATE_CORRECT=False
+
+--- 10912090-DS-33-e9f9d55e64c  text='mild'  label=Procedure had_correct_before=False ---
+generated: {'standard_name': 'Mitral regurgitation', 'concept_type': 'Condition', 'reasoning': "'mild' is an adjective modifying a condition (mitral regurgitation), and given its context in describing echocardiogram findings, it's clear that 'mild' refers to the severity of MR, not a procedure or other concept type.", 'error': None}
+NEW CANDIDATE: 443962 Mitral valve regurgitation  snomed=48724000  gold=840306007  NEW_CANDIDATE_CORRECT=False
+
+--- 11025563-DS-7-e10a88a9a63  text='CHLORIDE-100'  label=Lab Test had_correct_before=False ---
+generated: {'standard_name': 'Chloride level', 'concept_type': 'Lab Test', 'reasoning': "'CHLORIDE' is a standard lab test abbreviation for measuring chloride levels in the blood, and its presence alongside other electrolyte measurements (SODIUM, POTASSIUM, TOTAL carbon dioxide) confirms this reading; I agree with the automated type guess.", 'error': None}
+NEW CANDIDATE: 4267665 Chloride level - finding  snomed=365762007  gold=104589004  NEW_CANDIDATE_CORRECT=False
+
+--- 11025563-DS-7-ecf58751f3a  text='Thigh'  label=Anatomy had_correct_before=True ---
+generated: {'standard_name': 'Thigh muscle', 'concept_type': 'Anatomy', 'reasoning': "The term 'Thigh' is a specific anatomical location, and its context in the Circulation section suggests it refers to an anatomical structure rather than a condition or symptom.", 'error': None}
+NEW CANDIDATE: 4177041 Skeletal muscle structure of thigh  snomed=50092008  gold=68367000  NEW_CANDIDATE_CORRECT=False
+
+--- 11050097-DS-13-e1354d7006d  text='headache'  label=Symptom had_correct_before=True ---
+generated: {'standard_name': 'Headache', 'concept_type': 'Symptom', 'reasoning': "The context is a ROS (review of systems) where the patient denies experiencing various symptoms, and 'headache' fits this pattern as a symptom being queried.", 'error': None}
+NEW CANDIDATE: none (verified={'concept_id': 378253, 'concept_name': 'Headache', 'domain_id': 'Condition', 'vocabulary_id': 'SNOMED', 'match_tier': '1 (Exact)', 'similarity_score': 1.0}, already_present=True)
+
+====================================================================================================
+CATEGORY: TIER_2_AUTO_RESOLVED/tier2_auto_resolved_pending_revalidation  (15 entities)
+====================================================================================================
+
+--- 10912090-DS-33-ecc9c8620aa  text='left atrial volume index'  label=Lab Test had_correct_before=False ---
+generated: {'standard_name': 'Left atrial volume index', 'concept_type': 'Lab Test', 'reasoning': "The term refers to a specific measurement result, and its presence in the conclusions section suggests it's an outcome of diagnostic testing rather than a condition or anatomy itself.", 'error': None}
+NEW CANDIDATE: none (verified={'concept_id': 4174898, 'concept_name': 'Left ventricular stroke work index', 'domain_id': 'Measurement', 'vocabulary_id': 'SNOMED', 'match_tier': '3 (Semantic)', 'similarity_score': 0.7401}, already_present=True)
+
+--- 11522433-DS-6-e89c0db462a  text='increased abdominal girth'  label=Symptom had_correct_before=True ---
+generated: {'standard_name': 'Abdominal distension', 'concept_type': 'Symptom', 'reasoning': "'Increased abdominal girth' is a descriptive phrase for 'abdominal distension', and given its context in the History of Present Illness section, it's clear that this refers to a symptom being experienced by the patient.", 'error': None}
+NEW CANDIDATE: 4012079 Abdominal distension symptom  snomed=162068007  gold=60728008  NEW_CANDIDATE_CORRECT=False
+
+--- 11576109-DS-15-e02852a4d4c  text='antibiotic'  label=Medication had_correct_before=True ---
+generated: {'standard_name': 'Levofloxacin', 'concept_type': 'Medication', 'reasoning': "The context clearly indicates that levofloxacin is a medication being prescribed to the patient, and 'antibiotic' is simply an informal term used in the discharge instructions; I agree with the automated type guess.", 'error': None}
+NEW CANDIDATE: 1742253 levofloxacin  snomed=387552007  gold=281789004  NEW_CANDIDATE_CORRECT=False
+
+--- 11654232-DS-17-e65da53bf99  text='stress test'  label=Procedure had_correct_before=False ---
+generated: {'standard_name': 'Exercise stress test', 'concept_type': 'Procedure', 'reasoning': "'Stress test' is a common colloquialism for an exercise stress test, and the context of discharge instructions and mention of a negative result confirm this interpretation; I agree with the automated type guess (Procedure).", 'error': None}
+NEW CANDIDATE: 4335824 Exercise stress echocardiography  snomed=433233004  gold=16545191000119100  NEW_CANDIDATE_CORRECT=False
+
+--- 12204513-DS-26-e205475b1d8  text='lactate'  label=Lab Test had_correct_before=True ---
+generated: {'standard_name': 'Lactate level', 'concept_type': 'Lab Test', 'reasoning': "'Lactate' is a lab test result, and its mention in the context of 'notable labs' supports this classification; I agree with the automated type guess.", 'error': None}
+NEW CANDIDATE: none (verified={'concept_id': 4138179, 'concept_name': 'D-lactate measurement', 'domain_id': 'Measurement', 'vocabulary_id': 'SNOMED', 'match_tier': '3 (Semantic)', 'similarity_score': 0.8992}, already_present=True)
+
+====================================================================================================
+OVERALL SUMMARY
+====================================================================================================
+entities sampled: 75  clean-gradable: 28  not clean-gradable (skipped): 47
+already had correct candidate in pool BEFORE augmentation: 10/28
+new candidate added: 20/28
+of those, new candidate itself matches gold: 3/20
+RECALL RECOVERED (correct answer now in pool, wasn't before): 3/28
+
+By category:
+  TIER_4_ENSEMBLE_SPLIT/ensemble_split: gradable=0 had_before=0 new_added=0 new_correct=0 recall_recovered=0
+  TIER_5_TRUE_AMBIGUITY/verdict_none_correct: gradable=10 had_before=1 new_added=10 new_correct=3 recall_recovered=3
+  TIER_5_TRUE_AMBIGUITY/below_similarity_floor: gradable=3 had_before=3 new_added=0 new_correct=0 recall_recovered=0
+  None/below_confidence_threshold: gradable=10 had_before=3 new_added=7 new_correct=0 recall_recovered=0
+  TIER_2_AUTO_RESOLVED/tier2_auto_resolved_pending_revalidation: gradable=5 had_before=3 new_added=3 new_correct=0 recall_recovered=0
