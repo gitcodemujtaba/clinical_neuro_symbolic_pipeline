@@ -965,13 +965,61 @@ def tier3_fast_path(entity: dict) -> dict:
 
     alias_hits = [(i, c) for i, c in enumerate(entity.get("candidates") or [], 1)
                   if c.get("match_basis") == "verified_brand_alias"]
-    if len(alias_hits) != 1:
+    if len(alias_hits) == 1 and not entity.get("expansion_ambiguous") \
+            and entity.get("assertion_status") in (None, "PRESENT"):
+        i, c = alias_hits[0]
+        return {
+            "tier": TIER_3_AUTO_VALIDATED,
+            "mollm_routing_decision": "AUTO_VALIDATED",
+            "queue_reason": None,
+            "final_candidate_index": i,
+            "composite_confidence": None,
+            "routing_basis": (
+                f"Tier 3 fast path: candidate [{i}] ({c.get('concept_name')}) is a "
+                f"graph-verified brand alias, the sole such hit, with no ambiguous "
+                f"expansion or non-PRESENT assertion -- skipped the two-step "
+                f"ensemble entirely."),
+            "models": [],
+        }
+
+    # 2026-08-20 ("Lab Test near-duplicate-concept" finding,
+    # evaluation/grade_fresh25_by_tier.py): the module docstring already
+    # claimed verified_lab_test_alias sits in the same curated/verified
+    # trust tier as verified_brand_alias, but this bypass never actually
+    # checked for it -- confirmed live the gap was real: existing "HCT"
+    # entities (already in _LAB_TEST_ALIASES, in production before this
+    # fix) were landing in TIER_5_TRUE_AMBIGUITY, not any auto-write tier,
+    # because a bare lab abbreviation's own SapBERT similarity is
+    # routinely too low to pass tier5_precheck's floor even after the
+    # correct concept is force-included into the pool (confirmed: none of
+    # Calcium/Na's correct concepts even appear in the raw top-5; ALT/MCV
+    # land at raw rank #2, not #1) -- force-inclusion alone was never
+    # going to be enough to reach Tier 1 on raw ranking.
+    #
+    # is_ambiguous is explicitly ALLOWED here, unlike the general case,
+    # but ONLY when ambiguity_reason is specifically
+    # "verified_lab_test_alias_below_floor" (orchestrator.py's own
+    # "rescue" flag for exactly this situation: the curated alias
+    # candidate's raw score fell below TIER3_SIMILARITY_FLOOR). That
+    # reason is a symptom of embedding a bare abbreviation, not evidence
+    # against the curated identity -- the curation IS the trust signal.
+    # Any OTHER ambiguity reason (e.g. a genuine top-2-candidate near-miss,
+    # the MCH/MCHC pattern _lab_procedure_fast_path() already guards
+    # against) still declines, same discipline as that fast path's own
+    # is_ambiguous check -- this does not blindly trust every ambiguous
+    # lab entity, only this one specific, already-understood reason.
+    lab_alias_hits = [(i, c) for i, c in enumerate(entity.get("candidates") or [], 1)
+                      if c.get("match_basis") == "verified_lab_test_alias"]
+    if len(lab_alias_hits) != 1:
         return None
     if entity.get("expansion_ambiguous"):
         return None
     if entity.get("assertion_status") not in (None, "PRESENT"):
         return None
-    i, c = alias_hits[0]
+    if entity.get("is_ambiguous") and \
+            entity.get("ambiguity_reason") != "verified_lab_test_alias_below_floor":
+        return None
+    i, c = lab_alias_hits[0]
     return {
         "tier": TIER_3_AUTO_VALIDATED,
         "mollm_routing_decision": "AUTO_VALIDATED",
@@ -980,9 +1028,9 @@ def tier3_fast_path(entity: dict) -> dict:
         "composite_confidence": None,
         "routing_basis": (
             f"Tier 3 fast path: candidate [{i}] ({c.get('concept_name')}) is a "
-            f"graph-verified brand alias, the sole such hit, with no ambiguous "
-            f"expansion or non-PRESENT assertion -- skipped the two-step "
-            f"ensemble entirely."),
+            f"curated, gold-verified lab-test-shorthand alias, the sole such hit, "
+            f"with no ambiguous expansion, non-PRESENT assertion, or unexplained "
+            f"ambiguity -- skipped the two-step ensemble entirely."),
         "models": [],
     }
 

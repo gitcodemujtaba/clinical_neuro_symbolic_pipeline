@@ -235,6 +235,50 @@ def run():
           tier3_fast_path(absent) is None)
 
     # ======================================================================
+    # tier3_fast_path -- verified_lab_test_alias (2026-08-20, "Lab Test
+    # near-duplicate-concept" fix, evaluation/grade_fresh25_by_tier.py)
+    # ======================================================================
+    lab_alias = _entity(gliner_label="Lab Test", original_text="Calcium-8.3",
+                        candidates=[{"concept_name": "Blood calcium measurement",
+                                    "match_basis": "verified_lab_test_alias",
+                                    "similarity_score": 0.62}])
+    r = tier3_fast_path(lab_alias)
+    check("sole verified_lab_test_alias, not ambiguous -> Tier 3 auto-validated",
+          r is not None and r["tier"] == "TIER_3_AUTO_VALIDATED")
+
+    lab_alias_rescued = _entity(gliner_label="Lab Test", original_text="HCT-32",
+                                is_ambiguous=True,
+                                ambiguity_reason="verified_lab_test_alias_below_floor",
+                                candidates=[{"concept_name": "Hematocrit determination",
+                                            "match_basis": "verified_lab_test_alias",
+                                            "similarity_score": 0.6625}])
+    check("is_ambiguous=True with reason=...below_floor still fast-paths "
+          "(the curated identity, not the raw score, is the trust signal)",
+          tier3_fast_path(lab_alias_rescued) is not None)
+
+    lab_alias_other_ambiguity = _entity(
+        gliner_label="Lab Test", original_text="MCH-28",
+        is_ambiguous=True, ambiguity_reason="tier3_top2_margin_below_threshold",
+        candidates=[{"concept_name": "Mean corpuscular hemoglobin determination",
+                    "match_basis": "verified_lab_test_alias", "similarity_score": 0.75}])
+    check("is_ambiguous=True with a DIFFERENT reason (genuine near-miss) still "
+          "blocks the fast path, same discipline as _lab_procedure_fast_path()",
+          tier3_fast_path(lab_alias_other_ambiguity) is None)
+
+    two_lab_alias = _entity(gliner_label="Lab Test", candidates=[
+        {"concept_name": "A", "match_basis": "verified_lab_test_alias"},
+        {"concept_name": "B", "match_basis": "verified_lab_test_alias"},
+    ])
+    check("multiple verified_lab_test_alias hits do not fast-path (real ambiguity)",
+          tier3_fast_path(two_lab_alias) is None)
+
+    lab_alias_ambiguous_expansion = _entity(
+        gliner_label="Lab Test", expansion_ambiguous=True,
+        candidates=[{"concept_name": "X", "match_basis": "verified_lab_test_alias"}])
+    check("ambiguous expansion blocks the lab-alias fast path too",
+          tier3_fast_path(lab_alias_ambiguous_expansion) is None)
+
+    # ======================================================================
     # tier5_precheck
     # ======================================================================
     check("no candidates -> Tier 5",

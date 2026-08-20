@@ -405,6 +405,29 @@ _LAB_TEST_ALIASES = {
     # Confirmed live that bare Tier 1-3 search returns "0 (Failed)" for
     # "CXR" today (below-floor semantic drift, not a domain/vocab issue).
     "cxr": 4163872,   # -> 'Plain X-ray of chest'
+    # 2026-08-20, verified against train_annotations.csv gold spans, same
+    # discipline as the entries above -- root-caused from the fresh25
+    # validation batch's Tier 1 Lab Test finding (64/94 = 68% wrong,
+    # evaluation/grade_fresh25_by_tier.py). NOT a lab_procedure_preferred
+    # regression (only 1/120 Lab Test Tier-1 candidates used that basis) --
+    # plain SapBERT semantic_similarity was landing on a plausible but
+    # not-exact SNOMED near-duplicate (e.g. generic "Calcium measurement"
+    # instead of gold's "Blood calcium measurement"; a UK-SNOMED-extension
+    # code instead of the US-core concept for ALT). Each entry below is
+    # 100% consistent in gold, sample sizes 41-491 (bare abbreviation,
+    # value-suffix already stripped by strip_lab_value_suffix()):
+    "calcium": 4193434,  # -> 'Blood calcium measurement' (n=274/274)
+    "alt": 4146380,       # -> 'Alanine aminotransferase measurement' (n=208/208)
+    "na": 4208938,        # -> 'Sodium measurement, blood' (n=407/407)
+    "urean": 4017361,     # -> 'Blood urea nitrogen measurement' (n=368/368)
+    "ph": 4215028,        # -> 'pH measurement' (n=103/103)
+    "creat": 4324383,     # -> 'Creatinine measurement' (n=474/474)
+    "phos": 4020559,      # -> 'Phosphate, total measurement' (n=260/260)
+    "inr": 4261078,       # -> 'Calculation of international normalized ratio' (n=41/41)
+    "rdw": 4281085,       # -> 'Red cell distribution width determination' (n=491/491)
+    "mcv": 4016239,       # -> 'Erythrocyte mean corpuscular volume determination' (n=192/192)
+    "mchc": 4290193,      # -> 'Mean corpuscular hemoglobin concentration determination' (n=490/490)
+    "total co2": 4193415,  # -> 'Blood total carbon dioxide (calculated)' (n=88/88)
 }
 
 
