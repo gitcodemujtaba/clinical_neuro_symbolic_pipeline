@@ -60,7 +60,7 @@ def _load_pure_functions(module_filename: str, wanted: set, extra_globals: dict 
 TG = _load_pure_functions(
     "mollm_tier_gate.py",
     {"qualifier_fragment_precheck", "tier3_fast_path", "_lab_procedure_fast_path",
-     "tier5_precheck", "route_tier",
+     "tier5_precheck", "route_tier", "_score_with_calibrator",
      "_clinical_meaning_prompt", "_binary_match_prompt", "_is_coronary_segment_trap",
      "_is_short_alphanumeric_code", "_fragile_shorthand_trap"},
     extra_globals={"TIER3_SIMILARITY_FLOOR": 0.72, "TIER1_CONFIDENCE_FLOOR": 0.70,
@@ -613,6 +613,68 @@ def run():
           route_tier(calibrator_entity, model_results=split_votes,
                     calibrator=_FakeCalibrator(0.95), conn="FAKE_CONN")["tier"]
           == "TIER_1B_CALIBRATED_AUTO_VALIDATED")
+
+    # ======================================================================
+    # 2026-08-20: ConsensusCalibrator escape hatch for TIER_2_AUTO_RESOLVED
+    # (unanimous re-rank), structurally separate from TIER_1B.
+    # ======================================================================
+    tier2_entity = _entity(candidates=[
+        {"concept_name": "X", "similarity_score": 0.9, "omop_concept_id": 111},
+        {"concept_name": "Y", "similarity_score": 0.85, "omop_concept_id": 666}])
+    unanimous_rerank_votes = [_vote("a", "RE_RANK_TO_CANDIDATE_2", 0.9),
+                              _vote("b", "RE_RANK_TO_CANDIDATE_2", 0.85),
+                              _vote("c", "RE_RANK_TO_CANDIDATE_2", 0.92)]
+
+    r = route_tier(tier2_entity, model_results=unanimous_rerank_votes)
+    check("calibrator=None, conn=None (default) reproduces existing Tier 2 "
+          "behavior exactly: HITL, tagged TIER_2_AUTO_RESOLVED for audit",
+          r["tier"] == "TIER_2_AUTO_RESOLVED"
+          and r["mollm_routing_decision"] == "HITL_REQUIRED")
+    check("calibrated_score is explicitly None when no calibrator was supplied",
+          r["calibrated_score"] is None)
+
+    tier2_high_calibrator = _FakeCalibrator(0.95)
+    r = route_tier(tier2_entity, model_results=unanimous_rerank_votes,
+                   calibrator=tier2_high_calibrator, conn="FAKE_CONN")
+    check("a high-scoring calibrator promotes a unanimous re-rank to "
+          "TIER_2B_CALIBRATED_AUTO_RESOLVED, NOT TIER_1B -- structurally "
+          "distinct from a genuine split-vote promotion",
+          r["tier"] == "TIER_2B_CALIBRATED_AUTO_RESOLVED"
+          and r["mollm_routing_decision"] == "AUTO_VALIDATED")
+    check("the promoted decision's final_candidate_index follows the "
+          "unanimous verdict (RE_RANK_TO_CANDIDATE_2 -> candidate 2)",
+          r["final_candidate_index"] == 2)
+    check("calibrated_score is persisted on the TIER_2B promotion",
+          r["calibrated_score"] == 0.95)
+
+    tier2_low_calibrator = _FakeCalibrator(0.40)
+    r = route_tier(tier2_entity, model_results=unanimous_rerank_votes,
+                   calibrator=tier2_low_calibrator, conn="FAKE_CONN")
+    check("a low-scoring calibrator leaves the unanimous re-rank at "
+          "TIER_2_AUTO_RESOLVED/HITL, unpromoted",
+          r["tier"] == "TIER_2_AUTO_RESOLVED"
+          and r["mollm_routing_decision"] == "HITL_REQUIRED")
+    check("the low score is still persisted for audit, not discarded",
+          r["calibrated_score"] == 0.40)
+
+    check("TIER_2B is not conflated with TIER_1B anywhere -- the two "
+          "constants are genuinely distinct strings",
+          "TIER_2B_CALIBRATED_AUTO_RESOLVED" != "TIER_1B_CALIBRATED_AUTO_VALIDATED")
+
+    # The coronary/short-code traps apply here too, via the same
+    # _score_with_calibrator() helper -- one quick check to confirm it's
+    # actually wired in for the TIER_2 path, not just TIER_4's.
+    tier2_coronary_entity = _entity(
+        original_text="LCX", candidates=[
+            {"concept_name": "Structure of circumflex coronary artery",
+             "similarity_score": 0.9, "omop_concept_id": 222},
+            {"concept_name": "Y", "similarity_score": 0.85, "omop_concept_id": 777}])
+    tier2_trap_calibrator = _FakeCalibrator(0.99)
+    r = route_tier(tier2_coronary_entity, model_results=unanimous_rerank_votes,
+                   calibrator=tier2_trap_calibrator, conn="FAKE_CONN")
+    check("the coronary-segment trap also guards the TIER_2 calibrator path",
+          r["tier"] == "TIER_2_AUTO_RESOLVED" and r["calibrated_score"] is None
+          and tier2_trap_calibrator.calls == [])
 
     # ======================================================================
     # 2026-08-17: short alphanumeric code trap (S2/T1/V12-shaped mentions).

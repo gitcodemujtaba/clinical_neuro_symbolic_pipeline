@@ -110,22 +110,41 @@ TIER_5_TRUE_AMBIGUITY = "TIER_5_TRUE_AMBIGUITY"
 # genuine unanimous vote vs a calibrated guess") can tell the two apart.
 TIER_1B_CALIBRATED_AUTO_VALIDATED = "TIER_1B_CALIBRATED_AUTO_VALIDATED"
 
+# 2026-08-20 (fresh25 root-cause finding, evaluation/grade_fresh25_by_tier.py
+# and docs/2026-08-20_Session_Results_And_Status.md). A unanimous re-rank
+# (TIER_2_AUTO_RESOLVED) a fitted ConsensusCalibrator scores as
+# likely-correct anyway promotes here -- structurally separate from
+# TIER_1B for the same reason TIER_1B is separate from TIER_1: the
+# calibrator was fit on split-vote (non-unanimous) examples, a materially
+# different feature distribution than Tier 2's 100%-is_ambiguous,
+# zero-vote-disagreement population (confirmed directly: every single
+# TIER_2_AUTO_RESOLVED decision in the DB has is_ambiguous=True, whereas
+# "unanimous" here reflects the 3 models sharing a common bias on an
+# already-shaky retrieval signal, not independent verification -- see the
+# TIER_2_AUTO_RESOLVED comment below). NOT added to AUTO_TIERS by default;
+# see that set's own comment for why, and for the shadow-validation this
+# tier needs before it ever could be.
+TIER_2B_CALIBRATED_AUTO_RESOLVED = "TIER_2B_CALIBRATED_AUTO_RESOLVED"
+
 # 2026-08-19 (temporary, conservative gating change -- see
-# docs/2026-08-19_Lab_Procedure_Vs_Observable_Entity_Finding.md).
-# TIER_2_AUTO_RESOLVED deliberately excluded from AUTO_TIERS: corpus-scale
-# grading measured 20.0% precision (115 clean-graded), and while 78% of
-# that (73/93 wrong) is the now-fixed lab-procedure-vs-observable-entity
-# bug, the remaining 20/93 span Anatomy/Condition/Medication/Procedure with
-# repeated wrong patterns of their own (e.g. "Diverticulosis"->"Diverticular
-# disease" x2, "stress test"->"Cardiovascular stress testing" x3) that have
-# NOT been root-caused yet. route_tier() still tags these decisions
-# tier=TIER_2_AUTO_RESOLVED (unchanged -- the underlying signal, a 3/3
-# unanimous re-rank, is still real and still worth distinguishing in every
-# audit/grading query) but routes them to HITL_REQUIRED rather than
-# AUTO_RESOLVED until a fresh evaluation on post-fix data confirms the
-# 20% baseline has actually recovered. Re-add TIER_2_AUTO_RESOLVED to this
-# set once that re-measurement (and ideally the residual-20 pattern) is
-# done and clears whatever bar TIER_1/TIER_3 clear today (~82%/~98%).
+# docs/2026-08-19_Lab_Procedure_Vs_Observable_Entity_Finding.md), UPDATED
+# 2026-08-20 with the fresh25 re-measurement. TIER_2_AUTO_RESOLVED stays
+# excluded from AUTO_TIERS: the fresh-note re-evaluation this exclusion was
+# pending measured 16.2% clean-span precision (11/68) -- essentially
+# unchanged from the original ~20% baseline, confirming the earlier fixes
+# did NOT recover it and this exclusion should stay in place, not be a
+# transitional state. Root cause dug into directly: 100% of
+# TIER_2_AUTO_RESOLVED decisions in the DB are flagged is_ambiguous=True by
+# retrieval -- structural, not incidental. Tier 2 requires all 3 models to
+# unanimously re-rank AWAY from retrieval's own top candidate, which only
+# happens when that candidate already looked shaky; "3/3 unanimous" in
+# this population is more likely to reflect the 3 models sharing a common
+# bias than independently verifying the same correct answer. A
+# deterministic fast path therefore isn't the right tool here (see
+# TIER_2B_CALIBRATED_AUTO_RESOLVED above) -- route_tier() now gives a
+# fitted calibrator a chance to promote a specific Tier-2-shaped decision
+# there instead of a blanket rule, but TIER_2B is not in this set either,
+# pending the shadow-validation its own comment describes.
 AUTO_TIERS = {TIER_1_AUTO_VALIDATED, TIER_3_AUTO_VALIDATED,
              TIER_1B_CALIBRATED_AUTO_VALIDATED}
 
@@ -1153,6 +1172,45 @@ def tier5_precheck(entity: dict) -> dict:
     return None
 
 
+def _score_with_calibrator(entity: dict, model_results: list, candidate_index: int,
+                           calibrator, conn, conn_factory) -> dict:
+    """Shared calibrator-consultation logic, factored out 2026-08-20 so the
+    TIER_2_AUTO_RESOLVED (unanimous re-rank) and non-unanimous-split paths
+    in route_tier() apply the EXACT same safety checks -- the
+    fragile-shorthand trap and prior-confirmation lookup -- rather than
+    risking the two call sites silently drifting apart over time. Returns
+    {"trapped": bool, "trap_reason": str|None, "calibrated_score": float|None,
+    "prior_count": int|None}. Caller decides what tier a promotion lands in
+    (TIER_1B for a split, TIER_2B for a unanimous re-rank) -- this function
+    only computes the score.
+    """
+    candidates = entity.get("candidates") or []
+    trapped, trap_reason = _fragile_shorthand_trap(entity, candidate_index, candidates)
+    if trapped:
+        return {"trapped": True, "trap_reason": trap_reason,
+                "calibrated_score": None, "prior_count": None}
+
+    from src.mollm_tier_calibrator import build_feature_context, count_prior_confirmations
+    chosen_concept_id = None
+    if 0 < candidate_index <= len(candidates):
+        chosen_concept_id = candidates[candidate_index - 1].get("omop_concept_id")
+
+    if conn_factory is not None:
+        lookup_conn = conn_factory()
+        try:
+            prior_count = count_prior_confirmations(
+                lookup_conn, entity.get("original_text"), chosen_concept_id)
+        finally:
+            lookup_conn.close()
+    else:
+        prior_count = count_prior_confirmations(
+            conn, entity.get("original_text"), chosen_concept_id)
+    context = build_feature_context(entity, model_results, prior_count)
+    calibrated_score = calibrator.score(context)
+    return {"trapped": False, "trap_reason": None,
+            "calibrated_score": calibrated_score, "prior_count": prior_count}
+
+
 # ==========================================================================
 # Full Tier 1-5 gate
 # ==========================================================================
@@ -1269,20 +1327,55 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
 
     if unanimous and top_verdict.startswith("RE_RANK_TO_CANDIDATE_"):
         n = int(top_verdict.rsplit("_", 1)[1])
-        # 2026-08-19 (temporary, see AUTO_TIERS' own comment above): still
-        # tagged TIER_2_AUTO_RESOLVED for audit/grading continuity, but
-        # routed to HITL_REQUIRED, not AUTO_RESOLVED, until a fresh
-        # post-fix evaluation confirms this tier's measured 20% precision
-        # has actually recovered.
+        # 2026-08-20 (see TIER_2B_CALIBRATED_AUTO_RESOLVED's own comment):
+        # a unanimous re-rank is NOT a deterministic auto-write on its own
+        # -- give a fitted calibrator a chance to say THIS SPECIFIC decision
+        # is likely correct anyway, same mechanism (and same safety checks:
+        # fragile-shorthand trap, prior-confirmation count) as the
+        # non-unanimous split path below, just landing in a structurally
+        # separate tier since Tier 2's feature distribution (100%
+        # is_ambiguous, zero vote disagreement) is not what the calibrator
+        # was fit/validated on.
+        tier2_calibrated_score = None
+        if calibrator is not None and (conn is not None or conn_factory is not None):
+            result = _score_with_calibrator(entity, model_results, n, calibrator, conn, conn_factory)
+            if result["trapped"]:
+                return {"tier": TIER_2_AUTO_RESOLVED, "mollm_routing_decision": "HITL_REQUIRED",
+                        "queue_reason": result["trap_reason"], "final_candidate_index": n,
+                        "composite_confidence": composite_confidence,
+                        "calibrated_score": None,
+                        "routing_basis": (
+                            f"3/3 unanimous re-rank to candidate {n}; calibrator bypassed -- "
+                            f"fragile-shorthand trap ({result['trap_reason']})"),
+                        "models": model_results}
+            tier2_calibrated_score = result["calibrated_score"]
+            if tier2_calibrated_score is not None and tier2_calibrated_score >= CALIBRATED_AUTO_THRESHOLD:
+                return {"tier": TIER_2B_CALIBRATED_AUTO_RESOLVED,
+                        "mollm_routing_decision": "AUTO_VALIDATED", "queue_reason": None,
+                        "final_candidate_index": n,
+                        "composite_confidence": composite_confidence,
+                        "calibrated_score": tier2_calibrated_score,
+                        "routing_basis": (
+                            f"3/3 unanimous re-rank to candidate {n}, but ConsensusCalibrator "
+                            f"scored {tier2_calibrated_score} >= {CALIBRATED_AUTO_THRESHOLD} "
+                            f"(prior_confirmation_count={result['prior_count']})"),
+                        "models": model_results}
+        # Still tagged TIER_2_AUTO_RESOLVED for audit/grading continuity
+        # (the underlying signal is real and worth distinguishing), routed
+        # to HITL_REQUIRED since it didn't clear the calibrator (or no
+        # calibrator was supplied at all).
         return {"tier": TIER_2_AUTO_RESOLVED, "mollm_routing_decision": "HITL_REQUIRED",
                 "queue_reason": "tier2_auto_resolved_pending_revalidation",
                 "final_candidate_index": n,
                 "composite_confidence": composite_confidence,
-                "calibrated_score": None,
+                "calibrated_score": tier2_calibrated_score,
                 "routing_basis": (f"3/3 unanimous re-rank to candidate {n}, "
                                   f"composite_confidence {composite_confidence} -- "
                                   f"queued for review pending TIER_2_AUTO_RESOLVED "
-                                  f"post-fix re-validation (see AUTO_TIERS comment)"),
+                                  f"post-fix re-validation (see AUTO_TIERS comment)"
+                                  + (f"; calibrator scored {tier2_calibrated_score} < "
+                                     f"{CALIBRATED_AUTO_THRESHOLD}"
+                                     if tier2_calibrated_score is not None else "")),
                 "models": model_results}
 
     if unanimous and top_verdict == "NONE_CORRECT":
@@ -1321,8 +1414,6 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
             candidate_index = int(top_verdict.rsplit("_", 1)[1])
 
         if candidate_index is not None:
-            candidates = entity.get("candidates") or []
-
             # Fragile-shorthand trap (coronary-segment enumerated list +
             # short-code shape regex, see _fragile_shorthand_trap()): a
             # known-fragile retrieval pattern, quarantined BEFORE the
@@ -1330,45 +1421,21 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
             # all for a trapped entity, not merely overridden after the
             # fact, so no training data (evaluation/tier_gate_cal_eval.py)
             # or future fit can accidentally re-learn its way around this
-            # gate. Same helper used by the unanimous SUPPORTED_1 branch
-            # above, so both AUTO-tier paths stay in sync.
-            trapped, trap_reason = _fragile_shorthand_trap(entity, candidate_index, candidates)
-            if trapped:
+            # gate. Same _score_with_calibrator() helper the unanimous
+            # re-rank (TIER_2) branch above uses, so both stay in sync.
+            result = _score_with_calibrator(entity, model_results, candidate_index,
+                                            calibrator, conn, conn_factory)
+            if result["trapped"]:
                 return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",
-                        "queue_reason": trap_reason, "final_candidate_index": None,
+                        "queue_reason": result["trap_reason"], "final_candidate_index": None,
                         "composite_confidence": composite_confidence,
                         "calibrated_score": None,  # bypassed BEFORE calibrator.score() is called
                         "routing_basis": (
                             f"non-unanimous verdicts {dict(vote_counts)}; calibrator bypassed -- "
-                            f"fragile-shorthand trap ({trap_reason})"),
+                            f"fragile-shorthand trap ({result['trap_reason']})"),
                         "models": model_results}
-
-            from src.mollm_tier_calibrator import (
-                build_feature_context, count_prior_confirmations)
-            chosen_concept_id = None
-            if 0 < candidate_index <= len(candidates):
-                chosen_concept_id = candidates[candidate_index - 1].get("omop_concept_id")
-
-            # conn_factory preferred: opens a connection ONLY for this one
-            # brief lookup, closes it immediately -- this is the actual
-            # DB-touching moment, happening AFTER run_two_step_ensemble()'s
-            # 3 LLM calls have already returned, so the lock is held for
-            # milliseconds, not the whole route_tier() call. Falls back to
-            # a caller-supplied already-open `conn` for backward
-            # compatibility (existing tests, callers that don't care about
-            # lock duration).
-            if conn_factory is not None:
-                lookup_conn = conn_factory()
-                try:
-                    prior_count = count_prior_confirmations(
-                        lookup_conn, entity.get("original_text"), chosen_concept_id)
-                finally:
-                    lookup_conn.close()
-            else:
-                prior_count = count_prior_confirmations(
-                    conn, entity.get("original_text"), chosen_concept_id)
-            context = build_feature_context(entity, model_results, prior_count)
-            calibrated_score = calibrator.score(context)
+            calibrated_score = result["calibrated_score"]
+            prior_count = result["prior_count"]
 
             if calibrated_score is not None and calibrated_score >= CALIBRATED_AUTO_THRESHOLD:
                 return {"tier": TIER_1B_CALIBRATED_AUTO_VALIDATED,
