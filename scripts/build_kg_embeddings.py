@@ -25,7 +25,9 @@ if PROJECT_DIR not in sys.path:
 from src.db_utils import connect_with_retry  # noqa: E402
 from src.kg_embedding import (  # noqa: E402
     build_vocab, evaluate_against_tp_records, evaluate_link_prediction,
-    load_snomed_subgraph, train_transe)
+    load_snomed_subgraph, save_model, train_transe)
+
+MODEL_CHECKPOINT_PATH = f"{PROJECT_DIR}/models/kg_transe_v1.pt"
 
 
 def gather_tp_records(conn):
@@ -117,6 +119,9 @@ def main():
 
     print("\ntraining TransE...")
     model = train_transe(train_triples, entity2idx, relation2idx, dim=100, epochs=50)
+
+    save_model(model, entity2idx, relation2idx, MODEL_CHECKPOINT_PATH, dim=100)
+    print(f"\nmodel checkpoint written to {MODEL_CHECKPOINT_PATH}")
 
     print("\n--- intrinsic evaluation (standard KGE protocol, RAW setting) ---")
     link_pred = evaluate_link_prediction(model, test_triples, entity2idx, relation2idx, k=10)

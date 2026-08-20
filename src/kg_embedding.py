@@ -51,6 +51,29 @@ import torch
 import torch.nn as nn
 
 
+def save_model(model: "TransE", entity2idx: dict, relation2idx: dict, path: str, dim: int = None):
+    """Bundles weights + vocab into one checkpoint -- the vocab is data-
+    dependent (which concept_ids/relation types were in THIS training run's
+    subgraph), so a state_dict alone isn't enough to reconstruct usable
+    entity2idx lookups for a later evaluation/tiebreak run."""
+    dim = dim if dim is not None else model.entity_emb.embedding_dim
+    torch.save({
+        "state_dict": model.state_dict(),
+        "entity2idx": entity2idx,
+        "relation2idx": relation2idx,
+        "dim": dim,
+    }, path)
+
+
+def load_model(path: str, device: str = "cpu"):
+    """Inverse of save_model(). Returns (model, entity2idx, relation2idx)."""
+    ckpt = torch.load(path, map_location=device, weights_only=False)
+    model = TransE(len(ckpt["entity2idx"]), len(ckpt["relation2idx"]), dim=ckpt["dim"]).to(device)
+    model.load_state_dict(ckpt["state_dict"])
+    model.eval()
+    return model, ckpt["entity2idx"], ckpt["relation2idx"]
+
+
 def load_snomed_subgraph(conn, concept_ids: list) -> list:
     """Real SNOMED relationship triples (concept_id_1, relationship_id,
     concept_id_2) with BOTH endpoints in `concept_ids` -- the concepts
