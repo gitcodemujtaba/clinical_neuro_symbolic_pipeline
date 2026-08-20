@@ -60,6 +60,7 @@ from src.normalization import (
 from src.acronym_escalation import ACRONYM_ESCALATION_ENABLED, resolve_ambiguous_acronyms
 from src.db_utils import connect_with_retry
 from src.physexam_shorthand import build_physexam_shorthand_entities
+from src.lab_abbrev_coldstart import build_lab_abbrev_coldstart_entities
 
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 DB_PATH = os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb")
@@ -373,6 +374,27 @@ def run_pipeline(note_id: str, raw_text: str, conn, is_test: bool = False) -> di
     if physexam_entities:
         store_entities(conn, physexam_entities, is_test=is_test)
         accepted = accepted + physexam_entities
+
+    # BARE LAB-ABBREVIATION COLD START (2026-08-20). Same category of gap
+    # as the physexam cold start above, different population: bare CBC/
+    # chemistry-panel abbreviations with no attached value ("Creat trended
+    # up", not "Creat-1.2") -- confirmed corpus-wide (full 140-note
+    # is_test corpus) that 100% of the 20,754 gold spans with zero
+    # overlapping prediction are true zero-shot blind spots (GLiNER
+    # proposes nothing at any confidence, not just below-threshold), and
+    # the most-repeated missed texts are dominated by exactly this
+    # pattern. See src.lab_abbrev_coldstart's own module docstring for the
+    # gold-verification methodology. Passed the COMBINED accepted list so
+    # far (not just `entities`) so it also skips anything the physexam
+    # cold start just added, not only GLiNER's own output. Unlike
+    # physexam_shorthand, these need no dedicated concept-resolution
+    # bypass -- they flow through ordinary Tier 1-3 normalization and hit
+    # _LAB_TEST_ALIASES/tier3_fast_path's existing verified_lab_test_alias
+    # branch automatically.
+    lab_abbrev_entities = build_lab_abbrev_coldstart_entities(raw_text, note_id, accepted)
+    if lab_abbrev_entities:
+        store_entities(conn, lab_abbrev_entities, is_test=is_test)
+        accepted = accepted + lab_abbrev_entities
 
     # SPAN GROWTH, then COMPOUND-SPAN SPLIT. Both run after the sub-
     # threshold filter (only real, accepted entities are worth the

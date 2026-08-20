@@ -428,6 +428,15 @@ _LAB_TEST_ALIASES = {
     "mcv": 4016239,       # -> 'Erythrocyte mean corpuscular volume determination' (n=192/192)
     "mchc": 4290193,      # -> 'Mean corpuscular hemoglobin concentration determination' (n=490/490)
     "total co2": 4193415,  # -> 'Blood total carbon dioxide (calculated)' (n=88/88)
+    # 2026-08-20, added alongside src.lab_abbrev_coldstart (extraction-side
+    # cold start for the SAME bare-abbreviation population) -- also
+    # 100%-consistent in gold, n=208-568:
+    "hgb": 40480067,   # -> 'Measurement of total hemoglobin concentration' (n=539/539)
+    "rbc": 4030871,    # -> 'Red blood cell count' (n=550/550)
+    "cl": 4019545,     # -> 'Chloride measurement, blood' (n=384/384)
+    "wbc": 4298431,    # -> 'White blood cell count' (n=568/568)
+    "angap": 4103762,  # -> 'Anion gap measurement' (n=348/348)
+    "hco3": 4194291,   # -> 'Blood bicarbonate measurement' (n=378/378)
 }
 
 
