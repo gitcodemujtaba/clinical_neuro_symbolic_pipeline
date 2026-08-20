@@ -124,25 +124,79 @@ concept names only). Verified via `streamlit.testing.v1.AppTest` (no
 exceptions) and a standalone test of the offset-splitting logic against
 exact-match, ours-wider, gold-wider, and staggered-overlap cases.
 
-## 6. Fresh25 validation batch — in progress, not yet graded
+## 6. Fresh25 validation batch — complete and graded
 
-25 genuinely fresh notes (outside every calibrator train/val note) queued
-for Stage 1→2a→2b, chained into Stage 3, specifically to close two open
-items above: a real fresh-note `TIER_2_AUTO_RESOLVED` re-evaluation, and a
-real fresh-note calibrator check against the 0.845 internal-validation
-number. **Status as of this doc: still running** (note 1 of 25 — the
-corpus's known longest/slowest note — done; note 2 in progress). Grading
-against gold has not happened yet; no numbers from this batch are reported
-anywhere in this doc or elsewhere, deliberately, until it actually
-completes.
+25 genuinely fresh notes (outside every calibrator train/val note),
+Stage 1→2a→2b→3, 3,519 entities processed (0 errors), 390.5 minutes total.
+Graded against gold via `evaluation/grade_fresh25_by_tier.py`
+(clean-span, SNOMED-crosswalked, same methodology as every other
+tier-grading script this project uses):
+
+| Tier | n decisions | Clean-span precision |
+|---|---|---|
+| Tier 1 (unanimous) | 1,248 | 544/690 = **78.8%** |
+| Tier 1B (calibrator) | 197 | 100/108 = **92.6%** |
+| Tier 2 (unanimous re-rank) | 94 | 11/68 = **16.2%** |
+| Tier 3 (fast path) | 491 | 323/364 = 88.7% |
+| Combined `AUTO_TIERS` (1+1B+3) | 1,936 | 967/1,162 = **83.2%** |
+
+**Tier 2: the fix from §1 did not recover precision at scale (16.2% vs.
+the ~20% baseline it was meant to fix) — confirming the decision to hold
+it out of `AUTO_TIERS` was correct, not overcautious.** Root cause dug
+into directly: every single `TIER_2_AUTO_RESOLVED` decision in the DB
+(259/259, all entity types) is flagged `is_ambiguous=True` by retrieval.
+This is structural, not incidental — Tier 2 requires all 3 models to
+unanimously re-rank *away* from retrieval's own top candidate, which only
+happens when that top candidate already looks shaky. So "3/3 unanimous"
+in this specific population is more likely to reflect the 3 models
+sharing a common bias than independently verifying the same correct
+answer. Confirmed concretely for the lab-panel cases (MCV/MCHC/RDW):
+retrieval's `lab_procedure_preferred` tag on candidate #1 is present and
+correct, the fast path correctly declines because `is_ambiguous=True`,
+and the LLM ensemble's fallback judgment is what lands on the wrong
+candidate. **This tier likely needs calibrator-style scoring, not a
+deterministic fast path, to ever safely re-enter `AUTO_TIERS`** — a
+concrete next step, not yet built.
+
+**Tier 1B calibrator: validated, holds up well on fresh notes (92.6%)** —
+a real improvement over the earlier 5-note check (84.2%) that had
+triggered the 0.65→0.72 threshold raise. The retrained calibrator
+(0.845 AUROC), the two hard traps, and the 0.72 threshold are working
+together as intended on a larger, more diverse fresh sample. This closes
+the open item from §2 cleanly and positively.
+
+**Tier 1: lower than prior checkpoints (78.8% vs. 84–88% at earlier
+checkpoints) — partially explained, partially a new finding.** Broken
+down by entity type: `Medication` is 18/18 (100%) wrong, fully explained
+by the already-documented gold-annotation-schema gap (gold codes
+medications to Administration-of-X procedure concepts, not the drug
+substance — see the medication crosswalk finding in prior session
+memory, not new). `Lab Test` is 64/94 (68%) wrong — **new, and not
+caused by the `lab_procedure_preferred` mechanism** (only 1/120 Lab Test
+Tier-1 candidates used that match basis; the rest were plain
+`semantic_similarity`). Direct lookup of gold's own target concepts shows
+this is a genuine SNOMED near-duplicate-concept problem: gold's targets
+are themselves Procedure/Measurement-class concepts, just a *different*
+specific one than what SapBERT matched (e.g. gold wants "Blood calcium
+measurement" [312472004], we matched "Calcium measurement" [71878006];
+for ALT, we matched a UK-SNOMED-extension code instead of the US-core
+concept gold uses). A previously unquantified semantic-retrieval
+precision ceiling for common labs with multiple close SNOMED synonyms —
+distinct from anything this session's fixes targeted, and not yet
+addressed.
 
 ## Open items carried forward
 
-* Fresh-note `TIER_2_AUTO_RESOLVED` precision (blocks re-including it in
-  `AUTO_TIERS`).
-* Fresh-note `TIER_1B_CALIBRATED_AUTO_VALIDATED` precision against 0.845.
-* No corrected `benchmark_char_iou` baseline yet — first real measurement
-  should happen against the fresh25 batch once it's graded, not against
+* **Tier 2 needs a different mechanism than a deterministic fast path**
+  (see above) before it can safely re-enter `AUTO_TIERS` — the root cause
+  is now understood, the fix is not yet built.
+* **Lab Test near-duplicate-concept precision ceiling at Tier 1** (68%
+  wrong on this fresh batch) — newly surfaced, needs its own
+  investigation into whether a body-fluid/specificity-aware re-ranking or
+  a curated alias table (same pattern as the existing brand/lab-alias
+  tables) can close it.
+* No corrected `benchmark_char_iou` baseline yet — should be computed
+  against this now-graded fresh25 batch next, not against
   calibrator-training notes.
 * The 8B arbiter (`tier4_arbiter_8b.py`) remains the strongest unwired
   candidate for a future escalation tier, contingent on a larger
