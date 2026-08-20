@@ -288,6 +288,100 @@ generalized `_cold_start_mapping()` in `orchestrator.py`.
 (+6.8 points total)** -- the narrative-word fix adds 493 additionally-
 recovered spans on top of the lab-abbreviation fix's 2,140.
 
+## 9. Proposal alignment gap analysis, and manual-baseline benchmark (Gap 3)
+
+Mapped the current implementation against the original COM748 proposal's
+5 objectives and Methodology section. Three real gaps found: (1)
+guideline-derived KG injection (Objective 2 / Methodology §1) -- data
+prepared (76 processed triplet files) but `scripts/init_memgraph_
+guidelines.py` never actually implemented, the production tier gate
+does not consume it; (2) KG embeddings (Objective 4, TransE/RotatE/
+CompGCN from repurposed classification data) -- confirmed via direct
+code search, the only trace anywhere in the codebase is a single
+comment in `src/kg3_query.py` acknowledging it as unbuilt future work;
+(3) manual-annotation-baseline benchmarking (Objective 5 / Methodology
+§4) -- never measured, no baseline existed anywhere in this project
+before this session. Two apparent gaps are NOT real gaps and should be
+written up as closed, deliberate outcomes: the acronym-escalation
+cold-start (built, corpus-scale tested, found insufficient at 34-36%
+precision, correctly kept off) and the dry-run-only KG3 write gate
+(deliberately withheld pending precision, the correct call).
+
+**Gap 3 closed**: real, source-verified manual-annotation-speed
+benchmark. Source: Wei, Q., Franklin, A., Cohen, T., & Xu, H. (2018).
+"Clinical text annotation -- what factors are associated with the cost
+of time?" *AMIA Annual Symposium Proceedings*. 9 clinician annotators
+tagging problems/treatments/tests (directly comparable to this
+project's Condition/Medication/Procedure/Lab Test categories) on the
+2010 i2b2/VA clinical NLP dataset, 6,663 sentences -- measured
+40.47-92.22 words/minute. This project's own corpus: 272 notes, mean
+1,554.1 words/note (computed directly).
+
+| | Manual (range) | This pipeline | Ratio |
+|---|---|---|---|
+| Extraction+linking only (Stage 1->2a->2b) | 16.85-38.41 min/note | 5.71 min/note | 2.95x-6.73x faster |
+| Full pipeline incl. tier-gate (Stage 1->2a->2b->3) | 16.85-38.41 min/note | 21.33 min/note | 0.79x-1.80x -- barely faster, SLOWER than the fastest manual annotator |
+
+**Honest finding, not flattering**: once Stage 3's LLM-ensemble
+validation is counted, the raw speed advantage over manual annotation
+largely disappears (up to 18 LLM calls/entity is genuinely more
+compute-intensive than a human reading and clicking once). The correct
+framing for the paper is NOT a velocity claim -- it's that 55-57% of
+entities never require a human at all, cutting required expert review
+volume by over half. That claim is well-supported; a raw-speed claim
+for the full pipeline is not.
+
+**Three supplementary citations checked, one has a real misattribution
+problem worth flagging if it surfaces elsewhere**: arXiv:2405.02664
+(MedPromptExtract) confirmed verbatim ("9.6 man-hours for 48
+annotations... 12 minutes per document"); a ResearchGate Nov 2024
+pharmacovigilance-NLP productivity study confirmed (4.689 min vs 0.729
+min/document, 84% gain, 98.24% accuracy); general industry
+medical-annotation cost premium (3-5x general NLP annotation cost)
+directionally confirmed across independent sources. One claim -- "124
+words/hour... when SNOMED CT ontology linking is required" -- traced to
+a REAL number (TLT8 proceedings) but the WRONG task: that figure is
+from general syntactic treebank (dependency-parsing) annotation, with
+no connection to clinical NER or SNOMED linking. Not used.
+
+## 10. Real bug found and fixed during the recall-fix backfill
+
+While running Stage 3 tier-gating on the newly-injected lab-abbreviation/
+narrative-state-word cold-start entities (§8), found a genuine, live bug:
+`_collapse_hierarchy_duplicates()` (the step that merges SNOMED parent/
+child candidate pairs so they don't fracture ensemble voting into an
+artificial split) picks whichever candidate has the higher **raw**
+similarity score when two candidates share an "Is a"/"Subsumes" edge. A
+curated alias candidate is scored by its own real cosine similarity, not
+pinned to 1.0 -- so this silently discarded a gold-verified alias in
+favor of a same-hierarchy sibling that merely scored higher on plain
+semantic similarity, with no awareness that one candidate was curated
+ground truth and the other a guess.
+
+Confirmed live on "HCO3": the curated concept (4194291, "Blood
+bicarbonate measurement") lost to its own SNOMED parent (4227915,
+"Bicarbonate measurement", 0.8857 similarity) purely because the
+non-curated sibling scored higher -- candidate[0] ended up being the
+*wrong* concept even though the correct one had been successfully
+force-included into the pool.
+
+**Fixed**: a candidate carrying a curated match_basis
+(`verified_lab_test_alias`/`verified_brand_alias`/`lab_procedure_preferred`)
+now wins its hierarchy root unconditionally, regardless of raw score.
+Verified directly (`normalize_entity('HCO3', ...)` now correctly returns
+the curated concept as candidate #1). 7 new regression tests. All 2,899
+already-written cold-start entities were re-normalized under the fix
+(`scripts/refix_coldstart_hierarchy_collapse.py`), and the 100 stale
+tier-gate decisions the partially-completed Stage 3 pass had already
+written under the buggy candidates were cleared and are being re-graded.
+
+**Why this matters beyond the immediate fix**: this is the second time
+this session a downstream ranking/dedup step turned out to have no
+awareness of curated match_basis tags (`tier3_fast_path()`'s missing
+`verified_lab_test_alias` branch, §1, was the first). Worth a broader
+audit of every function that ranks or collapses candidates for the same
+blind spot, rather than assuming this is the last instance.
+
 ## Open items carried forward
 
 * **Tier 2's calibrator escape hatch needs its own training data.** The
