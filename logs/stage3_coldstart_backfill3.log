@@ -637,3 +637,19 @@ resume check: 19139 entity_id(s) already have a stored tier-gate decision and wi
   [6/24] 'Calcium' (Lab Test)  [elapsed 41.4m | done 243 | skipped 3053 | errors 0]
     -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
   [7/24] 'Phos' (Lab Test)  [elapsed 41.6m | done 244 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [8/24] 'HGB' (Lab Test)  [elapsed 41.8m | done 245 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [9/24] 'HCT' (Lab Test)  [elapsed 42.2m | done 246 | skipped 3053 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [10/24] 'WBC' (Lab Test)  [elapsed 42.2m | done 247 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [11/24] 'RBC' (Lab Test)  [elapsed 42.5m | done 248 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [12/24] 'Hgb' (Lab Test)  [elapsed 42.8m | done 249 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [13/24] 'Hct' (Lab Test)  [elapsed 43.1m | done 250 | skipped 3053 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [14/24] 'MCH' (Lab Test)  [elapsed 43.1m | done 251 | skipped 3053 | errors 0]
