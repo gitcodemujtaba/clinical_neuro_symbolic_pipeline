@@ -1,0 +1,49 @@
+already extracted (Stage 2b/3 re-run only): ['10043750-DS-6', '10371195-DS-9']
+never extracted (full Stage 1-3 run needed): ['15706386-DS-9', '15975714-DS-10', '14766716-DS-22']
+Loading GLiNER-BioMed model... (this may take a moment on the first run)
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 2478.05it/s]
+Loading GLiNER-relex model... (this may take a moment on the first run)
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 2437.70it/s]
+Loading SapBERT model for vector normalization... (this may take a moment)
+  running full pipeline for 15706386-DS-9 (5768 chars)...
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+  done in 3.6 min
+  running full pipeline for 15975714-DS-10 (5780 chars)...
+ℹ️ 6/6 relations in 15975714-DS-10 had at least one unlinked endpoint.
+  done in 3.7 min
+  running full pipeline for 14766716-DS-22 (6610 chars)...
+ℹ️ 3/3 relations in 14766716-DS-22 had at least one unlinked endpoint.
+  done in 3.8 min
+
+261 entities to re-normalize across 2 notes
+  re-normalized 50/261
+  re-normalized 100/261
+  re-normalized 150/261
+  re-normalized 200/261
+  re-normalized 250/261
+  re-normalized 261/261
+cleared 202 stale tier-gate decision(s) for re-grading
+  ! leakage: trained on 1 of the note(s) about to be scored (10043750-DS-6).
+    refusing to use it; falling back to existing routing.
+
+calibrator: untrained (no-op)
+[note 1/5] 15706386-DS-9: 112 total, 25 to grade (capped at 25/note)
+  [1.3m] 10 processed so far...
+  [2.8m] 20 processed so far...
+[note 2/5] 15975714-DS-10: 105 total, 25 to grade (capped at 25/note)
+  [4.2m] 30 processed so far...
+  [5.1m] 40 processed so far...
+  [6.5m] 50 processed so far...
+[note 3/5] 14766716-DS-22: 102 total, 25 to grade (capped at 25/note)
+  [8.0m] 60 processed so far...
+  [9.5m] 70 processed so far...
+[note 4/5] 10043750-DS-6: 111 total, 25 to grade (capped at 25/note)
+  [10.3m] 80 processed so far...
+  [11.7m] 90 processed so far...
+  [13.3m] 100 processed so far...
+[note 5/5] 10371195-DS-9: 103 total, 25 to grade (capped at 25/note)
+  [15.3m] 110 processed so far...
+  [18.0m] 120 processed so far...
+
+done: 125 processed, 0 errors, 19.6 min total

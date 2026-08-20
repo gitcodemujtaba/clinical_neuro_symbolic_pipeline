@@ -1,0 +1,62 @@
+Loading SapBERT model for vector normalization... (this may take a moment)
+80 target entities across 21 notes
+0 already decided (unexpected -- refix just cleared these; continuing with the rest)
+  ! leakage: trained on 13 of the note(s) about to be scored (10097089-DS-8, 10302979-DS-5, 10355641-DS-7, 10417827-DS-10, 10513485-DS-7 ...).
+    refusing to use it; falling back to existing routing.
+calibrator: untrained (no-op)
+[note 1/21] 10000032-DS-23: 2 target entity(ies)
+  [0.0m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [0.3m] 'RDW' -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED
+[note 2/21] 10000032-DS-24: 2 target entity(ies)
+  [0.6m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [0.9m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 3/21] 10000084-DS-17: 2 target entity(ies)
+  [1.3m] 'MCHC' -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED
+  [1.6m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 4/21] 10097089-DS-8: 2 target entity(ies)
+  [1.9m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [2.2m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 5/21] 10124346-DS-4: 2 target entity(ies)
+  [2.5m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [2.9m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 6/21] 10302979-DS-5: 2 target entity(ies)
+  [3.2m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [3.5m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 7/21] 10355641-DS-7: 2 target entity(ies)
+  [3.8m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [4.2m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 8/21] 10371195-DS-9: 1 target entity(ies)
+  [4.4m] 'MCHC' -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED
+[note 9/21] 10417827-DS-10: 2 target entity(ies)
+  [4.8m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [5.1m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 10/21] 10513485-DS-7: 2 target entity(ies)
+  [5.4m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [5.8m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 11/21] 10667959-DS-19: 2 target entity(ies)
+  [6.1m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [6.4m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 12/21] 10686970-DS-21: 1 target entity(ies)
+  [6.7m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 13/21] 10797747-DS-20: 1 target entity(ies)
+  [7.0m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 14/21] 10813665-DS-7: 2 target entity(ies)
+  [7.3m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [7.7m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 15/21] 10839721-DS-9: 2 target entity(ies)
+  [8.0m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [8.3m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 16/21] 10848570-DS-12: 1 target entity(ies)
+  [8.6m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 17/21] 10850358-DS-17: 2 target entity(ies)
+  [8.9m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [9.3m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 18/21] 10850639-DS-7: 1 target entity(ies)
+  [9.5m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 19/21] 10912090-DS-33: 2 target entity(ies)
+  [9.9m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+  [10.2m] 'RDW' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+[note 20/21] 10960609-DS-16: 1 target entity(ies)
+  [10.5m] 'MCHC' -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED
+
+done: 34 processed, 0 errors, 10.8 min total

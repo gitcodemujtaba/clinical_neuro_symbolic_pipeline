@@ -1,0 +1,36 @@
+7276 distinct concept_ids touched by this pipeline
+24922 real SNOMED relationship triples (both endpoints touched)
+
+gathering this project's own true-positive records for extrinsic eval...
+Loading SapBERT model for vector normalization... (this may take a moment)
+455 TP records (auto-tier, gold-confirmed correct, >=2 real candidates)
+
+train: 22429  test (held out): 2493
+vocab: 7269 entities, 104 relation types
+
+training TransE...
+  epoch 1/50  mean loss 0.4226
+  epoch 11/50  mean loss 0.0264
+  epoch 21/50  mean loss 0.0222
+  epoch 31/50  mean loss 0.0212
+  epoch 41/50  mean loss 0.0207
+  epoch 50/50  mean loss 0.0212
+
+model checkpoint written to /home/ec2-user/clinical_neuro_symbolic_pipeline_reorder/models/kg_transe_v1.pt
+
+--- intrinsic evaluation (standard KGE protocol, RAW setting) ---
+{
+  "mrr": 0.7757178359410913,
+  "hits_at_10": 0.909,
+  "n_evaluated": 2000
+}
+
+--- extrinsic evaluation (this project's own TP records) ---
+{
+  "n_tp_records_provided": 455,
+  "n_usable_records": 455,
+  "n_comparisons": 1612,
+  "frac_wrong_candidate_closer_than_random": 0.6892059553349876
+}
+
+results written to /home/ec2-user/clinical_neuro_symbolic_pipeline_reorder/logs/kg_embedding_results.json
