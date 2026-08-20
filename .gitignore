@@ -18,7 +18,6 @@ data/athena_omop/*
 data/snomed_kg/*
 data/processed/*
 data/medical_abbreviations/*
-data/guidelines/*
 
 # Exception: Keep the directory structure intact in git
 !data/raw_notes/.gitkeep

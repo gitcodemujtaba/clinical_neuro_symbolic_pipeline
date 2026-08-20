@@ -653,3 +653,71 @@ resume check: 19139 entity_id(s) already have a stored tier-gate decision and wi
     -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
     [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
   [14/24] 'MCH' (Lab Test)  [elapsed 43.1m | done 251 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [15/24] 'MCHC' (Lab Test)  [elapsed 43.4m | done 252 | skipped 3053 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [16/24] 'RDW' (Lab Test)  [elapsed 43.8m | done 253 | skipped 3053 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [17/24] 'CALCIUM' (Lab Test)  [elapsed 44.1m | done 254 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [18/24] 'UreaN' (Lab Test)  [elapsed 44.3m | done 255 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [19/24] 'Creat' (Lab Test)  [elapsed 44.6m | done 256 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [20/24] 'Na' (Lab Test)  [elapsed 44.9m | done 257 | skipped 3053 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [21/24] 'clinic' (Procedure)  [elapsed 45.2m | done 258 | skipped 3053 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=42537845 (Outpatient care management)
+  [22/24] 'baseline' (Symptom)  [elapsed 45.2m | done 259 | skipped 3053 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4029350 (Baseline state)
+  [23/24] 'Alert' (Symptom)  [elapsed 45.2m | done 260 | skipped 3053 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [24/24] 'improved' (Symptom)  [elapsed 45.2m | done 261 | skipped 3053 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149524 (Patient's condition improved)
+[note 24/140] 12545016-DS-17: 210 record(s), 13 remaining after resume-skip
+  [1/13] 'Warm' (Symptom)  [elapsed 45.2m | done 262 | skipped 3250 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [2/13] 'CREAT' (Lab Test)  [elapsed 45.2m | done 263 | skipped 3250 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [3/13] 'RBC' (Lab Test)  [elapsed 45.5m | done 264 | skipped 3250 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [4/13] 'Hgb' (Lab Test)  [elapsed 45.8m | done 265 | skipped 3250 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [5/13] 'Hct' (Lab Test)  [elapsed 46.1m | done 266 | skipped 3250 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [6/13] 'MCH' (Lab Test)  [elapsed 46.2m | done 267 | skipped 3250 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [7/13] 'MCHC' (Lab Test)  [elapsed 46.5m | done 268 | skipped 3250 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [8/13] 'Creat' (Lab Test)  [elapsed 46.8m | done 269 | skipped 3250 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [9/13] 'Na' (Lab Test)  [elapsed 47.1m | done 270 | skipped 3250 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [10/13] 'Cl' (Lab Test)  [elapsed 47.4m | done 271 | skipped 3250 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [11/13] 'AnGap' (Lab Test)  [elapsed 47.4m | done 272 | skipped 3250 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [12/13] 'Phos' (Lab Test)  [elapsed 47.5m | done 273 | skipped 3250 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [13/13] 'Alert' (Symptom)  [elapsed 47.7m | done 274 | skipped 3250 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+[note 25/140] 12730675-DS-12: 125 record(s), 14 remaining after resume-skip
+  [1/14] 'Hgb' (Lab Test)  [elapsed 47.7m | done 275 | skipped 3361 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [2/14] 'Hct' (Lab Test)  [elapsed 48.0m | done 276 | skipped 3361 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [3/14] 'MCH' (Lab Test)  [elapsed 48.0m | done 277 | skipped 3361 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [4/14] 'MCHC' (Lab Test)  [elapsed 48.4m | done 278 | skipped 3361 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [5/14] 'RDW' (Lab Test)  [elapsed 48.7m | done 279 | skipped 3361 | errors 0]
