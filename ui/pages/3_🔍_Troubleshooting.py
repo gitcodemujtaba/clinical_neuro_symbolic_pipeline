@@ -35,7 +35,17 @@ PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 sys.path.insert(0, PROJECT_DIR)
 
 from scripts.score_gold_recall import best_tier, overlaps  # noqa: E402
+from src.retrieval import VocabularyRetriever  # noqa: E402
 from ui.components.db_status import render_locked_db_status  # noqa: E402
+
+# Colors used by the note highlighter (render_highlighted_note below):
+# ours=green, abbreviation=blue (both pre-existing), plus the two new ones
+# for the gold-vs-ours span diff -- GOLD_COLOR for gold's own annotation,
+# OVERLAP_COLOR for the exact character range where our span and a gold
+# span agree. Kept as module constants so the legend text and the span
+# builders below can't drift apart.
+GOLD_COLOR = "#e6c229"
+OVERLAP_COLOR = "#9e9e9e"
 
 DB_PATH = os.environ.get("CNSP_DB_PATH", os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb"))
 
@@ -57,7 +67,11 @@ st.caption(
 )
 
 
-@st.cache_resource
+# 2026-08-18: deliberately NOT @st.cache_resource -- see
+# ui/pages/4_📊_Evaluation_Metrics.py's identical comment. A cached
+# connection stays open for the server's whole lifetime and blocks any
+# background batch job's writes for as long as this page has ever been
+# visited.
 def get_conn():
     return duckdb.connect(DB_PATH, read_only=True)
 
@@ -66,6 +80,14 @@ try:
     conn = get_conn()
 except duckdb.IOException as exc:
     render_locked_db_status(exc)
+
+
+def _stop():
+    """st.stop(), but closing `conn` first -- see
+    ui/pages/1_🚀_Pipeline_Runner.py's identical helper for why an explicit
+    close (not just letting `conn` go out of scope) is needed."""
+    conn.close()
+    st.stop()
 
 
 @st.cache_data
@@ -138,15 +160,53 @@ def render_highlighted_note(text: str, spans: list, height: str = "78vh"):
     )
 
 
+def _split_overlap_spans(pred_start, pred_end, pred_tooltip,
+                          gold_start, gold_end, gold_tooltip, match: bool) -> list:
+    """One (prediction span, gold span) pair known to overlap -- slices the
+    two into up to 3 character ranges rather than one flat highlight, so a
+    start/end mismatch between our span and gold's is visible directly in
+    the text: the SHARED range (both agree these characters belong to this
+    entity) in OVERLAP_COLOR, and whatever each span extends beyond that
+    shared range in its own color (green for ours, GOLD_COLOR for gold's).
+    When the two spans are character-identical, only the overlap piece is
+    non-empty and this collapses to a single grey highlight. Priorities are
+    set above every other span type in this page (max elsewhere is 10) so
+    this diff always wins the displayed color when it applies.
+    """
+    verdict = "SNOMED MATCH" if match else "SNOMED MISMATCH"
+    ov_start, ov_end = max(pred_start, gold_start), min(pred_end, gold_end)
+    out = []
+    if ov_start < ov_end:
+        out.append((ov_start, ov_end, 25, OVERLAP_COLOR,
+                    f"{verdict} (overlap): {pred_tooltip} || GOLD: {gold_tooltip}"))
+    if pred_start < ov_start:
+        out.append((pred_start, ov_start, 24, "#a5d6a7", f"OURS ONLY (outside gold span): {pred_tooltip}"))
+    if pred_end > ov_end:
+        out.append((ov_end, pred_end, 24, "#a5d6a7", f"OURS ONLY (outside gold span): {pred_tooltip}"))
+    if gold_start < ov_start:
+        out.append((gold_start, ov_start, 23, GOLD_COLOR, f"GOLD ONLY (outside our span): {gold_tooltip}"))
+    if gold_end > ov_end:
+        out.append((ov_end, gold_end, 23, GOLD_COLOR, f"GOLD ONLY (outside our span): {gold_tooltip}"))
+    return out
+
+
 with st.sidebar:
     st.header("Note selection")
+    # extracted_entities itself carries no is_stale/provenance columns
+    # (only normalized_entities and mollm_tier_gate_decisions do) -- joined
+    # here rather than filtered directly. is_stale=FALSE means "processed
+    # by current code" -- see scripts/mark_notes_stale.py for the migration.
     note_rows = conn.execute("""
         SELECT note_id, count(*) AS n FROM extracted_entities
-        WHERE is_test = TRUE GROUP BY note_id ORDER BY n ASC
+        WHERE is_test = TRUE AND note_id IN (
+            SELECT DISTINCT note_id FROM normalized_entities
+            WHERE is_test = TRUE AND is_stale = FALSE
+        ) GROUP BY note_id ORDER BY n ASC
     """).fetchall()
     if not note_rows:
-        st.warning("No processed notes found (is_test=TRUE).")
-        st.stop()
+        st.warning("No fresh (is_stale = FALSE) notes found -- older pre-fix runs are "
+                  "deliberately hidden. See the is_stale column on normalized_entities.")
+        _stop()
     note_ids_sorted = [r[0] for r in note_rows]
     counts_by_note = dict(note_rows)
     note_id = st.selectbox(
@@ -186,7 +246,7 @@ below = [r for r in entity_rows if r[5]]
 
 norm_rows = conn.execute("""
     SELECT e.original_text, n.match_tier, n.omop_concept_name, n.similarity_score,
-           n.is_ambiguous, e.orig_start, e.orig_end
+           n.is_ambiguous, e.orig_start, e.orig_end, n.omop_concept_id
     FROM extracted_entities e JOIN normalized_entities n ON n.entity_id = e.entity_id
     WHERE e.note_id = ? ORDER BY e.orig_start
 """, [note_id]).fetchall()
@@ -195,6 +255,18 @@ norm_rows = conn.execute("""
 # entity_id join would work too, but offsets are what the highlighter
 # already indexes everything else by.
 norm_by_span = {(r[5], r[6]): r for r in norm_rows}
+
+# SNOMED codes for the tooltip -- same crosswalk scripts/score_gold_recall.py's
+# attach_snomed_codes() uses, just called directly (per-concept, cached) since
+# this page needs it attached to a dict keyed by span, not a predictions list.
+_vocab = VocabularyRetriever(conn)
+
+
+@st.cache_data
+def _snomed_for_concept(concept_id):
+    if concept_id is None:
+        return None
+    return _vocab.snomed_code_for_concept(concept_id)
 
 tier_rows = conn.execute("""
     SELECT e.original_text, d.tier, d.routing_basis, d.composite_confidence,
@@ -316,10 +388,15 @@ with left_col:
         "🟧 ambiguous abbreviation &nbsp; 🟦 abbreviation (single meaning) &nbsp; "
     )
     if gold_report:
-        legend += ("🟥 gold entity we missed entirely &nbsp; 🟨 found, but wrong SNOMED concept "
-                   "&nbsp; ⬜ pipeline extra (no gold annotation here at all)")
+        legend += (
+            "🟨 gold annotation &nbsp; 🟥 gold entity we missed entirely &nbsp; "
+            "⬛ overlap: our span and gold's span agree on these exact characters "
+            "&nbsp; <small>(where our span and gold's don't share the same start/end, "
+            "the non-overlapping part of each keeps its own color -- green for ours, "
+            "gold/yellow for theirs)</small>"
+        )
     else:
-        legend += "<i>(run Step 3 to also see missed/wrong-concept gold spans here)</i>"
+        legend += "<i>(run Step 3 to also see gold spans here)</i>"
     st.markdown(f"<small>{legend}</small>", unsafe_allow_html=True)
     st.caption("Hover any highlight for the full detail — colors can and do stack "
               "(an abbreviation is often inside a larger GLiNER entity span).")
@@ -352,24 +429,40 @@ with left_col:
             norm = norm_by_span.get((start, end))
             tip = f"GLiNER: {text!r} [{label}] confidence={conf:.3f}"
             if norm:
-                _, tier, concept, sim, is_amb, _, _ = norm
+                _, tier, concept, sim, is_amb, _, _, concept_id = norm
                 sim_str = f"{sim:.3f}" if sim is not None else "—"
+                snomed = _snomed_for_concept(concept_id)
                 tip += (f"  |  SapBERT/Stage2b: tier={tier or '—'} sim={sim_str} "
-                       f"-> {concept or 'Unmapped'}")
+                       f"-> {concept or 'Unmapped'} (SNOMED {snomed or '—'})")
             spans.append((start, end, 5, "#a5d6a7", tip))
 
         if gold_report:
+            # Missed: gold annotated this, we found nothing overlapping it
+            # at all -- no prediction span exists to diff against, so this
+            # is a plain gold-colored highlight, not a split.
             for g in gold_report["missed"]:
                 spans.append((g["start"], g["end"], 10, "#ef5350",
                               f"MISSED: gold={g['span']!r} ({g['concept_id']})"))
+            # Correct and wrong-concept both have a real overlapping
+            # prediction -- diff our span against gold's span in both
+            # cases (concept correctness is conveyed in the tooltip, not
+            # as a separate hue, per the offset-mismatch highlighting spec).
+            for e in gold_report["correct"]:
+                spans.extend(_split_overlap_spans(
+                    e["pred_start"], e["pred_end"], f"{e['predicted_text']!r} -> {e['predicted_concept']!r}",
+                    e["start"], e["end"], f"gold={e['span']!r} ({e['concept_id']})", match=True))
             for e in gold_report["wrong_concept"]:
-                spans.append((e["start"], e["end"], 9, "#fff176",
-                              f"WRONG CONCEPT: gold wanted {e['gold_concept_id']}, "
-                              f"we predicted {e['predicted_concept']!r}"))
+                spans.extend(_split_overlap_spans(
+                    e["pred_start"], e["pred_end"],
+                    f"{e['predicted_text']!r} -> {e['predicted_concept']!r} ({e['predicted_snomed_code']})",
+                    e["start"], e["end"], f"gold wanted {e['gold_concept_id']} ({e['gold_span']!r})",
+                    match=False))
+            # Extra: a pipeline entity with no gold overlap at all keeps its
+            # plain green from the GLiNER-entity loop above -- this only
+            # adds a lower-priority tooltip note, it does not change color.
             for p in gold_report["extra"]:
-                spans.append((p["orig_start"], p["orig_end"], 8, "#b0bec5",
-                              f"PIPELINE EXTRA (no gold overlap): {p['original_text']!r} "
-                              f"[{p['entity_label']}] -> {p['omop_concept_name'] or 'Unmapped'}"))
+                spans.append((p["orig_start"], p["orig_end"], 4, "#a5d6a7",
+                              "PIPELINE EXTRA (no gold overlap here)"))
         render_highlighted_note(raw_text, spans)
 
 with right_col:
@@ -462,9 +555,14 @@ with right_col:
                             continue
                         hit = next((p for p in overlapping if p["snomed_code"] == g["concept_id"]), None)
                         if hit:
+                            # orig_start/orig_end kept alongside gold's own
+                            # start/end (both present under the same **g
+                            # spread) so the left-column highlighter can
+                            # diff the two spans, not just flag a match.
                             correct.append({**g, "predicted_text": hit["original_text"],
                                            "predicted_concept": hit["omop_concept_name"],
-                                           "match_tier": hit["match_tier"]})
+                                           "match_tier": hit["match_tier"],
+                                           "pred_start": hit["orig_start"], "pred_end": hit["orig_end"]})
                         else:
                             best = best_tier(overlapping)
                             wrong.append({**g, "gold_span": g["span"], "gold_concept_id": g["concept_id"],
@@ -472,7 +570,8 @@ with right_col:
                                          "predicted_concept": best["omop_concept_name"],
                                          "predicted_snomed_code": best["snomed_code"],
                                          "match_tier": best["match_tier"],
-                                         "start": g["start"], "end": g["end"]})
+                                         "start": g["start"], "end": g["end"],
+                                         "pred_start": best["orig_start"], "pred_end": best["orig_end"]})
 
                     # The other direction: pipeline entities gold says NOTHING
                     # about (no overlapping gold span at all) -- not covered by
@@ -621,3 +720,5 @@ with right_col:
                             st.caption(f"queue_reason: {queue_reason}")
                         if basis:
                             st.caption(f"{basis}")
+
+conn.close()
