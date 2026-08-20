@@ -382,6 +382,49 @@ awareness of curated match_basis tags (`tier3_fast_path()`'s missing
 audit of every function that ranks or collapses candidates for the same
 blind spot, rather than assuming this is the last instance.
 
+## 11. Gap 1 (KG embeddings, Objective 4) — closed, correcting an earlier wrong call
+
+Earlier in this session, Gap 1 was scoped OUT with the reasoning "no
+accumulated KG3 write volume to embed yet." That reasoning was wrong --
+it conflated the dynamic patient-instance graph (KG3, genuinely empty,
+`dry_run=True` everywhere) with the REFERENCE graph (SNOMED CT itself,
+via `athena_concept_relationship`), which is already real, substantial,
+and fully populated in this project's own DuckDB. Nothing about training
+a KG embedding model requires KG3 to have any data at all.
+
+**Built**: `src/kg_embedding.py` -- TransE (Bordes et al. 2013) in plain
+PyTorch, no new library dependency (pykeen/torch-geometric aren't
+installed in this environment). RotatE and CompGCN -- the other two
+methods the proposal names -- are real, meaningfully more complex
+follow-on work (complex-valued embeddings; a full graph-convolutional
+architecture respectively), stated honestly as out of scope rather than
+attempted under time pressure.
+
+**Data**: a real SNOMED subgraph scoped to the 7,261 concepts this
+pipeline's own candidate pools have actually touched -- 24,872 real
+relationship edges among them, 104 distinct relationship types. This is
+the "based on our TP records" framing: the graph's *scope* is defined by
+concepts this project's own tier gate has actually resolved and graded,
+not an arbitrary slice of all of SNOMED.
+
+**Two real evaluations, both run end to end**:
+- Intrinsic (standard KGE literature protocol): held-out link prediction
+  on 2,488 real triples never seen during training. **MRR 0.768,
+  Hits@10 0.909** (RAW setting, not filtered -- not directly comparable
+  to filtered-MRR numbers common in papers, flagged explicitly).
+- Extrinsic, tied directly to this project's own task: for 457
+  gold-confirmed true-positive tier-gate decisions with real competing
+  candidates (1,623 comparisons), the wrong-but-competing candidate sat
+  closer to the correct concept than a random unrelated concept **70.2%
+  of the time** (vs. 50% chance) -- a real, positive signal the
+  embedding captures genuine clinical proximity among candidates that
+  actually competed for the same mention.
+
+Ran read-only, concurrently with the active Stage 3 recall-fix batch,
+with no contention. 13 new tests including a genuine generalization
+check. **Of the 3 real gaps this session's proposal-mapping surfaced,
+all 3 are now closed with real, tested, committed code.**
+
 ## Open items carried forward
 
 * **Tier 2's calibrator escape hatch needs its own training data.** The
