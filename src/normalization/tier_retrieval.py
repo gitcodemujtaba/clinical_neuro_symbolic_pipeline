@@ -28,6 +28,26 @@ _TIER_DEFAULT_MATCH_BASIS = {
     "4 (Fuzzy)": "fuzzy_edit_distance",
 }
 
+# 2026-08-20: regional-extension SCTID exclusion. OMOP bundles every SNOMED
+# national extension (UK, in this dump) into the same vocabulary_id='SNOMED'
+# string as the International Release -- confirmed empirically, only one
+# distinct vocabulary_id value exists in athena_concept, so there is no
+# vocabulary_id to filter on the way a first-glance fix would assume.
+# concept_class_id isn't a reliable discriminator either (verified: 23,842 of
+# these extension concepts are themselves 'Procedure' class, same as their
+# correct International counterparts).
+#
+# The real, robust signal is the SCTID itself: extension concepts carry a
+# 7-digit namespace-identifier block (UK's is reserved as "1000000") between
+# the item-identifier and the 2-digit partition+check-digit suffix, which
+# International Release concepts never have. Verified against the live DB:
+# 98,487 concepts (9% of the whole SNOMED table) match this pattern, and
+# ZERO of our 4,522 distinct gold-standard SNOMED codes are among them --
+# excluding them from Tier 1-4 retrieval can never cost a gold-correct
+# match, only remove near-duplicate noise the MoLLM ensemble was
+# splitting votes on (root cause of the MCHC/RDW Tier 2 precision gap).
+_UK_EXTENSION_EXCLUSION = "AND concept_code NOT LIKE '%1000000___'"
+
 
 
 
@@ -247,7 +267,7 @@ def _fuzzy_typo_candidates(conn, search_text, vocabs, domains, exclude_ids=None)
                        levenshtein(lower(concept_name), ?) AS edit_distance
                 FROM athena_concept
                 WHERE standard_concept = 'S'
-                AND vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause}
+                AND vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause} {_UK_EXTENSION_EXCLUSION}
                 AND length(concept_name) BETWEEN ? AND ?
             )
             SELECT concept_id, concept_name, domain_id, vocabulary_id, edit_distance
@@ -595,13 +615,28 @@ def _collapse_hierarchy_duplicates(conn, cands):
     return out
 
 
-# concept_class_id penalty applied to an "Observable Entity" candidate when a
-# "Procedure" sibling is also present, for Lab-Test-labeled entities only --
-# see _prefer_lab_procedure_over_observable()'s docstring. Large enough to
+# concept_class_id penalty applied to an "Observable Entity"/"Qualifier
+# Value" candidate when a "Procedure" sibling is also present, for
+# Lab-Test-labeled entities only -- see
+# _prefer_lab_procedure_over_observable()'s docstring. Large enough to
 # reliably flip every score gap actually observed on the 27-note corpus
 # (max ~0.06, e.g. "MCHC" candidates), without being so large it could ever
 # plausibly matter against a genuinely unrelated third candidate.
+#
+# "Qualifier Value" added 2026-08-20: once the UK-extension SCTID exclusion
+# (_UK_EXTENSION_EXCLUSION) removed the regional near-duplicate that was
+# previously winning MCHC/RDW outright, a SECOND, different near-duplicate
+# class surfaced underneath it -- 22 SNOMED "X calculation technique"
+# concepts (Qualifier Value class, Observation domain: MCV, MCHC, MCH, RDW,
+# PDW, PMV, anion gap, GFR, INR, etc.), never Observable Entity class, that
+# the earlier check didn't catch. Confirmed live: for RDW specifically this
+# concept (42536363) outscored the correct Procedure-class concept (4281085)
+# by a 0.077 gap even before any penalty -- inside this bonus's margin, so
+# the existing rank-only mechanism generalizes to it correctly once included.
+# Verified zero of these 22 concepts is ever gold-correct in this corpus, so
+# demoting them below a real Procedure-class sibling can't cost a true match.
 _LAB_PROCEDURE_CLASS_BONUS = 0.1
+_LAB_PROCEDURE_PENALIZED_CLASSES = {"Observable Entity", "Qualifier Value"}
 
 
 def _prefer_lab_procedure_over_observable(conn, cands, gliner_label):
@@ -641,14 +676,14 @@ def _prefer_lab_procedure_over_observable(conn, cands, gliner_label):
             f"WHERE concept_id IN ({placeholders})", params=ids).fetchall())
     except duckdb.Error:
         return cands
-    has_observable = any(classes.get(c["omop_concept_id"]) == "Observable Entity" for c in cands)
+    has_observable = any(classes.get(c["omop_concept_id"]) in _LAB_PROCEDURE_PENALIZED_CLASSES for c in cands)
     has_procedure = any(classes.get(c["omop_concept_id"]) == "Procedure" for c in cands)
     if not (has_observable and has_procedure):
         return cands
 
     def _sort_key(c):
         penalty = _LAB_PROCEDURE_CLASS_BONUS \
-            if classes.get(c["omop_concept_id"]) == "Observable Entity" else 0.0
+            if classes.get(c["omop_concept_id"]) in _LAB_PROCEDURE_PENALIZED_CLASSES else 0.0
         return c["similarity_score"] - penalty
 
     ranked = sorted(cands, key=_sort_key, reverse=True)
@@ -776,7 +811,7 @@ def _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=None, limit=No
                            list_cosine_similarity(embedding, ?::FLOAT[]) AS similarity
                     FROM athena_concept
                     WHERE embedding IS NOT NULL AND standard_concept = 'S'
-                    AND vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause}
+                    AND vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause} {_UK_EXTENSION_EXCLUSION}
                     ORDER BY similarity DESC, concept_id ASC LIMIT {int(limit)}
                 ),
                 alias AS (
@@ -797,7 +832,7 @@ def _tier3_semantic_rows(conn, vector, vocabs, domains, alias_ids=None, limit=No
                        list_cosine_similarity(embedding, ?::FLOAT[]) AS similarity
                 FROM athena_concept
                 WHERE embedding IS NOT NULL AND standard_concept = 'S'
-                AND vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause}
+                AND vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause} {_UK_EXTENSION_EXCLUSION}
                 ORDER BY similarity DESC, concept_id ASC LIMIT {int(limit)};
             """, params=[vector, *vocabs, *(domains or [])]).fetchall()
     except duckdb.Error:
@@ -962,7 +997,7 @@ def _tier_queries(conn, search_text, vocabs, domains, entity_text, vector=None,
         SELECT concept_id, concept_name, domain_id, vocabulary_id
         FROM athena_concept
         WHERE lower(concept_name) = ? AND standard_concept = 'S'
-        AND vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause}
+        AND vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause} {_UK_EXTENSION_EXCLUSION}
         ORDER BY concept_id ASC LIMIT {CANDIDATE_LIMIT};
     """, params=[search_text, *vocabs, *(domains or [])]).fetchall()
     if rows:
@@ -980,6 +1015,7 @@ def _tier_queries(conn, search_text, vocabs, domains, entity_text, vector=None,
         JOIN athena_concept c ON s.concept_id = c.concept_id
         WHERE lower(s.concept_synonym_name) = ? AND c.standard_concept = 'S'
         AND c.vocabulary_id IN ({_in_clause(vocabs)}) {domain_clause2}
+        AND c.concept_code NOT LIKE '%1000000___'
         ORDER BY c.concept_id ASC LIMIT {CANDIDATE_LIMIT};
     """, params=[search_text, *vocabs, *(domains or [])]).fetchall()
     if rows:
