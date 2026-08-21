@@ -729,6 +729,40 @@ informative -- a 10.1pp AUTO-precision gap and a 25.8pp deflection gap
 quantify how much of the corpus-wide number reflects genuine
 generalization vs. fitting to what was debugged on.
 
+**Dug into WHY, not left as a vague "development leakage" claim** -- broke
+the 25.8pp deflection gap down by tier:
+
+| Tier | Corpus % | Fresh-10 % | Gap |
+|---|---|---|---|
+| `TIER_1_AUTO_VALIDATED` (unanimous 3-model ensemble) | 36.1% | 30.0% | +6.1pp |
+| `TIER_4_ENSEMBLE_SPLIT` | 27.7% | 46.4% | -18.7pp |
+| **`TIER_3_AUTO_VALIDATED`** (deterministic fast path, zero LLM calls) | **18.4%** | **1.2%** | **+17.2pp** |
+| `TIER_5_TRUE_AMBIGUITY` | 13.1% | 19.6% | -6.5pp |
+| `TIER_1B_CALIBRATED_AUTO_VALIDATED` | 3.0% | 0.0% | +3.0pp |
+| `TIER_2_AUTO_RESOLVED` | 1.4% | 2.0% | -0.6pp |
+
+**`TIER_3` alone accounts for 17.2 of the 25.8pp gap -- two-thirds of
+it.** `TIER_1` (the actual 3-model LLM ensemble reaching unanimous
+agreement) differs by only 6.1pp; `TIER_1B` (the calibrator) accounts for
+the remaining 3.0pp, fully explained by its leakage guard degrading to
+untrained/no-op on this note set (§13). `TIER_3` is the curated,
+hand-built fast path -- exact-text matches, the 26 `_LAB_TEST_ALIASES`
+entries, verified brand aliases, physexam-shorthand and
+narrative-state-word cold starts, `lab_procedure_preferred` tags -- built
+and verified by mining terms encountered while debugging specific notes
+this session. On fresh-10 it fires on almost nothing (1.2% vs 18.4%): a
+strong, specific signal that the curated dictionaries are narrower than
+the corpus they were built against, NOT that the LLM ensemble itself
+generalizes poorly (its own tier holds up reasonably well, -6.1pp).
+
+**Revised, more actionable framing**: the deflection-rate gap is not
+generically "the pipeline works worse on unseen notes" -- it is
+specifically "the curated fast-path dictionaries built this session don't
+yet cover fresh vocabulary." Widening `_LAB_TEST_ALIASES` and the
+cold-start dictionaries against a broader vocabulary sample is the
+concrete next step this finding points to, not further ensemble/
+calibrator tuning.
+
 **Recommended framing for the paper**: report both columns, not just the
 corpus-wide one. Lead with fresh-10 as the generalization claim (76.8%
 precision, 31.2% deflection, 33.7% F1); report corpus-wide explicitly
