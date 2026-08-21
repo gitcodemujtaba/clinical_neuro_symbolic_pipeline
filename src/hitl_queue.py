@@ -330,6 +330,16 @@ def _presented_suggestion_from_tier_gate_decision(row: dict) -> dict:
         "tier": row.get("tier"),
         "confidence_tier_in": row.get("tier"),  # UI compat: see this dict's own field docs below
         "composite_confidence": row.get("composite_confidence"),
+        # 2026-08-20 (HITL full-note view): lets the reviewer UI locate this
+        # entity's exact span inside the FULL raw note text, not just the
+        # sentence-bounded local_context window -- a reviewer judging
+        # something ambiguous may need the surrounding paragraph/section,
+        # not just one sentence. Absent on rows queued before this field was
+        # added (presented_suggestion is a snapshot at enqueue-time) -- the
+        # UI degrades to the local_context-only view in that case, same
+        # pattern as the existing "no note context available" fallback.
+        "orig_start": row.get("orig_start"),
+        "orig_end": row.get("orig_end"),
         # 2026-08-17 (UI build): route_tier()'s own plain-language explanation
         # of why this tier -- "3/3 unanimous SUPPORTED_1, composite_confidence
         # 0.85", "non-unanimous verdicts {...}; calibrator bypassed --
@@ -508,7 +518,7 @@ def enqueue_pending_cases(conn, is_test: bool = True) -> int:
                g.mollm_routing_decision, g.tier, g.composite_confidence,
                g.final_candidate_index, g.models, g.routing_basis, e.original_text,
                e.entity_label, n.candidates, e.local_context, e.section_name,
-               e.assertion_status, e.experiencer
+               e.assertion_status, e.experiencer, e.orig_start, e.orig_end
         FROM mollm_tier_gate_decisions g
         LEFT JOIN extracted_entities e ON e.entity_id = g.entity_id
         LEFT JOIN normalized_entities n ON n.entity_id = g.entity_id
@@ -523,7 +533,7 @@ def enqueue_pending_cases(conn, is_test: bool = True) -> int:
                       "mollm_routing_decision", "tier", "composite_confidence",
                       "final_candidate_index", "models", "routing_basis", "original_text",
                       "entity_label", "candidates", "local_context", "section_name",
-                      "assertion_status", "experiencer"]
+                      "assertion_status", "experiencer", "orig_start", "orig_end"]
 
     for raw in tier_gate_rows:
         row = dict(zip(tier_gate_cols, raw))

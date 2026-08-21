@@ -12,7 +12,21 @@ KG3 unreviewed). A reviewer seeing an AUTO_VALIDATED case should understand
 it is here because of that blanket policy, not because Stage 3 itself
 flagged anything wrong with it -- the queue_reason field alone doesn't say
 that, so the page adds it explicitly.
+
+2026-08-20 REBUILD: full-note side-by-side view + per-model provenance.
+Previously this page only showed `local_context` (one sentence-bounded
+window, the same text the MoLLM prompt itself sees) -- enough to judge the
+model's own reasoning, but not enough for a reviewer who needs the
+surrounding paragraph/section to catch something the model's narrow window
+couldn't see. Now shows the FULL raw note (same load_raw_text()/highlight
+convention as ui/pages/3_🔍_Troubleshooting.py, kept independent rather
+than cross-imported from another page module) with the entity highlighted
+by its real orig_start/orig_end offset, alongside the full per-model
+eval_trail (not just the final verdict+reasoning) so a reviewer can see
+HOW each of the 3 models got there, not just what they concluded.
 """
+import csv
+import html
 import os
 import time
 
@@ -35,8 +49,50 @@ from ui.components.db_status import render_locked_db_status  # noqa: E402
 # path this page has.
 DB_PATH = os.environ.get("CNSP_DB_PATH", os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb"))
 
+# Same fallback list as ui/pages/3_🔍_Troubleshooting.py -- data/raw_notes/
+# {discharge,gold_notes}.csv only exist in the sibling (non-_reorder)
+# worktree, not this one; this covers both layouts.
+RAW_TEXT_CANDIDATES = [
+    os.path.join(PROJECT_DIR, "data", "raw_notes", "gold_notes.csv"),
+    os.path.join(PROJECT_DIR, "data", "raw_notes", "discharge.csv"),
+    os.path.join(PROJECT_DIR, "data", "snomed-ct-entity-linking-challenge-1.2.0", "train_notes.csv"),
+]
+
 st.set_page_config(page_title="HITL Review Queue", page_icon="🩺", layout="wide")
 st.title("🩺 HITL Review Queue")
+
+
+@st.cache_data
+def load_raw_text(note_id: str):
+    for path in RAW_TEXT_CANDIDATES:
+        if not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                if row.get("note_id") == note_id:
+                    return row.get("text") or row.get("note_text")
+    return None
+
+
+def render_note_with_highlight(raw_text: str, start, end, height: str = "70vh"):
+    """One-span highlighter -- deliberately simpler than Troubleshooting's
+    multi-span/multi-color version (this page only ever needs to show ONE
+    entity's location, not a full cross-stage diff overlay)."""
+    if start is None or end is None or not (0 <= start < end <= len(raw_text)):
+        st.caption("⚠️ span offset unavailable for this case (queued before "
+                  "2026-08-20) -- showing local context only, see below.")
+        return
+    before = html.escape(raw_text[:start])
+    span_text = html.escape(raw_text[start:end])
+    after = html.escape(raw_text[end:])
+    body = (f"{before}<mark style='background:#ff9d3d;padding:1px 2px;"
+           f"border-radius:2px;'>{span_text}</mark>{after}")
+    st.markdown(
+        f"<div style='white-space:pre-wrap; font-family:monospace; font-size:0.85em; "
+        f"max-height:{height}; overflow-y:auto; border:1px solid rgba(128,128,128,0.3); "
+        f"border-radius:4px; padding:10px;'>{body}</div>",
+        unsafe_allow_html=True,
+    )
 
 
 # 2026-08-18: deliberately NOT @st.cache_resource -- a cached connection
@@ -105,35 +161,41 @@ suggestion = case["presented_suggestion"] or {}
 
 st.progress((idx + 1) / len(queue), text=f"Case {idx + 1} of {len(queue)}")
 
-col1, col2 = st.columns([2, 1])
+col_note, col_provenance, col_review = st.columns([2.2, 2.0, 1.3])
 
-with col1:
+# ==========================================================================
+# LEFT — full note, side by side, entity highlighted in its real position
+# ==========================================================================
+with col_note:
     st.subheader(suggestion.get("original_text") or "(no text)")
     st.caption(f"entity_id: {case['entity_id']}  |  note_id: {case['note_id']}  |  source: {case['source_table']}")
 
-    # 2026-08-15 (reviewer feedback): the queue was showing only model
-    # verdicts/reasoning with no surrounding note text at all -- a reviewer
-    # cannot actually judge "MD" -> muscular dystrophy vs. Doctor of
-    # Medicine, say, without seeing the sentence it came from. local_context
-    # is the same sentence-bounded window Stage 3's own prompt shows the
-    # models (src/entity_extraction.py's build_local_context()), so the
-    # reviewer sees exactly what the models saw, not less.
+    meta_bits = [b for b in [
+        f"section: {suggestion.get('section_name')}" if suggestion.get("section_name") else None,
+        f"assertion: {suggestion.get('assertion_status')}" if suggestion.get("assertion_status") else None,
+        f"experiencer: {suggestion.get('experiencer')}" if suggestion.get("experiencer") else None,
+    ] if b]
+    if meta_bits:
+        st.caption(" | ".join(meta_bits))
+
+    raw_text = load_raw_text(case["note_id"])
+    if raw_text:
+        st.markdown("**Full note** (entity highlighted):")
+        render_note_with_highlight(raw_text, suggestion.get("orig_start"), suggestion.get("orig_end"))
+    else:
+        st.caption("⚠️ raw note text not found in data/raw_notes/ — showing local sentence context only.")
+
+    # Kept as a fallback/supplement even when the full note IS shown -- this
+    # is the EXACT window the MoLLM prompt itself saw (build_local_context()),
+    # useful to compare directly against what a model reasoned over.
     local_context = suggestion.get("local_context")
     if local_context:
         entity_text = suggestion.get("original_text") or ""
         highlighted = local_context
         if entity_text and entity_text in local_context:
             highlighted = local_context.replace(entity_text, f"**:orange[{entity_text}]**", 1)
-        meta_bits = [b for b in [
-            f"section: {suggestion.get('section_name')}" if suggestion.get("section_name") else None,
-            f"assertion: {suggestion.get('assertion_status')}" if suggestion.get("assertion_status") else None,
-            f"experiencer: {suggestion.get('experiencer')}" if suggestion.get("experiencer") else None,
-        ] if b]
-        if meta_bits:
-            st.caption(" | ".join(meta_bits))
-        st.markdown(f"> {highlighted}")
-    else:
-        st.caption("⚠️ no note context available for this case")
+        with st.expander("Local context (exactly what the MoLLM prompt saw)", expanded=not raw_text):
+            st.markdown(f"> {highlighted}")
 
     if case["reviewer_decision"] != "PENDING":
         st.info(
@@ -148,6 +210,11 @@ with col1:
             "(current policy: every decision is reviewed before KG3 write-back)."
         )
 
+# ==========================================================================
+# MIDDLE — provenance: routing, candidates, and EVERY model's full trail
+# ==========================================================================
+with col_provenance:
+    st.markdown("### Provenance")
     routing = suggestion.get("routing_decision")
     tier = suggestion.get("confidence_tier_in")
     conf = suggestion.get("composite_confidence")
@@ -155,11 +222,6 @@ with col1:
     if case["queue_reason"]:
         st.markdown(f"**Queue reason:** `{case['queue_reason']}`")
 
-    # 2026-08-17: route_tier()'s own plain-language explanation -- "how did
-    # the pipeline reach this conclusion", the thing a reviewer previously
-    # had to reconstruct by reading raw model verdicts. Only present for
-    # mollm_tier_gate_decisions-sourced cases (the current production gate);
-    # absent for the two older sources, which is expected, not a bug.
     routing_basis = suggestion.get("routing_basis")
     if routing_basis:
         st.markdown("**How the pipeline reached this conclusion:**")
@@ -167,7 +229,7 @@ with col1:
 
     candidates = suggestion.get("candidates") or []
     if candidates:
-        st.markdown("**Candidates:**")
+        st.markdown("**Candidates (Stage 2b retrieval):**")
         for i, c in enumerate(candidates, 1):
             st.text(
                 f"[{i}] {c.get('concept_name')}  "
@@ -178,16 +240,45 @@ with col1:
     if proposed_name:
         st.markdown(f"**Proposed concept:** {proposed_name}")
 
+    # 2026-08-20: full per-model trail, not just the final verdict. Each
+    # model's eval_trail is Step B's own sequential candidate-by-candidate
+    # record (src.mollm_tier_gate._evaluate_one_model()) -- clinical_meaning
+    # (Step A, no candidate list visible) then one accept/reject judgment
+    # per candidate in order, plus a tiebreak entry if EXHAUSTIVE_CANDIDATE_
+    # EVAL_ENABLED triggered one. Showing this (not just "model X -> verdict
+    # Y") is what actually lets a reviewer catch a model that reasoned
+    # correctly then contradicted its own reasoning in the final verdict --
+    # a real failure mode this project found and documented this session.
     models = suggestion.get("models") or []
     if models:
-        st.markdown("**Model verdicts:**")
+        st.markdown(f"**MoLLM decisions ({len(models)} model(s)):**")
         for m in models:
             verdict = m.get("verdict") or m.get("assessment")
+            meaning = m.get("clinical_meaning")
             reasoning = m.get("reasoning") or m.get("reasoning_text") or ""
-            with st.expander(f"{m.get('model', 'model')} → {verdict}"):
-                st.write(reasoning)
+            conf_m = m.get("logprob_confidence")
+            with st.expander(f"{m.get('model', 'model')} → {verdict}  (conf {conf_m})"):
+                if meaning:
+                    st.markdown(f"**Step A — clinical meaning (no candidates visible):** {meaning}")
+                trail = m.get("eval_trail") or []
+                if trail:
+                    st.markdown("**Step B — per-candidate evaluation, in order:**")
+                    for t in trail:
+                        if t.get("tiebreak"):
+                            st.text(f"  [tiebreak] considered {t.get('candidates_considered')} "
+                                   f"-> chose [{t.get('chosen_index')}]: {t.get('reasoning', '')}")
+                            continue
+                        if "error" in t:
+                            st.text(f"  [{t.get('candidate_index')}] ERROR: {t['error']}")
+                            continue
+                        mark = "✅" if t.get("match") else "❌"
+                        st.text(f"  {mark} [{t.get('candidate_index')}] {t.get('concept_name')}")
+                        if t.get("reasoning"):
+                            st.caption(f"     {t['reasoning']}")
+                else:
+                    st.write(reasoning)
 
-with col2:
+with col_review:
     st.markdown("### Review")
     with st.form(key=f"review_form_{case['hitl_case_id']}"):
         decision = st.radio("Decision", ["APPROVED", "CORRECTED", "REJECTED"])
