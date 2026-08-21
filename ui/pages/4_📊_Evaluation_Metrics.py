@@ -106,7 +106,7 @@ with tab_overall:
         from evaluation import iou_metrics
         from evaluation.cal_eval import GOLD_CANDIDATES, _first_existing
         from scripts.score_gold_recall import (
-            attach_snomed_codes, load_gold, load_predictions, score,
+            attach_snomed_codes, load_gold, load_predictions, overlaps, score,
         )
         from src.mollm_tier_gate import AUTO_TIERS
         from src.retrieval import VocabularyRetriever
@@ -123,16 +123,46 @@ with tab_overall:
                     gold_by_note[g["note_id"]].append(g)
                 vocab = VocabularyRetriever(conn)
 
-                # Stage 1/2 completeness
+                # Stage 1/2 completeness: span recall / linked recall
                 predictions = load_predictions(conn, note_ids)
                 attach_snomed_codes(conn, predictions)
                 recall_report = score(gold_rows, predictions)["combined"]
 
-                # Stage 3 tier distribution + AUTO precision (headline number)
+                # Linked PRECISION -- same population as linked recall (every
+                # resolved prediction, all tiers), NOT AUTO-tier-only. Mixing
+                # AUTO-tier precision with full-population recall would score
+                # two different populations and make F1 meaningless -- see
+                # docs/2026-08-20_Session_Results_And_Status.md §15.
+                n_pred_with_concept = sum(1 for p in predictions if p.get("snomed_code"))
+                n_pred_correct = sum(
+                    1 for p in predictions if p.get("snomed_code") and any(
+                        overlaps(p["orig_start"], p["orig_end"], g["start"], g["end"])
+                        and g["concept_id"] == p["snomed_code"]
+                        for g in gold_by_note.get(p["note_id"], [])))
+                linked_precision = n_pred_correct / n_pred_with_concept if n_pred_with_concept else None
+                linked_recall = recall_report["linked_recall"]
+                linked_f1 = (2 * linked_precision * linked_recall / (linked_precision + linked_recall)
+                            if linked_precision and linked_recall else None)
+
+                # Stage 3: full tier distribution (ALL tiers, not grade_by_tier's
+                # AUTO_TIERS+TIER_4-only default) -- needed for a correct
+                # deflection rate. A real bug (gradable-restricted AUTO count
+                # divided by an unrestricted/tier-limited total) was caught and
+                # fixed in this exact computation -- see §15's "Methodology" note.
+                note_ph = ",".join("?" * len(note_ids))
+                all_tier_rows = conn.execute(
+                    f"SELECT tier, COUNT(*) FROM mollm_tier_gate_decisions "
+                    f"WHERE note_id IN ({note_ph}) GROUP BY tier", note_ids).fetchall()
+                total_decisions = sum(n for _, n in all_tier_rows)
+                auto_all = sum(n for t, n in all_tier_rows if t in AUTO_TIERS)
+                deflection_rate = auto_all / total_decisions if total_decisions else None
+
+                # AUTO-tier PRECISION still needs the gradable (clean-span)
+                # restriction -- that part was never the bug, precision can only
+                # be checked on decisions we can actually grade against gold.
                 tier_report = grade_by_tier(conn, note_ids)
                 auto_n = sum(r["clean"]["n"] for t, r in tier_report.items() if t in AUTO_TIERS)
                 auto_correct = sum(r["clean"]["n_correct"] for t, r in tier_report.items() if t in AUTO_TIERS)
-                total_decisions = sum(r["n_decisions"] for r in tier_report.values())
 
                 # Stage 2b benchmark char IoU (DrivenData definition)
                 bench = iou_metrics.benchmark_char_iou(conn, note_ids, gold_by_note, vocab)
@@ -144,15 +174,24 @@ with tab_overall:
                 oc2.metric("Span recall", f"{recall_report['span_recall']*100:.1f}%")
                 oc3.metric("Linked recall", f"{recall_report['linked_recall']*100:.1f}%")
 
-                st.markdown("#### Auto-write precision (Stage 3 — of what we auto-wrote, how often right?)")
+                st.markdown("#### Linked concept-level Precision / Recall / F1 (same population, all tiers)")
+                of1, of2, of3 = st.columns(3)
+                of1.metric("Linked precision", f"{linked_precision*100:.1f}%" if linked_precision is not None else "n/a",
+                          help=f"{n_pred_correct}/{n_pred_with_concept} of our own resolved links (any tier) match gold")
+                of2.metric("Linked recall", f"{linked_recall*100:.1f}%")
+                of3.metric("Linked F1", f"{linked_f1*100:.1f}%" if linked_f1 is not None else "n/a")
+
+                st.markdown("#### Stage 3 gate — deflection rate & AUTO-tier precision")
                 oc4, oc5, oc6 = st.columns(3)
                 oc4.metric("Total Stage 3 decisions", total_decisions)
-                oc5.metric("AUTO coverage", f"{auto_n}/{total_decisions}",
-                          f"{auto_n/total_decisions*100:.1f}%" if total_decisions else "—")
+                oc5.metric("Deflection rate", f"{auto_all}/{total_decisions}",
+                          f"{deflection_rate*100:.1f}%" if deflection_rate is not None else "—",
+                          help="Fraction of ALL Stage 3 decisions that auto-wrote with no human "
+                               "review (every AUTO_TIERS decision, not just the gradable subset).")
                 oc6.metric("AUTO-tier precision", f"{auto_correct}/{auto_n}" if auto_n else "n/a",
                           f"{auto_correct/auto_n*100:.1f}%" if auto_n else None,
-                          help="THE headline number: of decisions we auto-wrote (no human review), "
-                               "how often did we pick gold's exact SNOMED concept?")
+                          help="Of AUTO-written decisions we can grade against gold (clean single "
+                               "span overlap), how often did we pick gold's exact SNOMED concept?")
 
                 st.markdown("#### Benchmark metric (Stage 2b — DrivenData's own char-level IoU)")
                 oc7, oc8 = st.columns(2)
