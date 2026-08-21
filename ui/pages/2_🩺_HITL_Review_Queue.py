@@ -41,6 +41,7 @@ from src.hitl_queue import (  # noqa: E402
     ensure_hitl_queue_table, enqueue_pending_cases, load_hitl_queue, submit_review,
 )
 from ui.components.db_status import render_locked_db_status  # noqa: E402
+from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
 
 # CNSP_DB_PATH override matches the OLLAMA_HOST/NEO4J_URI/MEMGRAPH_URI
 # env-var pattern already used elsewhere in this codebase -- lets this page
@@ -137,6 +138,11 @@ queue = load_hitl_queue(
     status=None if status_filter == "(all)" else status_filter,
     source_table=None if source_filter == "(all)" else source_filter,
 )
+# Scoped to the 10 fresh, held-out validation notes only (see
+# ui/components/fresh10_notes.py) -- same convention as pages 1/3/4, so the
+# demo consistently reflects the one validated population, not the full
+# mixed-vintage corpus.
+queue = [c for c in queue if c["note_id"] in FRESH10_NOTE_IDS]
 if note_filter:
     queue = [c for c in queue if note_filter in (c["note_id"] or "")]
 
