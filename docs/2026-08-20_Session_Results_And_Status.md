@@ -681,6 +681,67 @@ near-duplicate (falsified by running the actual retrained model against
 the actual entity). This verify-before-accepting discipline is the same
 one applied to every other claim in this document.
 
+## 15. Final evaluation-criteria numbers: corpus-wide vs. fresh-10 held-out
+
+Direct response to "the proposal names P/R/F1, annotation velocity,
+cost-effectiveness -- give the real table." Computed twice, deliberately:
+once corpus-wide (144 `is_test` notes, mixed pre-/post-fix vintage) and
+once on the fresh-10 held-out notes (§13), so the comparison itself is
+the finding, not just the numbers.
+
+**Methodology, stated precisely so it's reproducible**: linked precision
+is computed over the SAME population as linked recall (every prediction
+with a resolved SNOMED code, across all tiers, checked against gold for
+that same note set) -- not AUTO-tier-only precision against full-corpus
+recall, which would be two different populations and make F1 meaningless.
+Deflection rate = ALL `AUTO_TIERS` decisions (not just the clean-span
+gradable subset) / all Stage 3 decisions -- a real bug in an earlier draft
+of this table divided a gradable-restricted AUTO count by the
+unrestricted total, undercounting deflection by roughly 20-25 points;
+caught and corrected before this version.
+
+| Metric | Corpus-wide (144 notes, mixed vintage) | Fresh-10 (held-out, post-fix) |
+|---|---|---|
+| Gold annotations | 39,403 | 1,497 |
+| Span recall | 53.0% (20,873/39,403) | 49.5% (741/1,497) |
+| Linked recall | 33.5% (13,208/39,403) | 26.8% (401/1,497) |
+| Linked precision | 50.0% (13,197/26,382) | 45.3% (401/886) |
+| **Linked F1** | 40.1% | 33.7% |
+| Benchmark char IoU (macro / weighted) | 0.1437 / 0.2824 | 0.1453 / 0.2425 |
+| **AUTO-tier precision** | 86.9% (5,841/6,724 gradable) | **76.8% (43/56 gradable)** |
+| **Deflection rate** | 57.0% (10,953/19,202) | **31.2% (78/250)** |
+
+**Annotation velocity / cost-effectiveness** (from §9, real, source-cited,
+Wei et al. 2018 -- not re-derived here):
+
+| | Manual (cited range) | This pipeline | Ratio |
+|---|---|---|---|
+| Extraction + linking only (Stage 1->2b) | 16.85-38.41 min/note | 5.71 min/note | 2.95x-6.73x faster |
+| Full pipeline incl. tier-gate ensemble | 16.85-38.41 min/note | 21.33 min/note | 0.79x-1.80x -- speed advantage largely disappears |
+
+**Reading it honestly, not just reporting it**: every metric is higher
+corpus-wide than on fresh-10 -- recall, precision, and deflection all
+move the same direction. This is the expected signature of development-
+set leakage, not an inconsistency: notes used to build and tune this
+session's fixes (SNOMED retrieval, calibrator training) score better on
+themselves than on genuinely unseen notes. The gap sizes are themselves
+informative -- a 10.1pp AUTO-precision gap and a 25.8pp deflection gap
+quantify how much of the corpus-wide number reflects genuine
+generalization vs. fitting to what was debugged on.
+
+**Recommended framing for the paper**: report both columns, not just the
+corpus-wide one. Lead with fresh-10 as the generalization claim (76.8%
+precision, 31.2% deflection, 33.7% F1); report corpus-wide explicitly
+labeled "mixed development/held-out notes," not as an unqualified
+headline.
+
+**What's still genuinely missing**: no confidence intervals were computed
+for any number above. No T0->T2 deflection-rate trend exists (both
+figures above are single point-in-time reads). False-deflection rate is
+not measurable -- zero completed human reviews exist anywhere in the
+system (`hitl_review_queue` has 0 rows, every write path is
+`dry_run=True`).
+
 ## Open items carried forward
 
 * **Tier 2's calibrator escape hatch needs its own training data.** The
@@ -707,7 +768,7 @@ one applied to every other claim in this document.
 * **`EXHAUSTIVE_CANDIDATE_EVAL_ENABLED`'s proposed HITL-routing mitigation
   (§12) is not implemented.** The flag remains default-on; only its net
   impact is now measured, not yet acted on.
-* Evaluation-criteria refresh (P/R/F1, annotation velocity,
-  cost-effectiveness) against this session's final numbers, and a
-  refreshed summary stat-figure artifact, were scoped as next steps but
-  explicitly deferred by user decision this session, not completed.
+* **The 35.0%/22.4% deflection-rate figures given in chat earlier this
+  session were wrong** (a gradable-restricted numerator divided by an
+  unrestricted denominator) -- corrected to 57.0%/31.2% in §15. Flagged
+  here so the error trail is visible, not just quietly fixed.

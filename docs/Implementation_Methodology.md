@@ -359,18 +359,24 @@ authoritative — they visualize what the pipeline already computed:
 
 ## Current Headline Result — Fresh-Note Held-Out Validation
 
-**AUTO-tier precision: 76.8% (43/56)**, measured 2026-08-20 on 10 notes
-from the official locked test split (`data/splits/note_splits.csv`) that
-were not used to develop or debug this session's SNOMED near-duplicate
-retrieval fix or the KGE evaluation, and were (for 7 of the 10) also
-outside the tier-gate calibrator's own training set. This is the
-recommended number to cite as the pipeline's current AUTO-tier precision
--- not the higher figures measured on notes used during active
-development, which reflect fitting to those specific notes' failure
-modes rather than genuine generalization. Full breakdown in
-`docs/2026-08-20_Session_Results_And_Status.md` §13; the note list lives
-in `ui/components/fresh10_notes.py`, also used to scope the Streamlit
-demo pages to this validated population.
+**AUTO-tier precision: 76.8% (43/56)**, **deflection rate: 31.2%
+(78/250)**, **linked concept-level F1: 33.7%** -- measured 2026-08-20 on
+10 notes from the official locked test split
+(`data/splits/note_splits.csv`) that were not used to develop or debug
+this session's SNOMED near-duplicate retrieval fix or the KGE evaluation,
+and were (for 7 of the 10) also outside the tier-gate calibrator's own
+training set. These are the recommended numbers to cite as the
+pipeline's current performance -- not the higher corpus-wide figures
+(86.9% precision, 57.0% deflection, 40.1% F1, measured on all 144
+`is_test` notes) which are inflated by including notes used during
+active development; the ~10pp precision gap and ~26pp deflection gap
+between the two is itself a real, reportable measure of how much of the
+corpus-wide number is genuine generalization vs. fitting to what was
+debugged on. Full breakdown (including the annotation-velocity/
+cost-effectiveness comparison) in
+`docs/2026-08-20_Session_Results_And_Status.md` §13 and §15; the note
+list lives in `ui/components/fresh10_notes.py`, also used to scope the
+Streamlit demo pages to this validated population.
 
 ## Baseline Comparison
 
