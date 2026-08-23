@@ -205,7 +205,13 @@ KGE library) on the SNOMED subgraph this pipeline's candidate pools
 touch — 7,269 concepts, ~24,900 edges, 104 relation types.
 
 **Intrinsic evaluation** (standard KGE protocol, RAW setting): **MRR
-0.776, Hits@10 0.909** (2,000 held-out triples evaluated).
+0.776, Hits@10 0.909** — 2,000 of 2,493 held-out test triples evaluated
+(a random subsample, not the first N; `evaluate_link_prediction()` caps
+at `max_eval=2000` since ranking each triple's true tail against the
+full 7,269-entity set is the expensive part of the intrinsic protocol).
+Verified directly against `logs/kg_embedding_results.json`
+(`n_test: 2493`, `link_prediction.n_evaluated: 2000`) and
+`src/kg_embedding.py`'s `max_eval` parameter before writing this.
 
 **Extrinsic evaluation** (task-specific): on 455 real gold-confirmed TP
 records (1,612 comparisons), the embedding placed a wrong-but-competing
