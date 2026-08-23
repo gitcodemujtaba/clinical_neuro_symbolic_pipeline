@@ -10,11 +10,12 @@ paraphrased. This is the "why," paired with proof — for the "what
 changed" narrative, see `docs/2026-08-20_Session_Results_And_Status.md`;
 for final numbers, see `docs/FINAL_RESULTS_Single_Source_Of_Truth.md`.
 
-**One real contradiction found while compiling this, flagged rather than
-silently resolved**: two docs from the same date (2026-08-07) state
-opposite conclusions about which corpus was chosen as the primary
-guideline-KG source (`local_triplets_db2_v6`/MedCAT vs. `rules-llm`) — see
-§7, both entries kept, not reconciled here.
+**One real contradiction found while compiling this, checked and resolved
+against the live repo (not left ambiguous)**: two docs from the same date
+(2026-08-07) stated opposite conclusions about which corpus was chosen as
+the primary guideline-KG source. Verified directly: `local_triplets_db2_v6`
+(MedCAT) is what's actually wired into production; `rules-llm` was
+evaluated and not adopted — see §7 for the full evidence trail.
 
 ---
 
@@ -763,12 +764,33 @@ guideline-KG source (`local_triplets_db2_v6`/MedCAT vs. `rules-llm`) — see
 
 ## 7. Knowledge Graph / Guideline Infrastructure
 
-### ⚠️ Unresolved contradiction, flagged not silently resolved
-Two docs, both dated 2026-08-07, state opposite conclusions about which
-corpus is the primary guideline-KG source:
-- `docs/Guideline_Triplets_KG_Review.md` §6 states **`local_triplets_db2_v6` (MedCAT pipeline)** was selected as final, over `rules-llm`, citing `rules-llm`'s 14.4% dangling-target rate and weaker structural integrity despite better raw grounding (96.5% vs. 50.5%).
-- `docs/Rules_LLM_Triplets_Review.md` §§1,4 states **`rules-llm`** was adopted as primary, citing 96.5% SNOMED grounding vs. 50.5%, 0% duplicate nodes vs. 63%, 71% high-containment citations vs. 47%.
-Both cite similar grounding numbers but reach opposite conclusions — likely reflects a decision that evolved over the course of that day, or two docs written from different vantage points that were never reconciled. **Whichever is current should be verified directly against `data/` before citing either in the paper.**
+### RESOLVED (2026-08-20): `local_triplets_db2_v6` (MedCAT pipeline) is what's actually wired in, not `rules-llm`
+Two docs, both dated 2026-08-07, stated opposite conclusions about which
+corpus was the primary guideline-KG source — `docs/Guideline_Triplets_KG_Review.md`
+§6 said `local_triplets_db2_v6` (MedCAT), `docs/Rules_LLM_Triplets_Review.md`
+§§1,4 said `rules-llm`. Checked directly against the live repo rather than
+trusting either doc:
+- `data/` contains only the `local_triplets_db2_v6_*` family (cleaned,
+  cleaned_grounded, cleaned_grounded_rules_added) — no `rules-llm`
+  directory exists anywhere in this repo.
+- `rules-llm`/`rules_llm` appears in exactly one file codebase-wide
+  (`scripts/clean_local_triplets.py`, a comparison/cleaning reference),
+  never in a retrieval or ingestion path.
+- The actual production code, `src/retrieval.py` (consumed live by
+  `mollm_review.py`, `scripts/run_stage3_batch.py`, and others), hardcodes
+  `DEFAULT_TRIPLETS_DIR = data/local_triplets_db2_v6_cleaned_grounded_rules_added`.
+- `scripts/init_memgraph_guidelines.py` is a 0-byte empty file — the
+  guideline KG was never actually ingested into Memgraph as a graph;
+  `Guideline_Triplets_KG_Review.md`'s "selected" framing is correct, but
+  the actual delivery mechanism is a **file-backed index**
+  (`GuidelineIndex` in `src/retrieval.py`, reading the JSON triplets
+  directly), not a live Memgraph graph. State this precisely for
+  Objective 2 — the guideline KG exists and is consumed, but not via the
+  graph-database ingestion path the original architecture proposed.
+
+**Verdict: `Guideline_Triplets_KG_Review.md` is correct; `Rules_LLM_Triplets_Review.md`'s
+"adopted as primary" claim does not match the live code — `rules-llm` was
+evaluated and not adopted.**
 
 ### Neo4j/Memgraph split collapsed into unified KG1
 - **Decision**: Collapsed the original design (SNOMED in Neo4j, guidelines in Memgraph) into one unified graph.
