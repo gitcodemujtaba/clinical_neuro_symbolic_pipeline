@@ -206,7 +206,7 @@ Start here, depending on what you need:
 | `docs/ConsensusCalibrator_Technical_Reference.md` | The 16-feature calibrator: exact features, training, thresholds, safety traps. |
 | `docs/Provenance_Fields_Technical_Reference.md` | Every provenance field the pipeline writes, where computed, every downstream consumer. |
 | `docs/TransE_KG_Embedding_Technical_Reference.md` | The TransE KG-embedding model: training, both evaluations, the gold-validated tiebreak test, and why it stays unwired from production. |
-| `docs/GLiNER_BioMed_Technical_Reference.md` | GLiNER-BioMed usage: model/label choice, threshold calibration, sliding-window chunking, false-positive filters, offset reconciliation. |
+| `docs/GLiNER_Models_Technical_Reference.md` | Both GLiNER models: GLiNER-BioMed span extraction (calibration, chunking, false-positive filters) and GLiNER-relex relation extraction (endpoint linking, Channel E guideline bridge). |
 | `docs/Evaluation_Criteria.md` | The proposal's own evaluation-criteria spec, verbatim — what a claim needs to satisfy to count. |
 | `docs/2026-08-20_Session_Results_And_Status.md` | Chronological session log — the narrative behind the numbers above. |
 

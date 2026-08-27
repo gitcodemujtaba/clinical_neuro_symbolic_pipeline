@@ -97,7 +97,7 @@ mechanism, see below.
   corpus's longest note (24,858 chars). Full technical detail — model
   choice, threshold calibration evidence, the chunking algorithm, and the
   three false-positive filters built around GLiNER's specific failure
-  modes — in `docs/GLiNER_BioMed_Technical_Reference.md`.
+  modes — in `docs/GLiNER_Models_Technical_Reference.md` Part 1.
 * **PhysExam shorthand cold-start** (`src/physexam_shorthand.py`) —
   telegraphic exam notation ("Abd: S/NT/ND", bare section headers like
   "HEENT"/"NAD") that GLiNER never proposes as a candidate at *any*
@@ -109,6 +109,13 @@ mechanism, see below.
   — relation extraction, same GPU-placement fix applied. Clinical-T5 was
   removed from the live pipeline (MIMIC-III/IV pretraining contamination
   risk against the eval set) and is kept only as an external baseline.
+  Extracted relations feed Channel E of guideline-evidence retrieval
+  (`src/retrieval.py`'s `channel_e_relation()`) — real, live-measured
+  reach: 34/300 relations (11.3%) clear the both-endpoints-linked-and-
+  SNOMED-anchored bar. Full technical detail — the GLiREL fallback
+  investigation, offset-overlap endpoint linking, the shared-`FLAT_NER`
+  measurement, and the full predicate-coverage numbers — in
+  `docs/GLiNER_Models_Technical_Reference.md` Part 2.
 * **Span growth** then **compound-span splitting** run after extraction,
   before normalization.
 

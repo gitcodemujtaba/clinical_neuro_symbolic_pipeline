@@ -1,15 +1,30 @@
-# GLiNER-BioMed — Technical Implementation Reference
+# GLiNER Models — Technical Implementation Reference
 
 Deep-dive companion to `docs/Implementation_Methodology.md`'s Stage 2a
-section. This document covers exactly how GLiNER-BioMed is used in this
-pipeline — model choice, calibration, the sliding-window chunking
-mechanism that closes its real truncation gap, the false-positive filters
-built around its specific failure modes, and where its blind spots are
-covered by other machinery. Every claim below is grounded in the real,
-current source (`src/entity_extraction.py`, 940 lines) and real measured
-numbers, not description from memory.
+section. This pipeline uses **two** independent models from the `gliner`
+library, both zero-shot, both running over the same `expanded_text` and
+sharing one character-offset coordinate system, but doing genuinely
+different jobs:
+
+- **Part 1 — GLiNER-BioMed** (`Ihor/gliner-biomed-large-v1.0`,
+  `src/entity_extraction.py`) — zero-shot **span extraction**: the six
+  clinical entity types this pipeline's every later stage is built
+  around.
+- **Part 2 — GLiNER-relex** (`knowledgator/gliner-relex-large-v1.0`,
+  `src/extraction.py`) — zero-shot joint **relation extraction**: typed
+  edges between two entity spans (e.g. `[Medication] -[treated with]->
+  [Condition]`), run independently alongside (not on top of) the
+  GLiNER-BioMed pass.
+
+Every claim in both parts is grounded in the real, current source
+(`src/entity_extraction.py`, 940 lines; `src/extraction.py`, 386 lines)
+and real measured numbers — including a live run of
+`scripts/measure_relation_coverage.py` performed while writing Part 2,
+not a number quoted from memory or an old log.
 
 ---
+
+# Part 1 — GLiNER-BioMed (Zero-Shot Span Extraction)
 
 ## 1. What GLiNER-BioMed is and why it replaced the original model
 
@@ -394,3 +409,314 @@ in this pipeline's numbers.
   evidence-mined** — the dictionary in `physexam_shorthand.py` covers
   what this project's own gold corpus contains, not a general solution
   to telegraphic clinical shorthand.
+
+---
+
+# Part 2 — GLiNER-relex (Zero-Shot Relation Extraction)
+
+## 11. What GLiNER-relex is, and the model it replaced
+
+**Model**: `knowledgator/gliner-relex-large-v1.0`
+(`RELEX_MODEL_NAME`, `src/extraction.py:88`) — a **joint zero-shot
+NER+RE model** on the same `gliner` library GLiNER-BioMed uses. "Joint"
+matters here: GLiNER-relex runs its own internal (general-domain, not
+clinically tuned) entity detection as part of producing relations — it
+does not, and per its model card cannot, accept externally-supplied
+spans from GLiNER-BioMed as fixed relation endpoints. This is the source
+of the real, ongoing trade-off documented in §14 below.
+
+**Module docstring** (`src/extraction.py:1-72`) records a genuine
+three-model journey, worth preserving as real project history rather
+than compressing away:
+
+1. **Clinical-T5** was originally slated for this role, but removed from
+   the live pipeline before this project's evaluation began — it was
+   pretrained on MIMIC-III/IV, which is a direct contamination risk
+   against this project's own MIMIC-IV-derived evaluation notes. Kept
+   only as an external baseline reference, never run in the live
+   pipeline.
+2. **GLiREL** (`jackboyla/glirel-large-v0`) was tried next, and
+   abandoned after a concrete, reproduced failure: it scored near-zero
+   even on **its own README example** (documented score 0.9923, actual
+   reproduced score 0.0028). Root-caused, not just observed: this
+   project's `transformers==4.57.6`/`torch==2.8.0` are far newer than
+   what that single, unmaintained "v0" checkpoint was ever validated
+   against, and DeBERTa-v3 (GLiREL's backbone) is known to drift
+   numerically across `transformers` versions. Downgrading the
+   library versions was considered and rejected — too high a risk of
+   breaking GLiNER-BioMed/SapBERT, which both depend on the current
+   versions elsewhere in the same pipeline.
+3. **GLiNER-relex** — the current, live choice — replaced it: actively
+   maintained, and reuses the same `gliner` library dependency
+   `entity_extraction.py` already needed, adding no new library surface.
+
+**MedGemma 4B was deliberately not used here**, despite being already
+committed to Stage 3's MoLLM ensemble. Reasoning stated plainly in the
+code: a model that both *generates* a relation in Stage 2a and then
+*votes on validating it* in Stage 3 would not be an independent check —
+which is the entire basis of the ensemble's consensus-validation claim.
+Reusing it here would have quietly undermined that claim.
+
+## 12. Relation vocabulary and plausibility constraints
+
+```python
+RELATION_LABELS = [
+    "treated with", "indicates", "causes", "located in", "measured by",
+]
+```
+
+(`src/extraction.py:104-110`.) Five relation labels, passed to
+GLiNER-relex at inference time — zero-shot, so this list can be extended
+without retraining. `"treated with"`'s head/tail direction was chosen to
+match `docs/Implementation_Methodology.md`'s own
+`[Medication]-[:TREATED_WITH]->[Condition]` Stage 2a example verbatim.
+
+GLiNER-relex's model card documents no built-in `allowed_head`/
+`allowed_tail` type-constraint mechanism, so this project enforces
+plausibility as a **post-hoc filter** instead — the same pattern Stage 2b
+already applies to concept candidates, applied here to relation pairs:
+
+```python
+RELATION_CONSTRAINTS = {
+    "treated with": {"allowed_head": ["Medication", "Procedure"], "allowed_tail": ["Condition", "Symptom"]},
+    "indicates":    {"allowed_head": ["Lab Test", "Symptom"],     "allowed_tail": ["Condition"]},
+    "causes":       {"allowed_head": ["Medication", "Condition"], "allowed_tail": ["Symptom", "Condition"]},
+    "located in":   {"allowed_head": ["Condition", "Symptom", "Procedure"], "allowed_tail": ["Anatomy"]},
+    "measured by":  {"allowed_head": ["Condition", "Symptom"],    "allowed_tail": ["Lab Test"]},
+}
+```
+
+`_passes_label_constraint()` (`src/extraction.py:138-148`) rejects a
+prediction whose head/tail labels fall outside the allowed set for that
+relation type. Deliberately permissive on the unknown case: a relation
+label with **no** matching `RELATION_CONSTRAINTS` entry passes through
+**unfiltered**, not rejected — so extending `RELATION_LABELS` in the
+future without immediately adding a constraint entry doesn't silently
+drop every prediction of the new type.
+
+**Confidence floors**, set per the model card's own recommendations
+(`src/extraction.py:124-127`): `ENTITY_CONFIDENCE_FLOOR=0.5`,
+`ADJACENCY_THRESHOLD=0.5`, `RELATION_CONFIDENCE_FLOOR=0.7` — the
+relation floor is meaningfully higher than the entity floor, reflecting
+that a wrong *relation* claim is a stronger, more specific error than a
+wrong span.
+
+## 13. FLAT_NER shared with GLiNER-BioMed — a real, measured, counter-intuitive result
+
+Originally, `extraction.py` passed `flat_ner=False` (nested) while
+`entity_extraction.py` used the library's flat default — a **library-
+default accident**, not a considered decision, per the module's own
+2026-08-09 docstring entry. Both now import one shared `FLAT_NER`
+constant from `entity_extraction.py` (§Part 1 §2's reasoning: one KG3
+observation per entity, no overlap-target ambiguity).
+
+**The prediction going in was that this would REDUCE relation yield** —
+nested spans give GLiNER-relex more candidate endpoints to relate, so
+forcing flat seemed like it could only cost coverage. Measured directly
+on note `10000032-DS-21`, it did the **opposite**:
+
+| | Before (nested relex) | After (flat, shared) |
+|---|---|---|
+| Relations found | 3 | 3 |
+| Unlinked endpoints | 2 | 0 |
+| Endpoint linking rate | 33% | **100%** |
+
+Same relations found either way — the difference is entirely in the
+**linking** step (§14), not the extraction step: when both models
+produce flat spans, they agree on span boundaries, so `_overlap_ratio()`
+clears `MIN_ENDPOINT_OVERLAP` that it previously missed. Both unresolved
+endpoints under the old (nested) setting were relex spans like "right
+upper quadrant" with no flat counterpart in `extracted_entities` to link
+to. This is recorded in the code specifically because **the prediction
+was confidently wrong in a way only real measurement caught** — boundary
+*consistency* between the two independent models turned out to matter
+more than the extra candidate endpoints nesting nominally provided, the
+opposite of the trade-off assumed when the nested setting was first
+chosen.
+
+## 14. Endpoint linking — offset overlap, not text matching
+
+GLiNER-relex predicts relations between spans it finds via its own
+internal (general-domain) entity detection — it cannot be handed
+GLiNER-BioMed's canonical spans directly. An earlier version of this
+module stored only the head/tail **text and label** for a relation,
+discarding both GLiNER-relex's own character offsets and the entity list
+its internal pass returns — which made connecting a relation's endpoint
+back to a specific, canonical `extracted_entities` row genuinely hard: a
+fuzzy text-similarity match, described at the time as "a bigger, separate
+piece of work" and deferred.
+
+**Fixed, 2026-08-08**: that difficulty was self-inflicted, not inherent
+— both models run over the exact same `expanded_text`, so their spans
+already live in one shared character-offset coordinate system. Linking a
+relation endpoint to a canonical entity is a **character-overlap test**,
+not a fuzzy heuristic:
+
+```python
+def _overlap_ratio(a_start, a_end, b_start, b_end) -> float:
+    """Character overlap as a fraction of the SHORTER span."""
+    overlap = min(a_end, b_end) - max(a_start, b_start)
+    if overlap <= 0:
+        return 0.0
+    return overlap / max(1, min(a_end - a_start, b_end - b_start))
+```
+
+(`src/extraction.py:171-182`.) The **shorter-span denominator** is
+deliberate: a canonical entity `"chest pain"` fully contained inside a
+wider relex endpoint `"severe chest pain"` should score 1.0, because
+both refer to the same real mention — using the union (a Jaccard-style
+ratio) would penalize exactly the nesting disagreement the two
+independently-trained models are expected to have.
+
+`_link_endpoint()` (`src/extraction.py:185-206`) picks the
+`extracted_entities` row with the highest overlap ratio, requiring
+`>= MIN_ENDPOINT_OVERLAP = 0.50` (calibration target, per
+`docs/MoLLM_Stage3_Retrieval_Design.md` §8) to count as `"linked"`; ties
+break deterministically (larger overlap, then lower `entity_id`) so
+linking is reproducible across runs, the same determinism discipline
+Stage 2b's own retrieval `ORDER BY` fix exists to guarantee elsewhere in
+this codebase. Below the threshold, the endpoint is recorded as
+`"unresolved_low_overlap"` — **not guessed at**. This honesty is
+structural, not incidental: `extracted_relations` stores
+`head_link_status`/`tail_link_status` per row, and any consumer
+(§15's Channel E included) must check `== "linked"` before trusting an
+endpoint's identity — an unresolved endpoint is explicitly passed
+through to Stage 3 as ungrounded free text rather than silently dropped
+or silently force-matched.
+
+**The trade-off that remains real, not fully closed by the fix above**:
+GLiNER-relex still does its own general-domain entity typing internally,
+so a relation's `head_entity_label`/`tail_entity_label` as GLiNER-relex
+sees them may genuinely differ from what GLiNER-BioMed assigned the same
+span. `entity_extraction.py` remains the single source of truth for
+`extracted_entities` — GLiNER-relex's own typing is stored
+(`head_entity_label`/`tail_entity_label` on `extracted_relations`) but
+never overrides the canonical entity's own `entity_label`.
+
+## 15. Where extracted relations actually get used: Channel E of guideline-evidence retrieval
+
+Unlike a diagnostic-only mechanism, GLiNER-relex's output is genuinely
+**wired into production retrieval** — `src/retrieval.py`'s
+`channel_e_relation()` (`src/retrieval.py:1120-1159`), one of the
+guideline-evidence-matching channels available to Stage 3 (behind
+`GUIDELINE_EVIDENCE_ENABLED`, off by default corpus-wide — see
+`docs/MoLLM_Prompts_And_Reasoning_Technical_Reference.md`).
+
+**The idea**: for an entity with a `linked` GLiNER-relex relation to
+another Stage-2-normalized entity, look for a guideline-KG edge that
+connects a node reachable from *this* entity's SNOMED code to a node
+reachable from the *related* entity's code, via a predicate compatible
+with the relex relation label. A guideline rule confirmed from **both**
+ends this way is treated as stronger evidence than either entity matched
+in isolation — Channels A/B (the other retrieval channels) only ever
+look at one entity at a time.
+
+**The relex-label → guideline-predicate bridge**
+(`RELEX_LABEL_TO_PREDICATES`, `src/retrieval.py:147-153`):
+
+```python
+RELEX_LABEL_TO_PREDICATES = {
+    "treated with": {"REQUIRES_MEDICATION", "REQUIRES_INTERVENTION"},
+    "indicates":    {"INDICATES", "TRIGGERS_SEVERITY"},
+    "causes":       set(),
+    "located in":   set(),
+    "measured by":  set(),
+}
+```
+
+Only 2 of the 5 relation labels are mapped to real guideline predicates
+— `"causes"`, `"located in"`, `"measured by"` are **deliberately left
+empty**, not guessed at, because (as the code's own comment states)
+nobody had enumerated the other ~45+ real predicate names in the
+guideline corpus to check for a plausible match before this document was
+written. `scripts/measure_relation_coverage.py` exists specifically to
+close that gap by inspection rather than guesswork.
+
+### 15.1 Real, live-measured numbers (not quoted from an old log)
+
+Run directly against the current production DB while writing this
+document (`python3 scripts/measure_relation_coverage.py`, read-only,
+safe alongside a concurrent write-locked batch):
+
+**Guideline predicate coverage** — the guideline KG has **52 distinct
+predicates across 1,162 rules total**. The top 4 by volume:
+
+| Predicate | Rule count | Mapped? |
+|---|---|---|
+| `INDICATES` | 469 | ✅ (`"indicates"`) |
+| `REQUIRES_INTERVENTION` | 274 | ✅ (`"treated with"`) |
+| `TRIGGERS_SEVERITY` | 133 | ✅ (`"indicates"`) |
+| `REQUIRES_MEDICATION` | 71 | ✅ (`"treated with"`) |
+
+These four **already-mapped** predicates account for **947 of 1,162
+rules (81.5%)** — so although only 4 of 52 distinct predicate *names*
+are mapped, the current mapping already covers the large majority of
+guideline rule *volume*. The 48 unmapped predicates are individually
+small (the largest, `HAS_QUANTITATIVE_THRESHOLD`, is 34 rules; most are
+single digits), which is real, useful context for prioritizing whether
+completing the mapping is worth the effort — a real, measured answer to
+a question the code's own comment left open, not a re-guess.
+
+**Channel E's plausible reach** (81 notes measured, every note with any
+stored relation):
+
+| Stage | Count | % of prior stage |
+|---|---|---|
+| Entities (denominator, for scale) | 17,738 | — |
+| Relations extracted | 300 | — |
+| Relations with **both** endpoints linked | 146 | 48.7% of relations |
+| ...of those, **both** ends SNOMED-anchored (Channel E's actual reach) | **34** | 23.3% of linked relations |
+
+So **34 of 300 extracted relations (11.3%)** clear the bar Channel E
+requires *before* the predicate mapping is even checked — a small,
+genuinely measured reach, not a large or a negligible one. This is the
+honest, current answer to the question the module's own comment posed
+("if it's a small percentage, Channel E is a real but minor addition");
+34/300 supports "real but minor" as the fair characterization, with the
+predicate-mapping completion (§ above) as the more promising next lever
+if this channel's reach is ever prioritized further.
+
+## 16. Storage and provenance
+
+`extracted_relations` (`src/extraction.py:227-259`) stores, per relation:
+both endpoints' text/label, the relation label, a stable
+`relation_id` (`make_relation_id()`, hashed over spans so it survives a
+re-run unchanged — the same pattern as `entity_extraction.py`'s
+`make_entity_id()`), both endpoints' `entity_id` (when linked),
+expanded- **and** original-text offsets for both endpoints (mapped back
+through the same `map_offsets_to_original()` "Time Machine" §Part 1 §7
+uses, so a relation can always be located in the text a clinician
+actually wrote — necessary for the HITL reviewer to inspect it), each
+endpoint's `link_status`/`overlap_ratio`, and `relex_model_version` for
+the same reason `entity_extraction.py` stamps `gliner_model_version` —
+so a row can always be traced to which checkpoint produced it.
+
+A high `unresolved_count` for a note is printed rather than only
+recorded silently per row (`src/extraction.py:342-348`) — the reasoning
+stated directly in the code: a high unresolved rate is the signal that
+the two models are disagreeing about span boundaries more than expected,
+and that `MIN_ENDPOINT_OVERLAP=0.50` may need revisiting; that signal
+would be invisible if only ever inspected one row at a time.
+
+## 17. Honest limitations (Part 2)
+
+- **No dedicated unit test file exists for `src/extraction.py`** as of
+  this writing (confirmed: no `test_extraction*.py` or
+  `test_relex*.py` under `tests/`) — unlike GLiNER-BioMed's chunking
+  logic (Part 1 §8), the relation-linking math (`_overlap_ratio()`,
+  `_link_endpoint()`) has no standalone pure-logic test coverage today.
+  This is a real, stated gap, not glossed over.
+- **48 of 52 real guideline predicates remain unmapped** to any relex
+  label (§15.1) — `"causes"`, `"located in"`, `"measured by"` retrieve
+  nothing from Channel E today, by design (empty set, not a guess), but
+  also therefore contribute zero reach regardless of how often
+  GLiNER-relex predicts them.
+- **Channel E's measured reach is small** (34/300 relations, 11.3%,
+  §15.1) — real, positive, but a minor contribution relative to Channels
+  A-D, and Channel E itself sits behind `GUIDELINE_EVIDENCE_ENABLED`,
+  which is off by default corpus-wide.
+- **GLiNER-relex's internal entity typing can diverge from GLiNER-
+  BioMed's** (§14) — a structural trade-off from using a joint NER+RE
+  model that cannot accept externally-supplied spans, not fully closed,
+  only worked around via offset-overlap linking plus treating
+  GLiNER-BioMed as the sole source of truth for canonical entity labels.
