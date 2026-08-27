@@ -94,7 +94,10 @@ mechanism, see below.
   activates automatically for notes over `CHUNK_WORD_BUDGET=1800` words
   (128-word sentence-boundary-snapped overlap) — confirmed to recover 282
   real entities GLiNER silently dropped via single-pass truncation on the
-  corpus's longest note (24,858 chars).
+  corpus's longest note (24,858 chars). Full technical detail — model
+  choice, threshold calibration evidence, the chunking algorithm, and the
+  three false-positive filters built around GLiNER's specific failure
+  modes — in `docs/GLiNER_BioMed_Technical_Reference.md`.
 * **PhysExam shorthand cold-start** (`src/physexam_shorthand.py`) —
   telegraphic exam notation ("Abd: S/NT/ND", bare section headers like
   "HEENT"/"NAD") that GLiNER never proposes as a candidate at *any*
