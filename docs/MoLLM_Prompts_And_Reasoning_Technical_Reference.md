@@ -1,0 +1,583 @@
+# MoLLM Prompts & Reasoning — Complete Technical Reference
+
+**Module**: `src/mollm_tier_gate.py` (prompt construction, orchestration) ·
+`src/guideline_evidence.py` (rules-based KG bridge) · `src/llm_client.py`
+(model transport)
+
+**Companion documents**: `docs/ConsensusCalibrator_Technical_Reference.md`
+(what happens to a decision *after* the ensemble votes — this document
+stops where that one starts) and `docs/Entity_Journey_Plain_Language_Walkthrough.md`
+(the same "fever" example used in §3 below, told for a non-technical
+reader).
+
+**Verification discipline**: every code snippet below is copied verbatim
+from the live source, re-read in full for this document. Every example
+is either a real, stored production decision (quoted from
+`mollm_tier_gate_decisions`) or a real function call made live against
+the actual guideline index and the actual database — none are invented
+or hypothetical. Where a mechanism exists in code but is not currently
+active in production (the guideline-evidence bridge, §7), that is stated
+explicitly, not glossed over.
+
+---
+
+## 1. The core design: two steps, not one, and why
+
+Every entity that reaches the ensemble (i.e. survives the four free,
+zero-model-call pre-checks — see `docs/ConsensusCalibrator_Technical_Reference.md`
+§2 for the full routing diagram) is evaluated by **three independent
+local LLMs** (qwen2.5:3b, llama3.2:3b, phi4-mini), each running the
+**same two-step process**, in complete isolation from each other and
+from Stage 2b's own retrieval scores.
+
+```
+Step A — "What does this span mean?"     (no candidate list shown)
+              │
+              ▼
+Step B — "Does THIS candidate match that meaning?"   (one candidate at a time)
+```
+
+**Why isolate Step A from the candidate list at all?** If the model saw
+the candidates before committing to an interpretation, it could anchor
+on whatever's in front of it rather than reasoning independently about
+the clinical meaning — the exact failure mode this project calls
+"attention dilution" or "anchoring," found and fixed more than once in
+this codebase's history (see §5 and §8 for two concrete, measured
+instances of it).
+
+**Why one candidate at a time in Step B, rather than a single prompt
+showing the whole ranked list?** This was tried and measured to fail.
+The module's own comment on it:
+
+> Already tried and rejected in this exact codebase, 2026-08-14: a dense
+> 1-to-N candidate list measurably let 3B models detach a candidate's
+> evidence tag from its own bracket index and misattribute it to the
+> highest-scored candidate instead (two real 'lasix' cases both moved to
+> the highest-scored LASCUFLOXACIN candidate instead of the correctly-tagged
+> furosemide one) — a formatting fix (isolating each tag on its own line)
+> was tried and still not reliable enough.
+
+So Step B asks about **exactly one candidate per model call**: no
+bracket index for a small model to mis-track. The system pays for this
+in call volume (up to 1 Step-A call + up to 5 Step-B calls, per model,
+per entity — up to 18 LLM calls for one entity across all three models)
+but the isolation is what makes each individual judgment trustworthy.
+
+---
+
+## 2. Step A — the clinical-meaning prompt, in full
+
+```python
+MEANING_SYSTEM_PROMPT = (
+    "You are a clinical terminology expert reading a single clinical note. "
+    "Your only job right now is to state what a highlighted text span means "
+    "clinically, using the note's own context. You have not been shown any "
+    "candidate concept list and must not anticipate or guess at one."
+)
+
+def _clinical_meaning_prompt(entity: dict) -> str:
+    assertion = entity.get("assertion_status", "PRESENT")
+    allergy_instruction = ALLERGY_MEANING_INSTRUCTION if assertion == "ALLERGY" else ""
+    return (
+        "ENTITY:\n"
+        f"  text as written: {entity.get('original_text')!r}\n"
+        f"  after abbreviation expansion: {entity.get('expanded_text')!r}\n"
+        f"  extractor label: {entity.get('gliner_label')}\n"
+        f"  assertion: {assertion} / experiencer: {entity.get('experiencer', 'PATIENT')}\n\n"
+        f"SECTION: {entity.get('section_name') or 'unknown'}\n"
+        f"CONTEXT: ...{entity.get('local_context', '')}...\n\n"
+        f"{allergy_instruction}"
+        "TASK: Based ONLY on the note text above, provide a concise, "
+        "single-phrase clinical definition of what this entity refers to "
+        '(e.g. "a beta-blocker medication", "a diagnosis of high blood '
+        'pressure", "a surgical procedure on the knee"). Do not name a '
+        "database code, ontology term, or vocabulary identity. Do not "
+        "explain the patient's history. Define the term only.\n\n"
+        'Reply with JSON: {"clinical_meaning": "<single-phrase definition>", '
+        '"reasoning": "<one short sentence>"}'
+    )
+```
+
+**Exactly six pieces of provenance feed this prompt**, all computed by
+earlier stages and simply read here, never recomputed:
+
+| Field | Computed by | What it tells the model |
+|---|---|---|
+| `original_text` | Stage 2a (GLiNER) | the literal span as written |
+| `expanded_text` | Stage 1 | the abbreviation-expanded form, if different |
+| `gliner_label` | Stage 2a | the extractor's own category guess (Symptom/Condition/Medication/...) |
+| `assertion_status` / `experiencer` | Stage 1 (medspacy/ConText) | whether this is being claimed, denied, historical, about a family member, etc. |
+| `section_name` | Stage 1 (section segmentation) | which part of the note this sits in |
+| `local_context` | Stage 2a's `build_local_context()` | the sentence-bounded window around the span |
+
+**Deliberately absent from Step A**: any candidate SNOMED concept, any
+Stage 2b retrieval score, any `match_basis`. The model reasons purely
+from the note's own text.
+
+**Why a single phrase, not a paragraph?** A 2026-08-18 tightening,
+explained directly in the code:
+
+> a single-phrase definition rather than a free sentence or two gives
+> Step B a tighter, more atomic string to compare each candidate
+> against — "a beta-blocker medication" is less ambiguous to judge a
+> candidate against than a paragraph that drifts into patient history.
+
+---
+
+## 3. Worked example, Step A — "fever" (real, stored decision)
+
+Same entity as the plain-language walkthrough doc, note `11859945-DS-29`,
+`assertion_status: ABSENT` (the note says "Denies fever"). Three real
+Step A outputs, verbatim from the database:
+
+| Model | `clinical_meaning` |
+|---|---|
+| qwen2.5:3b | *"absence of fever in a patient"* |
+| phi4-mini | *"An elevation in body temperature indicative of an infection"* |
+| llama3.2:3b | *"a normal body temperature"* (factually backwards — a fever is not normal — but the model still reaches the correct final verdict in Step B, see below) |
+
+This single example already shows the real spread of behavior across
+three small models on identical input: one (qwen) let the *negation*
+leak into its definition of the *concept* — exactly the confusion rule
+3 in Step B (§4) exists to correct; one (phi4-mini) reasoned cleanly;
+one (llama) got the definition itself wrong but recovered in Step B
+anyway. None of this is cherry-picked — it's the actual output for a
+genuinely ordinary entity.
+
+---
+
+## 4. Step B — the binary-match prompt, in full, with every conditional rule
+
+```python
+MATCH_SYSTEM_PROMPT = (
+    "You are a clinical terminology validator auditing whether a proposed "
+    "concept code correctly labels a text span, given an independent "
+    "statement of what that span means."
+)
+
+def _binary_match_prompt(entity, candidate, clinical_meaning, extra_rule=None):
+    basis = candidate.get("match_basis", "semantic_similarity")
+    rules = (
+        "RULES:\n"
+        "1. SEMANTIC MATCH: judge the candidate strictly against the CLINICAL "
+        "MEANING stated above, not the raw text spelling or the candidate's "
+        "match score -- does it represent the exact same clinical idea, even "
+        "if spelled completely differently? Do not reject a candidate just "
+        "because the words do not match the original text.\n"
+    )
+    if basis in _VERIFIED_ALIAS_BASES:          # only when THIS candidate's basis warrants it
+        rules += f"2. This candidate's basis is {basis} -- {_VERIFIED_ALIAS_BASES[basis]}. " \
+                 "Do not reject it merely because the spelling differs from the entity text.\n"
+    rules += (
+        "3. Ignore assertion/negation status when judging the CONCEPT match "
+        '-- a negated entity ("denies fever") still maps to its concept '
+        '("Fever") if the name matches; you are labeling which concept the '
+        "text refers to, not diagnosing.\n"
+        "4. STRICT DOMAIN MISMATCH: reject a candidate that is a distinct or "
+        "clinically unrelated concept (e.g. mapping a symptom to a "
+        "biological genus, or a medication to a surgical tool). Do not "
+        "force a match.\n"
+    )
+    if extra_rule:
+        rules += extra_rule + "\n"
+    return (
+        "This entity's clinical meaning was independently determined to be:\n"
+        f'  "{clinical_meaning}"\n\n'
+        "ENTITY:\n"
+        f"  text as written: {entity.get('original_text')!r}\n"
+        f"  section: {entity.get('section_name') or 'unknown'}\n"
+        f"  assertion: {entity.get('assertion_status', 'PRESENT')} / "
+        f"experiencer: {entity.get('experiencer', 'PATIENT')}\n"
+        f"  context: ...{entity.get('local_context', '')}...\n\n"
+        "CANDIDATE CONCEPT:\n"
+        f"  name: {candidate.get('concept_name')}\n"
+        f"  domain: {candidate.get('domain_id')}\n"
+        f"  vocabulary: {candidate.get('vocabulary_id')}\n"
+        f"  basis: {basis}\n\n"
+        f"{rules}\n"
+        "Does this candidate concept match the clinical meaning stated "
+        'above? Reply with JSON: {"match": true or false, "reasoning": '
+        '"<one sentence>"}'
+    )
+```
+
+**Rule 2 only appears when it applies to *this specific candidate*.**
+This is a deliberately narrow fix for a real, measured bleed problem:
+
+> confirmed live to cause exactly the bleed this guards against: a
+> candidate whose real basis was `exact_text` got justified in a model's
+> own reasoning as "verified to be a brand alias in the SNOMED
+> vocabulary", language borrowed straight from this rule's text despite
+> not applying to that candidate at all.
+
+**The rule numbering never shifts, even when rule 2 is omitted** — rules
+stay 1/[2]/3/4/5 because `ALLERGY_CONTEXT_CLAUSE` hardcodes "RULE 3" and
+`QWEN_SUBSUMPTION_CLAUSE` hardcodes "5." in their own text; both must
+keep pointing at the same rule whether or not rule 2 is present that
+call.
+
+### 4.1 Continuing the "fever" example — Step B, all three models, verbatim
+
+Candidate: `Fever` (SNOMED concept 437663, match tier "1 (Exact)", basis
+`exact_text` — so rule 2 does **not** fire here, since `exact_text` isn't
+in `_VERIFIED_ALIAS_BASES`).
+
+**qwen2.5:3b** → `match: false`
+> *"The candidate concept 'Fever' does not directly represent the
+> absence of fever. It is a distinct and clinically unrelated concept."*
+
+This is qwen applying rule 4 (domain mismatch) to a case that was
+actually about rule 3 (ignore negation) — it treated "absence of fever"
+(its own Step A output) as a different *concept* from "Fever," when
+really it's the same concept under a negated assertion. A real,
+instructive model mistake.
+
+**phi4-mini** → `match: true`
+> *"The term 'fever' directly corresponds to an elevation in body
+> temperature indicative of infection."*
+
+**llama3.2:3b** → `match: true`
+> *"The candidate concept 'Fever' matches the clinical meaning of 'a
+> normal body temperature' because it is a synonym in the SNOMED
+> vocabulary and represents an exact match in terms of clinical idea."*
+
+Llama's Step A definition was wrong (fever ≠ normal temperature), and
+its Step B reasoning repeats that error, yet it still lands on the
+correct `match: true`. **Two out of three models correctly separated
+"what concept does this word name" from "does the patient have it";
+one did not.** This is exactly the disagreement that gets handed to the
+calibrator (see the companion document) rather than either auto-approved
+or auto-rejected outright.
+
+---
+
+## 5. The `_evaluate_one_model()` orchestration — sequential, stop-on-accept-first-normally, exhaustive when needed
+
+```python
+def _evaluate_one_model(client, entity):
+    meaning_raw = client.complete(MEANING_SYSTEM_PROMPT, _clinical_meaning_prompt(entity),
+                                  schema=_meaning_schema())
+    clinical_meaning = parse_json_response(meaning_raw["text"]).get("clinical_meaning")
+
+    extra_rules = []
+    if client.model_name.startswith("qwen"):
+        extra_rules.append(QWEN_SUBSUMPTION_CLAUSE)
+    if entity.get("assertion_status") == "ALLERGY":
+        extra_rules.append(ALLERGY_CONTEXT_CLAUSE)
+    extra_rule = "\n".join(extra_rules) if extra_rules else None
+
+    accepted = []   # only populated when EXHAUSTIVE_CANDIDATE_EVAL_ENABLED
+    for i, cand in enumerate(candidates, 1):
+        raw = client.complete(MATCH_SYSTEM_PROMPT,
+                              _binary_match_prompt(entity, cand, clinical_meaning, extra_rule),
+                              schema=_match_schema())
+        matched = parse_json_response(raw["text"]).get("match")
+        if matched:
+            if not EXHAUSTIVE_CANDIDATE_EVAL_ENABLED:
+                return {"verdict": "SUPPORTED_1" if i == 1 else f"RE_RANK_TO_CANDIDATE_{i}", ...}
+            accepted.append({"index": i, "candidate": cand, ...})   # keep going, don't stop
+    # after the loop: 0 accepted -> NONE_CORRECT; 1 accepted -> that one;
+    # 2+ accepted -> _resolve_tiebreak() (see §6)
+```
+
+**Two conditional rules are layered on top of the base 4, per model call,
+per entity — never both from the same source competing:**
+
+- `QWEN_SUBSUMPTION_CLAUSE` is added **only** when `client.model_name`
+  starts with `"qwen"`. It is never shown to llama3.2:3b or phi4-mini.
+- `ALLERGY_CONTEXT_CLAUSE` is added **only** when
+  `entity["assertion_status"] == "ALLERGY"`. It is shown to all three
+  models when it applies, since the allergy-context confusion was
+  measured across all three, not one.
+
+`EXHAUSTIVE_CANDIDATE_EVAL_ENABLED` (default on) is the setting that
+decides whether Step B stops at the *first* accepted candidate (the
+original design) or evaluates *every* candidate independently and only
+then decides. This default flip is itself a real, measured decision —
+see `docs/2026-08-20_Session_Results_And_Status.md` §12 for the honest
+finding that the broader population this creates (2+ independently-accepted
+candidates) grades at only 14.3% precision versus 84.7% for entities
+that don't trigger it.
+
+---
+
+## 6. Rule 5 — `QWEN_SUBSUMPTION_CLAUSE`, and why it's qwen-only
+
+```python
+QWEN_SUBSUMPTION_CLAUSE = (
+    "5. HIERARCHICAL SUBSUMPTION: candidates are being checked ONE AT A TIME "
+    "in ranked order; if you reject this one, it will not be reconsidered "
+    "later. If this candidate is a correct but less-specific (broader) or "
+    "more-specific (narrower) SNOMED/RxNorm relative of the precise concept "
+    "described -- not a DIFFERENT concept entirely -- accept it as a match "
+    "rather than rejecting it purely for lacking the note's full specificity "
+    "(severity, laterality, exact subtype). Still reject a candidate that "
+    "names a different clinical concept, not merely a less-detailed one."
+)
+```
+
+**Why qwen specifically, not a blanket rule for all three models?** A
+broader version of this idea ("don't require every detail to match") was
+tried across *all three* models on 2026-08-15 and had to be reverted —
+it let every model rubber-stamp wrong matches on bare qualifier
+fragments ('left', 'Removal', 'Multiple'), collapsing Tier 1 precision
+to 5.9% (1/17). The narrower, qwen-only, hierarchy-specific version was
+only safe to try after a separate fix (`qualifier_fragment_precheck()`)
+removed those fragment spans from the ensemble's job entirely — so the
+residual risk of a per-model relaxation was smaller than it was when
+the earlier, blanket version was tried.
+
+**Why can't the model just check "is there a more specific candidate
+elsewhere in the list"?** Because Step B evaluates one candidate at a
+time — that's the whole point of the sequential design (§1). The clause
+doesn't pretend otherwise; it makes the actual tradeoff explicit (rank
+order, no second look) rather than asking the model to reason about
+information it structurally does not have.
+
+---
+
+## 7. Provenance-conditioned rules — the allergy exception (real, measured, fixed)
+
+```python
+ALLERGY_CONTEXT_CLAUSE = (
+    "ALLERGY EXCEPTION TO RULE 3: this entity's assertion status is ALLERGY. "
+    "Unlike negation, an ALLERGY assertion means the CORRECT concept is the "
+    "patient's allergic disposition/reaction to the substance, not the "
+    "substance itself -- these are genuinely different concepts here, and "
+    "that is expected, not an error. If the candidate names an allergy or "
+    "adverse-reaction concept for this same substance (e.g. 'Allergy to X', "
+    "'X allergy', 'Allergic reaction caused by X'), treat that as the "
+    "correct match. Do NOT reject it under rule 4 on the grounds that it "
+    "names a 'different concept' from the substance itself -- for an "
+    "ALLERGY-status entity, the allergy/reaction concept IS the correct one."
+)
+```
+
+**This is the single clearest example in the whole system of provenance
+directly steering the prompt's own rule set, not just informing it.**
+`assertion_status` (computed once, in Stage 1, by the deterministic
+medspacy/ConText engine — never by an LLM) is read at *two separate
+points* for an ALLERGY-status entity: it triggers a different Step A
+instruction (`ALLERGY_MEANING_INSTRUCTION`, §2) *and* a different Step B
+rule set (`ALLERGY_CONTEXT_CLAUSE`, here) — the same upstream field,
+consumed twice, at two different stages of the same model call chain.
+
+**What went wrong before this clause existed, root-caused from real
+stored `mollm_tier_gate_decisions.models` trail data**: with retrieval
+already fixed and correctly surfacing "Allergy to morphine" as the #1
+candidate, the ensemble still split votes on it, 0/19 reaching Tier 1.
+
+> Confirmed in the raw trail: phi4-mini's Step A never even mentioned
+> allergy ("Morphine is an opioid medication..."), and qwen2.5:3b
+> rejected "Allergy to morphine" as "too specific" after its own Step A
+> hedged into a generic "may cause an allergy" framing instead of stating
+> the patient's actual disposition.
+
+The base rule 3 ("ignore assertion status when judging concept match")
+is *correct* for negation — "denies fever" still names the concept
+"Fever." But it is actively wrong for allergy: the correct concept for
+an allergy-context substance mention genuinely **is** a different
+concept (the allergic-disposition finding), and the stock rule 3 pushed
+models toward rejecting that correct answer under rule 4 ("different
+concept, reject"). The clause is a targeted carve-out from the general
+rule, not a contradiction of it — measured to move Aspirin, fluconazole,
+and morphine from `TIER_4_ENSEMBLE_SPLIT` to `TIER_1` in one re-run.
+
+---
+
+## 8. The tiebreak prompt — when 2+ candidates independently match
+
+Only reached when `EXHAUSTIVE_CANDIDATE_EVAL_ENABLED` (§5) lets Step B
+run to completion and finds **more than one** candidate independently
+accepted by the *same* model. A separate, smaller comparative call runs,
+scoped to just the accepted subset (usually 2, rarely 3) — not the full
+original candidate list, for the same index-isolation reason as §1.
+
+```python
+TIEBREAK_SYSTEM_PROMPT = (
+    "You are a clinical terminology validator. Several candidate concept "
+    "codes have each independently been judged a plausible match for the "
+    "same text span -- your job now is to pick the single best one using "
+    "the note's own context, not to re-decide whether any of them match."
+)
+```
+
+The prompt shows each accepted candidate's name, domain, concept class,
+match basis, **and the model's own earlier Step B reasoning for why it
+accepted it** — the model is reminded of its own prior judgment rather
+than starting cold. Then, conditionally, up to two more evidence blocks
+are appended:
+
+### 8.1 `CONDITION_VS_OBSERVATION_PRIOR` — a corpus-measured convention, injected only when the exact pattern is present
+
+```python
+def _condition_vs_observation_duplicate(accepted):
+    if len(accepted) != 2:
+        return False
+    names = {a["candidate"]["concept_name"].strip().lower() for a in accepted}
+    if len(names) != 1:
+        return False
+    domains = {a["candidate"]["domain_id"] for a in accepted}
+    return domains == {"Condition", "Observation"}
+```
+
+Fires only when exactly two candidates share the identical name string
+but span the Condition and Observation domains — the specific SNOMED
+near-duplicate pattern this corpus was measured to handle one way,
+11-of-14 times (78.6%), on direct corpus inspection. **This is
+deliberately injected as a hint the model can still override, never as
+an absolute rule** — the prompt says so explicitly, and the source is
+candid about why a stronger, unconditional version was tried and had to
+be strengthened again:
+
+> v1's softly-worded, stats-cited prior ("11 of 14... treat as a weak
+> prior") measurably UNDER-powered against a 3B model's pretraining
+> association between disease-sounding terms ("Carcinoma") and
+> Condition/Disorder framing: live-tested on 'Metastatic Renal Cell
+> Cancer', all 3 models cited "diagnosis"/"documentation style" to
+> override the prior toward the WRONG (Condition) answer.
+
+**Real bug, found and fixed, worth knowing**: this detector originally
+also required `concept_class_id` to match `"Disorder"`/`"Morph
+Abnormality"` — but candidate dicts never carry `concept_class_id` at
+all, nothing populates it. That silently disabled the entire prior
+injection from the day it was built, confirmed live on the "wound
+dehiscence" case (note `13538696-DS-11`): the tiebreak correctly fired
+for all three models, but with no prior actually injected, each model
+reasoned unguided and all three happened to agree on the wrong
+(Condition/Disorder) candidate. Relaxed to match on `domain_id` alone
+(a field every candidate dict genuinely carries).
+
+### 8.2 The rules-based guideline KG evidence block — real mechanism, real example, currently off by default
+
+```python
+def _guideline_evidence_block(accepted):
+    from src.guideline_evidence import GUIDELINE_EVIDENCE_ENABLED, get_guideline_index, \
+        guideline_evidence_for_candidates
+    if not GUIDELINE_EVIDENCE_ENABLED:
+        return ""
+    evidence = guideline_evidence_for_candidates(get_guideline_index(), accepted)
+    return evidence + "\n\n" if evidence else ""
+```
+
+**⚠️ Stated plainly, not glossed over: `GUIDELINE_EVIDENCE_ENABLED`
+defaults OFF** (`CNSP_GUIDELINE_EVIDENCE` env var, unset in production).
+This is the rules-based clinical guideline knowledge graph — 76 source
+documents, ~1,700 nodes, 1,162 extracted recommendation rules, each
+citing its own source — bridged into the tiebreak prompt for the first
+time on 2026-08-20, but held behind a flag pending its own validation
+batch, the same discipline applied to every other prompt-touching change
+in this codebase (hybrid retrieval, acronym escalation). **No production
+decision in the database today was made with this evidence visible to
+the model.**
+
+**How matching works, and why not by SNOMED code**: the guideline
+corpus's own curators flagged several of its nodes
+`quality_flag: same_snomed_type_mismatch_not_merged` — cases where they
+found the SNOMED code alone would wrongly conflate distinct concepts.
+So matching is done by **node name (case-insensitive exact match)** plus
+a **soft type-compatibility check** against the node's own `@type`
+(`Finding`/`Condition`/`Intervention`/`Medication`/...) versus the
+candidate's OMOP domain — conservative, and tied to what the guideline
+document actually names, not to a crosswalk the corpus's own curators
+already flagged as sometimes wrong.
+
+**Real, measured coverage — not assumed**: checked directly against
+every candidate concept currently in the database: **67 of 7,151
+distinct candidate concept names (0.9%)** have an exact match in the
+guideline corpus. Modest, reported honestly.
+
+**A real evidence block, computed live for this document** (not stored
+in any production decision, since the flag is off — this is what the
+mechanism *would* produce for a real candidate that genuinely has
+coverage):
+
+```
+Candidate: "Osteoporosis" (Condition domain) — one of the 67 real, covered names
+
+OFFICIAL GUIDELINE EVIDENCE (from curated clinical-guideline triplets, not a
+similarity guess -- weigh this as real evidence, it does not decide the
+answer for you):
+  candidate [1] (Osteoporosis, guideline type: Condition) -- guideline
+  evidence from gold-pocket-guide-2026-v1.1-20nov2025_wmv2_chunk_7_copd_and_multimorbidity.json:
+      -> IS_PART_OF: Osteoporosis is one of the conditions comprising the
+      Multiple Organ Loss of Tissue (MOLT) morbidity cluster associated with
+      COPD. [source: Multiple Organ Loss of Tissue (MOLT): Osteoporosis,
+      sarcopenia, anemia, emphysema.]
+```
+
+Notice the framing line: *"weigh this as real evidence, it does not
+decide the answer for you"* — this is additive context, structurally
+incapable of forcing a verdict on its own, the same "evidence to weigh,
+never a deterministic override" discipline applied to
+`CONDITION_VS_OBSERVATION_PRIOR` above.
+
+---
+
+## 9. Provenance summary — everything that reaches a prompt, and from where
+
+| Provenance field | Source stage | Reaches Step A? | Reaches Step B? | Reaches tiebreak? |
+|---|---|---|---|---|
+| `original_text` | Stage 2a (GLiNER) | ✓ | ✓ | ✓ |
+| `expanded_text` | Stage 1 | ✓ | — | — |
+| `gliner_label` | Stage 2a | ✓ | — | — |
+| `assertion_status` / `experiencer` | Stage 1 (medspacy/ConText) | ✓ (drives `ALLERGY_MEANING_INSTRUCTION`) | ✓ (drives rule 3 + `ALLERGY_CONTEXT_CLAUSE`) | ✓ |
+| `section_name` | Stage 1 (sectioning) | ✓ | ✓ | ✓ |
+| `local_context` | Stage 2a (`build_local_context()`) | ✓ | ✓ | ✓ |
+| `match_basis` | Stage 2b (retrieval) | — | ✓ (drives conditional rule 2) | ✓ (shown, not rule-driving) |
+| `concept_name` / `domain_id` / `vocabulary_id` | Stage 2b (retrieval) | — | ✓ | ✓ |
+| `concept_class_id` | Stage 2b (retrieval) | — | — | ✓ (shown; also what `CONDITION_VS_OBSERVATION_PRIOR`'s detector intended to use, see §8.1's bug note) |
+| model's own prior Step B reasoning | this stage | — | — | ✓ (only in tiebreak) |
+| guideline KG evidence | `src/guideline_evidence.py` | — | — | ✓ (only in tiebreak, only if `GUIDELINE_EVIDENCE_ENABLED`) |
+| `CONDITION_VS_OBSERVATION_PRIOR` | corpus-measured constant | — | — | ✓ (only when the exact 2-candidate Condition/Observation same-name pattern is present) |
+
+**The single organizing principle across every row above**: every piece
+of provenance is either shown as context for the model to reason over,
+or used to select *which fixed rule text* gets included — nothing in
+this system lets provenance silently change what counts as a correct
+answer without the model seeing and reasoning about the relevant
+evidence itself. The one deliberate, narrow exception is the four free
+pre-checks upstream of the ensemble entirely (qualifier-fragment,
+Tier-3 fast path, lab-procedure fast path, Tier-5 precheck) — those skip
+the model outright, by design, and are documented in the companion
+calibrator reference (§2 there).
+
+---
+
+## 10. Confidence extraction — not self-reported
+
+Every Step A and Step B call asks for a JSON verdict but **never asks
+the model to self-report a confidence number**. Confidence is instead
+extracted from the model's own token log-probabilities on the verdict
+token itself (`extract_verdict_confidence()` in `src/llm_client.py`) —
+the same distinction the calibrator reference document explains for its
+own `mean_logprob_confidence`/`min_logprob_confidence` features: a
+log-probability is an observation of the decode, not the model's
+opinion of itself. This project measured self-reported HIGH/LOW
+confidence directly (a separate investigation, see the calibrator
+reference §3.1) and found it to be a **per-model constant**, not a
+per-record signal — BioMistral returned HIGH on 10/10 records in that
+check regardless of correctness — which is exactly why this system
+never asks for it that way.
+
+---
+
+## 11. What this document does not cover
+
+Deliberately out of scope here, covered elsewhere:
+
+- **What happens to the vote after it's cast** (unanimous vs. split
+  routing, the calibrator's 16 features, the hard traps, threshold
+  0.72) — `docs/ConsensusCalibrator_Technical_Reference.md`.
+- **The retrieval mechanics that produce the candidate list in the
+  first place** (Tier 1–4, the SNOMED namespace exclusion, the
+  Procedure/Observable-Entity preference) — `docs/Code_Reference_Stages_And_Metrics.md`.
+- **The TransE knowledge graph embedding** (a completely separate
+  mechanism, evaluated as a candidate-disambiguation signal, not
+  currently wired into any prompt) — `docs/Entity_Journey_Plain_Language_Walkthrough.md`
+  §8.
+- **Degenerate-generation detection and retry** (garbled/repetitive
+  model output, a transport-layer concern in `src/llm_client.py`) —
+  not detailed here; briefly, a degenerate response is excluded from
+  `usable_votes()` exactly like an error, contributing no evidence
+  either way.
