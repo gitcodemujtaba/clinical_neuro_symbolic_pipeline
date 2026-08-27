@@ -162,7 +162,14 @@ Start here, depending on what you need:
 | `docs/MoLLM_Prompts_And_Reasoning_Technical_Reference.md` | Every MoLLM prompt verbatim, how provenance selects prompt rules, the rules-KG bridge. |
 | `docs/ConsensusCalibrator_Technical_Reference.md` | The 16-feature calibrator: exact features, training, thresholds, safety traps. |
 | `docs/Provenance_Fields_Technical_Reference.md` | Every provenance field the pipeline writes, where computed, every downstream consumer. |
+| `docs/Evaluation_Criteria.md` | The proposal's own evaluation-criteria spec, verbatim — what a claim needs to satisfy to count. |
 | `docs/2026-08-20_Session_Results_And_Status.md` | Chronological session log — the narrative behind the numbers above. |
+
+`docs/archive/` holds superseded design docs and dated investigation
+logs (2026-08-13 through 2026-08-19) — every real finding in them has
+been mined into `Implementation_Decisions_Log.md` above, kept via
+`git mv` (full history, nothing deleted) rather than removed. See
+`docs/archive/README.md` for what superseded what.
 
 ---
 
