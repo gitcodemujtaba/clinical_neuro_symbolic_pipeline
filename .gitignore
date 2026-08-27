@@ -19,6 +19,16 @@ data/snomed_kg/*
 data/processed/*
 data/medical_abbreviations/*
 
+# MIMIC-IV / PhysioNet-restricted data -- credentialed access only, must
+# never be redistributed via a public git repo (data use agreement).
+# Deleted from tracking 2026-08-23; ignored here so it can't be
+# accidentally re-added later. raw_notes uses the same *-plus-.gitkeep-
+# exception pattern as the other clinical-data dirs below (directory
+# structure preserved, contents ignored); the SNOMED-CT challenge dir
+# never had that convention, so it's ignored outright.
+data/raw_notes/*
+data/snomed-ct-entity-linking-challenge-1.2.0/
+
 # Exception: Keep the directory structure intact in git
 !data/raw_notes/.gitkeep
 !data/athena_omop/.gitkeep
