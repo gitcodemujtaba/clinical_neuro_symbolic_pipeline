@@ -122,7 +122,16 @@ mechanism, see below.
 ### Stage 2b — Normalization / Grounding (`src/normalization/`)
 * **SapBERT** (`src/normalization/sapbert_model.py`) embeds spans; also
   GPU-placed with a CPU fallback — the highest-volume model call in the
-  pipeline (every Tier 3 candidate needs an embedding).
+  pipeline (every Tier 3 candidate needs an embedding). Concept-side
+  vectors are precomputed onto `athena_concept.embedding` (768-dim
+  `FLOAT[]`, 100% coverage on the standard-SNOMED population Tier 3
+  actually queries) and compared via DuckDB's native
+  `list_cosine_similarity()` — no external vector database. Full
+  technical detail — the embedding column's provenance, the calibrated
+  similarity floor's measured precision/coverage trade-off, and two
+  alternatives that were built, measured, and rejected (BM25 hybrid
+  fusion, GLiNER-Linker rerankers) — in
+  `docs/SapBERT_Technical_Reference.md`.
 * **Tiered candidate retrieval** (`src/normalization/tier_retrieval.py`,
   `compound_span.py`): Tier 1 (exact concept-name match), Tier 2 (exact
   synonym match), Tier 3 (SapBERT dense semantic similarity, gated at
