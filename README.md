@@ -147,6 +147,49 @@ patterns.
 
 ---
 
+## Getting the data (not included in this repo)
+
+Two of this project's data dependencies are gitignored on purpose — see
+the note above — and need to be obtained independently by anyone
+reproducing this work. **This project does not redistribute either.**
+
+### Clinical notes & gold annotations (PhysioNet, credentialed access required)
+
+* **MIMIC-IV-Note** (the raw discharge-summary corpus) —
+  https://physionet.org/content/mimic-iv-note/ . Requires a free
+  PhysioNet account, completing the required CITI human-subjects-research
+  training, and signing the dataset's specific data use agreement before
+  download access is granted.
+* **SNOMED CT Entity Linking Challenge gold annotations** (the 272-note,
+  75,491-annotation-row evaluation set this project's gold-recall/precision
+  numbers are measured against) — start from the DrivenData benchmark
+  page, https://www.drivendata.org/benchmarks/310/benchmark-snomed-ct/page/983/
+  (this is also the source of the official char-IoU metric definition
+  this project implements in `evaluation/iou_metrics.py`) — it links
+  through to the underlying PhysioNet-hosted dataset, which is also
+  credentialed-access, same PhysioNet account as above.
+
+Once obtained, place them at `data/raw_notes/` (discharge note CSVs) and
+`data/snomed-ct-entity-linking-challenge-1.2.0/` respectively — the exact
+paths `.gitignore` already excludes and the `RAW_TEXT_CANDIDATES`-style
+fallback lists in `scripts/` already expect.
+
+### Athena/OHDSI OMOP vocabulary (free registration, not PhysioNet-restricted)
+
+The SNOMED CT/RxNorm/OMOP vocabulary tables this pipeline's retrieval
+stages query (`athena_concept`, `athena_concept_synonym`,
+`athena_concept_relationship`, `athena_concept_ancestor`) come from the
+OHDSI Athena vocabulary browser: https://athena.ohdsi.org/ . Free
+registration (no PhysioNet credentialing needed), then select the
+vocabularies you need (this project uses SNOMED and RxNorm) and download.
+Load the resulting CSVs into `db/kg2_lexical_store.duckdb` — see
+`scripts/` for the loading scripts this project used, and
+`docs/Implementation_Decisions_Log.md` §7 for why SNOMED regional
+extensions specifically need the namespace-pattern filter documented
+there if you're building retrieval logic against this data yourself.
+
+---
+
 ## Documentation index
 
 Start here, depending on what you need:
