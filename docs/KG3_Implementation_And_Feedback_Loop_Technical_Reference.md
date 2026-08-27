@@ -470,13 +470,170 @@ problem, not a code problem.
   anytime; will currently report an empty/first-run baseline given §9's
   numbers.
 
-## 11. Honest limitations
+## 11. Simulated-review impact experiment — fresh-5 held-out notes
 
-- **Zero real review throughput to date** (§9) — every claim in §5-§6
-  about how this *will* improve the pipeline is a description of a
-  built, tested mechanism, not a measured before/after result. This
-  document does not have an impact number to report because one does
-  not yet exist.
+**Context and method, stated upfront.** §9 established that real review
+throughput is zero, so §5-§6's mechanisms have no *measured* impact yet
+— only a description of how they're supposed to work. This section
+closes that gap with a genuine, one-off computational experiment: since
+19,103 real reviewer clicks aren't available, the queue was
+**gold-based auto-approved** instead — for every queued case, the
+entity's already-known gold SNOMED annotation (from this project's own
+evaluation corpus) stands in for a reviewer's verdict: a matching
+suggestion is treated as `APPROVED`, a mismatch is treated as
+`CORRECTED` to the gold concept, and anything without a clean,
+gradable gold match is left `PENDING` rather than guessed at. This is
+**not real HITL data** — it substitutes gold-corpus lookup for genuine
+clinical judgment — and is reported here as exactly that: a controlled
+simulation of "what if the queue were fully reviewed," not a claim
+about real reviewer behavior. Run entirely against a **throwaway copy**
+of the production DB (`kg3_impact_experiment.duckdb`, in the session
+scratchpad, never committed) — the real production `hitl_review_queue`
+(§9's numbers) was never touched by this experiment and remains 100%
+`PENDING`.
+
+**Notes measured**: the first 5 of `ui/components/fresh10_notes.py`'s
+`FRESH10_NOTE_IDS` (`13538696-DS-11`, `19895550-DS-7`,
+`11516225-DS-20`, `14652764-DS-17`, `12298181-DS-9`), held out from
+approval so nothing about their own outcome could leak into the pool
+that trains the mechanisms being measured. The approval pool was every
+*other* queued case: 139 notes, 18,978 cases.
+
+### 11.1 Approval pass — real numbers
+
+| Outcome | Count | % of pool |
+|---|---|---|
+| `APPROVED` (suggestion matched gold) | 5,889 | 31.0% |
+| `CORRECTED` (mismatch, gold concept resolvable) | 4,881 | 25.7% |
+| Left `PENDING` — no clean single gold-span overlap | 8,043 | 42.4% |
+| Left `PENDING` — gold SNOMED code not a resolvable standard OMOP concept | 165 | 0.9% |
+| **Total reviewed** | **10,770** | **56.7%** |
+
+The 42.4% "no clean gold overlap" figure is not a flaw in the
+experiment — it reflects the same clean-span-only grading discipline
+every other measurement in this project's documentation uses (a
+prediction span must cleanly cover exactly one gold annotation to be
+graded at all), applied honestly here rather than loosened to inflate
+the approved count.
+
+### 11.2 Mechanism 1 (mined context rules) — real output
+
+`mine_context_rules()` (§5) ran against the newly-reviewed pool and
+wrote **27 rules**, covering exactly **3 distinct abbreviations**:
+`lad` (25 rules, split across two meanings — concept `315085`
+"Lymphadenopathy" and concept `4245039`, the coronary-artery-segment
+sense), `cta` (1 rule), `ttp` (1 rule). The `lad` result is a
+genuine, substantive finding on its own: 21 independent confirmed
+examples of the word `"no"` immediately preceding `lad` predicting the
+Lymphadenopathy sense (e.g. "no lymphadenopathy" in a physical-exam
+line) — this is real, mined evidence bearing directly on the
+coronary-artery-segment systematic-bias problem §5.4 already discusses,
+the population this mechanism was specifically built to eventually
+help correct.
+
+**Fresh-5 Stage 1 impact: zero.** Of fresh5's 22 ambiguous-expansion
+entities, **none** use `lad`, `cta`, or `ttp` — a real, checked null
+result, not an assumption. The mined rules are real and substantive,
+they simply don't happen to touch this particular 5-note sample.
+
+### 11.3 Mechanism 2 (calibrator confirmation count) — real output, with a real complication found along the way
+
+Re-scoring fresh5's non-auto tier-gate decisions against the
+now-populated `hitl_review_queue` surfaced a genuine, unplanned finding
+**before** any impact number could even be computed: loading the
+production calibrator with `scoring_note_ids=FRESH5` triggered its own
+leakage guard —
+
+```
+! leakage: trained on 3 of the note(s) about to be scored
+  (11516225-DS-20, 12298181-DS-9, 19895550-DS-7).
+  refusing to use it; falling back to existing routing.
+```
+
+**3 of the 5 "fresh" notes used for this experiment were actually in
+the production `ConsensusCalibrator`'s own training set** — contradicting
+`ui/components/fresh10_notes.py`'s own docstring claim that this note
+set is "genuinely held-out." That claim is accurate with respect to the
+SNOMED near-duplicate retrieval fix and the KGE evaluation (what it was
+originally written for), but **not** with respect to this specific
+calibrator artifact. This is reported here, plainly, as a real
+contamination finding this experiment surfaced — not fixed or corrected
+elsewhere, per this section's scope.
+
+Given that, results below are reported **per-note contamination
+status**, never blended:
+
+| Entity | Note | Status | Prior tier | `prior_confirmation_count` (new) | Calibrated score | Result |
+|---|---|---|---|---|---|---|
+| `Abd` | `13538696-DS-11` | clean | (tier=`None`, an error/edge-case decision) | 0 | 0.6646 | Below `CALIBRATED_AUTO_THRESHOLD=0.72` — not promoted |
+| `VS` | `19895550-DS-7` | **contaminated** | `TIER_2_AUTO_RESOLVED` | 44 | 0.1786 | Not a clean result (calibrator trained on this note) — but note the score is low regardless |
+| `RRR` | `14652764-DS-17` | clean | `TIER_2_AUTO_RESOLVED` | — | — | `_is_short_alphanumeric_code()` hard trap fired; calibrator never consulted |
+
+Of fresh5's 125 total tier-gate decisions, only **3** were even
+calibrator-eligible (already-auto tiers and split-vote decisions with
+no `final_candidate_index` — i.e. no single candidate reached plurality
+among the models — are structurally never consulted). **Net result on
+the clean population: 0 of 0 eligible clean entities newly promoted**
+(`Abd` is the only clean, calibrator-consulted case, and its score
+stayed below threshold).
+
+One number worth flagging on its own merit despite the contamination:
+`VS`'s `prior_confirmation_count` reached **44** from a single
+approval pass — real evidence the mechanism accumulates volume exactly
+as designed — yet its calibrated score was still low (0.18). This is
+consistent with, not contradicting, this project's own earlier ablation
+finding (§6): `prior_confirmation_count` is a real but **secondary**
+signal in the fitted model, not one that can push a score to promotion
+on its own regardless of magnitude.
+
+### 11.4 Honest summary of this experiment
+
+**Measured impact of KG3's repurposing mechanisms on this specific
+fresh-5 note set, after gold-based-simulated review of 56.7% of the
+queue: zero routing changes.** Not because either mechanism is broken —
+§11.1-§11.3 show both firing exactly as designed on real data (27 real
+rules mined, a real 44-count confirmation signal accumulated) — but
+because of three compounding, honestly-reported reasons specific to
+this sample: (1) the abbreviations that reached mining volume don't
+overlap this note set's ambiguous entities, (2) most of this note set's
+split-vote entities structurally never reach the calibrator at all
+(no plurality candidate), and (3) the one genuinely clean,
+calibrator-consulted entity scored meaningfully below the promotion
+threshold. A larger approval pass, a different 5-note sample, or simply
+more accumulated volume over time could all plausibly change this —
+this experiment measures one honest data point, not a ceiling on what
+the mechanisms can do.
+
+**Reproducing this experiment**: the two scripts used
+(`kg3_impact_experiment.py`, `kg3_impact_experiment_part2.py`) were
+written as one-off session scratchpad scripts, not committed to this
+repository — they are not part of the maintained codebase. Reproducing
+this result requires a scratch copy of the production DB, gold
+annotations and raw note text (both PhysioNet-restricted, see the
+README's Data Access section), and the same gold-based-approval
+methodology described in this section.
+
+## 12. Honest limitations
+
+- **Zero real review throughput to date** (§9) — real reviewer clicks
+  remain at zero. §11's numbers come from a gold-based *simulation* of
+  review, not genuine human judgment — a real, useful data point, but
+  not the same evidence real HITL volume would provide.
+- **§11's simulated experiment measured zero routing changes** on the
+  specific fresh-5 note sample tested — both mechanisms fired
+  correctly on real data (27 mined rules, a real 44-count confirmation
+  signal), but neither happened to change an outcome for these
+  particular 5 notes; §11.4 explains why in detail. Do not read this as
+  evidence the mechanisms don't work — the sample is small and the null
+  result is well-explained, not mysterious.
+- **A real note-set contamination was found while running §11's
+  experiment**: 3 of the 5 "fresh10" notes are actually inside the
+  production `ConsensusCalibrator`'s own training set, despite
+  `ui/components/fresh10_notes.py`'s docstring describing the set as
+  "genuinely held-out." That claim holds for what it was originally
+  written about (the SNOMED near-duplicate fix, the KGE evaluation) but
+  not for this calibrator specifically. Flagged here, not corrected
+  elsewhere, per this document's scope.
 - **`mine_context_rules()` needs real volume, not just any review
   activity** — `MIN_CONTEXT_RULE_SUPPORT=5` independent examples *per
   abbreviation* before any rule is written at all; a handful of reviewed
