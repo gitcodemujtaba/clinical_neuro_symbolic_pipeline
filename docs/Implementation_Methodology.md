@@ -344,7 +344,12 @@ Scoped to foundations in this build: the abbreviation flywheel and the
 consensus calibrator's `prior_confirmation_count` feature are the two
 concrete feedback-loop mechanisms actually running today. A full dynamic
 KG3-driven feedback loop into GLiNER's own prompt/search space (as
-originally proposed) is not built.
+originally proposed) is not built. Full technical detail on both write
+paths, the review-queue lifecycle, and exactly how a reviewer's
+APPROVED/CORRECTED verdict repurposes into these two feedback
+mechanisms — including current real throughput numbers (0 reviewed
+cases as of this writing) — in
+`docs/KG3_Implementation_And_Feedback_Loop_Technical_Reference.md`.
 
 ## Concurrency & Operational Infrastructure
 

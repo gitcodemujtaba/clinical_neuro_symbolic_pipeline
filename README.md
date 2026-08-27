@@ -208,6 +208,7 @@ Start here, depending on what you need:
 | `docs/TransE_KG_Embedding_Technical_Reference.md` | The TransE KG-embedding model: training, both evaluations, the gold-validated tiebreak test, and why it stays unwired from production. |
 | `docs/GLiNER_Models_Technical_Reference.md` | Both GLiNER models: GLiNER-BioMed span extraction (calibration, chunking, false-positive filters) and GLiNER-relex relation extraction (endpoint linking, Channel E guideline bridge). |
 | `docs/SapBERT_Technical_Reference.md` | SapBERT dense retrieval: the Athena embedding column, DuckDB-native vector search, the similarity floor's measured trade-off, and two rejected alternatives (hybrid RRF, GLiNER-Linker rerankers). |
+| `docs/KG3_Implementation_And_Feedback_Loop_Technical_Reference.md` | KG3 write-back: both gated write paths, the HITL review-queue lifecycle, and the two mechanisms that repurpose reviewed labels back into the pipeline. |
 | `docs/Evaluation_Criteria.md` | The proposal's own evaluation-criteria spec, verbatim — what a claim needs to satisfy to count. |
 | `docs/2026-08-20_Session_Results_And_Status.md` | Chronological session log — the narrative behind the numbers above. |
 
