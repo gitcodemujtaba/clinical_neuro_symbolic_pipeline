@@ -189,7 +189,10 @@ mechanism, see below.
   (265 win / 181 loss at threshold 0.03) — real value as a generalist
   secondary signal, not yet integrated pending a calibrated gating
   mechanism (the raw win/loss rate is not risk-free enough for auto-write
-  decisions on its own).
+  decisions on its own). Full technical detail — architecture, training
+  procedure, both evaluations, the gold-validated threshold sweep, and
+  the specific falsified claim — in
+  `docs/TransE_KG_Embedding_Technical_Reference.md`.
 
 ### Stage 3 — MoLLM Tier Gate (`src/mollm_tier_gate.py`)
 Three local Ollama models — **qwen2.5:3b, llama3.2:3b, phi4-mini** — each
