@@ -29,6 +29,30 @@ data/medical_abbreviations/*
 data/raw_notes/*
 data/snomed-ct-entity-linking-challenge-1.2.0/
 
+# 2026-08-28: a real local-dev gap found via the Streamlit UI -- with the
+# real directories deleted (above), data/raw_notes/* and the trailing-
+# slash pattern only match CONTENTS of an actual directory at that path,
+# not a symlink placed directly at "data/raw_notes" itself (e.g. one
+# pointing at a sibling worktree's real, credentialed-access copy of this
+# same PhysioNet data for local testing) -- confirmed live, such a symlink
+# showed up as untracked (`??`) rather than ignored, a real risk of it
+# getting swept into a careless `git add -A`. These two bare
+# (no-trailing-slash) patterns close that gap by matching the path itself
+# regardless of type (file, directory, or symlink).
+#
+# KNOWN, ACCEPTED TRADE-OFF: a bare pattern excludes the directory itself,
+# not just its contents, which means git's own documented limitation now
+# applies -- a file cannot be re-included by a `!` negation if its parent
+# directory is itself excluded. This makes the
+# `!data/raw_notes/.gitkeep` exception below permanently inert for
+# data/raw_notes specifically (verified empirically; a `!data/raw_notes/`
+# directory-negation was tried first and did NOT restore it either).
+# Accepted deliberately: compliance (never let this symlink become
+# trackable) matters more than the cosmetic convenience of an empty
+# tracked directory placeholder, which is what would be lost.
+data/raw_notes
+data/snomed-ct-entity-linking-challenge-1.2.0
+
 # Exception: Keep the directory structure intact in git
 !data/raw_notes/.gitkeep
 !data/athena_omop/.gitkeep
