@@ -181,6 +181,31 @@ with tab_overall:
                 of2.metric("Linked recall", f"{linked_recall*100:.1f}%")
                 of3.metric("Linked F1", f"{linked_f1*100:.1f}%" if linked_f1 is not None else "n/a")
 
+                # 2026-08-28: made explicit after a real, confirmed-live finding
+                # -- scripts/run_fresh5_final_validation.py caps Stage 3 at the
+                # first 25 (by orig_start) Stage-2b-eligible entities PER NOTE,
+                # regardless of note size ("still a real, gradable held-out
+                # sample" -- its own comment). Every one of the 10 fresh-
+                # validation notes hits exactly this cap. total_decisions below
+                # is real and correctly computed, but a reader who doesn't know
+                # about the cap could easily mistake it for full note coverage
+                # -- this note prevents that, using the real extracted-entity
+                # count as the comparison, not a hardcoded "25".
+                n_eligible = conn.execute(f"""
+                    SELECT count(*) FROM extracted_entities e
+                    WHERE e.note_id IN ({note_ph}) AND e.is_test = TRUE
+                    AND (e.superseded_by_split IS NULL OR e.superseded_by_split = FALSE)
+                    AND (e.superseded_by_growth IS NULL OR e.superseded_by_growth = FALSE)
+                    AND (e.below_threshold IS NULL OR e.below_threshold = FALSE)
+                """, note_ids).fetchone()[0]
+                if n_eligible > total_decisions:
+                    st.caption(f"⚠️ **{total_decisions} of {n_eligible}** Stage-2b-eligible entities "
+                              f"in the selected note(s) actually reached Stage 3 — "
+                              f"`scripts/run_fresh5_final_validation.py` deliberately caps at "
+                              f"~25/note for a fast, real, gradable sample, not full coverage. "
+                              f"The numbers below are accurate for that capped population, not "
+                              f"the whole note.")
+
                 st.markdown("#### Stage 3 gate — deflection rate & AUTO-tier precision")
                 oc4, oc5, oc6 = st.columns(3)
                 oc4.metric("Total Stage 3 decisions", total_decisions)
@@ -219,6 +244,21 @@ with tab_tiers:
         from src.mollm_tier_gate import AUTO_TIERS
         total = sum(r[2] for r in tier_rows)
         auto_n = sum(r[2] for r in tier_rows if r[0] in AUTO_TIERS)
+
+        # Same real, confirmed-live cap as the Overall tab's identical note --
+        # see that comment for the full explanation.
+        n_eligible = conn.execute(f"""
+            SELECT count(*) FROM extracted_entities e
+            WHERE e.note_id IN ({note_ph}) AND e.is_test = TRUE
+            AND (e.superseded_by_split IS NULL OR e.superseded_by_split = FALSE)
+            AND (e.superseded_by_growth IS NULL OR e.superseded_by_growth = FALSE)
+            AND (e.below_threshold IS NULL OR e.below_threshold = FALSE)
+        """, note_ids).fetchone()[0]
+        if n_eligible > total:
+            st.caption(f"⚠️ This is {total} of {n_eligible} Stage-2b-eligible entities in the "
+                      f"selected note(s) — the validation run caps Stage 3 at ~25/note, so this "
+                      f"distribution is over that capped sample, not full note coverage.")
+
         c1, c2, c3 = st.columns(3)
         c1.metric("Total decisions", total)
         c2.metric("AUTO coverage", f"{auto_n}/{total}",
