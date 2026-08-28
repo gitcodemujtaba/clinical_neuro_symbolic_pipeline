@@ -193,6 +193,30 @@ def _split_overlap_spans(pred_start, pred_end, pred_tooltip,
     return out
 
 
+@st.cache_data
+def load_gold_note_ids() -> set:
+    """Distinct note_ids present in the gold annotations CSV -- read once
+    (just the note_id column, not full annotation rows) and cached, so
+    the sidebar can filter the browsable list down to notes a gold
+    comparison is actually possible for. Returns an empty set (not an
+    error) if the gold CSV isn't reachable here -- same degrade-gracefully
+    discipline as load_raw_text() above; a caller must treat an empty
+    set as 'gold unavailable', not 'zero notes have gold'.
+    """
+    from evaluation.cal_eval import GOLD_CANDIDATES
+    for path in GOLD_CANDIDATES:
+        if not os.path.exists(path):
+            continue
+        ids = set()
+        with open(path, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                nid = row.get("note_id")
+                if nid:
+                    ids.add(nid)
+        return ids
+    return set()
+
+
 with st.sidebar:
     st.header("Note selection")
     # 2026-08-28: widened from a fixed FRESH10_NOTE_IDS-only dropdown to
@@ -205,6 +229,19 @@ with st.sidebar:
     # mollm_tier_gate_decisions do) -- joined here rather than filtered
     # directly. is_stale=FALSE means "processed by current code" -- see
     # scripts/mark_notes_stale.py for the migration.
+    #
+    # Further narrowed (same session, follow-up request) to only notes
+    # that actually HAVE gold annotations -- tab 3's gold comparison is
+    # meaningless (and was silently a no-op) on a note gold says nothing
+    # about. Applied to the BROWSABLE list only, not the free-text
+    # override below -- that path is a deliberate "I know what I'm
+    # doing" escape hatch and stays available for a gold-less note, just
+    # with an explicit warning instead of being blocked outright.
+    gold_note_ids = load_gold_note_ids()
+    if not gold_note_ids:
+        st.warning("Gold annotations CSV not reachable here — showing all "
+                  "processed notes, unfiltered by gold availability.")
+
     fresh10_only = st.checkbox("Fresh-10 (validated) notes only", value=False)
     scope_ph = FRESH10_NOTE_IDS if fresh10_only else None
     scope_clause = f"AND note_id IN ({','.join('?' * len(scope_ph))})" if scope_ph else ""
@@ -215,8 +252,10 @@ with st.sidebar:
             WHERE is_test = TRUE AND is_stale = FALSE
         ) GROUP BY note_id ORDER BY n ASC
     """, scope_ph or []).fetchall()
+    if gold_note_ids:
+        note_rows = [r for r in note_rows if r[0] in gold_note_ids]
     if not note_rows:
-        st.warning("No processed, non-stale notes match this filter yet.")
+        st.warning("No processed, non-stale notes with gold annotations match this filter yet.")
         _stop()
     note_ids_sorted = [r[0] for r in note_rows]
     counts_by_note = dict(note_rows)
@@ -275,6 +314,10 @@ with st.sidebar:
                     f"(use the 🚀 Pipeline Runner page), or it isn't a note_id "
                     f"this corpus has under `is_test=TRUE`.")
             _stop()
+        if gold_note_ids and note_id not in gold_note_ids:
+            st.warning(f"`{note_id}` has no gold annotations — tab 3's gold "
+                      f"comparison will find nothing for it. Stages 1/2a/2b/3 "
+                      f"still work normally.")
         st.caption(f"Typed selection: {counts_by_note[note_id]} extracted entities"
                   f"{'  ⭐ fresh-10 validated' if is_fresh10[note_id] else ''}")
     else:
