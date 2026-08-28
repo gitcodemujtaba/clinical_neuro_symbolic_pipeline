@@ -182,24 +182,59 @@ def render_entity_trace(entity: dict, norm: dict, decision: dict):
 
 with st.sidebar:
     st.header("Selection")
-    # extracted_entities itself carries no is_stale/provenance columns
-    # (only normalized_entities and mollm_tier_gate_decisions do) -- joined
-    # here rather than filtered directly. is_stale=FALSE means "processed
-    # by current code" -- see scripts/mark_notes_stale.py for the migration.
-    note_ph = ",".join("?" * len(FRESH10_NOTE_IDS))
+    # 2026-08-28: widened from a fixed FRESH10_NOTE_IDS-only dropdown to
+    # the full processed-note pool, matching the same fix applied to
+    # ui/pages/3_🔍_Troubleshooting.py -- "select OR insert a note id"
+    # needs both a browsable list and a free-text override, not just 5
+    # hardcoded notes. extracted_entities itself carries no is_stale/
+    # provenance columns (only normalized_entities and
+    # mollm_tier_gate_decisions do) -- joined here rather than filtered
+    # directly. is_stale=FALSE means "processed by current code" -- see
+    # scripts/mark_notes_stale.py for the migration.
+    fresh10_only = st.checkbox("Fresh-10 (validated) notes only", value=False)
+    scope_ph = FRESH10_NOTE_IDS if fresh10_only else None
+    scope_clause = f"AND e.note_id IN ({','.join('?' * len(scope_ph))})" if scope_ph else ""
     note_ids = [r[0] for r in conn.execute(f"""
         SELECT DISTINCT e.note_id FROM extracted_entities e
-        WHERE e.is_test = TRUE AND e.note_id IN ({note_ph}) AND e.note_id IN (
+        WHERE e.is_test = TRUE {scope_clause} AND e.note_id IN (
             SELECT DISTINCT note_id FROM normalized_entities
             WHERE is_test = TRUE AND is_stale = FALSE
         ) ORDER BY e.note_id
-    """, FRESH10_NOTE_IDS).fetchall()]
+    """, scope_ph or []).fetchall()]
     if not note_ids:
-        st.warning("None of the 10 fresh-validation notes are ready (is_stale = FALSE) yet. "
-                  "Run the pipeline on them first (scripts/run_fresh5_final_validation.py), "
-                  "then reload this page.")
+        st.warning("No processed, non-stale notes match this filter yet.")
         _stop()
-    note_id = st.selectbox("Note", note_ids)
+
+    picked = st.selectbox(f"Browse ({len(note_ids)} processed notes)", note_ids)
+    typed = st.text_input(
+        "...or type/paste any note_id directly",
+        placeholder="e.g. 10000032-DS-21",
+        help="Overrides the dropdown above when non-empty.")
+
+    if typed.strip():
+        note_id = typed.strip()
+        if note_id not in note_ids:
+            direct = conn.execute("""
+                SELECT count(*) FROM extracted_entities e
+                WHERE e.is_test = TRUE AND e.note_id = ? AND e.note_id IN (
+                    SELECT DISTINCT note_id FROM normalized_entities
+                    WHERE is_test = TRUE AND is_stale = FALSE
+                )
+            """, [note_id]).fetchone()[0]
+            if not direct:
+                any_rows = conn.execute(
+                    "SELECT count(*) FROM extracted_entities WHERE note_id = ?", [note_id]
+                ).fetchone()[0]
+                if any_rows:
+                    st.warning(
+                        f"`{note_id}` has {any_rows} extracted entities but hasn't "
+                        f"completed Stage 2b (or is marked stale) yet.")
+                else:
+                    st.warning(f"`{note_id}` has no extracted entities in this database.")
+                _stop()
+    else:
+        note_id = picked
+
     n_entities = st.number_input("Number of entities to track", min_value=1, max_value=50, value=1, step=1)
     search = st.text_input("Filter: entity text contains (optional)")
 
