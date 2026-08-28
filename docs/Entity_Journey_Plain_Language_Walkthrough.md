@@ -609,15 +609,56 @@ clean as the "fever" story:
    other two models outvoted it, but qwen itself got less reliable, not
    more.
 
-**The fair, honest summary**: giving the AI models real medical-hierarchy
-context to reason from is a genuinely promising idea, and the "fever"
-case proves it can work — but it isn't a simple win that automatically
-applies everywhere. It only reaches a third of the cases that would need
-it (because finding the right entry in the graph is its own hard
-problem), and even when it does reach them, it can occasionally make one
-model's reasoning worse instead of better, not just better. This is
-exactly why this project treats it as an experiment worth writing down
-and learning from, not something ready to switch on for real notes.
+### A fairer test — 10 cases picked specifically from where the graph *can* help
+
+The test above mixed together cases where the graph could help with
+cases where it couldn't even try, which made it hard to tell how good
+the idea really is *when it applies*. So a second, more targeted test
+was run: instead of grabbing 15 random disagreement-cases, the system
+kept sampling real cases until it had found **10 where the graph lookup
+actually worked** (it had to check 31 real cases to find those 10 — the
+same roughly one-in-three hit rate as before).
+
+**This time, the result was a clean, real win:**
+
+| | Without the graph | With the graph |
+|---|---|---|
+| Correct | 6 out of 10 | **8 out of 10** |
+| Got fixed (wrong → right) | — | **2 cases** |
+| Got broken (right → wrong) | — | **0 cases** |
+
+Both of the newly-fixed cases (a heart-damage blood test called
+"Troponin," and a "neck swelling" mention) followed the exact same
+pattern as "fever": the models had been leaning toward the wrong answer
+2-votes-to-1, and once they were shown where the term actually sits in
+the medical hierarchy, all three agreed on the right answer.
+
+The two cases that stayed wrong did so for a completely different, fair
+reason: for those two, the *earlier* step in the pipeline (the one that
+searches the vocabulary for candidate matches, before the AI models ever
+get involved — see §4) had already handed the models the wrong option to
+choose from in the first place. All three models agreed with each other
+both times, correctly following instructions — the problem was upstream
+of anything this experiment touches, and giving the models a dictionary
+can't fix a question they were never actually asked.
+
+**The fair, honest summary, taking both tests together**: giving the AI
+models real medical-hierarchy context to reason from is a genuinely
+promising idea. It only reaches roughly a third of the cases that would
+need it, because finding the right entry in the graph for a given
+phrase is its own hard problem — most real clinical wording (short
+abbreviations, multi-word phrases) doesn't land on an exact match. But
+**when it does reach a case, the evidence so far is genuinely
+encouraging**: the first, broader test found no clear pattern either way
+(one improvement, one setback, mostly no change); this second, more
+targeted test — specifically built to isolate the cases where the idea
+could actually be judged — found a real 20-percentage-point improvement
+with zero cases made worse. That's still a small sample, not proof this
+would hold up across the whole corpus, but it's real, encouraging
+evidence rather than a coin flip. This is exactly why this project
+treats it as a promising experiment worth pursuing further (starting
+with a better way of finding graph matches in the first place), not
+something ready to switch on for real notes yet.
 
 ---
 

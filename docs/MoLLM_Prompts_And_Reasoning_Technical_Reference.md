@@ -728,21 +728,70 @@ the easy case, not the typical one, and typical `TIER_4_ENSEMBLE_SPLIT`
 entities mostly never even reach the taxonomy-injection path under this
 simple search strategy.
 
-### 12.6 What a real version of this would need
+### 12.6 A cleaner test — 10 entities drawn specifically from the taxonomy-matched population
+
+§12.5's 5 scored entities were a byproduct of a *blind* random sample —
+diluted by the ~67% of cases where the mechanism can't apply at all, so
+the sample size within reach was too small to draw a real conclusion
+from. A second, more targeted test fixed that: instead of sampling
+`TIER_4_ENSEMBLE_SPLIT` entities blindly, it scanned the gradable pool
+(cheap — Neo4j lookup only, no LLM calls) specifically **until 10
+entities with a real taxonomy match were found** (31 entities scanned to
+find 10 — a 32.3% match rate, consistent with §12.5's finding), then ran
+the full real OLD-vs-NEW Step A/B comparison on all 10.
+
+**Real result, this time a clean, positive one:**
+
+| | OLD | NEW |
+|---|---|---|
+| Correct | 6/10 (60%) | **8/10 (80%)** |
+| WRONG → CORRECT | — | **2** (`Troponin`, `neck swelling`) |
+| CORRECT → WRONG | — | **0** |
+
+Both flips show the same pattern as the "fever" case: a genuine 2-vote
+plurality that was actually *wrong* (`Troponin`: `[None, None, 1]`,
+`neck swelling`: `[None, None, 1]`) became a clean 3/3 unanimous
+*correct* vote once Step A had real taxonomy to reason from — e.g.
+`Troponin`'s new meaning, *"a biomarker used to diagnose myocardial
+infarction,"* is properly grounded where the old, ungrounded guesses had
+the majority of models rejecting the correct candidate outright.
+
+**The two entities that stayed wrong did so for an entirely different,
+honest reason** — not a Step A problem at all: `Prednisone` and a
+PICC-line entity had all 3 models agree on the *same* candidate both
+times, and that candidate's SNOMED crosswalk simply isn't gold's answer
+(a Stage 2b retrieval-layer gap — the correct concept was never in the
+candidate pool to begin with). No amount of better meaning-generation in
+Step A can fix a candidate that was never offered; this is out of scope
+for what this mechanism can do, and correctly shows up as unaffected
+rather than falsely "fixed."
+
+**Zero regressions in this run** — unlike §12.5's blind sample, which had
+one (the PNA/qwen over-elaboration case). Taken together, the honest
+picture across both experiments is: **limited reach (~33% of
+`TIER_4_ENSEMBLE_SPLIT` entities under this naive search), but a real,
+clean, +20-percentage-point improvement with zero downside specifically
+within that reach** — a materially more encouraging result than §12.5's
+blind sample alone would suggest, precisely because most of §12.5's
+"no effect" cases were never actually testing the mechanism at all.
+
+### 12.7 What a real version of this would need
 
 Stated plainly, not glossed over: (1) a smarter match strategy than
-exact-string-after-stripping-the-tag — the 33% coverage ceiling here is
-a search-quality problem, not a proof the taxonomy signal itself is
-weak; a fuzzy/synonym-aware lookup (or reusing SapBERT similarity
-against `fullySpecifiedName` the same way Tier 3 already works, see
-`docs/SapBERT_Technical_Reference.md`) would very likely raise coverage
-substantially. (2) A larger, pre-registered sample before drawing any
-production conclusion — 5 scored entities is far too small to estimate
-a real net effect size, positive or negative. (3) Thought given to the
-PNA-style downside — taxonomy context clearly *can* invite
-over-elaboration, not just correction, and any real deployment would
-need to measure that risk directly rather than assume the "fever" win
-generalizes for free.
+exact-string-after-stripping-the-tag — the ~33% coverage ceiling across
+both experiments is a search-quality problem, not a proof the taxonomy
+signal itself is weak; §12.6's clean result inside that reach is direct
+evidence the underlying idea works, so widening the reach (a
+fuzzy/synonym-aware lookup, or reusing SapBERT similarity against
+`fullySpecifiedName` the same way Tier 3 already works, see
+`docs/SapBERT_Technical_Reference.md`) is the highest-leverage next
+step. (2) A larger, pre-registered sample before any production
+conclusion — 10 and 5 scored entities are still small; §12.6's +20pp is
+encouraging, not yet statistically conclusive. (3) Thought given to the
+PNA-style downside from §12.5 — taxonomy context clearly *can* invite
+over-elaboration on some entities even though it didn't in §12.6's
+sample, and any real deployment would need to keep measuring that risk,
+not assume it never recurs.
 
 ## 12. What this document does not cover
 
