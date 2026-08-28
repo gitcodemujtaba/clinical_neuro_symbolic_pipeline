@@ -662,7 +662,76 @@ something ready to switch on for real notes yet.
 
 ---
 
-## 11. The whole journey, summarized
+## 11. A different experiment — what if we just used a real medical AI instead?
+
+Section 10 tried giving a general-purpose AI model outside help (a
+medical dictionary of sorts) to make up for it not having medical
+training. A different, simpler question follows naturally: **what if we
+skipped that, and just used an AI model that was actually trained on
+medical text in the first place?**
+
+### First, a real, useful side-discovery
+
+This project's own setup notes name two medical AI models it originally
+planned to use — but checking directly, **neither is actually running**
+anywhere on this machine right now. Separately, this project's storage
+already has two *different* copies of similar medical models sitting
+fully downloaded but never used, because the software needed to actually
+run that particular file format was never installed. So "does the
+project have a medical AI available" turned out to have a real, slightly
+disappointing answer: sort of, but not in a form that's usable today
+without extra setup work.
+
+### So two real medical AI models were downloaded fresh and tried
+
+Two genuine, publicly available medical AI models were pulled down for
+real — not simulated — and given the exact same "fever" puzzle from
+section 5, completely unaided (no dictionary help this time — just
+"here's the note, here's the candidate answer, does it match?").
+
+**One of them got it right. The other got it wrong — and in a strange,
+new way.** The one that failed didn't seem confused about the medicine
+at all — when asked to describe what "fever" means, it gave a
+perfectly sensible answer. But then, when asked "does the official
+answer match your own description," it said no, and its stated reason
+made no sense: it claimed the two didn't belong in the same category,
+which wasn't even true. A model that sounds medically fluent isn't
+automatically a *reliable* one for this specific kind of check.
+
+### A bigger, fairer test: the same 10 real cases from section 10
+
+| | Correct out of 10 |
+|---|---|
+| Regular AI models, no help | 6 |
+| Regular AI models, **with** the medical dictionary | **8** |
+| Medical AI #1 (the one that failed on "fever") | **0** |
+| Medical AI #2 (the one that succeeded on "fever") | 7 (plus 1 case it couldn't answer at all) |
+
+The model that got "fever" wrong got **every single one of the 10 cases
+wrong** — including several where its own description of the term was
+basically correct, but it then said "no" anyway when asked to confirm
+the match. That's a strange, specific kind of unreliability, not a lack
+of medical knowledge.
+
+The other medical model did about as well as the regular models did
+*with* the dictionary's help — and the few cases it missed were the same
+two cases everything else in this whole document also got wrong, for an
+unrelated reason (the very first search step, described in section 4,
+never found the right answer to hand to any AI model in the first
+place — no model, however well-trained, can pick a correct answer it
+was never shown).
+
+**The fair, honest takeaway**: being "trained on medical text" doesn't
+automatically make an AI model trustworthy for this specific job. One
+real medical model tested here was the single worst performer of
+everything tried anywhere in this document. The other was genuinely
+good — about as good as giving a regular model a dictionary to consult.
+Which specific AI model you pick matters at least as much as whether it
+was "medically trained" in general.
+
+---
+
+## 12. The whole journey, summarized
 
 ```
 "Denies fever, chills, ..."

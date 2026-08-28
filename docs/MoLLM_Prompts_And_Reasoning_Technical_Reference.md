@@ -572,7 +572,7 @@ because it's a direct, measured answer to a real architectural question
 (§2's own text: Step A gets *nothing* but the note itself), not because
 it's been adopted.
 
-### 12.1 The problem, restated precisely
+### 11.1 The problem, restated precisely
 
 `_clinical_meaning_prompt()` (§2) instructs the model: *"Based ONLY on
 the note text above, provide a concise, single-phrase clinical
@@ -586,7 +586,7 @@ concept's own definition, which is the literal, documented cause of its
 `NONE_CORRECT` vote on an entity every other signal (Tier 1 exact match,
 similarity 1.0, the other two models) already had right.
 
-### 12.2 A real, previously-undiscovered resource: a live Neo4j SNOMED graph
+### 11.2 A real, previously-undiscovered resource: a live Neo4j SNOMED graph
 
 Verified live, direct connection, not assumed: this environment runs a
 Docker container (`db1_neo4j_lexicon`, bolt://localhost:7687) holding a
@@ -611,7 +611,7 @@ Step A is **taxonomic position** (what a term is a type of, and what's
 a type of it) — not a prose definition. That turns out to be enough to
 matter, per §12.4 below.
 
-### 12.3 The design — an independent search, not the candidate list
+### 11.3 The design — an independent search, not the candidate list
 
 The two-step CoT's central discipline is that Step A must not see Stage
 2b's candidate list before forming its own judgment (§1) — this was
@@ -643,7 +643,7 @@ shortcut to it:
    line — every other line of the prompt is byte-identical, so this is
    the only variable between the OLD and NEW conditions below.
 
-### 12.4 Deep-dive result — the "fever" entity, Step A *and* Step B, real models
+### 11.4 Deep-dive result — the "fever" entity, Step A *and* Step B, real models
 
 Re-ran the real, shipped Step A and Step B calls (same `LLMClient`, same
 schema-guided decoding, `TEMPERATURE=0.0` — reproducible, not a lucky
@@ -673,7 +673,7 @@ barely above the 0.72 threshold, itself dependent on a high
 directly to genuine `TIER_1_AUTO_VALIDATED`, no calibrator needed, no
 split-vote fragility at all.
 
-### 12.5 Scaled result — 15 real held-out `TIER_4_ENSEMBLE_SPLIT` entities, gold-graded
+### 11.5 Scaled result — 15 real held-out `TIER_4_ENSEMBLE_SPLIT` entities, gold-graded
 
 The single "fever" case is a best-case scenario — a common, single word
 that happens to match a SNOMED preferred term exactly. To check whether
@@ -728,7 +728,7 @@ the easy case, not the typical one, and typical `TIER_4_ENSEMBLE_SPLIT`
 entities mostly never even reach the taxonomy-injection path under this
 simple search strategy.
 
-### 12.6 A cleaner test — 10 entities drawn specifically from the taxonomy-matched population
+### 11.6 A cleaner test — 10 entities drawn specifically from the taxonomy-matched population
 
 §12.5's 5 scored entities were a byproduct of a *blind* random sample —
 diluted by the ~67% of cases where the mechanism can't apply at all, so
@@ -775,7 +775,7 @@ within that reach** — a materially more encouraging result than §12.5's
 blind sample alone would suggest, precisely because most of §12.5's
 "no effect" cases were never actually testing the mechanism at all.
 
-### 12.7 What a real version of this would need
+### 11.7 What a real version of this would need
 
 Stated plainly, not glossed over: (1) a smarter match strategy than
 exact-string-after-stripping-the-tag — the ~33% coverage ceiling across
@@ -792,6 +792,98 @@ PNA-style downside from §12.5 — taxonomy context clearly *can* invite
 over-elaboration on some entities even though it didn't in §12.6's
 sample, and any real deployment would need to keep measuring that risk,
 not assume it never recurs.
+
+### 11.8 A different question — does a medically-trained model need the taxonomy crutch at all?
+
+Sections 11.1-11.7 grounded a general-purpose 3B model with external
+taxonomy. A different, orthogonal question: would a model that was
+*already* medically fine-tuned solve the same puzzle unaided, with the
+real, unmodified production prompts and no help at all?
+
+**Real models pulled and tested, not simulated**: two genuine
+medically-fine-tuned checkpoints, confirmed real via the Hugging Face
+API before pulling and never assumed —
+`MaziyarPanahi/BioMistral-7B-GGUF` (Q4_K_M, 4.4 GB) and
+`aaditya/OpenBioLLM-Llama3-8B-GGUF` (Q4_K_M, 4.9 GB) — pulled directly
+via `ollama pull hf.co/<repo>:Q4_K_M`, run through the exact same
+`LLMClient.complete()` transport every production model uses. Both
+models were unloaded from GPU memory and deleted from disk immediately
+after testing — this was a pure side-experiment, never wired into
+`MODEL_NAMES` or any production call path.
+
+**A separate, real finding along the way, worth recording precisely**:
+this project's own `.env` (sibling worktree) names two medical model
+endpoints — `MEDGEMMA_URL`, `OPENBIOLLM_URL` — neither of which is
+currently running (checked directly, nothing listening on either port).
+Separately, this box's Hugging Face cache already holds two
+*different*, AWQ-quantized copies of these same model families, fully
+downloaded (`OpenBioLLM-Llama3-8B-AWQ`, 5.4 GB; `BioMistral-7B-AWQ`,
+3.9 GB) but unusable as-is — AWQ format needs vLLM, and `vllm` is not
+installed anywhere on this box. This experiment deliberately used
+fresh, independently-verified GGUF pulls instead, specifically so it
+could run on the existing Ollama transport with zero new infrastructure
+— see `docs/Entity_Journey_Plain_Language_Walkthrough.md` §11 for the
+plain-language version of this same infrastructure finding.
+
+**Single-entity puzzle ("fever", real unmodified Step A + Step B, no
+taxonomy help)**:
+
+| Model | Step A meaning | Step B verdict |
+|---|---|---|
+| BioMistral-7B | "a symptom of fever in a patient" (reasonable) | **WRONG** — `match=False`, conf 0.308. Reasoning: *"Fever is in the domain of Symptom, while the text span 'fever' is in the domain of Condition. The two are not equivalent."* — a hallucinated domain conflict; the candidate's real domain is Condition, and the model's own Step A meaning never claimed otherwise. |
+| OpenBioLLM-Llama3-8B | "An infectious process characterized by high body temperature" (overspecified but sound) | **CORRECT** — `match=True`, conf 0.882 |
+
+Genuinely different failure/success shapes than the general 3B models
+saw — not the negation-confusion bug at all. Medical training changed
+*what kind* of mistake gets made; it didn't guarantee no mistake.
+
+**Scaled test — the identical 10 entities from §11.6**, same gold
+grading, run with the real unmodified prompts (no taxonomy) against
+both medical models:
+
+| Entity | Gold-correct? | General OLD | General NEW (+taxonomy) | BioMistral-7B | OpenBioLLM-8B |
+|---|---|---|---|---|---|
+| abdominal pain | ✓ | ✓ | ✓ | ✗ | ✓ |
+| spinal stenosis | ✓ | ✓ | ✓ | ✗ | ✓ |
+| brain natriuretic peptide | ✓ | ✓ | ✓ | ✗ | ✓ |
+| Prednisone | (retrieval gap) | ✗ | ✗ | ✗ | ✗ |
+| chronic kidney disease | ✓ | ✓ | ✓ | ✗ | ✓ |
+| PICC line | (retrieval gap) | ✗ | ✗ | ✗ | ✗ |
+| Tetracycline | ✓ | ✓ | ✓ | ✗ | error (empty Step A) |
+| deep venous thrombosis | ✓ | ✓ | ✓ | ✗ | ✓ |
+| Troponin | ✓ | ✗ | ✓ | ✗ | ✓ |
+| neck swelling | ✓ | ✗ | ✓ | ✗ | ✓ |
+| **Total** | | **6/10** | **8/10** | **0/10** | **7/10 (1 error)** |
+
+**BioMistral-7B scored 0/10 — every single candidate rejected, on every
+entity, including cases where its own Step A meaning was an
+near-exact paraphrase of the correct candidate's name** (e.g. "a
+diagnosis of chronic kidney disease" for the CKD candidate, still
+rejected at Step B). This reads as a systematic instruction-following
+failure specific to this model on this exact structured binary-match
+task shape — not a medical-knowledge gap, since its free-text reasoning
+was frequently reasonable. A real, concrete example of why "medically
+trained" is not a substitute for verifying a model actually follows
+this pipeline's specific prompt contract.
+
+**OpenBioLLM-Llama3-8B (7/10, 1 error) matched the general ensemble's
+taxonomy-boosted result on every entity that had a correct candidate to
+find** — its 2 wrong answers (Prednisone, PICC line) are the *same two*
+entities every other approach in this table also got wrong, both for
+the same reason: a Stage 2b retrieval-layer gap where the correct
+concept was never in the candidate pool at all. On the population where
+an answer was actually reachable, OpenBioLLM alone performed on par with
+the general ensemble + real external grounding — genuinely competitive,
+not a fluke on one lucky entity.
+
+**Honest conclusion**: real medical fine-tuning is not a uniform win —
+one of two real, independently-verified medical models tested here was
+the single worst performer of any approach tried in this whole
+document (0/10), while the other matched the best-performing
+general-ensemble configuration. Model *choice* within "medically
+trained" matters at least as much as the medical/general label itself,
+and neither this section nor §11.1-§11.7 should be read as recommending
+a specific production change — both remain documented experiments.
 
 ## 12. What this document does not cover
 
