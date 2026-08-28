@@ -562,7 +562,189 @@ never asks for it that way.
 
 ---
 
-## 11. What this document does not cover
+## 11. Experimental — grounding Step A with real SNOMED IS_A taxonomy (Neo4j)
+
+**Status: an experiment run against real models and real data, not a
+shipped mechanism.** Nothing described in this section is wired into
+`route_tier()` or any production call path — it lives entirely in
+one-off session scratchpad scripts, not this repository. Reported here
+because it's a direct, measured answer to a real architectural question
+(§2's own text: Step A gets *nothing* but the note itself), not because
+it's been adopted.
+
+### 12.1 The problem, restated precisely
+
+`_clinical_meaning_prompt()` (§2) instructs the model: *"Based ONLY on
+the note text above, provide a concise, single-phrase clinical
+definition."* There is no SNOMED lookup, no dictionary, no KG query
+anywhere in that call. Whatever definition comes out is manufactured
+entirely from the model's own pretrained weights at that instant. §3's
+own worked example already shows the cost of this directly: qwen2.5:3b's
+real, stored Step A output for "fever" (`assertion_status: ABSENT`) was
+*"absence of fever in a patient"* — the negation leaked into the
+concept's own definition, which is the literal, documented cause of its
+`NONE_CORRECT` vote on an entity every other signal (Tier 1 exact match,
+similarity 1.0, the other two models) already had right.
+
+### 12.2 A real, previously-undiscovered resource: a live Neo4j SNOMED graph
+
+Verified live, direct connection, not assumed: this environment runs a
+Docker container (`db1_neo4j_lexicon`, bolt://localhost:7687) holding a
+genuine, substantial SNOMED CT hierarchy — **386,110 `:SnomedConcept`
+nodes**, each with `id` (SCTID) and `fullySpecifiedName`, connected by
+**641,727 `:IS_A` relationships**. It is completely disconnected from
+the live pipeline today — the only code that ever queries it is
+`scripts/profile_databases.py`, a standalone diagnostic script, not part
+of any production path. (This is separate from, and should not be
+confused with, the Memgraph instances documented in
+`docs/KG3_Implementation_And_Feedback_Loop_Technical_Reference.md` — this
+is a *third*, distinct graph database on the same box, holding the
+*static reference* SNOMED hierarchy, not the dynamic patient graph.)
+
+**Checked directly and confirmed absent**: this graph carries no textual
+definitions. Every property key ever used across the whole graph is just
+`id`, `effectiveTime`, `fullySpecifiedName`, and an unused
+`preferredTerm` (0 nodes actually have it set). There is no `Description`
+node type, no synonym table, no defining-relationship data — only the
+bare `IS_A` subsumption hierarchy. So the only thing this graph can give
+Step A is **taxonomic position** (what a term is a type of, and what's
+a type of it) — not a prose definition. That turns out to be enough to
+matter, per §12.4 below.
+
+### 12.3 The design — an independent search, not the candidate list
+
+The two-step CoT's central discipline is that Step A must not see Stage
+2b's candidate list before forming its own judgment (§1) — this was
+built specifically to fix an earlier anchoring-bias bug. Grounding Step
+A with the Neo4j graph without breaking that discipline requires the
+taxonomy lookup to be **independent of Stage 2b's retrieval**, not a
+shortcut to it:
+
+1. Search `SnomedConcept.fullySpecifiedName` for a tight match against
+   the entity's **own text** — `expanded_text` (what Step A's prompt
+   already shows the model as "after abbreviation expansion"), not
+   Stage 2b's OMOP-scoped, already-filtered candidate pool. Match
+   strategy: strip the trailing SNOMED semantic tag
+   (`"Fever (finding)"` → `"Fever"`) and compare case-insensitively;
+   nothing forced if there's no tight match.
+2. On a match, pull its `IS_A` parent and a handful of children.
+3. Inject as a labeled block making explicit that this is **context,
+   not a candidate list**:
+   ```
+   RELATED SNOMED TAXONOMY (real medical-hierarchy context for terms
+   like "fever" -- for background only, this is NOT a list to choose
+   from and does not imply this entity means any one of these):
+     "Fever (finding)" is a type of: Body temperature above reference
+     range (finding)
+     narrower/related terms under it include: Recurrent fever, Chronic
+     fever, Fever due to infection, ...
+   ```
+   inserted into the existing prompt immediately before the `TASK:`
+   line — every other line of the prompt is byte-identical, so this is
+   the only variable between the OLD and NEW conditions below.
+
+### 12.4 Deep-dive result — the "fever" entity, Step A *and* Step B, real models
+
+Re-ran the real, shipped Step A and Step B calls (same `LLMClient`, same
+schema-guided decoding, `TEMPERATURE=0.0` — reproducible, not a lucky
+sampling draw) against `11859945-DS-29-ebf08ad5f49`, with and without
+the taxonomy block:
+
+| Model | OLD `clinical_meaning` | NEW `clinical_meaning` | OLD Step B | NEW Step B |
+|---|---|---|---|---|
+| qwen2.5:3b | "absence of fever in a patient" | **"a symptom of elevated body temperature"** | match=False, `NONE_CORRECT`, conf 0.734 | **match=True, `SUPPORTED_1`, conf 0.998** |
+| llama3.2:3b | "a normal body temperature" (backwards) | "a body temperature above normal range" | match=True, `SUPPORTED_1`, conf 0.636 | match=True, `SUPPORTED_1`, conf 0.792 |
+| phi4-mini | "An elevation in body temperature indicative of an infection" | "An elevated body temperature above normal range" | match=True, `SUPPORTED_1`, conf 0.960 | match=True, `SUPPORTED_1`, conf 0.969 |
+
+**qwen's verdict flipped from wrong to right**, and the OLD run
+reproduces the real historical reasoning almost verbatim (*"does not
+directly represent the absence of fever... a distinct and clinically
+unrelated concept"*), confirming this is a faithful replay of the actual
+production failure, not a different scenario. llama and phi4-mini were
+already correct and stayed correct, with higher confidence and reasoning
+that echoes the graph's own wording (*"a body temperature above normal
+range"* — nearly identical to the parent concept's actual name, *"Body
+temperature above reference range"*).
+
+**Net effect on this entity**: OLD = 2/3 split → routes to
+`TIER_4_ENSEMBLE_SPLIT`, rescued only by the calibrator (score 0.928,
+barely above the 0.72 threshold, itself dependent on a high
+`prior_confirmation_count`). **NEW = 3/3 unanimous** → would route
+directly to genuine `TIER_1_AUTO_VALIDATED`, no calibrator needed, no
+split-vote fragility at all.
+
+### 12.5 Scaled result — 15 real held-out `TIER_4_ENSEMBLE_SPLIT` entities, gold-graded
+
+The single "fever" case is a best-case scenario — a common, single word
+that happens to match a SNOMED preferred term exactly. To check whether
+it generalizes, 15 real `TIER_4_ENSEMBLE_SPLIT` entities were sampled
+(seed 42, from a pool of 2,222 gradable-against-gold, ≤3-candidate
+entities out of 3,866 total) and run through the identical OLD-vs-NEW
+comparison, majority vote graded against gold via
+`VocabularyRetriever.snomed_code_for_concept()`.
+
+**A real bug was caught and fixed mid-experiment, reported honestly
+rather than silently corrected**: the taxonomy search was first run
+against `original_text`, missing entities Stage 1 had already expanded
+before Step A ever sees them (`PNA`→`pneumonia`, `GERD`→`gastroesophageal
+reflux disease` — Step A's own prompt shows `expanded_text`, so that's
+the field the taxonomy search should use too). Fixing this raised
+coverage from 3/15 to 5/15.
+
+**Even after the fix, coverage was low: 5 of 15 (33%)**. Most
+`TIER_4_ENSEMBLE_SPLIT` entities in this sample were either abbreviations
+whose expansion still doesn't exactly equal a SNOMED preferred term
+(`HTN`→"Hypertension" vs. SNOMED's actual "Hypertensive disorder";
+`CABG`→"coronary artery bypass graft", `HCAP`, `TTE` — none tight-matched)
+or multi-word phrases with no single matching concept name at all
+(`left colon`, `renal failure`, `groin pain`, `nondisplaced fractures`,
+`heaving`, `coronary arteries`). The naive exact-match strategy in §12.3
+is real but structurally narrow — most of this corpus's language doesn't
+land on a literal SNOMED preferred term.
+
+**Of the 5 scored entities, the outcome was far more mixed than the
+"fever" case, reported in full**:
+
+| Entity | OLD → NEW majority | Correct both ways? | Note |
+|---|---|---|---|
+| syncope | [1,1,None]→ same pick, unchanged | Yes, no change | — |
+| constipation | unchanged | Yes, no change | — |
+| abdominal pain | [1,None,1] (2/3) → [1,1,1] (3/3) | Yes, no change | Went from a fragile plurality to full unanimity — same answer, more stable |
+| PNA / pneumonia | [1,1,None] (2/3) → [None,1,1] (2/3) | Yes, no change | **qwen's individual vote got worse**, not better — its NEW meaning ("bilateral opacities suggestive of multifocal pneumonia") invented clinical detail nowhere in the note's context and then rejected the correct candidate as too generic. The ensemble's final answer only stayed correct because the other two models still agreed. |
+| GERD | [1,1,1] → [1,1,1] | Yes, no change | Already unanimous; no effect either direction |
+
+**Honest bottom line**: across this sample, **zero WRONG→CORRECT flips
+and zero CORRECT→WRONG flips at the ensemble-majority level** — every
+entity that was correct under OLD stayed correct under NEW. One case
+(abdominal pain) improved in a way that matters even without changing
+the final answer (a genuine 3/3 unanimous vote is structurally safer
+than a 2/3 plurality that happens to be right). One case (PNA) shows a
+real, concrete downside: taxonomy context can also feed a model's
+tendency to over-elaborate rather than sharpening its judgment — qwen's
+new meaning was *more* wrong in a different way, not simply better.
+**The "fever" result is real and reproducible, but it should not be read
+as representative of what this mechanism would do at scale** — it was
+the easy case, not the typical one, and typical `TIER_4_ENSEMBLE_SPLIT`
+entities mostly never even reach the taxonomy-injection path under this
+simple search strategy.
+
+### 12.6 What a real version of this would need
+
+Stated plainly, not glossed over: (1) a smarter match strategy than
+exact-string-after-stripping-the-tag — the 33% coverage ceiling here is
+a search-quality problem, not a proof the taxonomy signal itself is
+weak; a fuzzy/synonym-aware lookup (or reusing SapBERT similarity
+against `fullySpecifiedName` the same way Tier 3 already works, see
+`docs/SapBERT_Technical_Reference.md`) would very likely raise coverage
+substantially. (2) A larger, pre-registered sample before drawing any
+production conclusion — 5 scored entities is far too small to estimate
+a real net effect size, positive or negative. (3) Thought given to the
+PNA-style downside — taxonomy context clearly *can* invite
+over-elaboration, not just correction, and any real deployment would
+need to measure that risk directly rather than assume the "fever" win
+generalizes for free.
+
+## 12. What this document does not cover
 
 Deliberately out of scope here, covered elsewhere:
 

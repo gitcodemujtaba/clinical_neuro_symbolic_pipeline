@@ -477,10 +477,18 @@ retrieval searches it directly; the TransE embeddings in §8 are trained
 on its relationship structure; and it's the source of the SNOMED code
 "437663 — Fever" that "fever" resolved to.
 
-It's not literally sitting in a graph database like Neo4j or Memgraph —
-it's queried directly as relational tables (via DuckDB), which turned
-out to be both simpler and fast enough for this project's actual query
-patterns.
+The system that actually resolves clinical mentions to codes queries it
+directly as relational tables (via DuckDB), which turned out to be both
+simpler and fast enough for this project's real query patterns.
+
+**A correction to this section, found later in this same investigation**:
+a real graph-database copy of SNOMED CT *does* exist on this project's
+own infrastructure — a Neo4j instance holding 386,110 real concepts and
+641,727 "is a" relationships, verified by querying it directly. It is
+just never touched by anything the pipeline actually runs — the only
+code that ever connects to it is a standalone diagnostic script. See §10
+below for what happened when it was tried as a live input to the AI
+models' reasoning.
 
 ### 9b. The rules-based clinical guideline graph — "what does medical practice say to do"
 
@@ -513,7 +521,107 @@ real clinical mentions today — stated plainly, not oversold.
 
 ---
 
-## 10. The whole journey, summarized
+## 10. An experiment — what if the AI models had a dictionary?
+
+§5 showed one of the three AI models (qwen) getting confused about
+"fever": it defined the word as *"absence of fever in a patient"* —
+mixing up "what does this word mean" with "does the patient have it."
+That confusion is the direct, documented reason it voted the wrong way.
+
+Why did it get confused? Because when the system asks a model *"what
+does this word mean, clinically?"*, it hands over the note text and
+nothing else — no dictionary, no textbook, no medical reference of any
+kind. The model has to answer purely from whatever it happened to learn
+during its general training. It isn't allowed to look anything up.
+
+That raised an obvious question: **this project already has a real,
+working copy of the SNOMED medical vocabulary sitting in a graph
+database (see the correction in §9a) — what if we let the model consult
+its "is a" relationships before answering?** A graph "is a" relationship
+is simple: it just says one thing is a specific kind of another thing —
+"Fever is a kind of *elevated body temperature finding*," for instance.
+It's not a dictionary definition, but it's real, structured medical
+knowledge the model could actually be shown.
+
+### The experiment
+
+Using the exact same "fever" entity followed through this whole
+document, the system was asked "what does this word mean?" twice — once
+exactly as it works today (no outside information), and once with one
+extra paragraph added, pulled live from the real graph database:
+
+> *RELATED SNOMED TAXONOMY (context only): "Fever" is a type of "Body
+> temperature above reference range." Narrower/related terms include:
+> Recurrent fever, Chronic fever, Fever due to infection...*
+
+Everything else about the question was left completely unchanged — same
+model, same note text, same everything. The only difference was that one
+extra paragraph.
+
+**The result: qwen's answer changed from wrong to right.**
+
+| | Without the graph | With the graph |
+|---|---|---|
+| qwen's definition | "absence of fever in a patient" ❌ | "a symptom of elevated body temperature" ✅ |
+| qwen's final vote | Rejected the correct answer | **Accepted the correct answer**, very confidently |
+
+And because the second, separate check ("does this SNOMED code match
+that definition?") was also re-run with the new definition, this wasn't
+just a nicer-sounding sentence — the model's actual final decision
+flipped from wrong to right. All three models would now agree
+unanimously, which means this case would no longer need the calibrator
+(§6) to rescue it at all — it would just be correctly resolved on the
+first pass.
+
+### But — a more honest, larger test told a more complicated story
+
+One example proving a point is not the same as the mechanism actually
+working well in general, so a further test was run: 15 *different* real
+cases where the three models had genuinely disagreed with each other (the
+same population §6's calibrator exists to rescue), each checked against
+the true answer from this project's gold-standard reference data.
+
+Two honest findings came out of that larger test, neither of them as
+clean as the "fever" story:
+
+1. **The graph could only actually be consulted for 5 of the 15 cases**
+   (a third). The lookup only works when the exact wording in the note
+   matches a term in the graph precisely — and most real clinical
+   language doesn't. Abbreviations like "HTN" expand to "Hypertension,"
+   but the graph's own official name is "Hypertensive disorder" — close,
+   but not an exact match, so the lookup came up empty. Phrases like
+   "renal failure" or "groin pain" simply don't exist as their own single
+   entry in the graph at all. The graph itself is real and useful; the
+   simple way of *searching* it used in this test just wasn't
+   sophisticated enough to find something usable most of the time.
+2. **Of the 5 cases it could check, none flipped from wrong to right —
+   and one got a real bit worse.** Four stayed exactly as correct as they
+   already were (one of them became more *confident* — going from a
+   shaky 2-out-of-3 agreement to all 3 models agreeing — without
+   changing the actual answer, which is still a genuine improvement in
+   safety even without changing the outcome). But in the fifth case (a
+   pneumonia mention), giving the model extra background information
+   backfired: qwen's new definition invented specific medical detail
+   ("bilateral opacities suggestive of multifocal pneumonia") that
+   wasn't actually anywhere in the note, and it then second-guessed
+   itself and rejected the right answer for a different, worse reason
+   than before. The final team decision was still correct because the
+   other two models outvoted it, but qwen itself got less reliable, not
+   more.
+
+**The fair, honest summary**: giving the AI models real medical-hierarchy
+context to reason from is a genuinely promising idea, and the "fever"
+case proves it can work — but it isn't a simple win that automatically
+applies everywhere. It only reaches a third of the cases that would need
+it (because finding the right entry in the graph is its own hard
+problem), and even when it does reach them, it can occasionally make one
+model's reasoning worse instead of better, not just better. This is
+exactly why this project treats it as an experiment worth writing down
+and learning from, not something ready to switch on for real notes.
+
+---
+
+## 11. The whole journey, summarized
 
 ```
 "Denies fever, chills, ..."
