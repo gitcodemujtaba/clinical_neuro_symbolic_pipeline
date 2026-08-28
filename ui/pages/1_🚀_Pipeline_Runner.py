@@ -182,59 +182,59 @@ def render_entity_trace(entity: dict, norm: dict, decision: dict):
 
 with st.sidebar:
     st.header("Selection")
-    # 2026-08-28: widened from a fixed FRESH10_NOTE_IDS-only dropdown to
-    # the full processed-note pool, matching the same fix applied to
-    # ui/pages/3_🔍_Troubleshooting.py -- "select OR insert a note id"
-    # needs both a browsable list and a free-text override, not just 5
-    # hardcoded notes. extracted_entities itself carries no is_stale/
-    # provenance columns (only normalized_entities and
-    # mollm_tier_gate_decisions do) -- joined here rather than filtered
-    # directly. is_stale=FALSE means "processed by current code" -- see
-    # scripts/mark_notes_stale.py for the migration.
-    fresh10_only = st.checkbox("Fresh-10 (validated) notes only", value=False)
-    scope_ph = FRESH10_NOTE_IDS if fresh10_only else None
-    scope_clause = f"AND e.note_id IN ({','.join('?' * len(scope_ph))})" if scope_ph else ""
-    note_ids = [r[0] for r in conn.execute(f"""
-        SELECT DISTINCT e.note_id FROM extracted_entities e
-        WHERE e.is_test = TRUE {scope_clause} AND e.note_id IN (
-            SELECT DISTINCT note_id FROM normalized_entities
-            WHERE is_test = TRUE AND is_stale = FALSE
-        ) ORDER BY e.note_id
-    """, scope_ph or []).fetchall()]
-    if not note_ids:
-        st.warning("No processed, non-stale notes match this filter yet.")
-        _stop()
-
-    picked = st.selectbox(f"Browse ({len(note_ids)} processed notes)", note_ids)
+    # 2026-08-28, second pass -- narrowed back to exactly the 10
+    # fresh-validation notes, per direct request ("show only the ten
+    # notes we run completely"). Real finding along the way, worth
+    # recording here since it corrects that framing: NONE of the 10 were
+    # run "completely" in the sense of every entity reaching Stage 3 --
+    # scripts/run_fresh5_final_validation.py deliberately caps Stage 3
+    # at the first 25 (by orig_start) Stage-2b-eligible entities per note
+    # ("25/note... still a real, gradable held-out sample" -- its own
+    # comment), not a bug or a stalled run. Stage 2b coverage per note is
+    # much higher (69-97%, measured live), but Stage 3 specifically caps
+    # at a flat 25 regardless of note size -- confirmed live across all
+    # 10 notes (25/46 up to 25/153). The "COMPLETE TRACE ONLY" filter
+    # below is the direct fix: rather than tracking entities by raw
+    # position (which surfaces confusing "not yet" placeholders the
+    # moment position 26+ is reached), it shows only entities that
+    # actually have real data at every stage.
+    note_ids = FRESH10_NOTE_IDS
+    picked = st.selectbox(f"Note ({len(note_ids)} fresh-validation notes)", note_ids)
     typed = st.text_input(
-        "...or type/paste any note_id directly",
+        "...or type/paste any OTHER note_id (advanced — not part of the "
+        "validated fresh-10 set)",
         placeholder="e.g. 10000032-DS-21",
-        help="Overrides the dropdown above when non-empty.")
+        help="Overrides the dropdown above when non-empty. Stage 3 coverage "
+            "for a note outside the fresh-10 set may be even less complete.")
 
     if typed.strip():
         note_id = typed.strip()
-        if note_id not in note_ids:
-            direct = conn.execute("""
-                SELECT count(*) FROM extracted_entities e
-                WHERE e.is_test = TRUE AND e.note_id = ? AND e.note_id IN (
-                    SELECT DISTINCT note_id FROM normalized_entities
-                    WHERE is_test = TRUE AND is_stale = FALSE
-                )
-            """, [note_id]).fetchone()[0]
-            if not direct:
-                any_rows = conn.execute(
-                    "SELECT count(*) FROM extracted_entities WHERE note_id = ?", [note_id]
-                ).fetchone()[0]
-                if any_rows:
-                    st.warning(
-                        f"`{note_id}` has {any_rows} extracted entities but hasn't "
-                        f"completed Stage 2b (or is marked stale) yet.")
-                else:
-                    st.warning(f"`{note_id}` has no extracted entities in this database.")
-                _stop()
+        direct = conn.execute("""
+            SELECT count(*) FROM extracted_entities e
+            WHERE e.is_test = TRUE AND e.note_id = ? AND e.note_id IN (
+                SELECT DISTINCT note_id FROM normalized_entities
+                WHERE is_test = TRUE AND is_stale = FALSE
+            )
+        """, [note_id]).fetchone()[0]
+        if not direct:
+            any_rows = conn.execute(
+                "SELECT count(*) FROM extracted_entities WHERE note_id = ?", [note_id]
+            ).fetchone()[0]
+            if any_rows:
+                st.warning(
+                    f"`{note_id}` has {any_rows} extracted entities but hasn't "
+                    f"completed Stage 2b (or is marked stale) yet.")
+            else:
+                st.warning(f"`{note_id}` has no extracted entities in this database.")
+            _stop()
     else:
         note_id = picked
 
+    complete_only = st.checkbox(
+        "Complete trace only (entity has real Stage 3 data)", value=True,
+        help="Off shows every extracted entity, including ones the "
+            "validation run's 25/note cap never reached Stage 3 for -- "
+            "useful for seeing WHAT was skipped, not just what wasn't.")
     n_entities = st.number_input("Number of entities to track", min_value=1, max_value=50, value=1, step=1)
     search = st.text_input("Filter: entity text contains (optional)")
 
@@ -251,11 +251,25 @@ entity_cols = ["entity_id", "original_text", "expanded_text", "entity_label", "c
               "local_context", "expansion_ambiguous", "candidate_expansions", "selection_basis"]
 entities = [dict(zip(entity_cols, r)) for r in entity_rows]
 
+stage3_entity_ids = {r[0] for r in conn.execute(
+    "SELECT entity_id FROM mollm_tier_gate_decisions WHERE note_id = ?", [note_id]).fetchall()}
+n_total_extracted = len(entities)
+
 if search:
     entities = [e for e in entities if search.lower() in (e["original_text"] or "").lower()]
 
-st.caption(f"**{note_id}** — {len(entities)} entit{'y' if len(entities) == 1 else 'ies'} available "
-          f"(after filter), tracking the first {min(n_entities, len(entities))}.")
+n_after_search = len(entities)
+if complete_only:
+    entities = [e for e in entities if e["entity_id"] in stage3_entity_ids]
+
+st.caption(f"**{note_id}** — {n_total_extracted} entities extracted total, "
+          f"{len(stage3_entity_ids)} reached real Stage 3 data "
+          f"(this note's validation run caps at ~25 — see the sidebar note). "
+          f"{len(entities)} available after filters, tracking the first "
+          f"{min(n_entities, len(entities))}.")
+if complete_only and len(stage3_entity_ids) < n_after_search:
+    st.caption(f"({n_after_search - len(stage3_entity_ids)} more match the search but were "
+              f"hidden by 'Complete trace only' — uncheck it in the sidebar to see them too.)")
 
 tracked = entities[:n_entities]
 if not tracked:
