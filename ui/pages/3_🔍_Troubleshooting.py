@@ -36,7 +36,8 @@ sys.path.insert(0, PROJECT_DIR)
 
 from scripts.score_gold_recall import best_tier, overlaps  # noqa: E402
 from src.retrieval import VocabularyRetriever  # noqa: E402
-from ui.components.db_status import render_locked_db_status  # noqa: E402
+from ui.components.db_status import (  # noqa: E402
+    render_locked_db_status, render_mixed_connection_status)
 from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
 
 # Colors used by the note highlighter (render_highlighted_note below):
@@ -83,6 +84,8 @@ try:
     conn = get_conn()
 except duckdb.IOException as exc:
     render_locked_db_status(exc)
+except duckdb.ConnectionException as exc:
+    render_mixed_connection_status(exc)
 
 
 def _stop():

@@ -14,6 +14,32 @@ import streamlit as st
 from src.batch_status import JOB_LABELS, format_duration, read_status
 
 
+def render_mixed_connection_status(exc):
+    """Call this, then st.stop() (it calls st.stop() itself), when a DuckDB
+    connect() call raised duckdb.ConnectionException -- "Can't open a
+    connection to same database file with a different configuration than
+    existing connections". Distinct cause from render_locked_db_status()'s
+    IOException case: this isn't a batch job holding the write lock, it's
+    ANOTHER PAGE in this same Streamlit server process (e.g. 🩺 HITL Review
+    Queue's read-write connection) still open with different settings than
+    the one this page is trying to open. Confirmed live, 2026-08-28: every
+    page in this app now explicitly closes its connection at every exit
+    point specifically to prevent this, but a genuine race between two
+    browser tabs rerunning at the same moment can still hit it, so this
+    stays as a friendly fallback rather than assuming the fix makes it
+    impossible.
+    """
+    st.error(
+        "**Could not open the database — a connection with different "
+        "settings is already open elsewhere in this app.** This usually "
+        "means another tab (often 🩺 HITL Review Queue, which needs "
+        "read-write access) is mid-render right now. Reload this page — "
+        "if it recurs, close other tabs of this app and try again."
+    )
+    st.caption(f"Underlying error: {exc}")
+    st.stop()
+
+
 def render_locked_db_status(exc):
     """Call this, then st.stop() (it calls st.stop() itself, but a caller
     should treat this as terminal either way) when a DuckDB connect() call

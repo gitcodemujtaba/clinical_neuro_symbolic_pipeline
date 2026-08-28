@@ -40,7 +40,8 @@ sys.path.insert(0, PROJECT_DIR)
 from src.hitl_queue import (  # noqa: E402
     ensure_hitl_queue_table, enqueue_pending_cases, load_hitl_queue, submit_review,
 )
-from ui.components.db_status import render_locked_db_status  # noqa: E402
+from ui.components.db_status import (  # noqa: E402
+    render_locked_db_status, render_mixed_connection_status)
 from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
 
 # CNSP_DB_PATH override matches the OLLAMA_HOST/NEO4J_URI/MEMGRAPH_URI
@@ -117,6 +118,34 @@ try:
     conn = get_conn()
 except duckdb.IOException as exc:
     render_locked_db_status(exc)
+except duckdb.ConnectionException as exc:
+    render_mixed_connection_status(exc)
+
+
+# 2026-08-28: a real, confirmed-live bug -- this page never explicitly
+# closed `conn` at ANY of its exit points (the one st.stop() below, or
+# any of the three st.rerun() calls further down after a review
+# submission or Previous/Next navigation), despite this exact page's own
+# get_conn() docstring already flagging the general risk. A lingering
+# read-write connection from here left open into a LATER script rerun
+# (or a later page navigation within the same Streamlit server process)
+# collided with a fresh read-only connect() elsewhere, surfacing as
+# `duckdb.ConnectionException: Can't open a connection to same database
+# file with a different configuration than existing connections` on
+# ui/pages/3_🔍_Troubleshooting.py -- reproduced and root-caused live.
+# _stop()/_rerun() below close the connection first, every time,
+# mirroring the _stop() helper every other page in this app already
+# uses for exactly this reason.
+def _stop():
+    conn.close()
+    st.stop()
+
+
+def _rerun():
+    conn.close()
+    st.rerun()
+
+
 ensure_hitl_queue_table(conn)
 
 with st.sidebar:
@@ -151,7 +180,7 @@ st.caption(f"{len(queue)} case(s) match filters — {pending_count} pending revi
 
 if not queue:
     st.info("No cases match the current filters. Click **Pull new decisions into queue** in the sidebar.")
-    st.stop()
+    _stop()
 
 # One case at a time, tracked by index in session_state so Approve/Correct/
 # Reject can advance the reviewer to the next case without a page reload
@@ -329,16 +358,21 @@ with col_review:
             )
             st.session_state.hitl_index = min(idx + 1, len(queue) - 1)
             st.session_state.hitl_case_started_at = time.time()
-            st.rerun()
+            _rerun()
 
     nav1, nav2 = st.columns(2)
     with nav1:
         if st.button("← Previous", disabled=idx == 0):
             st.session_state.hitl_index = idx - 1
             st.session_state.hitl_case_started_at = time.time()
-            st.rerun()
+            _rerun()
     with nav2:
         if st.button("Next →", disabled=idx >= len(queue) - 1):
             st.session_state.hitl_index = idx + 1
             st.session_state.hitl_case_started_at = time.time()
-            st.rerun()
+            _rerun()
+
+# Natural fall-through (no button clicked this run, no stop/rerun
+# triggered) -- same explicit-close discipline as every exit point
+# above, not just the ones that terminate the script early.
+conn.close()

@@ -25,7 +25,8 @@ import streamlit as st
 PROJECT_DIR = "/home/ec2-user/clinical_neuro_symbolic_pipeline_reorder"
 sys.path.insert(0, PROJECT_DIR)
 
-from ui.components.db_status import render_locked_db_status  # noqa: E402
+from ui.components.db_status import (  # noqa: E402
+    render_locked_db_status, render_mixed_connection_status)
 from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
 
 DB_PATH = os.environ.get("CNSP_DB_PATH", os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb"))
@@ -50,6 +51,8 @@ try:
     conn = get_conn()
 except duckdb.IOException as exc:
     render_locked_db_status(exc)
+except duckdb.ConnectionException as exc:
+    render_mixed_connection_status(exc)
 
 
 def _stop():
