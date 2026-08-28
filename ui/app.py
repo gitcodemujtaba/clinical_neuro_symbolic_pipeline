@@ -19,7 +19,7 @@ Use the sidebar to navigate:
 
 - **🩺 HITL Review Queue** — review Stage 3/Objective 3 decisions before KG3 write-back.
 - **🚀 Pipeline Runner** — run Stage 1→2a→2b→3 on a note.
-- **🔍 Troubleshooting** — inspect a single entity's full decision trace.
+- **🔍 Troubleshooting** — pick or type any note_id and step through Stage 1→2a→2b→3 for it, input/output at each stage, with a full gold comparison.
 - **📊 Evaluation Metrics** — gold-recall and calibration reports.
 """
 )

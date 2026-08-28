@@ -62,8 +62,10 @@ RAW_TEXT_CANDIDATES = [
 st.set_page_config(page_title="Troubleshooting", page_icon="🔍", layout="wide")
 st.title("🔍 Troubleshooting — Step-by-Step Input/Output")
 st.caption(
-    "The full note stays visible on the left at every stage. Findings are "
-    "highlighted directly in the text as they're computed -- colors are "
+    "Pick or type any processed note_id in the sidebar, then walk through "
+    "Stage 1 → Stage 2a → gold comparison → Stage 2b → Stage 3 in the tabs "
+    "below. The full note stays visible on the left at every stage. Findings "
+    "are highlighted directly in the text as they're computed -- colors are "
     "explained in the legend above it."
 )
 
@@ -193,28 +195,92 @@ def _split_overlap_spans(pred_start, pred_end, pred_tooltip,
 
 with st.sidebar:
     st.header("Note selection")
-    # extracted_entities itself carries no is_stale/provenance columns
-    # (only normalized_entities and mollm_tier_gate_decisions do) -- joined
-    # here rather than filtered directly. is_stale=FALSE means "processed
-    # by current code" -- see scripts/mark_notes_stale.py for the migration.
-    note_ph = ",".join("?" * len(FRESH10_NOTE_IDS))
+    # 2026-08-28: widened from a fixed FRESH10_NOTE_IDS-only dropdown to
+    # the full processed-note pool, per direct request -- "select OR
+    # insert a note id" needs both a browsable list (any of the 144
+    # notes this box has actually run Stage 1-3 on, not just the 10
+    # held-out validation ones) and a free-text override for a note_id
+    # typed/pasted directly. extracted_entities itself carries no
+    # is_stale/provenance columns (only normalized_entities and
+    # mollm_tier_gate_decisions do) -- joined here rather than filtered
+    # directly. is_stale=FALSE means "processed by current code" -- see
+    # scripts/mark_notes_stale.py for the migration.
+    fresh10_only = st.checkbox("Fresh-10 (validated) notes only", value=False)
+    scope_ph = FRESH10_NOTE_IDS if fresh10_only else None
+    scope_clause = f"AND note_id IN ({','.join('?' * len(scope_ph))})" if scope_ph else ""
     note_rows = conn.execute(f"""
         SELECT note_id, count(*) AS n FROM extracted_entities
-        WHERE is_test = TRUE AND note_id IN ({note_ph}) AND note_id IN (
+        WHERE is_test = TRUE {scope_clause} AND note_id IN (
             SELECT DISTINCT note_id FROM normalized_entities
             WHERE is_test = TRUE AND is_stale = FALSE
         ) GROUP BY note_id ORDER BY n ASC
-    """, FRESH10_NOTE_IDS).fetchall()
+    """, scope_ph or []).fetchall()
     if not note_rows:
-        st.warning("None of the 10 fresh-validation notes are ready (is_stale = FALSE) yet. "
-                  "See scripts/run_fresh5_final_validation.py.")
+        st.warning("No processed, non-stale notes match this filter yet.")
         _stop()
     note_ids_sorted = [r[0] for r in note_rows]
     counts_by_note = dict(note_rows)
-    note_id = st.selectbox(
-        "Note (defaults to smallest)", note_ids_sorted, index=0,
-        format_func=lambda n: f"{n}  ({counts_by_note[n]} entities)")
-    st.caption(f"Selected: {counts_by_note[note_id]} extracted entities")
+    is_fresh10 = {n: (n in FRESH10_NOTE_IDS) for n in note_ids_sorted}
+
+    picked = st.selectbox(
+        f"Browse ({len(note_ids_sorted)} processed notes — type to filter)",
+        note_ids_sorted, index=0,
+        format_func=lambda n: f"{n}  ({counts_by_note[n]} entities)"
+                              f"{'  ⭐ fresh-10' if is_fresh10[n] else ''}")
+    typed = st.text_input(
+        "...or type/paste any note_id directly",
+        placeholder="e.g. 10000032-DS-21", help=(
+            "Overrides the dropdown above when non-empty. Works for any "
+            "note this box has run Stage 1-3 on, not just the browsable "
+            "list — useful for a note_id you already know (e.g. from a "
+            "log or another page) without scrolling to find it above."))
+
+    if typed.strip():
+        note_id = typed.strip()
+        # Looked up directly, unfiltered by the "Fresh-10 only" checkbox
+        # above -- counts_by_note may be scoped to just those 10, and a
+        # typed note_id outside that scope but otherwise fully processed
+        # must not be misreported as unprocessed just because the
+        # checkbox happens to be on.
+        if note_id not in counts_by_note:
+            direct = conn.execute("""
+                SELECT count(*) FROM extracted_entities
+                WHERE is_test = TRUE AND note_id = ? AND note_id IN (
+                    SELECT DISTINCT note_id FROM normalized_entities
+                    WHERE is_test = TRUE AND is_stale = FALSE
+                )
+            """, [note_id]).fetchone()[0]
+            if direct:
+                counts_by_note[note_id] = direct
+                is_fresh10[note_id] = note_id in FRESH10_NOTE_IDS
+        if note_id not in counts_by_note:
+            # Distinguish "exists but not yet Stage-2b-processed / stale"
+            # from "not a real note_id at all in this corpus" -- both are
+            # real, different situations a typed id can land in, and the
+            # message should say which one this is rather than one flat
+            # "not found".
+            any_rows = conn.execute(
+                "SELECT count(*) FROM extracted_entities WHERE note_id = ?", [note_id]
+            ).fetchone()[0]
+            if any_rows:
+                st.warning(
+                    f"`{note_id}` has {any_rows} extracted entities but hasn't "
+                    f"completed Stage 2b (or is marked stale) — this page needs "
+                    f"a fully-processed note. Re-run it via the 🚀 Pipeline "
+                    f"Runner page first.")
+            else:
+                st.warning(
+                    f"`{note_id}` has no extracted entities in this database at "
+                    f"all — either it hasn't been run through the pipeline yet "
+                    f"(use the 🚀 Pipeline Runner page), or it isn't a note_id "
+                    f"this corpus has under `is_test=TRUE`.")
+            _stop()
+        st.caption(f"Typed selection: {counts_by_note[note_id]} extracted entities"
+                  f"{'  ⭐ fresh-10 validated' if is_fresh10[note_id] else ''}")
+    else:
+        note_id = picked
+        st.caption(f"Selected: {counts_by_note[note_id]} extracted entities"
+                  f"{'  ⭐ fresh-10 validated' if is_fresh10[note_id] else ''}")
 
 raw_text = load_raw_text(note_id)
 
