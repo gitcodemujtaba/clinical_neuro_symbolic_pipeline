@@ -970,6 +970,128 @@ def run():
          "a candidate pair (Anemia/Asthma) that has real corpus coverage",
           "OFFICIAL GUIDELINE EVIDENCE" not in guideline_candidate_prompt)
 
+    # ======================================================================
+    # 2026-08-30: kg3_driver/kg3_driver_factory plumbing for the calibrator's
+    # new kg3_confirmation_count feature (src.kg3_query.count_kg3_confirmations).
+    # Both default to None -- must reproduce every prior behavior exactly
+    # when omitted, and must actually reach build_feature_context() when
+    # supplied, mirroring conn/conn_factory's own two tests above.
+    # ======================================================================
+    class _ContextCapturingCalibrator:
+        """Like _FakeCalibrator, but records the full feature context it
+        was given so a test can inspect kg3_confirmation_count specifically,
+        not just the resulting tier."""
+        def __init__(self, fixed_score):
+            self.fixed_score = fixed_score
+            self.contexts = []
+
+        def score(self, context):
+            self.contexts.append(context)
+            return self.fixed_score
+
+    kg3_entity = _entity(candidates=[
+        {"concept_name": "X", "similarity_score": 0.9, "omop_concept_id": 111}])
+
+    no_kg3_calibrator = _ContextCapturingCalibrator(0.40)
+    route_tier(kg3_entity, model_results=split_votes,
+              calibrator=no_kg3_calibrator, conn="FAKE_CONN")
+    check("kg3_driver omitted (None default): kg3_confirmation_count reads "
+         "back 0 in the feature context, not None or a crash -- "
+         "count_kg3_confirmations()'s own 'missing driver -> 0' contract",
+          no_kg3_calibrator.contexts
+          and no_kg3_calibrator.contexts[0].get("kg3_confirmation_count") == 0)
+
+    # A driver-shaped fake whose session().run() raises -- exercising
+    # count_kg3_confirmations()'s own never-raise contract from the
+    # route_tier() call site, the same "bad conn is swallowed, not
+    # propagated" behavior the "FAKE_CONN" string sentinel already proves
+    # for the DuckDB side above.
+    class _RaisingKG3Driver:
+        def session(self):
+            raise RuntimeError("no real Memgraph connection in this test")
+        def close(self):
+            pass
+
+    raising_kg3_calibrator = _ContextCapturingCalibrator(0.40)
+    r = route_tier(kg3_entity, model_results=split_votes,
+                   calibrator=raising_kg3_calibrator, conn="FAKE_CONN",
+                   kg3_driver=_RaisingKG3Driver())
+    check("kg3_driver supplied but errors on every query: still reaches the "
+         "calibrator with kg3_confirmation_count=0, doesn't crash route_tier()",
+          raising_kg3_calibrator.contexts
+          and raising_kg3_calibrator.contexts[0].get("kg3_confirmation_count") == 0
+          and r["tier"] == "TIER_4_ENSEMBLE_SPLIT")
+
+    # A working fake driver returning a real, non-zero count -- proves the
+    # value genuinely flows from kg3_driver through count_kg3_confirmations()
+    # into build_feature_context(), not just defaulting to 0 either way.
+    class _FakeRecord(dict):
+        def __getitem__(self, key):
+            return dict.get(self, key)
+
+    class _FakeResult:
+        def __init__(self, n):
+            self._n = n
+        def single(self):
+            return _FakeRecord(n=self._n)
+
+    class _FakeSession:
+        def __init__(self, n):
+            self._n = n
+        def run(self, query, **kwargs):
+            return _FakeResult(self._n)
+        def __enter__(self):
+            return self
+        def __exit__(self, *a):
+            return False
+
+    class _FakeKG3Driver:
+        def __init__(self, n):
+            self._n = n
+        def session(self):
+            return _FakeSession(self._n)
+        def close(self):
+            pass
+
+    working_kg3_calibrator = _ContextCapturingCalibrator(0.40)
+    route_tier(kg3_entity, model_results=split_votes,
+              calibrator=working_kg3_calibrator, conn="FAKE_CONN",
+              kg3_driver=_FakeKG3Driver(4))
+    check("a working kg3_driver returning a real count (4) flows all the "
+         "way into the calibrator's feature context, scaled the same way "
+         "prior_confirmation_count already is",
+          working_kg3_calibrator.contexts
+          and working_kg3_calibrator.contexts[0].get("kg3_confirmation_count") == 4)
+
+    # kg3_driver_factory takes priority when both are supplied, mirroring
+    # conn_factory's own priority-over-conn contract -- and the caller
+    # (route_tier(), via _score_with_calibrator()) must close() what the
+    # factory returns.
+    factory_calls = []
+    closed = []
+
+    class _ClosableFakeDriver(_FakeKG3Driver):
+        def close(self):
+            closed.append(self)
+
+    def kg3_factory():
+        d = _ClosableFakeDriver(7)
+        factory_calls.append(d)
+        return d
+
+    factory_calibrator = _ContextCapturingCalibrator(0.40)
+    route_tier(kg3_entity, model_results=split_votes,
+              calibrator=factory_calibrator, conn="FAKE_CONN",
+              kg3_driver_factory=kg3_factory)
+    check("kg3_driver_factory is invoked exactly once and its result flows "
+         "into the feature context",
+          len(factory_calls) == 1
+          and factory_calibrator.contexts[0].get("kg3_confirmation_count") == 7)
+    check("kg3_driver_factory's returned driver is close()'d by the caller, "
+         "matching conn_factory's own contract (short-lived handle, not "
+         "held open for the whole ensemble call)",
+          factory_calls[0] in closed)
+
     print(f"tier-gate tests: {ok} passed, {len(fail)} failed")
     for f in fail:
         print(f"  FAILED: {f}")

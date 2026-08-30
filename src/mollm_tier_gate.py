@@ -1216,24 +1216,35 @@ def tier5_precheck(entity: dict) -> dict:
 
 
 def _score_with_calibrator(entity: dict, model_results: list, candidate_index: int,
-                           calibrator, conn, conn_factory) -> dict:
+                           calibrator, conn, conn_factory,
+                           kg3_driver=None, kg3_driver_factory=None) -> dict:
     """Shared calibrator-consultation logic, factored out 2026-08-20 so the
     TIER_2_AUTO_RESOLVED (unanimous re-rank) and non-unanimous-split paths
     in route_tier() apply the EXACT same safety checks -- the
     fragile-shorthand trap and prior-confirmation lookup -- rather than
     risking the two call sites silently drifting apart over time. Returns
     {"trapped": bool, "trap_reason": str|None, "calibrated_score": float|None,
-    "prior_count": int|None}. Caller decides what tier a promotion lands in
-    (TIER_1B for a split, TIER_2B for a unanimous re-rank) -- this function
-    only computes the score.
+    "prior_count": int|None, "kg3_count": int|None}. Caller decides what
+    tier a promotion lands in (TIER_1B for a split, TIER_2B for a unanimous
+    re-rank) -- this function only computes the score.
+
+    `kg3_driver`/`kg3_driver_factory` (2026-08-30, plan Phase 6 follow-on):
+    same "prefer a factory, fall back to an already-open handle" contract
+    as `conn`/`conn_factory` above, mirrored for the live KG3 (Memgraph)
+    graph. Both default to None, which reproduces every prior behavior
+    exactly -- kg3_confirmation_count comes back 0 (count_kg3_confirmations()
+    never raises, never returns None on a missing driver), the same
+    "absent evidence, not negative evidence" default the DuckDB-sourced
+    prior_confirmation_count already uses when conn is also absent.
     """
     candidates = entity.get("candidates") or []
     trapped, trap_reason = _fragile_shorthand_trap(entity, candidate_index, candidates)
     if trapped:
         return {"trapped": True, "trap_reason": trap_reason,
-                "calibrated_score": None, "prior_count": None}
+                "calibrated_score": None, "prior_count": None, "kg3_count": None}
 
     from src.mollm_tier_calibrator import build_feature_context, count_prior_confirmations
+    from src.kg3_query import count_kg3_confirmations
     chosen_concept_id = None
     if 0 < candidate_index <= len(candidates):
         chosen_concept_id = candidates[candidate_index - 1].get("omop_concept_id")
@@ -1248,10 +1259,23 @@ def _score_with_calibrator(entity: dict, model_results: list, candidate_index: i
     else:
         prior_count = count_prior_confirmations(
             conn, entity.get("original_text"), chosen_concept_id)
-    context = build_feature_context(entity, model_results, prior_count)
+
+    if kg3_driver_factory is not None:
+        lookup_driver = kg3_driver_factory()
+        try:
+            kg3_count = count_kg3_confirmations(
+                lookup_driver, entity.get("original_text"), chosen_concept_id)
+        finally:
+            lookup_driver.close()
+    else:
+        kg3_count = count_kg3_confirmations(
+            kg3_driver, entity.get("original_text"), chosen_concept_id)
+
+    context = build_feature_context(entity, model_results, prior_count, kg3_count)
     calibrated_score = calibrator.score(context)
     return {"trapped": False, "trap_reason": None,
-            "calibrated_score": calibrated_score, "prior_count": prior_count}
+            "calibrated_score": calibrated_score, "prior_count": prior_count,
+            "kg3_count": kg3_count}
 
 
 # ==========================================================================
@@ -1259,7 +1283,8 @@ def _score_with_calibrator(entity: dict, model_results: list, candidate_index: i
 # ==========================================================================
 
 def route_tier(entity: dict, model_results: list = None, clients: dict = None,
-               calibrator=None, conn=None, conn_factory=None) -> dict:
+               calibrator=None, conn=None, conn_factory=None,
+               kg3_driver=None, kg3_driver_factory=None) -> dict:
     """Runs the Tier 1-5 gate for one Stage 2b LOW-tier entity record.
 
     Order: qualifier-fragment precheck -> Tier 3 fast path -> Tier 5
@@ -1298,6 +1323,17 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
     is kept for backward compatibility (existing tests, any caller that
     doesn't care about lock duration); `conn_factory` takes priority when
     both are supplied.
+
+    `kg3_driver`/`kg3_driver_factory` (2026-08-30): the same pair, mirrored
+    for the live KG3 (Memgraph) graph, feeding the calibrator's new
+    kg3_confirmation_count feature (src.kg3_query.count_kg3_confirmations).
+    Both default to None -- omitting them reproduces prior behavior exactly
+    (the feature reads back 0, same "no evidence" default as
+    prior_confirmation_count with no conn supplied). See
+    src/mollm_tier_calibrator.py's FEATURE_NAMES/FEATURE_SET_VERSION=2 and
+    docs/KG3_Implementation_And_Feedback_Loop_Technical_Reference.md for why
+    this is a new, separate feature rather than a replacement for the
+    DuckDB-sourced one.
     """
     qualifier = qualifier_fragment_precheck(entity)
     if qualifier:
@@ -1381,7 +1417,8 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
         # was fit/validated on.
         tier2_calibrated_score = None
         if calibrator is not None and (conn is not None or conn_factory is not None):
-            result = _score_with_calibrator(entity, model_results, n, calibrator, conn, conn_factory)
+            result = _score_with_calibrator(entity, model_results, n, calibrator, conn, conn_factory,
+                                            kg3_driver, kg3_driver_factory)
             if result["trapped"]:
                 return {"tier": TIER_2_AUTO_RESOLVED, "mollm_routing_decision": "HITL_REQUIRED",
                         "queue_reason": result["trap_reason"], "final_candidate_index": n,
@@ -1401,7 +1438,8 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
                         "routing_basis": (
                             f"3/3 unanimous re-rank to candidate {n}, but ConsensusCalibrator "
                             f"scored {tier2_calibrated_score} >= {CALIBRATED_AUTO_THRESHOLD} "
-                            f"(prior_confirmation_count={result['prior_count']})"),
+                            f"(prior_confirmation_count={result['prior_count']}, "
+                            f"kg3_confirmation_count={result['kg3_count']})"),
                         "models": model_results}
         # Still tagged TIER_2_AUTO_RESOLVED for audit/grading continuity
         # (the underlying signal is real and worth distinguishing), routed
@@ -1467,7 +1505,8 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
             # gate. Same _score_with_calibrator() helper the unanimous
             # re-rank (TIER_2) branch above uses, so both stay in sync.
             result = _score_with_calibrator(entity, model_results, candidate_index,
-                                            calibrator, conn, conn_factory)
+                                            calibrator, conn, conn_factory,
+                                            kg3_driver, kg3_driver_factory)
             if result["trapped"]:
                 return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",
                         "queue_reason": result["trap_reason"], "final_candidate_index": None,
@@ -1479,6 +1518,7 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
                         "models": model_results}
             calibrated_score = result["calibrated_score"]
             prior_count = result["prior_count"]
+            kg3_count = result["kg3_count"]
 
             if calibrated_score is not None and calibrated_score >= CALIBRATED_AUTO_THRESHOLD:
                 return {"tier": TIER_1B_CALIBRATED_AUTO_VALIDATED,
@@ -1490,7 +1530,7 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
                             f"non-unanimous verdicts {dict(vote_counts)}, but "
                             f"ConsensusCalibrator scored {calibrated_score} >= "
                             f"{CALIBRATED_AUTO_THRESHOLD} (prior_confirmation_count="
-                            f"{prior_count})"),
+                            f"{prior_count}, kg3_confirmation_count={kg3_count})"),
                         "models": model_results}
 
     return {"tier": TIER_4_ENSEMBLE_SPLIT, "mollm_routing_decision": "HITL_REQUIRED",

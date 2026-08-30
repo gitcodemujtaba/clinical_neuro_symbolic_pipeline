@@ -54,6 +54,52 @@ def get_observations_for_concept(driver, omop_concept_id: int) -> list:
         return [dict(r) for r in result]
 
 
+def count_kg3_confirmations(driver, entity_text: str, concept_id: int) -> int:
+    """How many :PatientObservation nodes in KG3 already confirm this exact
+    (entity text, concept) pairing -- the KG3-sourced counterpart to
+    src.mollm_tier_calibrator.count_prior_confirmations(), which reads the
+    same kind of signal from DuckDB (mollm_tier_gate_decisions/
+    hitl_review_queue) instead. Added 2026-08-30 as a genuinely NEW,
+    separate calibrator feature (kg3_confirmation_count) rather than a
+    replacement for the existing one -- see docs/KG3_Implementation_And_
+    Feedback_Loop_Technical_Reference.md for why: KG3 was never wired as a
+    read source for any decision before this, and the only data in it right
+    now is gold-simulated (not real human review), so this is introduced
+    as a measurable, separate signal, not a silent swap of the existing
+    trusted one.
+
+    Counts ANY node matching, regardless of final_decision_status
+    (APPROVED/CORRECTED/AUTO) -- unlike get_accepted_triples(), which
+    restricts to APPROVED/CORRECTED only. A node existing in KG3 at all
+    means it already cleared one of the two write paths' own gates
+    (src.kg3_ingestion's docstring: nothing writes to KG3 unreviewed
+    except the deliberately-narrow AUTO_TIERS path) -- for a pure
+    confirmation-count signal, that's the right population to count, not
+    a further-restricted subset.
+
+    Matches on raw_text case-insensitively (mirroring
+    count_prior_confirmations()'s lower(trim(...)) comparison) joined
+    through :INSTANCE_OF to the target :Concept.
+
+    Returns 0 (never raises, never returns None) on a missing driver,
+    missing arguments, or any connection/query error -- same
+    never-break-the-caller discipline as count_prior_confirmations().
+    """
+    if driver is None or not entity_text or concept_id is None:
+        return 0
+    try:
+        with driver.session() as session:
+            result = session.run("""
+                MATCH (obs:PatientObservation)-[:INSTANCE_OF]->(c:Concept {omop_concept_id: $cid})
+                WHERE toLower(trim(obs.raw_text)) = toLower(trim($text))
+                RETURN count(obs) AS n
+            """, cid=concept_id, text=entity_text)
+            record = result.single()
+            return record["n"] if record else 0
+    except Exception:
+        return 0
+
+
 def get_accepted_triples(driver, domain_id: str = None) -> list:
     """Every fully-provenanced observation (has a :HITLReview with
     APPROVED/CORRECTED status) currently in KG3, optionally restricted to

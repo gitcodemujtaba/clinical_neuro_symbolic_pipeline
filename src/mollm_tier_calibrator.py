@@ -42,7 +42,7 @@ degrades to None rather than raising.
 import os
 import warnings
 
-FEATURE_SET_VERSION = 1
+FEATURE_SET_VERSION = 2
 
 # Canonical save/load path -- defined once here (the module that owns the
 # class) rather than duplicated as a string literal in both the fitting
@@ -74,6 +74,12 @@ FEATURE_NAMES = [
     "resolved_via_acronym_escalation",       # an ambiguous abbreviation was MoLLM-resolved first
     "expansion_ambiguous",                   # the abbreviation itself had >1 dictionary meaning
     "prior_confirmation_count",              # how often this same resolution was confirmed before
+                                              # (DuckDB: mollm_tier_gate_decisions/hitl_review_queue)
+    "kg3_confirmation_count",                # same signal, sourced from the live KG3 graph instead
+                                              # (src.kg3_query.count_kg3_confirmations) -- added
+                                              # 2026-08-30, kept separate from prior_confirmation_count
+                                              # rather than merged, since KG3's current population is
+                                              # gold-simulated, not real human review; see FEATURE_SET_VERSION
 ]
 
 
@@ -89,18 +95,22 @@ def usable_votes(model_results: list) -> list:
 
 
 def build_feature_context(entity: dict, model_results: list,
-                          prior_confirmation_count: int = 0) -> dict:
+                          prior_confirmation_count: int = 0,
+                          kg3_confirmation_count: int = 0) -> dict:
     """Packages exactly what route_tier() already has in hand at the point
     it would consult this calibrator -- the entity record and the two-step
-    ensemble's per-model verdicts -- plus one value the caller must supply
-    from a DB lookup (prior_confirmation_count). Kept as a separate
-    plain-dict step so featurize() itself stays a pure function of already-
-    gathered data, testable with synthetic inputs and no DB connection.
+    ensemble's per-model verdicts -- plus two values the caller must supply
+    from DB/graph lookups (prior_confirmation_count from DuckDB,
+    kg3_confirmation_count from the live KG3 graph -- see
+    src.kg3_query.count_kg3_confirmations). Kept as a separate plain-dict
+    step so featurize() itself stays a pure function of already-gathered
+    data, testable with synthetic inputs and no DB/graph connection.
     """
     return {
         "entity": entity or {},
         "model_results": model_results or [],
         "prior_confirmation_count": prior_confirmation_count or 0,
+        "kg3_confirmation_count": kg3_confirmation_count or 0,
     }
 
 
@@ -153,6 +163,8 @@ def featurize(context: dict) -> list:
         "expansion_ambiguous": 1.0 if entity.get("expansion_ambiguous") else 0.0,
         "prior_confirmation_count":
             min(context.get("prior_confirmation_count") or 0, 10) / 10.0,
+        "kg3_confirmation_count":
+            min(context.get("kg3_confirmation_count") or 0, 10) / 10.0,
     }
     return [fields[name] for name in FEATURE_NAMES]
 
