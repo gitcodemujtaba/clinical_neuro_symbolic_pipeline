@@ -495,8 +495,19 @@ Every column below is a real, gold-graded measurement (not a projection) — see
   metric the proposal names cannot be computed until real review happens.
 - **No T0→T2 longitudinal trend.** Every deflection/precision figure
   above is a single point-in-time measurement.
-- **No confidence intervals** anywhere in this document — none were
-  computed; reported as point estimates only.
+- **Confidence intervals, partially closed 2026-08-30.** Every figure
+  above is still a point estimate. `docs/Code_Reference_Stages_And_Metrics.md`
+  §14 now adds real Wilson score intervals for the headline AUTO-tier
+  precision, Linked precision/recall, and calibrator `TIER_1B` promotion
+  precision numbers across all three populations — worth reading before
+  citing any single-population figure above as decisive, especially
+  fresh-10's (n=56, a 21.7-percentage-point-wide interval) and fresh-5's
+  `TIER_1B` slice (n=23). **Still open**: this project's own evaluation
+  criteria (`docs/Evaluation_Criteria.md`) call for **bootstrap CIs
+  resampled at the note level**, not a plain binomial-proportion interval
+  — Wilson treats each graded entity as independent, which understates
+  true uncertainty given entities cluster within notes. Note-level
+  bootstrap CIs are not yet built anywhere in this codebase.
 - **A third SNOMED near-duplicate pattern** ("Clinical Finding"-domain
   concepts) is confirmed real but unhandled by either the hardcoded rule
   or KGE.

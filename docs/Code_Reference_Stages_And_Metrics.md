@@ -517,6 +517,211 @@ def hardcoded_rule_applicable(entity_label, top1_class, top2_class):
     return "Procedure" in classes and bool(classes & {"Observable Entity", "Qualifier Value"})
 ```
 
+### 10. Linked precision & Linked F1 (Stage 1-2b)
+
+**What it's calculating in this project**: linked recall (§2 above) asks
+"of gold's annotations, how many did we find and link correctly" —
+recall's own denominator is gold, so it cannot see *false positives* (a
+predicted concept with no gold justification at all). Linked precision is
+the complementary question: "of everything we predicted with a resolved
+SNOMED code, how many are actually right." Not a named function in this
+codebase — computed as an aggregate over the same `predictions` list
+`score_gold_recall.py::load_predictions()`/`attach_snomed_codes()` already
+build, restricted to predictions carrying a non-null `snomed_code`:
+
+```
+linked_precision = linked_correct / count(predictions where snomed_code is not None)
+linked_F1 = 2 * linked_precision * linked_recall / (linked_precision + linked_recall)
+```
+
+Computed across **every tier**, not just `AUTO_TIERS` — this is a
+different population from AUTO-tier precision (§3): AUTO-tier precision
+only asks about the subset written without review; linked precision/F1
+ask about the pipeline's entire output, reviewed or not. Mixing the two
+populations (AUTO-tier-only precision against corpus-wide recall) is a
+real, documented mistake this project already caught and fixed once —
+see `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §2's own methodology
+note.
+
+### 11. Deflection rate (Stage 3)
+
+**What it's calculating**: what fraction of Stage 3's decisions never
+require human review at all — the pipeline's actual autonomy rate, and
+the metric this whole project is ultimately optimizing (`docs/
+Implementation_Methodology.md`'s stated objective is "a high share of
+fully autonomous, high-precision concept writes"). Uses **every**
+`AUTO_TIERS` decision, not just the clean-span-gradable subset (an
+earlier draft of this exact computation restricted the numerator to
+gradable decisions while leaving the denominator unrestricted, silently
+undercounting deflection by ~20-26 points — caught and fixed, see
+`docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §2's own methodology note).
+
+```python
+from src.mollm_tier_gate import AUTO_TIERS   # the real one -- see the warning below
+
+n_auto = sum(1 for d in decisions if d["tier"] in AUTO_TIERS)
+deflection_rate = n_auto / len(decisions)
+```
+
+⚠️ **Import `AUTO_TIERS` from `src.mollm_tier_gate` directly — do not
+redefine it.** Two evaluation scripts in this codebase
+(`evaluation/grade_overnight_corpus_run.py`, `evaluation/
+grade_allergy_shadow_run.py`) carry their own hardcoded copy,
+`{"TIER_1_AUTO_VALIDATED", "TIER_2_AUTO_RESOLVED", "TIER_3_AUTO_VALIDATED"}`
+— which is now **wrong**: the real, current `AUTO_TIERS` (`src/
+mollm_tier_gate.py` line 149) is `{TIER_1_AUTO_VALIDATED,
+TIER_3_AUTO_VALIDATED, TIER_1B_CALIBRATED_AUTO_VALIDATED}` — the
+hardcoded copy is missing `TIER_1B` entirely (added later, never
+backported to those two scripts) and wrongly includes `TIER_2_AUTO_RESOLVED`
+(deliberately excluded from the real set, pending shadow validation — see
+`docs/ConsensusCalibrator_Technical_Reference.md` §2). This is the exact
+same drift-bug class already found and fixed once in `src/
+kg3_ingestion.py::ingest_auto_decision()` (2026-08-17,
+`docs/2026-08-17_Phase5_Phase6_Closeout_And_Corpus_Validation.md`).
+Found again while writing this section, 2026-08-30 — **not yet fixed in
+those two evaluation scripts**, flagged here as a real, open item rather
+than silently worked around.
+
+### 12. Classification metrics: TP / FP / Precision / Recall / F1 (Stage 3 promotion decisions)
+
+**What it's calculating**: standard binary-classification metrics, applied
+specifically to "did the tier gate correctly decide to auto-promote this
+entity" — used throughout the calibrator/KG3-feature work
+(`docs/ConsensusCalibrator_Technical_Reference.md` §17.5,
+`docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §9-§10) to isolate one
+mechanism's own marginal contribution, holding everything else fixed.
+
+```
+TP = count(promoted AND gold-correct)
+FP = count(promoted AND gold-wrong)
+Precision = TP / (TP + FP)                              -- of what got promoted, how much is right
+Recall    = TP / (TP + FN)                               -- of everything that WOULD be correct if
+                                                             promoted, how much actually got promoted
+F1        = 2 · Precision · Recall / (Precision + Recall)
+```
+
+**The FN population is the subtle part, computed per-context, not by a
+single shared function**: it is *not* "everything not promoted" — it is
+specifically the entities that *would have graded correct* had they been
+promoted (derived via `plurality_candidate_index()` on the still-`TIER_4`
+population, exactly matching `evaluation/grade_overnight_corpus_run.py`'s
+own "Tier 4 shadow precision" methodology). An entity that's genuinely
+wrong and correctly left at HITL is neither a TP nor an FN — it's a true
+negative, uncounted, exactly as intended.
+
+### 13. AUROC (calibrator validation)
+
+`evaluation/tier_gate_cal_eval.py::fit_and_report()`, via
+`sklearn.metrics.roc_auc_score()` — the probability that the calibrator's
+score ranks a random correct example above a random incorrect one, over
+the full [0,1] threshold range (not just the one deployed threshold):
+
+```
+AUROC = P( score(random positive) > score(random negative) )
+```
+
+Not reimplemented in this codebase — `sklearn`'s own implementation is
+used directly, consistent with `_build_model()`'s "single construction
+site" discipline (§7 of `docs/ConsensusCalibrator_Technical_Reference.md`).
+Reported alongside, never instead of, the threshold-sweep coverage/
+precision table (§13 of that same doc) — AUROC summarizes ranking quality
+across every possible threshold, while the actually-deployed number
+(`CALIBRATED_AUTO_THRESHOLD = 0.72`) only cares about one point on that
+curve.
+
+### 14. Wilson score interval — **not currently used anywhere in this codebase before this section**, added here
+
+**What it is**: a confidence interval for a single binomial proportion
+(e.g. "correct" vs. "incorrect" over `n` graded decisions) that stays
+well-calibrated at small `n` and near `p=0` or `p=1` — the plain
+`p̂ ± z·√(p̂(1-p̂)/n)` "normal approximation" interval used more often in
+practice is known to undercover badly in exactly those conditions
+(small-`n`, extreme-`p`), which is precisely the shape of several
+populations in this project (e.g. fresh-10's 56-decision AUTO-tier
+population, or the calibrator's 23-decision `TIER_1B` slice on fresh-5).
+
+**Formula** (95% CI, `z = 1.96`):
+
+```
+p̂ = x / n
+center = (p̂ + z²/2n) / (1 + z²/n)
+margin = z·√(p̂(1-p̂)/n + z²/4n²) / (1 + z²/n)
+CI = [center - margin, center + margin]
+```
+
+```python
+import math
+
+def wilson_interval(x, n, z=1.96):
+    if n == 0:
+        return None
+    p = x / n
+    denom = 1 + z**2 / n
+    center = (p + z**2 / (2 * n)) / denom
+    margin = (z * math.sqrt(p * (1 - p) / n + z**2 / (4 * n**2))) / denom
+    return p, max(0.0, center - margin), min(1.0, center + margin)
+```
+
+**What it's calculating in this project**, computed 2026-08-30 for the
+headline AUTO-tier precision figure across all three populations
+(`x` = correct, `n` = gradable):
+
+| Population | x/n | Point estimate | Wilson 95% CI | Width |
+|---|---|---|---|---|
+| Corpus-wide (144 notes) | 5,841/6,724 | 86.9% | [86.0%, 87.7%] | 1.6pp |
+| Fresh-10 | 43/56 | 76.8% | [64.2%, 85.9%] | **21.7pp** |
+| Fresh-5 | 139/151 | 92.1% | [86.6%, 95.4%] | 8.8pp |
+
+And for Linked precision / Linked recall (§10/§2):
+
+| Population | Metric | x/n | Point estimate | Wilson 95% CI |
+|---|---|---|---|---|
+| Corpus-wide | Linked precision | 13,197/26,382 | 50.0% | [49.4%, 50.6%] |
+| Fresh-10 | Linked precision | 401/886 | 45.3% | [42.0%, 48.6%] |
+| Fresh-5 | Linked precision | 218/402 | 54.2% | [49.3%, 59.0%] |
+| Corpus-wide | Linked recall | 13,208/39,403 | 33.5% | [33.1%, 34.0%] |
+| Fresh-10 | Linked recall | 401/1,497 | 26.8% | [24.6%, 29.1%] |
+| Fresh-5 | Linked recall | 218/544 | 40.1% | [36.0%, 44.2%] |
+
+And for the calibrator's own `TIER_1B` promotion precision specifically:
+
+| Population | x/n | Point estimate | Wilson 95% CI |
+|---|---|---|---|
+| Held-out val split (`docs/ConsensusCalibrator_Technical_Reference.md` §17.5) | 129/133 | 97.0% | [92.5%, 98.8%] |
+| Fresh-5 (real, 2026-08-30, `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §10.2) | 21/23 | 91.3% | [73.2%, 97.6%] |
+
+**Read this honestly, not just as decoration on the point estimates.**
+The fresh-10 AUTO-tier-precision interval is **21.7 percentage points
+wide** — nearly a quarter of the whole [0,1] range — because `n=56` is
+small. Fresh-10's 76.8% and fresh-5's 92.1% intervals ([64.2%, 85.9%] vs.
+[86.6%, 95.4%]) come close to touching but do not overlap, so the
+fresh-5-beats-fresh-10 claim in §10.3 of the SSOT doc survives this
+check — but the margin is real, not overwhelming, and should not be
+oversold as a large, decisive gap on the strength of the point estimates
+alone. The `TIER_1B` fresh-5 interval ([73.2%, 97.6%]) is wide enough
+that "97.0% on held-out val" and "91.3% on fresh-5" are **fully
+consistent with being the same underlying rate** — read them as
+compatible measurements of one thing, not as evidence the calibrator
+performs differently in the two settings.
+
+**What this is *not***: the project's own evaluation criteria
+(`docs/Evaluation_Criteria.md`) call for **bootstrap confidence
+intervals resampled at the note level** — a materially different, more
+rigorous approach, since entities within one discharge note are not
+independent draws (the exact same non-independence reasoning behind
+every note-disjoint train/val split in this project — see
+`docs/ConsensusCalibrator_Technical_Reference.md` §10.5). The Wilson
+interval above treats every graded entity as an independent Bernoulli
+trial, which understates true uncertainty whenever a population is
+dominated by a few notes with many entities each (true for all three
+populations here, to varying degrees — fresh-5's 151 gradable AUTO-tier
+decisions come from only 5 notes). **Note-level bootstrap CIs are not
+yet built anywhere in this codebase** — this Wilson-interval addition is
+a real, useful, but acknowledged-partial answer to the "no confidence
+intervals" gap `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` previously
+stated as fully open; see that doc's Known Limitations section for the
+updated, precise framing.
+
 ---
 
 ## Summary Table — Metric → Formula → Where Computed
@@ -534,3 +739,9 @@ def hardcoded_rule_applicable(entity_label, top1_class, top2_class):
 | KGE Hits@k | `fraction(rank ≤ k)` | `src/kg_embedding.py` |
 | KGE extrinsic | `count(d_wrong < d_random) / n_comparisons` | `src/kg_embedding.py` |
 | KGE tiebreak win/loss | baseline-wrong→right = win; baseline-right→wrong = loss | `evaluation/kg_tiebreak_validation.py` |
+| Linked precision | `linked_correct / count(predictions with resolved SNOMED code)` | ad hoc, `scripts/score_gold_recall.py`'s `load_predictions()`/`attach_snomed_codes()` |
+| Linked F1 | `2PR / (P+R)` (Linked precision, Linked recall) | ad hoc |
+| Deflection rate | `count(tier in AUTO_TIERS) / count(all decisions)` | ad hoc, `AUTO_TIERS` from `src/mollm_tier_gate.py` |
+| Precision/Recall/F1 (promotion) | `TP/(TP+FP)`, `TP/(TP+FN)`, `2PR/(P+R)` | ad hoc, this project's calibrator/KG3 experiments |
+| AUROC | `P(score(pos) > score(neg))` | `sklearn.metrics.roc_auc_score`, via `evaluation/tier_gate_cal_eval.py` |
+| Wilson score interval | `(p̂+z²/2n)/(1+z²/n) ± z√(p̂(1-p̂)/n+z²/4n²)/(1+z²/n)` | new, §14 above, not yet a checked-in function |

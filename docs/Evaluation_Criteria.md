@@ -28,3 +28,36 @@
 ## Success Criteria
 * The accuracy claim is supported if the pipeline's concept-level F1 at T2 meets or exceeds Clinical-T5's on the locked test set with non-overlapping bootstrap confidence intervals[cite: 7].
 * The effort-reduction claim is supported via a T0 to T2 deflection-rate trend that is statistically distinguishable from flat, alongside a false-deflection rate that stays within a pre-set acceptable bound[cite: 7].
+
+---
+
+## Implementation status (editorial note, added 2026-08-30 — not part of the cited proposal above)
+
+What actually exists today, against each section above, stated plainly:
+
+- **Confidence intervals — partial.** The proposal calls for bootstrap CIs
+  resampled at the note level. What's built instead, as of 2026-08-30, is
+  a simpler Wilson score interval on the headline binomial proportions
+  (AUTO-tier precision, Linked precision/recall, calibrator promotion
+  precision) — see `docs/Code_Reference_Stages_And_Metrics.md` §14. Wilson
+  treats each graded entity as independent, which is not what "resampled
+  at the note level" means and likely understates true uncertainty for
+  populations dominated by a few large notes. **Bootstrap CIs are not yet
+  built.**
+- **T0/T1/T2 checkpoints — not implemented.** Every result in
+  `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` is a single point-in-time
+  measurement; no trend across checkpoints exists.
+- **False deflection rate — cannot be computed.** Zero real human reviews
+  exist in production (`hitl_review_queue` is populated but unreviewed) —
+  see `docs/FINAL_RESULTS_Single_Source_Of_Truth.md`'s Known Limitations.
+- **Deflection rate — real, measured.** See §3 above; corpus-wide,
+  fresh-10, and fresh-5 numbers all exist and are compared side by side in
+  `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §10.3.
+- **Concept-level precision/recall/F1 — real, measured** (as "Linked
+  precision/recall/F1" in this project's own naming), same doc, same
+  section. No comparison against Clinical-T5 exists — that baseline was
+  never run.
+- **ECE — real, measured**, but for the superseded single-pass ensemble
+  gate (`src/mollm_calibrator.py`), not the current two-step CoT tier gate
+  (`src/mollm_tier_gate.py`) — see `docs/ConsensusCalibrator_Technical_Reference.md`'s
+  own warning not to confuse the two modules.
