@@ -1,0 +1,434 @@
+<title>Neuro-Symbolic Pipeline Schematic</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #F1F3F2;
+    --paper: #FBFCFB;
+    --ink: #16211F;
+    --muted: #52625E;
+    --line: #C7D0CC;
+    --line-soft: #DCE3E0;
+    --accent: #2F6F6B;
+    --accent-soft: #E4EEEC;
+    --auto: #3F7A45;
+    --auto-soft: #E5EFE3;
+    --review: #A06A22;
+    --review-soft: #F3E8D6;
+    --trap: #9A4436;
+    --trap-soft: #F5E4E0;
+    --mono-bg: #101917;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F1715;
+      --paper: #141E1B;
+      --ink: #E7EEEB;
+      --muted: #9DAFA9;
+      --line: #2B3835;
+      --line-soft: #223330;
+      --accent: #6FBFB8;
+      --accent-soft: #16302D;
+      --auto: #7FC583;
+      --auto-soft: #17281A;
+      --review: #E0AC5C;
+      --review-soft: #2E2416;
+      --trap: #E28776;
+      --trap-soft: #301E1A;
+      --mono-bg: #0B1211;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1715;
+    --paper: #141E1B;
+    --ink: #E7EEEB;
+    --muted: #9DAFA9;
+    --line: #2B3835;
+    --line-soft: #223330;
+    --accent: #6FBFB8;
+    --accent-soft: #16302D;
+    --auto: #7FC583;
+    --auto-soft: #17281A;
+    --review: #E0AC5C;
+    --review-soft: #2E2416;
+    --trap: #E28776;
+    --trap-soft: #301E1A;
+    --mono-bg: #0B1211;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+  }
+  body {
+    margin: 0;
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.55;
+    padding: clamp(20px, 4vw, 56px);
+  }
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.7rem, 3vw, 2.35rem);
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  .dek {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 66ch;
+  }
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .stat {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    border-radius: 3px;
+    padding: 6px 10px;
+    color: var(--muted);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .stat b {
+    color: var(--ink);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Section headers ---------- */
+  h2 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0 0 4px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  h2 .n {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .section-note {
+    font-size: 0.88rem;
+    color: var(--muted);
+    max-width: 74ch;
+    margin: 0 0 14px 0;
+  }
+
+  /* ---------- Schematic panel ---------- */
+  .schematic {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background:
+      linear-gradient(var(--line-soft) 1px, transparent 1px) 0 0 / 100% 28px,
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px) 0 0 / 28px 100%,
+      var(--paper);
+    background-blend-mode: normal;
+    padding: 22px;
+    overflow-x: auto;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .schematic { background-blend-mode: screen; }
+  }
+  :root[data-theme="dark"] .schematic { background-blend-mode: screen; }
+  .schematic pre.mermaid {
+    margin: 0;
+    min-width: 980px;
+  }
+
+  /* ---------- Legend ---------- */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .legend .item { display: flex; align-items: center; gap: 8px; }
+  .swatch {
+    width: 13px; height: 13px; border-radius: 3px;
+    border: 1px solid var(--line);
+    flex: none;
+  }
+  .swatch.auto { background: var(--auto-soft); border-color: var(--auto); }
+  .swatch.review { background: var(--review-soft); border-color: var(--review); }
+  .swatch.trap { background: var(--trap-soft); border-color: var(--trap); }
+  .swatch.gate { background: var(--accent-soft); border-color: var(--accent); }
+
+  /* ---------- Reference table ---------- */
+  table.ref {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.86rem;
+  }
+  .table-wrap { overflow-x: auto; }
+  table.ref th, table.ref td {
+    text-align: left;
+    padding: 9px 14px 9px 0;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  table.ref th {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  table.ref td.k {
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  table.ref td.v {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  table.ref td.d { color: var(--muted); }
+
+  footer {
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  footer code {
+    font-family: "IBM Plex Mono", monospace;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.85em;
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="eyebrow">Pipeline schematic — end to end</div>
+    <h1>MIMIC-IV discharge note → SNOMED/OMOP concept, or human review</h1>
+    <div class="dek">
+      Five stages, one note at a time: abbreviation expansion, zero-shot entity extraction, tiered
+      concept normalization, a three-model LLM ensemble tier gate, then routing to an autonomous
+      knowledge-graph write or a human reviewer. Every label below is a real module, function, or
+      threshold in the live codebase — nothing here is illustrative.
+    </div>
+    <div class="stats">
+      <div class="stat">real run, 5 fresh notes · <b>373</b> entities</div>
+      <div class="stat">AUTO coverage · <b>56.6%</b></div>
+      <div class="stat">AUTO-tier precision · <b>92.1%</b></div>
+      <div class="stat">ensemble · <b>qwen2.5:3b + llama3.2:3b + phi4-mini</b></div>
+    </div>
+  </div>
+
+  <section>
+    <h2><span class="n">01</span> The full route</h2>
+    <p class="section-note">
+      Top to bottom: Stage 1 preprocessing, Stage 2a extraction, Stage 2b grounding, Stage 3's
+      tier gate, Stage 4 routing. Diamonds are real decision points; the seven boxed outcomes at
+      the bottom are the only places an entity's journey actually ends.
+    </p>
+    <div class="schematic">
+<pre class="mermaid">
+flowchart TD
+  RAW["Raw discharge note text"]
+
+  subgraph STAGE1["STAGE 1 — Preprocessing"]
+    direction TB
+    S1A["expand_text_and_track_offsets()<br/>abbreviation expansion"]
+    S1B{"Ambiguous abbreviation?<br/>2+ dictionary meanings"}
+    S1C["Static tiebreaks<br/>alphabetical / numeric-context / OMOP-groundability"]
+    S1D["Flywheel tiebreaks<br/>compute_frequency_priority (allow-list gated)<br/>select_by_context_pattern (HITL-mined rules)"]
+  end
+
+  subgraph STAGE2A["STAGE 2A — Extraction"]
+    direction TB
+    E1["GLiNER-BioMed<br/>zero-shot span extraction, 6 labels"]
+    E2["Sliding-window chunking<br/>&gt;1800 words, 128-token overlap"]
+    E3{"below_threshold?<br/>EXTRACTION_THRESHOLD 0.50"}
+    E4["Cold-start injectors<br/>physexam shorthand · lab-abbrev · narrative-state-word"]
+    E5["Assertion + experiencer tagging"]
+    E6["GLiNER-relex<br/>relation extraction"]
+    E7["grow_entity_spans()"]
+    E8["split_compound_entities()"]
+  end
+
+  subgraph STAGE2B["STAGE 2B — Normalization / Grounding"]
+    direction TB
+    N1{"Tier 1 exact match?"}
+    N2{"Tier 2 synonym match?"}
+    N3["Tier 3 — SapBERT semantic search<br/>floor 0.72 (TIER3_SIMILARITY_FLOOR)"]
+    N4["Alias force-include<br/>verified_lab_test_alias / verified_brand_alias"]
+    N5["Near-duplicate tiebreaks<br/>Procedure-vs-Observable · Condition-vs-Observation · allergy-domain"]
+    N6["Lab Value Suffix Fallback<br/>strip_lab_value_suffix() retry, tier-OR-alias acceptance"]
+    N7["Domain-conflict check"]
+  end
+
+  subgraph STAGE3["STAGE 3 — MoLLM Tier Gate — route_tier()"]
+    direction TB
+    T0["Qualifier-fragment precheck"]
+    T1{"Tier 3 fast path?<br/>sole verified alias, no ambiguity conflict"}
+    T1B{"Lab-procedure fast path?<br/>78/78 corpus convention"}
+    T2{"Tier 5 precheck?<br/>below floor / unresolved acronym"}
+    T3A["Step A — clinical meaning<br/>(no candidates shown)"]
+    T3B["Step B — per candidate<br/>binary match, all 3 models"]
+    T3C["Tiebreak prompt<br/>+ CONDITION_VS_OBSERVATION_PRIOR<br/>+ guideline evidence (off, measured null)"]
+    T4{"3/3 unanimous SUPPORTED_1?"}
+    T5{"3/3 unanimous RE_RANK_N?"}
+    T4N{"3/3 unanimous NONE_CORRECT?"}
+    TRAP1{"Hard trap?<br/>coronary-segment / short-code"}
+    TRAP2{"Hard trap?"}
+    TRAP3{"Hard trap?"}
+    CONF{"composite_confidence<br/>&ge; 0.70?"}
+    CAL1["ConsensusCalibrator.score()<br/>17 features incl. kg3_confirmation_count"]
+    CAL2["ConsensusCalibrator.score()"]
+  end
+
+  TIER1(["TIER_1<br/>AUTO_VALIDATED"])
+  TIER1B(["TIER_1B<br/>CALIBRATED_AUTO_VALIDATED"])
+  TIER3T(["TIER_3<br/>AUTO_VALIDATED"])
+  TIER2B(["TIER_2B<br/>CALIBRATED_AUTO_RESOLVED"])
+  TIER2(["TIER_2 / TIER_4<br/>→ HITL_REQUIRED"])
+  TIER5(["TIER_5<br/>TRUE_AMBIGUITY → HITL"])
+
+  subgraph STAGE4["STAGE 4 — Routing"]
+    direction TB
+    H1[("hitl_review_queue<br/>every non-AUTO decision")]
+    H2["Human reviewer<br/>0 completed in production"]
+    K1["ingest_auto_decision()<br/>dry_run=True in production"]
+    K2[("KG3 — Memgraph<br/>PatientObservation → Concept")]
+  end
+
+  RAW --> S1A --> S1B
+  S1B -- yes --> S1D --> S1C --> E1
+  S1B -- no --> E1
+  E1 --> E2 --> E3
+  E3 -- above threshold --> E4
+  E3 -. below, stored only .-> E4
+  E4 --> E5 --> E6 --> E7 --> E8 --> N1
+  N1 -- no --> N2
+  N2 -- no --> N3 --> N4 --> N5 --> N6 --> N7 --> T0
+  N1 -- yes --> T0
+  N2 -- yes --> T0
+  T0 --> T1
+  T1 -- yes --> TIER3T
+  T1 -- no --> T1B
+  T1B -- yes --> TIER3T
+  T1B -- no --> T2
+  T2 -- yes --> TIER5
+  T2 -- no --> T3A --> T3B --> T3C --> T4
+  T4 -- yes --> TRAP1
+  TRAP1 -- trapped --> TIER2
+  TRAP1 -- clear --> CONF
+  CONF -- yes --> TIER1
+  CONF -- no --> TIER2
+  T4 -- no --> T5
+  T5 -- yes --> TRAP2
+  TRAP2 -- trapped --> TIER2
+  TRAP2 -- clear --> CAL2
+  CAL2 -- "&ge; 0.72" --> TIER2B
+  CAL2 -- "&lt; 0.72" --> TIER2
+  T5 -- no --> T4N
+  T4N -- yes --> TIER5
+  T4N -- no, split vote --> TRAP3
+  TRAP3 -- trapped --> TIER2
+  TRAP3 -- clear --> CAL1
+  CAL1 -- "&ge; 0.72" --> TIER1B
+  CAL1 -- "&lt; 0.72" --> TIER2
+
+  TIER1 --> K1
+  TIER1B --> K1
+  TIER3T --> K1
+  TIER2B -. "not in AUTO_TIERS<br/>pending shadow validation" .-> H1
+  TIER2 --> H1
+  TIER5 --> H1
+  K1 --> K2
+  H1 --> H2 -. "would confirm/correct" .-> K2
+
+  classDef gate fill:#E4EEEC,stroke:#2F6F6B,color:#16211F,stroke-width:1px;
+  classDef auto fill:#E5EFE3,stroke:#3F7A45,color:#16211F,stroke-width:1px;
+  classDef review fill:#F3E8D6,stroke:#A06A22,color:#16211F,stroke-width:1px;
+  classDef trap fill:#F5E4E0,stroke:#9A4436,color:#16211F,stroke-width:1px;
+  classDef proc fill:#FBFCFB,stroke:#C7D0CC,color:#16211F;
+
+  class S1B,E3,N1,N2,T1,T1B,T2,T4,T5,T4N,TRAP1,TRAP2,TRAP3,CONF gate;
+  class TIER1,TIER1B,TIER3T,K1,K2 auto;
+  class TIER2,TIER2B,TIER5,H1,H2 review;
+  class CAL1,CAL2 gate;
+</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span> Reading the schematic</h2>
+    <div class="legend">
+      <div class="item"><span class="swatch gate"></span> decision point / model consultation</div>
+      <div class="item"><span class="swatch auto"></span> reaches KG3 without human review</div>
+      <div class="item"><span class="swatch review"></span> routed to <code style="font-family:'IBM Plex Mono',monospace;background:var(--accent-soft);color:var(--accent);padding:1px 5px;border-radius:3px;">hitl_review_queue</code></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span> Thresholds &amp; constants actually in force</h2>
+    <div class="table-wrap">
+      <table class="ref">
+        <thead><tr><th>Constant</th><th>Value</th><th>Governs</th></tr></thead>
+        <tbody>
+          <tr><td class="k">EXTRACTION_THRESHOLD</td><td class="v">0.50</td><td class="d">GLiNER span accepted vs. stored-for-study-only (0.35 floor)</td></tr>
+          <tr><td class="k">TIER3_SIMILARITY_FLOOR</td><td class="v">0.72</td><td class="d">Below this, Stage 2b reports no candidate at all</td></tr>
+          <tr><td class="k">TIER1_CONFIDENCE_FLOOR</td><td class="v">0.70</td><td class="d">Minimum mean logprob confidence for a unanimous vote to reach TIER_1</td></tr>
+          <tr><td class="k">CALIBRATED_AUTO_THRESHOLD</td><td class="v">0.72</td><td class="d">ConsensusCalibrator score needed for TIER_1B / TIER_2B promotion</td></tr>
+          <tr><td class="k">FEATURE_SET_VERSION</td><td class="v">2</td><td class="d">17 calibrator features, incl. kg3_confirmation_count (added 2026-08-30)</td></tr>
+          <tr><td class="k">CHUNK_WORD_BUDGET</td><td class="v">1,800</td><td class="d">Notes above this get sliding-window GLiNER extraction</td></tr>
+          <tr><td class="k">EXHAUSTIVE_CANDIDATE_EVAL</td><td class="v">on (default)</td><td class="d">Step B keeps evaluating candidates past the first accept</td></tr>
+          <tr><td class="k">GUIDELINE_EVIDENCE_ENABLED</td><td class="v">off</td><td class="d">A/B tested 2026-08-30: zero flips on 23 real paired entities</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Source of truth for every figure and threshold above: <code>docs/FINAL_RESULTS_Single_Source_Of_Truth.md</code>,
+    <code>docs/Code_Reference_Stages_And_Metrics.md</code>, <code>docs/ConsensusCalibrator_Technical_Reference.md</code>.
+    Diagram reflects the pipeline as of 2026-08-30.
+  </footer>
+
+</div>
