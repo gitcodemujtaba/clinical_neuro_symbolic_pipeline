@@ -488,7 +488,30 @@ Every column below is a real, gold-graded measurement (not a projection) — see
 
 ---
 
-## 11. Known Limitations & Open Gaps — Stated Honestly
+## 11. Experiment: Guideline Evidence Injection (2026-08-30)
+
+**Question**: `src/guideline_evidence.py` (curated clinical-guideline rules injected into the MoLLM tiebreak prompt, built 2026-08-20, off by default pending validation) — does it actually help? Full plan at `/home/ec2-user/.claude/plans/here-is-details-of-peppy-pixel.md`.
+
+**Real population**: 217 entities (corrected from an initially-reported 258 — a real `select_population()` dedup bug, no `DISTINCT` on `entity_id`, was found and fixed; `normalized_entities` can carry more than one row per `entity_id` after re-normalization), 88 distinct mention texts, spanning `TIER_4_ENSEMBLE_SPLIT`/`TIER_2_AUTO_RESOLVED` decisions whose candidate list gets a real name match in the 76-file guideline corpus.
+
+**Method**: `evaluation/guideline_evidence_ab_test.py` — real, live, paired LLM calls (not a replay of stored votes, since guideline evidence changes the prompt text itself), each entity run twice through `route_tier()`, once with `GUIDELINE_EVIDENCE_ENABLED` off and once on, graded via the same clean-span + SNOMED-crosswalk methodology as every other precision figure in this document.
+
+**Result, 50-entity slice (n=23 gradable)**:
+
+| | Gradable | Correct | Precision |
+|---|---|---|---|
+| OFF | 23 | 20 | 87.0% |
+| ON | 23 | 20 | 87.0% |
+
+**Zero flips** — every one of the 23 paired entities got the identical correctness outcome with guideline evidence on vs. off, not just similar aggregate precision.
+
+**Why, investigated directly rather than assumed**: inspected all 13 unique gradable entities' actual injected evidence text and full 3-model reasoning, both arms. Every real hit was **one-sided background context about the single candidate already chosen** ("chest pain can be a symptom of ACS", "aspirin is standard therapy for ACS", "CHF is a differential diagnosis to consider for COPD") — never a fact that discriminates between the two specific candidates causing a tie. Even on genuine 2-1 splits, the injected evidence didn't address the axis of disagreement, so reasoning text sometimes changed wording between arms while the verdict pattern stayed identical. This is a structural explanation, not a small-sample artifact — matches exactly what the original scoping investigation (plan file) already found: real hits in this corpus are overwhelmingly one-sided facts, not pair-adjudicating rules.
+
+**Decision**: `GUIDELINE_EVIDENCE_ENABLED` stays off. Not concluded from statistical underpowering alone — the zero-flip result plus a mechanistic explanation for *why* it can't move a tiebreak under the current name-match-only design together make a full 217-entity run unlikely to change the conclusion. The full run was not executed (a real ~2.4-hour cost at this reduced population size); this stays a documented, reasoned decision rather than an assumption, and can be revisited if the underlying design changes (e.g. the plan's own out-of-scope items — rule-relevance ranking, or wiring evidence into Stage 1's separate acronym-escalation prompt instead).
+
+---
+
+## 12. Known Limitations & Open Gaps — Stated Honestly
 
 - **No false-deflection rate.** `hitl_review_queue` is populated (19,103
   cases) but has zero completed human reviews — the patient-safety
@@ -558,7 +581,7 @@ Every column below is a real, gold-graded measurement (not a projection) — see
 
 ---
 
-## 12. Reproducibility
+## 13. Reproducibility
 
 - Full code-flow trace: `docs/Code_Flow.md`.
 - Every metric's exact formula + real implementing code:
