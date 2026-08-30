@@ -271,19 +271,166 @@ identified but **not implemented or verified**.
 
 ## 8. Calibrator Status
 
-`ConsensusCalibrator` (`src/mollm_tier_calibrator.py`), 16-feature
-logistic regression, scores `P(correct)` only for entities that already
-fail every hard Tier 1/3 rule. Retrained on 114 notes: **validation AUROC
-0.845** (up from 0.74 pre-retrain). `CALIBRATED_AUTO_THRESHOLD = 0.72`.
-Two hard "trap" gates bypass the calibrator entirely for known-fragile
-patterns (`_is_coronary_segment_trap()`, `_is_short_alphanumeric_code()`).
+`ConsensusCalibrator` (`src/mollm_tier_calibrator.py`), **17-feature**
+logistic regression (was 16 before 2026-08-30, see §9), scores `P(correct)`
+only for entities that already fail every hard Tier 1/3 rule. Current
+production model retrained on **144 notes**: **validation AUROC 0.852**
+(up from 0.845 on the prior 114-note/16-feature model, and 0.74 before
+that). `CALIBRATED_AUTO_THRESHOLD = 0.72` — **not re-derived against
+either retrain**; see `docs/ConsensusCalibrator_Technical_Reference.md`
+§13.5 for the open item this leaves. Two hard "trap" gates bypass the
+calibrator entirely for known-fragile patterns
+(`_is_coronary_segment_trap()`, `_is_short_alphanumeric_code()`).
 Leakage guard (`ConsensusCalibrator.load(..., scoring_note_ids=...)`)
 verified live: correctly degraded to untrained/no-op on 3 of the 10
 fresh-validation notes (they were in its training set).
 
 ---
 
-## 9. Known Limitations & Open Gaps — Stated Honestly
+## 9. Experiment: `kg3_confirmation_count` as a calibrator feature (2026-08-30)
+
+**Question**: KG3 (Memgraph) had been a pure write sink for the whole
+project — confirmed by direct code search that zero references to
+Memgraph/`kg3_query` existed in any decision-making module. Does reading
+it back in as calibrator evidence actually move precision/AUROC, and by
+how much specifically (isolated from simply having more training data)?
+
+### 9.1 What was changed, and how the calibrator was retrained
+
+- **New read function**, `src/kg3_query.py::count_kg3_confirmations(driver, entity_text, concept_id)`
+  — how many `:PatientObservation` nodes in the live graph already confirm
+  this exact (text, concept) pairing. Same never-raise, "0 on any failure"
+  contract as the existing DuckDB-sourced `count_prior_confirmations()`.
+- **New 17th feature**, `kg3_confirmation_count` (`min(count, 10) / 10.0`,
+  identical scaling to the existing `prior_confirmation_count`).
+  `FEATURE_SET_VERSION` bumped 1→2, so any model saved under the old
+  16-feature layout safely degrades to untrained on load rather than
+  silently scoring with misaligned coefficients — verified live before
+  retraining.
+- **`route_tier()`/`_score_with_calibrator()`** gained `kg3_driver`/
+  `kg3_driver_factory` parameters mirroring the existing `conn`/
+  `conn_factory` contract exactly. `scripts/run_stage3_tier_gate.py`
+  passes `kg3_driver=memgraph_driver` — the same driver already opened
+  for the (dry-run) KG3 write-path check, not a second connection.
+- **Retraining procedure** (unchanged methodology from the 2026-08-20
+  114-note retrain, documented in
+  `docs/ConsensusCalibrator_Technical_Reference.md` §10 — only the note
+  population and feature count differ): real historical
+  `mollm_tier_gate_decisions` rows, restricted to `TIER_4_ENSEMBLE_SPLIT`
+  (the population the calibrator is actually consulted for), labeled 1/0
+  by SNOMED-crosswalk exact match against gold, split **note-disjoint**
+  (every 4th note, sorted, to validation — never random), fit with
+  `LogisticRegression(class_weight="balanced")`. The only change this
+  round: `evaluation/tier_gate_cal_eval.py::build_labeled_examples()` now
+  also takes a live Memgraph driver and computes each training example's
+  real `kg3_confirmation_count` via the same function `route_tier()` calls
+  at inference — previously this would have trained the new feature on an
+  all-zero column, which was caught and fixed before the retrain ran, not
+  after.
+- **The abbreviation flywheel (`src/abbreviation_flywheel.py`) was NOT
+  touched or retrained in this update.** It is a separate mechanism,
+  upstream of this calibrator (Stage 1 expansion tie-breaking, not Stage
+  3 tier routing), trained from a different data source entirely: real
+  `hitl_review_queue` reviewer-confirmed resolutions mined into
+  deterministic context-trigger rules (`mine_context_rules()`), plus a
+  frequency-priority mechanism (`compute_frequency_priority()`) gated
+  behind an explicit `VERIFIED_ALLOW_LIST` that starts **empty** — a
+  posture inverted from an earlier block-list design after a real-data
+  test found the block-list version re-selecting its own wrong guesses
+  (7/7 wrong on gold-check, see the reorg plan's Phase 7 entry). Only the
+  calibrator is the subject of this experiment.
+
+### 9.2 Result — isolated from the corpus-growth effect
+
+Comparing the new 144-note/17-feature model's AUROC (0.852) directly
+against the old 114-note/16-feature baseline (0.845) conflates two
+changes at once (more notes **and** a new feature). To isolate the
+feature's own contribution, two models were fit on the **exact same**
+144-note data and note-disjoint split — one with real
+`kg3_confirmation_count`, one with that single feature zeroed
+(`evaluation/tier_gate_cal_eval.py`'s existing ablation mechanism,
+`fit_and_report(..., ablate_indices=(kg3_idx,))`):
+
+| | AUROC | Coverage @ 0.72 | Precision @ 0.72 | Promoted |
+|---|---|---|---|---|
+| With `kg3_confirmation_count` | 0.852 | 20.9% | **97.0%** | 133 |
+| Without (ablated) | 0.821 | 18.0% | **91.2%** | 114 |
+| **Delta, feature-attributable** | **+0.031** | **+2.9pp** | **+5.8pp** | +19 net |
+
+`kg3_confirmation_count > 0` on 23.9% of train / 23.8% of val examples —
+a common signal, not a rare edge case, at the current corpus size.
+
+**Inspected at the individual-example level, not just aggregate deltas.**
+29 val examples are promoted only when the KG3 feature is present, and
+**all 29 are correct against gold** — dominated by recurring lab-value
+patterns (WBC/RBC/HGB/Creat measurements independently confirmed
+elsewhere in the graph) and repeated findings (`NSTEMI` ×3, `headaches`
+×2, `blindness` ×2). Going the other direction, 10 examples lose
+promotion when the feature is added: 6 are real false positives correctly
+suppressed — `aspirin` most dramatically (score 0.919→0.224 despite a
+high `prior_confirmation_count=66`, once `kg3_confirmation_count=0`
+contradicted it) — but 4 are genuine misses (`renal failure`, `Sclera`,
+`lungs`, `left ovary` — the last essentially a tie, 0.71999 vs. the 0.72
+threshold).
+
+### 9.3 What the fitted coefficients show
+
+Read directly from `models/consensus_calibrator_v1.pkl` (17-feature,
+current production model):
+
+| Feature | β (new, 17-feature) | β (old, 16-feature) |
+|---|---:|---:|
+| `kg3_confirmation_count` | **+7.1368** | *(did not exist)* |
+| `top_candidate_similarity_score` | +2.7502 | +3.5188 |
+| `frac_supported_1` | +2.3729 | +2.0133 |
+| `prior_confirmation_count` | **−2.1114** | **+1.3456** |
+
+`kg3_confirmation_count`'s coefficient (+7.14) is by far the largest
+magnitude of any feature in the model — more than double the next
+largest. **`prior_confirmation_count`'s coefficient flipped sign** between
+the two fits (+1.35 → −2.11). The most defensible reading, stated as
+inference rather than a fact read directly off the model: the two
+confirmation-count features are correlated (an entity confirmed in
+DuckDB's own decision history is often also the kind of entity KG3 was
+populated with, since KG3's population was itself derived by grading
+those same historical decisions — see §9.4), and a linear model facing
+two collinear features can assign credit to one and a compensating
+negative weight to the other without that implying either feature
+individually predicts incorrectness. This is flagged as something to
+verify (e.g. a variance-inflation check, or refitting with only one of
+the two confirmation-count features) before treating the sign flip as a
+substantive finding on its own, not just an artifact of adding a
+correlated feature.
+
+### 9.4 The honest caveat — this measures today's KG3, not real human review
+
+KG3's current population is **100% gold-simulated** — written by grading
+the pipeline's own historical decisions against gold and only ingesting
+the matching ones (`ingest_reviewed_case()`/`ingest_auto_decision()`),
+not real completed human review (still zero in production, see §9
+[Known Limitations] below). So `kg3_confirmation_count > 0` is, to a
+real and unquantified degree, a restatement of "this exact pattern
+already matched gold once" — evaluated here against labels that are
+**also** gold-based, on a note population that substantially overlaps the
+notes KG3 was populated from. The note-disjoint train/val split guards
+against literal row-level leakage (the same guard every other feature in
+this calibrator relies on), but not this deeper population-level
+circularity. §9.2's numbers are real **given KG3's contents as of
+2026-08-30** and should not be read as a measurement of what happens once
+KG3 accumulates independent, real human-reviewed confirmations.
+
+**Decision**: adopted as production (`code_version=full_corpus_retrain_2026-08-30`)
+on the reasoning that (a) the isolated ablation shows real, well-behaved
+signal even acknowledging the caveat above, (b) it is also the only way
+to have a genuinely trained calibrator at all post-`FEATURE_SET_VERSION`
+bump, since the alternative was leaving production running the old
+16-feature model in its safely-degraded, always-`None`-scoring untrained
+state. Not treated as a validated claim about real-world unreviewed KG3
+data — that measurement does not yet exist.
+
+---
+
+## 10. Known Limitations & Open Gaps — Stated Honestly
 
 - **No false-deflection rate.** `hitl_review_queue` is populated (19,103
   cases) but has zero completed human reviews — the patient-safety
@@ -304,12 +451,23 @@ fresh-validation notes (they were in its training set).
   (Objective 4's other two named methods) remain unbuilt** — TransE was
   built as the simplest of the three named KGE methods; the other two are
   real, stated scope, not silently skipped.
-- **All KG3 writes remain `dry_run=True`** system-wide — no code path
-  writes to the knowledge graph live and unreviewed today.
+- **The production pipeline's own automatic write path remains
+  `dry_run=True`** — `scripts/run_stage3_tier_gate.py`'s call to
+  `ingest_auto_decision()` never commits a live, unreviewed write, exactly
+  as before. **Nuance added 2026-08-30, not previously true**: the live
+  KG3 graph is no longer empty — a one-off, manually-run population script
+  (`ingest_reviewed_case()`, real writes, not dry-run) wrote ~6,600 nodes
+  derived by grading historical decisions against gold and treating a
+  match as a simulated approval. This is **not** real human review and
+  not an ongoing autonomous write path; it exists specifically so
+  `kg3_confirmation_count` (§9) has real data to be evaluated against. Do
+  not read "KG3 has data in it" as "the system writes to KG3 unreviewed
+  in production" — those are two different claims, and only the second
+  one was previously stated by this bullet.
 
 ---
 
-## 10. Reproducibility
+## 11. Reproducibility
 
 - Full code-flow trace: `docs/Code_Flow.md`.
 - Every metric's exact formula + real implementing code:
@@ -322,3 +480,5 @@ fresh-validation notes (they were in its training set).
   reproducible via `scripts/export_pipeline_tables.py`.
 - KGE checkpoint: `models/kg_transe_v1.pt`.
 - Fresh-10 validation note IDs: `ui/components/fresh10_notes.py`.
+- §9's retrain: `scripts/retrain_calibrator_full_corpus.py --save`. §9's
+  isolated feature ablation: `evaluation/kg3_feature_ablation.py`.

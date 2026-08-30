@@ -1,6 +1,6 @@
 # ConsensusCalibrator — Complete Technical Reference
 
-**Module**: `src/mollm_tier_calibrator.py` · **Class**: `ConsensusCalibrator` · **Feature set version**: 1
+**Module**: `src/mollm_tier_calibrator.py` · **Class**: `ConsensusCalibrator` · **Feature set version**: 2 (was 1 before 2026-08-30 — §1–§16 below describe the original 16-feature module and are otherwise unchanged from when they were written; §17 is new and documents the 17th feature and its own, separately-verified retrain)
 **Model artefact**: `models/consensus_calibrator_v1.pkl` (`DEFAULT_MODEL_PATH`, derived from the module's own location so the fitting script and every production call site cannot point at different files)
 
 **Sources**: four source files, all read in full, plus the fitted model artefacts themselves (`models/consensus_calibrator_v1.pkl` and its pre-retrain backup, unpickled and reported in §14) — `src/mollm_tier_calibrator.py` (the module), `evaluation/tier_gate_cal_eval.py` (labelling, splitting, fitting, threshold sweep), `scripts/retrain_calibrator_full_corpus.py` (the retrain wrapper), and `src/mollm_tier_gate.py` (both call sites, the thresholds, the traps). Everything in §1–§15 is verified against that source or read from the artefact. §16 states what remains uncovered and lists seven questions the source itself does not settle.
@@ -610,4 +610,252 @@ Re-extracted directly from `models/consensus_calibrator_v1.pkl` in this session,
 | `expansion_ambiguous` | **0.0000** | |
 | `prior_confirmation_count` | +1.3456 | |
 
-**⚠️ Document truncated here in the source message this file was built from.** The original had a fuller version of this table (apparently including the `.bak_2026-08-20` column's values feature-by-feature, a "Design intent" / "Agrees?" comparison column, and commentary), plus §14.2 onward and the entirety of §15 (open questions) and §16 (what remains uncovered). Everything above this notice was verified word-for-word and number-for-number against the live source and the real pickled artefacts before being saved. **§14's remainder, §15, and §16 are missing and need to be supplied to complete this document** — please resend from where the coefficient table cuts off.
+**⚠️ Document truncated here in the source message this file was built from.** The original had a fuller version of this table (apparently including the `.bak_2026-08-20` column's values feature-by-feature, a "Design intent" / "Agrees?" comparison column, and commentary), plus §14.2 onward and the entirety of §15 (open questions) and §16 (what remains uncovered). Everything above this notice was verified word-for-word and number-for-number against the live source and the real pickled artefacts before being saved. **§14's remainder, §15, and §16 are missing** — this predates §17 below and is unrelated to it; not filled in as part of this update, since re-deriving lost content that was never captured is a different task from documenting what changed on 2026-08-30.
+
+---
+
+## 17. 2026-08-30 update — feature 17 (`kg3_confirmation_count`) and the 144-note refit
+
+Everything in this section is verified directly against the live source
+(`src/kg3_query.py`, `src/mollm_tier_calibrator.py`, `src/mollm_tier_gate.py`,
+`evaluation/tier_gate_cal_eval.py`, `scripts/retrain_calibrator_full_corpus.py`)
+and against the real, currently-deployed `models/consensus_calibrator_v1.pkl`,
+unpickled directly for this section — same discipline as §14, applied fresh
+rather than assumed to still hold.
+
+### 17.1 Why this exists — KG3 was a pure write sink before this
+
+Direct code search (grep across `mollm_tier_gate.py`, `mollm_tier_calibrator.py`,
+`abbreviation_flywheel.py`, `preprocessing.py`) found **zero references to
+Memgraph or `kg3_query` in any decision-making module** — KG3 accumulated
+writes but nothing ever read them back. §6's own caveat about
+`prior_confirmation_count` said as much: *"KG3 ingestion runs dry-run
+throughout, so there is no live graph to query."* This section documents
+closing that gap: a new read function, a new feature built on it, and a
+retrain that actually exercises it against real graph data.
+
+### 17.2 What changed, concretely
+
+- **`src/kg3_query.py::count_kg3_confirmations(driver, entity_text, concept_id)`**
+  (new) — how many `:PatientObservation` nodes in the live graph already
+  confirm this exact (text, concept) pairing, matched case-insensitively
+  on `raw_text`. Same never-raise, "0 on any failure" contract as
+  `count_prior_confirmations()` (§6): missing driver, missing arguments,
+  or any query error all return `0`, never `None`, never propagate.
+- **`FEATURE_NAMES` gains a 17th entry**, `kg3_confirmation_count`, scaled
+  identically to feature 16 (`min(raw_count, 10) / 10.0`).
+  **`FEATURE_SET_VERSION` bumped 1 → 2.** §11.2's guard is exactly what
+  makes this safe: a model saved under the old 16-feature layout is
+  refused on load (`model = None`, degraded to untrained), not silently
+  scored against a coefficient vector one element short. Verified live
+  before retraining — loading the then-current 114-note/16-feature `.pkl`
+  under the new module reported `model is None`.
+- **`build_feature_context()` and `featurize()`** both gained the new
+  field/index, in the same fixed position `FEATURE_NAMES` defines —
+  no change to how any of the other 16 features are computed.
+- **`route_tier()` / `_score_with_calibrator()`** gained `kg3_driver` and
+  `kg3_driver_factory` parameters, mirroring §2's `conn`/`conn_factory`
+  contract exactly (factory takes priority when both are supplied; the
+  caller closes what a factory returns). Both default to `None` —
+  omitting them reproduces every prior behaviour exactly, the same
+  "absent evidence, not negative evidence" default `conn`/`conn_factory`
+  already use. **Unlike `conn`/`conn_factory`, there is no lock-avoidance
+  reason to prefer a factory here** — a Bolt driver already supports many
+  concurrent short sessions from one long-lived instance, which is why
+  `scripts/run_stage3_tier_gate.py` passes the plain, already-open
+  `memgraph_driver` (the same one it opens for the dry-run KG3 write-path
+  check) rather than a factory.
+- **`evaluation/tier_gate_cal_eval.py::build_labeled_examples()`** gained
+  a `kg3_driver` parameter. **This was the part that actually mattered**:
+  without it, a retrain would have trained the new feature on an
+  all-zero column — a valid fit, but one that could learn nothing real
+  about the feature. Caught and fixed before the retrain in §17.4 ran,
+  not discovered after.
+
+### 17.3 What did *not* change
+
+The abbreviation flywheel (`src/abbreviation_flywheel.py`) is a separate,
+upstream mechanism — Stage 1 expansion tie-breaking for ambiguous
+abbreviations, not Stage 3 tier routing — and was **not touched** by this
+update. It has its own, distinct training story worth stating for
+contrast: `compute_frequency_priority()` aggregates the pipeline's own
+Stage 2b outcomes, gated behind an explicit `VERIFIED_ALLOW_LIST` that
+**starts empty** (a posture inverted from an earlier block-list design,
+after a real-data test found the block-list version re-selecting its own
+wrong guesses — 7/7 wrong on a gold-check of its highest-confidence
+picks); `mine_context_rules()`/`select_by_context_pattern()` mines real
+`hitl_review_queue` reviewer-confirmed resolutions into deterministic
+trigger-word rules, and deliberately does **not** apply the same
+exclusion list, since independently-confirmed human evidence is exactly
+what could correct a systematic bias the frequency mechanism must avoid
+formalising. Neither mechanism was retrained or otherwise modified as
+part of this update — only `ConsensusCalibrator` was.
+
+### 17.4 The retrain
+
+Same procedure as §10, run again via
+`scripts/retrain_calibrator_full_corpus.py --save`: `TIER_4_ENSEMBLE_SPLIT`
+population, SNOMED-crosswalk exact-match labels, note-disjoint split
+(every 4th note to validation). Two things changed simultaneously versus
+the 2026-08-20 model, not one:
+
+| | 2026-08-20 (previous) | 2026-08-30 (current) |
+|---|---|---|
+| Notes with `TIER_4_ENSEMBLE_SPLIT` decisions | 114 | 144 |
+| Train / val notes | 82 / 27 | 105 / 34 (some notes yield zero gradable examples after label filtering — see §10.4) |
+| Train / val examples | 1,403 / 450 | 1,740 / 635 |
+| Features | 16 | 17 |
+| `kg3_confirmation_count` source | n/a | live Memgraph, best-effort (`None` driver → 0 for every example) |
+| Val AUROC | 0.845 | **0.852** |
+| `BASELINE_AUROC` in the retrain script | 0.74 (stale even in 2026-08-20; corrected this update) | 0.845 |
+
+A real bug was caught and fixed live during this retrain, unrelated to
+the feature itself: `training_split`'s save string had `"2026-08-20"`
+hardcoded into an f-string regardless of when the script actually ran —
+`code_version` two lines below already used `datetime.date.today()`
+correctly, `training_split` did not. The first `--save` run under this
+fix's absence produced a `.pkl` with a false training date; caught before
+being treated as authoritative, fixed, and the retrain re-run so the
+saved metadata (`training_split=full_corpus_144_notes_2026-08-30`) is
+correct.
+
+**⚠️ The naive AUROC comparison (0.852 vs. 0.845) conflates two changes
+at once** — more notes *and* a new feature — and should not be quoted as
+"the KG3 feature is worth +0.007 AUROC." §17.5 isolates the feature's own
+contribution properly.
+
+### 17.5 Isolating the feature's own effect — an ablation on identical data
+
+Same technique as §10.7 (`fit_and_report(..., ablate_indices=(kg3_idx,))`),
+applied here for the first time to this feature specifically, and checked
+in as its own reproducible script: `evaluation/kg3_feature_ablation.py`.
+Two models are fit on the **exact same** 144-note data and note-disjoint
+split — one with real `kg3_confirmation_count`, one with that single
+feature zeroed.
+Everything else — the other 16 features, the split, the labels, the hard
+traps — is identical between the two fits.
+
+| | AUROC | Coverage @ 0.72 | Precision @ 0.72 | Promoted |
+|---|---|---|---|---|
+| Real `kg3_confirmation_count` | 0.852 | 20.9% | **97.0%** | 133 |
+| Ablated (zeroed) | 0.821 | 18.0% | **91.2%** | 114 |
+| **Delta, attributable to this feature alone** | **+0.031** | **+2.9pp** | **+5.8pp** | +19 net |
+
+This is the number to quote for "what did the feature contribute" — more
+than 4× the naive 0.845→0.852 delta, because the naive comparison is
+diluted by comparing against a smaller, older corpus rather than holding
+the corpus fixed.
+
+`kg3_confirmation_count > 0` on 23.9% of train examples, 23.8% of val —
+not a rare-edge-case feature at the current corpus size.
+
+**Per-example inspection, not just the aggregate table.** 29 val examples
+promote only with the feature present, and **29/29 are correct against
+gold** — dominated by repeated lab-value measurements (`WBC`/`RBC`/`HGB`/
+`Creat` patterns independently confirmed elsewhere in the graph) and
+recurring findings (`NSTEMI` ×3, `headaches` ×2, `blindness` ×2). 10
+examples lose promotion when the feature is added: 6 are real false
+positives correctly suppressed — `aspirin` most dramatically, score
+0.918865 → 0.223810 despite `prior_confirmation_count=66` (raw count
+capped to feature value 1.0), once `kg3_confirmation_count=0`
+contradicted it — and 4 are genuine misses (`renal failure`, `Sclera`,
+`lungs`, `left ovary` — the last essentially a coin-flip, 0.719992 vs. the
+0.72 threshold in the ablated fit, 0.720312 with it).
+
+### 17.6 The coefficients — and a sign flip worth flagging, not asserting
+
+Extracted directly from the current, deployed `models/consensus_calibrator_v1.pkl`:
+
+| Feature | β (17-feature, current) | β (16-feature, `.bak_2026-08-20`, §14.1) |
+|---|---:|---:|
+| `kg3_confirmation_count` | **+7.1368** | *(did not exist)* |
+| `top_candidate_similarity_score` | +2.7502 | +3.5188 |
+| `frac_supported_1` | +2.3729 | +2.0133 |
+| `mean_logprob_confidence` | +2.1775 | +2.4479 |
+| `confidence_spread` | +1.2949 | +1.9391 |
+| `min_logprob_confidence` | +1.2104 | +1.3506 |
+| `is_ambiguous` | +0.6583 | +0.3382 |
+| `match_tier_is_exact_or_synonym` | +0.6149 | +0.4967 |
+| `resolved_via_value_stripped_fallback` | −0.6255 | −1.5957 |
+| `resolved_via_original_text_fallback` | +0.4137 | +0.5856 |
+| `frac_none_correct` | +0.3770 | +0.7991 |
+| `frac_rerank_same_target` | −1.5026 | −1.2113 |
+| `domain_conflict` | −0.8176 | −0.1225 |
+| `frac_usable_votes` | +0.0155 | −0.0371 |
+| `resolved_via_acronym_escalation` | 0.0000 | 0.0000 |
+| `expansion_ambiguous` | 0.0000 | 0.0000 |
+| `prior_confirmation_count` | **−2.1114** | **+1.3456** |
+| intercept β₀ | −7.4247 | −8.3237 |
+| `n_iter_` (converged) | 53 (of 1000) | 61 |
+
+Two things worth stating plainly, in the "read from the model, not
+asserted" discipline §3's warning sets for this document:
+
+1. **`kg3_confirmation_count`'s coefficient (+7.14) is by far the largest
+   magnitude of any feature in either fit** — more than double
+   `top_candidate_similarity_score`, the previous largest. Read
+   literally, on this bounded [0,1] scaled feature, going from 0 to a
+   saturated 1.0 (10+ confirmations) shifts the logit by +7.14, which
+   alone can move `P(correct)` from near-chance to near-certain,
+   independent of everything else the model sees.
+2. **`prior_confirmation_count`'s coefficient flipped sign**: +1.3456 in
+   the 16-feature fit, **−2.1114** in the 17-feature fit. This sign IS
+   read directly off the fitted model — that part is fact, not inference.
+   **What it means is inference, and is flagged as such rather than
+   asserted**: the two confirmation-count features are plausibly
+   collinear (an entity confirmed in DuckDB's own decision history is
+   often also the kind of entity KG3 was populated with, since KG3's
+   current population was itself derived by grading those same
+   historical decisions — see §17.7), and a linear model facing two
+   correlated features can assign the credit to one and a compensating
+   negative weight to the other without either feature individually
+   *predicting* incorrectness. Worth a variance-inflation check or a
+   single-confirmation-feature refit before treating the sign flip as
+   more than a fitting artifact — not done as part of this update.
+
+### 17.7 The caveat that must accompany every number above
+
+KG3's current population is **100% gold-simulated** — every node was
+written by a one-off script that graded historical pipeline decisions
+against gold and ingested the matching ones via `ingest_reviewed_case()`
+with real (non-dry-run) writes, not by real completed human review — zero
+real HITL reviews exist in production as of this writing (see
+`docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §10). `kg3_confirmation_count`
+being greater than zero is therefore, to a real and
+currently unquantified degree, **a restatement of "this exact pattern
+already matched gold once"** — evaluated in §17.5 against labels that are
+**also** gold-based, on a note population substantially overlapping the
+notes KG3 was populated from.
+
+The note-disjoint train/val split protects against literal row-level
+leakage (`ConsensusCalibrator.load(..., scoring_note_ids=...)`'s guard,
+§11.3, applies identically here) — it does **not** protect against this
+deeper, population-level circularity, which is a different and unsolved
+problem. §6's own caveat about `prior_confirmation_count` already named
+this risk for the DuckDB-sourced feature; it applies at least as strongly
+to `kg3_confirmation_count`, for the same reason and for a graph
+literally populated by the grading process the labels themselves come
+from. **§17.5's numbers are real, given KG3's contents as of 2026-08-30,
+and should not be presented as a measurement of what this feature does
+against independent, real human-reviewed KG3 data — that measurement
+does not exist yet, because that data does not exist yet.**
+
+### 17.8 The adoption decision
+
+Adopted as production (`code_version=full_corpus_retrain_2026-08-30`,
+`training_split=full_corpus_144_notes_2026-08-30`), on two grounds: (1)
+the isolated ablation (§17.5) shows real, individually-inspectable,
+well-behaved signal even holding the §17.7 caveat in mind, and (2) it is
+also the only way to have a genuinely *trained* production calibrator at
+all after the `FEATURE_SET_VERSION` bump — the alternative was leaving
+the old 16-feature model deployed, where it now loads as `model = None`
+(§11.2's guard) and `route_tier()` treats every calibrator consultation
+exactly as "no calibrator available." This is **not** presented as a
+validated claim about real-world unreviewed KG3 evidence — see §17.7 —
+only as the honest best available option given what currently exists.
+
+**`CALIBRATED_AUTO_THRESHOLD = 0.72` was not re-derived for this retrain
+either**, compounding the already-open item in §13.5: the threshold has
+now survived two refits on two different corpora with two different
+feature sets without being re-validated against either one. This is
+flagged, not fixed, in this update.
