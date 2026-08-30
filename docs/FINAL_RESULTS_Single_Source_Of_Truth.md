@@ -511,9 +511,31 @@ Every column below is a real, gold-graded measurement (not a projection) — see
 - **A third SNOMED near-duplicate pattern** ("Clinical Finding"-domain
   concepts) is confirmed real but unhandled by either the hardcoded rule
   or KGE.
-- **The MCHC/RDW retrieval fix (§5) is verified on 28 entities**, not the
-  full 26-term lab-abbreviation alias population — the other 24 terms are
-  re-normalized but not yet graded at the Stage 3 ensemble level.
+- **The MCHC/RDW retrieval fix (§5) closed, 2026-08-30**: the remaining 24
+  terms were graded at the Stage 3 ensemble level for the first time (991
+  real decisions, 521 `AUTO_TIERS`, 467 gradable). Found overall precision
+  at only 57.8% (270/467) — entirely explained by 5 terms sitting at
+  exactly 0% each (135 wrongly auto-approved entities: `hco3`, `urean`,
+  `na`, `total co2`, `mch`), while the other 19 averaged ~95%+. Root-caused
+  to two real, distinct bugs, both fixed: (1) `tier3_fast_path()`'s
+  `verified_lab_test_alias` trust-bypass only allowlisted one
+  `ambiguity_reason` string, missing `"alias_candidate_outranked"` —
+  orchestrator.py's own detector for exactly this situation (the alias
+  candidate present but outranked by a wrong one), computed but never
+  consulted; (2) the Lab Value Suffix Fallback's retry-selection logic
+  only adopted a stripped-text retry when it strictly improved the coarse
+  tier label, silently discarding a retry that introduced the correct,
+  gold-verified alias candidate at an *unchanged* tier. Verified directly
+  against each term's own gold-documented concept ID (not assumed):
+  `urean`/`total co2`/`na` now fully auto-resolve correctly; `hco3`/`mch`
+  get the pool-inclusion fix (previously entirely absent, now genuinely
+  visible to the ensemble) but are deliberately still routed to the full
+  ensemble rather than auto-approved, since an existing test encodes real,
+  still-valid caution (the 2026-08-20 MCH/MCHC near-duplicate finding)
+  about the specific ambiguity reason those two produce. **Not yet done**:
+  a full corpus re-normalization/re-grading batch to measure the real,
+  at-scale precision delta — this was verified via direct function calls
+  on each term's bare form, not yet applied to a live batch re-run.
 - **`EXHAUSTIVE_CANDIDATE_EVAL_ENABLED`'s proposed HITL-routing mitigation
   (§7) is not implemented** — only its net impact is measured.
 - **Guideline-derived KG injection (Objective 2) and RotatE/CompGCN
