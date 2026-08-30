@@ -52,6 +52,7 @@ from src.mollm_tier_calibrator import (  # noqa: E402
     ConsensusCalibrator, DEFAULT_MODEL_PATH, FEATURE_NAMES, build_feature_context,
     count_prior_confirmations, featurize)
 from src.mollm_tier_gate import _is_coronary_segment_trap, _is_short_alphanumeric_code  # noqa: E402
+from src.kg3_query import count_kg3_confirmations  # noqa: E402
 
 
 def _code_version():
@@ -64,7 +65,7 @@ def _code_version():
         return None
 
 
-def build_labeled_examples(conn, vocab, gold_by_note, note_ids=None):
+def build_labeled_examples(conn, vocab, gold_by_note, note_ids=None, kg3_driver=None):
     """Returns a list of dicts: note_id, text, label (1/0), feature_context,
     vector (pre-featurized, so fitting doesn't re-run featurize() per split),
     plus diagnostic fields (top_verdict, vote_counts) for the printed report.
@@ -78,6 +79,16 @@ def build_labeled_examples(conn, vocab, gold_by_note, note_ids=None):
     still only curated for the original 31 notes -- any gold-annotation
     quirk specific to a newly-added note isn't corrected here, a known,
     stated limitation rather than a silent one.
+
+    kg3_driver (2026-08-30, FEATURE_SET_VERSION=2): optional live Memgraph
+    driver, feeding the real kg3_confirmation_count for each training
+    example via count_kg3_confirmations() -- the SAME function route_tier()
+    itself calls at inference time (src/mollm_tier_gate.py's
+    _score_with_calibrator()). Omitted (None, the default): every example's
+    kg3_confirmation_count comes back 0 -- still a valid fit (a constant-
+    zero feature just gets ~0 learned weight), but training on an all-zero
+    column can't teach the model anything real about this feature, so a
+    genuine retrain intended to make use of it should pass a real driver.
     """
     note_ids = note_ids if note_ids is not None else NOTE_IDS
     note_ph = ",".join("?" * len(note_ids))
@@ -152,12 +163,14 @@ def build_labeled_examples(conn, vocab, gold_by_note, note_ids=None):
         if isinstance(models, str):
             models = json.loads(models)
         prior_count = count_prior_confirmations(conn, d["original_text"], concept_id)
-        context = build_feature_context(entity, models, prior_count)
+        kg3_count = count_kg3_confirmations(kg3_driver, d["original_text"], concept_id)
+        context = build_feature_context(entity, models, prior_count, kg3_count)
 
         examples.append({
             "note_id": note_id, "text": d["original_text"], "label": label,
             "vector": featurize(context), "top_verdict": top_verdict,
             "vote_counts": dict(vote_counts or {}), "prior_confirmation_count": prior_count,
+            "kg3_confirmation_count": kg3_count,
             "is_trapped": (_is_coronary_segment_trap(entity, idx, candidates)
                           or _is_short_alphanumeric_code(entity)),
         })
@@ -269,7 +282,8 @@ def fit_and_report(train, val, train_notes, ablate_indices=(), label="FULL",
         print("  (none)")
     for e in fps:
         print(f"  [{e['note_id']}] {e['text']!r} score={e['score']} "
-              f"votes={e['vote_counts']} prior_count={e['prior_confirmation_count']}")
+              f"votes={e['vote_counts']} prior_count={e['prior_confirmation_count']} "
+              f"kg3_count={e.get('kg3_confirmation_count', 0)}")
 
     if save_path:
         code_version = _code_version()
@@ -284,13 +298,30 @@ def main():
     conn = duckdb.connect(DB_PATH, read_only=True)
     vocab = VocabularyRetriever(conn)
 
+    # 2026-08-30: best-effort live KG3 driver, feeding kg3_confirmation_count
+    # (FEATURE_SET_VERSION=2). Degrades to None (every example's
+    # kg3_confirmation_count comes back 0) if Memgraph isn't reachable --
+    # same "never fail the caller over this" contract as everywhere else
+    # this driver is used.
+    from src.kg3_ingestion import get_memgraph_driver
+    kg3_driver = None
+    try:
+        kg3_driver = get_memgraph_driver()
+        with kg3_driver.session() as s:
+            s.run("RETURN 1")
+        print("Memgraph: reachable -- kg3_confirmation_count will use real data")
+    except Exception as exc:
+        print(f"Memgraph: NOT reachable ({exc}) -- kg3_confirmation_count will be 0 "
+              f"for every example")
+        kg3_driver = None
+
     gold_path = _first_existing(GOLD_CANDIDATES, "gold")
     gold_rows = load_gold(gold_path, NOTE_IDS)
     gold_by_note = collections.defaultdict(list)
     for g in gold_rows:
         gold_by_note[g["note_id"]].append(g)
 
-    examples = build_labeled_examples(conn, vocab, gold_by_note)
+    examples = build_labeled_examples(conn, vocab, gold_by_note, kg3_driver=kg3_driver)
     n_pos = sum(e["label"] for e in examples)
     print(f"base rate: {n_pos}/{len(examples)} = {n_pos/len(examples)*100:.1f}% correct\n")
 
@@ -308,7 +339,8 @@ def main():
     print(f"hard-trap (coronary + short-code) entities in val: {n_trapped_val}/{len(val)}\n")
 
     calibrator, val_full, auc = fit_and_report(
-        train, val, train_notes, ablate_indices=(), label="FULL (16 features), hard traps OFF")
+        train, val, train_notes, ablate_indices=(),
+        label=f"FULL ({len(FEATURE_NAMES)} features), hard traps OFF")
 
     prior_idx = FEATURE_NAMES.index("prior_confirmation_count")
     fit_and_report(
@@ -345,6 +377,9 @@ def main():
                     training_split="overnight_2026-08-17_train", code_version=code_version)
     print(f"\nsaved FULL (untrapped-training, trap applied at inference by route_tier() "
           f"itself) calibrator to {DEFAULT_MODEL_PATH} (code_version={code_version})")
+
+    if kg3_driver is not None:
+        kg3_driver.close()
 
 
 if __name__ == "__main__":

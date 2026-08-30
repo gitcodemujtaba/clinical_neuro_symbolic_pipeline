@@ -1,14 +1,32 @@
 """scripts/retrain_calibrator_full_corpus.py -- 2026-08-20. Retrain
 ConsensusCalibrator on the FULL current corpus (114 notes with Stage 3
 decisions, well past the ~100-note threshold noted as a planned follow-up),
-compare val AUROC against the production baseline (0.74), and report
-whether it should be adopted. Diagnostic by default -- does NOT overwrite
+compare val AUROC against the production baseline, and report whether it
+should be adopted. Diagnostic by default -- does NOT overwrite
 models/consensus_calibrator_v1.pkl unless explicitly told to save.
 
 Reuses evaluation/tier_gate_cal_eval.py's proven build_labeled_examples()/
 split_by_note()/fit_and_report() machinery rather than re-deriving it --
 only the note_ids population differs (full corpus, not the hardcoded
 31-note "overnight" set that module defaults to).
+
+BASELINE_AUROC (2026-08-30 update): 0.845 -- the 114-note retrain this
+exact script produced on 2026-08-20, which WAS adopted (per
+memory/calibrator-retrain-at-100-notes.md) and is the actual currently-
+deployed models/consensus_calibrator_v1.pkl as of this update (confirmed
+live: its pickled metadata reads training_split=
+"full_corpus_114_notes_2026-08-20"). The original 0.74 baseline this
+script compared against was itself superseded by that same run and should
+not still be the comparison target for any FUTURE retrain.
+
+2026-08-30 (FEATURE_SET_VERSION=2): this run also feeds the new
+kg3_confirmation_count feature (src.kg3_query.count_kg3_confirmations())
+via a live Memgraph driver, best-effort -- see the driver setup in main()
+below. The currently-deployed .pkl was fit under FEATURE_SET_VERSION=1
+(16 features) and therefore ALWAYS reports "untrained (no-op)" when
+loaded by any FEATURE_SET_VERSION=2 code now, regardless of this script --
+running this retrain (with --save, after reviewing the numbers) is what
+actually produces a usable 17-feature model again.
 """
 import argparse
 import sys
@@ -27,7 +45,9 @@ from scripts.score_gold_recall import load_gold  # noqa: E402
 from src.mollm_tier_calibrator import ConsensusCalibrator  # noqa: E402
 
 DB_PATH = f"{PROJECT_DIR}/db/kg2_lexical_store.duckdb"
-BASELINE_AUROC = 0.74  # the current production v1 calibrator's own val AUROC
+BASELINE_AUROC = 0.845  # the current production v1 calibrator's own val AUROC
+                        # (114-note retrain, 2026-08-20 -- see this module's
+                        # docstring for how this was confirmed still current)
 
 
 def main():
@@ -38,6 +58,19 @@ def main():
 
     conn = connect_with_retry(DB_PATH, read_only=True, max_wait_seconds=300)
     vocab = VocabularyRetriever(conn)
+
+    from src.kg3_ingestion import get_memgraph_driver
+    kg3_driver = None
+    try:
+        kg3_driver = get_memgraph_driver()
+        with kg3_driver.session() as s:
+            s.run("RETURN 1")
+        print("Memgraph: reachable -- kg3_confirmation_count will use real data\n")
+    except Exception as exc:
+        print(f"Memgraph: NOT reachable ({exc}) -- kg3_confirmation_count will be 0 "
+              f"for every example (still a valid fit, just no real signal on "
+              f"the new feature)\n")
+        kg3_driver = None
 
     all_notes = sorted(r[0] for r in conn.execute(
         "SELECT DISTINCT note_id FROM mollm_tier_gate_decisions WHERE tier = 'TIER_4_ENSEMBLE_SPLIT'"
@@ -51,7 +84,8 @@ def main():
     for g in gold_rows:
         gold_by_note[g["note_id"]].append(g)
 
-    examples = build_labeled_examples(conn, vocab, gold_by_note, note_ids=all_notes)
+    examples = build_labeled_examples(conn, vocab, gold_by_note, note_ids=all_notes,
+                                      kg3_driver=kg3_driver)
     n_pos = sum(e["label"] for e in examples)
     print(f"labeled examples: {len(examples)}, base rate {n_pos}/{len(examples)} = {n_pos/len(examples)*100:.1f}% correct\n")
 
@@ -81,9 +115,16 @@ def main():
 
     if args.save and auc is not None and auc > BASELINE_AUROC:
         import datetime
-        code_version = f"full_corpus_retrain_{datetime.date.today().isoformat()}"
+        today = datetime.date.today().isoformat()
+        code_version = f"full_corpus_retrain_{today}"
+        # 2026-08-30 fix: this date suffix was hardcoded to "2026-08-20" (the
+        # day this script was first written) regardless of when it actually
+        # ran -- caught live when a 2026-08-30 retrain saved metadata falsely
+        # claiming it was trained on 2026-08-20. code_version two lines above
+        # already used datetime.date.today() correctly; training_split now
+        # does too, so the two can't drift apart again.
         calibrator.save(DEFAULT_MODEL_PATH, training_note_ids=train_notes,
-                        training_split=f"full_corpus_{len(all_notes)}_notes_2026-08-20",
+                        training_split=f"full_corpus_{len(all_notes)}_notes_{today}",
                         code_version=code_version)
         print(f"\nSAVED to {DEFAULT_MODEL_PATH} (code_version={code_version}, "
               f"trained on {len(train_notes)} notes, val AUROC {auc:.3f} vs baseline {BASELINE_AUROC})")
@@ -94,6 +135,8 @@ def main():
               "if you decide to adopt this after reviewing the numbers above.")
 
     conn.close()
+    if kg3_driver is not None:
+        kg3_driver.close()
 
 
 if __name__ == "__main__":

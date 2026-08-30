@@ -40,6 +40,18 @@ scripts/run_stage3_batch.py for the new gate.
   would otherwise have succeeded -- see ConsensusCalibrator.load()'s own
   docstring for the full degrade-gracefully contract.
 
+2026-08-30: route_tier() also gets kg3_driver=memgraph_driver (the SAME
+  driver this script already opens for the dry-run KG3 write-path check
+  below, reused rather than opening a second one), feeding the calibrator's
+  new kg3_confirmation_count feature (FEATURE_SET_VERSION=2). When Memgraph
+  isn't reachable at startup, memgraph_driver is None and this reproduces
+  prior behavior exactly -- the feature reads back 0 for every entity. The
+  currently-loaded production .pkl was fit under FEATURE_SET_VERSION=1, so
+  ConsensusCalibrator.load() will report it "untrained (no-op)" until it is
+  refit on the new 17-feature set -- this wiring alone does not change any
+  routing decision until that refit happens; see
+  evaluation/tier_gate_cal_eval.py.
+
 Run:  python3 scripts/run_stage3_tier_gate.py --note-ids 17739994-DS-31,10043750-DS-6,...
       python3 scripts/run_stage3_tier_gate.py --note-ids ... --limit-per-note 2   # light touch first
 """
@@ -251,10 +263,24 @@ def main():
                 # below. Folded into the SAME try/except that already
                 # handles per-entity errors, so a connect-retry timeout is
                 # just one more entity-level failure, not a script crash.
+                # 2026-08-30: kg3_driver=memgraph_driver (the SAME driver
+                # already opened above for the dry-run KG3 write-path check,
+                # not a fresh one per entity). Unlike conn/conn_factory,
+                # there's no DuckDB-style single-writer lock to avoid
+                # holding open here -- a Bolt driver already supports many
+                # concurrent short sessions from one long-lived driver
+                # instance, which is exactly how the write-path check below
+                # already uses it for the whole batch. When Memgraph isn't
+                # reachable (memgraph_driver is None, see the reachability
+                # check above), this reproduces the pre-2026-08-30 behavior
+                # exactly -- kg3_confirmation_count reads back 0 for every
+                # entity, same "absent evidence" default as an omitted
+                # kg3_driver anywhere else.
                 try:
                     decision = route_tier(
                         rec, clients=clients, calibrator=calibrator,
-                        conn_factory=lambda: connect_with_retry(args.db, read_only=False))
+                        conn_factory=lambda: connect_with_retry(args.db, read_only=False),
+                        kg3_driver=memgraph_driver)
                     write_conn = connect_with_retry(args.db, read_only=False)
                     try:
                         decision = store_tier_decision(decision, rec["entity_id"], note_id,
