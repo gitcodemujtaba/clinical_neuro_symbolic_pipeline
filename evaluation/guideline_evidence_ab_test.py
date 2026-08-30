@@ -96,8 +96,18 @@ def select_population(conn, guideline_index, limit=None):
         WHERE d.tier IN (?, ?)
     """, [TIER_4_ENSEMBLE_SPLIT, TIER_2_AUTO_RESOLVED]).fetchall()
 
-    hits = []
+    # 2026-08-30 fix: dedup by entity_id. The query above has no DISTINCT,
+    # and normalized_entities can carry more than one row per entity_id
+    # after re-normalization (the table's own is_stale column implies this,
+    # though no live code currently filters on it -- confirmed by grep, so
+    # not relied on here either). Caught live: 'chest pain' (10097089-DS-8)
+    # appeared twice in a --limit 50 run with byte-identical candidates both
+    # times, silently double-counting one entity in the population and in
+    # every downstream precision figure.
+    seen = {}
     for note_id, entity_id, cands_json in rows:
+        if entity_id in seen:
+            continue
         candidates = cands_json
         if isinstance(candidates, str):
             candidates = json.loads(candidates)
@@ -111,7 +121,8 @@ def select_population(conn, guideline_index, limit=None):
         # get evidence" check), not used for grading.
         accepted_shape = [{"index": i + 1, "candidate": c} for i, c in enumerate(candidates)]
         if guideline_evidence_for_candidates(guideline_index, accepted_shape):
-            hits.append((note_id, entity_id))
+            seen[entity_id] = (note_id, entity_id)
+    hits = list(seen.values())
     if limit:
         hits = hits[:limit]
     return hits
