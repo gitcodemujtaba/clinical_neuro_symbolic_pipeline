@@ -1058,18 +1058,48 @@ def tier3_fast_path(entity: dict) -> dict:
     # land at raw rank #2, not #1) -- force-inclusion alone was never
     # going to be enough to reach Tier 1 on raw ranking.
     #
-    # is_ambiguous is explicitly ALLOWED here, unlike the general case,
-    # but ONLY when ambiguity_reason is specifically
-    # "verified_lab_test_alias_below_floor" (orchestrator.py's own
-    # "rescue" flag for exactly this situation: the curated alias
-    # candidate's raw score fell below TIER3_SIMILARITY_FLOOR). That
-    # reason is a symptom of embedding a bare abbreviation, not evidence
-    # against the curated identity -- the curation IS the trust signal.
-    # Any OTHER ambiguity reason (e.g. a genuine top-2-candidate near-miss,
-    # the MCH/MCHC pattern _lab_procedure_fast_path() already guards
-    # against) still declines, same discipline as that fast path's own
-    # is_ambiguous check -- this does not blindly trust every ambiguous
-    # lab entity, only this one specific, already-understood reason.
+    # is_ambiguous is explicitly ALLOWED here, unlike the general case, but
+    # only for a curated set of reasons all describing ranking noise AMONG
+    # OTHER candidates in the pool, never doubt about the alias-tagged
+    # candidate's own identity -- the curation (independently verified
+    # against gold, 100% consistency, n=100s per entry) IS the trust
+    # signal, not this entity's particular ranking outcome. This branch is
+    # structurally safe to extend this way BECAUSE it always indexes the
+    # SPECIFIC alias-tagged candidate (lab_alias_hits[0]'s own position),
+    # never assumes rank #1 the way _lab_procedure_fast_path() does -- that
+    # is the actual, load-bearing difference from the MCH/MCHC risk this
+    # comment used to cite (a DIFFERENT branch, _lab_procedure_fast_path(),
+    # trusting candidates[0] purely by raw score with no identity check at
+    # all -- it correctly stays strict, unconditionally declining on
+    # is_ambiguous, no exception list here).
+    #   - "verified_lab_test_alias_below_floor": the alias candidate's own
+    #     raw score fell below TIER3_SIMILARITY_FLOOR -- a symptom of
+    #     embedding a bare abbreviation, not evidence against it.
+    #   - "alias_candidate_outranked" (added 2026-08-30, real bug found on
+    #     live gold data): orchestrator.py's own ambiguity detector already
+    #     names this exact situation -- the alias candidate is present but
+    #     a DIFFERENT candidate scored higher. That WAS the bug: this
+    #     reason existed and was already computed, just never consulted
+    #     here, so "UreaN"/"MCH"-shaped entities fell through to the full
+    #     ensemble, which unanimously (and wrongly) agreed with the
+    #     higher-scored non-alias candidate instead. Corpus-measured impact
+    #     before this fix: 0% AUTO-tier precision on affected terms.
+    #
+    # Deliberately NOT adding "tier3_top2_margin_below_threshold" here even
+    # though it also affects a real bug case ("HCO3"-shaped entities,
+    # 2026-08-30) -- an existing test (tests/test_tier_gate.py, the
+    # "MCH-28... genuine near-miss" case) explicitly encodes the original
+    # 2026-08-20 MCH/MCHC caution for exactly this reason string, and nothing
+    # here rules out that a genuine top-2 near-miss could occasionally mean
+    # something is wrong with the alias candidate's OWN applicability in a
+    # specific context, not just noise among other pool members. Left
+    # blocked (falls through to the full ensemble, which now at least SEES
+    # the alias candidate post-Bug-B-fix below, rather than never having it
+    # in the pool at all) rather than resolving the ambiguity by assertion.
+    _ALLOWED_AMBIGUITY_REASONS = frozenset((
+        "verified_lab_test_alias_below_floor",
+        "alias_candidate_outranked",
+    ))
     lab_alias_hits = [(i, c) for i, c in enumerate(entity.get("candidates") or [], 1)
                       if c.get("match_basis") == "verified_lab_test_alias"]
     if len(lab_alias_hits) != 1:
@@ -1079,7 +1109,7 @@ def tier3_fast_path(entity: dict) -> dict:
     if entity.get("assertion_status") not in (None, "PRESENT"):
         return None
     if entity.get("is_ambiguous") and \
-            entity.get("ambiguity_reason") != "verified_lab_test_alias_below_floor":
+            entity.get("ambiguity_reason") not in _ALLOWED_AMBIGUITY_REASONS:
         return None
     i, c = lab_alias_hits[0]
     return {

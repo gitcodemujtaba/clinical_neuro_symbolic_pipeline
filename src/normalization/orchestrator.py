@@ -25,6 +25,34 @@ from .tier_retrieval import (
 from src.physexam_shorthand import PHYSEXAM_SHORTHAND_MATCH_BASIS
 from src.narrative_state_word_coldstart import NARRATIVE_STATE_WORD_MATCH_BASIS
 
+# match_basis values meaning "a curated, pre-verified lookup force-included
+# this candidate", not a similarity guess -- see _has_verified_alias_candidate()
+_VERIFIED_ALIAS_MATCH_BASES = ("verified_lab_test_alias", "verified_brand_alias")
+
+
+def _has_verified_alias_candidate(mapping: dict) -> bool:
+    """True if ANY candidate in mapping["candidates"] is a curated alias hit
+    (verified_lab_test_alias / verified_brand_alias) -- used by the Lab
+    Value Suffix Fallback's retry-acceptance check (2026-08-30 fix, see that
+    block's own comment) to adopt a stripped retry that introduces a
+    verified alias candidate even when it does not also improve the coarse
+    match_tier label. Without this, a retry landing at the SAME tier as the
+    original attempt (both "3 (Semantic)", say) was silently discarded by
+    the tier-only comparison, even when the retry's candidate pool is
+    materially better -- e.g. it actually contains the gold-verified
+    concept a bare lab abbreviation like "HCO3" maps to, while the
+    original, un-stripped "HCO3-24" attempt's pool never triggered the
+    alias lookup at all (the dict key is "hco3", not "hco3-24") and has no
+    way to surface that candidate.
+
+    Verified live (2026-08-30, real corpus data): "HCO3-24"/"TOTAL CO2-24"
+    -shaped entities were landing at 0% AUTO-tier precision corpus-wide
+    (28/28 and 20/20 wrong) for exactly this reason -- confirmed by tracing
+    normalize_entity() directly, not assumed.
+    """
+    return any(c.get("match_basis") in _VERIFIED_ALIAS_MATCH_BASES
+              for c in (mapping.get("candidates") or []))
+
 
 def _cold_start_mapping(info: dict, match_basis: str, normalized_from: str) -> dict:
     """Synthetic normalize_entity()-shaped mapping for an entity injected by
@@ -1310,12 +1338,23 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
                         if tier12_winner:
                             break
 
+                    # 2026-08-30 fix (see _has_verified_alias_candidate()'s own
+                    # docstring for the corpus-measured bug this closes): a
+                    # retry is now adopted when it EITHER strictly improves the
+                    # tier rank (unchanged original behavior) OR introduces a
+                    # verified alias candidate the current best_mapping doesn't
+                    # already have, even at an unchanged tier rank -- both
+                    # original attempt and retry can legitimately land at "3
+                    # (Semantic)" while only one of them actually contains the
+                    # curated, gold-verified concept in its candidate pool.
                     if tier12_winner:
                         stripped, source_name = tier12_winner
                         retry = normalize_entity(stripped, conn, gliner_label=label,
                                                  domain_override=domain_override)
-                        if _LAB_TIER_RANK.get(retry["match_tier"], 9) < \
-                                _LAB_TIER_RANK.get(best_mapping["match_tier"], 9):
+                        if (_LAB_TIER_RANK.get(retry["match_tier"], 9) <
+                                _LAB_TIER_RANK.get(best_mapping["match_tier"], 9)
+                                or (_has_verified_alias_candidate(retry)
+                                    and not _has_verified_alias_candidate(best_mapping))):
                             best_mapping = retry
                             best_source = f"value_stripped_from_{source_name}:{stripped}"
                     else:
@@ -1324,8 +1363,10 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
                             for stripped in strip_lab_value_suffix(candidate_text or ""):
                                 retry = normalize_entity(stripped, conn, gliner_label=label,
                                                          domain_override=domain_override)
-                                if _LAB_TIER_RANK.get(retry["match_tier"], 9) < \
-                                        _LAB_TIER_RANK.get(best_mapping["match_tier"], 9):
+                                if (_LAB_TIER_RANK.get(retry["match_tier"], 9) <
+                                        _LAB_TIER_RANK.get(best_mapping["match_tier"], 9)
+                                        or (_has_verified_alias_candidate(retry)
+                                            and not _has_verified_alias_candidate(best_mapping))):
                                     best_mapping = retry
                                     best_source = f"value_stripped_from_{source_name}:{stripped}"
                                 if retry["match_tier"] in ("1 (Exact)", "2 (Synonym)"):
