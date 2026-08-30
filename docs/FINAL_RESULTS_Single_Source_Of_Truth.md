@@ -430,7 +430,65 @@ data — that measurement does not yet exist.
 
 ---
 
-## 10. Known Limitations & Open Gaps — Stated Honestly
+## 10. Fresh-5 End-to-End Validation (2026-08-30)
+
+**Question**: does any of §9's work (the new `kg3_confirmation_count` calibrator feature, now in production) actually show up in a genuinely fresh, real, end-to-end run — not a re-grade of already-stored decisions? Five notes were picked that had **never been processed by this pipeline at all** (confirmed via `extracted_entities`, 0 rows for all 5 before this run) — smallest-by-char-count from the 133 gold-covered notes not yet in the 144-note corpus, same "smallest for speed" convention as `scripts/run_fresh5_final_validation.py`'s second batch: `13397956-DS-5`, `17739994-DS-31`, `16410990-DS-12`, `16795604-DS-17`, `17309807-DS-20`. Run for real: `src.clinical_pipeline.run_pipeline()` (Stage 1-2b) then `scripts/run_stage3_tier_gate.py` (Stage 3, real production code path, real Memgraph driver, real production calibrator) — not a replay or simulation.
+
+### 10.1 Stage 1-2b: real gold comparison vs. the existing headline numbers
+
+Via `scripts/score_gold_recall.py` (same methodology as §2's table), 544 real gold annotations:
+
+| Metric | Corpus-wide (144 notes, §2) | Fresh-10 (§2) | **Fresh-5 (new, 2026-08-30)** |
+|---|---|---|---|
+| Span recall | 53.0% | 49.5% | **58.6%** (319/544) |
+| Linked recall | 33.5% | 26.8% | **40.1%** (218/544) |
+| Linked precision | 50.0% | 45.3% | **54.2%** (218/402) |
+| **Linked F1** | 40.1% | 33.7% | **46.1%** |
+| Benchmark char IoU (macro/weighted) | 0.1437/0.2824 | 0.1453/0.2425 | **0.2131/0.3366** (all) / 0.2187/0.3311 (in-scope) |
+
+Fresh-5 beats both prior measurements on every metric. **This is not attributable to §9's work** — Stage 1-2b never touches the calibrator or KG3 at all. It reflects the cumulative effect of every fix landed since the 2026-08-20 measurement (SNOMED crosswalk fix, SNOMED near-duplicate retrieval fix, allergy-context fixes, extraction cold-start work). Real per-note spread: span recall 38.6%-66.7%, linked recall 22.9%-48.2% across the 5 notes — a noisier read than the 144-note/1,497-annotation prior measurements, given n=5.
+
+**Vs. the external DrivenData benchmark leaderboard** (`drivendata.org/benchmarks/310`, live-fetched 2026-08-30, not the closed competition #258, which is a different, non-comparable leaderboard on a much larger official test set): the official reference baseline is 0.1794 macro IoU. Both prior internal measurements (0.1437, 0.1453) sat **below** that baseline; fresh-5 (0.2131-0.2187) is the **first time this project's own measurement has cleared it** — by 0.019-0.039. Still well below the real leaderboard's top entries (0.41-0.48 macro / 0.56-0.64 weighted) and rank is unchanged (still last/7th on macro, 6th/7th on weighted, since the gap to the nearest entry — 0.2321 macro, `FAISS+Qwen3 Instruct` — closed from ~0.087 to ~0.015-0.019, about 80%, without fully closing). Caveat: this is a 5-note internal sample, not the real withheld test set the leaderboard entries were scored on — a calibration point, not a literal submission comparison (same framing this doc already used for the 3-note version of this check).
+
+### 10.2 Stage 3: real production run with the current calibrator + live KG3
+
+373 entities, 0 errors, 44.0 min wall-clock. Tier distribution: `TIER_1_AUTO_VALIDATED`=111, `TIER_3_AUTO_VALIDATED`=73, `TIER_1B_CALIBRATED_AUTO_VALIDATED`=27, `TIER_2_AUTO_RESOLVED`=8, `TIER_4_ENSEMBLE_SPLIT`=109, `TIER_5_TRUE_AMBIGUITY`=44, 1 unscored. **AUTO coverage 211/373 = 56.6%**, gold-graded precision (clean-span, SNOMED-crosswalk) **92.1%** (139/151 gradable).
+
+Calibrator loaded genuinely **trained**, not leakage-refused (`ConsensusCalibrator.load(..., scoring_note_ids=...)` correctly passed — these 5 notes were never in its training set, since they'd never been processed before this run at all).
+
+**The calibrator's own isolated contribution** (`TIER_1B` specifically — the only tier a calibrator promotion reaches that counts toward `AUTO_TIERS`):
+
+| | TP | FP | Precision | Recall* | **F1** |
+|---|---|---|---|---|---|
+| Without a calibrator (nothing ever promotes from `TIER_4`) | 0 | 0 | n/a | 0.0% | **0.0%** |
+| With the current production calibrator | 21 | 2 | **91.3%** | 44.7% | **60.0%** |
+
+*Recall = TP / (TP + still-correct-but-stuck-at-`TIER_4`) = 21/(21+26). 26 more entities remain genuinely correct by plurality vote but didn't clear the 0.72 threshold — a real, honest coverage gap, not a defect. 91.3% precision on n=23 gradable is consistent with (a touch below) the held-out val-set measurement in §9.2/§17.5 of `docs/ConsensusCalibrator_Technical_Reference.md` (97.0%), within expected small-sample noise. 2 wrong: `Incision` (a specificity mismatch — predicted a valid but less-specific SNOMED concept than gold wanted) and `neurology`.
+
+**Conclusion**: the calibrator genuinely activates and produces real, mostly-correct promotions on truly unseen notes — not just on its own held-out val split. This is the first real end-to-end confirmation of §9's work outside a re-grade of already-stored decisions.
+
+### 10.3 All-stages summary — corpus-wide, fresh-10, fresh-5, side by side
+
+Every column below is a real, gold-graded measurement (not a projection) — see §2 for corpus-wide/fresh-10 methodology and §10.1-10.2 above for fresh-5's. Gold annotation counts differ substantially by column (39,403 / 1,497 / 544) — read percentages, not raw counts, as the comparable figures; a 5-note sample is noisier than the other two, per the per-note spread already noted in §10.1.
+
+| Stage | Metric | Corpus-wide (144 notes, 2026-08-20) | Fresh-10 (2026-08-20) | **Fresh-5 (2026-08-30)** |
+|---|---|---|---|---|
+| 1-2b | Gold annotations | 39,403 | 1,497 | 544 |
+| 1-2b | Span recall | 53.0% | 49.5% | **58.6%** |
+| 1-2b | Linked recall | 33.5% | 26.8% | **40.1%** |
+| 1-2b | Linked precision | 50.0% | 45.3% | **54.2%** |
+| 1-2b | **Linked F1** | 40.1% | 33.7% | **46.1%** |
+| 1-2b | Benchmark char IoU (macro) | 0.1437 | 0.1453 | **0.2131** (0.2187 in-scope) |
+| 1-2b | Benchmark char IoU (weighted) | 0.2824 | 0.2425 | **0.3366** (0.3311 in-scope) |
+| 3 | Total Stage-3 decisions | 19,202 | 250 | 373 |
+| 3 | **Deflection rate** (all `AUTO_TIERS` / all decisions) | 57.0% | 31.2% | **56.6%** |
+| 3 | **AUTO-tier precision** (gradable) | 86.9% | 76.8% | **92.1%** |
+
+**Reading this honestly, not just favorably**: fresh-5 leads on every single row — but it's the *newest* measurement, on the *smallest* sample, run *after* every fix this whole document catalogs (SNOMED crosswalk, near-duplicate retrieval, allergy-context, the KG3 calibrator feature). It is not a controlled ablation against the other two columns — multiple things changed between 2026-08-20 and 2026-08-30, not one. Treat it as "the pipeline's current state looks meaningfully better on fresh data than the 2026-08-20 snapshot," not as an isolated measurement of any single change (§10.2's own TP/FP/precision/recall/F1 table is the one isolated, single-variable measurement in this section — the calibrator's own marginal contribution, holding everything else fixed).
+
+---
+
+## 11. Known Limitations & Open Gaps — Stated Honestly
 
 - **No false-deflection rate.** `hitl_review_queue` is populated (19,103
   cases) but has zero completed human reviews — the patient-safety
@@ -467,7 +525,7 @@ data — that measurement does not yet exist.
 
 ---
 
-## 11. Reproducibility
+## 12. Reproducibility
 
 - Full code-flow trace: `docs/Code_Flow.md`.
 - Every metric's exact formula + real implementing code:
@@ -482,3 +540,11 @@ data — that measurement does not yet exist.
 - Fresh-10 validation note IDs: `ui/components/fresh10_notes.py`.
 - §9's retrain: `scripts/retrain_calibrator_full_corpus.py --save`. §9's
   isolated feature ablation: `evaluation/kg3_feature_ablation.py`.
+- §10's fresh-5 note IDs: `13397956-DS-5`, `17739994-DS-31`, `16410990-DS-12`,
+  `16795604-DS-17`, `17309807-DS-20`. Stage 1-2b: `src.clinical_pipeline.run_pipeline()`
+  per note. Stage 3: `scripts/run_stage3_tier_gate.py --note-ids <the 5 ids> --is-test`.
+  Grading: `scripts/score_gold_recall.py --note-ids <the 5 ids>` (§10.1) and
+  `evaluation/grade_overnight_corpus_run.py`'s `grade_population()`/
+  `plurality_candidate_index()` against the same 5 notes (§10.2) — run ad hoc for
+  this section, not yet consolidated into one checked-in script the way §9's
+  ablation was.
