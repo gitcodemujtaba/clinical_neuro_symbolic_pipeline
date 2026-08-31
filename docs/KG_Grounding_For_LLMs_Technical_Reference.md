@@ -153,7 +153,11 @@ A frequently-drawn version of this architecture (the original project proposal's
 - **TransE is real and evaluated, but not wired into Stage 2B retrieval** — §5 above. The hardcoded rule it was tested against has zero losses where TransE has 63; that result is *why* it stays unwired, not an oversight.
 - **The "Search Space & Prompt Tuner" feeding Stage 2A/2B extraction prompts has never been built.** It's the original proposal's aspirational Stage 5 scope ("GLiNER prompt/search-space feedback loop"), explicitly scoped in `docs/Implementation_Methodology.md` as "foundations only" and never implemented.
 
-The corrected picture — what's actually wired, live, and measured today, versus what's real-but-unwired, versus what was never built at all:
+The corrected picture — what's actually wired, live, and measured today, versus what's real-but-unwired, versus what was never built at all. Verified against the live source arrow-by-arrow (this is the final, corrected version — two earlier drafts each had one real wiring error caught and fixed the same way):
+
+![As-built Stage 5 active-learning architecture, corrected against the live source](diagram/technical_architecture_diagram_repurposing.png)
+
+The same structure, as a text-based (versionable, diffable) equivalent:
 
 ```mermaid
 flowchart TD
