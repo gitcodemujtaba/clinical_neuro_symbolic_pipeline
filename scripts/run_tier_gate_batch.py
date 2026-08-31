@@ -233,8 +233,13 @@ def main():
     vocab = VocabularyRetriever(conn)
 
     if args.curated_atomic:
-        all_note_ids = [r[0] for r in conn.execute(
-            "SELECT DISTINCT note_id FROM extracted_entities WHERE is_test = TRUE").fetchall()]
+        # 2026-08-31 FIX: excludes the locked test split by default -- see
+        # evaluation/splits.py; this script's default previously had no
+        # such guard.
+        from evaluation.splits import load_split
+        all_note_ids_unfiltered = {r[0] for r in conn.execute(
+            "SELECT DISTINCT note_id FROM extracted_entities WHERE is_test = TRUE").fetchall()}
+        all_note_ids = sorted(all_note_ids_unfiltered - load_split("test"))
         gold_path = _first_existing(GOLD_CANDIDATES, "gold")
         gold_rows = load_gold(gold_path, all_note_ids)
         gold_by_note = collections.defaultdict(list)

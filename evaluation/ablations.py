@@ -628,9 +628,14 @@ def main():
         if args.note_ids:
             note_ids = [n.strip() for n in args.note_ids.split(",") if n.strip()]
         else:
-            note_ids = [r[0] for r in conn.execute(
+            # 2026-08-31 FIX: excludes the locked test split by default --
+            # see evaluation/splits.py; this script's default previously had
+            # no such guard.
+            from evaluation.splits import load_split
+            all_notes = {r[0] for r in conn.execute(
                 "SELECT DISTINCT note_id FROM mollm_decisions WHERE is_test = TRUE"
-            ).fetchall()]
+            ).fetchall()}
+            note_ids = sorted(all_notes - load_split("test"))
         if not note_ids:
             raise SystemExit("No is_test=TRUE rows in mollm_decisions. "
                              "Run scripts/test_stage3_live.py --store first.")

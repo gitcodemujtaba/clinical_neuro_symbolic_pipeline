@@ -185,7 +185,25 @@ TIER1_CONFIDENCE_FLOOR = 0.70
 # it. Re-validate before ever changing this: a refit on new data or a
 # different held-out split can shift where 0.72 actually sits on the
 # precision/coverage curve.
-CALIBRATED_AUTO_THRESHOLD = 0.72
+#
+# 2026-08-31 RE-DERIVED, 0.72 -> 0.78, after the locked-test-split +
+# fresh-10/fresh-5 leakage fix (docs/ConsensusCalibrator_Technical_
+# Reference.md S18) forced a calibrator refit anyway. Applied the EXACT
+# SAME selection rule as the original 0.72 choice (smallest threshold
+# reaching 100% precision on the val set, hard traps active) to the new,
+# clean 105-note pool (75 train / 25 val): at 0.72, precision is now only
+# ~98% (between the printed 97.8%/0.70 and 98.7%/0.75 sweep rows) -- NOT
+# 100% on current data, a real drift, not staleness alone. The single
+# remaining false positive is 'neck pain' (score 0.779742, votes
+# SUPPORTED_1:2/NONE_CORRECT:1) -- the same shape of story as the original
+# 'incontinence' case (a non-trappable word, not a pattern the coronary/
+# short-code hard traps can catch), just a different specific entity.
+# 0.78 is the smallest 0.01-granular threshold that clears it (0 false
+# positives at 0.78, confirmed by direct fine sweep). Real coverage cost:
+# 66/485 = 13.6% of this val pool promoted at 0.78, vs. ~89-77 (18.4%-15.9%)
+# at 0.70-0.75 -- smaller than the previous 0.70->0.72 bump's cost but not
+# free. Re-validate before ever changing this again, same warning as above.
+CALIBRATED_AUTO_THRESHOLD = 0.78
 
 # 2026-08-17 (plan Phase 6, coronary safety gate). The calibrator's own
 # val-set false positives (evaluation/tier_gate_cal_eval.py) cluster on

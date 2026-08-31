@@ -363,7 +363,14 @@ def main():
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--note-ids", default=None,
                      help="Comma-separated note_ids. Default: every note_id with "
-                          "is_test=TRUE rows in extracted_entities.")
+                          "is_test=TRUE rows in extracted_entities, MINUS the locked "
+                          "test split (see 2026-08-31 fix below). Pass --split test "
+                          "--unlock-test-ack to deliberately include it.")
+    ap.add_argument("--split-test-ack", action="store_true",
+                    help="Acknowledge including the locked test split in the default "
+                         "population -- required because this script's own output has "
+                         "previously informed a live production threshold "
+                         "(HIGH_GLINER_RISK_FLOOR); see evaluation/splits.py.")
     ap.add_argument("--gold", default=None, help="path to train_annotations.csv")
     ap.add_argument("--db", default=DB_PATH)
     ap.add_argument("--out", default=None, help="write full JSON report here")
@@ -375,9 +382,26 @@ def main():
         if args.note_ids:
             note_ids = [n.strip() for n in args.note_ids.split(",") if n.strip()]
         else:
-            note_ids = [r[0] for r in conn.execute(
+            # 2026-08-31 FIX: previously used every is_test=TRUE note
+            # unconditionally -- confirmed this script's own ECE curve had
+            # informed HIGH_GLINER_RISK_FLOOR (src/normalization/constants.py),
+            # a live production threshold, with no guard against the locked
+            # test split (data/splits/note_splits.csv). Now excludes it by
+            # default, same evaluation.splits.load_split() discipline used
+            # elsewhere; --split-test-ack opts back in deliberately.
+            from evaluation.splits import load_split
+            all_notes = {r[0] for r in conn.execute(
                 "SELECT DISTINCT note_id FROM extracted_entities WHERE is_test = TRUE"
-            ).fetchall()]
+            ).fetchall()}
+            if args.split_test_ack:
+                note_ids = sorted(all_notes)
+            else:
+                locked = load_split("test")
+                note_ids = sorted(all_notes - locked)
+                n_excluded = len(all_notes) - len(note_ids)
+                if n_excluded:
+                    print(f"excluded {n_excluded} note(s) from the locked test split "
+                         f"(pass --split-test-ack to include them deliberately)")
         if not note_ids:
             raise SystemExit("No is_test=TRUE rows in extracted_entities. "
                              "Run scripts/test_pipeline_e2e.py first.")

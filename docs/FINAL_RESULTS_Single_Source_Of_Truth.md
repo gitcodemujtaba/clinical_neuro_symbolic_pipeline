@@ -324,9 +324,14 @@ re-verifying the first fix) 4 of fresh-5's 5 real validation notes.
 Current production model retrained on the corrected **105-note pool**:
 **validation AUROC 0.868** (up from the previously-reported 0.852 on the
 contaminated 144-note fit — removing 39% of the pool did not hurt).
-`CALIBRATED_AUTO_THRESHOLD = 0.72` — **still not re-derived against any
-retrain**; see `docs/ConsensusCalibrator_Technical_Reference.md` §13.5
-for the open item this leaves. Two hard "trap" gates bypass the
+**Same day, re-derived**: `CALIBRATED_AUTO_THRESHOLD` moved **0.72 → 0.78**
+(`docs/ConsensusCalibrator_Technical_Reference.md` §19) — applying the
+exact rule 0.72 was originally chosen with (smallest threshold reaching
+100% val precision, hard traps active) to the clean model found 0.72 no
+longer holds 100% on current data (only ~98%; `neck pain` @ 0.779742 is
+now the sole blocker, the same shape of story as the original
+`incontinence` case). Real cost: coverage at 0.78 is 13.6%, down from
+~16-17% at 0.72 on the same clean pool. Two hard "trap" gates bypass the
 calibrator entirely for known-fragile patterns
 (`_is_coronary_segment_trap()`, `_is_short_alphanumeric_code()`).
 Leakage guard (`ConsensusCalibrator.load(..., scoring_note_ids=...)`)

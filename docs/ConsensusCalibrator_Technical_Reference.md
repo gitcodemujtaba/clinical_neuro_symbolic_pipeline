@@ -946,8 +946,8 @@ single-fix-intermediate model.
 production `models/consensus_calibrator_v1.pkl`, superseding §17.8's
 2026-08-30 model.
 
-**Still open, same items as §13.5/§17.8, now compounded further**:
-`CALIBRATED_AUTO_THRESHOLD = 0.72` has now survived three refits (2026-
+**Still open at the time §18 was first written**:
+`CALIBRATED_AUTO_THRESHOLD = 0.72` had survived three refits (2026-
 08-20, 2026-08-30, 2026-08-31) across three different corpora and two
 feature-set versions without ever being re-derived from scratch. Also
 newly open: `evaluation/tier_gate_cal_eval.py`'s own default `NOTE_IDS`
@@ -956,3 +956,56 @@ explicitly) was not checked against the locked split as part of this fix
 — the production retrain path (`retrain_calibrator_full_corpus.py`,
 fixed above) never relies on that default, but any other caller that
 does should not be assumed clean without the same check.
+
+---
+
+## 19. 2026-08-31, same day — `CALIBRATED_AUTO_THRESHOLD` re-derived: 0.72 → 0.78
+
+Closes the item §18 left open. Since the leakage fix forced a calibrator
+refit anyway, the threshold was re-derived on the clean model using the
+**exact same selection rule the original 0.72 was chosen with** (§13.1):
+the smallest threshold reaching 100% precision on the val set, hard traps
+(`_is_coronary_segment_trap()`, `_is_short_alphanumeric_code()`) active.
+
+**Fine-grained sweep on the clean 105-note pool** (75 train / 25 val,
+same model as §18):
+
+| Threshold | Coverage | Precision | False positive(s) remaining |
+|---|---|---|---|
+| 0.72 | ~16-17% (between the 0.70/0.75 sweep rows) | **~98%** (between 97.8% and 98.7%) | `neck pain` (score 0.779742) and others below it |
+| 0.75 | 15.9% (77/485) | 98.7% | `neck pain` still present |
+| 0.76 | — | <100% | `neck pain` (0.779742) — confirmed the ONLY one remaining |
+| 0.77 | — | <100% | `neck pain` (0.779742) — still present |
+| **0.78** | **13.6% (66/485)** | **100%** | **none** — confirmed via direct fine sweep |
+
+**The story is structurally identical to the original 0.70→0.72 bump**,
+just a different specific entity: `incontinence` (0.70698) forced the
+first bump; `neck pain` (0.779742, votes `SUPPORTED_1:2/NONE_CORRECT:1`)
+is the equivalent blocker here — a real clinical term the coronary/
+short-code hard traps have no reason to catch (neither a coronary-segment
+abbreviation nor a short alphanumeric code), so only a threshold move
+closes it.
+
+**Why 0.72 no longer holds, on real data, not just staleness**: the
+original 0.72 was measured at **100%** precision on its own 2026-08-17
+val set. On today's clean, current-corpus val set, 0.72 measures only
+**~98%** — a real drift in what the threshold actually buys, independent
+of the leakage question. This is consistent with (and now supersedes) the
+2026-08-17 51-note diagnostic already logged in `docs/Implementation_
+Decisions_Log.md` ("the production 0.72 threshold itself measured only
+89.5% on this larger set vs. ~100% on the original smaller val set") —
+that finding was directionally correct 14 days before this fix, on data
+that (per §18) was itself unverified against the locked split.
+
+**Adopted**: `src/mollm_tier_gate.py`'s `CALIBRATED_AUTO_THRESHOLD`
+updated `0.72` → `0.78`, with an inline comment recording this derivation
+and the exact false-positive story, matching the discipline already
+present for the original value. Real, disclosed cost: coverage at this
+threshold (13.6%) is lower than 0.72's own coverage was on this same
+clean val set (16-17%) — a further tightening on top of the original
+0.65→0.72 tightening's own cost, not a free correction.
+
+**Still open**: `evaluation/tier_gate_cal_eval.py`'s own default
+`NOTE_IDS` (unaffected by today's fixes, per §18's closing note) remains
+a real gap for any future caller that relies on it without an explicit
+`note_ids` override.

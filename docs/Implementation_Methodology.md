@@ -279,9 +279,11 @@ where that stands.
 `ConsensusCalibrator`) — a 16-feature logistic regression (vote-consensus
 shape, retrieval provenance, fragile-fallback flags, prior-confirmation
 count) scoring `P(correct)` for entities the ensemble did not agree on
-unanimously. `CALIBRATED_AUTO_THRESHOLD = 0.72`. Full feature-by-feature
-detail, the exact learned coefficients, and where 0.72 came from:
-`docs/ConsensusCalibrator_Technical_Reference.md`.
+unanimously. `CALIBRATED_AUTO_THRESHOLD = 0.78` (re-derived 2026-08-31
+from 0.72, after a locked-test-split leakage fix forced a calibrator
+refit — same selection rule as the original value, applied to clean
+data). Full feature-by-feature detail, the exact learned coefficients,
+and where 0.78 came from: `docs/ConsensusCalibrator_Technical_Reference.md`.
 
 **Two distinct call sites, sharing one helper (`_score_with_calibrator()`)
 but not the same validation history**: call site 1 scores a genuine

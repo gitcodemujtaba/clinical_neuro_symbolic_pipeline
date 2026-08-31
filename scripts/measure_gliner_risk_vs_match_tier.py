@@ -102,8 +102,14 @@ def main():
     if args.note_ids:
         note_ids = args.note_ids.split(",")
     else:
-        note_ids = [r[0] for r in conn.execute(
-            "SELECT DISTINCT note_id FROM extracted_entities WHERE is_test = TRUE").fetchall()]
+        # 2026-08-31 FIX: excludes the locked test split by default -- see
+        # evaluation/splits.py; this script's default previously had no
+        # such guard, and its output directly informs HIGH_GLINER_RISK_FLOOR
+        # (src/normalization/constants.py) via evaluation/stage_calibration.py.
+        from evaluation.splits import load_split
+        all_notes = {r[0] for r in conn.execute(
+            "SELECT DISTINCT note_id FROM extracted_entities WHERE is_test = TRUE").fetchall()}
+        note_ids = sorted(all_notes - load_split("test"))
 
     if not note_ids:
         print("No is_test=TRUE note_ids found in extracted_entities -- nothing to measure.")
