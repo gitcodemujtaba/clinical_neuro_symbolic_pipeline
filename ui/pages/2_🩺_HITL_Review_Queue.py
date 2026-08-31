@@ -46,6 +46,7 @@ from ui.components.db_status import (  # noqa: E402
 from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
 from ui.components.hitl_context_aids import (  # noqa: E402
     ENTITY_LABEL_OPTIONS, agreement_summary, known_risk_flags)
+from ui.components.keyboard_shortcuts import render_keyboard_shortcuts_toggle  # noqa: E402
 
 # CNSP_DB_PATH override matches the OLLAMA_HOST/NEO4J_URI/MEMGRAPH_URI
 # env-var pattern already used elsewhere in this codebase -- lets this page
@@ -164,6 +165,9 @@ with st.sidebar:
     status_filter = st.selectbox(
         "status", ["PENDING", "APPROVED", "CORRECTED", "REJECTED", "(all)"], index=0
     )
+
+    st.divider()
+    render_keyboard_shortcuts_toggle()
 
 queue = load_hitl_queue(
     conn,

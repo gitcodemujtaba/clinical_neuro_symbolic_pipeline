@@ -128,6 +128,13 @@ def run():
 
         check("page loads without raising", not at.exception)
 
+        # 2026-08-31: keyboard-shortcuts opt-in checkbox renders, defaults
+        # OFF (so the JS component is never injected unless a reviewer
+        # explicitly opts in).
+        shortcut_checkboxes = [c for c in at.checkbox if "Keyboard shortcuts" in c.label]
+        check("the keyboard-shortcuts checkbox renders and defaults to False",
+              len(shortcut_checkboxes) == 1 and shortcut_checkboxes[0].value is False)
+
         # 2026-08-31 additions: agreement badge + known-risk flags. The
         # fixture's models are a real 2-1 split (SUPPORTED_1 x2,
         # NONE_CORRECT x1), so a "Split" warning should render.
