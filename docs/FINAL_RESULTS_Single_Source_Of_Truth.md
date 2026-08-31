@@ -261,11 +261,49 @@ independently accepted 2+ candidates (tiebreak-eligible) graded at
 **14.3% precision (3/21)** vs. **84.7% (265/313)** for non-eligible
 entities — spot-checked against real entities, not a grading artifact.
 
-**Conclusion**: not neutral, not occasionally negative — substantially
+**Conclusion at the time**: not neutral, not occasionally negative — substantially
 negative on the broad population. The flag's one verified narrow win is
 real and kept; a proposed mitigation (route tiebreak-eligible entities
-straight to HITL rather than pay for the comparative LLM call) is
-identified but **not implemented or verified**.
+straight to HITL rather than pay for the comparative LLM call) was
+identified but not implemented or verified.
+
+### 7.1 Re-investigated at full corpus scale, 2026-08-31 — the mitigation isn't justified after all
+
+The 14.3% figure above was a 5-note, 21-entity sample. Re-measured
+against the full corpus (2,529 real tiebreak-eligible entities, detected
+directly from stored `eval_trail` data, not re-derived):
+
+| Population | Precision | n |
+|---|---|---|
+| Original 5-note sample | 14.3% | 3/21 |
+| **Full corpus, raw plurality pick, any tier** | **38.8%** | 437/1,126 gradable |
+| **Full corpus, AUTO-tier subset only** (the actual unreviewed-write risk) | **78.7%** | 37/47 gradable |
+
+The direction of the original finding is real — this population's raw
+plurality pick genuinely underperforms (38.8% vs. the ~85% baseline for
+non-eligible entities) — but the **original 14.3% number understated the
+real rate by nearly 3×**, a small-sample artifact, not a corpus-wide
+truth.
+
+More importantly: only **64 of 2,529** tiebreak-eligible entities (2.5%)
+ever actually reach an AUTO tier at all (51 unanimous `TIER_1`, 13
+calibrator-promoted `TIER_1B`) — the existing gate (unanimous-agreement
+requirement + `CALIBRATED_AUTO_THRESHOLD`) is **already** filtering this
+genuinely-weaker population down to a much smaller, much safer subset
+(78.7% precision, in line with the rest of the system's AUTO-tier
+precision elsewhere in this document). The proposed mitigation's real
+justification was precision risk; that risk, measured properly, is far
+smaller than believed.
+
+**Decision: not implemented.** What remains after removing the precision
+argument is a pure compute-cost optimization (skip one comparative LLM
+call across ~2,529 entities corpus-wide, versus ~19,000+ total Stage-3
+decisions) — real, but modest, and not free: implementing it as
+originally scoped (skip the ensemble outcome entirely, not just the
+extra call) would discard the 64 entities currently reaching AUTO tier
+legitimately. Documented here rather than built, so the next person
+doesn't re-discover the same small-sample-artifact urgency this document
+originally reported.
 
 ---
 
@@ -537,9 +575,17 @@ Every column below is a real, gold-graded measurement (not a projection) — see
   — Wilson treats each graded entity as independent, which understates
   true uncertainty given entities cluster within notes. Note-level
   bootstrap CIs are not yet built anywhere in this codebase.
-- **A third SNOMED near-duplicate pattern** ("Clinical Finding"-domain
-  concepts) is confirmed real but unhandled by either the hardcoded rule
-  or KGE.
+- **A third SNOMED near-duplicate pattern ("Clinical Finding"-class
+  concepts) — investigated at corpus scale 2026-08-31, does not justify a
+  fix.** The original characterization (one observed case) doesn't hold
+  up: 1,562 real Lab Test entities have a `Clinical Finding`-class
+  candidate alongside another class in their pool, but on a 38-entity
+  gradable sample, that class was actually *chosen* only once (2.6%) —
+  and that one case was wrong. `_LAB_PROCEDURE_PENALIZED_CLASSES` doesn't
+  even include `Clinical Finding`; raw SapBERT similarity alone already
+  keeps it from winning in the vast majority of real cases. Not
+  recommended as a priority — building a new tiebreak rule here would
+  touch ~1 case per ~38, not the systemic pattern originally believed.
 - **The MCHC/RDW retrieval fix (§5) closed, 2026-08-30**: the remaining 24
   terms were graded at the Stage 3 ensemble level for the first time (991
   real decisions, 521 `AUTO_TIERS`, 467 gradable). Found overall precision
@@ -566,7 +612,14 @@ Every column below is a real, gold-graded measurement (not a projection) — see
   at-scale precision delta — this was verified via direct function calls
   on each term's bare form, not yet applied to a live batch re-run.
 - **`EXHAUSTIVE_CANDIDATE_EVAL_ENABLED`'s proposed HITL-routing mitigation
-  (§7) is not implemented** — only its net impact is measured.
+  — investigated at corpus scale 2026-08-31, deliberately not built.**
+  §7.1: the original 14.3%-precision justification was a 5-note/21-entity
+  sample; the real, full-corpus AUTO-tier-specific precision is 78.7%
+  (the existing gate already filters this population). What's left is a
+  real but modest compute-cost optimization, not a precision fix, and
+  building it as originally scoped would cost 64 currently-legitimate
+  AUTO-tier decisions corpus-wide. A considered non-decision, not an
+  oversight.
 - **Guideline-derived KG injection (Objective 2) and RotatE/CompGCN
   (Objective 4's other two named methods) remain unbuilt** — TransE was
   built as the simplest of the three named KGE methods; the other two are
