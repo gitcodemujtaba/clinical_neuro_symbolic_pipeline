@@ -17,6 +17,15 @@ Two real aids:
 """
 
 
+# Mirrors src.entity_extraction.CLINICAL_LABELS exactly -- NOT imported
+# from there, deliberately: that module loads the full GLiNER-BioMed
+# model at import time (confirmed live -- "Loading GLiNER-BioMed
+# model..." fires on import, not on first use), which would make every
+# HITL page load pay a real model-load cost just to get this 6-item
+# constant. Update this list by hand if CLINICAL_LABELS ever changes.
+ENTITY_LABEL_OPTIONS = ["Condition", "Symptom", "Medication", "Procedure", "Anatomy", "Lab Test"]
+
+
 def agreement_summary(models: list) -> dict:
     """{"total_usable": int, "top_verdict": str|None, "top_count": int,
     "unanimous": bool, "vote_counts": dict, "label": str} -- `label` is

@@ -88,6 +88,16 @@ def ensure_hitl_queue_table(conn):
     # hitl_review_queue -- until reviewers actually use this field, that
     # mechanism has nothing to mine, by design.
     conn.sql("ALTER TABLE hitl_review_queue ADD COLUMN IF NOT EXISTS reviewer_comment VARCHAR;")
+    # 2026-08-31 (UI: span/label correction tools). Before this, a
+    # reviewer could only correct WHICH CONCEPT an entity resolves to --
+    # if GLiNER's own span boundary or entity_label was wrong (a genuine,
+    # different failure mode from a bad concept pick), there was no way to
+    # record that at all. NULL means "unchanged from what was presented"
+    # for all three -- never conflate with 0/empty-string, which would be
+    # a real value for orig_start specifically.
+    conn.sql("ALTER TABLE hitl_review_queue ADD COLUMN IF NOT EXISTS corrected_orig_start INTEGER;")
+    conn.sql("ALTER TABLE hitl_review_queue ADD COLUMN IF NOT EXISTS corrected_orig_end INTEGER;")
+    conn.sql("ALTER TABLE hitl_review_queue ADD COLUMN IF NOT EXISTS corrected_entity_label VARCHAR;")
     for stmt in provenance_alter_statements("hitl_review_queue"):
         conn.sql(stmt)
 
@@ -580,7 +590,8 @@ def load_hitl_queue(conn, status: str = None, note_id: str = None,
         SELECT hitl_case_id, source_table, source_call_id, entity_id, note_id,
                queue_reason, presented_suggestion, reviewer_decision,
                corrected_concept_id, rejection_reason, review_duration,
-               final_ingestion_path, created_at, reviewer_comment
+               final_ingestion_path, created_at, reviewer_comment,
+               corrected_orig_start, corrected_orig_end, corrected_entity_label
         FROM hitl_review_queue
         WHERE {' AND '.join(where)}
         ORDER BY created_at DESC
@@ -598,13 +609,17 @@ def load_hitl_queue(conn, status: str = None, note_id: str = None,
             "corrected_concept_id": r[8], "rejection_reason": r[9],
             "review_duration": r[10], "final_ingestion_path": r[11],
             "created_at": r[12], "reviewer_comment": r[13],
+            "corrected_orig_start": r[14], "corrected_orig_end": r[15],
+            "corrected_entity_label": r[16],
         })
     return out
 
 
 def submit_review(conn, hitl_case_id: str, reviewer_decision: str,
                   corrected_concept_id: int = None, rejection_reason: str = None,
-                  review_duration: float = None, reviewer_comment: str = None):
+                  review_duration: float = None, reviewer_comment: str = None,
+                  corrected_orig_start: int = None, corrected_orig_end: int = None,
+                  corrected_entity_label: str = None):
     """Records a human reviewer's verdict on one queued case.
 
     reviewer_decision must be one of 'APPROVED' / 'CORRECTED' / 'REJECTED'
@@ -622,6 +637,21 @@ def submit_review(conn, hitl_case_id: str, reviewer_decision: str,
     hitl_review_queue; a reviewer explaining WHY (not just WHAT) is what
     eventually lets that mechanism -- or any other future analysis --
     improve the pipeline from real cases instead of guessing.
+
+    corrected_orig_start/corrected_orig_end/corrected_entity_label
+    (2026-08-31): a genuinely different correction axis from
+    corrected_concept_id -- GLiNER's own SPAN or LABEL can be wrong
+    independent of whether the right CONCEPT was ultimately picked. All
+    three default to None, meaning "unchanged from what was presented" --
+    the caller (ui/pages/2_🩺_HITL_Review_Queue.py) is responsible for
+    only passing a value when the reviewer actually changed it, so a
+    routine APPROVED case never gets spurious non-NULL "corrections"
+    recorded. NOT yet consumed by src/kg3_ingestion.py's write path --
+    persisted here and exposed via load_ingestible_cases()/
+    load_hitl_queue() so the data exists, but wiring it into the actual
+    KG3 write (which would mean re-deriving downstream fields like
+    local_context from a different span) is deliberately out of scope for
+    this change.
     """
     if reviewer_decision not in ("APPROVED", "CORRECTED", "REJECTED"):
         raise ValueError(f"reviewer_decision must be APPROVED/CORRECTED/REJECTED, got {reviewer_decision!r}")
@@ -629,7 +659,9 @@ def submit_review(conn, hitl_case_id: str, reviewer_decision: str,
     conn.execute("""
         UPDATE hitl_review_queue
         SET reviewer_decision = ?, corrected_concept_id = ?, rejection_reason = ?,
-            review_duration = ?, final_ingestion_path = ?, reviewer_comment = ?
+            review_duration = ?, final_ingestion_path = ?, reviewer_comment = ?,
+            corrected_orig_start = ?, corrected_orig_end = ?, corrected_entity_label = ?
         WHERE hitl_case_id = ?
     """, [reviewer_decision, corrected_concept_id, rejection_reason,
-          review_duration, final_ingestion_path, reviewer_comment, hitl_case_id])
+          review_duration, final_ingestion_path, reviewer_comment,
+          corrected_orig_start, corrected_orig_end, corrected_entity_label, hitl_case_id])

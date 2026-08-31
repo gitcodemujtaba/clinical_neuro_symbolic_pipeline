@@ -44,7 +44,8 @@ from ui.components.concept_search import format_concept_option, search_concepts 
 from ui.components.db_status import (  # noqa: E402
     render_locked_db_status, render_mixed_connection_status)
 from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
-from ui.components.hitl_context_aids import agreement_summary, known_risk_flags  # noqa: E402
+from ui.components.hitl_context_aids import (  # noqa: E402
+    ENTITY_LABEL_OPTIONS, agreement_summary, known_risk_flags)
 
 # CNSP_DB_PATH override matches the OLLAMA_HOST/NEO4J_URI/MEMGRAPH_URI
 # env-var pattern already used elsewhere in this codebase -- lets this page
@@ -241,6 +242,14 @@ with col_note:
         )
         if case.get("reviewer_comment"):
             st.caption(f"💬 {case['reviewer_comment']}")
+        if case.get("corrected_orig_start") is not None or case.get("corrected_entity_label"):
+            st.caption(
+                "✏️ Span/label corrected: "
+                + (f"span → [{case.get('corrected_orig_start')}:{case.get('corrected_orig_end')}]  "
+                  if case.get("corrected_orig_start") is not None else "")
+                + (f"label → {case.get('corrected_entity_label')}"
+                  if case.get("corrected_entity_label") else "")
+            )
     else:
         st.warning(
             "Queued for human review regardless of this decision's own confidence tier "
@@ -286,6 +295,23 @@ with col_provenance:
 
     if candidates:
         st.markdown("**Candidates (Stage 2b retrieval):**")
+        # 2026-08-31: two real context aids per candidate, both reusing
+        # already-built project functions rather than new logic --
+        # (a) prior_confirmation_count: how many times THIS EXACT (mention
+        # text, concept) pairing already cleared an auto-tier or a human
+        # review before (src.mollm_tier_calibrator.count_prior_
+        # confirmations() -- the same DuckDB-sourced signal the calibrator
+        # itself trains on, just never surfaced to a human reviewer
+        # before); (b) domain/parent context (src.retrieval.
+        # VocabularyRetriever.concept_context() -- Channel C's own
+        # ontology-grounding lookup, reused here for a reviewer instead of
+        # a prompt). One extra query pair per candidate -- kept in an
+        # expander, not inline, so it doesn't visually clutter the
+        # already-dense candidate list; only fetched when opened.
+        from src.mollm_tier_calibrator import count_prior_confirmations
+        from src.retrieval import VocabularyRetriever
+        vocab = VocabularyRetriever(conn)
+        entity_text = suggestion.get("original_text")
         for i, c in enumerate(candidates, 1):
             st.text(
                 f"[{i}] {c.get('concept_name')}  "
@@ -293,6 +319,18 @@ with col_provenance:
                 f"tier {c.get('match_tier')}, score {c.get('similarity_score')}, "
                 f"basis {c.get('match_basis')})"
             )
+            with st.expander(f"  ↳ context for [{i}]", expanded=False):
+                cid_i = c.get("omop_concept_id")
+                prior_count = count_prior_confirmations(conn, entity_text, cid_i)
+                st.caption(f"Prior confirmations of this exact (mention, concept) pairing: "
+                          f"**{prior_count}**" + (" — never seen before" if prior_count == 0 else ""))
+                ctx = vocab.concept_context(cid_i)
+                if ctx:
+                    st.caption(f"FSN: {ctx.get('fsn')}  |  {ctx.get('domain_id')}/"
+                              f"{ctx.get('concept_class_id')} ({ctx.get('vocabulary_id')})")
+                    parents = ctx.get("parents") or []
+                    if parents:
+                        st.caption("Parent concept(s): " + ", ".join(p["name"] for p in parents))
     proposed_name = suggestion.get("proposed_concept_name")
     if proposed_name:
         st.markdown(f"**Proposed concept:** {proposed_name}")
@@ -389,6 +427,45 @@ with col_review:
     if decision == "REJECTED":
         rejection_reason = st.text_area("Rejection reason", key=f"rejection_reason_{cid}")
 
+    # 2026-08-31: span/label correction -- a genuinely different axis from
+    # corrected_concept_id above. GLiNER's own span boundary or entity
+    # label can be wrong independent of whether the right CONCEPT was
+    # ultimately picked (e.g. a compound span that should have been split,
+    # or "Symptom" when it should have been "Condition"). Available
+    # regardless of decision (APPROVED/CORRECTED alike) -- a case can be
+    # concept-correct but still have a span/label worth fixing. Collapsed
+    # by default so the common "everything's fine, just click a button"
+    # case isn't cluttered by it.
+    orig_start = suggestion.get("orig_start")
+    orig_end = suggestion.get("orig_end")
+    entity_label = suggestion.get("entity_label")
+    corrected_orig_start = corrected_orig_end = corrected_entity_label = None
+    with st.expander("✏️ Adjust span or entity label (optional)", expanded=False):
+        if orig_start is None or orig_end is None:
+            st.caption("No span offset on this case (queued before 2026-08-20) — nothing to adjust.")
+        else:
+            sc1, sc2 = st.columns(2)
+            new_start = sc1.number_input("Span start", min_value=0, value=int(orig_start),
+                                         key=f"span_start_{cid}")
+            new_end = sc2.number_input("Span end", min_value=0, value=int(orig_end),
+                                       key=f"span_end_{cid}")
+            if new_start != orig_start or new_end != orig_end:
+                if new_start < new_end and raw_text and 0 <= new_start < new_end <= len(raw_text):
+                    st.caption("Preview of the adjusted span:")
+                    render_note_with_highlight(raw_text, int(new_start), int(new_end), height="15vh")
+                    corrected_orig_start, corrected_orig_end = int(new_start), int(new_end)
+                else:
+                    st.error("Adjusted span must have start < end and fit within the note.")
+
+        if entity_label:
+            label_options = ([entity_label] if entity_label not in ENTITY_LABEL_OPTIONS
+                            else []) + ENTITY_LABEL_OPTIONS
+            new_label = st.selectbox("Entity label", label_options,
+                                     index=label_options.index(entity_label),
+                                     key=f"entity_label_{cid}")
+            if new_label != entity_label:
+                corrected_entity_label = new_label
+
     # 2026-08-17: independent of rejection_reason -- available on every
     # decision, not just REJECTED. This is the real ground truth
     # src.abbreviation_flywheel.mine_context_rules() (and any future
@@ -411,6 +488,9 @@ with col_review:
             rejection_reason=rejection_reason,
             review_duration=round(duration, 1),
             reviewer_comment=comment.strip() or None,
+            corrected_orig_start=corrected_orig_start,
+            corrected_orig_end=corrected_orig_end,
+            corrected_entity_label=corrected_entity_label,
         )
         st.session_state.hitl_index = min(idx + 1, len(queue) - 1)
         st.session_state.hitl_case_started_at = time.time()

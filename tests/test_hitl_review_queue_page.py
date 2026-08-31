@@ -134,6 +134,12 @@ def run():
         warning_texts = " ".join(w.value for w in at.warning)
         check("the 2-1 split fixture renders a 'Split' agreement warning",
               "Split" in warning_texts)
+
+        # 2026-08-31 additions: per-candidate context expander (prior-
+        # confirmation count + domain/parent lookup).
+        expander_labels = [e.proto.label for e in at.expander]
+        check("a per-candidate context expander renders for the top candidate",
+              any("context for [1]" in lbl for lbl in expander_labels))
         if at.exception:
             print("EXCEPTION:", at.exception)
 
@@ -164,6 +170,53 @@ def run():
                      "1's CORRECTED selection -- the actual bug this "
                      "case-id-scoped key= fix prevents",
                       len(radios_case2) >= 1 and radios_case2[0].value == "APPROVED")
+
+        # 2026-08-31: verify submit_review()'s new corrected_orig_start/
+        # corrected_orig_end/corrected_entity_label params round-trip
+        # correctly (both the "actually changed" and the "left unchanged
+        # -> stays NULL" cases) -- called directly rather than via a full
+        # AppTest button click for this specific check: AppTest's
+        # rerun-state restoration for a number_input nested inside a
+        # collapsed st.expander hit an internal KeyError unrelated to this
+        # page's own logic (the widget itself is unconditional whenever
+        # orig_start is not None; only the preview below it is
+        # conditional) -- calling the already-AppTest-covered submit_review()
+        # directly here tests the actual behavior this feature depends on
+        # without depending on that harness quirk.
+        conn3 = duckdb.connect(db_path, read_only=False)
+        from src.hitl_queue import submit_review as _submit_review
+        # Case 1 (e1): routine approve, no span/label change -- must stay NULL.
+        _submit_review(conn3, "hitl_mollm_tier_gate_decisions_call1", "APPROVED")
+        # Case 2 (e2): a real span + label correction.
+        _submit_review(conn3, "hitl_mollm_tier_gate_decisions_call2", "CORRECTED",
+                       corrected_concept_id=222, corrected_orig_start=6,
+                       corrected_orig_end=9, corrected_entity_label="Condition")
+        row1 = conn3.execute(
+            "SELECT reviewer_decision, corrected_orig_start, corrected_orig_end, "
+            "corrected_entity_label FROM hitl_review_queue WHERE entity_id = 'e1'").fetchone()
+        row2 = conn3.execute(
+            "SELECT reviewer_decision, corrected_orig_start, corrected_orig_end, "
+            "corrected_entity_label FROM hitl_review_queue WHERE entity_id = 'e2'").fetchone()
+        conn3.close()
+        check("a routine approve with no span/label change leaves all three NULL "
+             "(no spurious 'correction' recorded)",
+              row1 == ("APPROVED", None, None, None))
+        check("an actual span+label correction round-trips through submit_review() "
+             "and back out via load_hitl_queue()'s same columns",
+              row2 == ("CORRECTED", 6, 9, "Condition"))
+
+        # And confirm load_hitl_queue() itself surfaces the new fields (the
+        # page's "Already reviewed: ... span/label corrected" display reads
+        # exactly these keys).
+        from src.hitl_queue import load_hitl_queue as _load_hitl_queue
+        conn4 = duckdb.connect(db_path, read_only=True)
+        queue_rows = _load_hitl_queue(conn4)
+        conn4.close()
+        e2_row = next((r for r in queue_rows if r["entity_id"] == "e2"), None)
+        check("load_hitl_queue() exposes corrected_orig_start/end/entity_label",
+              e2_row is not None and e2_row["corrected_orig_start"] == 6
+              and e2_row["corrected_orig_end"] == 9
+              and e2_row["corrected_entity_label"] == "Condition")
 
     print(f"hitl-review-queue-page tests: {ok} passed, {len(fail)} failed")
     for f in fail:
