@@ -191,6 +191,34 @@ def compute_overall_metrics(conn, note_ids):
     }
 
 
+@st.cache_data(persist="disk", show_spinner=False)
+def _compute_overall_metrics_cached(_conn, note_ids_key: tuple, cache_version: int):
+    """Disk-persisted wrapper around compute_overall_metrics(), for the
+    FIXED-membership named batches only (Fresh-10, Fresh-5 original,
+    Fresh-5 gazetteer -- finished, historical validation runs that don't
+    change) -- NOT for "All processed notes", which genuinely grows as
+    the corpus does and must always be graded fresh (see the batch loop
+    below, which only calls this for batches with a non-None note list).
+
+    `_conn` (underscore prefix): Streamlit's own convention for "don't
+    hash this argument, but the function still needs it" -- a DuckDB
+    connection object isn't meaningfully hashable/stable across reruns
+    anyway. `note_ids_key`: the resolved note_ids as a SORTED TUPLE (the
+    real cache key, alongside `cache_version`) -- persisted to disk
+    (~/.streamlit/cache/), survives an app restart, so this genuinely
+    avoids recomputing a finished batch's grading every single time this
+    tab is opened, not just within one server session.
+
+    `cache_version`: bumped by the "Force recalculate" button below to
+    invalidate a specific batch's cache entry on demand -- these batches
+    are believed stable, but if one is ever deliberately re-run/re-graded
+    (e.g. the gazetteer batch gets a code fix and is re-processed), a
+    reviewer needs a way to get a fresh number without waiting for
+    something else to expire the cache.
+    """
+    return compute_overall_metrics(_conn, list(note_ids_key))
+
+
 tab_overall, tab_batches, tab_tiers, tab_precision, tab_recall, tab_calibration, tab_calibrator = st.tabs(
     ["Overall", "Batch comparison", "Tier distribution", "Precision vs. gold",
      "Recall / completeness", "ECE & IoU (per stage)", "Calibrator status"])
@@ -273,12 +301,29 @@ with tab_overall:
 # this project has built by hand this session.
 # ==========================================================================
 with tab_batches:
-    st.caption("Every named note population this project has actually run, graded fresh and "
-              "shown side by side -- the same comparison this session has built by hand "
-              "repeatedly (docs/FINAL_RESULTS_Single_Source_Of_Truth.md's own tables), now live. "
-              "Each batch is graded on its OWN full resolved population, independent of the "
-              "sidebar's current note selection above.")
-    if st.button("Run batch comparison (grades every named batch against gold)"):
+    st.caption("Every named note population this project has actually run, graded and shown "
+              "side by side -- the same comparison this session has built by hand repeatedly "
+              "(docs/FINAL_RESULTS_Single_Source_Of_Truth.md's own tables), now live. Each batch "
+              "is graded on its OWN full resolved population, independent of the sidebar's "
+              "current note selection above.")
+    st.caption("**Caching**: the fixed-membership batches (Fresh-10, Fresh-5 original, Fresh-5 "
+              "gazetteer) are finished, historical validation runs that don't change -- their "
+              "results are cached to disk (survive an app restart, not just this session) so "
+              "this tab doesn't re-grade them every time it's opened. **'All processed notes'** "
+              "genuinely grows as the corpus does and is always graded fresh, never cached.")
+
+    if "batch_cache_version" not in st.session_state:
+        st.session_state.batch_cache_version = 0
+    bc1, bc2 = st.columns([3, 1])
+    run_clicked = bc1.button("Run batch comparison (grades every named batch against gold)")
+    if bc2.button("🔄 Force recalculate (ignore cache)",
+                  help="Bumps the cache key for the fixed-membership batches, forcing them to "
+                       "re-grade from scratch -- use this if one of them was deliberately "
+                       "re-run/re-processed and the cached numbers are now stale."):
+        st.session_state.batch_cache_version += 1
+        run_clicked = True
+
+    if run_clicked:
         rows = []
         for name, batch_ids in NOTE_BATCHES.items():
             resolved = resolve_batch_note_ids(conn, batch_ids)
@@ -286,7 +331,16 @@ with tab_batches:
                 rows.append({"Batch": name, "Notes": 0})
                 continue
             with st.spinner(f"Grading '{name}' ({len(resolved)} notes)..."):
-                m = compute_overall_metrics(conn, resolved)
+                if batch_ids is None:
+                    # "All processed notes" -- genuinely grows over time,
+                    # never cached.
+                    m = compute_overall_metrics(conn, resolved)
+                else:
+                    # Fixed-membership batch -- cached to disk, keyed on
+                    # the exact resolved note_ids plus the force-recalculate
+                    # counter.
+                    m = _compute_overall_metrics_cached(
+                        conn, tuple(sorted(resolved)), st.session_state.batch_cache_version)
             if m is None:
                 rows.append({"Batch": name, "Notes": len(resolved), "Gold annotations": 0})
                 continue
