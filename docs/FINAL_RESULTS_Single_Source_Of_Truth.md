@@ -516,8 +516,14 @@ Every column below is a real, gold-graded measurement (not a projection) — see
 - **No false-deflection rate.** `hitl_review_queue` is populated (19,103
   cases) but has zero completed human reviews — the patient-safety
   metric the proposal names cannot be computed until real review happens.
-- **No T0→T2 longitudinal trend.** Every deflection/precision figure
-  above is a single point-in-time measurement.
+- **T0→T2 longitudinal trend, partially closed 2026-08-30.** §15 now
+  reports two real, comparable checkpoints (T0 = 2026-08-20, T1 =
+  2026-08-30) with a proper two-proportion significance test — all four
+  metrics tested improved with p < 0.01. **Still open**: a third
+  checkpoint (T2) doesn't exist yet and can't be fabricated, and two
+  points establish a significant difference, not a validated trend line.
+  T0→T1 also isn't isolated to one cause — it reflects everything shipped
+  between the two dates together.
 - **Confidence intervals, partially closed 2026-08-30.** Every figure
   above is still a point estimate. `docs/Code_Reference_Stages_And_Metrics.md`
   §14 now adds real Wilson score intervals for the headline AUTO-tier
@@ -604,6 +610,25 @@ Every column below is a real, gold-graded measurement (not a projection) — see
   `plurality_candidate_index()` against the same 5 notes (§10.2) — run ad hoc for
   this section, not yet consolidated into one checked-in script the way §9's
   ablation was.
+
+---
+
+## 15. Longitudinal Trend — T0 and T1 (real checkpoints; T2 pending)
+
+**What this section honestly is, and isn't.** `docs/Evaluation_Criteria.md`'s own proposal language calls for "a T0 to T2 deflection-rate trend that is statistically distinguishable from flat" — three checkpoints, not two, with a T2 that by definition requires further real elapsed deployment time this project doesn't have yet. This section is **not** that. What it is: the two real, comparable, already-measured checkpoints this project actually has — reported honestly as a first data point toward that requirement, not a substitute for it.
+
+**T0 = 2026-08-20** (fresh-10, §2) and **T1 = 2026-08-30** (fresh-5, §10) are the two genuinely comparable checkpoints available: both are "fresh, never-before-processed at measurement time" note populations, graded by the identical clean-span + SNOMED-crosswalk methodology. 10 real calendar days apart.
+
+| Metric | T0 (2026-08-20) | T1 (2026-08-30) | Two-proportion z-test |
+|---|---|---|---|
+| **Deflection rate** | 31.2% (78/250) | 56.6% (211/373) | z = 6.22, **p < 0.0001** |
+| **AUTO-tier precision** | 76.8% (43/56) | 92.1% (139/151) | z = 2.99, **p = 0.0027** |
+| **Linked recall** | 26.8% (401/1,497) | 40.1% (218/544) | z = 5.77, **p < 0.0001** |
+| **Linked precision** | 45.3% (401/886) | 54.2% (218/402) | z = 2.99, **p = 0.0028** |
+
+**All four differences are statistically significant** (two-proportion z-test, not just a favorable point estimate) — genuinely stronger evidence than "the newer number looks better," which is as far as §10.3's own honest caveat took this. Deflection rate, the proposal's own named headline metric for this exact test, is the single most significant of the four (p < 0.0001).
+
+**What this does not establish**: a *trend* in the statistical sense needs three or more points to distinguish a real trajectory from two noisy draws that happen to differ — this is a real, significant **difference between two points**, not yet a validated trend line. Nor does it isolate a cause: per §10.3's own caveat, T0→T1 reflects the cumulative effect of everything shipped in between (the SNOMED crosswalk fix, near-duplicate retrieval fix, the `kg3_confirmation_count` feature, the lab-alias bug fixes), not one attributable change. **T2 does not exist and cannot be fabricated** — it requires a third, later, comparably-measured checkpoint. This section should be extended, not re-derived, the next time such a checkpoint exists.
 
 ---
 
