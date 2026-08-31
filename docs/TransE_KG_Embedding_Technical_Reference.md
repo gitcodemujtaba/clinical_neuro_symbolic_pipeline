@@ -92,22 +92,33 @@ list during this project's own Stage 2b runs (`scripts/build_kg_embeddings.py`
 (which has vastly more concepts and edges than this pipeline will ever
 touch).
 
+**⚠️ Superseded twice since this table was first measured — see the
+2026-08-31 update at the end of this section for the current numbers.**
+The training GRAPH itself (SNOMED relationship subgraph, touched
+concepts) was never affected by either correction below; only the
+model's real-world tiebreak/extrinsic numbers moved, via (1) real corpus
+growth and (2) a locked-test-split leakage fix in the shared TP-record
+population (`docs/ConsensusCalibrator_Technical_Reference.md` §18,
+`docs/RotatE_KG_Embedding_Technical_Reference.md` §4).
+
 **Current, live scale** (`logs/kg_embedding_results.json`, matching the
 checkpoint on disk):
 
 | Metric | Value |
 |---|---|
-| Distinct concepts touched by candidate pools | 7,276 |
-| Real SNOMED relationship triples (both endpoints touched) | 24,922 |
-| Vocabulary — entities | 7,269 |
+| Distinct concepts touched by candidate pools | 7,545 |
+| Real SNOMED relationship triples (both endpoints touched) | 25,980 |
+| Vocabulary — entities | 7,537 |
 | Vocabulary — relation types | 104 |
-| Train / test split (90/10, random) | 22,429 / 2,493 |
+| Train / test split (90/10, random) | 23,382 / 2,598 |
 
 (An earlier training run, before the Stage 3 recall-fix backfill enlarged
 the candidate-pool population, reported a slightly smaller graph — 7,261
 concepts, 24,872 edges, 2,488 test triples. The model was **retrained**
-once the larger post-backfill pool existed; the numbers in this document
-and in `logs/kg_embedding_results.json` reflect that retrained, currently
+once the larger post-backfill pool existed, then retrained again
+2026-08-31 alongside the leakage fix below; the numbers in this document
+and in `logs/kg_embedding_results.json` reflect that most recently
+retrained, currently
 checkpointed model, not the earlier run.)
 
 ## 4. Model architecture — real code, walked through
@@ -246,18 +257,29 @@ gold), it computes:
 and reports the fraction of comparisons where `d_wrong < d_random` — i.e.
 the genuinely-confusable rival sits closer than chance would predict.
 
-**Result** (`logs/kg_embedding_results.json`):
+**Result, 2026-08-31, post-leakage-fix** (`logs/kg_embedding_results.json`
+— was `n_tp_records_provided: 455`, `frac: 0.6892` before the fix below):
 
 ```json
 "extrinsic": {
-  "n_tp_records_provided": 455,
-  "n_usable_records": 455,
-  "n_comparisons": 1612,
-  "frac_wrong_candidate_closer_than_random": 0.6892059553349876
+  "n_tp_records_provided": 343,
+  "n_usable_records": 343,
+  "n_comparisons": 1209,
+  "frac_wrong_candidate_closer_than_random": 0.6368899917287014
 }
 ```
 
-**68.9%** of 1,612 comparisons across 455 real gold-confirmed TP records
+**Real, material drop: 68.9% → 63.7%.** The TP-record population this
+extrinsic eval is built from (`gather_tp_records()`,
+`scripts/build_kg_embeddings.py`) was found to unconditionally include
+notes from `data/splits/note_splits.csv`'s locked test split — 39 of 149
+source notes (26%). Fixed to exclude them; the real TP-record count
+dropped 455→343, and this signal dropped with it. TransE's apparent
+strength here was partly an artifact of test-split notes it should never
+have been measured against — see the 2026-08-31 update below for the
+full picture across both corrections.
+
+**68.9% (now 63.7%)** of 1,209 comparisons across 343 real gold-confirmed TP records
 — well above the 50% chance baseline. This is real, positive signal: the
 embedding space does capture genuine clinical proximity among candidates
 that actually competed for the same mention, not just generic SNOMED
@@ -342,32 +364,56 @@ pure-logic, unit-tested with no DB or model needed):
   (includes cases where KGE had no usable score and fell back to the
   baseline unchanged).
 
-**Results, real gold-validated threshold sweep**:
+**Results, real gold-validated threshold sweep — three states, all
+disclosed, most recent is authoritative**:
 
 | Threshold | Full population win/loss | KGE loss on hardcoded rule's own pattern |
 |---|---|---|
-| 0.01 | 12 win / 20 loss (net negative) | 0 / 0 (n=5) |
-| 0.02 | 93 win / 104 loss (net negative) | 0 / 0 (n=93, tied) |
-| 0.03 | 265 win / 181 loss (**net +84**) | **63 / 0** |
-| 0.05 | 347 win / 200 loss | 63 / 0 |
-| 0.08 | 347 win / 202 loss | 63 / 0 |
+| **State 1 (original)** — 0.03 | 265 win / 181 loss (net +84) | 63 / 0 |
+| **State 2 (2026-08-31, corpus growth)** — 0.03 | 228 win / 263 loss (net −35) | 105 / 0 |
+| **State 3 (2026-08-31, + leakage fix — current)** — 0.03 | **130 win / 379 loss (net −249)** | **134 / 0** |
 
-Two separate conclusions come out of this table, and they point in
-opposite directions — both are reported honestly:
+Full State-3 sweep (`evaluation/kg_tiebreak_validation.py --model-type transe`):
+
+| Threshold | Full population win/loss | KGE loss on hardcoded rule's own pattern |
+|---|---|---|
+| 0.01 | 11 win / 24 loss | 0 / 0 (n=5) |
+| 0.02 | 65 win / 243 loss | 29 / 0 (n=93) |
+| 0.03 | 130 win / 379 loss (net −249) | 134 / 0 |
+| 0.05 | 190 win / 399 loss | 134 / 0 |
+| 0.08 | 200 win / 400 loss | 134 / 0 |
+
+**Two independent, real corrections happened the same day, not one** —
+disclosed in full rather than silently collapsed into the final row.
+First, TransE's numbers drifted from corpus growth alone (State 1→2,
+measured on the same, then-uncorrected TP-record population, just more
+notes processed since the original measurement). Second, a locked-test-
+split leakage fix (`docs/ConsensusCalibrator_Technical_Reference.md`
+§18) found 39 of 149 notes (26%) feeding `gather_tp_records()` —
+consumed both here and by `docs/RotatE_KG_Embedding_Technical_
+Reference.md`'s `gold`/`combined` configs — were from the locked test
+split. Excluding them moved State 2→3, further in the SAME direction as
+the first correction, not a reversal: **TransE's original apparent
+strength was partly an artifact of notes it should never have been
+measured against.**
+
+Two separate conclusions come out of the current (State 3) table, and
+they point in opposite directions — both are reported honestly:
 
 1. **On the hardcoded rule's own pattern** (Lab Test entities, Procedure
    vs. Observable-Entity/Qualifier-Value candidates — exactly what
    `_prefer_lab_procedure_over_observable()` was built for): the rule has
-   **zero losses at every threshold tested**, up to n=380. KGE has **63
-   losses** once the threshold widens past 0.02. On its own specialist
-   pattern, the hardcoded rule is strictly safer.
-2. **On the broader tied-pair population beyond the rule's scope**
-   (n=1,828 at threshold 0.03, any entity label, any tied pair) — KGE
-   shows a genuine **positive net** (265 win / 181 loss). Real value as a
-   generalist secondary signal for patterns the hardcoded rule was never
-   built to cover, but a ~9.9% net-loss rate is not risk-free enough to
-   auto-write on its own without a calibrated gating mechanism that
-   doesn't yet exist.
+   **zero losses at every threshold tested**. KGE now has **134 losses**
+   once the threshold widens past 0.02 (was 63 in State 1, 105 in State
+   2) — a real, worsening trend across both corrections. On its own
+   specialist pattern, the hardcoded rule is strictly safer, more
+   decisively than originally measured.
+2. **On the broader tied-pair population beyond the rule's scope** — KGE
+   now shows a genuine **negative net** (130 win / 379 loss), not the
+   positive net originally reported. The "real value as a generalist
+   secondary signal" framing from the original measurement **no longer
+   holds on current, clean data** — TransE is net-harmful on the broader
+   population too, not just losing to the rule.
 
 **Specific falsification, directly tested rather than assumed.** A
 proposed narrative (raised mid-session as a plausible-sounding argument)
