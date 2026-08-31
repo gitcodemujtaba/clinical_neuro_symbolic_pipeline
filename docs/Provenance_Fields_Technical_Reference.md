@@ -415,3 +415,71 @@ gracefully to the local-context-only view — a real, live example of
 mattering: the underlying `extracted_entities.orig_start` value had been
 sitting in the database the whole time, just never captured into this
 particular JSON blob until something needed it there.
+
+---
+
+## 10. KG-embedding checkpoints — a provenance artifact outside the DB row model
+
+Every other field in this document lives inside a DuckDB row and follows
+§1's pattern (written once by one stage, read without recomputation by
+later stages). The KG-embedding checkpoints (`src/kg_embedding.py`'s
+TransE, `src/kg_embedding_rotate.py`'s RotatE) are a different shape of
+provenance artifact — a versioned **file**, not a row — worth recording
+here specifically because it's the one place this pipeline's provenance
+discipline extends outside the database.
+
+**What `save_model()` bundles, and why the bundle matters as provenance**
+(`src/kg_embedding.py` / `src/kg_embedding_rotate.py`, both identical in
+shape):
+
+| Field in the `.pt` checkpoint | Meaning |
+|---|---|
+| `state_dict` | the trained weights |
+| `entity2idx` | which OMOP `concept_id`s were in THIS training run's subgraph, and their embedding-table row |
+| `relation2idx` | which relation types were in THIS run's subgraph |
+| `dim` | embedding width used (RotatE: per-component width, doubled internally for the packed real+imaginary table) |
+
+The vocab is data-dependent — a state_dict alone can't be reused without
+knowing which concept_id maps to which embedding row, so `entity2idx`/
+`relation2idx` are carried in the checkpoint itself rather than assumed
+stable across runs. This is the file-based analog of this document's own
+"vocab is data-dependent" discipline (§4.1's `match_basis`, §7's
+`code_version`) — a checkpoint is only interpretable together with the
+exact vocab it was trained on, so the two are never separated.
+
+**Checkpoint inventory, as of 2026-08-31** (all read-only evaluation
+artifacts — none is loaded by any live pipeline code path):
+
+| File | Training data | Real triple count |
+|---|---|---|
+| `models/kg_transe_v1.pt` | SNOMED CT relationship subgraph, restricted to this pipeline's own touched concepts | 24,922 |
+| `models/kg_rotate_guideline_v1.pt` | Curated clinical-guideline graph (Memgraph `:GuidelineNode`), OMOP-grounded subset | 263 |
+| `models/kg_rotate_gold_v1.pt` | This project's own gold-confirmed candidate-competition signal (`gather_tp_records()`) | 1,593 |
+| `models/kg_rotate_combined_v1.pt` | guideline + gold, concatenated | 1,856 |
+| `models/kg_rotate_snomed_is_a_v1.pt`† | Full SNOMED IS_A hierarchy, separate KG1 Neo4j instance | 530,515 |
+
+†**Not tracked in git** — 319,557 entities makes this checkpoint ~247MB,
+over GitHub's 100MB per-file limit (no LFS configured for this repo).
+Every other checkpoint above is small enough (a few KB–3MB) to commit
+directly. Regenerate locally with `python3 scripts/build_kg_embeddings_
+rotate.py --config snomed_is_a` — same "large, script-regenerable, not
+committed" convention already used for `db/` (31GB, gitignored).
+
+**Why none of this shows up anywhere else in this document yet**: as of
+2026-08-31, no entity-level provenance field (`routing_basis`,
+`match_basis`, `normalized_from`, or any `mollm_tier_gate_decisions`
+column) is ever populated from a KGE checkpoint. `src/kg_embedding_
+tiebreak.py`'s functions exist and are unit-tested, and
+`evaluation/kg_tiebreak_validation.py` validates every checkpoint above
+against real gold data — but that validation is an offline evaluation
+harness, not a wired-in decision path. Both TransE and RotatE were
+measured to lose head-to-head to the existing hardcoded
+`_prefer_lab_procedure_over_observable()` rule at every threshold tested
+(0 losses for the rule vs. 105+ for every KGE variant) — the honest,
+current reason this document has no "KGE-sourced" row to add to §5's
+table. If a KGE signal is ever added as a `ConsensusCalibrator` feature
+(proposed, not yet built — see `docs/RotatE_KG_Embedding_Technical_
+Reference.md`'s closing section), that would be the first time a KGE
+checkpoint's output becomes real, DB-persisted, entity-level provenance,
+and this section should be updated to add it to §5's table at that
+point.

@@ -1,0 +1,21 @@
+{
+  "config": "snomed_is_a",
+  "n_triples": 530515,
+  "n_relation_types": 1,
+  "n_train": 477463,
+  "n_test": 53052,
+  "n_entities": 319557,
+  "n_relations": 1,
+  "link_prediction": {
+    "mrr": 0.028086199436545105,
+    "hits_at_10": 0.0755,
+    "n_evaluated": 2000
+  },
+  "extrinsic": {
+    "n_tp_records_provided": 452,
+    "n_usable_records": 422,
+    "n_comparisons": 1175,
+    "frac_wrong_candidate_closer_than_random": 0.6740425531914893
+  },
+  "skipped": false
+}

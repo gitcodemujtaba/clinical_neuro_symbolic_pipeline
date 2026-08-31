@@ -78,3 +78,12 @@ dist/
 # OS Generated Files
 .DS_Store
 Thumbs.db
+
+# Large, fully-regenerable KGE checkpoints -- GitHub rejects anything over
+# 100MB (no LFS configured for this repo). Every other kg_*.pt/pkl model
+# checkpoint in models/ is small enough to track directly (a few KB to a
+# few MB); this one specifically is trained on the full SNOMED IS_A
+# hierarchy (319,557 entities) and lands at ~247MB. Regenerate via
+# `python3 scripts/build_kg_embeddings_rotate.py --config snomed_is_a` --
+# same convention as db/ (31GB, also gitignored, also script-regenerable).
+models/kg_rotate_snomed_is_a_v1.pt

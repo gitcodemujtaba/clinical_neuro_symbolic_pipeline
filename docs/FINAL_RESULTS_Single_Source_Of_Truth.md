@@ -620,10 +620,24 @@ Every column below is a real, gold-graded measurement (not a projection) — see
   building it as originally scoped would cost 64 currently-legitimate
   AUTO-tier decisions corpus-wide. A considered non-decision, not an
   oversight.
-- **Guideline-derived KG injection (Objective 2) and RotatE/CompGCN
-  (Objective 4's other two named methods) remain unbuilt** — TransE was
-  built as the simplest of the three named KGE methods; the other two are
-  real, stated scope, not silently skipped.
+- **Update, 2026-08-31 — this bullet is now stale on two of its three counts.**
+  Guideline-derived KG injection (Objective 2) was built and A/B-validated
+  (§11): a real null result (87.0%/87.0% precision, zero flips), stays off.
+  RotatE (Objective 4's second named KGE method) was built and evaluated as
+  a genuine 4-config ablation (curated guideline graph / gold-derived
+  competition triples / their combination / the full SNOMED IS_A hierarchy)
+  — see `docs/RotatE_KG_Embedding_Technical_Reference.md`. Real finding:
+  RotatE shows a stronger AGGREGATE embedding-separation signal than TransE
+  on two of the four configs (72–84% vs. TransE's 69%), but is WORSE as an
+  actual per-entity tiebreak (loses 8–9x more than it wins, vs. TransE's
+  near-breakeven), and every usable RotatE config still loses head-to-head
+  to the existing hardcoded `_prefer_lab_procedure_over_observable()` rule
+  (0 losses for the rule, every config, every threshold) — a materially
+  worse showing than TransE's own already-negative result against that same
+  rule. **Only CompGCN (Objective 4's third named method) remains genuinely
+  unbuilt and deliberately deferred** — real, stated scope, a substantially
+  bigger architectural lift than either TransE or RotatE, not silently
+  skipped (see the RotatE doc's own §5).
 - **The production pipeline's own automatic write path remains
   `dry_run=True`** — `scripts/run_stage3_tier_gate.py`'s call to
   `ingest_auto_decision()` never commits a live, unreviewed write, exactly

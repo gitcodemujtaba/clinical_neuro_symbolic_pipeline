@@ -215,29 +215,55 @@ def _print_report(results, thresholds):
              f"{c['rule_win']:>9} {c['rule_loss']:>10}")
 
 
+ROTATE_CONFIGS = ["guideline", "gold", "combined", "snomed_is_a"]
+
+
+def _resolve_model_path(model_type, config, explicit_path):
+    """Explicit --model-path always wins. Otherwise: TransE keeps its one
+    default checkpoint; RotatE's default is config-specific, since each of
+    the 4 configs writes its own checkpoint (scripts/build_kg_embeddings_
+    rotate.py) -- there is no single 'the' RotatE model."""
+    if explicit_path is not None:
+        return explicit_path
+    if model_type == "transe":
+        return DEFAULT_MODEL_PATH
+    return f"{PROJECT_DIR}/models/kg_rotate_{config}_v1.pt"
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--thresholds", default=",".join(str(t) for t in DEFAULT_THRESHOLDS))
-    parser.add_argument("--model-path", default=DEFAULT_MODEL_PATH)
+    parser.add_argument("--model-path", default=None,
+                        help="Overrides the default checkpoint path implied by --model-type/--config.")
+    parser.add_argument("--model-type", default="transe", choices=["transe", "rotate"])
+    parser.add_argument("--config", default="guideline", choices=ROTATE_CONFIGS,
+                        help="Only used when --model-type=rotate -- selects which of the "
+                        "4 ablation configs' checkpoint to validate.")
     args = parser.parse_args()
     thresholds = sorted(float(x) for x in args.thresholds.split(","))
+    model_path = _resolve_model_path(args.model_type, args.config, args.model_path)
 
-    if not os.path.exists(args.model_path):
+    if not os.path.exists(model_path):
+        build_script = "scripts/build_kg_embeddings.py" if args.model_type == "transe" \
+            else f"scripts/build_kg_embeddings_rotate.py --config {args.config}"
         raise SystemExit(
-            f"No trained KGE checkpoint at {args.model_path}. Run "
-            f"scripts/build_kg_embeddings.py first (it now writes this checkpoint via "
-            f"src.kg_embedding.save_model() as of 2026-08-20) -- this harness deliberately "
-            f"does not fall back to training a throwaway model, since the whole point is "
-            f"to validate the SAME weights that would be wired into production.")
+            f"No trained KGE checkpoint at {model_path}. Run {build_script} first -- "
+            f"this harness deliberately does not fall back to training a throwaway model, "
+            f"since the whole point is to validate the SAME weights that would be wired "
+            f"into production.")
 
     from evaluation.cal_eval import GOLD_CANDIDATES, _first_existing
     from scripts.score_gold_recall import load_gold
     from src.db_utils import connect_with_retry
-    from src.kg_embedding import load_model
     from src.retrieval import VocabularyRetriever
+    if args.model_type == "rotate":
+        from src.kg_embedding_rotate import load_model
+    else:
+        from src.kg_embedding import load_model
 
-    model, entity2idx, relation2idx = load_model(args.model_path)
-    print(f"loaded checkpoint: {len(entity2idx)} entities, {len(relation2idx)} relations")
+    model, entity2idx, relation2idx = load_model(model_path)
+    label = args.model_type if args.model_type == "transe" else f"rotate/{args.config}"
+    print(f"loaded checkpoint ({label}): {len(entity2idx)} entities, {len(relation2idx)} relations")
 
     conn = connect_with_retry(f"{PROJECT_DIR}/db/kg2_lexical_store.duckdb",
                               read_only=True, max_wait_seconds=120)

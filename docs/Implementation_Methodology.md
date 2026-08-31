@@ -202,16 +202,28 @@ mechanism, see below.
   **Evaluated against gold, not deployed**: head-to-head against
   `_prefer_lab_procedure_over_observable()` on the rule's own pattern
   showed the hardcoded rule strictly safer (0 losses at every threshold
-  0.01-0.08 vs. KGE's 63 losses past 0.02) — the rule was kept, KGE was
-  not wired into production as its replacement. On the broader tied-pair
-  population beyond the rule's scope, KGE showed a genuine positive net
-  (265 win / 181 loss at threshold 0.03) — real value as a generalist
-  secondary signal, not yet integrated pending a calibrated gating
-  mechanism (the raw win/loss rate is not risk-free enough for auto-write
-  decisions on its own). Full technical detail — architecture, training
-  procedure, both evaluations, the gold-validated threshold sweep, and
-  the specific falsified claim — in
-  `docs/TransE_KG_Embedding_Technical_Reference.md`.
+  — the rule was kept, KGE was not wired into production as its
+  replacement. **2026-08-31 re-measurement, same corpus that has since
+  grown**: TransE's own numbers have drifted since first documented —
+  full-population net at threshold 0.03 is now 228 win / 263 loss
+  (net-negative; was 265/181 net-positive when first measured), and
+  rule-subset losses are now 105 (was 63). The "real value as a
+  generalist secondary signal" framing below no longer holds on the
+  current corpus — TransE is now net-negative on the broader population
+  too, not just losing to the rule.
+  **RotatE was also built and evaluated this same session, as a 4-config
+  ablation** (curated guideline graph / gold-derived competition triples /
+  their combination / the full SNOMED IS_A hierarchy) — real finding: a
+  stronger AGGREGATE embedding-separation signal than TransE on two of
+  the four configs (72-84% vs. TransE's 69%), but WORSE as an actual
+  per-entity tiebreak (8-9x more losses than wins), and every usable
+  config still loses to the hardcoded rule, more badly than TransE does.
+  Neither KGE method is integrated; the hardcoded rule remains the only
+  production tiebreak for this pattern. Full technical detail — both
+  models' architecture, training procedure, both evaluations, the
+  gold-validated threshold sweeps, and the specific falsified claim — in
+  `docs/TransE_KG_Embedding_Technical_Reference.md` and
+  `docs/RotatE_KG_Embedding_Technical_Reference.md`.
 
 ### Stage 3 — MoLLM Tier Gate (`src/mollm_tier_gate.py`)
 Three local Ollama models — **qwen2.5:3b, llama3.2:3b, phi4-mini** — each
