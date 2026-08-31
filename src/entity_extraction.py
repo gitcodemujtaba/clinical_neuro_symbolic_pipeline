@@ -65,6 +65,10 @@ from src.assertion import (
     is_structured_result,
     _default_assertion,
 )
+from src.gliner_gazetteer_fallback import (
+    GAZETTEER_FALLBACK_ENABLED,
+    recover_missed_entities,
+)
 from src.preprocessing import (
     section_for_offset,
     SECTION_EXPERIENCER_OVERRIDE,
@@ -572,6 +576,13 @@ def ensure_extracted_entities_table(conn):
         # graded per method rather than only "ambiguous vs not".
         "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS selection_basis VARCHAR;",
         "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS gliner_model_version VARCHAR;",
+        # 2026-08-31, src.gliner_gazetteer_fallback (gated OFF by default,
+        # CNSP_GLINER_GAZETTEER_FALLBACK) -- 'gliner' for every ordinary
+        # extraction (implicit default for all pre-existing rows too, so a
+        # NULL here always means 'gliner', never 'unknown'), or
+        # 'gazetteer_fallback_gliner_miss' for a deterministic recovery.
+        # Never conflate the two when measuring precision/recall by source.
+        "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS extraction_source VARCHAR DEFAULT 'gliner';",
         "ALTER TABLE extracted_entities ADD COLUMN IF NOT EXISTS extraction_threshold FLOAT;",
         # TRUE for spans that scored between SUBTHRESHOLD_FLOOR and
         # EXTRACTION_THRESHOLD. Retained for analysis only -- every consumer
@@ -655,6 +666,7 @@ def store_entities(conn, processed_entities: list, is_test: bool = False):
         e.get("compound_split_of"), e.get("superseded_by_split", False),
         e.get("grown_from"), e.get("superseded_by_growth", False),
         e.get("possibly_truncated", False), e.get("gliner_input_token_count"),
+        e.get("extraction_source", "gliner"),
     ) for e in processed_entities]
 
     # DO UPDATE rather than DO NOTHING: re-running a note after a model or
@@ -674,8 +686,8 @@ def store_entities(conn, processed_entities: list, is_test: bool = False):
      candidate_expansions, selection_basis, gliner_model_version, extraction_threshold,
      below_threshold, flat_ner, crosses_sentence_boundary, sentence_ids_spanned,
      compound_split_of, superseded_by_split, grown_from, superseded_by_growth,
-     possibly_truncated, gliner_input_token_count)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+     possibly_truncated, gliner_input_token_count, extraction_source)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT (note_id, orig_start, orig_end, entity_label) DO UPDATE SET
         expanded_text = EXCLUDED.expanded_text,
         original_text = EXCLUDED.original_text,
@@ -709,7 +721,8 @@ def store_entities(conn, processed_entities: list, is_test: bool = False):
         grown_from = EXCLUDED.grown_from,
         superseded_by_growth = EXCLUDED.superseded_by_growth,
         possibly_truncated = EXCLUDED.possibly_truncated,
-        gliner_input_token_count = EXCLUDED.gliner_input_token_count;
+        gliner_input_token_count = EXCLUDED.gliner_input_token_count,
+        extraction_source = EXCLUDED.extraction_source;
     """, rows)
 
 
@@ -787,6 +800,18 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str,
                 possibly_truncated = True
                 gliner_input_token_count = int(m.group(1))
                 break
+
+    # 2b. Gazetteer fallback recovery (src.gliner_gazetteer_fallback, gated
+    # OFF by default via CNSP_GLINER_GAZETTEER_FALLBACK). Operates in the
+    # SAME exp_start/exp_end coordinate system GLiNER's own raw_entities are
+    # already in -- unioned in BEFORE assertion detection/offset
+    # reconciliation below, so every downstream step (assertion, section
+    # lookup, credential/header/placeholder filters, ambiguous-expansion
+    # overlap) applies to a recovered entity exactly the same way it applies
+    # to a real GLiNER one, with zero special-casing needed past this point.
+    if GAZETTEER_FALLBACK_ENABLED:
+        existing_spans = [(e["start"], e["end"]) for e in raw_entities]
+        raw_entities = raw_entities + recover_missed_entities(expanded_text, existing_spans)
 
     # 3. Assertion detection over the SAME text and coordinate system GLiNER
     #    produced the spans in -- no offset mapping happens inside
@@ -918,6 +943,7 @@ def extract_and_store_entities(note_id: str, expanded_text: str, raw_text: str,
             "candidate_expansions": candidate_expansions,
             "selection_basis": selection_basis,
             "gliner_model_version": GLINER_MODEL_NAME,
+            "extraction_source": ent.get("_extraction_source", "gliner"),
             "extraction_threshold": EXTRACTION_THRESHOLD,
             "below_threshold": confidence < EXTRACTION_THRESHOLD,
             "flat_ner": FLAT_NER,
