@@ -65,7 +65,14 @@ one of the three AI models below.
 ## 2. Stage 1 — Preprocessing (before any AI looks at *meaning*)
 
 Before any model tries to understand what "fever" *means*, the system
-does deterministic, rule-based work — no AI, no guessing.
+does deterministic, rule-based work — no AI, no guessing. **A correction
+worth stating up front**: this stage is sometimes described (including
+in earlier drafts of this document) as running "scispaCy." That's not
+accurate — checked directly against the real code (`src/assertion.py`)
+rather than assumed. scispaCy appears exactly once in this codebase, as
+a version-compatibility comment pinning spaCy below 3.8.0; it is never
+actually imported or run as a pipeline component. What genuinely runs is
+three real sub-processes, chained together, detailed below.
 
 ### 2a. Section detection
 The system knows which part of the note it's reading. This mention
@@ -78,11 +85,55 @@ summaries are consistently sectioned) — but it's a genuinely useful
 signal on its own: a mention under "Family History" almost never needs a
 negation check, because that section is inherently about someone else.
 
-### 2b. Assertion detection — is this actually being *claimed*?
-The system scans the text around "fever" for negation words, using a
-rule-based clinical language tool (medspacy/ConText — this is NOT an AI
-model, it's a fixed set of linguistic rules built for exactly this
-purpose in clinical text). Real output for this mention:
+### 2b. Sentence splitting — PyRuSH, not a plain sentence splitter
+
+Before negation detection can even ask "what sentence is this word in,"
+something has to decide where one sentence ends and the next begins.
+The system uses **PyRuSH** (medspaCy's own clinical-aware rule-based
+sentence segmenter), built on a blank spaCy pipeline
+(`spacy.blank("en")`) with `medspacy_pyrush` attached as a pipe — not
+spaCy's own general-purpose statistical sentence splitter, and not a
+naive "split on periods" approach.
+
+**Why this specific choice matters, with a real documented failure it
+was chosen to avoid**: note `10000032-DS-21` in this project's own
+corpus contains a dense physical-exam/lab block — a single run-on
+passage 1,908 characters long, packed with abbreviated lab values and no
+normal sentence-ending punctuation. Tested directly against a plain,
+general-purpose sentence splitter (spaCy's built-in `sentencizer`), that
+entire 1,908-character block collapsed into **one single "sentence"** —
+which meant a negation cue anywhere in that giant block (e.g. the word
+"without" near the start) got applied to *every* lab value in it,
+producing false `ABSENT` assertions on real, actually-present findings:
+`GLUCOSE-109`, `UREA N-25`, `CREAT-0.3`, `HGB-14`, and `MCV-99` were all
+incorrectly marked as negated. PyRuSH's clinical-specific splitting
+rules (aware of lab-value line breaks and clinical list punctuation, not
+just periods) correctly break this block into its real, separate
+sentences instead — this is a genuine, previously-hit bug this specific
+engineering choice was made to fix, not a hypothetical. (`sentencizer`
+is still kept as an automatic fallback if PyRuSH itself fails to load —
+worse than PyRuSH, but safer than crashing the whole pipeline.)
+
+**Input** (raw note text, unchanged): the full text of note
+`11859945-DS-29`, including the sentence `"No hemoptysis. Denies fever,
+chills, nausea, vomiting, change in bowel or bladder function, ..."`.
+
+**Output**: sentence-boundary offsets — for this passage, PyRuSH
+correctly identifies `"No hemoptysis."` as one sentence and `"Denies
+fever, chills, nausea, vomiting, change in bowel or bladder function,
+change in vision or hearing, bruising, adenopathy, new rash or
+lesion."` as the next, separate sentence. This sentence boundary is what
+lets the next sub-process (2c) correctly scope "Denies" as applying to
+everything in *that* sentence's list, not bleeding into unrelated text
+before or after it.
+
+### 2c. Assertion detection — is this actually being *claimed*?
+The system scans the text around "fever," within the sentence boundary
+PyRuSH just found, for negation words — using **medspaCy's ConText**
+module, a rule-based clinical language tool (this is NOT an AI model,
+it's a fixed set of linguistic rules built for exactly this purpose in
+clinical text, chained onto the same blank-spaCy pipeline as
+`medspacy_context`). Real output for this mention:
 
 ```
 assertion_status:        ABSENT
@@ -93,10 +144,11 @@ temporality:                CURRENT
 assertion_engine:          medspacy_context/pyrush
 ```
 
-In plain terms: the system found the word "Denies" right before "fever"
-and correctly classified this as a **negated** finding — the patient
-does not have a fever, and this fact is about the patient themself,
-right now (not a past event, not someone else's history).
+In plain terms: the system found the word "Denies" right before "fever,"
+within the sentence PyRuSH scoped it to, and correctly classified this
+as a **negated** finding — the patient does not have a fever, and this
+fact is about the patient themself, right now (not a past event, not
+someone else's history).
 
 **This is computed once, here, and passed along untouched** — every
 later stage uses this same `assertion_status`, it's never recomputed.
@@ -215,6 +267,24 @@ score from the model's own token probabilities (not just a self-reported
 number, which this project measured to be an unreliable signal on its
 own).
 
+### How many actual model calls does this cost?
+
+For "fever" specifically: **1 Step-A call + 1 Step-B call per model**
+(Step B only evaluates 1 candidate here, because Stage 2b only handed
+forward one — see §4), run independently and in parallel for all 3
+models, so **6 real LLM calls total** for this one entity's Stage 3
+decision (2 per model × 3 models). By default, Step B stops at the
+first candidate a model accepts — but in production this pipeline runs
+with `EXHAUSTIVE_CANDIDATE_EVAL_ENABLED` turned on, meaning a model
+keeps checking every remaining candidate even after accepting one (so
+it can flag a genuine tie between two candidates it both accepts,
+rather than silently stopping at whichever one happened to be checked
+first). For an entity with, say, 3 real candidates instead of 1, the
+real cost is `1 + 3 = 4` calls per model, `12` calls total — this is
+the concrete reason this project explicitly budgets a generous
+2–5-minute-per-note latency allowance rather than treating Stage 3 as
+cheap.
+
 ### The three real verdicts for "fever"
 
 **qwen2.5:3b** — verdict: `NONE_CORRECT` (rejected the candidate)
@@ -268,13 +338,21 @@ situation looks, how likely is it that the majority (2 of 3) is actually
 right?"**
 
 This calibrator is a **logistic regression model** (a standard, simple,
-interpretable statistical model — not a neural network) trained on 114
-real, previously-graded decisions from this pipeline's own history. It
-looks at **16 specific numeric features** — not the raw text, not the
-models' reasoning paragraphs, just numbers describing the *shape* of the
-disagreement and the entity's own processing history.
+interpretable statistical model — not a neural network). It has been
+retrained twice since it was first built, most recently on 2026-08-31
+(after fixing a real data-leakage bug where some of its training
+examples were accidentally drawn from the project's own locked test
+split) — the version live today is fit on **1,293 real, previously-graded
+decisions across 75 distinct notes** (`training_split:
+full_corpus_105_notes_2026-08-31`, checked directly against the loaded
+model file, not from memory). It looks at **17 specific numeric
+features** — not the raw text, not the models' reasoning paragraphs,
+just numbers describing the *shape* of the disagreement, the entity's
+own processing history, and (new since 2026-08-30) what the project's
+own permanent knowledge graph already independently knows about this
+same word-to-concept pairing.
 
-### The real 16 features for this exact "fever" decision
+### The real 17 features for this exact "fever" decision
 
 | # | Feature | Plain-language meaning | Value for "fever" |
 |---|---|---|---|
@@ -293,30 +371,58 @@ disagreement and the entity's own processing history.
 | 13 | `resolved_via_original_text_fallback` | Did the expanded/processed text fail, requiring a retry on the raw original text? | 0.0 (no retry needed) |
 | 14 | `resolved_via_acronym_escalation` | Was this an ambiguous abbreviation that needed AI help just to expand? | 0.0 ("fever" isn't an abbreviation) |
 | 15 | `expansion_ambiguous` | Did the text contain an abbreviation with more than one dictionary meaning? | 0.0 |
-| 16 | `prior_confirmation_count` | How many times has this exact (word → concept) pairing already been confirmed correct before, elsewhere in this project's history? (capped and scaled to 0–1) | **1.0** (capped — this exact pairing had already been confirmed 21 separate times) |
+| 16 | `prior_confirmation_count` | How many times has this exact (word → concept) pairing already been confirmed correct before, in DuckDB's own record of `mollm_tier_gate_decisions`/`hitl_review_queue`? (capped at 10, scaled to 0–1) | **1.0** (capped — 21 confirmations at the time this specific stored decision was made; querying live today, that count has grown to **47**, since the pipeline has kept processing "fever" mentions in other notes since then) |
+| 17 | `kg3_confirmation_count` | The same idea as #16, but sourced from a completely different place: the live Memgraph knowledge graph (KG3) itself, not DuckDB. Counts real `:PatientObservation` nodes already written into KG3 for this exact (text, concept) pair. (capped at 10, scaled to 0–1) | **1.0** (capped — queried live against the real KG3 instance right now: **39** existing `:PatientObservation` nodes already link the text "fever" to concept 437663) |
+
+**Why this is a genuinely separate feature, not a duplicate of #16**: KG3's
+current population is gold-simulated (a one-off backfill from this
+project's gold-graded history, not real clinician review clicks — see
+§7.5 below), so it is deliberately kept as its own, separately-weighted
+input rather than merged into `prior_confirmation_count` — the model is
+free to learn that the two agree (as they do here: 47 vs. 39, the same
+underlying story from two different tables) without this document, or
+the calibrator's own design, ever asserting KG3 is currently an
+independent, human-verified source of truth. See §7.6 for exactly how
+this number is computed against the live graph.
 
 **In plain terms, what this feature vector is telling the calibrator**:
 "Two of three models agreed and were reasonably confident; the retrieval
 itself was about as clean and reliable as retrieval ever gets (a perfect
 Tier-1 exact-text match, no ambiguity flags, no fallback machinery
 involved); and — importantly — this exact word-to-concept pairing has
-already been independently confirmed correct 21 times before in this
-project's own history." That combination of signals is exactly the
-pattern the calibrator learned to trust.
+already been independently confirmed correct dozens of times before,
+both in this project's own decision history AND in the separate,
+already-written knowledge graph." That combination of signals is exactly
+the pattern the calibrator learned to trust.
 
 ### The calibrator's real output
 
 ```
 calibrated_score:  0.927709
-threshold:         0.72   (CALIBRATED_AUTO_THRESHOLD, fixed in advance)
-0.927709 >= 0.72  →  PROMOTE to TIER_1B_CALIBRATED_AUTO_VALIDATED
+threshold:         0.78   (CALIBRATED_AUTO_THRESHOLD, fixed in advance)
+0.927709 >= 0.78  →  PROMOTE to TIER_1B_CALIBRATED_AUTO_VALIDATED
 ```
 
 The system's own recorded, human-readable explanation for this exact
-decision (pulled directly from the database, not paraphrased):
+decision (pulled directly from the database, not paraphrased — this
+decision was stored on 2026-08-20, when the threshold constant in the
+code at that time was still 0.72; both numbers below are real, just
+from two different points in this project's history):
 
 > *"non-unanimous verdicts {'NONE_CORRECT': 1, 'SUPPORTED_1': 2}, but
 > ConsensusCalibrator scored 0.927709 >= 0.72 (prior_confirmation_count=21)"*
+
+**Why the threshold moved from 0.72 to 0.78, told honestly**: the
+original 0.72 was picked as the smallest threshold that reached 100%
+validation precision on a clean sample — but that sample itself later
+turned out to be contaminated (some of its "clean" examples had leaked
+in from the project's own locked test split, a real bug fixed on
+2026-08-31 — see project history). Re-deriving the threshold the exact
+same way, on the corrected, leak-free data, moved it to 0.78. The
+"fever" decision above still clears the new, stricter bar comfortably
+(0.927709 is well above 0.78), so the actual outcome for this specific
+entity is unchanged — but a borderline case that had scored, say, 0.74
+would flip from promoted to HITL-routed under the corrected threshold.
 
 **This is a fundamentally different, more cautious kind of "auto-approve"
 than a unanimous vote.** It's kept in its own separate category
@@ -372,21 +478,191 @@ have it, which is a separate, correctly-recorded fact).
 The reviewer can **Approve**, **Correct** (pick a different concept),
 or **Reject**, and leave a free-text comment — comments are not just
 discarded, they feed back into future automated rule-mining (a mechanism
-this project calls the "abbreviation flywheel," which mines confirmed
-human corrections into deterministic rules for future entities).
+this project calls the "abbreviation flywheel," §7c below).
 
----
+### 7a. What an approved decision actually writes into the knowledge graph (KG3)
 
-## 8. Knowledge Graph Embeddings — what was actually built, and a correction
+Once a decision is approved (by a human, or — for the small set of
+tiers trusted enough — automatically), the pipeline writes a permanent
+record into a separate graph database, **KG3** (a Memgraph instance,
+Bolt-compatible with Neo4j), so the fact "this exact span of this exact
+note maps to this exact standardized concept, and here's the full
+evidence trail for why" is queryable later, not just sitting in a
+one-off log line.
 
-**A clarification worth stating plainly**: this project's original plan
-named three possible methods for representing the SNOMED graph as dense
-numeric vectors — **TransE, RotatE, and CompGCN**. What was actually
-**built and evaluated is TransE**, not RotatE. RotatE (which uses
-complex-valued numbers to represent relationships as rotations) and
-CompGCN (a full graph neural network architecture) were both scoped as
-real, meaningfully more complex follow-on work and explicitly not
-attempted — stated honestly as a scope decision, not hidden.
+**A real record, pulled live from the actual running KG3 instance** (a
+different entity than "fever" — "upper respiratory infection," from note
+`19895550-DS-7` — chosen because it's a genuine, complete 4-node chain
+that could be walked end to end; "fever"'s own KG3 node exists but this
+one shows every linked node type in one real example):
+
+```
+:PatientObservation {
+  entity_id:        "19895550-DS-7-e3afe58fe3e"
+  note_id:           "19895550-DS-7"
+  raw_text:           "upper respiratory infection"
+  label:              "Condition"
+  orig_start:         533
+  orig_end:           560
+  confidence:          0.8861986994743347
+  omop_concept_id:    4181583
+  vocabulary_id:      "SNOMED"
+  matched:            true
+}
+      │ [:INSTANCE_OF]
+      ▼
+:Concept {
+  omop_concept_id:    4181583
+  concept_name:        "Upper respiratory infection"
+  domain_id:            "Condition"
+  vocabulary_id:        "SNOMED"
+}
+
+:PatientObservation ──[:VALIDATED_BY]──▶ :MoLLMDecision {
+  mollm_call_id:       "e29047cd-8b5e-4aae-a99f-5ef226770097"
+  source_table:         "mollm_tier_gate_decisions"
+}
+      │ [:REVIEWED_BY]
+      ▼
+:HITLReview {
+  hitl_case_id:            "gold_populated_e29047cd-8b5e-4aae-a99f-5ef226770097"
+  final_decision_status:    "APPROVED"
+  queue_reason:              "gold_based_population_TIER_1_AUTO_VALIDATED"
+}
+```
+
+Every field above was read directly off the live graph with a real
+Cypher query — nothing constructed for illustration. The full
+provenance trail this node points back to (the actual
+`mollm_tier_gate_decisions` row for `mollm_call_id
+e29047cd-8b5e-4aae-a99f-5ef226770097`, in DuckDB) is just as real:
+`tier: TIER_1_AUTO_VALIDATED`, `composite_confidence: 0.79114`, a
+3-for-3 unanimous `SUPPORTED_1` vote, and each of the three models' own
+full Step-A/Step-B reasoning trail, verbatim — exactly the same shape of
+evidence trail §5 walked through for "fever."
+
+**An honest caveat about this specific record, stated plainly rather
+than glossed over**: this particular node's `hitl_case_id` is prefixed
+`gold_populated_`, not the two real write-paths this pipeline ships
+today (see next paragraph) — it came from a one-off historical backfill
+that populated KG3 from this project's own gold-graded Stage 3 history,
+so its `final_decision_status: APPROVED` reflects a simulated,
+gold-based approval, not a real clinician's click. This is consistent
+with what this project's own memory record already states about KG3's
+current population (gold-simulated, not real human review), and is
+exactly why kg3_confirmation_count (§7b) is kept as its own, separately
+distrusted calibrator feature rather than treated as equivalent
+independent evidence.
+
+**The two real, currently-shipping write paths**, for comparison (both
+in `src/kg3_ingestion.py`, both write the identical 4-node graph shape
+above, differing only in the `:HITLReview` node's own fields):
+
+- `ingest_reviewed_case()` — the human-reviewed path. `hitl_case_id` is
+  the real reviewer's own queue case id; `final_decision_status` is
+  `APPROVED` or `CORRECTED`, taken directly from what a real reviewer
+  clicked in the HITL Review Queue page (§7).
+- `ingest_auto_decision()` — the new, unreviewed-but-trusted path for
+  Tier 1/1B/2/3 decisions specifically. `hitl_case_id` is always
+  `auto_{mollm_call_id}`; `final_decision_status` is always the literal
+  string `"AUTO"` (never a human decision) — and **this path defaults to
+  `dry_run=True`**: it computes and returns exactly what *would* be
+  written, without ever touching Memgraph, until a caller explicitly
+  passes `dry_run=False`. As of this document, every real production run
+  still calls it in dry-run mode — direct, unreviewed KG3 writes remain
+  gated pending further validation, a deliberate, standing conservatism
+  (§7 above already explains why: even the best tier's precision on
+  genuinely unseen notes, 76.8%, isn't close enough to 100% yet).
+
+### 7b. How KG3 feeds back into the calibrator — the exact query, the exact numbers
+
+`src/kg3_query.py`'s `count_kg3_confirmations(driver, entity_text,
+concept_id)` runs this Cypher query against the live graph:
+
+```cypher
+MATCH (obs:PatientObservation)-[:INSTANCE_OF]->(c:Concept {omop_concept_id: $cid})
+WHERE toLower(trim(obs.raw_text)) = toLower(trim($text))
+RETURN count(obs) AS n
+```
+
+Run live, right now, against the real running instance, for the two
+entities this document already follows:
+
+| Entity text | Concept ID | `kg3_confirmation_count` (real, live) | `prior_confirmation_count` (DuckDB, real, live) |
+|---|---|---|---|
+| "fever" | 437663 (Fever) | **39** | **47** |
+| "upper respiratory infection" | 4181583 | **1** | **1** |
+
+Both numbers get capped at 10 and scaled to 0–1 before reaching the
+calibrator (feature #16/#17 in §6's table) — so "fever," at 39 real KG3
+confirmations, saturates that feature at its maximum value of 1.0,
+exactly as shown in §6's table. "Upper respiratory infection," with only
+1 confirmation on file, would contribute a much smaller 0.1 for that
+same feature if it were ever routed back through the calibrator — the
+same mechanism, genuinely different evidence strength, depending on how
+often the pipeline has actually seen and confirmed that specific
+pairing before.
+
+### 7c. The abbreviation flywheel — feeding corrections back into the pipeline
+
+The idea: every human correction (and, for the frequency-based
+mechanism below, every one of the pipeline's own confident-but-recorded
+Stage 2b outcomes) is a real, cheap-to-mine data point about which
+meaning of an ambiguous word is actually correct in practice — so
+instead of only ever using them once, mine them into standing rules that
+help the *next* similar mention resolve faster and more reliably,
+without needing a fresh model call at all.
+
+Two real, built mechanisms exist, and their current live status is
+genuinely different — reported honestly, not smoothed over:
+
+- **`compute_frequency_priority()`** — aggregates the pipeline's *own*
+  Stage 2b outcomes for an abbreviation into a "which meaning did we
+  pick most often" ledger. **A real, cautionary finding from this
+  project's own history**: an early version of this mechanism was tested
+  against 50 real, production-processed notes (8,062 entities), and the
+  top 7 highest-confidence ledger winners it would have promoted were
+  gold-checked directly — **7 out of 7 were wrong** (`DM` → "deep
+  masseter" instead of diabetes mellitus; `IVF` → "In Vitro
+  Fertilization" instead of IV fluids; and five more of the same shape).
+  Worse, the mechanism was caught, mid-run, re-selecting its own earlier
+  wrong guesses as supposedly-confirming evidence — the exact circularity
+  risk this whole design was built to guard against. **The fix,
+  live today**: this mechanism now requires an abbreviation to be on an
+  explicit, manually gold-verified `VERIFIED_ALLOW_LIST` before it will
+  ever return an answer at all — and that list **starts, and currently
+  remains, empty**. So `compute_frequency_priority()` is real, tested,
+  wired in, and returns `None` (defers to the existing static rules)
+  for every abbreviation today, by design, until an entry is
+  individually gold-verified and added.
+- **`mine_context_rules()`** — a structurally different, deliberately
+  *not*-excluded mechanism: it mines rules only from
+  `hitl_review_queue` rows a **real human reviewer** actually confirmed
+  (`reviewer_decision IN ('APPROVED','CORRECTED')`), on the reasoning
+  that independent human confirmation is exactly the kind of evidence
+  that could correct a systematic model bias, rather than just
+  reinforcing one. **Checked live, right now, against the real
+  database**: `hitl_review_queue` currently holds 19,103 rows, and every
+  single one of them has `reviewer_decision = 'PENDING'` — zero real
+  reviewer decisions exist yet (this project's standing HITL-everything
+  policy from §7 means the queue is populated, but not yet worked, in
+  the currently deployed state). `mine_context_rules()` therefore
+  correctly, honestly returns **0** rules today — not a bug, an accurate
+  reflection of "no real review data exists yet to mine."
+
+## 8. Knowledge Graph Embeddings — what was actually built, and the honest result
+
+**Update, this is now current as of this document's latest revision**:
+this project's original plan named three possible methods for
+representing the SNOMED graph as dense numeric vectors — **TransE,
+RotatE, and CompGCN**. An earlier version of this document said only
+TransE had been built. That's now out of date: **RotatE has since been
+built too**, as a genuine 4-configuration ablation (not just "does
+RotatE work," but "does RotatE trained on four different real data
+sources work") — full real results in §8b below. **CompGCN (a full
+graph neural network architecture) remains the one deliberately
+unbuilt method**, scoped as real, meaningfully bigger follow-on work
+and explicitly deferred, not hidden.
 
 ### What TransE actually does, in plain terms
 
@@ -443,20 +719,101 @@ concept meaningfully closer to the rest of the candidate pool than the
 wrong one?
 
 **Honest result, tested directly, not assumed**: on the exact pattern it
-was hoped to help with, a simpler, already-existing hand-built rule (that
-prefers a specific SNOMED category over a similar-sounding one, based on
-a 78-out-of-78 exceptionless pattern found earlier in this project)
-turned out to be **measurably safer** — the hand-built rule made zero
-wrong calls across every test threshold, while the embedding-based
-approach made real mistakes once you allowed it to be more aggressive.
-On a *broader* set of hard cases (not the specific pattern the rule was
-built for), the embedding approach did show a genuine net positive
-effect — more right calls than wrong ones — so it wasn't a wasted
-effort, but it also wasn't ready to replace the specific, narrower rule
-it was compared against. **It is built, tested, and currently NOT used
-to make any live decision in the pipeline** — kept as evaluated,
-promising-but-unproven future work, which is a real, common, honest
-outcome in applied machine learning, not a failure to hide.
+was hoped to help with, a simpler, already-existing hand-built rule (see
+§8c below) turned out to be **measurably safer** — the hand-built rule
+made zero wrong calls across every test threshold, while the
+embedding-based approach made real mistakes once you allowed it to be
+more aggressive. TransE is built, tested, and — like every KGE method
+evaluated in this project so far (§8b) — currently **not used to make
+any live decision in the pipeline**, kept as evaluated,
+promising-but-unproven future work.
+
+### 8b. RotatE — the second method, built as a real 4-way ablation
+
+RotatE represents each SNOMED concept as a point in a *complex-valued*
+space (not the plain real-valued space TransE uses) and represents each
+relationship type as a **rotation** rather than a straight-line
+movement — the idea being that some relationships (e.g. "is the reverse
+of") are better captured by a repeatable rotation than by addition.
+
+**The real question this project asked before training anything**:
+train RotatE on what data, exactly? The obvious choice — reuse the same
+SNOMED relationship subgraph TransE already used — was checked and
+rejected. Directly querying the live KG3 graph found its own core
+structure (`PatientObservation`/`Concept`/`MoLLMDecision`/`HITLReview`)
+has exactly 3 relationship types, each a 1:1 provenance edge, not real
+relational structure — the wrong shape of graph for this kind of
+model. Instead, **four separate, real training-data sources were tried,
+as a genuine ablation, not a single run**:
+
+| Config | What it's built from | Real trainable triples | Relation types |
+|---|---|---|---|
+| `guideline` | The curated clinical-guideline graph (also living in KG3) | 263 | 26 |
+| `gold` | This project's own gold-graded correct-vs-wrong candidate pairs | 1,209 | 1 (`PREFERRED_OVER`) |
+| `combined` | `guideline` + `gold` together | 1,472 | 27 |
+| `snomed_is_a` | The full SNOMED "is a" hierarchy, pulled from a live Neo4j copy | 530,515 | 1 (`IS_A`) |
+
+**Two separate evaluations were run for all four, plus TransE for
+comparison** — and this is the real, honest heart of the finding: the
+two evaluations point in *opposite* directions.
+
+*Evaluation 1 — does the embedding space separate right answers from
+wrong ones, in aggregate?* Yes, for `gold` especially: it correctly
+places the right concept measurably closer than a random one in 78.9% of
+cases — actually beating TransE's own 63.7% on this same measure.
+
+*Evaluation 2 — does picking a winner by embedding distance actually
+help or hurt on individual, real, gold-graded tiebreak decisions?* This
+is the test that matters for whether it's safe to use — and here, every
+single config **loses badly**, `gold` included: 97 wins against 757
+losses (net **−660**). `combined` is nearly identical (−659).
+`snomed_is_a` is the single worst performer of all five methods tested,
+including TransE (net −478, only a 1.4% win rate on the cases it could
+even resolve). `guideline` couldn't resolve any real cases at all — its
+training graph is simply too small.
+
+**The core finding, stated plainly**: a method can have genuinely good
+*aggregate* signal (RotatE-on-gold's 78.9%, the best of any method
+tested) and still be actively harmful as a *per-decision* tiebreak
+(−660 net). Those are different questions, and this project measured
+both, on purpose, rather than trusting the easier-to-compute aggregate
+number alone. **Every RotatE configuration loses to TransE, and TransE
+itself already loses to the existing hardcoded rule (§8c)** — so neither
+of the two KGE methods built in this project is used to make any live
+routing decision today. This is a complete, considered, negative result
+for both remaining named methods from the original project plan
+(RotatE now built; CompGCN deliberately still isn't) — reported exactly
+as measured, not adjusted to look better.
+
+### 8c. What actually replaced KGE — the hardcoded rule that beat both
+
+The rule that both TransE and every RotatE configuration lose to is a
+3-line, hand-written tiebreak, `_prefer_lab_procedure_over_observable()`
+(`src/normalization/tier_retrieval.py`). It applies to one specific,
+well-understood pattern: for a Lab-Test-labeled entity (like "WBC" —
+white blood cell count), SNOMED often has *two* separate concepts for
+the same real-world thing — a "Procedure"-class concept (the act of
+measuring it) and an "Observable Entity"-class concept (the abstract
+property being measured) — and this project's own embedding model
+(SapBERT) consistently scores the *wrong* one (the Observable Entity)
+higher by raw text similarity.
+
+**Why this rule, and not a KGE model, was trusted**: measured directly
+against this project's own gold-graded corpus, across every Lab-Test
+entity where both concept classes were present as candidates, the
+Procedure-class concept was the gold-correct answer in **78 out of 78
+cases** — zero exceptions. One concrete real example: for the
+abbreviation "WBC," SapBERT itself scores "Leucocyte count" (the wrong,
+Observable-Entity concept) at 0.892 and "White blood cell count" (the
+right, Procedure concept) at 0.8694 — genuinely close, and wrong by
+raw similarity alone. The rule doesn't change either score (a reviewer
+still sees the model's true, unmodified numbers) — it only re-ranks
+which candidate is offered first, based on a pattern that has held
+without a single counterexample across the whole corpus tested so far.
+That's a stronger, more falsifiable evidence base (78/78, exceptionless,
+on real gold data) than either embedding method managed to produce, and
+it's why this simple rule — not a learned model — is what's actually
+live in the pipeline today for this specific class of decision.
 
 ---
 
@@ -731,7 +1088,52 @@ was "medically trained" in general.
 
 ---
 
-## 12. The whole journey, summarized
+## 12. All ablation studies run across this pipeline — the complete, honest scoreboard
+
+This document has already walked through several of these in detail as
+they came up naturally (§8's TransE/RotatE comparison, §10-11's
+guideline-context and medical-AI-model experiments). This section pulls
+every real ablation/A-B study run across the whole project into one
+place, so the pattern across all of them is visible at a glance —
+**most of them found the tested idea does NOT beat what the pipeline
+already had**, which is itself a meaningful, repeated finding, not a
+string of failures to be embarrassed about.
+
+| # | What was tested | Real result | Adopted? |
+|---|---|---|---|
+| 1 | Lab-Test Procedure-vs-Observable tiebreak rule (§8c) | 78/78 exceptionless on gold data | **Yes — live in production** |
+| 2 | TransE knowledge-graph embeddings (§8) | Loses to rule #1: 130 wins / 379 losses (net −249) on the rule's own applicable subset | No — evaluated, not wired to any decision |
+| 3 | RotatE, 4-config ablation — `guideline`/`gold`/`combined`/`snomed_is_a` (§8b) | Best aggregate signal of any method (`gold`, 78.9%) but worst per-decision safety of any method (net −660) | No — evaluated, not wired to any decision |
+| 4 | RRF hybrid retrieval (BM25 + dense + prior) vs. dense-only Tier 3 search | Dense-only strictly beat every blended weight tested, on both Top-1 (61.3%) and oracle (74.2%) accuracy | No — hybrid retrieval flag stays off |
+| 5 | Guideline-evidence injection into the Stage 3 tiebreak prompt | 23 gradable paired entities, 20/23 correct in BOTH arms, **zero flips either direction** — the injected evidence was real but one-sided, never actually discriminating between the tied candidates | No — flag stays off |
+| 6 | MoLLM acronym-escalation (resolving ambiguous abbreviations via a live model call, §"Phase 4") | 34.3%→36.1% precision across two corpus-scale grading passes — a systematic textbook-prior bias (e.g. "LAD" always resolved to the artery, even when gold meant "Lymphadenopathy") | No — stays off by default |
+| 7 | `compute_frequency_priority()` — the pipeline's own past picks as a tiebreak (§7c) | 7/7 gold-checked promotions were wrong on first real-data test; caught actively re-confirming its own earlier mistakes | No — gated behind an empty, manually-curated allow-list |
+| 8 | GLiNER gazetteer fallback — recovering entities GLiNER's neural model misses entirely, via a small curated term list | 96.1% span-level precision (488 TP/20 FP) on the train split; separately found only 9/17 (52.9%) of recovered spans went on to link to the *correct* concept downstream | Partially — 13 of 14 terms kept; `glucose` excluded (its "requires a BLOOD marker" guard only covered 69.6% of real gold cases, due to MIMIC de-identification masking panel headers) |
+| 9 | `prior_confirmation_count` calibrator-feature ablation (dropping it and re-fitting) | Model's real signal came from consensus-shape/retrieval-provenance, not this feature — but this same investigation surfaced a real, separate false-positive cluster (coronary-artery-segment abbreviations like LCX/LMCA) | `prior_confirmation_count` kept; a dedicated hard-coded trap added for the coronary-segment pattern instead |
+| 10 | Calibrator retrain on a larger, 51-note pool | Val AUROC dropped (0.701 vs. the 0.74 baseline) — more data did not automatically help; also surfaced that the deployed threshold's precision on a larger, more diverse validation set (89.5%) was lower than the small-sample read that first justified it | Diagnostic only — nothing changed in production from this run alone |
+| 11 | Medical-domain-pretrained AI models vs. general-purpose models, on the same tiebreak task (§11) | One medical model scored 0/10 (worse than every other approach tried in this whole document); the other scored 7/10, matching the general model + dictionary-context combination | Neither swapped in — which specific model matters more than whether it was "medically trained" |
+| 12 | SNOMED-graph "is a" hierarchy context injected into the Stage 3 prompt (§10) | On a fair, targeted 10-case sample: 6/10 → 8/10 correct, 2 cases fixed, 0 made worse | No — promising, but the lookup only succeeds for about 1 in 3 real mentions; not yet reliable enough to enable broadly |
+
+**The one clear, adopted win** in this whole scoreboard is #1 — a
+3-line hand-written rule, backed by an exceptionless 78/78 real-data
+check. Every learned/statistical alternative tried against that exact
+same problem (TransE, all four RotatE configs) lost to it. That's not a
+coincidence specific to embeddings — it's the same shape of result as
+#4, #5, #6, #7, and #10: a more sophisticated mechanism, tested
+honestly against real gold data instead of assumed to help, did not
+beat what was already there. The lesson this project draws from that
+pattern, stated directly: prefer measuring a specific, narrow,
+falsifiable improvement (like rule #1's 78/78) over trusting a more
+general-sounding mechanism's aggregate promise — several of the
+"sophisticated" ideas above (RotatE's 78.9% aggregate signal, the
+guideline-evidence injection's real-but-irrelevant hits) looked
+promising by exactly the kind of surface metric that's easiest to
+report, and only real per-decision grading against gold caught that
+they weren't actually safe to ship.
+
+---
+
+## 13. The whole journey, summarized
 
 ```
 "Denies fever, chills, ..."
@@ -756,13 +1158,23 @@ was "medically trained" in general.
            → 2/3, not unanimous
         │
         ▼
-[Calibrator] 16 real features → score 0.927709 ≥ 0.72 threshold
+[Calibrator] 17 real features (incl. kg3_confirmation_count=39 from the
+           live graph) → score 0.927709 ≥ 0.78 threshold
            → promoted to TIER_1B_CALIBRATED_AUTO_VALIDATED
         │
         ▼
 [Stage 4]  Queued for human review anyway (standing policy) — PENDING,
            full model reasoning + full note shown side by side for the
            reviewer to make the final call
+        │
+        ▼
+[If approved] Written into KG3 (Memgraph) as a real 4-node provenance
+           chain: PatientObservation-[:INSTANCE_OF]->Concept, plus
+           MoLLMDecision-[:REVIEWED_BY]->HITLReview (§7a) — which then
+           feeds back into kg3_confirmation_count for the NEXT "fever"
+           mention's own calibrator decision (§7b), and, once real
+           reviewer decisions exist, into the abbreviation flywheel's
+           mined context rules (§7c) for future ambiguous mentions.
 ```
 
 Every number above is real, pulled directly from this project's own
