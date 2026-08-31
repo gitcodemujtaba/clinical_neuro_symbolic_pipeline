@@ -859,3 +859,100 @@ either**, compounding the already-open item in §13.5: the threshold has
 now survived two refits on two different corpora with two different
 feature sets without being re-validated against either one. This is
 flagged, not fixed, in this update.
+
+---
+
+## 18. 2026-08-31 — locked-test-split contamination found and fixed
+
+**What was found.** `scripts/retrain_calibrator_full_corpus.py` (every
+retrain described in §17 above, including the currently-deployed model)
+sourced its training-note pool from `SELECT DISTINCT note_id FROM
+mollm_tier_gate_decisions WHERE tier = 'TIER_4_ENSEMBLE_SPLIT'` — every
+note the pipeline had processed, unconditionally. That is a different
+thing from `data/splits/note_splits.csv`'s **official locked test split**
+(70 notes reserved for the T0/T1/T2 benchmark comparison against
+Clinical-T5, per `docs/Evaluation_Criteria.md`) — the two "test" concepts
+share a name (`is_test`) but not a meaning. Checked live: **31 of the 105
+notes actually used to fit the previously-deployed model (30%) were from
+the locked split.** The calibrator's own supervised labels (gold-graded
+correct/incorrect) were built in part from annotations the proposal
+reserves for final evaluation only.
+
+**Why past point-in-time claims in §17 above are not retroactively
+false, but going-forward reuse of "fresh-10"/"fresh-5" needed a second,
+related fix.** The 2026-08-20/2026-08-30 retrains happened before this
+fix; whatever generalization those models showed on fresh-10/fresh-5 at
+*measurement time* is a fact about what was measured then. But
+cross-referencing the deployed model's own `training_note_ids` against
+`ui/components/fresh10_notes.py`'s `FRESH10_NOTE_IDS` found **8 of
+fresh-10's 10 notes were, by the time of this check, part of the
+calibrator's actual training set** (fresh-10 is entirely drawn from the
+official locked test split, so excluding that split — the fix below —
+removes fresh-10 too). Fresh-5's real 2026-08-30 batch (`13397956-DS-5`
+etc., §10 of the SSOT — NOT `evaluation/grade_fresh5_by_tier.py`'s
+differently-named older batch, a related mix-up documented in
+`docs/Code_Reference_Stages_And_Metrics.md` §16) is **not** part of the
+official locked split — it's a project-specific "genuinely unprocessed as
+of this date" holdout — so checking the first fix alone found it clean.
+**But re-verifying after applying the first fix found a second, live
+contamination**: the retrain naturally re-pulled 4 of fresh-5's 5 notes
+back into the training pool, because their own 2026-08-30 validation run
+had, by now, given them real `TIER_4_ENSEMBLE_SPLIT` decisions — nothing
+in the first fix excluded them, since they were never part of the
+official test split to begin with. Same failure shape as the first leak,
+different mechanism (a project-specific holdout the official split
+doesn't know about, not a naming collision).
+
+**Fix, two parts**: `scripts/retrain_calibrator_full_corpus.py` now
+excludes (1) `evaluation.splits.load_split("test")` — the official locked
+split, same discipline `evaluation/splits.py` already established for
+every properly-behaved evaluation script in this codebase, just not
+previously applied here; and (2) `FRESH10_NOTE_IDS` and fresh-5's 5 real
+note IDs explicitly, hardcoded with a comment explaining why the official
+split alone doesn't cover fresh-5.
+
+**Real, re-measured result on the doubly-clean 105-note pool** (75 train
+/ 25 val, vs. the previous 105/144 note counts above — a smaller corpus,
+since 44 notes contributing contaminated or holdout-destroying volume are
+now correctly excluded):
+
+| | Previous (contaminated, §17.4) | **Re-measured, clean (2026-08-31)** |
+|---|---|---|
+| Notes in training pool | 144 | 105 (39 locked-test-split + 5 fresh-5 excluded) |
+| Train / val notes | 105 / 34 | 75 / 25 |
+| Train / val examples | 1,740 / 635 | 1,293 / 485 |
+| Val AUROC | 0.852 | **0.868** |
+| Precision @ 0.72 (bracket; exact value not re-derived — see §13.5's still-open item) | 97.0% | **~97.8%–98.7%** (bracketed between the printed 0.70/0.75 sweep rows, unchanged bracket from the single-fix intermediate result) |
+
+**The honest headline: removing 39% of the training pool did not hurt —
+AUROC moved from 0.852 to 0.868.** This is reassuring but should not be
+oversold as "the contaminated data was actively harmful" — the two val
+sets differ in composition (different notes), so this is not a clean
+ablation the way §17.5 is; it is a real measurement on a corrected
+population, not a controlled comparison isolating the contamination's
+own effect. What it does establish: the previously-reported 0.852 was not
+an artifact that collapses once the leaks are closed, and the corrected
+model is at least as good by the same metric.
+
+**Verified directly, not assumed**: the final saved model's
+`training_note_ids` (75 notes) has **zero overlap** with both
+`FRESH10_NOTE_IDS` and fresh-5's real 5 notes — both are now genuinely
+usable as held-out validation populations for this calibrator, which was
+not true of fresh-10 under either the untouched-original or the
+single-fix-intermediate model.
+
+**Adopted**: saved as `code_version=full_corpus_retrain_2026-08-31`,
+`training_split=full_corpus_105_notes_2026-08-31`. This is now the
+production `models/consensus_calibrator_v1.pkl`, superseding §17.8's
+2026-08-30 model.
+
+**Still open, same items as §13.5/§17.8, now compounded further**:
+`CALIBRATED_AUTO_THRESHOLD = 0.72` has now survived three refits (2026-
+08-20, 2026-08-30, 2026-08-31) across three different corpora and two
+feature-set versions without ever being re-derived from scratch. Also
+newly open: `evaluation/tier_gate_cal_eval.py`'s own default `NOTE_IDS`
+(the hardcoded 31-note "overnight" set, used when no `note_ids` is passed
+explicitly) was not checked against the locked split as part of this fix
+— the production retrain path (`retrain_calibrator_full_corpus.py`,
+fixed above) never relies on that default, but any other caller that
+does should not be assumed clean without the same check.

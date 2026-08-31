@@ -315,17 +315,26 @@ originally reported.
 
 `ConsensusCalibrator` (`src/mollm_tier_calibrator.py`), **17-feature**
 logistic regression (was 16 before 2026-08-30, see §9), scores `P(correct)`
-only for entities that already fail every hard Tier 1/3 rule. Current
-production model retrained on **144 notes**: **validation AUROC 0.852**
-(up from 0.845 on the prior 114-note/16-feature model, and 0.74 before
-that). `CALIBRATED_AUTO_THRESHOLD = 0.72` — **not re-derived against
-either retrain**; see `docs/ConsensusCalibrator_Technical_Reference.md`
-§13.5 for the open item this leaves. Two hard "trap" gates bypass the
+only for entities that already fail every hard Tier 1/3 rule. **Updated
+2026-08-31** (`docs/ConsensusCalibrator_Technical_Reference.md` §18): a
+locked-test-split contamination was found and fixed — the training pool
+had unconditionally included 39 of 149 notes (26%) from `data/splits/
+note_splits.csv`'s official locked test split, plus (found while
+re-verifying the first fix) 4 of fresh-5's 5 real validation notes.
+Current production model retrained on the corrected **105-note pool**:
+**validation AUROC 0.868** (up from the previously-reported 0.852 on the
+contaminated 144-note fit — removing 39% of the pool did not hurt).
+`CALIBRATED_AUTO_THRESHOLD = 0.72` — **still not re-derived against any
+retrain**; see `docs/ConsensusCalibrator_Technical_Reference.md` §13.5
+for the open item this leaves. Two hard "trap" gates bypass the
 calibrator entirely for known-fragile patterns
 (`_is_coronary_segment_trap()`, `_is_short_alphanumeric_code()`).
 Leakage guard (`ConsensusCalibrator.load(..., scoring_note_ids=...)`)
-verified live: correctly degraded to untrained/no-op on 3 of the 10
-fresh-validation notes (they were in its training set).
+verified live: the corrected model's `training_note_ids` now has **zero
+overlap** with both fresh-10 and fresh-5 — both remain genuinely usable
+held-out validation populations for the current calibrator, which was
+not true of fresh-10 under the pre-fix model (8 of its 10 notes had
+silently become training data by the time this was checked).
 
 ---
 

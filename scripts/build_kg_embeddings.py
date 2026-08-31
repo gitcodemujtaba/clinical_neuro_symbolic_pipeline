@@ -34,17 +34,40 @@ def gather_tp_records(conn):
     """One record per gold-graded, tier-gate-correct entity with >=2 real
     candidates -- the wrong candidate(s) are genuine alternatives the
     correct concept had to beat, not synthetic. Reuses this session's
-    standard clean-span grading methodology throughout."""
+    standard clean-span grading methodology throughout.
+
+    2026-08-31 FIX: previously scoped to every `is_test=TRUE` note -- a DB
+    flag meaning only "processed by the pipeline", unrelated to
+    `data/splits/note_splits.csv`'s OFFICIAL locked test split (70 notes
+    reserved for the T0/T1/T2 benchmark). Confirmed live: 39 of the 149
+    is_test=TRUE notes (26%) were from that locked split, meaning this
+    function's output -- consumed as RotatE's `gold`/`combined` TRAINING
+    data (src/kg_embedding_rotate.py) and as the extrinsic-eval population
+    for BOTH TransE and RotatE -- was partly built from gold annotations
+    the proposal reserves for final evaluation only. Now excludes the
+    locked split via evaluation.splits.load_split(), same discipline every
+    other evaluation script in this codebase already follows (evaluation/
+    splits.py's own docstring: "the safe choice required remembering to
+    type something, and the unsafe choice was what you got by pressing
+    enter" -- this function was exactly that unsafe default)."""
     import os
 
     from evaluation.cal_eval import GOLD_CANDIDATES, _first_existing
+    from evaluation.splits import load_split
     from scripts.score_gold_recall import load_gold, overlaps
     from src.mollm_tier_gate import AUTO_TIERS
     from src.retrieval import VocabularyRetriever
 
     vocab = VocabularyRetriever(conn)
-    note_ids = [r[0] for r in conn.execute(
-        "SELECT DISTINCT note_id FROM extracted_entities WHERE is_test=TRUE").fetchall()]
+    all_test_notes = {r[0] for r in conn.execute(
+        "SELECT DISTINCT note_id FROM extracted_entities WHERE is_test=TRUE").fetchall()}
+    locked_test_split = load_split("test")
+    note_ids = sorted(all_test_notes - locked_test_split)
+    n_excluded = len(all_test_notes) - len(note_ids)
+    if n_excluded:
+        print(f"gather_tp_records(): excluded {n_excluded} note(s) from the "
+             f"locked test split (data/splits/note_splits.csv) -- {len(note_ids)} "
+             f"notes remain in scope")
     gold_path = _first_existing(GOLD_CANDIDATES, "gold")
     gold_rows = load_gold(gold_path, note_ids)
     gold_by_note = collections.defaultdict(list)

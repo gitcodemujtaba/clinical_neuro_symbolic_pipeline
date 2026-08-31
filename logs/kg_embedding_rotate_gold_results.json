@@ -1,21 +1,21 @@
 {
   "config": "gold",
-  "n_triples": 1593,
+  "n_triples": 1209,
   "n_relation_types": 1,
-  "n_train": 1433,
-  "n_test": 160,
-  "n_entities": 145,
+  "n_train": 1088,
+  "n_test": 121,
+  "n_entities": 128,
   "n_relations": 1,
   "link_prediction": {
-    "mrr": 0.5000701113841322,
-    "hits_at_10": 0.9625,
-    "n_evaluated": 160
+    "mrr": 0.4786555535633495,
+    "hits_at_10": 0.9669421487603306,
+    "n_evaluated": 121
   },
   "extrinsic": {
-    "n_tp_records_provided": 452,
-    "n_usable_records": 452,
-    "n_comparisons": 1593,
-    "frac_wrong_candidate_closer_than_random": 0.7225360954174513
+    "n_tp_records_provided": 343,
+    "n_usable_records": 343,
+    "n_comparisons": 1209,
+    "frac_wrong_candidate_closer_than_random": 0.7890818858560794
   },
   "skipped": false
 }

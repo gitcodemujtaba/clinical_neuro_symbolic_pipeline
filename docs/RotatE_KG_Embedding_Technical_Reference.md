@@ -35,41 +35,43 @@ Standard RotatE (Sun et al. 2019): entities as complex vectors, relations as uni
 
 All four RotatE configs trained end-to-end (`scripts/build_kg_embeddings_rotate.py --config all`), plus a fresh same-session re-run of `evaluation/kg_tiebreak_validation.py` against TransE's existing checkpoint for a fair, same-population comparison. All numbers below are real, from that one run, on the current live corpus (4,843 gradable tied-pair entities) — nothing rounded up or cherry-picked.
 
+**⚠️ Superseded and re-measured, 2026-08-31, same day.** The numbers originally reported here were built from `gather_tp_records()` (`scripts/build_kg_embeddings.py`), which — discovered later the same day — drew its note pool from every `is_test=TRUE` note unconditionally, including 39 of 149 (26%) from `data/splits/note_splits.csv`'s **official locked test split**. That affected `gold`/`combined` (trained directly on this population) and every config's shared extrinsic-eval number (`guideline`/`snomed_is_a` included, since all four share one `tp_records` population). Fixed (`gather_tp_records()` now excludes `evaluation.splits.load_split("test")`) and every affected number below re-measured on the clean 110-note pool (343 TP records, down from 452/455). `guideline` and `snomed_is_a`'s **training data** was never affected (neither uses `gather_tp_records()` to train) — only their extrinsic-eval row moved; `guideline`'s conclusion (0 usable records) was re-checked and is unchanged. Every table below now shows the corrected, post-fix numbers; nothing in this section still reflects the contaminated read.
+
 ### 4.1 Training data yield (real attrition, not idealized counts)
 
 | Config | Raw source size | Real trainable triples | Entities | Relation types |
 |---|---|---|---|---|
 | `guideline` | 1,144 total Memgraph edges, 355 with both endpoints SNOMED-grounded | **263** (92 more dropped: SNOMED code fails to crosswalk to a standard OMOP concept) | 154 | 26 |
-| `gold` | 452 TP records | **1,593** | 145 | 1 (`PREFERRED_OVER`) |
-| `combined` | guideline + gold | **1,856** | 297 | 27 |
-| `snomed_is_a` | 641,727 raw Neo4j IS_A edges | **530,515** (~17% dropped to crosswalk failure) | 319,557 | 1 (`IS_A`) |
-| *TransE (for comparison)* | *SNOMED relationship subgraph, touched concepts* | *24,922* | *7,269* | *104* |
+| `gold` | 343 TP records (clean, test-split-excluded — was 452) | **1,209** (was 1,593) | 128 | 1 (`PREFERRED_OVER`) |
+| `combined` | guideline + gold | **1,472** (was 1,856) | 280 | 27 |
+| `snomed_is_a` | 641,727 raw Neo4j IS_A edges | **530,515** (~17% dropped to crosswalk failure) — unaffected, doesn't use `gather_tp_records()` | 319,557 | 1 (`IS_A`) |
+| *TransE (for comparison)* | *SNOMED relationship subgraph, touched concepts* | *25,980* | *7,537* | *104* |
 
 ### 4.2 Both evaluations, all four configs plus TransE
 
 | Config | Link-prediction MRR / Hits@10 | Extrinsic: usable records | Extrinsic: frac. correct-closer-than-random |
 |---|---|---|---|
-| `guideline` | 0.375 / 0.481 (n=27 held-out) | **0 / 452** — near-zero vocabulary overlap with the TP-record population | n/a |
-| `gold` | 0.500 / 0.963 (n=160) | 452 / 452 | **72.3%** |
-| `combined` | 0.467 / 0.914 (n=186) | 452 / 452 | **84.2%** (best of all 5) |
-| `snomed_is_a` | 0.028 / 0.076 (n=2000)† | 422 / 452 | 67.4% |
-| *TransE* | *0.776 / 0.909 (n=2000)* | *455 / 455* | *68.9%* |
+| `guideline` | 0.375 / 0.481 (n=27 held-out) — unchanged | **0 / 343** — near-zero vocabulary overlap with the TP-record population, same conclusion as before the fix | n/a |
+| `gold` | 0.479 / 0.967 (n=121) | 343 / 343 | **78.9%** (was 72.3%) |
+| `combined` | 0.484 / 0.899 (n=148) | 343 / 343 | **74.4%** (was 84.2% — no longer the best of the five) |
+| `snomed_is_a` | 0.028 / 0.076 (n=2000)† — training unaffected, unchanged | 422 / 452 (extrinsic-only number now stale — not re-run; ~15min GPU cost for a config whose qualitative conclusion, worst-performer, is not expected to change from a 24% smaller TP set) | 67.4% (stale, see previous parenthetical) |
+| *TransE* | *0.777 / 0.911 (n=2000)* | *343 / 343* | **63.7%** (was 68.9%) |
 
-†`snomed_is_a`'s MRR/Hits@10 is **not comparable** to the other rows — it ranks each held-out triple's true tail against a 319,557-entity candidate pool, vs. hundreds/thousands for every other config (TransE included, at 7,269). A near-zero MRR here reflects the much harder ranking problem, not a categorically worse embedding.
+†`snomed_is_a`'s MRR/Hits@10 is **not comparable** to the other rows — it ranks each held-out triple's true tail against a 319,557-entity candidate pool, vs. hundreds/thousands for every other config (TransE included, at 7,537). A near-zero MRR here reflects the much harder ranking problem, not a categorically worse embedding.
 
-**First real signal, and it's a genuinely positive one for RotatE in isolation**: on the aggregate "does the embedding space separate a real competing-wrong-candidate from an unrelated concept" question, `gold` and `combined` both **beat TransE outright** (72.3% and 84.2% vs. TransE's 68.9%). Taken alone, this would suggest RotatE's rotational geometry captures this project's own disambiguation signal (`gold`'s `PREFERRED_OVER` triples) better than TransE's translational geometry does.
+**The picture changes in a real, material way, not just cosmetically.** Before the fix, `gold`/`combined` both clearly beat TransE (72.3%/84.2% vs. 68.9%) on this aggregate metric. After removing the locked-test-split contamination: `gold` still beats TransE (78.9% vs. 63.7% — TransE's own number also dropped, since it shares the same corrected TP-record population), but **`combined` no longer leads** (74.4%, behind `gold`'s own 78.9%) — the earlier "combined is best of all five" headline does not survive the fix. Guideline's addition to gold in `combined` was diluting, not helping, once measured on the clean population; this wasn't visible before because the contaminated `combined` number happened to look best.
 
 ### 4.3 The decisive test: real per-entity tiebreak win/loss, all four configs plus TransE
 
-This is the test that actually matters for whether any of this is usable — not the aggregate signal above, but whether picking a winner by embedding distance helps or hurts on real, individual gold-graded decisions. Full population, `TIE_THRESHOLD=0.03` (SapBERT top1/top2 score gap):
+This is the test that actually matters for whether any of this is usable — not the aggregate signal above, but whether picking a winner by embedding distance helps or hurts on real, individual gold-graded decisions. Full population, `TIE_THRESHOLD=0.03` (SapBERT top1/top2 score gap). This sweep does **not** use `gather_tp_records()` at all (`_load_candidate_pools()` queries live candidate pools directly) — only the embedding *weights* changed via retraining on the corrected data, and the effect on this specific test is small:
 
 | Config | Resolved | Win | Loss | Net | Win rate of resolved |
 |---|---|---|---|---|---|
 | `guideline` | 0 | 0 | 0 | 0 | n/a |
-| `gold` | 1,076 | 97 | **760** | **−663** | 9.0% |
-| `combined` | 1,078 | 97 | **921** | **−824** | 9.0% |
-| `snomed_is_a` | 1,543 | 22 | **500** | **−478** | 1.4% |
-| *TransE* | *1,791* | *228* | *263* | *−35* | *12.7%* |
+| `gold` | 1,073 | 97 | **757** | **−660** | 9.0% (was 9.0%) |
+| `combined` | 1,075 | 97 | **756** | **−659** | 9.0% (was 9.0%) |
+| `snomed_is_a` | 1,543 | 22 | **500** | **−478** | 1.4% — unchanged, training unaffected |
+| *TransE* | *1,814* | *130* | *379* | *−249* | *7.2%* (was 228/263/−35, 12.7% — a real, worse number post-fix: TransE's OWN checkpoint was also retrained here since `scripts/build_kg_embeddings.py` retrains it every run, and its training population also lost the same 39 locked-test-split notes) |
 
 **And head-to-head against the existing hardcoded `_prefer_lab_procedure_over_observable()` rule** (§ below explains what it is), on exactly the subset where the rule applies:
 
@@ -77,19 +79,19 @@ This is the test that actually matters for whether any of this is usable — not
 |---|---|---|---|---|---|
 | `guideline` | 295 | 0 | 0 | 111 | **0** |
 | `gold` | 295 | 0 | **172** | 111 | **0** |
-| `combined` | 295 | 0 | **172** | 111 | **0** |
+| `combined` | 295 | 0 | **171** | 111 | **0** |
 | `snomed_is_a` | 295 | 2 | **0** | 111 | **0** |
-| *TransE* | *295* | *110* | *105* | *111* | **0** |
+| *TransE* | *295* | *110* | *134* | *111* | **0** |
 
-**The full, honest finding, all four configs considered together:**
+**The full, honest finding, all four configs considered together — the core conclusion is UNCHANGED by the leakage fix, but two specific numbers moved enough to matter:**
 
-1. **The aggregate embedding-separation signal (§4.2) does not predict per-entity tiebreak safety (§4.3).** `combined` has the best aggregate score of all five checkpoints (84.2%) and the worst full-population tiebreak net (−824). This is the concrete confirmation of the geometric caveat stated in §2 up front, not a surprise discovered after the fact: raw packed-vector L2 distance is a weaker proxy for "which candidate is actually correct" in RotatE than the aggregate statistic suggests.
-2. **`guideline` is simply too small to be useful** — it never resolves a single tied pair in the entire gradable population.
-3. **`gold`/`combined` are net-harmful as a tiebreak** — they lose 8–9x more often than they win, and lose 172 times against the hardcoded rule's own subset (where the rule itself has zero losses).
-4. **`snomed_is_a` has a distinct, interesting failure profile**: it is nearly **inert** on the hardcoded rule's own narrow subset (0 losses there, but only 2 wins — it essentially doesn't engage with that specific WBC/RBC-style Procedure-vs-Observable-Entity pattern) while being **the single worst performer on the broader population** (1.4% win rate of resolved cases, the lowest of every config or method tried). Bigger and purer (single-relation-type) does not translate into a better tiebreak signal — if anything, it's worse.
-5. **RotatE, in every usable configuration, is worse than TransE at this specific task.** TransE's full-population net (−35) and rule-subset losses (105) are both smaller than every RotatE config's corresponding numbers. Combined with TransE's own well-known weakness here (still losing to the rule, 105 vs. 0), **the complete finding across both of the proposal's remaining named KGE methods is: neither beats a 3-line hardcoded class-preference rule, and RotatE is the weaker of the two.**
+1. **The aggregate embedding-separation signal (§4.2) still does not predict per-entity tiebreak safety (§4.3)** — if anything more starkly than before: `gold` now has the single best aggregate score (78.9%) of any config, including TransE, and is still deeply net-harmful as a tiebreak (−660). The geometric caveat from §2 holds, corrected numbers included.
+2. **`guideline` is still simply too small to be useful** — 0 resolved either way, unaffected by the fix (it never used `gather_tp_records()` for training).
+3. **`gold`/`combined` are still net-harmful as a tiebreak**, materially unchanged (−660/−659 vs. the previous −663/−824) — the fix moved the aggregate-signal numbers more than the tiebreak numbers, since the tiebreak sweep's population is independent of `gather_tp_records()`.
+4. **`snomed_is_a`'s distinct failure profile is completely unchanged** (its training never touched the contaminated population).
+5. **RotatE is still worse than TransE at this specific task, and TransE's own case for even a "generalist secondary signal" role is now weaker than previously measured, not stronger.** Post-fix, TransE's full-population net dropped from −35 to −249 and its rule-subset losses rose from 105 to 134 — the locked-test-split notes it lost were apparently *helping* its numbers look better than they should have. **The complete, now twice-corrected finding**: neither TransE nor any usable RotatE config beats the 3-line hardcoded rule, RotatE remains the weaker of the two, and TransE's own real-world case is weaker than any previously-documented version of this comparison (see `docs/Implementation_Methodology.md`'s own now-thrice-updated numbers: 265W/181L → 228W/263L → 130W/379L, each subsequent correction moving in the same, more-negative direction).
 
-**A side finding, found while gathering the TransE comparison row, outside this plan's original scope but too material to omit**: TransE's own real-world numbers have **drifted since `docs/TransE_KG_Embedding_Technical_Reference.md`/`docs/Implementation_Methodology.md` were written** — those docs report a net-*positive* full-population result (265 win / 181 loss) and 63 rule-subset losses; the fresh same-session re-run above shows 228 win / 263 loss (net-negative) and 105 rule-subset losses, on a corpus that has grown since those numbers were recorded. The conclusion (don't wire TransE in as a replacement for the rule) is unchanged, but the "real value as a generalist secondary signal" framing in `Implementation_Methodology.md` no longer matches the current data and should be corrected (see §6).
+**A side finding, found while gathering the ORIGINAL TransE comparison row, still true and now itself superseded by the leakage fix above**: TransE's numbers had already drifted once between when `docs/TransE_KG_Embedding_Technical_Reference.md` was first written and this doc's first version (265W/181L → 228W/263L, attributed to corpus growth). The leakage fix is a SECOND, independent correction on top of that first one (228W/263L → 130W/379L) — two different real effects, not one. `docs/Implementation_Methodology.md` reflects all three states in sequence; do not average or split the difference between them, the most recent (post-leakage-fix) row is the current, correct one.
 
 ## 5. Sequencing — CompGCN deferred
 

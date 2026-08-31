@@ -211,13 +211,25 @@ mechanism, see below.
   generalist secondary signal" framing below no longer holds on the
   current corpus — TransE is now net-negative on the broader population
   too, not just losing to the rule.
+  **Corrected again, same day**: a locked-test-split contamination was
+  then found in `gather_tp_records()` (`scripts/build_kg_embeddings.py`
+  — 39 of 149 notes, 26%, were from `data/splits/note_splits.csv`'s
+  official locked test split) and fixed; re-measuring on the clean
+  population moved TransE's numbers a THIRD time, further in the same
+  direction: full-population net is now 130 win / 379 loss, rule-subset
+  losses 134. TransE's earlier apparent strength was partly an artifact
+  of locked-test-split notes it should never have been measured against.
   **RotatE was also built and evaluated this same session, as a 4-config
   ablation** (curated guideline graph / gold-derived competition triples /
-  their combination / the full SNOMED IS_A hierarchy) — real finding: a
-  stronger AGGREGATE embedding-separation signal than TransE on two of
-  the four configs (72-84% vs. TransE's 69%), but WORSE as an actual
-  per-entity tiebreak (8-9x more losses than wins), and every usable
-  config still loses to the hardcoded rule, more badly than TransE does.
+  their combination / the full SNOMED IS_A hierarchy), re-measured under
+  the same leakage fix — real finding, unchanged in substance: a
+  stronger AGGREGATE embedding-separation signal than TransE on the
+  `gold` config specifically (78.9% vs. TransE's 63.7%, both post-fix),
+  but WORSE as an actual per-entity tiebreak (8-9x more losses than
+  wins), and every usable config still loses to the hardcoded rule, more
+  badly than TransE does. (The pre-fix claim that `combined` was the
+  single best aggregate performer did NOT survive the fix — `gold` alone
+  is now strongest, `combined` sits behind it.)
   Neither KGE method is integrated; the hardcoded rule remains the only
   production tiebreak for this pattern. Full technical detail — both
   models' architecture, training procedure, both evaluations, the

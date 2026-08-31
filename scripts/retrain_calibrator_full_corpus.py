@@ -38,6 +38,7 @@ if PROJECT_DIR not in sys.path:
 from src.db_utils import connect_with_retry  # noqa: E402
 from src.retrieval import VocabularyRetriever  # noqa: E402
 from evaluation.cal_eval import GOLD_CANDIDATES, _first_existing  # noqa: E402
+from evaluation.splits import load_split  # noqa: E402
 from evaluation.tier_gate_cal_eval import (  # noqa: E402
     build_labeled_examples, split_by_note, fit_and_report, FEATURE_NAMES,
     threshold_sweep, DEFAULT_MODEL_PATH)
@@ -72,10 +73,41 @@ def main():
               f"the new feature)\n")
         kg3_driver = None
 
-    all_notes = sorted(r[0] for r in conn.execute(
+    all_tier4_notes = {r[0] for r in conn.execute(
         "SELECT DISTINCT note_id FROM mollm_tier_gate_decisions WHERE tier = 'TIER_4_ENSEMBLE_SPLIT'"
-    ).fetchall())
-    print(f"{len(all_notes)} notes have TIER_4_ENSEMBLE_SPLIT decisions (the calibrator's training population)\n")
+    ).fetchall()}
+    # 2026-08-31 FIX: previously used every TIER_4-bearing note unconditionally
+    # -- confirmed live that 39 of 149 (26%) were from data/splits/note_splits.
+    # csv's OFFICIAL locked test split (70 notes reserved for the T0/T1/T2
+    # benchmark), meaning the deployed calibrator's own fit was contaminated
+    # with locked-test-split gold outcomes as training labels. Excluded here,
+    # same evaluation.splits.load_split() discipline every other evaluation
+    # script in this codebase already follows.
+    #
+    # SECOND exclusion, found while re-verifying the first fix: fresh-10/
+    # fresh-5 (ui/components/fresh10_notes.py, docs/FINAL_RESULTS_Single_
+    # Source_Of_Truth.md S2/S10) are this project's own "genuinely held-out"
+    # validation populations -- fresh-10 IS entirely inside the official
+    # test split (so the exclusion above already covers it), but fresh-5's
+    # real 5 notes are NOT (they're train/val-split notes used for a
+    # different, date-based "never processed before" held-out property).
+    # Confirmed live: without this second exclusion, today's retrain pulled
+    # in 4 of fresh-5's 5 notes as training data the moment their own
+    # 2026-08-30 validation run gave them TIER_4_ENSEMBLE_SPLIT decisions --
+    # silently destroying the exact held-out property that made fresh-5
+    # useful, the same failure mode the first fix exists to prevent, just
+    # via a different mechanism (a project-specific holdout, not the
+    # official split). Both are excluded explicitly so this calibrator can
+    # still be honestly validated against either population later.
+    from ui.components.fresh10_notes import FRESH10_NOTE_IDS
+    FRESH5_NOTE_IDS = {"13397956-DS-5", "17739994-DS-31", "16410990-DS-12",
+                       "16795604-DS-17", "17309807-DS-20"}
+    locked_test_split = load_split("test") | set(FRESH10_NOTE_IDS) | FRESH5_NOTE_IDS
+    all_notes = sorted(all_tier4_notes - locked_test_split)
+    n_excluded = len(all_tier4_notes) - len(all_notes)
+    print(f"{len(all_tier4_notes)} notes have TIER_4_ENSEMBLE_SPLIT decisions; "
+         f"excluded {n_excluded} (locked test split + fresh-10/fresh-5 holdouts) -- "
+         f"{len(all_notes)} notes remain as the calibrator's training population\n")
 
     gold_path = _first_existing(GOLD_CANDIDATES, "gold")
     gold_rows = load_gold(gold_path, all_notes)
