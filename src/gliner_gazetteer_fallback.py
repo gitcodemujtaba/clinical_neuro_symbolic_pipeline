@@ -10,15 +10,28 @@ extracted as a span in the first place. evaluation/mine_gliner_misses.py
 this session) systematically mined 9,772 real misses; the full top-25
 most-frequently-missed surface forms were each independently checked
 against real gold concept-consistency (>=95% required, same bar
-_LAB_TEST_ALIASES already uses), not guessed. Fourteen cleared that bar:
+_LAB_TEST_ALIASES already uses), not guessed. Fourteen cleared that bar;
+THIRTEEN are included -- see the glucose exclusion below.
 
   Mg    -> 271285000 'Blood magnesium measurement'    (78/78 gold, 100%)
   RA    -> 722742002 'Breathing room air'              (80/80 gold, 100%)
   CV    -> 363003006 'Cardiovascular physical examination' (59/59, 100%)
   EOMI  -> 103251002 'Normal ocular motility'           (44/44, 100%)
   CTAB  -> 48348007  'Normal breath sounds'             (41/41, 100%)
-  glucose, eos, monos, rdwsd, cxr, non-tender, wheezes,
+  eos, monos, rdwsd, cxr, non-tender, wheezes,
   ambulatory - independent, level of consciousness      (97-100% each)
+
+`glucose` cleared the consistency bar (99.1%) but was found live, during
+validation, to genuinely need context-gating it doesn't have: false
+positives fired on urinalysis/CSF dipstick "Glucose-NEG" readings, a
+DIFFERENT clinical concept than the blood-panel glucose it was verified
+against. The obvious fix (require "BLOOD" as the nearest panel marker
+within the preceding window) was checked directly against all 112 real
+gold occurrences and found unreliable -- only 78/112 (69.6%) actually
+have "BLOOD" in range, because MIMIC's de-identification frequently masks
+the panel-header word itself ("___ 08:42AM   Glucose-92", not
+"___ 08:42AM   BLOOD Glucose-92"). Excluded rather than ship an
+under-verified rule -- same discipline as the four terms below.
 
 SIX real top-25 candidates were EXCLUDED, not just left out silently:
 pain (73.6%), normal (60.8%), stable (84.0%), negative (50.0%), clear
@@ -136,7 +149,6 @@ _GAZETTEER = {
     "CV": (re.compile(r"\bCV\b"), "Procedure", _cv_context),
     "EOMI": (re.compile(r"\bEOMI\b"), "Condition", _always),
     "CTAB": (re.compile(r"\bCTAB\b"), "Condition", _always),
-    "glucose": (re.compile(r"\bglucose\b", re.IGNORECASE), "Lab Test", _always),
     "eos": (re.compile(r"\beos\b", re.IGNORECASE), "Lab Test", _always),
     "monos": (re.compile(r"\bmonos\b", re.IGNORECASE), "Lab Test", _always),
     "rdwsd": (re.compile(r"\brdwsd\b", re.IGNORECASE), "Lab Test", _always),

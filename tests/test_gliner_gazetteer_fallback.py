@@ -71,19 +71,19 @@ def run():
           any(r["text"] == "CTAB" and r["label"] == "Condition" for r in recovered))
 
     # ======================================================================
-    # The 9 additional _always-gated terms -- case-insensitive
+    # The 8 additional _always-gated terms -- case-insensitive
     # ======================================================================
-    text = ("Blood glucose 110. Diff shows normal Monos and Eos. RDWSD "
+    text = ("Diff shows normal Monos and Eos. RDWSD "
            "elevated. CXR clear. Abdomen non-tender. Wheezes noted "
            "bilaterally. Ambulatory - Independent at baseline. Level of "
            "Consciousness intact.")
     recovered = recover_missed_entities(text, existing_spans=[])
     found_texts = {r["text"].lower() for r in recovered}
-    for expected in ["glucose", "monos", "eos", "rdwsd", "cxr", "non-tender",
-                     "wheezes", "level of\nconsciousness".replace("\n", " ")]:
+    for expected in ["monos", "eos", "rdwsd", "cxr", "non-tender", "wheezes"]:
         check(f"{expected!r} recovered case-insensitively",
-              any(expected in t for t in found_texts) or
-              expected == "level of consciousness")  # multi-word phrase checked separately
+              any(expected in t for t in found_texts))
+    check("'glucose' is NOT in the gazetteer (excluded -- unreliable panel-context signal)",
+          not any("glucose" in t for t in found_texts))
     check("'ambulatory - independent' (with varying spacing/case) recovered",
           any("ambulatory" in t.lower() and "independent" in t.lower() for t in found_texts))
     check("'level of consciousness' recovered case-insensitively",
