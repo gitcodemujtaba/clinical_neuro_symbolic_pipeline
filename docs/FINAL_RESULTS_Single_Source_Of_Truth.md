@@ -115,11 +115,15 @@ require human review at all (see §2), cutting required expert review
 volume substantially, even though the pipeline itself isn't "fast" once
 verification is included.
 
-**Gap, stated honestly**: no false-deflection rate exists — `hitl_review_queue`
-has real cases now (19,103 total, 250 in the fresh-10 scope, populated
-2026-08-20) but zero completed human reviews, so the patient-safety metric
-the proposal names cannot be computed yet. No T0→T2 deflection-rate trend
-exists — every number above is a single point-in-time read.
+**Gap, stated honestly, updated 2026-08-31**: the proposal's own
+independent-re-audit false-deflection rate still cannot be computed —
+`hitl_review_queue` has real cases now (19,103 total, 250 in the fresh-10
+scope, populated 2026-08-20) but zero completed human reviews. A
+gold-substituted proxy now exists instead (this doc's §12 below, full
+derivation in `docs/Code_Reference_Stages_And_Metrics.md` §15): 7.9%–23.2%
+depending on population, real numbers, not the proposal's real metric. No T0→T2
+deflection-rate trend exists — every number above is a single
+point-in-time read.
 
 ---
 
@@ -551,9 +555,20 @@ Every column below is a real, gold-graded measurement (not a projection) — see
 
 ## 12. Known Limitations & Open Gaps — Stated Honestly
 
-- **No false-deflection rate.** `hitl_review_queue` is populated (19,103
-  cases) but has zero completed human reviews — the patient-safety
-  metric the proposal names cannot be computed until real review happens.
+- **False-deflection rate, closed 2026-08-31 via a gold-substituted proxy.**
+  `hitl_review_queue` is populated (19,103 cases) but still has zero
+  completed human reviews, so the proposal's own re-audit-based
+  computation remains impossible. What's now real: a wrong AUTO-tier
+  decision (gold-checked, not human-reviewed) is exactly what "should have
+  gone to HITL but did not" means, so `1 - auto_tier_precision` on the
+  same three populations already measured gives a real, Wilson-CI'd
+  number — corpus-wide 13.1% [12.3%, 14.0%], fresh-10 23.2% [14.1%,
+  35.8%], fresh-5 7.9% [4.6%, 13.4%]. Full derivation:
+  `docs/Code_Reference_Stages_And_Metrics.md` §15. **Still open**: this is
+  a proxy, not the proposal's real independent-re-audit metric, and the
+  proposal's own "pre-set acceptable bound" for this metric was never
+  defined anywhere in this project — there is no threshold to check these
+  numbers against, only the raw rate itself.
 - **T0→T2 longitudinal trend, partially closed 2026-08-30.** §15 now
   reports two real, comparable checkpoints (T0 = 2026-08-20, T1 =
   2026-08-30) with a proper two-proportion significance test — all four

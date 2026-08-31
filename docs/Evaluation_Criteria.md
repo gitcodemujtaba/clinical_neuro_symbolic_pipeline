@@ -47,9 +47,18 @@ What actually exists today, against each section above, stated plainly:
 - **T0/T1/T2 checkpoints — not implemented.** Every result in
   `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` is a single point-in-time
   measurement; no trend across checkpoints exists.
-- **False deflection rate — cannot be computed.** Zero real human reviews
-  exist in production (`hitl_review_queue` is populated but unreviewed) —
-  see `docs/FINAL_RESULTS_Single_Source_Of_Truth.md`'s Known Limitations.
+- **False deflection rate — real number exists as of 2026-08-31, via a
+  gold-substituted proxy, not the proposal's actual metric.** Zero real
+  human reviews still exist in production (`hitl_review_queue` is
+  populated but unreviewed), so the proposal's independent-re-audit
+  design remains unbuildable as specified. What's real instead: a wrong
+  AUTO-tier decision (checked against gold, not a human reviewer) is
+  exactly what "should have gone to HITL but did not" means, so
+  `1 - auto_tier_precision` gives a genuine, Wilson-CI'd number —
+  7.9%-23.2% depending on population (`docs/Code_Reference_Stages_And_
+  Metrics.md` §15). No "pre-set acceptable bound" was ever defined
+  anywhere in this project to check these numbers against — see
+  `docs/FINAL_RESULTS_Single_Source_Of_Truth.md`'s Known Limitations.
 - **Deflection rate — real, measured.** See §3 above; corpus-wide,
   fresh-10, and fresh-5 numbers all exist and are compared side by side in
   `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §10.3.

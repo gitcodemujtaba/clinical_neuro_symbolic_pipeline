@@ -724,6 +724,63 @@ updated, precise framing.
 
 ---
 
+### 15. False deflection rate — closed 2026-08-31 via a gold-substituted proxy
+
+**What it's supposed to measure** (`docs/Evaluation_Criteria.md`): "The
+proportion of the Stage 5 re-audit sample that should have gone to HITL
+but did not" — a patient-safety metric, distinct from deflection rate
+(§11, which measures *how much* was auto-approved, not *how safely*).
+
+**Why it was stuck at "cannot be computed."** The proposal's own design
+is a re-audit process: an independent reviewer re-checks a sample of
+already-auto-approved decisions after the fact. This project's real HITL
+infrastructure exists (`hitl_review_queue`, 19,103 cases) but has **zero
+completed human reviews** — `dry_run=True` everywhere in production, so
+there is no independent human verdict to compute this against.
+
+**The substitution that closes it, and why it's valid.** A wrong AUTO-tier
+decision — one that doesn't match gold's SNOMED concept — is, by
+definition, exactly the case that "should have gone to HITL but did not."
+Gold annotation *is* an independent, already-existing ground truth for
+that same question, standing in for the re-audit reviewer the proposal
+assumes. This is the same substitution principle used throughout this
+project wherever real human review doesn't exist yet (e.g. the KG3
+gold-simulated population, `docs/FINAL_RESULTS_Single_Source_Of_Truth.md`
+§12's own KG3 bullet) — stated as a substitution, not conflated with the
+real thing.
+
+```python
+false_deflection_rate = 1 - auto_tier_precision   # same x/n as §3, complemented
+```
+
+Concretely: `auto_correct`/`auto_n` from §3's own AUTO-tier-precision
+computation gives `x = auto_n - auto_correct` (the wrong, should-have-
+gone-to-HITL count) over the same `n`. No new grading code, no new LLM
+calls — this is the exact complement of a number already computed three
+times this project (corpus-wide, fresh-10, fresh-5), with Wilson CIs
+(§14) mirrored the same way (`CI(1-p) = [1 - upper(p), 1 - lower(p)]`):
+
+| Population | x/n (wrong/gradable AUTO) | False deflection rate | Wilson 95% CI |
+|---|---|---|---|
+| Corpus-wide (144 notes) | 883/6,724 | 13.1% | [12.3%, 14.0%] |
+| Fresh-10 | 13/56 | 23.2% | [14.1%, 35.8%] |
+| Fresh-5 | 12/151 | 7.9% | [4.6%, 13.4%] |
+
+**Read honestly**: this is **not** the metric the proposal specifies —
+it's a gold-substituted proxy for it, computed on the same clean-span-
+gradable population §3 uses (not literally "a periodic re-audit sample"
+drawn and reviewed independently after deployment). It also inherits
+everything true of AUTO-tier precision's own honesty caveats: fresh-10's
+interval is 21.7pp wide (small `n`), and the "pre-set acceptable bound"
+the proposal's Success Criteria section calls for was never defined
+anywhere in this project, so there is no threshold to check any of these
+three numbers against. What this closes is narrower but real: the
+computation itself is no longer blocked, and the honest current answer is
+"7.9%-23.2% depending on population, all real, none validated against an
+actual human reviewer."
+
+---
+
 ## Summary Table — Metric → Formula → Where Computed
 
 | Metric | Formula | Module |
@@ -745,3 +802,4 @@ updated, precise framing.
 | Precision/Recall/F1 (promotion) | `TP/(TP+FP)`, `TP/(TP+FN)`, `2PR/(P+R)` | ad hoc, this project's calibrator/KG3 experiments |
 | AUROC | `P(score(pos) > score(neg))` | `sklearn.metrics.roc_auc_score`, via `evaluation/tier_gate_cal_eval.py` |
 | Wilson score interval | `(p̂+z²/2n)/(1+z²/n) ± z√(p̂(1-p̂)/n+z²/4n²)/(1+z²/n)` | new, §14 above, not yet a checked-in function |
+| False deflection rate (gold-substituted proxy) | `1 - auto_tier_precision` | new, §15 above, not yet a checked-in function |
