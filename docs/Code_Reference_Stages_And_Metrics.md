@@ -781,6 +781,122 @@ actual human reviewer."
 
 ---
 
+### 16. Note-level bootstrap confidence intervals — built 2026-08-31, closes the proposal's actual CI requirement
+
+**What it is, and why it's different from §14's Wilson interval.**
+`docs/Evaluation_Criteria.md` specifies "Bootstrap confidence intervals
+... resampled at the note level" — not the Wilson score interval §14
+adds, which treats every graded *entity* as an independent Bernoulli
+trial. That's the wrong independence assumption for this project's data:
+entities cluster within notes (a note's own vocabulary/complexity is
+shared across every entity in it, and calibrator train/val splits are
+already kept note-disjoint for exactly this reason). Resampling *notes*
+with replacement — pooling every entity belonging to each resampled note,
+duplicates included when a note is drawn more than once — is the
+standard fix and the one the proposal actually names.
+
+```python
+def bootstrap_note_level_ci(records, metric_fn, n_boot=2000, seed=42, alpha=0.05):
+    by_note = group records by note_id
+    point = metric_fn(records)
+    for _ in range(n_boot):
+        sample_notes = choices(note_ids, k=len(note_ids))   # WITH replacement
+        pooled = concat(by_note[n] for n in sample_notes)   # duplicates included
+        boot_estimates.append(metric_fn(pooled))
+    return point, percentile(boot_estimates, alpha/2), percentile(boot_estimates, 1-alpha/2)
+```
+
+`src/evaluation/bootstrap_ci.py` (`bootstrap_note_level_ci()`,
+`precision_metric()`, `false_deflection_metric()`); real numbers produced
+by `evaluation/run_bootstrap_ci.py`, reusing `evaluation.tier_gate_grading.
+grade_by_tier()` for the same clean-span-gradable AUTO-tier population §3/
+§14 already use — no new grading logic, no new LLM calls.
+
+**A real bug caught while gathering these numbers, worth recording**: the
+obvious note-ID source for "fresh-5" (`evaluation/grade_fresh5_by_tier.py`'s
+own `NOTE_IDS`) is a *different*, older (2026-08-17) 5-note batch that
+happens to share the name — not the actual "Fresh-5 (2026-08-30)" notes
+§10's headline numbers are built on. Using it silently would have reported
+a bootstrap CI around 79.2% (151→24 gradable, a completely different
+population) instead of the real 92.1%. Caught by noticing the point
+estimate didn't match the already-documented number — the same
+"verify against real data before trusting a result" discipline this
+project applies everywhere else. `evaluation/run_bootstrap_ci.py` now
+hardcodes the correct 5 note IDs directly from §10's own text, with a
+comment explaining why the obvious import is wrong.
+
+**Real results, same three populations as §14, computed 2026-08-31**
+(the corpus-wide note count is 144 here, not the 149 total `is_test`
+notes now in the DB — 5 of those 149 notes have zero clean-span-gradable
+AUTO-tier decisions, so they contribute nothing to this specific
+population; the 149 total number is itself larger than the "144 notes"
+label's original vintage, reflecting real corpus growth since):
+
+| Population | n_notes | n_gradable | AUTO-tier precision | Wilson 95% CI (§14) | **Bootstrap 95% CI (note-level)** | Bootstrap width |
+|---|---|---|---|---|---|---|
+| Corpus-wide | 144 | 6,886 | 87.0% | [86.0%, 87.7%]¹ | **[85.9%, 88.1%]** | 2.2pp |
+| Fresh-10 | 10 | 56 | 76.8% | [64.2%, 85.9%] | **[68.9%, 83.9%]** | 15.1pp |
+| Fresh-5 | 5 | 151 | 92.1% | [86.6%, 95.4%] | **[86.1%, 96.7%]** | 10.5pp |
+
+¹Wilson figures here are §14's original 6,724-gradable read; this run's
+6,886 reflects the same real corpus-growth drift already disclosed for
+other metrics this session (e.g. TransE's numbers, `docs/RotatE_KG_
+Embedding_Technical_Reference.md` §4.3) — the point estimate (87.0% vs.
+86.9%) barely moved, so the Wilson interval is still a fair comparison
+point even though it wasn't recomputed on the exact same 6,886.
+
+And the false-deflection-rate proxy (§15), same populations, same method:
+
+| Population | False deflection rate | Bootstrap 95% CI |
+|---|---|---|
+| Corpus-wide | 13.0% | [11.9%, 14.1%] |
+| Fresh-10 | 23.2% | [16.1%, 31.2%] |
+| Fresh-5 | 7.9% | [3.3%, 13.9%] |
+
+**Read this honestly — the real finding is more nuanced than "bootstrap
+is always wider," and that nuance matters.** Note-level clustering does
+**not** uniformly inflate uncertainty relative to Wilson:
+- **Corpus-wide**: bootstrap is modestly wider (2.2pp vs. 1.6pp) — the
+  expected direction, a large, diverse population where note-to-note
+  precision does vary somewhat.
+- **Fresh-5**: bootstrap is wider (10.5pp vs. 8.8pp) — also expected,
+  only 5 notes means real between-note variance risk.
+- **Fresh-10 is the interesting exception: bootstrap is *narrower***
+  (15.1pp vs. Wilson's 21.7pp). This is not a bug — it means per-note
+  precision across these 10 notes is fairly homogeneous, so treating
+  notes (not entities) as the resampling unit doesn't inflate uncertainty
+  here; if anything, Wilson's generic "56 independent Bernoulli trials"
+  assumption was the more conservative (wider) one for this specific
+  population. Clustering can cut either way depending on the real
+  variance structure — asserting it always widens intervals would have
+  been an unearned assumption this project's own "verify before trusting"
+  discipline exists to catch.
+
+**The specific claim this was built to stress-test, and the honest
+result**: §14 already flagged that fresh-10's and fresh-5's Wilson
+intervals "come close to touching but do not overlap" (a 0.7 percentage
+point gap: 85.9% vs. 86.6%), and cautioned against over-reading that as
+decisive. Under the more rigorous bootstrap method, **the gap holds up
+better, not worse** — fresh-10's upper bound (83.9%) and fresh-5's lower
+bound (86.1%) are 2.2 percentage points apart, a wider separation than
+Wilson gave. The fresh-5-beats-fresh-10 claim in §10.3 of the SSOT
+survives this check more comfortably than the Wilson interval alone
+suggested — a real, reassuring result, not assumed in advance (the
+opposite outcome was considered a live possibility before running this).
+
+**What this closes, precisely**: `docs/Evaluation_Criteria.md`'s own
+specified method (bootstrap CIs resampled at the note level) is now
+built and run on the project's own headline metric (AUTO-tier precision)
+and its false-deflection-rate complement, across all three standard
+populations. **Not yet extended**: Linked precision/recall (a separate
+code path, `scripts/score_gold_recall.py`, not yet retrofitted with
+note-level resampling) and the calibrator's own `TIER_1B`-specific
+precision — both still only have Wilson intervals (§14). Worth doing if
+those specific numbers become load-bearing for a future claim; not done
+here since the headline metric was the priority.
+
+---
+
 ## Summary Table — Metric → Formula → Where Computed
 
 | Metric | Formula | Module |
@@ -803,3 +919,4 @@ actual human reviewer."
 | AUROC | `P(score(pos) > score(neg))` | `sklearn.metrics.roc_auc_score`, via `evaluation/tier_gate_cal_eval.py` |
 | Wilson score interval | `(p̂+z²/2n)/(1+z²/n) ± z√(p̂(1-p̂)/n+z²/4n²)/(1+z²/n)` | new, §14 above, not yet a checked-in function |
 | False deflection rate (gold-substituted proxy) | `1 - auto_tier_precision` | new, §15 above, not yet a checked-in function |
+| Note-level bootstrap CI | resample notes w/ replacement, pool entities, percentile the resulting metric distribution | `evaluation/bootstrap_ci.py`, run via `evaluation/run_bootstrap_ci.py`, §16 above |

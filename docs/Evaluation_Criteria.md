@@ -35,15 +35,20 @@
 
 What actually exists today, against each section above, stated plainly:
 
-- **Confidence intervals — partial.** The proposal calls for bootstrap CIs
-  resampled at the note level. What's built instead, as of 2026-08-30, is
-  a simpler Wilson score interval on the headline binomial proportions
-  (AUTO-tier precision, Linked precision/recall, calibrator promotion
-  precision) — see `docs/Code_Reference_Stages_And_Metrics.md` §14. Wilson
+- **Confidence intervals — the proposal's own method is now built, for the
+  headline metric.** A Wilson score interval was built first (2026-08-30,
+  `docs/Code_Reference_Stages_And_Metrics.md` §14) as a stopgap — it
   treats each graded entity as independent, which is not what "resampled
-  at the note level" means and likely understates true uncertainty for
-  populations dominated by a few large notes. **Bootstrap CIs are not yet
-  built.**
+  at the note level" means. **2026-08-31**: real note-level bootstrap CIs
+  (`evaluation/bootstrap_ci.py`, §16 of that same doc) are now built and
+  run for AUTO-tier precision and the false-deflection-rate proxy across
+  all three standard populations — corpus-wide, fresh-10, fresh-5. Real
+  finding: note clustering doesn't uniformly widen intervals (fresh-10's
+  bootstrap CI is narrower than its Wilson one), and the fresh-5-vs-
+  fresh-10 comparison holds up more robustly under the rigorous method,
+  not less. **Still partial**: Linked precision/recall and the
+  calibrator's `TIER_1B` slice still only have the Wilson-interval
+  stopgap, not bootstrap.
 - **T0/T1/T2 checkpoints — not implemented.** Every result in
   `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` is a single point-in-time
   measurement; no trend across checkpoints exists.

@@ -577,19 +577,30 @@ Every column below is a real, gold-graded measurement (not a projection) — see
   points establish a significant difference, not a validated trend line.
   T0→T1 also isn't isolated to one cause — it reflects everything shipped
   between the two dates together.
-- **Confidence intervals, partially closed 2026-08-30.** Every figure
-  above is still a point estimate. `docs/Code_Reference_Stages_And_Metrics.md`
-  §14 now adds real Wilson score intervals for the headline AUTO-tier
-  precision, Linked precision/recall, and calibrator `TIER_1B` promotion
-  precision numbers across all three populations — worth reading before
-  citing any single-population figure above as decisive, especially
-  fresh-10's (n=56, a 21.7-percentage-point-wide interval) and fresh-5's
-  `TIER_1B` slice (n=23). **Still open**: this project's own evaluation
-  criteria (`docs/Evaluation_Criteria.md`) call for **bootstrap CIs
-  resampled at the note level**, not a plain binomial-proportion interval
-  — Wilson treats each graded entity as independent, which understates
-  true uncertainty given entities cluster within notes. Note-level
-  bootstrap CIs are not yet built anywhere in this codebase.
+- **Confidence intervals, now closed on the headline metric, 2026-08-31.**
+  Every figure above was originally just a point estimate.
+  `docs/Code_Reference_Stages_And_Metrics.md` §14 first added Wilson score
+  intervals (AUTO-tier precision, Linked precision/recall, calibrator
+  `TIER_1B` promotion precision); §16 now adds the project's own
+  **actually-specified method** — bootstrap CIs resampled at the note
+  level, not a plain binomial-proportion interval — for AUTO-tier
+  precision and the false-deflection-rate proxy (§15) across all three
+  populations. Real result: [85.9%, 88.1%] corpus-wide, [68.9%, 83.9%]
+  fresh-10, [86.1%, 96.7%] fresh-5. Note-level clustering does **not**
+  uniformly widen intervals relative to Wilson (fresh-10's bootstrap CI is
+  actually *narrower*, 15.1pp vs. 21.7pp) — a real, checked finding, not
+  assumed. The specific claim this was built to stress-test (does
+  fresh-5 genuinely beat fresh-10) **holds up better under bootstrap, not
+  worse** — the gap widens from 0.7pp (Wilson) to 2.2pp (bootstrap).
+  **Still open**: Linked precision/recall and the calibrator's `TIER_1B`
+  slice still only have Wilson intervals — bootstrap wasn't extended to
+  those, since AUTO-tier precision (the paper's headline metric) was the
+  priority. A real, caught-live bug during this work is worth knowing
+  about if reusing note-ID lists elsewhere in this codebase: the obvious
+  `evaluation/grade_fresh5_by_tier.py` note list is a *different*, older
+  (2026-08-17) 5-note batch that happens to share the name "fresh5" — not
+  the real "Fresh-5 (2026-08-30)" notes this section's own numbers are
+  built on.
 - **A third SNOMED near-duplicate pattern ("Clinical Finding"-class
   concepts) — investigated at corpus scale 2026-08-31, does not justify a
   fix.** The original characterization (one observed case) doesn't hold

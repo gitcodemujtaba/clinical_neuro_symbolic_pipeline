@@ -1,0 +1,56 @@
+{
+  "corpus-wide (current, real count -- see note above)": {
+    "precision": {
+      "point": 0.8697356956142899,
+      "ci_lo": 0.8586409395973155,
+      "ci_hi": 0.881079478054567,
+      "n_notes": 144,
+      "n_records": 6886,
+      "n_boot_usable": 2000
+    },
+    "false_deflection": {
+      "point": 0.13026430438571013,
+      "ci_lo": 0.11895460056580898,
+      "ci_hi": 0.14136649514008004,
+      "n_notes": 144,
+      "n_records": 6886,
+      "n_boot_usable": 2000
+    }
+  },
+  "fresh-10": {
+    "precision": {
+      "point": 0.7678571428571429,
+      "ci_lo": 0.6885245901639344,
+      "ci_hi": 0.8392857142857143,
+      "n_notes": 10,
+      "n_records": 56,
+      "n_boot_usable": 2000
+    },
+    "false_deflection": {
+      "point": 0.2321428571428571,
+      "ci_lo": 0.1607142857142857,
+      "ci_hi": 0.3125,
+      "n_notes": 10,
+      "n_records": 56,
+      "n_boot_usable": 2000
+    }
+  },
+  "fresh-5": {
+    "precision": {
+      "point": 0.9205298013245033,
+      "ci_lo": 0.8613861386138614,
+      "ci_hi": 0.9666666666666667,
+      "n_notes": 5,
+      "n_records": 151,
+      "n_boot_usable": 2000
+    },
+    "false_deflection": {
+      "point": 0.07947019867549665,
+      "ci_lo": 0.033333333333333326,
+      "ci_hi": 0.13861386138613863,
+      "n_notes": 5,
+      "n_records": 151,
+      "n_boot_usable": 2000
+    }
+  }
+}
