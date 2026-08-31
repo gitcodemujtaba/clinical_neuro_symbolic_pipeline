@@ -103,6 +103,115 @@ with st.sidebar:
         st.info("Select at least one note.")
         _stop()
 
+# A real gap found while building this: batches that were interrupted and
+# resumed later (e.g. the fresh-5 gazetteer batch, capped at 30/note on
+# 2026-08-31 then completed on a later date) have one huge consecutive
+# gap where processing was genuinely PAUSED, not slow -- confirmed live,
+# a ~20.5 HOUR gap in exactly this batch's own real data, which would
+# otherwise dominate the mean and make "max entity time" meaningless.
+# This project has independently measured real per-decision processing
+# time before (median 17.1s / mean 18.6s, docs/FINAL_RESULTS_Single_
+# Source_Of_Truth.md's guideline-evidence A/B test cost estimate, a much
+# larger and cleaner sample) -- no real single decision has ever been
+# observed anywhere near this threshold, so 10 minutes is a generous
+# ceiling that only ever excludes a genuine inter-run pause, never real
+# (if slow) processing.
+MAX_PLAUSIBLE_ENTITY_GAP_SECONDS = 600
+
+
+def compute_timing_stats(conn, note_ids):
+    """Real Stage 3 processing-time stats, computed from
+    mollm_tier_gate_decisions.created_at -- NOT gold-dependent (unlike
+    compute_overall_metrics()), so this still returns real numbers even
+    for a batch/selection with no gold coverage.
+
+    Per-entity time: the gap between each decision's created_at and the
+    PREVIOUS decision's, across the whole chronological stream for these
+    notes (matches how every Stage 3 runner in this codebase actually
+    processes entities -- one live LLM-ensemble call at a time,
+    sequentially, not in parallel) -- mean/min/max of those gaps, EXCLUDING
+    any gap over MAX_PLAUSIBLE_ENTITY_GAP_SECONDS (a real pause between
+    runs, not real processing time -- see that constant's own comment).
+
+    Per-note time: NOT simply (last - first) within a note -- that has
+    the exact same pause-contamination problem if a note's own decisions
+    span an interruption. Instead, the SUM of that note's own internal
+    consecutive gaps that are individually under the same plausibility
+    ceiling -- i.e. real accumulated processing time for that note, robust
+    to a pause landing in the middle of it. mean/min/max ACROSS notes.
+
+    Returns a dict of None values (not zeros) when fewer than 2 decisions
+    exist to form a gap -- "no timing data" is a different, real state
+    from "processing was instantaneous." Also reports how many gaps were
+    excluded as implausible pauses, so this exclusion is never silent.
+    """
+    import collections
+
+    note_ph = ",".join("?" * len(note_ids))
+    rows = conn.execute(f"""
+        SELECT note_id, created_at FROM mollm_tier_gate_decisions
+        WHERE note_id IN ({note_ph}) AND created_at IS NOT NULL
+        ORDER BY created_at
+    """, note_ids).fetchall()
+
+    empty = {"entity_mean_s": None, "entity_min_s": None, "entity_max_s": None,
+            "note_mean_s": None, "note_min_s": None, "note_max_s": None,
+            "n_entity_gaps": 0, "n_notes_timed": 0, "n_gaps_excluded_as_pause": 0}
+    if len(rows) < 2:
+        return empty
+
+    # Per-entity: consecutive gaps across the whole chronological stream.
+    # A negative/zero gap (two decisions with the same or out-of-order
+    # timestamp -- e.g. two notes processed by concurrent runs interleaved
+    # in this same note selection) is excluded as impossible, not counted
+    # as real processing time; a gap over the plausibility ceiling is
+    # excluded as a real pause, tracked separately so the exclusion is
+    # visible, not silent.
+    gaps = []
+    n_excluded = 0
+    for i in range(1, len(rows)):
+        delta = (rows[i][1] - rows[i - 1][1]).total_seconds()
+        if delta <= 0:
+            continue
+        if delta > MAX_PLAUSIBLE_ENTITY_GAP_SECONDS:
+            n_excluded += 1
+            continue
+        gaps.append(delta)
+
+    # Per-note: sum of that note's OWN internal plausible gaps (not
+    # max-min, which would still be contaminated by a pause landing
+    # inside a single note's own timestamp range).
+    by_note = collections.defaultdict(list)
+    for nid, ts in rows:
+        by_note[nid].append(ts)
+    note_spans = []
+    for ts_list in by_note.values():
+        if len(ts_list) < 2:
+            continue
+        ts_list = sorted(ts_list)
+        real_span = sum(
+            d for d in (
+                (ts_list[i] - ts_list[i - 1]).total_seconds() for i in range(1, len(ts_list))
+            ) if 0 < d <= MAX_PLAUSIBLE_ENTITY_GAP_SECONDS
+        )
+        if real_span > 0:
+            note_spans.append(real_span)
+
+    if not gaps and not note_spans:
+        return {**empty, "n_gaps_excluded_as_pause": n_excluded}
+    return {
+        "entity_mean_s": sum(gaps) / len(gaps) if gaps else None,
+        "entity_min_s": min(gaps) if gaps else None,
+        "entity_max_s": max(gaps) if gaps else None,
+        "note_mean_s": sum(note_spans) / len(note_spans) if note_spans else None,
+        "note_min_s": min(note_spans) if note_spans else None,
+        "note_max_s": max(note_spans) if note_spans else None,
+        "n_entity_gaps": len(gaps),
+        "n_notes_timed": len(note_spans),
+        "n_gaps_excluded_as_pause": n_excluded,
+    }
+
+
 def compute_overall_metrics(conn, note_ids):
     """The exact grading logic the Overall tab has always run, factored out
     so the new Batch comparison tab can call it once per named batch
@@ -219,6 +328,16 @@ def _compute_overall_metrics_cached(_conn, note_ids_key: tuple, cache_version: i
     return compute_overall_metrics(_conn, list(note_ids_key))
 
 
+@st.cache_data(persist="disk", show_spinner=False)
+def _compute_timing_stats_cached(_conn, note_ids_key: tuple, cache_version: int):
+    """Same caching rationale/contract as _compute_overall_metrics_cached()
+    above, for compute_timing_stats() instead -- a separate cache entry
+    since timing doesn't depend on gold and the two are computed from
+    different queries, but shares the same cache_version counter so one
+    "Force recalculate" click refreshes both together."""
+    return compute_timing_stats(_conn, list(note_ids_key))
+
+
 tab_overall, tab_batches, tab_tiers, tab_precision, tab_recall, tab_calibration, tab_calibrator = st.tabs(
     ["Overall", "Batch comparison", "Tier distribution", "Precision vs. gold",
      "Recall / completeness", "ECE & IoU (per stage)", "Calibrator status"])
@@ -323,6 +442,14 @@ with tab_batches:
         st.session_state.batch_cache_version += 1
         run_clicked = True
 
+    def _fmt_s(seconds):
+        if seconds is None:
+            return "n/a"
+        if seconds < 60:
+            return f"{seconds:.1f}s"
+        m, s = divmod(seconds, 60)
+        return f"{int(m)}m {s:.0f}s"
+
     if run_clicked:
         rows = []
         for name, batch_ids in NOTE_BATCHES.items():
@@ -335,14 +462,30 @@ with tab_batches:
                     # "All processed notes" -- genuinely grows over time,
                     # never cached.
                     m = compute_overall_metrics(conn, resolved)
+                    t = compute_timing_stats(conn, resolved)
                 else:
                     # Fixed-membership batch -- cached to disk, keyed on
                     # the exact resolved note_ids plus the force-recalculate
                     # counter.
-                    m = _compute_overall_metrics_cached(
-                        conn, tuple(sorted(resolved)), st.session_state.batch_cache_version)
+                    key = tuple(sorted(resolved))
+                    m = _compute_overall_metrics_cached(conn, key, st.session_state.batch_cache_version)
+                    t = _compute_timing_stats_cached(conn, key, st.session_state.batch_cache_version)
+
+            # Timing is NOT gold-dependent -- shown even when m is None
+            # (no gold coverage for this batch), unlike every grading
+            # column below it.
+            timing_cols = {
+                "Entity time (mean/min/max)":
+                    f"{_fmt_s(t['entity_mean_s'])} / {_fmt_s(t['entity_min_s'])} / {_fmt_s(t['entity_max_s'])}"
+                    if t["entity_mean_s"] is not None else "n/a",
+                "Note time (mean/min/max)":
+                    f"{_fmt_s(t['note_mean_s'])} / {_fmt_s(t['note_min_s'])} / {_fmt_s(t['note_max_s'])}"
+                    if t["note_mean_s"] is not None else "n/a",
+                "Pauses excluded": t["n_gaps_excluded_as_pause"],
+            }
+
             if m is None:
-                rows.append({"Batch": name, "Notes": len(resolved), "Gold annotations": 0})
+                rows.append({"Batch": name, "Notes": len(resolved), "Gold annotations": 0, **timing_cols})
                 continue
             rows.append({
                 "Batch": name,
@@ -355,12 +498,26 @@ with tab_batches:
                 "Deflection rate": f"{m['deflection_rate']*100:.1f}%" if m["deflection_rate"] is not None else "n/a",
                 "AUTO-tier precision": f"{m['auto_precision']*100:.1f}%" if m["auto_precision"] is not None else "n/a",
                 "Macro char IoU": m["macro_char_iou"],
+                **timing_cols,
             })
         st.table(rows)
-        st.caption("Every column above uses the same grading functions as the other tabs on this "
+        st.caption("Every grading column above uses the same functions as the other tabs on this "
                   "page -- not a separate methodology. 'All processed notes' includes every batch "
                   "below it, so it is not an independent data point -- it is the corpus those "
                   "batches are drawn from.")
+        st.caption(f"**Timing columns**: real Stage 3 processing time, from mollm_tier_gate_decisions"
+                  f".created_at. 'Entity time' = the gap between each decision and the one before "
+                  f"it, across the whole chronological stream for that batch (mean/min/max). "
+                  f"'Note time' = each note's own ACCUMULATED real processing time (sum of its "
+                  f"internal consecutive gaps, mean/min/max across notes in the batch) -- NOT "
+                  f"simply last-minus-first, which would be thrown off by a pause landing inside "
+                  f"one note. 'Pauses excluded' = gaps over "
+                  f"{MAX_PLAUSIBLE_ENTITY_GAP_SECONDS/60:.0f} minutes, treated as the batch being "
+                  f"interrupted and resumed later (this project's own real measured per-decision "
+                  f"time has never been anywhere near that high), not as slow processing -- a real "
+                  f"one was found and excluded while building this (the gazetteer batch's own "
+                  f"~20.5-hour gap between its capped run and its later completion). Both timing "
+                  f"metrics need >=2 plausible decisions to compute; 'n/a' means too few.")
 
 # ==========================================================================
 # TAB 1 — tier distribution (of what we processed, where did it land)
