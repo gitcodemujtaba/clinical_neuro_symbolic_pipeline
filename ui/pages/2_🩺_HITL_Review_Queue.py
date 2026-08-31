@@ -40,9 +40,11 @@ sys.path.insert(0, PROJECT_DIR)
 from src.hitl_queue import (  # noqa: E402
     ensure_hitl_queue_table, enqueue_pending_cases, load_hitl_queue, submit_review,
 )
+from ui.components.concept_search import format_concept_option, search_concepts  # noqa: E402
 from ui.components.db_status import (  # noqa: E402
     render_locked_db_status, render_mixed_connection_status)
 from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
+from ui.components.hitl_context_aids import agreement_summary, known_risk_flags  # noqa: E402
 
 # CNSP_DB_PATH override matches the OLLAMA_HOST/NEO4J_URI/MEMGRAPH_URI
 # env-var pattern already used elsewhere in this codebase -- lets this page
@@ -257,19 +259,39 @@ with col_provenance:
     if case["queue_reason"]:
         st.markdown(f"**Queue reason:** `{case['queue_reason']}`")
 
+    # 2026-08-31: agreement-at-a-glance -- previously a reviewer had to
+    # expand each of the (up to 3) per-model boxes below just to tell a
+    # clean unanimous case from a genuine split. This is the same
+    # plurality logic route_tier() itself uses (reused, not re-derived).
+    models = suggestion.get("models") or []
+    if models:
+        agreement = agreement_summary(models)
+        (st.success if agreement["unanimous"] else st.warning)(agreement["label"])
+
+    # 2026-08-31: surfaces the SAME known-fragile patterns the production
+    # gate itself already checks for (coronary-segment trap, short-
+    # alphanumeric-code trap) plus a real domain-conflict signal this
+    # project measured repeatedly -- tells a reviewer WHERE to look
+    # harder, before they've read anything else on the page.
+    candidates = suggestion.get("candidates") or []
+    risk_flags = known_risk_flags(
+        suggestion.get("original_text"), candidates, suggestion.get("suggested_omop_concept_id"))
+    for flag in risk_flags:
+        st.warning(flag)
+
     routing_basis = suggestion.get("routing_basis")
     if routing_basis:
         st.markdown("**How the pipeline reached this conclusion:**")
         st.info(routing_basis)
 
-    candidates = suggestion.get("candidates") or []
     if candidates:
         st.markdown("**Candidates (Stage 2b retrieval):**")
         for i, c in enumerate(candidates, 1):
             st.text(
                 f"[{i}] {c.get('concept_name')}  "
-                f"(OMOP {c.get('omop_concept_id')}, tier {c.get('match_tier')}, "
-                f"score {c.get('similarity_score')}, basis {c.get('match_basis')})"
+                f"(OMOP {c.get('omop_concept_id')}, domain {c.get('domain_id')}, "
+                f"tier {c.get('match_tier')}, score {c.get('similarity_score')}, "
+                f"basis {c.get('match_basis')})"
             )
     proposed_name = suggestion.get("proposed_concept_name")
     if proposed_name:
@@ -315,50 +337,84 @@ with col_provenance:
 
 with col_review:
     st.markdown("### Review")
-    with st.form(key=f"review_form_{case['hitl_case_id']}"):
-        decision = st.radio("Decision", ["APPROVED", "CORRECTED", "REJECTED"])
-        corrected_id = None
-        if decision == "CORRECTED":
-            options = {f"[{i}] {c.get('concept_name')}": c.get("omop_concept_id")
-                      for i, c in enumerate(candidates, 1)}
-            choice = st.selectbox("Correct concept", list(options.keys()) or ["(none available)"])
-            corrected_id = options.get(choice)
-            manual_id = st.text_input("...or enter an OMOP concept_id directly")
-            if manual_id.strip():
-                try:
-                    corrected_id = int(manual_id.strip())
-                except ValueError:
-                    st.error("concept_id must be an integer")
-        rejection_reason = None
-        if decision == "REJECTED":
-            rejection_reason = st.text_area("Rejection reason")
+    # 2026-08-31: no longer an st.form(). The live concept-search box below
+    # is a plain st.text_input -- INSIDE an st.form, widget interactions
+    # (including every keystroke of a text_input) don't trigger a script
+    # rerun until the form's own submit button is pressed, so search
+    # results would never appear while the reviewer is actually typing.
+    # Every widget here gets an explicit case-id-scoped `key=` instead of
+    # relying on the form's own key to reset state per case (verified live
+    # in tests/test_hitl_review_queue_page.py: navigating between
+    # cases with a stale key would otherwise leak a decision/selection from
+    # the PREVIOUS case).
+    cid = case["hitl_case_id"]
+    decision = st.radio("Decision", ["APPROVED", "CORRECTED", "REJECTED"], key=f"decision_{cid}")
+    corrected_id = None
+    if decision == "CORRECTED":
+        options = {f"[{i}] {c.get('concept_name')}": c.get("omop_concept_id")
+                  for i, c in enumerate(candidates, 1)}
+        choice = st.selectbox("Correct concept (from Stage 2b's own retrieved candidates)",
+                              list(options.keys()) or ["(none available)"], key=f"cand_choice_{cid}")
+        corrected_id = options.get(choice)
 
-        # 2026-08-17: independent of rejection_reason -- available on every
-        # decision, not just REJECTED. This is the real ground truth
-        # src.abbreviation_flywheel.mine_context_rules() (and any future
-        # pipeline-improvement analysis) reads back from hitl_review_queue;
-        # a reviewer explaining WHY, not just WHAT, is what actually
-        # accumulates into something the pipeline can learn from later.
-        comment = st.text_area(
-            "Comments (optional) — notes for future pipeline improvement",
-            placeholder="e.g. 'context clearly says X, a rule for this "
-                        "abbreviation would have caught it' or 'candidate "
-                        "#2 was closer but still not quite right'",
+        # 2026-08-31: the real gap this closes -- previously the ONLY way to
+        # correct to a concept Stage 2b's own retrieval never surfaced at
+        # all (a genuine retrieval miss, not just a mis-ranking) was to
+        # already know its exact numeric OMOP concept_id and type it in
+        # blind. A reviewer almost never does. This searches athena_concept
+        # by name live, the same population Stage 2b itself searches, so
+        # "the retrieval missed it" cases become actually fixable, not just
+        # flaggable.
+        st.markdown("**...or search for a different concept:**")
+        search_query = st.text_input(
+            "Search by name (e.g. 'chest pain')", key=f"concept_search_{cid}")
+        if search_query:
+            search_results = search_concepts(conn, search_query)
+            if not search_results:
+                st.caption("No matches (need 3+ characters, or nothing found).")
+            else:
+                search_options = {format_concept_option(c): c["concept_id"] for c in search_results}
+                search_choice = st.selectbox(
+                    f"{len(search_results)} match(es)", list(search_options.keys()),
+                    key=f"concept_search_choice_{cid}")
+                corrected_id = search_options[search_choice]
+
+        manual_id = st.text_input("...or enter an OMOP concept_id directly", key=f"manual_id_{cid}")
+        if manual_id.strip():
+            try:
+                corrected_id = int(manual_id.strip())
+            except ValueError:
+                st.error("concept_id must be an integer")
+    rejection_reason = None
+    if decision == "REJECTED":
+        rejection_reason = st.text_area("Rejection reason", key=f"rejection_reason_{cid}")
+
+    # 2026-08-17: independent of rejection_reason -- available on every
+    # decision, not just REJECTED. This is the real ground truth
+    # src.abbreviation_flywheel.mine_context_rules() (and any future
+    # pipeline-improvement analysis) reads back from hitl_review_queue;
+    # a reviewer explaining WHY, not just WHAT, is what actually
+    # accumulates into something the pipeline can learn from later.
+    comment = st.text_area(
+        "Comments (optional) — notes for future pipeline improvement",
+        placeholder="e.g. 'context clearly says X, a rule for this "
+                    "abbreviation would have caught it' or 'candidate "
+                    "#2 was closer but still not quite right'",
+        key=f"comment_{cid}",
+    )
+
+    if st.button("Submit", key=f"submit_{cid}"):
+        duration = time.time() - st.session_state.hitl_case_started_at
+        submit_review(
+            conn, case["hitl_case_id"], decision,
+            corrected_concept_id=corrected_id,
+            rejection_reason=rejection_reason,
+            review_duration=round(duration, 1),
+            reviewer_comment=comment.strip() or None,
         )
-
-        submitted = st.form_submit_button("Submit")
-        if submitted:
-            duration = time.time() - st.session_state.hitl_case_started_at
-            submit_review(
-                conn, case["hitl_case_id"], decision,
-                corrected_concept_id=corrected_id,
-                rejection_reason=rejection_reason,
-                review_duration=round(duration, 1),
-                reviewer_comment=comment.strip() or None,
-            )
-            st.session_state.hitl_index = min(idx + 1, len(queue) - 1)
-            st.session_state.hitl_case_started_at = time.time()
-            _rerun()
+        st.session_state.hitl_index = min(idx + 1, len(queue) - 1)
+        st.session_state.hitl_case_started_at = time.time()
+        _rerun()
 
     nav1, nav2 = st.columns(2)
     with nav1:
