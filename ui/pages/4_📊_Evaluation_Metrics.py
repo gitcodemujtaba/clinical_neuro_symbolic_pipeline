@@ -27,7 +27,7 @@ sys.path.insert(0, PROJECT_DIR)
 
 from ui.components.db_status import (  # noqa: E402
     render_locked_db_status, render_mixed_connection_status)
-from ui.components.fresh10_notes import FRESH10_NOTE_IDS  # noqa: E402
+from ui.components.note_batches import NOTE_BATCHES  # noqa: E402
 
 DB_PATH = os.environ.get("CNSP_DB_PATH", os.path.join(PROJECT_DIR, "db", "kg2_lexical_store.duckdb"))
 
@@ -63,34 +63,137 @@ def _stop():
     st.stop()
 
 
-with st.sidebar:
-    st.header("Selection")
-    # extracted_entities itself carries no is_stale/provenance columns
-    # (only normalized_entities and mollm_tier_gate_decisions do) -- joined
-    # here rather than filtered directly. is_stale=FALSE means "processed by
-    # current code" -- see the 2026-08-18 migration that added this column
-    # (docs in scripts/mark_notes_stale.py) rather than the earlier,
-    # fragile hand-maintained-timestamp approach this replaced.
-    note_ph = ",".join("?" * len(FRESH10_NOTE_IDS))
-    all_note_ids = [r[0] for r in conn.execute(f"""
+def resolve_batch_note_ids(conn, batch_note_ids):
+    """Every processed, non-stale note_id, optionally restricted to
+    `batch_note_ids` (None means no restriction -- the full corpus).
+    Same is_stale=FALSE / is_test=TRUE discipline this page has always
+    used, just generalized past the old single hardcoded FRESH10 list.
+    """
+    if batch_note_ids is not None:
+        note_ph = ",".join("?" * len(batch_note_ids))
+        restrict_clause = f"AND e.note_id IN ({note_ph})"
+        params = list(batch_note_ids)
+    else:
+        restrict_clause = ""
+        params = []
+    return [r[0] for r in conn.execute(f"""
         SELECT DISTINCT e.note_id FROM extracted_entities e
-        WHERE e.is_test = TRUE AND e.note_id IN ({note_ph}) AND e.note_id IN (
+        WHERE e.is_test = TRUE {restrict_clause} AND e.note_id IN (
             SELECT DISTINCT note_id FROM normalized_entities
             WHERE is_test = TRUE AND is_stale = FALSE
         ) ORDER BY e.note_id
-    """, FRESH10_NOTE_IDS).fetchall()]
+    """, params).fetchall()]
+
+
+with st.sidebar:
+    st.header("Selection")
+    # 2026-08-31: was hardcoded to the single FRESH10_NOTE_IDS restriction
+    # -- generalized to every named population this project has actually
+    # run (ui.components.note_batches.NOTE_BATCHES), so a "10 notes" vs.
+    # "5 notes" vs. "5 notes" question doesn't need re-typing note_ids by
+    # hand. See the new "Batch comparison" tab for all of them side by
+    # side at once, rather than one at a time.
+    batch_name = st.selectbox("Batch", list(NOTE_BATCHES.keys()))
+    all_note_ids = resolve_batch_note_ids(conn, NOTE_BATCHES[batch_name])
     if not all_note_ids:
-        st.warning("None of the 10 fresh-validation notes are ready (is_stale = FALSE) yet. "
-                  "See scripts/run_fresh5_final_validation.py.")
+        st.warning(f"No notes in the '{batch_name}' batch are ready (is_stale = FALSE) yet.")
         _stop()
     note_ids = st.multiselect("Notes to include", all_note_ids, default=all_note_ids)
     if not note_ids:
         st.info("Select at least one note.")
         _stop()
 
-tab_overall, tab_tiers, tab_precision, tab_recall, tab_calibration, tab_calibrator = st.tabs(
-    ["Overall", "Tier distribution", "Precision vs. gold", "Recall / completeness",
-     "ECE & IoU (per stage)", "Calibrator status"])
+def compute_overall_metrics(conn, note_ids):
+    """The exact grading logic the Overall tab has always run, factored out
+    so the new Batch comparison tab can call it once per named batch
+    instead of duplicating it. Returns None if there's no gold for
+    `note_ids` (caller decides how to render that), else a dict of every
+    number the Overall tab displays, plus the raw counts each is built
+    from (n_pred_correct/n_pred_with_concept/auto_n/auto_correct/etc.) so
+    a caller can build its own help text without recomputing anything.
+    """
+    from evaluation.tier_gate_grading import grade_by_tier
+    from evaluation import iou_metrics
+    from evaluation.cal_eval import GOLD_CANDIDATES, _first_existing
+    from scripts.score_gold_recall import (
+        attach_snomed_codes, load_gold, load_predictions, overlaps, score,
+    )
+    from src.mollm_tier_gate import AUTO_TIERS
+    from src.retrieval import VocabularyRetriever
+    import collections as _collections
+
+    gold_path = _first_existing(GOLD_CANDIDATES, "gold")
+    gold_rows = load_gold(gold_path, note_ids)
+    if not gold_rows:
+        return None
+
+    gold_by_note = _collections.defaultdict(list)
+    for g in gold_rows:
+        gold_by_note[g["note_id"]].append(g)
+    vocab = VocabularyRetriever(conn)
+
+    predictions = load_predictions(conn, note_ids)
+    attach_snomed_codes(conn, predictions)
+    recall_report = score(gold_rows, predictions)["combined"]
+
+    n_pred_with_concept = sum(1 for p in predictions if p.get("snomed_code"))
+    n_pred_correct = sum(
+        1 for p in predictions if p.get("snomed_code") and any(
+            overlaps(p["orig_start"], p["orig_end"], g["start"], g["end"])
+            and g["concept_id"] == p["snomed_code"]
+            for g in gold_by_note.get(p["note_id"], [])))
+    linked_precision = n_pred_correct / n_pred_with_concept if n_pred_with_concept else None
+    linked_recall = recall_report["linked_recall"]
+    linked_f1 = (2 * linked_precision * linked_recall / (linked_precision + linked_recall)
+                if linked_precision and linked_recall else None)
+
+    note_ph = ",".join("?" * len(note_ids))
+    all_tier_rows = conn.execute(
+        f"SELECT tier, COUNT(*) FROM mollm_tier_gate_decisions "
+        f"WHERE note_id IN ({note_ph}) GROUP BY tier", note_ids).fetchall()
+    total_decisions = sum(n for _, n in all_tier_rows)
+    auto_all = sum(n for t, n in all_tier_rows if t in AUTO_TIERS)
+    deflection_rate = auto_all / total_decisions if total_decisions else None
+
+    tier_report = grade_by_tier(conn, note_ids)
+    auto_n = sum(r["clean"]["n"] for t, r in tier_report.items() if t in AUTO_TIERS)
+    auto_correct = sum(r["clean"]["n_correct"] for t, r in tier_report.items() if t in AUTO_TIERS)
+    auto_precision = auto_correct / auto_n if auto_n else None
+
+    bench = iou_metrics.benchmark_char_iou(conn, note_ids, gold_by_note, vocab)
+
+    n_eligible = conn.execute(f"""
+        SELECT count(*) FROM extracted_entities e
+        WHERE e.note_id IN ({note_ph}) AND e.is_test = TRUE
+        AND (e.superseded_by_split IS NULL OR e.superseded_by_split = FALSE)
+        AND (e.superseded_by_growth IS NULL OR e.superseded_by_growth = FALSE)
+        AND (e.below_threshold IS NULL OR e.below_threshold = FALSE)
+    """, note_ids).fetchone()[0]
+
+    return {
+        "gold_annotations": recall_report["gold_annotations"],
+        "span_recall": recall_report["span_recall"],
+        "linked_recall": linked_recall,
+        "linked_precision": linked_precision,
+        "linked_f1": linked_f1,
+        "n_pred_correct": n_pred_correct,
+        "n_pred_with_concept": n_pred_with_concept,
+        "total_decisions": total_decisions,
+        "auto_all": auto_all,
+        "deflection_rate": deflection_rate,
+        "auto_n": auto_n,
+        "auto_correct": auto_correct,
+        "auto_precision": auto_precision,
+        "macro_char_iou": bench["macro_char_iou"],
+        "weighted_char_iou": bench["weighted_char_iou"],
+        "n_eligible": n_eligible,
+        "n_notes": len(note_ids),
+    }
+
+
+tab_overall, tab_batches, tab_tiers, tab_precision, tab_recall, tab_calibration, tab_calibrator = st.tabs(
+    ["Overall", "Batch comparison", "Tier distribution", "Precision vs. gold",
+     "Recall / completeness", "ECE & IoU (per stage)", "Calibrator status"])
 
 # ==========================================================================
 # TAB 0 — Overall: one consolidated, cross-stage summary. The other tabs
@@ -105,128 +208,105 @@ with tab_overall:
               "Each number still comes from its own stage's own definition of 'correct' "
               "(see the per-stage tabs) -- this just puts them side by side.")
     if st.button("Run overall summary (grades every stage against gold)"):
-        from evaluation.tier_gate_grading import grade_by_tier
-        from evaluation import iou_metrics
-        from evaluation.cal_eval import GOLD_CANDIDATES, _first_existing
-        from scripts.score_gold_recall import (
-            attach_snomed_codes, load_gold, load_predictions, overlaps, score,
-        )
-        from src.mollm_tier_gate import AUTO_TIERS
-        from src.retrieval import VocabularyRetriever
-        import collections as _collections
-
         with st.spinner("Grading every stage against gold..."):
-            gold_path = _first_existing(GOLD_CANDIDATES, "gold")
-            gold_rows = load_gold(gold_path, note_ids)
-            if not gold_rows:
-                st.warning("No gold annotations found for the selected note(s).")
-            else:
-                gold_by_note = _collections.defaultdict(list)
-                for g in gold_rows:
-                    gold_by_note[g["note_id"]].append(g)
-                vocab = VocabularyRetriever(conn)
+            m = compute_overall_metrics(conn, note_ids)
 
-                # Stage 1/2 completeness: span recall / linked recall
-                predictions = load_predictions(conn, note_ids)
-                attach_snomed_codes(conn, predictions)
-                recall_report = score(gold_rows, predictions)["combined"]
+        if m is None:
+            st.warning("No gold annotations found for the selected note(s).")
+        else:
+            st.markdown("#### Completeness (Stage 1/2 — of everything gold has, how much did we find?)")
+            oc1, oc2, oc3 = st.columns(3)
+            oc1.metric("Gold annotations", m["gold_annotations"])
+            oc2.metric("Span recall", f"{m['span_recall']*100:.1f}%")
+            oc3.metric("Linked recall", f"{m['linked_recall']*100:.1f}%")
 
-                # Linked PRECISION -- same population as linked recall (every
-                # resolved prediction, all tiers), NOT AUTO-tier-only. Mixing
-                # AUTO-tier precision with full-population recall would score
-                # two different populations and make F1 meaningless -- see
-                # docs/2026-08-20_Session_Results_And_Status.md §15.
-                n_pred_with_concept = sum(1 for p in predictions if p.get("snomed_code"))
-                n_pred_correct = sum(
-                    1 for p in predictions if p.get("snomed_code") and any(
-                        overlaps(p["orig_start"], p["orig_end"], g["start"], g["end"])
-                        and g["concept_id"] == p["snomed_code"]
-                        for g in gold_by_note.get(p["note_id"], [])))
-                linked_precision = n_pred_correct / n_pred_with_concept if n_pred_with_concept else None
-                linked_recall = recall_report["linked_recall"]
-                linked_f1 = (2 * linked_precision * linked_recall / (linked_precision + linked_recall)
-                            if linked_precision and linked_recall else None)
+            st.markdown("#### Linked concept-level Precision / Recall / F1 (same population, all tiers)")
+            of1, of2, of3 = st.columns(3)
+            of1.metric("Linked precision", f"{m['linked_precision']*100:.1f}%" if m["linked_precision"] is not None else "n/a",
+                      help=f"{m['n_pred_correct']}/{m['n_pred_with_concept']} of our own resolved links (any tier) match gold")
+            of2.metric("Linked recall", f"{m['linked_recall']*100:.1f}%")
+            of3.metric("Linked F1", f"{m['linked_f1']*100:.1f}%" if m["linked_f1"] is not None else "n/a")
 
-                # Stage 3: full tier distribution (ALL tiers, not grade_by_tier's
-                # AUTO_TIERS+TIER_4-only default) -- needed for a correct
-                # deflection rate. A real bug (gradable-restricted AUTO count
-                # divided by an unrestricted/tier-limited total) was caught and
-                # fixed in this exact computation -- see §15's "Methodology" note.
-                note_ph = ",".join("?" * len(note_ids))
-                all_tier_rows = conn.execute(
-                    f"SELECT tier, COUNT(*) FROM mollm_tier_gate_decisions "
-                    f"WHERE note_id IN ({note_ph}) GROUP BY tier", note_ids).fetchall()
-                total_decisions = sum(n for _, n in all_tier_rows)
-                auto_all = sum(n for t, n in all_tier_rows if t in AUTO_TIERS)
-                deflection_rate = auto_all / total_decisions if total_decisions else None
+            # 2026-08-28: made explicit after a real, confirmed-live finding
+            # -- scripts/run_fresh5_final_validation.py caps Stage 3 at the
+            # first 25 (by orig_start) Stage-2b-eligible entities PER NOTE,
+            # regardless of note size ("still a real, gradable held-out
+            # sample" -- its own comment). total_decisions below is real
+            # and correctly computed, but a reader who doesn't know about
+            # the cap could easily mistake it for full note coverage --
+            # this note prevents that, using the real extracted-entity
+            # count as the comparison, not a hardcoded "25".
+            if m["n_eligible"] > m["total_decisions"]:
+                st.caption(f"⚠️ **{m['total_decisions']} of {m['n_eligible']}** Stage-2b-eligible entities "
+                          f"in the selected note(s) actually reached Stage 3 — a capped validation "
+                          f"run (e.g. scripts/run_fresh5_final_validation.py, ~25-30/note) rather "
+                          f"than full coverage. The numbers below are accurate for that capped "
+                          f"population, not the whole note.")
 
-                # AUTO-tier PRECISION still needs the gradable (clean-span)
-                # restriction -- that part was never the bug, precision can only
-                # be checked on decisions we can actually grade against gold.
-                tier_report = grade_by_tier(conn, note_ids)
-                auto_n = sum(r["clean"]["n"] for t, r in tier_report.items() if t in AUTO_TIERS)
-                auto_correct = sum(r["clean"]["n_correct"] for t, r in tier_report.items() if t in AUTO_TIERS)
+            st.markdown("#### Stage 3 gate — deflection rate & AUTO-tier precision")
+            oc4, oc5, oc6 = st.columns(3)
+            oc4.metric("Total Stage 3 decisions", m["total_decisions"])
+            oc5.metric("Deflection rate", f"{m['auto_all']}/{m['total_decisions']}",
+                      f"{m['deflection_rate']*100:.1f}%" if m["deflection_rate"] is not None else "—",
+                      help="Fraction of ALL Stage 3 decisions that auto-wrote with no human "
+                           "review (every AUTO_TIERS decision, not just the gradable subset).")
+            oc6.metric("AUTO-tier precision", f"{m['auto_correct']}/{m['auto_n']}" if m["auto_n"] else "n/a",
+                      f"{m['auto_precision']*100:.1f}%" if m["auto_precision"] is not None else None,
+                      help="Of AUTO-written decisions we can grade against gold (clean single "
+                           "span overlap), how often did we pick gold's exact SNOMED concept?")
 
-                # Stage 2b benchmark char IoU (DrivenData definition)
-                bench = iou_metrics.benchmark_char_iou(conn, note_ids, gold_by_note, vocab)
-
-            if gold_rows:
-                st.markdown("#### Completeness (Stage 1/2 — of everything gold has, how much did we find?)")
-                oc1, oc2, oc3 = st.columns(3)
-                oc1.metric("Gold annotations", recall_report["gold_annotations"])
-                oc2.metric("Span recall", f"{recall_report['span_recall']*100:.1f}%")
-                oc3.metric("Linked recall", f"{recall_report['linked_recall']*100:.1f}%")
-
-                st.markdown("#### Linked concept-level Precision / Recall / F1 (same population, all tiers)")
-                of1, of2, of3 = st.columns(3)
-                of1.metric("Linked precision", f"{linked_precision*100:.1f}%" if linked_precision is not None else "n/a",
-                          help=f"{n_pred_correct}/{n_pred_with_concept} of our own resolved links (any tier) match gold")
-                of2.metric("Linked recall", f"{linked_recall*100:.1f}%")
-                of3.metric("Linked F1", f"{linked_f1*100:.1f}%" if linked_f1 is not None else "n/a")
-
-                # 2026-08-28: made explicit after a real, confirmed-live finding
-                # -- scripts/run_fresh5_final_validation.py caps Stage 3 at the
-                # first 25 (by orig_start) Stage-2b-eligible entities PER NOTE,
-                # regardless of note size ("still a real, gradable held-out
-                # sample" -- its own comment). Every one of the 10 fresh-
-                # validation notes hits exactly this cap. total_decisions below
-                # is real and correctly computed, but a reader who doesn't know
-                # about the cap could easily mistake it for full note coverage
-                # -- this note prevents that, using the real extracted-entity
-                # count as the comparison, not a hardcoded "25".
-                n_eligible = conn.execute(f"""
-                    SELECT count(*) FROM extracted_entities e
-                    WHERE e.note_id IN ({note_ph}) AND e.is_test = TRUE
-                    AND (e.superseded_by_split IS NULL OR e.superseded_by_split = FALSE)
-                    AND (e.superseded_by_growth IS NULL OR e.superseded_by_growth = FALSE)
-                    AND (e.below_threshold IS NULL OR e.below_threshold = FALSE)
-                """, note_ids).fetchone()[0]
-                if n_eligible > total_decisions:
-                    st.caption(f"⚠️ **{total_decisions} of {n_eligible}** Stage-2b-eligible entities "
-                              f"in the selected note(s) actually reached Stage 3 — "
-                              f"`scripts/run_fresh5_final_validation.py` deliberately caps at "
-                              f"~25/note for a fast, real, gradable sample, not full coverage. "
-                              f"The numbers below are accurate for that capped population, not "
-                              f"the whole note.")
-
-                st.markdown("#### Stage 3 gate — deflection rate & AUTO-tier precision")
-                oc4, oc5, oc6 = st.columns(3)
-                oc4.metric("Total Stage 3 decisions", total_decisions)
-                oc5.metric("Deflection rate", f"{auto_all}/{total_decisions}",
-                          f"{deflection_rate*100:.1f}%" if deflection_rate is not None else "—",
-                          help="Fraction of ALL Stage 3 decisions that auto-wrote with no human "
-                               "review (every AUTO_TIERS decision, not just the gradable subset).")
-                oc6.metric("AUTO-tier precision", f"{auto_correct}/{auto_n}" if auto_n else "n/a",
-                          f"{auto_correct/auto_n*100:.1f}%" if auto_n else None,
-                          help="Of AUTO-written decisions we can grade against gold (clean single "
-                               "span overlap), how often did we pick gold's exact SNOMED concept?")
-
-                st.markdown("#### Benchmark metric (Stage 2b — DrivenData's own char-level IoU)")
-                oc7, oc8 = st.columns(2)
-                oc7.metric("Macro char IoU", bench["macro_char_iou"])
-                oc8.metric("Support-weighted char IoU", bench["weighted_char_iou"])
+            st.markdown("#### Benchmark metric (Stage 2b — DrivenData's own char-level IoU)")
+            oc7, oc8 = st.columns(2)
+            oc7.metric("Macro char IoU", m["macro_char_iou"])
+            oc8.metric("Support-weighted char IoU", m["weighted_char_iou"])
     else:
         st.info("Click the button above to grade the current note selection across every stage.")
+
+# ==========================================================================
+# TAB (new) — Batch comparison: the SAME compute_overall_metrics() grading,
+# run once per NAMED batch (ui.components.note_batches.NOTE_BATCHES), side
+# by side in one table -- "check the metric overall AND based on batches
+# (10 notes, then the two 5-note batches)" in one place, rather than
+# re-selecting one batch at a time in the sidebar. Deliberately IGNORES the
+# sidebar's current note_ids/multiselect -- always grades each batch's own
+# FULL resolved population, matching every manual SSOT comparison table
+# this project has built by hand this session.
+# ==========================================================================
+with tab_batches:
+    st.caption("Every named note population this project has actually run, graded fresh and "
+              "shown side by side -- the same comparison this session has built by hand "
+              "repeatedly (docs/FINAL_RESULTS_Single_Source_Of_Truth.md's own tables), now live. "
+              "Each batch is graded on its OWN full resolved population, independent of the "
+              "sidebar's current note selection above.")
+    if st.button("Run batch comparison (grades every named batch against gold)"):
+        rows = []
+        for name, batch_ids in NOTE_BATCHES.items():
+            resolved = resolve_batch_note_ids(conn, batch_ids)
+            if not resolved:
+                rows.append({"Batch": name, "Notes": 0})
+                continue
+            with st.spinner(f"Grading '{name}' ({len(resolved)} notes)..."):
+                m = compute_overall_metrics(conn, resolved)
+            if m is None:
+                rows.append({"Batch": name, "Notes": len(resolved), "Gold annotations": 0})
+                continue
+            rows.append({
+                "Batch": name,
+                "Notes": len(resolved),
+                "Gold annotations": m["gold_annotations"],
+                "Span recall": f"{m['span_recall']*100:.1f}%",
+                "Linked recall": f"{m['linked_recall']*100:.1f}%",
+                "Linked precision": f"{m['linked_precision']*100:.1f}%" if m["linked_precision"] is not None else "n/a",
+                "Linked F1": f"{m['linked_f1']*100:.1f}%" if m["linked_f1"] is not None else "n/a",
+                "Deflection rate": f"{m['deflection_rate']*100:.1f}%" if m["deflection_rate"] is not None else "n/a",
+                "AUTO-tier precision": f"{m['auto_precision']*100:.1f}%" if m["auto_precision"] is not None else "n/a",
+                "Macro char IoU": m["macro_char_iou"],
+            })
+        st.table(rows)
+        st.caption("Every column above uses the same grading functions as the other tabs on this "
+                  "page -- not a separate methodology. 'All processed notes' includes every batch "
+                  "below it, so it is not an independent data point -- it is the corpus those "
+                  "batches are drawn from.")
 
 # ==========================================================================
 # TAB 1 — tier distribution (of what we processed, where did it land)
