@@ -1088,7 +1088,40 @@ was "medically trained" in general.
 
 ---
 
-## 12. All ablation studies run across this pipeline — the complete, honest scoreboard
+## 12. Three real test batches, compared side by side
+
+Beyond following one entity end-to-end, this project has run the whole
+pipeline on three different small batches of real notes at different
+points in time, each fully processed through Stage 3 (every eligible
+entity decided, not a partial/capped run). Comparing them side by side
+shows how the system's real, measured behavior has actually shifted —
+not a guess, three real runs:
+
+| | Fresh-10 (2026-08-20) | Fresh-5 original (2026-08-30) | Fresh-5 gazetteer (2026-08-31) |
+|---|---|---|---|
+| Notes | 10 | 5 | 5 |
+| Total Stage 3 decisions | 258 | 373 | 411 |
+| Found the right SNOMED code at all ("linked recall") | 26.8% | 40.1% | 33.5% |
+| Of everything auto-approved, how often it was actually right | 76.8% | 92.0% | 93.3% |
+| Share of decisions that skipped human review entirely | 30.2% | 56.6% | 47.9% |
+| Average seconds to decide one entity in Stage 3 | 10.2s | 6.9s | 7.0s |
+
+**What this actually shows**: the two more recent Fresh-5 batches auto-approve
+correctly over 92% of the time when they do auto-approve — a real,
+meaningful improvement over the older Fresh-10 batch's 76.8%, reflecting
+everything fixed on the pipeline in between (SNOMED crosswalk fix,
+near-duplicate concept fixes, the calibrator, and — most recently — the
+`normalized_entities` bug described in §7a-7b). The gazetteer batch (the
+one that includes GLiNER-miss-recovery entities, §7c) auto-approves
+slightly less often (47.9% vs. 56.6%) because those recovered entities
+are, by construction, the *harder* cases GLiNER's own neural model
+wasn't confident enough to catch on its own — exactly the honest,
+expected tradeoff already flagged when that mechanism was built, not a
+regression.
+
+---
+
+## 13. All ablation studies run across this pipeline — the complete, honest scoreboard
 
 This document has already walked through several of these in detail as
 they came up naturally (§8's TransE/RotatE comparison, §10-11's
@@ -1133,7 +1166,7 @@ they weren't actually safe to ship.
 
 ---
 
-## 13. The whole journey, summarized
+## 14. The whole journey, summarized
 
 ```
 "Denies fever, chills, ..."
