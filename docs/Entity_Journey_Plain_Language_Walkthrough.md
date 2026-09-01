@@ -1119,6 +1119,35 @@ wasn't confident enough to catch on its own — exactly the honest,
 expected tradeoff already flagged when that mechanism was built, not a
 regression.
 
+### A fourth, deliberately different comparison — the same 5 notes, twice, one setting changed
+
+The three batches above each differ in more than one way (different
+notes, different points in time, several fixes landing in between) — a
+real, honest limitation already noted for that table. To isolate one
+specific mechanism's effect cleanly, a fourth experiment was run
+2026-09-01: five brand-new notes (never processed before, not among the
+5-model calibrator's own training notes) were run through Stage 1-2b
+**twice** — once exactly as normal, once with the newly-extended
+GLiNER gazetteer fallback (§7c, now 24 terms) switched on — with
+literally nothing else different between the two runs.
+
+| | Without the gazetteer | With the gazetteer (24 terms) |
+|---|---|---|
+| Entities found (Stage 2a, all 5 notes) | 688 | 700 (+12) |
+| Found the right text span at all ("span recall") | 50.2% | **51.5%** |
+| Found the right text *and* the right SNOMED code ("linked recall") | 27.4% | **27.7%** |
+
+A small, real, positive result — not a large one, and that's expected:
+the 24-term list was deliberately built narrow and safe (§7c already
+walks through the two-bar test every term had to pass, and the 6 terms
+that got rejected for being too common). Almost all of the gain came
+from just one of the five notes (9 of the 12 extra entities) — a real
+reminder that a 5-note sample is small enough for one note's own content
+to dominate the result, not proof the mechanism only helps one kind of
+note. The gazetteer stays off by default in production pending a larger
+validation batch, the same standing policy every other new mechanism in
+this project follows before being turned on for real notes.
+
 ---
 
 ## 13. All ablation studies run across this pipeline — the complete, honest scoreboard
@@ -1141,11 +1170,12 @@ string of failures to be embarrassed about.
 | 5 | Guideline-evidence injection into the Stage 3 tiebreak prompt | 23 gradable paired entities, 20/23 correct in BOTH arms, **zero flips either direction** — the injected evidence was real but one-sided, never actually discriminating between the tied candidates | No — flag stays off |
 | 6 | MoLLM acronym-escalation (resolving ambiguous abbreviations via a live model call, §"Phase 4") | 34.3%→36.1% precision across two corpus-scale grading passes — a systematic textbook-prior bias (e.g. "LAD" always resolved to the artery, even when gold meant "Lymphadenopathy") | No — stays off by default |
 | 7 | `compute_frequency_priority()` — the pipeline's own past picks as a tiebreak (§7c) | 7/7 gold-checked promotions were wrong on first real-data test; caught actively re-confirming its own earlier mistakes | No — gated behind an empty, manually-curated allow-list |
-| 8 | GLiNER gazetteer fallback — recovering entities GLiNER's neural model misses entirely, via a small curated term list | 96.1% span-level precision (488 TP/20 FP) on the train split; separately found only 9/17 (52.9%) of recovered spans went on to link to the *correct* concept downstream | Partially — 13 of 14 terms kept; `glucose` excluded (its "requires a BLOOD marker" guard only covered 69.6% of real gold cases, due to MIMIC de-identification masking panel headers) |
+| 8 | GLiNER gazetteer fallback — recovering entities GLiNER's neural model misses entirely, via a small curated term list | 96.1% span-level precision (488 TP/20 FP) on the train split; separately found only 9/17 (52.9%) of recovered spans went on to link to the *correct* concept downstream. **Extended 13→24 terms (2026-09-01)**, re-mined to rank 50 with a stricter two-bar test (gold-consistency AND a measured extraction-worthiness/tag-rate check — the second bar alone rejected 6 more candidates, including `k`/`mcv`/`infection`, that would have repeated the `interactive`/`evaluation`/`surgery` over-extraction mistake). A real, isolated before/after on 5 fresh notes (§12): span recall **+1.3pp**, linked recall **+0.4pp** | Partially — 24 of 32 mined candidates kept across two passes; `glucose` and 7 others excluded on real, measured evidence (context-gating unreliable, or failed one of the two safety bars). Flag stays off by default pending a larger validation batch |
 | 9 | `prior_confirmation_count` calibrator-feature ablation (dropping it and re-fitting) | Model's real signal came from consensus-shape/retrieval-provenance, not this feature — but this same investigation surfaced a real, separate false-positive cluster (coronary-artery-segment abbreviations like LCX/LMCA) | `prior_confirmation_count` kept; a dedicated hard-coded trap added for the coronary-segment pattern instead |
 | 10 | Calibrator retrain on a larger, 51-note pool | Val AUROC dropped (0.701 vs. the 0.74 baseline) — more data did not automatically help; also surfaced that the deployed threshold's precision on a larger, more diverse validation set (89.5%) was lower than the small-sample read that first justified it | Diagnostic only — nothing changed in production from this run alone |
 | 11 | Medical-domain-pretrained AI models vs. general-purpose models, on the same tiebreak task (§11) | One medical model scored 0/10 (worse than every other approach tried in this whole document); the other scored 7/10, matching the general model + dictionary-context combination | Neither swapped in — which specific model matters more than whether it was "medically trained" |
 | 12 | SNOMED-graph "is a" hierarchy context injected into the Stage 3 prompt (§10) | On a fair, targeted 10-case sample: 6/10 → 8/10 correct, 2 cases fixed, 0 made worse | No — promising, but the lookup only succeeds for about 1 in 3 real mentions; not yet reliable enough to enable broadly |
+| 13 | `normalized_entities` schema audit — was the recall gap a model problem or a plumbing problem? (§7a) | Found a real, 100%-explained bug: two entity_ids sharing the same (text, label) tuple collapsed into one DB row, silently orphaning 8,653 entities corpus-wide (~14pp of the recall shortfall) from ever reaching Stage 3/HITL/KG3 — not a GLiNER/SapBERT accuracy issue at all | **Yes — fixed, live**. Already-published recall/precision numbers didn't change (a grading-script workaround had already masked the symptom); the real gain is 8,653 entities now reachable downstream that weren't before |
 
 **The one clear, adopted win** in this whole scoreboard is #1 — a
 3-line hand-written rule, backed by an exceptionless 78/78 real-data

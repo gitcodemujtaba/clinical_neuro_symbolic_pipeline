@@ -10,3 +10,11 @@ Asking to truncate to max_length but no maximum length is provided and the model
 [510.4s] 14702741-DS-7: 10548 chars, 190 entities extracted (Stage 2a)
 ℹ️ 8/10 relations in 18752997-DS-9 had at least one unlinked endpoint.
 [726.4s] 18752997-DS-9: 8526 chars, 120 entities extracted (Stage 2a)
+[1013.3s] 17665522-DS-2: 8296 chars, 157 entities extracted (Stage 2a)
+[1243.0s] 17743133-DS-8: 9512 chars, 141 entities extracted (Stage 2a)
+
+=== Summary ===
+total extracted_entities rows (all, incl. below-threshold): 734
+Stage 2b-eligible (accepted, not superseded): 685
+normalized (have a normalized_entities row -- ready for Stage 3): 688
+total time: 1243.0s

@@ -778,8 +778,9 @@ Every mechanism below takes data this project already has for another reason —
 | **Mined context rules** (`mine_context_rules()`, KG3 doc §5, §11.2) | Gold-simulated-approved HITL cases → deterministic Stage 1 tiebreak rules | Stage 1 abbreviation-disambiguation accuracy | 27 real rules mined (21 confirmed `"no" + lad` → Lymphadenopathy examples) — but **zero** of fresh-5's 22 ambiguous entities used any mined abbreviation | **Real signal, null on this sample** — mining works, coverage hasn't reached this population yet |
 | **Guideline evidence injection** (§11 above) | 76 curated clinical-guideline documents | Tiebreak-resolution precision on `TIER_4`/`TIER_2` split votes | 87.0% / 87.0%, **zero flips** across 23 real paired entities — structural cause identified (real hits are one-sided background facts, not pair-adjudicating rules) | **Null, not adopted** — flag stays off |
 | **Acronym escalation** (`src/acronym_escalation.py`, tracked in the reorg plan's Phase 4) | MoLLM + the pipeline's own dictionary, repurposed to resolve ambiguous abbreviations before extraction | Stage 1 expansion accuracy | 34.3%→36.1% precision at corpus scale — a systematic textbook-prior bias (e.g. `LAD`→"left anterior descending artery" over gold's "Lymphadenopathy") | **Negative, not adopted** — stays off by default |
+| **GLiNER gazetteer fallback, 24-term extension** (`src/gliner_gazetteer_fallback.py`, §18 below) | Gold's own annotations, mined via `evaluation/mine_gliner_misses.py` (train-split, top-50), standing in for a future KG3-sourced version | Span recall / linked recall on a genuinely fresh, never-processed 5-note batch | **Span recall 50.2%→51.5% (+1.3pp), linked recall 27.4%→27.7% (+0.4pp)** — real, isolated before/after on the identical 5 notes (`CNSP_GLINER_GAZETTEER_FALLBACK` off vs. on, nothing else changed), 12 extra entities recovered across the batch | **Positive, small, real** — flag stays off by default pending a larger validation batch; §18 has the isolated-notes methodology and per-note breakdown |
 
-**Reading this honestly**: exactly one mechanism (`kg3_confirmation_count`) has a clearly positive, adopted, at-scale-verified effect; one more (the lab-alias fix) is positive and real but not yet re-measured at full corpus scale; `prior_confirmation_count` contributes a real but secondary signal; two mechanisms (mined context rules, guideline evidence) are honestly null on the specific populations tested so far, not proven ineffective in general; one (acronym escalation) is a real, corpus-measured negative result. The pattern worth taking away: **repurposing existing data has real, non-trivial potential — roughly half of what's been tried has moved a real benchmark number — but it is not uniformly positive, and every claim above is backed by a specific, reproducible measurement, not an assumption that "more signal is always better."**
+**Reading this honestly**: exactly one mechanism (`kg3_confirmation_count`) has a clearly positive, adopted, at-scale-verified effect; two more (the lab-alias fix, the gazetteer extension) are positive and real but on small samples, not yet re-measured at full corpus scale; `prior_confirmation_count` contributes a real but secondary signal; two mechanisms (mined context rules, guideline evidence) are honestly null on the specific populations tested so far, not proven ineffective in general; one (acronym escalation) is a real, corpus-measured negative result. The pattern worth taking away: **repurposing existing data has real, non-trivial potential — over half of what's been tried has moved a real benchmark number — but it is not uniformly positive, and every claim above is backed by a specific, reproducible measurement, not an assumption that "more signal is always better."**
 
 ---
 
@@ -831,3 +832,29 @@ Every mechanism below takes data this project already has for another reason —
 **A second-order finding, equally real**: six evaluation/grading scripts (`scripts/score_gold_recall.py`, `evaluation/iou_metrics.py`, `evaluation/ablations.py`, `evaluation/cal_eval.py`, `evaluation/stage1_disambiguation_eval.py`, `evaluation/stage2b_cal_eval.py`, `scripts/measure_gliner_risk_vs_match_tier.py`) had already joined `extracted_entities` to `normalized_entities` on the old composite key as a **documented, deliberate workaround** for this exact defect (`score_gold_recall.py`'s own "KNOWN DB CAVEAT" docstring, written earlier this session, correctly diagnosed the bug and worked around it for scoring purposes specifically because `normalize_entity()` is a pure function of that key — the *concept* a duplicate mention resolved to was never wrong, only its `entity_id`-level persistence). Once entity_id became reliable, that same workaround join would have started **double-counting** predictions instead — verified live, up to 6x row duplication on the Fresh-5 original batch. All seven were switched to the correct, direct `entity_id` join.
 
 **Net effect on already-reported numbers, checked directly rather than assumed**: because the workaround already existed in the grading path, **the linked-recall/precision figures already published in this document (§2, §10, §16) do not change** — re-run after the fix with the corrected join, all three batches in §16.2 reproduce identically. The real, practical benefit of this fix is **downstream, not in the score**: 8,653 previously-invisible entities (5,730 of them gold-covering) are now visible to Stage 3/HITL/KG3 for the first time, where before this fix they could never be routed, reviewed, or written at all — a pure coverage/completeness fix to the pipeline's own internal plumbing, not a retroactive change to any accuracy metric already reported. `tests/test_normalized_entities_dedup_key.py` (4 checks) and the full suite (91/91) both pass; see the fix's own commit message for the complete diagnosis.
+
+---
+
+## 18. Gazetteer Fallback Extension — Isolated Before/After Ablation (2026-09-01)
+
+**Method.** Rather than reuse an already-processed batch, five genuinely fresh notes were selected specifically to isolate this one variable: in the official locked test split (`evaluation.splits.load_split("test")`), **never processed by this pipeline at all** before this experiment, and **not among the `ConsensusCalibrator`'s 75 training notes** — `14050425-DS-5`, `14702741-DS-7`, `18752997-DS-9`, `17665522-DS-2`, `17743133-DS-8`. Stage 1→2a→2b was run twice on the identical 5 notes: once with `CNSP_GLINER_GAZETTEER_FALLBACK` unset (baseline), once with it set to `1` (all 24 gazetteer terms — the original 13 plus the 11 added this session, §14's table row). Nothing else differed between the two runs.
+
+**Per-note entity count** (Stage 2a, raw extraction):
+
+| Note | Baseline | With gazetteer | Delta |
+|---|---|---|---|
+| `14050425-DS-5` | 90 | 92 | +2 |
+| `14702741-DS-7` | 189 | 190 | +1 |
+| `18752997-DS-9` | 120 | 120 | +0 |
+| `17665522-DS-2` | 148 | 157 | +9 |
+| `17743133-DS-8` | 141 | 141 | +0 |
+| **Total** | **688** | **700** | **+12** |
+
+**Gold-graded result, 862 gold annotations across the 5 notes:**
+
+| Metric | Baseline | With gazetteer | Delta |
+|---|---|---|---|
+| Span recall | 50.2% | 51.5% | **+1.3pp** |
+| Linked recall | 27.4% | 27.7% | **+0.4pp** |
+
+**Honest read**: small and real, not a large win — consistent with the mechanism's own design intent (the two-bar vetting in §14/`src/gliner_gazetteer_fallback.py`'s docstring deliberately prioritized safety over volume, rejecting 6 of the 18 candidates checked at rank 26-50 specifically to avoid the `interactive`/`evaluation`/`surgery` over-extraction trap). The gain is concentrated in one note (`17665522-DS-2`, +9 of the +12 total) — a real per-note variance, not evidence the mechanism only works on one note type; a larger validation batch would be needed to say more. `CNSP_GLINER_GAZETTEER_FALLBACK` stays off by default pending that larger batch, consistent with every other new-mechanism rollout in this project.
