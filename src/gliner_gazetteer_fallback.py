@@ -94,6 +94,92 @@ GATED OFF BY DEFAULT (env var CNSP_GLINER_GAZETTEER_FALLBACK, same
 pattern as CNSP_ACRONYM_ESCALATION/CNSP_HYBRID_RETRIEVAL) -- built and
 unit-tested, pending its own validation batch on real notes before
 enabling, same discipline as every other new mechanism this session.
+
+2026-09-01 EXTENSION -- eleven more terms, ranks 26-50 of the same
+mining (`evaluation/mine_gliner_misses.py --top-n 50`, train-split only,
+`logs/gliner_miss_report_top50.json`). Ranks 1-25 were already fully
+triaged when this module was first built; this extension re-applies BOTH
+required bars to every new candidate, not just the consistency-when-
+tagged one:
+
+  1. Gold-concept-consistency-when-tagged >=95% (same bar as the
+     original 13).
+  2. TAG RATE (extraction-worthiness-whenever-present): of every real,
+     case-insensitive whole-word/phrase occurrence of the term in the
+     actual train-split note text, what fraction does gold ALSO tag as
+     this entity? A term can pass bar 1 while still being a common
+     narrative word gold rarely tags (exactly the `interactive`/
+     `evaluation`/`surgery`/`soft` trap already documented above) --
+     bar 2 catches that empirically instead of by guessing.
+
+Eleven cleared both bars (tag rate / consistency, all measured against
+real train-split occurrences):
+
+  totbili           -> 359986008 'Bilirubin, total measurement'   (100%/100%, n=67)
+  perrl             -> 386666001 'Pupils equal and reacting to light' (100%/100%, n=56)
+  rubs              -> 7036007   'Pericardial friction rub'       (98.1%/100%, n=53)
+  well perfused     -> 1137685003 'Normal tissue perfusion'       (100%/100%, n=51)
+  sclera anicteric  -> 427801009 'White sclera'                   (100%/100%, n=49)
+  gallops           -> 2170000   'Gallop rhythm'                  (98.0%/100%, n=50)
+  crackles          -> 48409008  'Respiratory crackles'           (100%/100%, n=49)
+  rhonchi           -> 24612001  'Wheeze - rhonchi'                (100%/100%, n=46)
+  cyanosis          -> 3415004   'Cyanosis'                        (100%/100%, n=43)
+  vitals            -> 118227000 'Vital signs finding'            (93.2%/99.1%, n=118)
+  ph                -> 81065003  'pH measurement'                 (90.8%/100%, n=65)
+
+SIX of the 18 candidates checked at ranks 26-50 FAILED and were excluded,
+same discipline as ranks 1-25's exclusions -- not silently dropped:
+
+  k          -- tag rate 21.4% (248 real occurrences, only 53 are the
+                entity) -- a single letter is inherently overloaded;
+                worst tag rate of any candidate checked.
+  mcv        -- tag rate 35.7% (280 occurrences, 100 tagged) -- collides
+                with other real uses far more often than it's the lab
+                value.
+  urine      -- consistency only 39.2% -- gold maps it to too many
+                different concepts depending on context, same failure
+                shape as the original `pain`/`normal`/`stable` exclusions.
+  infection  -- tag rate 95.1% (extraction-worthy) but consistency only
+                49.6% -- genuinely multi-concept even when it IS the
+                entity gold wanted.
+  bleeding   -- tag rate 99.0% but consistency only 57.8% -- same
+                multi-concept problem as `infection`.
+  erythema   -- consistency 86.4%, just under the 95% bar.
+
+`ph` carries one honest caveat worth flagging even though it cleared
+both bars: it's a 2-character token, and the WORD BOUNDARY regex
+(`\bph\b`) is what keeps it from matching inside "morph"/"graph" -- but
+"PH"/"pH" has real-world alternate readings (pulmonary hypertension,
+public health) this specific train-split corpus's measured 90.8%/100%
+happened not to surface. Included on the strength of the actual
+measurement (same standard `glucose` was excluded by, just the other
+direction), not asserted risk-free by inspection alone -- worth
+re-checking if a live validation run ever shows it misfiring.
+
+STANDING SELECTION CRITERIA -- for gold today, for KG3 later. Every term
+in this file, old and new, was vetted the same way: gold's own
+annotations stand in for what a mature KG3 (real confirmed clinician
+review) would eventually supply, since KG3 today holds zero real review
+volume (see docs/KG3_Implementation_And_Feedback_Loop_Technical_
+Reference.md). The two-bar rule above (>=95% consistency-when-tagged,
+AND an empirically-measured extraction-worthiness/tag-rate check, not a
+plausibility guess) is deliberately written as a METHOD, not a
+gold-specific procedure, so the exact same two checks apply unchanged
+the day KG3 has enough real, human-confirmed volume to mine from
+instead of gold. One addition required specifically for a KG3-sourced
+run, not needed for this gold-based one: a minimum REOCCURRENCE-COUNT
+gate before trusting a mined term at all (the same discipline already
+proven for `acronym_priors`' `MIN_CACHE_HIT_COUNT=2` and the abbreviation
+flywheel's `VERIFIED_ALLOW_LIST`) -- gold is a fixed, already-adjudicated
+dataset where a single measured tag-rate is trustworthy on its own; a
+live KG3 mining pass would be reading the pipeline's OWN accumulating
+decisions, which can self-reinforce a wrong pattern the same way
+`compute_frequency_priority()`'s first, block-list-based version did
+(7/7 wrong on first real-data check) before that mechanism was inverted
+to an allow-list. A future KG3-sourced version of this vetting should
+therefore require BOTH bars above AND independent reconfirmation across
+multiple distinct real review events before promoting any candidate,
+not a single mining pass's own numbers.
 """
 import os
 import re
@@ -159,6 +245,29 @@ _GAZETTEER = {
         re.compile(r"\bambulatory\s*-\s*independent\b", re.IGNORECASE), "Symptom", _always),
     "level of consciousness": (
         re.compile(r"\blevel of consciousness\b", re.IGNORECASE), "Procedure", _always),
+    # 2026-09-01 extension (11 terms, ranks 26-50 of the same mining --
+    # see module docstring's "2026-09-01 EXTENSION" section for the real
+    # tag-rate/consistency numbers each one cleared). All plain whole-
+    # word/phrase, case-insensitive, no context gate needed -- same
+    # "technical vocabulary with no viable everyday-English reading"
+    # reasoning as eos/monos/rdwsd/cxr above, empirically confirmed via
+    # each term's own measured tag rate rather than assumed by analogy.
+    "totbili": (re.compile(r"\btotbili\b", re.IGNORECASE), "Lab Test", _always),
+    "perrl": (re.compile(r"\bperrl\b", re.IGNORECASE), "Condition", _always),
+    "rubs": (re.compile(r"\brubs\b", re.IGNORECASE), "Condition", _always),
+    "well perfused": (
+        re.compile(r"\bwell\s+perfused\b", re.IGNORECASE), "Symptom", _always),
+    "sclera anicteric": (
+        re.compile(r"\bsclera\s+anicteric\b", re.IGNORECASE), "Condition", _always),
+    "gallops": (re.compile(r"\bgallops\b", re.IGNORECASE), "Condition", _always),
+    "crackles": (re.compile(r"\bcrackles\b", re.IGNORECASE), "Condition", _always),
+    "rhonchi": (re.compile(r"\brhonchi\b", re.IGNORECASE), "Condition", _always),
+    "cyanosis": (re.compile(r"\bcyanosis\b", re.IGNORECASE), "Condition", _always),
+    "vitals": (re.compile(r"\bvitals\b", re.IGNORECASE), "Condition", _always),
+    # See the docstring's honest caveat on this one -- included on the
+    # strength of its own 90.8%/100% measurement, not risk-free by
+    # inspection (a 2-char token, real-world alternate readings exist).
+    "ph": (re.compile(r"\bph\b", re.IGNORECASE), "Lab Test", _always),
 }
 
 

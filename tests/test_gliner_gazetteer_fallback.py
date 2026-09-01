@@ -112,10 +112,47 @@ def run():
     # ======================================================================
     # Deliberately excluded terms never appear, even in favorable text
     # ======================================================================
-    text = "Patient has pain. Vitals stable, exam normal. Cultures negative."
+    # 2026-09-01: this fixture used to also contain "Vitals" -- removed,
+    # since that term was legitimately added to the gazetteer the same
+    # day (see module docstring's "2026-09-01 EXTENSION" section), so its
+    # presence here would no longer test what this check is actually for.
+    text = "Patient has pain. Sat stable, exam normal. Cultures negative."
     recovered = recover_missed_entities(text, existing_spans=[])
     check("deliberately excluded ambiguous terms (pain/stable/normal/negative/"
          "culture) are never recovered -- not in the gazetteer at all",
+          len(recovered) == 0)
+
+    # ======================================================================
+    # 2026-09-01 extension -- 11 new terms, plain whole-word/phrase match,
+    # no context gate. One check per term against real-shaped text.
+    # ======================================================================
+    new_term_cases = [
+        ("TotBili-1.2\n", "totbili", "Lab Test"),
+        ("PERRL, EOMI\n", "perrl", "Condition"),
+        ("CV: RRR, no MRG, no rubs\n", "rubs", "Condition"),
+        ("Extremities: warm, well perfused\n", "well perfused", "Symptom"),
+        ("HEENT: sclera anicteric, MMM\n", "sclera anicteric", "Condition"),
+        ("Cardiac exam without gallops\n", "gallops", "Condition"),
+        ("Lungs: crackles at bases\n", "crackles", "Condition"),
+        ("no rhonchi appreciated\n", "rhonchi", "Condition"),
+        ("no cyanosis noted\n", "cyanosis", "Condition"),
+        ("Vitals within normal limits on discharge\n", "vitals", "Condition"),
+        ("Arterial pH 7.38\n", "ph", "Lab Test"),
+    ]
+    for text, term, expected_label in new_term_cases:
+        recovered = recover_missed_entities(text, existing_spans=[])
+        hits = [r for r in recovered if r["text"].lower() == term]
+        check(f"{term!r} recovered from real-shaped text with the correct label",
+              len(hits) == 1 and hits[0]["label"] == expected_label)
+
+    # And confirm the six rejected rank-26-50 candidates (k/mcv/urine/
+    # infection/bleeding/erythema) stay excluded, same discipline as the
+    # original five above.
+    text = ("K 4.1, MCV 88, urine culture pending, no infection, "
+            "no bleeding, mild erythema noted\n")
+    recovered = recover_missed_entities(text, existing_spans=[])
+    check("the six rank-26-50 candidates that failed vetting "
+         "(k/mcv/urine/infection/bleeding/erythema) are never recovered",
           len(recovered) == 0)
 
     print(f"gliner-gazetteer-fallback tests: {ok} passed, {len(fail)} failed")
