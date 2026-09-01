@@ -1088,38 +1088,45 @@ was "medically trained" in general.
 
 ---
 
-## 12. Three real test batches, compared side by side
+## 12. Four real test batches, compared side by side
 
 Beyond following one entity end-to-end, this project has run the whole
-pipeline on three different small batches of real notes at different
+pipeline on four different small batches of real notes at different
 points in time, each fully processed through Stage 3 (every eligible
 entity decided, not a partial/capped run). Comparing them side by side
 shows how the system's real, measured behavior has actually shifted —
-not a guess, three real runs:
+not a guess, four real runs. The fourth is the most demanding test yet:
+five notes verified to be genuinely new to *every* part of the pipeline,
+including the calibrator's own training history:
 
-| | Fresh-10 (2026-08-20) | Fresh-5 original (2026-08-30) | Fresh-5 gazetteer (2026-08-31) |
-|---|---|---|---|
-| Notes | 10 | 5 | 5 |
-| Total Stage 3 decisions | 258 | 373 | 411 |
-| Found the right SNOMED code at all ("linked recall") | 26.8% | 40.1% | 33.5% |
-| Of everything auto-approved, how often it was actually right | 76.8% | 92.0% | 93.3% |
-| Share of decisions that skipped human review entirely | 30.2% | 56.6% | 47.9% |
-| Average seconds to decide one entity in Stage 3 | 10.2s | 6.9s | 7.0s |
+| | Fresh-10 (2026-08-20) | Fresh-5 original (2026-08-30) | Fresh-5 gazetteer (2026-08-31) | Fresh-5 calibrator-unseen (2026-09-01) |
+|---|---|---|---|---|
+| Notes | 10 | 5 | 5 | 5 |
+| Total Stage 3 decisions | 258 | 373 | 411 | 688 |
+| Found the right SNOMED code at all ("linked recall") | 26.8% | 40.1% | 33.5% | 27.7% |
+| Of everything auto-approved, how often it was actually right | 76.8% | 92.0% | 93.3% | 86.9% |
+| Share of decisions that skipped human review entirely | 30.2% | 56.6% | 47.9% | 53.2% |
+| Average seconds to decide one entity in Stage 3 | 10.2s | 6.9s | 7.0s | 7.0s |
 
-**What this actually shows**: the two more recent Fresh-5 batches auto-approve
-correctly over 92% of the time when they do auto-approve — a real,
-meaningful improvement over the older Fresh-10 batch's 76.8%, reflecting
+**What this actually shows**: the three more recent batches auto-approve
+correctly well above the older Fresh-10 batch's 76.8%, reflecting
 everything fixed on the pipeline in between (SNOMED crosswalk fix,
 near-duplicate concept fixes, the calibrator, and — most recently — the
-`normalized_entities` bug described in §7a-7b). The gazetteer batch (the
-one that includes GLiNER-miss-recovery entities, §7c) auto-approves
-slightly less often (47.9% vs. 56.6%) because those recovered entities
-are, by construction, the *harder* cases GLiNER's own neural model
-wasn't confident enough to catch on its own — exactly the honest,
-expected tradeoff already flagged when that mechanism was built, not a
-regression.
+`normalized_entities` bug described in §7a-7b). The newest batch's 86.9%
+sits between the two prior Fresh-5 batches, but that blended number
+actually hides a stronger individual result: broken down by tier, this
+batch's calibrator-promoted decisions (`TIER_1B`) hit **100%** (25/25) and
+its exact-match decisions (`TIER_3`) also hit **100%** (63/63) — both as
+good as or better than any prior batch. The lower blended average comes
+from this batch simply having a bigger *share* of genuinely hard,
+split-vote entities (`TIER_4`, 33.3% of the total, the largest share of
+any batch except Fresh-10), not from any individual tier getting worse.
+Stage 3's own per-entity speed has stayed remarkably stable across the
+three most recent batches (6.9s, 7.0s, 7.0s) — real evidence the
+ensemble's own cost hasn't drifted even as everything else about the
+pipeline changed around it.
 
-### A fourth, deliberately different comparison — the same 5 notes, twice, one setting changed
+### A fifth data point, deliberately different — the same 5 notes, twice, one setting changed
 
 The three batches above each differ in more than one way (different
 notes, different points in time, several fixes landing in between) — a

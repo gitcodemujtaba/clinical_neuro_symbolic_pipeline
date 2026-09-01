@@ -1,0 +1,1775 @@
+==============================================================================
+STAGE 3 BATCH RUN -- Pass 4 Tier 1-5 gate (src.mollm_tier_gate)
+==============================================================================
+--- 1. OLLAMA MODEL PREFLIGHT ---
+  OK   qwen2.5:3b
+  OK   llama3.2:3b
+  OK   phi4-mini
+Loading SapBERT model for vector normalization... (this may take a moment)
+
+HYBRID_RETRIEVAL_ENABLED: False (should be False -- see this script's own docstring)
+Memgraph: reachable (dry-run writes will still be exercised, nothing will be committed)
+db:    /home/ec2-user/clinical_neuro_symbolic_pipeline_reorder/db/kg2_lexical_store.duckdb
+notes: 5
+calibrator: fitted, loaded from /home/ec2-user/clinical_neuro_symbolic_pipeline_reorder/models/consensus_calibrator_v1.pkl
+resume check: 0 entity_id(s) already have a stored tier-gate decision and will be skipped
+
+[note 1/5] 14050425-DS-5: 88 record(s), 88 remaining after resume-skip
+  [1/88] 'L distal femur nonunion' (Condition)  [elapsed 0.0m | done 0 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1077313 (Fracture of distal epiphysis of left femur)
+  [2/88] 'L' (Qualifier)  [elapsed 0.2m | done 1 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [3/88] 'distal' (Qualifier)  [elapsed 0.2m | done 2 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [4/88] 'femur' (Anatomy)  [elapsed 0.2m | done 3 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [5/88] 'left' (Qualifier)  [elapsed 0.3m | done 4 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [6/88] 'distal' (Qualifier)  [elapsed 0.3m | done 5 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [7/88] 'femur' (Anatomy)  [elapsed 0.3m | done 6 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [8/88] 'CT scan' (Procedure)  [elapsed 0.4m | done 7 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4300757 (Computed tomography)
+  [9/88] 'chills' (Symptom)  [elapsed 0.5m | done 8 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=434490 (Chill)
+  [10/88] 'HTN' (Condition)  [elapsed 0.6m | done 9 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [11/88] 'Physical Exam' (Procedure)  [elapsed 0.7m | done 10 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4240345 (Physical examination)
+  [12/88] 'General' (Procedure)  [elapsed 0.7m | done 11 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4036803 (General examination of patient)
+  [13/88] 'CV' (Anatomy)  [elapsed 0.8m | done 12 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [14/88] 'well perfused' (Symptom)  [elapsed 0.8m | done 13 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [15/88] 'Abd' (Procedure)  [elapsed 1.0m | done 14 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4075966 (Examination of abdomen)
+  [16/88] 'soft' (Symptom)  [elapsed 1.0m | done 15 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4096862 (Abdomen soft)
+  [17/88] 'non-tender' (Condition)  [elapsed 1.0m | done 16 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [18/88] 'WBC-15' (Lab Test)  [elapsed 1.1m | done 17 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [19/88] 'RBC-3' (Lab Test)  [elapsed 1.4m | done 18 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4030871 (Red blood cell count)
+  [20/88] 'Hgb-9' (Lab Test)  [elapsed 1.7m | done 19 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [21/88] 'Hct-30' (Lab Test)  [elapsed 2.0m | done 20 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [22/88] 'MCV-90' (Lab Test)  [elapsed 2.1m | done 21 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [23/88] 'MCH-28' (Lab Test)  [elapsed 2.4m | done 22 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [24/88] 'MCHC-32' (Lab Test)  [elapsed 2.7m | done 23 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [25/88] 'RDW-13' (Lab Test)  [elapsed 3.1m | done 24 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [26/88] 'RDWSD-44' (Lab Test)  [elapsed 3.4m | done 25 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [27/88] 'Glucose-322' (Lab Test)  [elapsed 3.4m | done 26 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [28/88] 'UreaN-11 Creat-1.0 Na-134' (Lab Test)  [elapsed 3.5m | done 27 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [29/88] 'K-4.0 Cl-96 HCO3-24 AnGap-14' (Lab Test)  [elapsed 3.5m | done 28 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [30/88] 'left' (Qualifier)  [elapsed 3.5m | done 29 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [31/88] 'distal' (Qualifier)  [elapsed 3.5m | done 30 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [32/88] 'femur' (Anatomy)  [elapsed 3.6m | done 31 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [33/88] 'left distal femur nonunion' (Condition)  [elapsed 3.7m | done 32 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1077313 (Fracture of distal epiphysis of left femur)
+  [34/88] 'SBP' (Lab Test)  [elapsed 3.8m | done 33 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [35/88] 'Metoprolol' (Medication)  [elapsed 3.8m | done 34 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1307046 (metoprolol)
+  [36/88] 'IVF' (Procedure)  [elapsed 3.9m | done 35 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [37/88] 'hyperglycemia' (Condition)  [elapsed 3.9m | done 36 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4214376 (Hyperglycemia)
+  [38/88] 'Apixaban' (Medication)  [elapsed 4.0m | done 37 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=43013024 (apixaban)
+  [39/88] 'Enoxaparin' (Medication)  [elapsed 4.1m | done 38 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1301025 (enoxaparin)
+  [40/88] 'Apixaban' (Medication)  [elapsed 4.2m | done 39 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=43013024 (apixaban)
+  [41/88] 'left lower extremity' (Anatomy)  [elapsed 4.3m | done 40 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [42/88] 'Apixaban' (Medication)  [elapsed 4.4m | done 41 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=43013024 (apixaban)
+  [43/88] 'DVT' (Condition)  [elapsed 4.5m | done 42 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [44/88] 'Apixaban' (Medication)  [elapsed 4.6m | done 43 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=43013024 (apixaban)
+  [45/88] 'Atorvastatin' (Medication)  [elapsed 4.7m | done 44 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1545958 (atorvastatin)
+  [46/88] 'Digoxin' (Medication)  [elapsed 4.8m | done 45 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1326303 (digoxin)
+  [47/88] 'Gabapentin' (Medication)  [elapsed 4.9m | done 46 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=797399 (gabapentin)
+  [48/88] 'Metoprolol' (Medication)  [elapsed 5.0m | done 47 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1307046 (metoprolol)
+  [49/88] 'Pantoprazole' (Medication)  [elapsed 5.1m | done 48 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=948078 (pantoprazole)
+  [50/88] 'Acetaminophen' (Medication)  [elapsed 5.2m | done 49 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1125315 (acetaminophen)
+  [51/88] 'Bisacodyl' (Medication)  [elapsed 5.3m | done 50 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=924939 (bisacodyl)
+  [52/88] 'Constipation' (Condition)  [elapsed 5.4m | done 51 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=75860 (Constipation)
+  [53/88] 'Calcium Carbonate' (Medication)  [elapsed 5.5m | done 52 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=19035704 (calcium carbonate)
+  [54/88] 'Cepacol' (Medication)  [elapsed 5.6m | done 53 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [55/88] 'Cough/Sore \nThroat' (Symptom)  [elapsed 6.1m | done 54 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [56/88] 'Docusate Sodium' (Medication)  [elapsed 6.4m | done 55 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [57/88] 'Milk of Magnesia' (Medication)  [elapsed 6.7m | done 56 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [58/88] 'ml' (Procedure)  [elapsed 7.1m | done 57 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [59/88] 'Constipation' (Condition)  [elapsed 7.2m | done 58 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=75860 (Constipation)
+  [60/88] 'Multivitamins' (Medication)  [elapsed 7.3m | done 59 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=36878782 (Multivitamin preparation)
+  [61/88] 'OxyCODONE' (Medication)  [elapsed 7.4m | done 60 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1124957 (oxycodone)
+  [62/88] 'oxycodone' (Medication)  [elapsed 7.4m | done 61 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1124957 (oxycodone)
+  [63/88] 'Senna' (Medication)  [elapsed 7.5m | done 62 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [64/88] 'Vitamin D' (Medication)  [elapsed 7.9m | done 63 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [65/88] 'Apixaban' (Medication)  [elapsed 8.0m | done 64 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=43013024 (apixaban)
+  [66/88] 'Atorvastatin' (Medication)  [elapsed 8.1m | done 65 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1545958 (atorvastatin)
+  [67/88] 'Digoxin' (Medication)  [elapsed 8.2m | done 66 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1326303 (digoxin)
+  [68/88] 'Gabapentin' (Medication)  [elapsed 8.3m | done 67 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=797399 (gabapentin)
+  [69/88] 'Metoprolol' (Medication)  [elapsed 8.4m | done 68 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1307046 (metoprolol)
+  [70/88] 'Pantoprazole' (Medication)  [elapsed 8.5m | done 69 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=948078 (pantoprazole)
+  [71/88] 'L distal femur nonunion' (Condition)  [elapsed 8.6m | done 70 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [72/88] 'Mental Status' (Procedure)  [elapsed 8.7m | done 71 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4190990 (Neurological mental status determination)
+  [73/88] 'Alert' (Symptom)  [elapsed 8.7m | done 72 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [74/88] 'Activity Status' (Symptom)  [elapsed 8.7m | done 73 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4030753 (Physical functional dependency)
+  [75/88] 'Incision' (Anatomy)  [elapsed 8.7m | done 74 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4147894 (Incision)
+  [76/88] 'left lower extremity' (Anatomy)  [elapsed 8.8m | done 75 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [77/88] 'pain' (Symptom)  [elapsed 8.9m | done 76 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4329041 (Pain)
+  [78/88] 'constipation' (Condition)  [elapsed 9.0m | done 77 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=75860 (Constipation)
+  [79/88] 'colace' (Medication)  [elapsed 9.1m | done 78 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=941258 (docusate)
+  [80/88] 'Tylenol' (Medication)  [elapsed 9.1m | done 79 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [81/88] 'Add' (Condition)  [elapsed 9.6m | done 80 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [82/88] 'Tylenol' (Medication)  [elapsed 9.8m | done 81 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [83/88] 'Tylenol' (Medication)  [elapsed 10.3m | done 82 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [84/88] 'Eliquis' (Medication)  [elapsed 10.8m | done 83 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=43013024 (apixaban)
+  [85/88] 'incision' (Anatomy)  [elapsed 10.8m | done 84 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4147894 (Incision)
+  [86/88] 'incision' (Anatomy)  [elapsed 10.9m | done 85 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4147894 (Incision)
+  [87/88] 'incision' (Anatomy)  [elapsed 11.0m | done 86 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4147894 (Incision)
+  [88/88] 'Incision' (Anatomy)  [elapsed 11.1m | done 87 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4147894 (Incision)
+[note 2/5] 14702741-DS-7: 187 record(s), 187 remaining after resume-skip
+  [1/187] 'Metastatic colon cancer' (Condition)  [elapsed 11.2m | done 88 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4312001 (Carcinoma of colon, stage IV)
+  [2/187] 'left ureter' (Anatomy)  [elapsed 11.3m | done 89 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [3/187] 'Left' (Qualifier)  [elapsed 11.4m | done 90 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [4/187] 'nephroureterectomy' (Procedure)  [elapsed 11.4m | done 91 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4022807 (Nephroureterectomy)
+  [5/187] 'cystoscopy' (Procedure)  [elapsed 11.5m | done 92 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=40299999 (Cystoscopy)
+  [6/187] 'urine\ncytology' (Lab Test)  [elapsed 11.6m | done 93 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=43530795 (Microscopic cytologic examination of urine specimen)
+  [7/187] 'colon' (Anatomy)  [elapsed 11.7m | done 94 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [8/187] 'cancer' (Condition)  [elapsed 11.8m | done 95 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [9/187] 'tumor' (Condition)  [elapsed 12.0m | done 96 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4030314 (Neoplasm)
+  [10/187] 'left ureter' (Anatomy)  [elapsed 12.1m | done 97 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4131503 (Structure of left ureter)
+  [11/187] 'left upper tract' (Anatomy)  [elapsed 12.2m | done 98 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [12/187] 'urine cytology' (Lab Test)  [elapsed 12.3m | done 99 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=43530795 (Microscopic cytologic examination of urine specimen)
+  [13/187] 'ureter' (Anatomy)  [elapsed 12.4m | done 100 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [14/187] 'cystoscopy' (Procedure)  [elapsed 12.5m | done 101 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=40299999 (Cystoscopy)
+  [15/187] 'bladder' (Anatomy)  [elapsed 12.5m | done 102 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4232481 (Urinary bladder structure)
+  [16/187] 'bladder' (Anatomy)  [elapsed 12.6m | done 103 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4232481 (Urinary bladder structure)
+  [17/187] 'flexible cystoscopy' (Procedure)  [elapsed 12.7m | done 104 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4116796 (Flexible cystoscopy)
+  [18/187] 'tumor' (Condition)  [elapsed 12.8m | done 105 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4030314 (Neoplasm)
+  [19/187] 'bladder' (Anatomy)  [elapsed 12.9m | done 106 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4232481 (Urinary bladder structure)
+  [20/187] 'left ureteral orifice' (Anatomy)  [elapsed 13.0m | done 107 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4088989 (Structure of left ureteral orifice)
+  [21/187] 'transitional cell\ncarcinoma' (Condition)  [elapsed 13.1m | done 108 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4097829 (Transitional cell carcinoma)
+  [22/187] 'histologic' (Qualifier)  [elapsed 13.2m | done 109 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [23/187] 'diagnosis' (Symptom)  [elapsed 13.2m | done 110 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [24/187] 'bladder' (Anatomy)  [elapsed 13.3m | done 111 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4232481 (Urinary bladder structure)
+  [25/187] 'left' (Qualifier)  [elapsed 13.4m | done 112 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [26/187] 'nephroureterectomy' (Procedure)  [elapsed 13.4m | done 113 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4022807 (Nephroureterectomy)
+  [27/187] 'colon' (Anatomy)  [elapsed 13.5m | done 114 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [28/187] 'cancer' (Condition)  [elapsed 13.6m | done 115 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [29/187] 'left' (Qualifier)  [elapsed 13.8m | done 116 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [30/187] 'nephroureterectomy' (Procedure)  [elapsed 13.8m | done 117 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4022807 (Nephroureterectomy)
+  [31/187] 'bladder' (Anatomy)  [elapsed 13.9m | done 118 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4232481 (Urinary bladder structure)
+  [32/187] 'tumor' (Condition)  [elapsed 14.0m | done 119 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4030314 (Neoplasm)
+  [33/187] 'TCC' (Condition)  [elapsed 14.1m | done 120 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [34/187] 'CEA' (Lab Test)  [elapsed 14.2m | done 121 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [35/187] 'bladder' (Anatomy)  [elapsed 14.2m | done 122 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4232481 (Urinary bladder structure)
+  [36/187] 'tumor' (Condition)  [elapsed 14.3m | done 123 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4030314 (Neoplasm)
+  [37/187] 'left kidney' (Anatomy)  [elapsed 14.4m | done 124 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [38/187] 'ureter' (Anatomy)  [elapsed 14.5m | done 125 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4337115 (Ureteric structure)
+  [39/187] 'clinic' (Procedure)  [elapsed 14.6m | done 126 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=42537845 (Outpatient care management)
+  [40/187] 'cystoscopy' (Procedure)  [elapsed 14.6m | done 127 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=40299999 (Cystoscopy)
+  [41/187] 'MD' (Condition)  [elapsed 14.7m | done 128 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4247802 (Muscular dystrophy)
+  [42/187] 'IIA' (Anatomy)  [elapsed 14.8m | done 129 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [43/187] 'cesarean section' (Procedure)  [elapsed 14.9m | done 130 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [44/187] 'laryngeal cancer' (Condition)  [elapsed 15.0m | done 131 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4178968 (Malignant tumor of larynx)
+  [45/187] 'colon' (Anatomy)  [elapsed 15.1m | done 132 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [46/187] 'cancer' (Condition)  [elapsed 15.2m | done 133 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [47/187] 'Physical Exam' (Procedure)  [elapsed 15.4m | done 134 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4240345 (Physical examination)
+  [48/187] 'NAD' (Symptom)  [elapsed 15.4m | done 135 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4085245 (No abnormality detected)
+  [49/187] 'WWP' (Symptom)  [elapsed 15.4m | done 136 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=605777 (Normal tissue perfusion)
+  [50/187] 'distress' (Symptom)  [elapsed 15.4m | done 137 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4239819 (Distress)
+  [51/187] 'Abdomen S' (Anatomy)  [elapsed 15.4m | done 138 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [52/187] 'TTP' (Anatomy)  [elapsed 15.5m | done 139 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [53/187] 'ND' (Symptom)  [elapsed 15.5m | done 140 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=442597 (Swollen abdomen)
+  [54/187] 'WBC' (Lab Test)  [elapsed 15.5m | done 141 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [55/187] 'RBC' (Lab Test)  [elapsed 15.8m | done 142 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [56/187] 'Hgb' (Lab Test)  [elapsed 16.1m | done 143 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [57/187] 'Hct' (Lab Test)  [elapsed 16.4m | done 144 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [58/187] 'MCH' (Lab Test)  [elapsed 16.5m | done 145 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [59/187] 'MCHC' (Lab Test)  [elapsed 16.8m | done 146 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [60/187] 'RDW' (Lab Test)  [elapsed 17.1m | done 147 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [61/187] 'UreaN' (Lab Test)  [elapsed 17.4m | done 148 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4017361 (Blood urea nitrogen measurement)
+  [62/187] 'Creat' (Lab Test)  [elapsed 17.5m | done 149 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [63/187] 'Na' (Lab Test)  [elapsed 17.7m | done 150 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4208938 (Sodium measurement, blood)
+  [64/187] 'Cl' (Lab Test)  [elapsed 17.7m | done 151 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4019545 (Chloride measurement, blood)
+  [65/187] 'HCO3' (Lab Test)  [elapsed 17.7m | done 152 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [66/187] 'AnGap-14' (Lab Test)  [elapsed 18.0m | done 153 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [67/187] 'Calcium' (Lab Test)  [elapsed 18.0m | done 154 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [68/187] 'Phos' (Lab Test)  [elapsed 18.2m | done 155 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [69/187] 'Mg' (Lab Test)  [elapsed 18.4m | done 156 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [70/187] 'laparoscopic \nleft nephrectomy' (Procedure)  [elapsed 18.5m | done 157 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [71/187] 'open' (Qualifier)  [elapsed 18.8m | done 158 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [72/187] 'distal ureterectomy' (Procedure)  [elapsed 18.8m | done 159 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1245991 (Excision of distal ureter)
+  [73/187] 'transurethral \nresection of bladder' (Procedure)  [elapsed 18.9m | done 160 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4124166 (Transurethral excision of urinary bladder)
+  [74/187] 'retroperitoneal lymph node \ndissection' (Procedure)  [elapsed 19.0m | done 161 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=42538967 (Retroperitoneal lymph node dissection)
+  [75/187] 'vagina' (Anatomy)  [elapsed 19.1m | done 162 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [76/187] 'pain' (Symptom)  [elapsed 19.2m | done 163 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4329041 (Pain)
+  [77/187] 'PCA' (Medication)  [elapsed 19.3m | done 164 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [78/187] 'pneumoboots' (Medication)  [elapsed 19.3m | done 165 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [79/187] 'basic metabolic panel' (Lab Test)  [elapsed 19.3m | done 166 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [80/187] 'complete blood count' (Lab Test)  [elapsed 19.6m | done 167 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4132152 (Complete blood count)
+  [81/187] 'nauseated' (Symptom)  [elapsed 19.7m | done 168 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [82/187] 'KUB' (Anatomy)  [elapsed 19.8m | done 169 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [83/187] 'KUB' (Anatomy)  [elapsed 19.9m | done 170 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [84/187] 'KUB' (Anatomy)  [elapsed 20.0m | done 171 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [85/187] 'ileus' (Condition)  [elapsed 20.1m | done 172 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [86/187] 'anti-emetics' (Medication)  [elapsed 20.2m | done 173 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [87/187] 'PCA' (Medication)  [elapsed 20.5m | done 174 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [88/187] 'oral analgesics' (Medication)  [elapsed 20.5m | done 175 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [89/187] 'JP \ncreatinine' (Lab Test)  [elapsed 20.5m | done 176 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [90/187] 'pain control' (Procedure)  [elapsed 20.8m | done 177 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4021823 (Pain control)
+  [91/187] 'oral analgesics' (Medication)  [elapsed 20.9m | done 178 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [92/187] 'clinic' (Procedure)  [elapsed 20.9m | done 179 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=42537845 (Outpatient care management)
+  [93/187] 'Ipratropium-Albuterol Inhalation Spray' (Medication)  [elapsed 20.9m | done 180 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=37499261 (albuterol / ipratropium Inhalation Spray)
+  [94/187] 'INH IH' (Medication)  [elapsed 21.1m | done 181 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [95/187] 'wheezing' (Symptom)  [elapsed 21.1m | done 182 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=314754 (Wheezing)
+  [96/187] 'SOB' (Symptom)  [elapsed 21.2m | done 183 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [97/187] 'Diltiazem Extended-Release' (Medication)  [elapsed 21.3m | done 184 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [98/187] 'Docusate Sodium' (Medication)  [elapsed 21.6m | done 185 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [99/187] 'Polyethylene Glycol' (Medication)  [elapsed 21.9m | done 186 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [100/187] 'constipation' (Condition)  [elapsed 22.0m | done 187 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=75860 (Constipation)
+  [101/187] 'Multivitamins' (Medication)  [elapsed 22.1m | done 188 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=36878782 (Multivitamin preparation)
+  [102/187] 'Acetaminophen w/Codeine' (Medication)  [elapsed 22.2m | done 189 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [103/187] 'pain' (Symptom)  [elapsed 22.6m | done 190 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4329041 (Pain)
+  [104/187] 'Fluticasone-Salmeterol Diskus' (Medication)  [elapsed 22.7m | done 191 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=44031154 (fluticasone / salmeterol Dry Powder Inhaler [Advair Diskus])
+  [105/187] 'INH IH' (Medication)  [elapsed 22.8m | done 192 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [106/187] 'Ciprofloxacin' (Medication)  [elapsed 22.8m | done 193 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1797513 (ciprofloxacin)
+  [107/187] 'HCl' (Medication)  [elapsed 22.9m | done 194 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=974140 (hydrochloric acid)
+  [108/187] 'albuterol sulfate' (Medication)  [elapsed 23.0m | done 195 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [109/187] 'wheezing' (Symptom)  [elapsed 23.1m | done 196 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=314754 (Wheezing)
+  [110/187] 'SOB' (Symptom)  [elapsed 23.2m | done 197 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [111/187] 'Vitamin D' (Medication)  [elapsed 23.3m | done 198 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [112/187] 'Diltiazem Extended-Release' (Medication)  [elapsed 23.4m | done 199 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [113/187] 'Docusate Sodium' (Medication)  [elapsed 23.7m | done 200 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [114/187] 'Fluticasone-Salmeterol Diskus' (Medication)  [elapsed 24.1m | done 201 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=44031154 (fluticasone / salmeterol Dry Powder Inhaler [Advair Diskus])
+  [115/187] 'INH IH' (Medication)  [elapsed 24.2m | done 202 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [116/187] 'Acetaminophen' (Medication)  [elapsed 24.2m | done 203 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1125315 (acetaminophen)
+  [117/187] 'Enoxaparin Sodium' (Medication)  [elapsed 24.3m | done 204 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [118/187] 'OxycoDONE' (Medication)  [elapsed 24.4m | done 205 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [119/187] 'pain' (Symptom)  [elapsed 24.5m | done 206 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4329041 (Pain)
+  [120/187] 'albuterol sulfate' (Medication)  [elapsed 24.6m | done 207 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [121/187] 'wheezing' (Symptom)  [elapsed 24.7m | done 208 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=314754 (Wheezing)
+  [122/187] 'SOB' (Symptom)  [elapsed 24.8m | done 209 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [123/187] 'Ipratropium-Albuterol Inhalation Spray' (Medication)  [elapsed 24.9m | done 210 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=37499261 (albuterol / ipratropium Inhalation Spray)
+  [124/187] 'INH IH' (Medication)  [elapsed 25.0m | done 211 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [125/187] 'wheezing' (Symptom)  [elapsed 25.0m | done 212 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=314754 (Wheezing)
+  [126/187] 'SOB' (Symptom)  [elapsed 25.1m | done 213 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [127/187] 'Multivitamins' (Medication)  [elapsed 25.2m | done 214 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=36878782 (Multivitamin preparation)
+  [128/187] 'Polyethylene Glycol' (Medication)  [elapsed 25.3m | done 215 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [129/187] 'constipation' (Condition)  [elapsed 25.4m | done 216 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=75860 (Constipation)
+  [130/187] 'Vitamin D' (Medication)  [elapsed 25.5m | done 217 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [131/187] 'Metastatic colon cancer' (Condition)  [elapsed 25.6m | done 218 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4312001 (Carcinoma of colon, stage IV)
+  [132/187] 'Alert' (Symptom)  [elapsed 25.7m | done 219 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [133/187] 'DISCHARGE' (Symptom)  [elapsed 25.7m | done 220 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [134/187] 'aspirin' (Medication)  [elapsed 25.8m | done 221 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [135/187] 'aspirin' (Medication)  [elapsed 25.9m | done 222 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [136/187] 'Fish \nOil' (Lab Test)  [elapsed 26.0m | done 223 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [137/187] 'Vitamin E' (Medication)  [elapsed 26.0m | done 224 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=19009540 (vitamin E)
+  [138/187] 'etc' (Symptom)  [elapsed 26.1m | done 225 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [139/187] 'IBUPROFEN' (Medication)  [elapsed 26.2m | done 226 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1177480 (ibuprofen)
+  [140/187] 'Advil' (Medication)  [elapsed 26.3m | done 227 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=below_similarity_floor
+  [141/187] 'Motrin' (Medication)  [elapsed 26.3m | done 228 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [142/187] 'etc' (Symptom)  [elapsed 26.7m | done 229 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [143/187] 'Tylenol' (Medication)  [elapsed 26.8m | done 230 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [144/187] 'Acetaminophen' (Medication)  [elapsed 27.3m | done 231 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1125315 (acetaminophen)
+  [145/187] 'pain' (Symptom)  [elapsed 27.4m | done 232 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4329041 (Pain)
+  [146/187] 'pain' (Symptom)  [elapsed 27.5m | done 233 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4329041 (Pain)
+  [147/187] 'TYLENOL' (Medication)  [elapsed 27.6m | done 234 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [148/187] 'ibuprofen' (Medication)  [elapsed 28.2m | done 235 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1177480 (ibuprofen)
+  [149/187] 'narcotic pain medication' (Medication)  [elapsed 28.2m | done 236 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [150/187] 'pain' (Symptom)  [elapsed 28.5m | done 237 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4329041 (Pain)
+  [151/187] 'pain relief' (Procedure)  [elapsed 28.6m | done 238 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4082404 (Pain relief)
+  [152/187] 'Ibuprofen' (Medication)  [elapsed 28.7m | done 239 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1177480 (ibuprofen)
+  [153/187] 'blood in your stool' (Symptom)  [elapsed 28.8m | done 240 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [154/187] 'dark, tarry \nstools' (Symptom)  [elapsed 29.1m | done 241 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [155/187] 'Tylenol' (Medication)  [elapsed 29.3m | done 242 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [156/187] 'narcotic \npain medication' (Medication)  [elapsed 29.8m | done 243 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [157/187] 'breakthrough pain' (Condition)  [elapsed 30.1m | done 244 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [158/187] 'Tylenol' (Medication)  [elapsed 30.2m | done 245 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [159/187] 'narcotic pain medication' (Medication)  [elapsed 30.7m | done 246 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [160/187] 'Tylenol' (Medication)  [elapsed 30.9m | done 247 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [161/187] 'acetaminophen' (Medication)  [elapsed 31.5m | done 248 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1125315 (acetaminophen)
+  [162/187] 'narcotic pain medication' (Medication)  [elapsed 31.6m | done 249 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [163/187] 'Tylenol' (Medication)  [elapsed 31.9m | done 250 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [164/187] 'lift' (Anatomy)  [elapsed 32.4m | done 251 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [165/187] 'incisions' (Anatomy)  [elapsed 32.7m | done 252 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [166/187] 'Colace' (Medication)  [elapsed 32.8m | done 253 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=941258 (docusate)
+  [167/187] 'post' (Qualifier)  [elapsed 32.8m | done 254 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [168/187] 'surgical' (Qualifier)  [elapsed 32.9m | done 255 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [169/187] 'constipation' (Condition)  [elapsed 32.9m | done 256 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=75860 (Constipation)
+  [170/187] 'constipation' (Condition)  [elapsed 33.0m | done 257 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=75860 (Constipation)
+  [171/187] 'narcotic pain medication' (Medication)  [elapsed 33.1m | done 258 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [172/187] 'loose stool' (Symptom)  [elapsed 33.3m | done 259 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4161687 (Loose stool)
+  [173/187] 'diarrhea' (Symptom)  [elapsed 33.4m | done 260 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [174/187] 'Colace' (Medication)  [elapsed 33.5m | done 261 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=941258 (docusate)
+  [175/187] 'fevers' (Symptom)  [elapsed 33.5m | done 262 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [176/187] 'vomiting' (Symptom)  [elapsed 33.9m | done 263 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=441408 (Vomiting)
+  [177/187] 'increased redness' (Symptom)  [elapsed 34.0m | done 264 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4146766 (Hyperemia)
+  [178/187] 'swelling' (Symptom)  [elapsed 34.1m | done 265 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [179/187] 'discharge' (Symptom)  [elapsed 34.3m | done 266 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [180/187] 'incision' (Anatomy)  [elapsed 34.4m | done 267 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4147894 (Incision)
+  [181/187] 'Foley' (Medication)  [elapsed 34.5m | done 268 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [182/187] 'wound check' (Procedure)  [elapsed 34.8m | done 269 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [183/187] 'Foley removal' (Procedure)  [elapsed 35.0m | done 270 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [184/187] 'Foley' (Medication)  [elapsed 35.3m | done 271 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [185/187] 'Large Foley bag' (Medication)  [elapsed 35.6m | done 272 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [186/187] 'bag' (Medication)  [elapsed 35.6m | done 273 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [187/187] 'etc' (Symptom)  [elapsed 35.8m | done 274 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+[note 3/5] 18752997-DS-9: 120 record(s), 120 remaining after resume-skip
+  [1/120] 'abdominal pain' (Symptom)  [elapsed 35.9m | done 275 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=200219 (Abdominal pain)
+  [2/120] 'Ventral' (Symptom)  [elapsed 36.0m | done 276 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [3/120] 'Hernia Repair' (Procedure)  [elapsed 36.1m | done 277 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4196678 (Hernia repair)
+  [4/120] 'Panniculectomy' (Procedure)  [elapsed 36.2m | done 278 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4221550 (Panniculectomy)
+  [5/120] 'Excision' (Procedure)  [elapsed 36.3m | done 279 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [6/120] 'umbilical stalk and skin' (Anatomy)  [elapsed 36.4m | done 280 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [7/120] 'Roux-en-Y gastric bypass' (Procedure)  [elapsed 36.5m | done 281 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [8/120] 'incisional hernia' (Condition)  [elapsed 36.6m | done 282 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=198464 (Incisional hernia)
+  [9/120] 'excess skin' (Condition)  [elapsed 36.7m | done 283 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=36716163 (Excessive skin and subcutaneous tissue)
+  [10/120] 'HTN' (Condition)  [elapsed 36.8m | done 284 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [11/120] 'Diabetes\nPE' (Condition)  [elapsed 36.9m | done 285 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [12/120] 'gastric bypass' (Procedure)  [elapsed 36.9m | done 286 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=40483096 (Bypass of stomach)
+  [13/120] 'PE' (Condition)  [elapsed 37.0m | done 287 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [14/120] 'Coumadin' (Medication)  [elapsed 37.0m | done 288 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1310149 (warfarin)
+  [15/120] 'colon' (Anatomy)  [elapsed 37.0m | done 289 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [16/120] 'polyp' (Symptom)  [elapsed 37.1m | done 290 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [17/120] 'surgery' (Symptom)  [elapsed 37.3m | done 291 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [18/120] 'partial colonectomy' (Procedure)  [elapsed 37.4m | done 292 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4181781 (Partial resection of colon)
+  [19/120] 'carpal tunnel release' (Procedure)  [elapsed 37.5m | done 293 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4166080 (Decompression of median nerve)
+  [20/120] 'Migraines' (Condition)  [elapsed 37.6m | done 294 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [21/120] 'Horse' (Symptom)  [elapsed 37.7m | done 295 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [22/120] 'tetanus' (Condition)  [elapsed 37.8m | done 296 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [23/120] 'serum' (Symptom)  [elapsed 37.9m | done 297 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4194767 (Serum)
+  [24/120] 'Physical Exam' (Procedure)  [elapsed 38.0m | done 298 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4240345 (Physical examination)
+  [25/120] 'heart' (Lab Test)  [elapsed 38.0m | done 299 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [26/120] 'blood pressure' (Lab Test)  [elapsed 38.1m | done 300 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4326744 (Blood pressure)
+  [27/120] 'saturation' (Lab Test)  [elapsed 38.2m | done 301 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [28/120] 'room air' (Symptom)  [elapsed 38.4m | done 302 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=36716647 (Breathing room air)
+  [29/120] 'general' (Procedure)  [elapsed 38.5m | done 303 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4036803 (General examination of patient)
+  [30/120] 'alert' (Symptom)  [elapsed 38.5m | done 304 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [31/120] 'oriented' (Symptom)  [elapsed 38.5m | done 305 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4092101 (Orientated)
+  [32/120] 'Eyes' (Anatomy)  [elapsed 38.5m | done 306 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [33/120] 'conjunctivae' (Anatomy)  [elapsed 38.6m | done 307 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [34/120] 'sclerae' (Anatomy)  [elapsed 38.9m | done 308 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4226516 (Structure of sclera proper)
+  [35/120] 'pupils' (Anatomy)  [elapsed 39.0m | done 309 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4213427 (Pupil structure)
+  [36/120] 'Ears, nose, mouth, and throat' (Anatomy)  [elapsed 39.1m | done 310 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4013622 (Ear, nose and throat examination)
+  [37/120] 'oropharynx' (Anatomy)  [elapsed 39.2m | done 311 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151149 (Oropharyngeal structure)
+  [38/120] 'Tongue' (Anatomy)  [elapsed 39.3m | done 312 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [39/120] 'Neck' (Anatomy)  [elapsed 39.3m | done 313 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=36684845 (Examination of neck)
+  [40/120] 'Heart' (Lab Test)  [elapsed 39.4m | done 314 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [41/120] 'Shaft and testes' (Anatomy)  [elapsed 39.5m | done 315 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [42/120] 'inguinal hernias' (Condition)  [elapsed 39.6m | done 316 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4288544 (Inguinal hernia)
+  [43/120] 'redundant skin' (Condition)  [elapsed 39.7m | done 317 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4065233 (Redundant skin)
+  [44/120] 'skin' (Anatomy)  [elapsed 39.8m | done 318 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [45/120] 'Cranial nerves II through XII' (Anatomy)  [elapsed 39.9m | done 319 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [46/120] 'Musculoskeletal' (Anatomy)  [elapsed 40.2m | done 320 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [47/120] 'neck' (Anatomy)  [elapsed 40.4m | done 321 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4260843 (Neck structure)
+  [48/120] 'pelvis' (Anatomy)  [elapsed 40.5m | done 322 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [49/120] 'Skin' (Anatomy)  [elapsed 40.6m | done 323 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4150633 (Examination of skin)
+  [50/120] 'Hct-34.6' (Lab Test)  [elapsed 40.7m | done 324 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [51/120] 'WBC-6' (Lab Test)  [elapsed 40.7m | done 325 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4298431 (White blood cell count)
+  [52/120] 'RBC-3' (Lab Test)  [elapsed 41.0m | done 326 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4030871 (Red blood cell count)
+  [53/120] 'Hgb-10.4' (Lab Test)  [elapsed 41.3m | done 327 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [54/120] 'Hct-31.3' (Lab Test)  [elapsed 41.7m | done 328 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [55/120] 'MCV-88' (Lab Test)  [elapsed 41.7m | done 329 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [56/120] 'MCH-29' (Lab Test)  [elapsed 42.0m | done 330 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [57/120] 'MCHC-33' (Lab Test)  [elapsed 42.4m | done 331 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [58/120] 'RDW-13' (Lab Test)  [elapsed 42.7m | done 332 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [59/120] 'Glucose-138' (Lab Test)  [elapsed 43.1m | done 333 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149519 (Glucose measurement)
+  [60/120] 'UreaN-15' (Lab Test)  [elapsed 43.2m | done 334 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4017361 (Blood urea nitrogen measurement)
+  [61/120] 'Creat' (Lab Test)  [elapsed 43.2m | done 335 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [62/120] 'Na-136 \nK-4' (Lab Test)  [elapsed 43.4m | done 336 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [63/120] 'Cl-97 HCO3-26' (Lab Test)  [elapsed 43.5m | done 337 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [64/120] 'AnGap-17' (Lab Test)  [elapsed 43.5m | done 338 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [65/120] 'Calcium-8.6 Phos-1.4' (Lab Test)  [elapsed 43.5m | done 339 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [66/120] '# Mg-1.7' (Lab Test)  [elapsed 43.8m | done 340 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [67/120] 'incisional hernia' (Condition)  [elapsed 43.8m | done 341 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=198464 (Incisional hernia)
+  [68/120] 'repair' (Symptom)  [elapsed 43.9m | done 342 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [69/120] 'panniculectomy' (Procedure)  [elapsed 44.1m | done 343 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4221550 (Panniculectomy)
+  [70/120] 'jejunojejunostomy' (Procedure)  [elapsed 44.2m | done 344 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4246722 (Jejunojejunostomy)
+  [71/120] 'anastomosis' (Symptom)  [elapsed 44.3m | done 345 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4219981 (Anastomosis)
+  [72/120] 'umbilicus' (Anatomy)  [elapsed 44.4m | done 346 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [73/120] 'glyburide' (Medication)  [elapsed 44.5m | done 347 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1559684 (glyburide)
+  [74/120] 'GLYBURIDE' (Medication)  [elapsed 44.6m | done 348 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1559684 (glyburide)
+  [75/120] 'INSULIN GLARGINE' (Medication)  [elapsed 44.7m | done 349 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1502905 (insulin glargine)
+  [76/120] 'LANTUS' (Medication)  [elapsed 44.8m | done 350 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=below_similarity_floor
+  [77/120] 'METFORMIN' (Medication)  [elapsed 44.8m | done 351 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1503297 (metformin)
+  [78/120] 'SIMVASTATIN' (Medication)  [elapsed 44.9m | done 352 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1539403 (simvastatin)
+  [79/120] 'VALSARTAN' (Medication)  [elapsed 45.0m | done 353 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1308842 (valsartan)
+  [80/120] 'DIOVAN' (Medication)  [elapsed 45.1m | done 354 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1308842 (valsartan)
+  [81/120] 'CALCIUM CITRATE-VITAMIN D3' (Medication)  [elapsed 45.2m | done 355 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [82/120] 'CALCIUM' (Lab Test)  [elapsed 45.5m | done 356 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [83/120] 'CYANOCOBALAMIN' (Medication)  [elapsed 45.7m | done 357 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [84/120] 'VITAMIN B-12' (Medication)  [elapsed 46.0m | done 358 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1308738 (vitamin B12)
+  [85/120] 'ERGOCALCIFEROL' (Medication)  [elapsed 46.1m | done 359 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=19045045 (ergocalciferol)
+  [86/120] 'VITAMIN D2' (Medication)  [elapsed 46.2m | done 360 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=19045045 (ergocalciferol)
+  [87/120] 'VITAMIN D' (Medication)  [elapsed 46.3m | done 361 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=19009405 (vitamin D)
+  [88/120] 'MULTIVITAMINS WITH MINERALS' (Medication)  [elapsed 46.5m | done 362 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [89/120] 'glyburide' (Medication)  [elapsed 46.5m | done 363 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1559684 (glyburide)
+  [90/120] 'glyburide' (Medication)  [elapsed 46.6m | done 364 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1559684 (glyburide)
+  [91/120] 'Oxycodone-Acetaminophen' (Medication)  [elapsed 46.7m | done 365 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [92/120] 'Metformin' (Medication)  [elapsed 46.7m | done 366 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1503297 (metformin)
+  [93/120] 'Valsartan' (Medication)  [elapsed 46.8m | done 367 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1308842 (valsartan)
+  [94/120] 'Simvastatin' (Medication)  [elapsed 46.9m | done 368 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1539403 (simvastatin)
+  [95/120] 'Keflex' (Medication)  [elapsed 47.0m | done 369 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1786621 (cephalexin)
+  [96/120] 'Lantus' (Medication)  [elapsed 47.0m | done 370 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=below_similarity_floor
+  [97/120] 'Ventral' (Symptom)  [elapsed 47.0m | done 371 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [98/120] 'hernia repair' (Procedure)  [elapsed 47.1m | done 372 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4196678 (Hernia repair)
+  [99/120] 'panniculectomy' (Procedure)  [elapsed 47.3m | done 373 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4221550 (Panniculectomy)
+  [100/120] 'Ischemic' (Qualifier)  [elapsed 47.3m | done 374 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [101/120] 'umbilicus' (Anatomy)  [elapsed 47.4m | done 375 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [102/120] 'chest pain' (Symptom)  [elapsed 47.5m | done 376 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=77670 (Chest pain)
+  [103/120] 'cough' (Condition)  [elapsed 47.6m | done 377 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=254761 (Cough)
+  [104/120] 'wheezing' (Condition)  [elapsed 47.7m | done 378 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=314754 (Wheezing)
+  [105/120] 'vomiting' (Symptom)  [elapsed 47.8m | done 379 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=441408 (Vomiting)
+  [106/120] 'vomiting' (Symptom)  [elapsed 47.9m | done 380 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=441408 (Vomiting)
+  [107/120] 'diarrhea' (Symptom)  [elapsed 48.0m | done 381 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [108/120] 'dry \n mouth' (Symptom)  [elapsed 48.0m | done 382 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4226991 (Xerostomia)
+  [109/120] 'rapid heartbeat' (Symptom)  [elapsed 48.1m | done 383 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [110/120] 'feeling dizzy or faint' (Symptom)  [elapsed 48.2m | done 384 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [111/120] 'shaking chills' (Symptom)  [elapsed 48.5m | done 385 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4087630 (Shivering or rigors)
+  [112/120] 'fever' (Symptom)  [elapsed 48.6m | done 386 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=437663 (Fever)
+  [113/120] 'warm' (Symptom)  [elapsed 48.7m | done 387 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [114/120] 'fever' (Symptom)  [elapsed 48.7m | done 388 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=437663 (Fever)
+  [115/120] 'warm' (Symptom)  [elapsed 48.8m | done 389 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [116/120] 'warm' (Symptom)  [elapsed 48.8m | done 390 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [117/120] 'fever' (Symptom)  [elapsed 48.8m | done 391 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=437663 (Fever)
+  [118/120] 'warm' (Symptom)  [elapsed 48.9m | done 392 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [119/120] 'water' (Anatomy)  [elapsed 48.9m | done 393 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [120/120] 'water' (Anatomy)  [elapsed 49.1m | done 394 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+[note 4/5] 17665522-DS-2: 154 record(s), 154 remaining after resume-skip
+  [1/154] 'Diarrhea' (Symptom)  [elapsed 49.4m | done 395 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [2/154] 'diarrhea' (Symptom)  [elapsed 49.5m | done 396 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [3/154] 'diarrhea' (Symptom)  [elapsed 49.6m | done 397 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [4/154] 'BMs' (Procedure)  [elapsed 49.7m | done 398 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [5/154] 'cramping' (Symptom)  [elapsed 49.8m | done 399 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [6/154] 'nausea' (Symptom)  [elapsed 50.1m | done 400 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=31967 (Nausea)
+  [7/154] 'weakness' (Symptom)  [elapsed 50.2m | done 401 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=437113 (Asthenia)
+  [8/154] 'pre-syncope' (Symptom)  [elapsed 50.3m | done 402 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [9/154] 'fevers' (Symptom)  [elapsed 50.5m | done 403 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [10/154] 'chills' (Symptom)  [elapsed 50.9m | done 404 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=434490 (Chill)
+  [11/154] 'HA' (Symptom)  [elapsed 51.0m | done 405 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [12/154] 'cough' (Symptom)  [elapsed 51.0m | done 406 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=254761 (Cough)
+  [13/154] 'z pack' (Medication)  [elapsed 51.1m | done 407 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [14/154] 'emesis' (Condition)  [elapsed 51.1m | done 408 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [15/154] 'loss of appetite' (Symptom)  [elapsed 51.3m | done 409 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=442165 (Loss of appetite)
+  [16/154] 'ATL' (Condition)  [elapsed 51.4m | done 410 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [17/154] 'anemia' (Condition)  [elapsed 51.6m | done 411 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=439777 (Anemia)
+  [18/154] 'colonoscopy' (Procedure)  [elapsed 51.7m | done 412 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4249893 (Colonoscopy)
+  [19/154] 'EKG' (Lab Test)  [elapsed 51.8m | done 413 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [20/154] 'sinus tacycardia' (Condition)  [elapsed 52.0m | done 414 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [21/154] 'abdomen' (Anatomy)  [elapsed 52.4m | done 415 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=37303867 (Abdomen)
+  [22/154] 'CT scan' (Procedure)  [elapsed 52.4m | done 416 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4300757 (Computed tomography)
+  [23/154] 'abd/pelvis' (Anatomy)  [elapsed 52.5m | done 417 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [24/154] 'CXR' (Anatomy)  [elapsed 52.7m | done 418 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [25/154] 'Hct' (Lab Test)  [elapsed 52.8m | done 419 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=below_similarity_floor
+  [26/154] 'chem 7' (Lab Test)  [elapsed 52.8m | done 420 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=3041230 (Basic metabolic panel - Blood)
+  [27/154] 'LFTs' (Lab Test)  [elapsed 52.8m | done 421 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [28/154] 'bicarb 21' (Lab Test)  [elapsed 52.8m | done 422 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4227915 (Bicarbonate measurement)
+  [29/154] 'anion gap' (Lab Test)  [elapsed 52.9m | done 423 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [30/154] 'zofran' (Medication)  [elapsed 53.0m | done 424 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1000560 (ondansetron)
+  [31/154] 'famotidine' (Medication)  [elapsed 53.0m | done 425 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=953076 (famotidine)
+  [32/154] 'tylenol' (Medication)  [elapsed 53.1m | done 426 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [33/154] 'morphine' (Medication)  [elapsed 53.7m | done 427 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1110410 (morphine)
+  [34/154] 'diarrhea' (Symptom)  [elapsed 53.8m | done 428 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [35/154] 'rhinorha' (Symptom)  [elapsed 53.9m | done 429 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [36/154] 'HA' (Symptom)  [elapsed 54.2m | done 430 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [37/154] 'cough' (Symptom)  [elapsed 54.2m | done 431 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=254761 (Cough)
+  [38/154] 'SOB' (Symptom)  [elapsed 54.3m | done 432 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [39/154] 'palpitations' (Symptom)  [elapsed 54.4m | done 433 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=315078 (Palpitations)
+  [40/154] 'dysuria' (Symptom)  [elapsed 54.5m | done 434 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=197684 (Dysuria)
+  [41/154] 'bronchitis' (Condition)  [elapsed 54.6m | done 435 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=256451 (Bronchitis)
+  [42/154] 'albuterol inhaler' (Medication)  [elapsed 54.7m | done 436 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [43/154] 'Z pack' (Medication)  [elapsed 55.0m | done 437 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [44/154] 'nephrolithiasis' (Condition)  [elapsed 55.0m | done 438 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=201620 (Kidney stone)
+  [45/154] 'CT scan' (Procedure)  [elapsed 55.1m | done 439 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4300757 (Computed tomography)
+  [46/154] 'Trigger finger' (Condition)  [elapsed 55.2m | done 440 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=77965 (Acquired trigger finger)
+  [47/154] 'HTN' (Condition)  [elapsed 55.3m | done 441 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [48/154] 'spinal stenosis' (Condition)  [elapsed 55.4m | done 442 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=77079 (Spinal stenosis)
+  [49/154] 'PTSD' (Qualifier)  [elapsed 55.5m | done 443 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [50/154] 'PTSD' (Symptom)  [elapsed 55.5m | done 444 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [51/154] 'PTSD' (Qualifier)  [elapsed 55.6m | done 445 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [52/154] 'Physical Exam' (Procedure)  [elapsed 55.6m | done 446 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4240345 (Physical examination)
+  [53/154] 'Vitals' (Symptom)  [elapsed 55.6m | done 447 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4042138 (Vital signs finding)
+  [54/154] 'T' (Symptom)  [elapsed 55.6m | done 448 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4022230 (Body temperature finding)
+  [55/154] 'BP' (Symptom)  [elapsed 55.7m | done 449 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4214962 (Blood pressure finding)
+  [56/154] 'RA' (Symptom)  [elapsed 55.7m | done 450 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=36716647 (Breathing room air)
+  [57/154] 'RA' (Condition)  [elapsed 55.7m | done 451 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [58/154] 'General' (Procedure)  [elapsed 55.7m | done 452 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4036803 (General examination of patient)
+  [59/154] 'Alert' (Symptom)  [elapsed 55.7m | done 453 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [60/154] 'oriented' (Symptom)  [elapsed 55.7m | done 454 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4092101 (Orientated)
+  [61/154] 'distress' (Symptom)  [elapsed 55.7m | done 455 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4239819 (Distress)
+  [62/154] 'HEENT' (Procedure)  [elapsed 55.8m | done 456 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4240345 (Physical examination)
+  [63/154] 'Sclera' (Anatomy)  [elapsed 55.8m | done 457 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4091162 (Scleral structure)
+  [64/154] 'anicteric' (Qualifier)  [elapsed 55.9m | done 458 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [65/154] 'MM' (Condition)  [elapsed 55.9m | done 459 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=437233 (Multiple myeloma)
+  [66/154] 'oropharynx' (Anatomy)  [elapsed 56.0m | done 460 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151149 (Oropharyngeal structure)
+  [67/154] 'Neck' (Procedure)  [elapsed 56.1m | done 461 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4240345 (Physical examination)
+  [68/154] 'supple' (Symptom)  [elapsed 56.1m | done 462 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4179457 (Normal movement of neck)
+  [69/154] 'JVP' (Lab Test)  [elapsed 56.1m | done 463 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [70/154] 'LAD  \nLungs' (Anatomy)  [elapsed 56.1m | done 464 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [71/154] 'wheezes' (Condition)  [elapsed 56.1m | done 465 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [72/154] 'CV' (Procedure)  [elapsed 56.2m | done 466 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [73/154] 'S1' (Anatomy)  [elapsed 56.3m | done 467 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [74/154] 'S2' (Anatomy)  [elapsed 56.3m | done 468 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [75/154] 'rubs' (Condition)  [elapsed 56.4m | done 469 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [76/154] 'gallops' (Condition)  [elapsed 56.5m | done 470 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [77/154] 'Abdomen' (Procedure)  [elapsed 56.8m | done 471 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4075966 (Examination of abdomen)
+  [78/154] 'BS' (Symptom)  [elapsed 56.8m | done 472 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4263560 (Normal bowel sounds)
+  [79/154] 'soft' (Symptom)  [elapsed 56.8m | done 473 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4096862 (Abdomen soft)
+  [80/154] 'rebound' (Symptom)  [elapsed 56.9m | done 474 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149024 (Rebound tenderness)
+  [81/154] 'guarding' (Symptom)  [elapsed 56.9m | done 475 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4091049 (Abdominal guarding)
+  [82/154] 'ascites' (Condition)  [elapsed 56.9m | done 476 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=200528 (Ascites)
+  [83/154] 'Guaiac' (Lab Test)  [elapsed 57.0m | done 477 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [84/154] 'Ext' (Procedure)  [elapsed 57.0m | done 478 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4121315 (Examination of limb)
+  [85/154] 'Warm' (Symptom)  [elapsed 57.0m | done 479 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4010974 (Warm skin)
+  [86/154] 'well perfused' (Symptom)  [elapsed 57.0m | done 480 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [87/154] 'cyanosis' (Condition)  [elapsed 57.2m | done 481 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=438555 (Cyanosis)
+  [88/154] 'edema' (Condition)  [elapsed 57.3m | done 482 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=433595 (Edema)
+  [89/154] 'LACTATE-1' (Lab Test)  [elapsed 57.4m | done 483 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [90/154] 'GLUCOSE-121' (Lab Test)  [elapsed 57.6m | done 484 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149519 (Glucose measurement)
+  [91/154] 'UREA N-16' (Lab Test)  [elapsed 57.7m | done 485 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [92/154] 'CREAT-1' (Lab Test)  [elapsed 58.0m | done 486 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4324383 (Creatinine measurement)
+  [93/154] 'SODIUM-137' (Lab Test)  [elapsed 58.3m | done 487 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [94/154] 'POTASSIUM-3' (Lab Test)  [elapsed 58.4m | done 488 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4245152 (Potassium measurement)
+  [95/154] 'CHLORIDE-106' (Lab Test)  [elapsed 58.4m | done 489 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [96/154] 'TOTAL CO2-21' (Lab Test)  [elapsed 58.5m | done 490 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4193415 (Blood total carbon dioxide (calculated))
+  [97/154] 'ANION GAP-14' (Lab Test)  [elapsed 58.5m | done 491 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4103762 (Anion gap measurement)
+  [98/154] 'ALT' (Lab Test)  [elapsed 58.6m | done 492 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4146380 (Alanine aminotransferase measurement)
+  [99/154] 'SGPT' (Lab Test)  [elapsed 58.6m | done 493 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [100/154] 'AST' (Lab Test)  [elapsed 58.9m | done 494 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [101/154] 'SGOT' (Lab Test)  [elapsed 59.0m | done 495 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=44810795 (Aspartate transaminase activity measurement)
+  [102/154] 'ALK' (Lab Test)  [elapsed 59.0m | done 496 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [103/154] 'PHOS-83' (Lab Test)  [elapsed 59.4m | done 497 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [104/154] 'LIPASE-31' (Lab Test)  [elapsed 59.6m | done 498 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4020423 (Lipoprotein lipase measurement)
+  [105/154] 'WBC-6' (Lab Test)  [elapsed 59.6m | done 499 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4298431 (White blood cell count)
+  [106/154] 'RBC-5' (Lab Test)  [elapsed 59.9m | done 500 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [107/154] 'HGB-14' (Lab Test)  [elapsed 60.3m | done 501 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [108/154] 'HCT-42' (Lab Test)  [elapsed 60.6m | done 502 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4151358 (Hematocrit determination)
+  [109/154] 'MCV-82' (Lab Test)  [elapsed 60.6m | done 503 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [110/154] 'MCH-28' (Lab Test)  [elapsed 60.9m | done 504 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [111/154] 'MCHC-34' (Lab Test)  [elapsed 61.3m | done 505 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [112/154] 'RDW-13' (Lab Test)  [elapsed 61.6m | done 506 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4281085 (Red cell distribution width determination)
+  [113/154] 'NEUTS-84' (Lab Test)  [elapsed 62.0m | done 507 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4148615 (Neutrophil count)
+  [114/154] 'LYMPHS-10' (Lab Test)  [elapsed 62.1m | done 508 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [115/154] 'MONOS-2' (Lab Test)  [elapsed 62.1m | done 509 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [116/154] 'EOS-2' (Lab Test)  [elapsed 62.1m | done 510 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [117/154] 'BASOS-0' (Lab Test)  [elapsed 62.3m | done 511 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [118/154] 'PLT' (Lab Test)  [elapsed 62.4m | done 512 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [119/154] 'EIA' (Lab Test)  [elapsed 62.7m | done 513 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [120/154] 'diarrhea' (Symptom)  [elapsed 62.7m | done 514 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [121/154] 'Diarrhea' (Symptom)  [elapsed 62.8m | done 515 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [122/154] 'diarrhea' (Symptom)  [elapsed 62.9m | done 516 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [123/154] 'fever' (Symptom)  [elapsed 62.9m | done 517 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=437663 (Fever)
+  [124/154] 'nausea' (Symptom)  [elapsed 63.0m | done 518 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=31967 (Nausea)
+  [125/154] 'Viral \ngastroenteritis' (Condition)  [elapsed 63.1m | done 519 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4008724 (Viral gastroenteritis)
+  [126/154] 'loperamide' (Medication)  [elapsed 63.2m | done 520 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=991876 (loperamide)
+  [127/154] 'IVF prn' (Medication)  [elapsed 63.3m | done 521 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [128/154] 'tylenol' (Medication)  [elapsed 63.3m | done 522 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [129/154] 'abdominal pain' (Symptom)  [elapsed 63.9m | done 523 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=200219 (Abdominal pain)
+  [130/154] 'HD2' (Lab Test)  [elapsed 64.0m | done 524 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [131/154] 'diarrhea' (Symptom)  [elapsed 64.0m | done 525 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [132/154] 'improved' (Symptom)  [elapsed 64.1m | done 526 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149524 (Patient's condition improved)
+  [133/154] 'Chronic cough' (Condition)  [elapsed 64.1m | done 527 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4195384 (Chronic cough)
+  [134/154] 'CXR' (Anatomy)  [elapsed 64.2m | done 528 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [135/154] 'pneumonia' (Condition)  [elapsed 64.3m | done 529 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=255848 (Pneumonia)
+  [136/154] 'post \nnasal drip' (Symptom)  [elapsed 64.3m | done 530 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [137/154] 'chronic cough' (Condition)  [elapsed 64.6m | done 531 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4195384 (Chronic cough)
+  [138/154] 'HCT' (Lab Test)  [elapsed 64.7m | done 532 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=below_similarity_floor
+  [139/154] 'risperidone' (Medication)  [elapsed 64.7m | done 533 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=735979 (risperidone)
+  [140/154] 'citalopram' (Medication)  [elapsed 64.8m | done 534 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=797617 (citalopram)
+  [141/154] 'risperidone' (Medication)  [elapsed 64.9m | done 535 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=735979 (risperidone)
+  [142/154] 'loperamide' (Medication)  [elapsed 65.0m | done 536 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=991876 (loperamide)
+  [143/154] 'citalopram' (Medication)  [elapsed 65.1m | done 537 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=797617 (citalopram)
+  [144/154] 'Viral enteritis' (Condition)  [elapsed 65.2m | done 538 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196620 (Viral enteritis of intestine)
+  [145/154] 'Mental Status' (Procedure)  [elapsed 65.3m | done 539 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4190990 (Neurological mental status determination)
+  [146/154] 'Alert' (Symptom)  [elapsed 65.3m | done 540 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086843 (Mentally alert)
+  [147/154] 'Activity Status' (Symptom)  [elapsed 65.3m | done 541 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4030753 (Physical functional dependency)
+  [148/154] 'Ambulatory - Independent' (Symptom)  [elapsed 65.3m | done 542 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [149/154] 'diarrhea' (Symptom)  [elapsed 65.6m | done 543 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [150/154] 'diarrhea' (Symptom)  [elapsed 65.7m | done 544 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [151/154] 'viral gastroenteritis' (Condition)  [elapsed 65.8m | done 545 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4008724 (Viral gastroenteritis)
+  [152/154] 'loperamide' (Medication)  [elapsed 65.9m | done 546 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=991876 (loperamide)
+  [153/154] 'Loperamide' (Medication)  [elapsed 66.0m | done 547 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=991876 (loperamide)
+  [154/154] 'diarrhea' (Symptom)  [elapsed 66.1m | done 548 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+[note 5/5] 17743133-DS-8: 139 record(s), 139 remaining after resume-skip
+  [1/139] 'Agitation' (Symptom)  [elapsed 66.2m | done 549 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4086746 (Feeling agitated)
+  [2/139] 'seizure' (Symptom)  [elapsed 66.3m | done 550 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=377091 (Seizure)
+  [3/139] 'intractable seizures' (Condition)  [elapsed 66.4m | done 551 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [4/139] 'vagal nerve \nstimulator' (Procedure)  [elapsed 66.7m | done 552 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=40482949 (Insertion of vagal nerve stimulator)
+  [5/139] 'dizzy' (Symptom)  [elapsed 66.8m | done 553 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4223938 (Dizziness)
+  [6/139] 'shaking' (Symptom)  [elapsed 66.9m | done 554 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [7/139] 'diverticulitis' (Condition)  [elapsed 67.0m | done 555 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [8/139] 'augmentin' (Medication)  [elapsed 67.2m | done 556 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=below_similarity_floor
+  [9/139] 'CT' (Procedure)  [elapsed 67.2m | done 557 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4300757 (Computed tomography)
+  [10/139] 'diverticulitis' (Condition)  [elapsed 67.3m | done 558 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [11/139] 'diarrhea' (Symptom)  [elapsed 67.5m | done 559 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [12/139] 'Ativan' (Medication)  [elapsed 67.6m | done 560 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=791967 (lorazepam)
+  [13/139] 'flagyl' (Medication)  [elapsed 67.6m | done 561 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1707164 (metronidazole)
+  [14/139] 'cipro' (Medication)  [elapsed 67.6m | done 562 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1797513 (ciprofloxacin)
+  [15/139] 'seizures' (Symptom)  [elapsed 67.6m | done 563 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [16/139] 'Meningitis' (Condition)  [elapsed 67.7m | done 564 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=435785 (Meningitis)
+  [17/139] 'Left temporal head trauma' (Condition)  [elapsed 67.8m | done 565 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [18/139] 'Arm' (Condition)  [elapsed 68.1m | done 566 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [19/139] 'fracture' (Symptom)  [elapsed 68.2m | done 567 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4217808 (Fracture)
+  [20/139] 'Left' (Qualifier)  [elapsed 68.3m | done 568 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [21/139] 'orbital fracture' (Condition)  [elapsed 68.3m | done 569 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4320022 (Fracture of orbit)
+  [22/139] 'surgical repair' (Procedure)  [elapsed 68.4m | done 570 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [23/139] 'Left leg' (Anatomy)  [elapsed 68.5m | done 571 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [24/139] 'amputation' (Procedure)  [elapsed 68.6m | done 572 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4217482 (Amputation)
+  [25/139] 'family history of epilepsy' (Symptom)  [elapsed 68.7m | done 573 | skipped 0 | errors 0]
+    -> tier=None routing=HITL_REQUIRED reason=below_confidence_threshold
+  [26/139] 'Physical Exam' (Procedure)  [elapsed 68.8m | done 574 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4240345 (Physical examination)
+  [27/139] 'Vitals' (Symptom)  [elapsed 68.8m | done 575 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4042138 (Vital signs finding)
+  [28/139] 'T' (Symptom)  [elapsed 68.9m | done 576 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4022230 (Body temperature finding)
+  [29/139] 'BP' (Symptom)  [elapsed 68.9m | done 577 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4214962 (Blood pressure finding)
+  [30/139] 'RR' (Symptom)  [elapsed 68.9m | done 578 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4117286 (Finding of respiratory rate)
+  [31/139] 'Gen' (Procedure)  [elapsed 68.9m | done 579 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4036803 (General examination of patient)
+  [32/139] 'distress' (Symptom)  [elapsed 68.9m | done 580 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4239819 (Distress)
+  [33/139] 'HEENT' (Procedure)  [elapsed 68.9m | done 581 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4240345 (Physical examination)
+  [34/139] 'Neck' (Procedure)  [elapsed 68.9m | done 582 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4240345 (Physical examination)
+  [35/139] 'supple' (Symptom)  [elapsed 69.0m | done 583 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4179457 (Normal movement of neck)
+  [36/139] 'LAD\nCV' (Anatomy)  [elapsed 69.0m | done 584 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=unresolved_acronym
+  [37/139] 'RRR' (Symptom)  [elapsed 69.0m | done 585 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4297303 (Normal heart rate)
+  [38/139] 's1' (Anatomy)  [elapsed 69.0m | done 586 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [39/139] 's2' (Anatomy)  [elapsed 69.1m | done 587 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [40/139] 'Lungs' (Procedure)  [elapsed 69.2m | done 588 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149530 (Examination of respiratory system)
+  [41/139] 'esp' (Anatomy)  [elapsed 69.2m | done 589 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [42/139] 'RLQ' (Anatomy)  [elapsed 69.3m | done 590 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [43/139] 'Extremities' (Procedure)  [elapsed 69.4m | done 591 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4121315 (Examination of limb)
+  [44/139] 'Neuro' (Procedure)  [elapsed 69.4m | done 592 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4225119 (Neurological examination)
+  [45/139] 'CT with contrast' (Procedure)  [elapsed 69.4m | done 593 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1073730 (CT with contrast)
+  [46/139] 'sigmoid colon' (Anatomy)  [elapsed 69.5m | done 594 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4244588 (Sigmoid colon structure)
+  [47/139] 'diverticulitis' (Condition)  [elapsed 69.7m | done 595 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [48/139] 'microperforation' (Condition)  [elapsed 69.9m | done 596 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [49/139] 'bladder' (Anatomy)  [elapsed 70.2m | done 597 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4232481 (Urinary bladder structure)
+  [50/139] 'CT' (Procedure)  [elapsed 70.3m | done 598 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [51/139] 'colonic vesicular fistula' (Condition)  [elapsed 70.4m | done 599 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [52/139] 'CXR' (Anatomy)  [elapsed 70.5m | done 600 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [53/139] 'AP examination' (Procedure)  [elapsed 70.5m | done 601 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [54/139] 'mid-left hemithorax' (Anatomy)  [elapsed 70.6m | done 602 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4134136 (Middle left thorax)
+  [55/139] 'Bibasilar subsegmental atelectasis' (Condition)  [elapsed 70.7m | done 603 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [56/139] 'multiple old healed right rib fractures' (Condition)  [elapsed 70.7m | done 604 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1450619 (Fracture of multiple right ribs)
+  [57/139] 'lateral' (Qualifier)  [elapsed 70.8m | done 605 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=standalone_qualifier_span
+  [58/139] 'pleural thickening' (Condition)  [elapsed 70.8m | done 606 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4249320 (Thickening of pleura)
+  [59/139] 'CHF' (Condition)  [elapsed 70.9m | done 607 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [60/139] 'CT' (Procedure)  [elapsed 71.0m | done 608 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4300757 (Computed tomography)
+  [61/139] 'intractable seizures' (Symptom)  [elapsed 71.1m | done 609 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [62/139] 'seizure' (Symptom)  [elapsed 71.4m | done 610 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [63/139] 'diverticulitis' (Condition)  [elapsed 71.5m | done 611 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [64/139] 'CT' (Procedure)  [elapsed 71.7m | done 612 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4300757 (Computed tomography)
+  [65/139] 'diverticulitis' (Condition)  [elapsed 71.8m | done 613 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [66/139] 'divertitulitis' (Condition)  [elapsed 72.0m | done 614 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [67/139] 'CT' (Procedure)  [elapsed 72.0m | done 615 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4300757 (Computed tomography)
+  [68/139] 'CT' (Procedure)  [elapsed 72.1m | done 616 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4300757 (Computed tomography)
+  [69/139] 'microperforation' (Condition)  [elapsed 72.2m | done 617 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [70/139] 'Surgery' (Procedure)  [elapsed 72.5m | done 618 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4301351 (Surgical procedure)
+  [71/139] 'diverticulitis' (Condition)  [elapsed 72.6m | done 619 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [72/139] 'broad spectrum \nantibiotics' (Medication)  [elapsed 72.8m | done 620 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [73/139] 'zosyn' (Medication)  [elapsed 72.8m | done 621 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [74/139] 'vancomycin' (Medication)  [elapsed 73.2m | done 622 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [75/139] 'Vancomycin' (Medication)  [elapsed 73.3m | done 623 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1707687 (vancomycin)
+  [76/139] 'TPN' (Medication)  [elapsed 73.4m | done 624 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [77/139] 'PICC' (Procedure)  [elapsed 73.5m | done 625 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [78/139] 'line' (Symptom)  [elapsed 73.6m | done 626 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [79/139] 'TPN' (Medication)  [elapsed 73.7m | done 627 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [80/139] 'abdominal pain' (Symptom)  [elapsed 73.8m | done 628 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=200219 (Abdominal pain)
+  [81/139] 'improved' (Symptom)  [elapsed 73.9m | done 629 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4149524 (Patient's condition improved)
+  [82/139] 'TPN' (Medication)  [elapsed 73.9m | done 630 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [83/139] 'augmentin' (Medication)  [elapsed 74.0m | done 631 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=below_similarity_floor
+  [84/139] 'diverticulitis' (Condition)  [elapsed 74.0m | done 632 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [85/139] 'diarrhea' (Symptom)  [elapsed 74.2m | done 633 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [86/139] 'seizures' (Symptom)  [elapsed 74.3m | done 634 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [87/139] 'flagyl' (Medication)  [elapsed 74.4m | done 635 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1707164 (metronidazole)
+  [88/139] 'seizure' (Symptom)  [elapsed 74.4m | done 636 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [89/139] 'vancomycin' (Medication)  [elapsed 74.5m | done 637 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1707687 (vancomycin)
+  [90/139] 'augmentin' (Medication)  [elapsed 74.6m | done 638 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=below_similarity_floor
+  [91/139] 'seizure' (Symptom)  [elapsed 74.6m | done 639 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=377091 (Seizure)
+  [92/139] 'ativan' (Medication)  [elapsed 74.7m | done 640 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=791967 (lorazepam)
+  [93/139] 'vagal nerve stimulator' (Medication)  [elapsed 74.8m | done 641 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=40490845 (Vagal nerve stimulator)
+  [94/139] 'seizure' (Symptom)  [elapsed 74.9m | done 642 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=377091 (Seizure)
+  [95/139] 'carbamazipine' (Medication)  [elapsed 75.0m | done 643 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [96/139] 'phenytoin' (Medication)  [elapsed 75.0m | done 644 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=740910 (phenytoin)
+  [97/139] 'ativan' (Medication)  [elapsed 75.1m | done 645 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=791967 (lorazepam)
+  [98/139] 'Ativan' (Medication)  [elapsed 75.1m | done 646 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=791967 (lorazepam)
+  [99/139] 'diverticulitis' (Condition)  [elapsed 75.1m | done 647 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [100/139] 'blood cx' (Lab Test)  [elapsed 75.3m | done 648 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [101/139] 'CXR' (Anatomy)  [elapsed 75.4m | done 649 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [102/139] 'vagal nerve stimulator' (Medication)  [elapsed 75.5m | done 650 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=40490845 (Vagal nerve stimulator)
+  [103/139] 'cardiac enzymes' (Lab Test)  [elapsed 75.6m | done 651 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [104/139] 'EKG' (Lab Test)  [elapsed 75.8m | done 652 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=short_alphanumeric_code_trap
+  [105/139] 'CARBAMAZEPINE' (Medication)  [elapsed 76.0m | done 653 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=740275 (carbamazepine)
+  [106/139] 'DILANTIN' (Medication)  [elapsed 76.1m | done 654 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=740910 (phenytoin)
+  [107/139] 'LAMICTAL' (Medication)  [elapsed 76.1m | done 655 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=705103 (lamotrigine)
+  [108/139] 'Multi-Vitamin W/Minerals' (Medication)  [elapsed 76.1m | done 656 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [109/139] 'TRILEPTAL' (Medication)  [elapsed 76.4m | done 657 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=718122 (oxcarbazepine)
+  [110/139] 'AUGMENTIN' (Medication)  [elapsed 76.4m | done 658 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=below_similarity_floor
+  [111/139] 'Dilantin' (Medication)  [elapsed 76.4m | done 659 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=740910 (phenytoin)
+  [112/139] 'Dilantin Kapseal' (Medication)  [elapsed 76.5m | done 660 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [113/139] 'Dilantin Kapseal' (Medication)  [elapsed 76.5m | done 661 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=no_candidates
+  [114/139] 'Lamotrigine' (Medication)  [elapsed 76.5m | done 662 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=705103 (lamotrigine)
+  [115/139] 'Lamotrigine' (Medication)  [elapsed 76.6m | done 663 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=705103 (lamotrigine)
+  [116/139] 'Carbamazepine' (Medication)  [elapsed 76.7m | done 664 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=740275 (carbamazepine)
+  [117/139] 'Carbamazepine' (Medication)  [elapsed 76.8m | done 665 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=740275 (carbamazepine)
+  [118/139] 'Oxcarbazepine' (Medication)  [elapsed 76.9m | done 666 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=718122 (oxcarbazepine)
+  [119/139] 'Amoxicillin-Pot Clavulanate' (Medication)  [elapsed 77.0m | done 667 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [120/139] 'Vancomycin' (Medication)  [elapsed 77.3m | done 668 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1707687 (vancomycin)
+  [121/139] 'Lorazepam' (Medication)  [elapsed 77.4m | done 669 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=791967 (lorazepam)
+  [122/139] 'Pantoprazole' (Medication)  [elapsed 77.5m | done 670 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=948078 (pantoprazole)
+  [123/139] 'Diverticulitis' (Condition)  [elapsed 77.6m | done 671 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [124/139] 'Clostridium Dificile infection' (Condition)  [elapsed 77.8m | done 672 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [125/139] 'Seizures' (Condition)  [elapsed 78.0m | done 673 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=377091 (Seizure)
+  [126/139] 'abdominal pain' (Symptom)  [elapsed 78.1m | done 674 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=200219 (Abdominal pain)
+  [127/139] 'CT scan' (Procedure)  [elapsed 78.2m | done 675 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=4300757 (Computed tomography)
+  [128/139] 'abdomen' (Anatomy)  [elapsed 78.3m | done 676 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=37303867 (Abdomen)
+  [129/139] 'diverticulitis' (Condition)  [elapsed 78.4m | done 677 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [130/139] 'antibiotics' (Medication)  [elapsed 78.6m | done 678 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [131/139] 'abdominal pain' (Symptom)  [elapsed 78.9m | done 679 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=200219 (Abdominal pain)
+  [132/139] 'antibiotics' (Medication)  [elapsed 79.0m | done 680 | skipped 0 | errors 0]
+    -> tier=TIER_4_ENSEMBLE_SPLIT routing=HITL_REQUIRED reason=ensemble_split
+  [133/139] 'Augmentin' (Medication)  [elapsed 79.2m | done 681 | skipped 0 | errors 0]
+    -> tier=TIER_5_TRUE_AMBIGUITY routing=HITL_REQUIRED reason=below_similarity_floor
+  [134/139] 'Clostridium Dificile \ninfection' (Condition)  [elapsed 79.2m | done 682 | skipped 0 | errors 0]
+    -> tier=TIER_2_AUTO_RESOLVED routing=HITL_REQUIRED reason=tier2_auto_resolved_pending_revalidation
+  [135/139] 'Vancomycin' (Medication)  [elapsed 79.5m | done 683 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=1707687 (vancomycin)
+  [136/139] 'ativan' (Medication)  [elapsed 79.6m | done 684 | skipped 0 | errors 0]
+    -> tier=TIER_3_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=791967 (lorazepam)
+  [137/139] 'abdominal pain' (Symptom)  [elapsed 79.6m | done 685 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=200219 (Abdominal pain)
+  [138/139] 'diarrhea' (Symptom)  [elapsed 79.7m | done 686 | skipped 0 | errors 0]
+    -> tier=TIER_1B_CALIBRATED_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=196523 (Diarrhea)
+  [139/139] 'seizures' (Symptom)  [elapsed 79.8m | done 687 | skipped 0 | errors 0]
+    -> tier=TIER_1_AUTO_VALIDATED routing=AUTO_VALIDATED reason=ok
+    [dry-run KG3 write OK] would write concept_id=377091 (Seizure)
+
+==============================================================================
+BATCH COMPLETE
+==============================================================================
+processed: 688   skipped(resume): 0   errors: 0
+elapsed: 79.9 minutes
+
+tier distribution: {'TIER_1_AUTO_VALIDATED': 236, 'TIER_5_TRUE_AMBIGUITY': 78, 'TIER_4_ENSEMBLE_SPLIT': 229, 'TIER_1B_CALIBRATED_AUTO_VALIDATED': 29, 'TIER_3_AUTO_VALIDATED': 101, 'TIER_2_AUTO_RESOLVED': 14, 'none': 1}
+routing: {'AUTO_VALIDATED': 366, 'HITL_REQUIRED': 322}
+AUTO coverage: 366/688 (53.2%)
+
+dry-run KG3 write checks: 366 would-succeed, 0 blocked (UningestibleCase) -- NOTHING was actually written to Memgraph this run

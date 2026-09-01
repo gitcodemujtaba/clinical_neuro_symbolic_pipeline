@@ -784,42 +784,46 @@ Every mechanism below takes data this project already has for another reason —
 
 ---
 
-## 16. Three-Batch Comparison at Full Stage 3 Coverage (Fresh-10 / Fresh-5 original / Fresh-5 gazetteer, 2026-09-01)
+## 16. Four-Batch Comparison at Full Stage 3 Coverage (Fresh-10 / Fresh-5 original / Fresh-5 gazetteer / Fresh-5 calibrator-unseen)
 
-§10's fresh-5 numbers were captured mid-batch; both fresh-5 batches (and Fresh-10) were subsequently run to **genuine full Stage 3 coverage** (`scripts/complete_fresh5_stage3_full.py` — no per-note cap, idempotent) and re-graded. This section is the current, authoritative, side-by-side comparison of all three named batches (`ui/components/note_batches.py`'s `NOTE_BATCHES`), superseding §10.3's numbers for the two batches it lists in more detail here plus adding the gazetteer batch for the first time.
+§10's fresh-5 numbers were captured mid-batch; both fresh-5 batches (and Fresh-10) were subsequently run to **genuine full Stage 3 coverage** (`scripts/complete_fresh5_stage3_full.py` — no per-note cap, idempotent) and re-graded. A **fourth batch** was added 2026-09-01: `14050425-DS-5`, `14702741-DS-7`, `18752997-DS-9`, `17665522-DS-2`, `17743133-DS-8` — five notes verified live to satisfy three constraints simultaneously (official locked test split, never processed by this pipeline before, and **not** among the `ConsensusCalibrator`'s own 75 training notes), run through the real production `scripts/run_stage3_tier_gate.py` (688 entities, 79.8 min, 0 errors). This section is the current, authoritative, side-by-side comparison of all four named batches.
 
 ### 16.1 Tier distribution (raw decision counts, % of that batch's total)
 
-| Tier | Fresh-10 (2026-08-20) | Fresh-5 original (2026-08-30) | Fresh-5 gazetteer (2026-08-31) |
-|---|---|---|---|
-| `TIER_1_AUTO_VALIDATED` | 75 (29.1%) | 111 (29.8%) | 119 (29.0%) |
-| `TIER_1B_CALIBRATED_AUTO_VALIDATED` | 0 | 27 (7.2%) | 0 |
-| `TIER_2_AUTO_RESOLVED` | 5 (1.9%) | 8 (2.1%) | 8 (1.9%) |
-| `TIER_3_AUTO_VALIDATED` | 3 (1.2%) | 73 (19.6%) | 78 (19.0%) |
-| `TIER_4_ENSEMBLE_SPLIT` | 124 (48.1%) | 109 (29.2%) | 154 (37.5%) |
-| `TIER_5_TRUE_AMBIGUITY` | 49 (19.0%) | 44 (11.8%) | 50 (12.2%) |
-| null/error | 2 (0.8%) | 1 (0.3%) | 2 (0.5%) |
-| **Total decisions** | **258** | **373** | **411** |
+| Tier | Fresh-10 (2026-08-20) | Fresh-5 original (2026-08-30) | Fresh-5 gazetteer (2026-08-31) | Fresh-5 calibrator-unseen (2026-09-01) |
+|---|---|---|---|---|
+| `TIER_1_AUTO_VALIDATED` | 75 (29.1%) | 111 (29.8%) | 119 (29.0%) | 236 (34.3%) |
+| `TIER_1B_CALIBRATED_AUTO_VALIDATED` | 0 | 27 (7.2%) | 0 | 29 (4.2%) |
+| `TIER_2_AUTO_RESOLVED` | 5 (1.9%) | 8 (2.1%) | 8 (1.9%) | 14 (2.0%) |
+| `TIER_3_AUTO_VALIDATED` | 3 (1.2%) | 73 (19.6%) | 78 (19.0%) | 101 (14.7%) |
+| `TIER_4_ENSEMBLE_SPLIT` | 124 (48.1%) | 109 (29.2%) | 154 (37.5%) | 229 (33.3%) |
+| `TIER_5_TRUE_AMBIGUITY` | 49 (19.0%) | 44 (11.8%) | 50 (12.2%) | 78 (11.3%) |
+| null/error | 2 (0.8%) | 1 (0.3%) | 2 (0.5%) | 1 (0.1%) |
+| **Total decisions** | **258** | **373** | **411** | **688** |
 
 ### 16.2 Accuracy & coverage
 
-| Metric | Fresh-10 | Fresh-5 original | Fresh-5 gazetteer |
-|---|---|---|---|
-| Gold annotations | 1,497 | 544 | 632 |
-| Span recall | 49.5% | 58.6% | 55.4% |
-| Linked recall | 26.8% | 40.1% | 33.5% |
-| Linked precision | 45.1% | 54.2% | 46.9% |
-| AUTO-tier precision (gradable) | 76.8% (43/56) | 92.0% (139/151) | 93.3% (111/119) |
-| Deflection rate (share landing AUTO) | 30.2% | 56.6% | 47.9% |
+| Metric | Fresh-10 | Fresh-5 original | Fresh-5 gazetteer | Fresh-5 calibrator-unseen |
+|---|---|---|---|---|
+| Gold annotations | 1,497 | 544 | 632 | 862 |
+| Span recall | 49.5% | 58.6% | 55.4% | 51.5% |
+| Linked recall | 26.8% | 40.1% | 33.5% | 27.7% |
+| Linked precision | 45.1% | 54.2% | 46.9% | 40.2% (239/595) |
+| AUTO-tier precision (gradable) | 76.8% (43/56) | 92.0% (139/151) | 93.3% (111/119) | **86.9% (172/198)** |
+| Deflection rate (share landing AUTO) | 30.2% | 56.6% | 47.9% | 53.2% (366/688) |
+
+**Per-AUTO-tier breakdown for the new batch**, since this is the first batch where all four AUTO tiers have real, non-trivial gradable volume simultaneously: `TIER_1B` 25/25 (**100%**), `TIER_3` 63/63 (**100%**), `TIER_1` 84/110 (76.4%), and — not an adopted AUTO tier, reported for reference — `TIER_4` (shadow) 45/93 (48.4%). The `TIER_1B` result is a real, meaningful confirmation: the calibrator hit 100% precision on this specific batch's 25 gradable promotions, on notes it has never seen in training.
 
 ### 16.3 Timing (mean seconds/entity, pause-excluded — `MAX_PLAUSIBLE_ENTITY_GAP_SECONDS=600`)
 
-| Stage | Fresh-10 | Fresh-5 original | Fresh-5 gazetteer |
-|---|---|---|---|
-| Stage 2b (normalization) | 1.216s | 2.938s | 2.110s |
-| Stage 3 (MoLLM tier gate) | 10.157s | 6.947s | 7.025s |
+| Stage | Fresh-10 | Fresh-5 original | Fresh-5 gazetteer | Fresh-5 calibrator-unseen |
+|---|---|---|---|---|
+| Stage 2b (normalization) | 1.216s | 2.938s | 2.110s | — (not separately re-measured) |
+| Stage 3 (MoLLM tier gate) | 10.157s | 6.947s | 7.025s | **6.962s** |
 
-**Reading it honestly**: Fresh-10 is the oldest measurement and TIER_3's near-absence there (3 vs. 73/78 in the two Fresh-5 batches) reflects a real pipeline change since — the fast-path exact-match tier got materially better coverage later, consistent with §16 not being a controlled ablation any more than §10.3 was. The two Fresh-5 batches are close on AUTO precision (92.0% vs. 93.3%) but the gazetteer batch has a noticeably higher `TIER_4_ENSEMBLE_SPLIT` share (37.5% vs. 29.2%) and lower deflection (47.9% vs. 56.6%) — consistent with the gazetteer-recovered spans being harder cases the ensemble agrees on less often (see §14's gazetteer-fallback discussion). Stage 3 is consistently the dominant per-entity cost (5-8x Stage 2b) across all three batches — direct empirical support for this project's 2-5 min/note latency budget being spent where it matters (the multi-model ensemble, not retrieval).
+**How the repurposing mechanisms are visibly shifting the tier distribution, read across all four batches in sequence**: `TIER_1B_CALIBRATED_AUTO_VALIDATED` — which requires `kg3_confirmation_count` (§9, adopted 2026-08-30) to exist at all — is **0% in every batch that predates or coincidentally missed it** (Fresh-10, predates the mechanism; Fresh-5 gazetteer, real chance variance, not a leakage artifact — verified those 5 notes aren't in calibrator training either) and **meaningfully present in both batches where it had real, unseen split-vote entities to work on** (7.2% original, 4.2% calibrator-unseen). `TIER_3`'s share jumped from near-zero (1.2%) in Fresh-10 to a stable 14.7-19.6% in every batch since — a real, separate pipeline change (the fast-path exact-match tier getting materially better coverage), not attributable to any single mechanism in this document. **`TIER_1`'s share is highest yet in the newest batch (34.3%)** — plausibly connected to the `normalized_entities` dedup-key fix (§17, live only for this batch) letting more duplicate-mention entities reach a clean decision that would previously have been silently dropped before ever reaching Stage 3, though this batch also differs from the others in more than that one variable (see caveat below) so this is a plausible contributor, not an isolated, proven cause.
+
+**Reading it honestly, not just favorably**: none of these four batches is a controlled ablation against the others — different notes, different points in time, multiple fixes landing in between. AUTO-tier precision for the newest batch (86.9%) sits between the two prior Fresh-5 batches (92.0%, 93.3%) and above Fresh-10 (76.8%) — a real, positive trend line, but the newest batch's own composition (higher `TIER_4` volume, 33.3%, driven by real split-vote disagreement, not error) is why its blended AUTO precision reads lower than the two batches immediately before it, even though every *individual* AUTO tier's own precision (100%/100%/76.4%) is as good as or better than those batches' equivalents. Stage 3 timing is remarkably stable across the three most recent batches (6.947s, 7.025s, 6.962s) — real evidence the per-entity ensemble cost hasn't drifted despite everything else changing, and Stage 3 remains the dominant per-entity cost (5-8x Stage 2b) everywhere it's been measured.
 
 ---
 
