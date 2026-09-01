@@ -30,6 +30,10 @@ FLOORS = [0.50, 0.55, 0.60, 0.65, 0.68, 0.70, 0.72]
 
 
 def main():
+    try:
+        sys.stdout.reconfigure(line_buffering=True)
+    except AttributeError:
+        pass
     ap = argparse.ArgumentParser()
     ap.add_argument("--sample-size", type=int, default=300)
     args = ap.parse_args()
@@ -37,10 +41,12 @@ def main():
     from src.db_utils import connect_with_retry
     from evaluation.cal_eval import GOLD_CANDIDATES, _first_existing
     from scripts.score_gold_recall import load_gold, overlaps
+    from src.retrieval import VocabularyRetriever
     import src.normalization.orchestrator as orch
     import src.normalization.tier_retrieval as tr
 
     conn = connect_with_retry(f"{PROJECT_DIR}/db/kg2_lexical_store.duckdb", read_only=True)
+    vocab = VocabularyRetriever(conn)
 
     # Population: currently NO_CANDIDATE (match_tier '0 (Failed)') entities
     # that actually have gold coverage (span overlap), so precision is
@@ -96,7 +102,12 @@ def main():
         concept_id = mapping.get("concept_id")
         if score is None or concept_id is None:
             continue
-        correct = str(concept_id) == str(gold_concept_id)
+        # gold_concept_id is a raw SNOMED code; normalize_entity() returns
+        # an OMOP internal concept_id -- two different id spaces. Must
+        # crosswalk before comparing (the same real bug this project
+        # already found once this session for gazetteer concept lookups).
+        snomed_code = vocab.snomed_code_for_concept(concept_id)
+        correct = snomed_code is not None and str(snomed_code) == str(gold_concept_id)
         results.append((score, correct))
         if i % 50 == 0:
             print(f"  [{time.time()-start:.0f}s] {i}/{len(sample)} done, {n_errors} errors")

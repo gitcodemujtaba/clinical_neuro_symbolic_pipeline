@@ -858,3 +858,45 @@ Every mechanism below takes data this project already has for another reason —
 | Linked recall | 27.4% | 27.7% | **+0.4pp** |
 
 **Honest read**: small and real, not a large win — consistent with the mechanism's own design intent (the two-bar vetting in §14/`src/gliner_gazetteer_fallback.py`'s docstring deliberately prioritized safety over volume, rejecting 6 of the 18 candidates checked at rank 26-50 specifically to avoid the `interactive`/`evaluation`/`surgery` over-extraction trap). The gain is concentrated in one note (`17665522-DS-2`, +9 of the +12 total) — a real per-note variance, not evidence the mechanism only works on one note type; a larger validation batch would be needed to say more. `CNSP_GLINER_GAZETTEER_FALLBACK` stays off by default pending that larger batch, consistent with every other new-mechanism rollout in this project.
+
+---
+
+## 19. Threshold Optimization — GLiNER `EXTRACTION_THRESHOLD` and SapBERT `TIER3_SIMILARITY_FLOOR` (2026-09-01)
+
+**Question**: are the two live accept/reject thresholds this pipeline runs on — `EXTRACTION_THRESHOLD=0.35` (Stage 2a, GLiNER) and `TIER3_SIMILARITY_FLOOR=0.72` (Stage 2b, SapBERT) — actually optimal on the current, grown corpus, or is there real headroom? Both were re-checked directly against real data rather than assumed still-correct.
+
+### 19.1 GLiNER `EXTRACTION_THRESHOLD` — a free, zero-new-inference sweep
+
+Every GLiNER prediction is already stored down to `SUBTHRESHOLD_FLOOR=0.35` with its real confidence score, so re-grading at a different cutoff needs no new model calls — just a re-filter and re-score against gold (`scripts/sweep_extraction_threshold.py`). Full corpus (154 notes, 41,441 gold annotations, 31,016 real GLiNER-scored rows):
+
+| Threshold | n accepted | Span recall | Span precision |
+|---|---|---|---|
+| **0.35 (current)** | 31,016 | **52.99%** | **70.61%** |
+| 0.40 | 29,522 | 50.17% | 70.30% |
+| 0.50 | 26,547 | 44.55% | 69.37% |
+| 0.60 | 23,569 | 38.80% | 68.22% |
+| 0.70 | 20,551 | 33.27% | 67.23% |
+| 0.80 | 17,192 | 27.69% | 66.96% |
+| 0.90 | 12,771 | 21.39% | 69.50% |
+
+**Result: 0.35 is confirmed optimal, not just historically chosen.** It is simultaneously the best recall point (52.99%, monotonically declining as the threshold rises) AND the best precision point (70.61% — precision falls as the threshold rises from 0.35 to ~0.80, then recovers slightly at the very top but never exceeds 0.35's own number). This directly re-confirms, on the current corpus, the original 2026-08 finding that GLiNER's own confidence is inverted against correctness in this domain — raising the threshold trades away real recall for no precision gain anywhere in the sweep. No change recommended.
+
+### 19.2 SapBERT `TIER3_SIMILARITY_FLOOR` — an asymmetric sweep, real re-computation required below 0.72
+
+Sweeping *above* 0.72 is free (candidates are already stored); sweeping *below* it is not — a below-floor top hit is dropped entirely today (`NO_CANDIDATE`, nothing persisted but a bare `top_score` in `tier_trace`), so testing whether a lower floor would recover real, gold-correct matches requires actually re-running the real `normalize_entity()` (not a reimplementation) with the floor disabled. Done on a real, random 300-entity sample of the 1,670 gold-gradable entities among the corpus's 2,467 current `NO_CANDIDATE` cases (`scripts/sweep_tier3_floor_downward.py`).
+
+**A real grading bug caught and fixed before trusting the first result**: the first run compared `normalize_entity()`'s OMOP `concept_id` directly against gold's raw SNOMED code — two different id spaces — and read a mechanically-guaranteed, meaningless 0% at every floor. Fixed to crosswalk via `VocabularyRetriever.snomed_code_for_concept()` (the same crosswalk `score_gold_recall.py` already uses) before comparing, then re-run:
+
+| Floor | n clearing (of 300) | n correct | Precision | Extrapolated recall gain (of 1,670) |
+|---|---|---|---|---|
+| 0.50 | 297 | 12 | **4.04%** | ~1,653 |
+| 0.55 | 260 | 12 | 4.62% | ~1,447 |
+| 0.60 | 188 | 9 | 4.79% | ~1,047 |
+| 0.65 | 125 | 5 | 4.00% | ~696 |
+| 0.68 | 71 | 5 | 7.04% | ~395 |
+| 0.70 | 20 | 1 | 5.00% | ~111 |
+| 0.72 (current) | 4 | 0 | 0.00% | ~22 |
+
+**Result: 0.72 is confirmed correct — lowering it would not help.** Precision sits at 4-7% across the entire below-floor range down to 0.50, essentially flat — there is no floor value between 0.50 and 0.72 where lowering the cutoff recovers meaningful volume without flooding the pipeline with wrong matches (a real, large recall gain — up to ~1,653 more entities extrapolated at 0.50 — comes at a cost of accepting ~96% wrong candidates). This directly reconfirms and extends `docs/SapBERT_Technical_Reference.md` §5.3's original by-similarity-bin finding ("the signal itself doesn't discriminate well enough at any point on this curve") below 0.72, with real data rather than assumption. No change recommended; the real, remaining recall gap in this population is a genuine retrieval-quality problem (the correct concept isn't being surfaced with high enough similarity at all), not a threshold-tuning problem.
+
+**Verdict for both**: neither threshold has real, exploitable headroom on the current corpus. Both stay at their current values.

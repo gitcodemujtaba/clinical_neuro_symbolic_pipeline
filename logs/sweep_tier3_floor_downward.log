@@ -1,0 +1,22 @@
+Loading SapBERT model for vector normalization... (this may take a moment)
+2467 total NO_CANDIDATE entities
+1670 of those have gold span coverage (gradable)
+sampling 300 for real re-computation (TIER3_SIMILARITY_FLOOR temporarily disabled)
+
+  [40s] 50/300 done, 0 errors
+  [88s] 100/300 done, 0 errors
+  [126s] 150/300 done, 0 errors
+  [173s] 200/300 done, 0 errors
+  [215s] 250/300 done, 0 errors
+  [266s] 300/300 done, 0 errors
+
+300 real, gradable re-computed results (0 errors), 267s total
+
+   floor  n_clearing  n_correct   precision  cum_recall_gain
+    0.50         297         12       4.04%            1653 (extrapolated)
+    0.55         260         12       4.62%            1447 (extrapolated)
+    0.60         188          9       4.79%            1047 (extrapolated)
+    0.65         125          5       4.00%             696 (extrapolated)
+    0.68          71          5       7.04%             395 (extrapolated)
+    0.70          20          1       5.00%             111 (extrapolated)
+    0.72           4          0       0.00%              22 (extrapolated)
