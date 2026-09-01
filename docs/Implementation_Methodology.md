@@ -13,7 +13,7 @@
 > (execution order), `docs/Code_Reference_Stages_And_Metrics.md` (core code +
 > metric formulas), `docs/MoLLM_Prompts_And_Reasoning_Technical_Reference.md`
 > (every prompt verbatim), `docs/ConsensusCalibrator_Technical_Reference.md`
-> (the 16-feature calibrator in full), `docs/Provenance_Fields_Technical_Reference.md`
+> (the 17-feature calibrator in full), `docs/Provenance_Fields_Technical_Reference.md`
 > (every provenance field, where computed, every consumer), and
 > `docs/Entity_Journey_Plain_Language_Walkthrough.md` (one real entity
 > traced end to end). `docs/2026-08-20_Session_Results_And_Status.md` and
@@ -116,6 +116,21 @@ mechanism, see below.
   investigation, offset-overlap endpoint linking, the shared-`FLAT_NER`
   measurement, and the full predicate-coverage numbers — in
   `docs/GLiNER_Models_Technical_Reference.md` Part 2.
+* **GLiNER gazetteer fallback** (`src/gliner_gazetteer_fallback.py`,
+  gated off by default via `CNSP_GLINER_GAZETTEER_FALLBACK`) — 24
+  gold-verified terms (13 built 2026-08-31, 11 more added 2026-09-01)
+  recovered whenever GLiNER's neural extraction misses them entirely,
+  unioned into the same span coordinate system before assertion
+  detection. Every term cleared two required bars, not just one: ≥95%
+  gold-concept-consistency whenever tagged, **and** a directly-measured
+  tag rate (what fraction of real train-split occurrences gold actually
+  tags as this entity) — the second bar is what excludes common
+  narrative words that would over-extract (`interactive`/`evaluation`/
+  `surgery`/`soft` cleared the first bar alone but failed the second; the
+  2026-09-01 extension additionally rejected `k`/`mcv`/`urine`/
+  `infection`/`bleeding`/`erythema` on the same two-bar test). Recovered
+  spans carry a distinct `extraction_source` so they're never blended
+  with a real GLiNER extraction in any measurement.
 * **Span growth** then **compound-span splitting** run after extraction,
   before normalization.
 
@@ -139,6 +154,22 @@ mechanism, see below.
   brand→generic drug names and common lab-test shorthand
   (`_LAB_TEST_ALIASES`). `CANDIDATE_LIMIT = 5` (widened from an original 3
   after measuring oracle-in-top-5 accuracy).
+* **`normalized_entities` dedup-key fix** (2026-09-01) — the table's row
+  identity used to be `UNIQUE(note_id, original_text, expanded_text,
+  gliner_label)`, not `entity_id`, so two distinct entity_ids sharing
+  that tuple (the same term mentioned twice in one note — verified live,
+  `"HTN"` twice in one note) silently collapsed into one row, orphaning
+  every duplicate mention but the last from Stage 3/HITL/KG3, all of
+  which key off `entity_id`. Verified corpus-wide: 100% of a real
+  8,653-row gap (~14 points of the measured recall shortfall) explained
+  by exactly this. Fixed to `UNIQUE(entity_id, expanded_text)` — not
+  `entity_id` alone, since a legitimate one-to-many case exists too (a
+  multi-drug regimen abbreviation like `"R-CHOP"` normalizes to several
+  different `expanded_text`/concept pairs for one `entity_id`). Six
+  downstream grading scripts that had independently worked around the
+  same defect via the old composite-key join were switched back to the
+  now-reliable `entity_id` join. Full diagnosis:
+  `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §17.
 * **`CONTEXTUAL_CANDIDATES_ENABLED`** (default **ON** since 2026-08-18):
   widens Condition-label search to also include the Observation domain —
   fixes a real class of "Condition vs Observation" duplicate-concept
@@ -276,9 +307,11 @@ of AUTO pending a fresh-note evaluation — see the latest-results doc for
 where that stands.
 
 **Consensus calibrator** (`src/mollm_tier_calibrator.py`,
-`ConsensusCalibrator`) — a 16-feature logistic regression (vote-consensus
+`ConsensusCalibrator`) — a 17-feature logistic regression (vote-consensus
 shape, retrieval provenance, fragile-fallback flags, prior-confirmation
-count) scoring `P(correct)` for entities the ensemble did not agree on
+count, plus `kg3_confirmation_count` — the same signal sourced from the
+live KG3 graph instead of DuckDB, added 2026-08-30) scoring `P(correct)`
+for entities the ensemble did not agree on
 unanimously. `CALIBRATED_AUTO_THRESHOLD = 0.78` (re-derived 2026-08-31
 from 0.72, after a locked-test-split leakage fix forced a calibrator
 refit — same selection rule as the original value, applied to clean

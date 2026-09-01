@@ -27,8 +27,11 @@ flowchart TD
         E --> E1{"word count ><br/>CHUNK_WORD_BUDGET?"}
         E1 -- yes --> E2["_extract_entities_chunked()<br/>128-token overlap"]
         E1 -- no --> E3["model.predict_entities()<br/>GLiNER-BioMed"]
-        E2 --> E4["annotate_assertions()"]
-        E3 --> E4
+        E2 --> E3B{"CNSP_GLINER_GAZETTEER_<br/>FALLBACK enabled?<br/>(off by default)"}
+        E3 --> E3B
+        E3B -- yes --> E3C["recover_missed_entities()<br/>24 gold-verified terms<br/>(13 orig + 11 added 2026-09-01)"]
+        E3B -- no --> E4
+        E3C --> E4["annotate_assertions()"]
         E4 --> F["extract_and_store_relations()<br/>GLiNER-relex"]
         F --> G["sub-threshold filter<br/>accepted vs subthreshold"]
         G --> H["cold-start injectors<br/>physexam / lab-abbrev / narrative-state"]
@@ -42,7 +45,7 @@ flowchart TD
         K1 --> K2["Tier 1 exact / Tier 2 synonym /<br/>Tier 3 SapBERT semantic<br/>(SCTID namespace exclusion applied)"]
         K2 --> K3["_prefer_lab_procedure_over_observable()<br/>rank penalty"]
         K3 --> K4["_collapse_hierarchy_duplicates()"]
-        K4 --> L["normalized_entities.candidates<br/>(written to DB)"]
+        K4 --> L["normalized_entities.candidates<br/>(written to DB, keyed on<br/>entity_id+expanded_text since 2026-09-01)"]
     end
 
     L --> M["Stage 3 batch runner<br/>scripts/run_stage3_tier_gate.py"]
@@ -64,7 +67,7 @@ flowchart TD
         N6 -- "RE_RANK_TO_N" --> N8["ConsensusCalibrator escape hatch"]
         N8 --> Z5["TIER_2_AUTO_RESOLVED<br/>(excluded from AUTO_TIERS)"]
         N6 -- "split 2-1 / 1-1-1" --> N9["_is_coronary_segment_trap() /<br/>_is_short_alphanumeric_code() /<br/>calibrator.score()"]
-        N9 -- "score >= 0.72" --> Z6["TIER_1B_CALIBRATED_AUTO_VALIDATED"]
+        N9 -- "score >= 0.78" --> Z6["TIER_1B_CALIBRATED_AUTO_VALIDATED"]
         N9 -- "below threshold / trapped" --> Z7["TIER_4_ENSEMBLE_SPLIT"]
     end
 
@@ -205,7 +208,7 @@ main()  [scripts/run_stage3_tier_gate.py]
           ├─ [split vote, 2-1 or 1-1-1]
           │    _is_coronary_segment_trap() / _is_short_alphanumeric_code()
           │    calibrator.score(feature_vector) if not trapped
-          │    → TIER_1B_CALIBRATED_AUTO_VALIDATED (score >= 0.72)
+          │    → TIER_1B_CALIBRATED_AUTO_VALIDATED (score >= 0.78)
           │      | TIER_4_ENSEMBLE_SPLIT (otherwise)
           │
           └─ store_tier_decision(decision, entity_id, note_id, conn, is_test)

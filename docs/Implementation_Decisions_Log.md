@@ -203,6 +203,12 @@ evaluated and not adopted — see §7 for the full evidence trail.
 - **Source**: docs/2026-08-20_Session_Results_And_Status.md (§8)
 - **Date**: 2026-08-20
 
+### GLiNER gazetteer fallback extended from 13 to 24 terms, via a two-bar re-mining pass
+- **Decision**: Re-ran `evaluation/mine_gliner_misses.py --top-n 50` (extending past the already-fully-triaged top-25) and vetted every new rank-26-50 candidate against BOTH required bars — gold-concept-consistency-when-tagged (≥95%, the existing bar) AND a new, empirically-measured tag-rate/extraction-worthiness check (what fraction of real occurrences gold actually tags as this entity). 11 of 18 new candidates cleared both bars and were added (`totbili`, `perrl`, `rubs`, `well perfused`, `sclera anicteric`, `gallops`, `crackles`, `rhonchi`, `cyanosis`, `vitals`, `ph`); 6 were rejected on the second bar specifically (`k` 21.4% tag rate, `mcv` 35.7%, `urine`/`infection`/`bleeding` failing consistency despite high tag rate, `erythema` at 86.4% consistency, just under the bar).
+- **Evidence**: Real train-split occurrence counts for every candidate, both accepted and rejected, logged in the module's own docstring (`src/gliner_gazetteer_fallback.py`). The two-bar method itself was formalized as the standing selection criteria for a future KG3-sourced (not gold-sourced) version of this same mining, with an added minimum-reoccurrence-count gate for that case specifically.
+- **Source**: `src/gliner_gazetteer_fallback.py` module docstring; `logs/gliner_miss_report_top50.json`
+- **Date**: 2026-09-01
+
 ---
 
 ## 4. Stage 2b — Normalization / Retrieval / Grounding
@@ -435,6 +441,12 @@ evaluated and not adopted — see §7 for the full evidence trail.
 - **Evidence**: `glinker` requires Python ≥3.10 (main pipeline pinned 3.9.25 for scispaCy/medspacy); checkpoints saved in `transformers==5.0.0` format, incompatible with the pipeline's pinned 4.57.6.
 - **Source**: docs/2026-08-18_GLiNER_Linker_Reranker_Evaluation.md
 - **Date**: 2026-08-18
+
+### `normalized_entities` re-keyed on `entity_id`, fixing a real duplicate-mention data loss bug
+- **Decision**: Changed `normalized_entities`' uniqueness key from `(note_id, original_text, expanded_text, gliner_label)` to `UNIQUE(entity_id, expanded_text)`. DuckDB 1.4.5 has no `ALTER TABLE ADD/DROP CONSTRAINT`, so this required a rename-recreate-copy migration (`scripts/fix_normalized_entities_dedup_key.py`, old table kept as a backup) plus a cheap backfill copying each orphaned `entity_id`'s sibling result rather than re-running `normalize_entity()`.
+- **Evidence**: Diagnosed while investigating the corpus recall gap: two distinct entity_ids sharing the old composite key (the same term mentioned twice in one note — verified live, `"HTN"` twice in note `10097089-DS-8`) collapsed into one physical row via `ON CONFLICT DO UPDATE SET entity_id = EXCLUDED.entity_id`, orphaning every duplicate mention but the last from Stage 3/HITL/KG3. 100% of a real 8,653-row corpus-wide gap explained by exactly this. The new key (not `entity_id` alone) was required because a legitimate one-to-many case exists too — verified zero collisions on the new key across all 22,177 pre-existing rows. Six downstream grading scripts that had independently worked around the same defect via the old composite-key join were switched back to the correct, direct `entity_id` join (the old workaround join would have started double-counting predictions instead, once entity_id became reliable — verified live, up to 6x row duplication on a real batch).
+- **Source**: `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §17; `scripts/fix_normalized_entities_dedup_key.py`
+- **Date**: 2026-09-01
 
 ---
 

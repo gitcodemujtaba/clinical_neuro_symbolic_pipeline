@@ -212,6 +212,12 @@ def pick_via_kg_tiebreak(model, entity2idx, tied_concept_ids, full_pool_concept_
 
 **Not wired into production** — evaluated (§ Metrics below) and found
 strictly less safe than the hardcoded rule on the rule's own pattern.
+RotatE (a real 4-configuration ablation — `guideline`/`gold`/`combined`/
+`snomed_is_a` training data) was subsequently built too, reusing this
+same `kg_tiebreak_score()`/`pick_via_kg_tiebreak()` pair unchanged
+(model-agnostic by contract), and every RotatE configuration loses even
+more decisively than TransE does. Full build, training, and ablation
+detail for both: `docs/Knowledge_Graphs_Technical_Reference.md` Part B.
 
 ---
 
@@ -626,8 +632,9 @@ site" discipline (§7 of `docs/ConsensusCalibrator_Technical_Reference.md`).
 Reported alongside, never instead of, the threshold-sweep coverage/
 precision table (§13 of that same doc) — AUROC summarizes ranking quality
 across every possible threshold, while the actually-deployed number
-(`CALIBRATED_AUTO_THRESHOLD = 0.72`) only cares about one point on that
-curve.
+(`CALIBRATED_AUTO_THRESHOLD = 0.78`, re-derived 2026-08-31 from 0.72
+after a locked-test-split leakage fix) only cares about one point on
+that curve.
 
 ### 14. Wilson score interval — **not currently used anywhere in this codebase before this section**, added here
 
@@ -840,8 +847,8 @@ label's original vintage, reflecting real corpus growth since):
 
 ¹Wilson figures here are §14's original 6,724-gradable read; this run's
 6,886 reflects the same real corpus-growth drift already disclosed for
-other metrics this session (e.g. TransE's numbers, `docs/RotatE_KG_
-Embedding_Technical_Reference.md` §4.3) — the point estimate (87.0% vs.
+other metrics this session (e.g. TransE's numbers, `docs/Knowledge_
+Graphs_Technical_Reference.md` Part B §10.3) — the point estimate (87.0% vs.
 86.9%) barely moved, so the Wilson interval is still a fair comparison
 point even though it wasn't recomputed on the exact same 6,886.
 
