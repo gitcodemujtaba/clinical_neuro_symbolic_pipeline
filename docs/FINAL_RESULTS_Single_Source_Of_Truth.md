@@ -202,7 +202,15 @@ Full technical detail and code: `docs/Code_Reference_Stages_And_Metrics.md`
 
 ---
 
-## 6. KG Embedding (TransE) Results
+## 6. KG Embedding (TransE + RotatE) Results
+
+**Update**: RotatE was subsequently built too, as a real 4-configuration
+ablation (`guideline`/`gold`/`combined`/`snomed_is_a` training data) —
+full results, method, and honest limitations in
+`docs/KG_Embedding_Technical_Reference.md` (merged 2026-09-01 from what
+were previously two separate TransE/RotatE docs). **Neither method beats
+the hardcoded rule; RotatE is worse than TransE at this task.** This
+section covers TransE specifically; see that doc's Part B for RotatE.
 
 **Built**: real TransE (Bordes et al. 2013, plain PyTorch, no external
 KGE library) on the SNOMED subgraph this pipeline's candidate pools
@@ -217,25 +225,39 @@ Verified directly against `logs/kg_embedding_results.json`
 (`n_test: 2493`, `link_prediction.n_evaluated: 2000`) and
 `src/kg_embedding.py`'s `max_eval` parameter before writing this.
 
-**Extrinsic evaluation** (task-specific): on 455 real gold-confirmed TP
-records (1,612 comparisons), the embedding placed a wrong-but-competing
-candidate closer to the correct concept than a random unrelated concept
-**68.9%** of the time (vs. 50% chance) — real signal.
+**Extrinsic evaluation** (task-specific), **current, post-locked-test-
+split-leakage-fix numbers** (2026-08-31; the leakage fix removed 39 of
+149 source notes that belonged to the official locked test split — see
+`docs/KG_Embedding_Technical_Reference.md` §6.2/§10 for the full
+before/after): on 343 real gold-confirmed TP records (1,209 comparisons),
+the embedding placed a wrong-but-competing candidate closer to the
+correct concept than a random unrelated concept **63.7%** of the time
+(was 68.9% pre-fix; vs. 50% chance) — real signal, smaller than
+originally measured.
 
 **Decisive test — gold-validated tiebreak, threshold sweep**
-(`evaluation/kg_tiebreak_validation.py`):
+(`evaluation/kg_tiebreak_validation.py`), **current numbers**:
 
 | Threshold | Full-population win/loss | KGE loss vs. hardcoded rule's own pattern |
 |---|---|---|
-| 0.01 | 12 win / 20 loss (net negative) | 0 / 0 (n=5) |
-| 0.02 | 93 win / 104 loss (net negative) | 0 / 0 (n=93, tied) |
-| 0.03 | 265 win / 181 loss (net +84) | **63 / 0** |
-| 0.05 | 347 win / 200 loss | 63 / 0 |
-| 0.08 | 347 win / 202 loss | 63 / 0 |
+| 0.01 | 11 win / 24 loss | 0 / 0 (n=5) |
+| 0.02 | 65 win / 243 loss | 29 / 0 (n=93) |
+| 0.03 | **130 win / 379 loss (net −249)** | **134 / 0** |
+| 0.05 | 190 win / 399 loss | 134 / 0 |
+| 0.08 | 200 win / 400 loss | 134 / 0 |
 
-On the hardcoded `_prefer_lab_procedure_over_observable()` rule's own
-pattern (Lab Test, Procedure vs. Observable-Entity/Qualifier-Value), the
-rule has **zero losses at every threshold tested**; KGE has 63.
+**Superseded twice, both moves in the same direction — disclosed in
+full, not collapsed to one row.** The net at threshold 0.03 was
+originally 265W/181L (net +84), then 228W/263L (net −35) from corpus
+growth alone, then the numbers above (130W/379L, net −249) after the
+locked-test-split leakage fix — TransE's original apparent strength was
+partly an artifact of notes it should never have been measured against.
+**The current, correct conclusion**: TransE is net-harmful on the
+broader tied-pair population, not just losing to the rule on its own
+narrower specialist pattern. On the hardcoded
+`_prefer_lab_procedure_over_observable()` rule's own pattern (Lab Test,
+Procedure vs. Observable-Entity/Qualifier-Value), the rule has **zero
+losses at every threshold tested**; KGE now has 134 (was 63).
 **Specific falsification**: a proposed narrative that KGE would
 "naturally" resolve the third near-duplicate concept from §5 was checked
 against the actual retrained model on the actual failing entity — KGE
@@ -243,11 +265,16 @@ picked the identical wrong concept, 0.0018 embedding-distance margin
 (noise, not signal).
 
 **Decision: not wired into production.** The hardcoded rule stays as the
-safer specialist mechanism. KGE remains built, tested, checkpointed
-(`models/kg_transe_v1.pt`, committed to git), and evaluated — a real,
-positive-net-but-imperfect generalist signal for future work on patterns
-the hardcoded rule doesn't cover, contingent on a calibrated gating
-mechanism that does not yet exist.
+safer specialist mechanism, and is now more decisively ahead than
+originally measured. KGE remains built, tested, checkpointed
+(`models/kg_transe_v1.pt`, committed to git), and evaluated. RotatE
+(§ above, full ablation in `docs/KG_Embedding_Technical_Reference.md`)
+was built as the natural follow-on question ("does a different KGE
+architecture do better") and found to underperform TransE at this same
+task across all four training-data configurations tried — neither
+method is a candidate for production use without a calibrated gating
+mechanism that does not yet exist (see that doc's §13 for the concrete,
+lower-risk integration points considered but not built).
 
 ---
 
@@ -753,3 +780,54 @@ Every mechanism below takes data this project already has for another reason —
 | **Acronym escalation** (`src/acronym_escalation.py`, tracked in the reorg plan's Phase 4) | MoLLM + the pipeline's own dictionary, repurposed to resolve ambiguous abbreviations before extraction | Stage 1 expansion accuracy | 34.3%→36.1% precision at corpus scale — a systematic textbook-prior bias (e.g. `LAD`→"left anterior descending artery" over gold's "Lymphadenopathy") | **Negative, not adopted** — stays off by default |
 
 **Reading this honestly**: exactly one mechanism (`kg3_confirmation_count`) has a clearly positive, adopted, at-scale-verified effect; one more (the lab-alias fix) is positive and real but not yet re-measured at full corpus scale; `prior_confirmation_count` contributes a real but secondary signal; two mechanisms (mined context rules, guideline evidence) are honestly null on the specific populations tested so far, not proven ineffective in general; one (acronym escalation) is a real, corpus-measured negative result. The pattern worth taking away: **repurposing existing data has real, non-trivial potential — roughly half of what's been tried has moved a real benchmark number — but it is not uniformly positive, and every claim above is backed by a specific, reproducible measurement, not an assumption that "more signal is always better."**
+
+---
+
+## 16. Three-Batch Comparison at Full Stage 3 Coverage (Fresh-10 / Fresh-5 original / Fresh-5 gazetteer, 2026-09-01)
+
+§10's fresh-5 numbers were captured mid-batch; both fresh-5 batches (and Fresh-10) were subsequently run to **genuine full Stage 3 coverage** (`scripts/complete_fresh5_stage3_full.py` — no per-note cap, idempotent) and re-graded. This section is the current, authoritative, side-by-side comparison of all three named batches (`ui/components/note_batches.py`'s `NOTE_BATCHES`), superseding §10.3's numbers for the two batches it lists in more detail here plus adding the gazetteer batch for the first time.
+
+### 16.1 Tier distribution (raw decision counts, % of that batch's total)
+
+| Tier | Fresh-10 (2026-08-20) | Fresh-5 original (2026-08-30) | Fresh-5 gazetteer (2026-08-31) |
+|---|---|---|---|
+| `TIER_1_AUTO_VALIDATED` | 75 (29.1%) | 111 (29.8%) | 119 (29.0%) |
+| `TIER_1B_CALIBRATED_AUTO_VALIDATED` | 0 | 27 (7.2%) | 0 |
+| `TIER_2_AUTO_RESOLVED` | 5 (1.9%) | 8 (2.1%) | 8 (1.9%) |
+| `TIER_3_AUTO_VALIDATED` | 3 (1.2%) | 73 (19.6%) | 78 (19.0%) |
+| `TIER_4_ENSEMBLE_SPLIT` | 124 (48.1%) | 109 (29.2%) | 154 (37.5%) |
+| `TIER_5_TRUE_AMBIGUITY` | 49 (19.0%) | 44 (11.8%) | 50 (12.2%) |
+| null/error | 2 (0.8%) | 1 (0.3%) | 2 (0.5%) |
+| **Total decisions** | **258** | **373** | **411** |
+
+### 16.2 Accuracy & coverage
+
+| Metric | Fresh-10 | Fresh-5 original | Fresh-5 gazetteer |
+|---|---|---|---|
+| Gold annotations | 1,497 | 544 | 632 |
+| Span recall | 49.5% | 58.6% | 55.4% |
+| Linked recall | 26.8% | 40.1% | 33.5% |
+| Linked precision | 45.1% | 54.2% | 46.9% |
+| AUTO-tier precision (gradable) | 76.8% (43/56) | 92.0% (139/151) | 93.3% (111/119) |
+| Deflection rate (share landing AUTO) | 30.2% | 56.6% | 47.9% |
+
+### 16.3 Timing (mean seconds/entity, pause-excluded — `MAX_PLAUSIBLE_ENTITY_GAP_SECONDS=600`)
+
+| Stage | Fresh-10 | Fresh-5 original | Fresh-5 gazetteer |
+|---|---|---|---|
+| Stage 2b (normalization) | 1.216s | 2.938s | 2.110s |
+| Stage 3 (MoLLM tier gate) | 10.157s | 6.947s | 7.025s |
+
+**Reading it honestly**: Fresh-10 is the oldest measurement and TIER_3's near-absence there (3 vs. 73/78 in the two Fresh-5 batches) reflects a real pipeline change since — the fast-path exact-match tier got materially better coverage later, consistent with §16 not being a controlled ablation any more than §10.3 was. The two Fresh-5 batches are close on AUTO precision (92.0% vs. 93.3%) but the gazetteer batch has a noticeably higher `TIER_4_ENSEMBLE_SPLIT` share (37.5% vs. 29.2%) and lower deflection (47.9% vs. 56.6%) — consistent with the gazetteer-recovered spans being harder cases the ensemble agrees on less often (see §14's gazetteer-fallback discussion). Stage 3 is consistently the dominant per-entity cost (5-8x Stage 2b) across all three batches — direct empirical support for this project's 2-5 min/note latency budget being spent where it matters (the multi-model ensemble, not retrieval).
+
+---
+
+## 17. `normalized_entities` Dedup-Key Bug — Found and Fixed (2026-09-01)
+
+**What was found.** Diagnosing the corpus-wide recall gap directly (not assumed): of 40,579 gold annotations across all 154 processed test notes, **46.9% were never extracted by GLiNER/gazetteer at all**, and a further **14.1% (5,730 gold-covering entities) were extracted and accepted but had zero `normalized_entities` row** — invisible to Stage 3/HITL/KG3 despite having cleared Stage 2a. Traced to a real schema bug, not a model-quality issue: `normalized_entities` was `UNIQUE(note_id, original_text, expanded_text, gliner_label)`, not `entity_id`. When the same term is mentioned twice in one note (verified live: `"HTN"` twice in note `10097089-DS-8`, both real, distinct `entity_id`s), the second `INSERT ... ON CONFLICT (...) DO UPDATE SET entity_id = EXCLUDED.entity_id` silently overwrote the first mention's `entity_id` link — orphaning it. Verified corpus-wide: **100% of a real 8,653-row gap** is explained by exactly this collision.
+
+**The fix** (`src/normalization/orchestrator.py`, `scripts/fix_normalized_entities_dedup_key.py`): `UNIQUE(entity_id, expanded_text)`, not `entity_id` alone — a real, legitimate one-to-many case exists too (a multi-drug regimen abbreviation like `"R-CHOP"` normalizes to 5 different `expanded_text`/concept pairs for the SAME `entity_id`, verified live in note `12465457-DS-18`: Rituximab/Cyclophosphamide/Hydroxydaunomycin/Oncovin/Prednisone). Verified zero collisions on the new key across all 22,177 pre-existing rows. DuckDB 1.4.5 has no `ALTER TABLE ADD/DROP CONSTRAINT`, so the fix is a rename-recreate-copy migration (old table kept, not dropped) plus a cheap backfill that copies each orphaned `entity_id`'s sibling result rather than re-running `normalize_entity()` (deterministic given the same key — zero new model/search calls for 8,653 rows). Production migration: 22,177 → 30,830 rows, 0 accepted entities left orphaned.
+
+**A second-order finding, equally real**: six evaluation/grading scripts (`scripts/score_gold_recall.py`, `evaluation/iou_metrics.py`, `evaluation/ablations.py`, `evaluation/cal_eval.py`, `evaluation/stage1_disambiguation_eval.py`, `evaluation/stage2b_cal_eval.py`, `scripts/measure_gliner_risk_vs_match_tier.py`) had already joined `extracted_entities` to `normalized_entities` on the old composite key as a **documented, deliberate workaround** for this exact defect (`score_gold_recall.py`'s own "KNOWN DB CAVEAT" docstring, written earlier this session, correctly diagnosed the bug and worked around it for scoring purposes specifically because `normalize_entity()` is a pure function of that key — the *concept* a duplicate mention resolved to was never wrong, only its `entity_id`-level persistence). Once entity_id became reliable, that same workaround join would have started **double-counting** predictions instead — verified live, up to 6x row duplication on the Fresh-5 original batch. All seven were switched to the correct, direct `entity_id` join.
+
+**Net effect on already-reported numbers, checked directly rather than assumed**: because the workaround already existed in the grading path, **the linked-recall/precision figures already published in this document (§2, §10, §16) do not change** — re-run after the fix with the corrected join, all three batches in §16.2 reproduce identically. The real, practical benefit of this fix is **downstream, not in the score**: 8,653 previously-invisible entities (5,730 of them gold-covering) are now visible to Stage 3/HITL/KG3 for the first time, where before this fix they could never be routed, reviewed, or written at all — a pure coverage/completeness fix to the pipeline's own internal plumbing, not a retroactive change to any accuracy metric already reported. `tests/test_normalized_entities_dedup_key.py` (4 checks) and the full suite (91/91) both pass; see the fix's own commit message for the complete diagnosis.
