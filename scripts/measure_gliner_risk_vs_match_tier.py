@@ -67,10 +67,14 @@ def load_predictions_with_confidence(conn, note_ids):
                n.match_tier, n.gliner_confidence
         FROM extracted_entities e
         JOIN normalized_entities n
-          ON n.note_id = e.note_id
-         AND n.original_text = e.original_text
-         AND n.expanded_text = e.expanded_text
-         AND n.gliner_label = e.entity_label
+          ON n.entity_id = e.entity_id
+        -- 2026-09-01: was joined on (note_id, original_text, expanded_text,
+        -- gliner_label) to work around a real DB defect where
+        -- normalized_entities didn't reliably carry entity_id (see
+        -- scripts/fix_normalized_entities_dedup_key.py) -- now fixed, and
+        -- the old composite-key join would double-count rows since the fix
+        -- landed (two entity_ids sharing that tuple now correctly have two
+        -- separate normalized_entities rows).
          AND n.is_test = TRUE
         WHERE e.is_test = TRUE
           AND e.note_id IN ({})

@@ -59,23 +59,36 @@ code, not blindly rejected. Concepts with no crosswalk hit are reported in a
 separate "uncrosswalked" bucket rather than folded into "wrong concept",
 since those are two different failure modes.
 
-KNOWN DB CAVEAT THIS SCRIPT WORKS AROUND, NOT FIXES.
-normalized_entities is UNIQUE on (note_id, original_text, expanded_text,
-gliner_label) -- NOT on entity_id, despite entity_id being written to every
-row for exactly this fan-out purpose (see process_and_normalize_entities's
-"DEDUP FAN-OUT" docstring in src/normalization.py). When the same text+label
-mention repeats in a note (e.g. "heart failure" appears 7+ times in
-19442119-DS-15), each INSERT for the 2nd..nth occurrence hits the SAME
-constraint and does an ON CONFLICT DO UPDATE that overwrites entity_id --
-so only the LAST-written entity_id's row survives under that key, and a join
-on entity_id alone silently drops every earlier duplicate-text entity from
-the score. This script joins on (note_id, original_text, expanded_text,
-gliner_label) instead of entity_id, which is safe here because
-normalize_entity() is a pure function of that same key -- the concept mapping
-IS identical for every duplicate, only the DB row-per-entity_id persistence is
-broken. That persistence gap is real and matters for Stage 4 (which needs one
-provenance row per entity_id), but it is a separate defect from what this
-script measures and is not fixed here.
+FORMERLY A KNOWN DB CAVEAT THIS SCRIPT WORKED AROUND -- FIXED 2026-09-01.
+normalized_entities used to be UNIQUE on (note_id, original_text,
+expanded_text, gliner_label) -- NOT on entity_id, despite entity_id being
+written to every row for exactly a per-entity fan-out purpose (see
+process_and_normalize_entities's "DEDUP FAN-OUT" docstring in
+src/normalization/orchestrator.py). When the same text+label mention
+repeated in a note (e.g. "heart failure" appears 7+ times in
+19442119-DS-15), each INSERT for the 2nd..nth occurrence hit the SAME
+constraint and did an ON CONFLICT DO UPDATE that overwrote entity_id -- so
+only the LAST-written entity_id's row survived under that key, and every
+earlier duplicate-text entity_id was left with zero normalized_entities
+row at all -- invisible to Stage 3/HITL/KG3, which all key off entity_id.
+This script previously worked around it by joining on (note_id,
+original_text, expanded_text, gliner_label) instead of entity_id, which
+was safe for THIS script's own scoring specifically (normalize_entity()
+is a pure function of that key, so the concept mapping was identical for
+every duplicate even though the per-entity_id row was missing) -- but did
+not fix the real, separate problem downstream (verified live: 100% of a
+corpus-wide 8,653-row gap, ~14 points of the measured linked-recall
+shortfall).
+
+The underlying defect is now actually fixed (src/normalization/
+orchestrator.py's UNIQUE(entity_id, expanded_text) key,
+scripts/fix_normalized_entities_dedup_key.py's one-time backfill), so
+this script's own join was switched back to entity_id (see
+load_predictions()) -- the workaround is no longer needed and, left in
+place, would have started double-counting predictions instead (two
+entity_ids sharing a (text,label) tuple now correctly have two normalized_
+entities rows, so the old composite-key join would match each extracted_
+entities row against both).
 
 ALSO REPORTS THE OFFICIAL BENCHMARK METRIC. Beyond the recall/precision
 breakdown above (built for debugging Stage 2a vs 2b failures), this script
@@ -162,9 +175,35 @@ def load_gold(path, note_ids):
 
 def load_predictions(conn, note_ids):
     """Accepted (>=EXTRACTION_THRESHOLD), normalized entities for the target
-    notes, joined on (note_id, original_text, expanded_text, gliner_label)
-    rather than entity_id -- see module docstring for why entity_id can't be
-    trusted as a join key here.
+    notes, joined on entity_id.
+
+    2026-09-01 UPDATE: this used to join on (note_id, original_text,
+    expanded_text, gliner_label) instead, deliberately working around a
+    real DB defect (see the module docstring's "KNOWN DB CAVEAT" section,
+    kept below for history) where normalized_entities' uniqueness key
+    didn't include entity_id, so an entity_id-keyed join would silently
+    drop every duplicate-text mention but the last. That defect is now
+    fixed (src/normalization/orchestrator.py, scripts/fix_normalized_
+    entities_dedup_key.py) -- entity_id is now a reliable, and the
+    CORRECT, join key: switching back to it removed a real duplication
+    artifact the composite-key join introduced once the fix landed (two
+    entity_ids sharing a (text,label) tuple now correctly have two
+    separate normalized_entities rows, so the OLD composite-key join
+    started matching each extracted_entities row against BOTH of them --
+    up to 6x row duplication measured live on the Fresh-5 original batch,
+    inflating n_pred_with_concept and skewing linked_precision without
+    the author having changed anything about actual prediction quality).
+
+    KNOWN REMAINING LIMITATION, not fixed here: a genuine one-to-many
+    case exists (a multi-drug regimen abbreviation like "R-CHOP"
+    legitimately normalizes to several different expanded_text/concept
+    pairs for ONE entity_id -- see the dedup-key fix's own docstring) --
+    an entity_id-keyed join surfaces all of those rows as separate
+    predictions for one physical span, which this scoring logic doesn't
+    yet specially handle (same class of issue as the existing compound-
+    span handling below, just not merged into it). Rare in practice (~72
+    such entity_id groups corpus-wide at time of writing) -- flagged
+    honestly rather than silently accepted.
 
     is_test=TRUE restricts to rows written by test_pipeline_e2e.py smoke
     runs, matching how these notes were actually processed.
@@ -192,10 +231,7 @@ def load_predictions(conn, note_ids):
                n.match_tier
         FROM extracted_entities e
         JOIN normalized_entities n
-          ON n.note_id = e.note_id
-         AND n.original_text = e.original_text
-         AND n.expanded_text = e.expanded_text
-         AND n.gliner_label = e.entity_label
+          ON n.entity_id = e.entity_id
          AND n.is_test = TRUE
         WHERE e.is_test = TRUE
           AND e.note_id IN ({})

@@ -133,9 +133,7 @@ def benchmark_char_iou(conn, note_ids, gold_by_note, vocab):
         SELECT e.orig_start, e.orig_end, e.note_id, n.omop_concept_id
         FROM extracted_entities e
         JOIN normalized_entities n
-          ON n.note_id = e.note_id AND n.original_text = e.original_text
-         AND n.expanded_text = e.expanded_text AND n.gliner_label = e.entity_label
-         AND n.is_test = TRUE
+          ON n.entity_id = e.entity_id AND n.is_test = TRUE
         WHERE e.is_test = TRUE AND e.note_id IN ({})
           AND (e.below_threshold IS NULL OR e.below_threshold = FALSE)
           AND (e.superseded_by_split IS NULL OR e.superseded_by_split = FALSE)

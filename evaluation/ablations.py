@@ -134,10 +134,14 @@ def load_decisions(conn, note_ids):
         FROM mollm_decisions d
         JOIN extracted_entities e ON e.entity_id = d.entity_id
         JOIN normalized_entities n
-          ON n.note_id = e.note_id
-         AND n.original_text = e.original_text
-         AND n.expanded_text = e.expanded_text
-         AND n.gliner_label = e.entity_label
+          ON n.entity_id = e.entity_id
+        -- 2026-09-01: was joined on (note_id, original_text, expanded_text,
+        -- gliner_label) to work around a real DB defect where
+        -- normalized_entities didn't reliably carry entity_id (see
+        -- scripts/fix_normalized_entities_dedup_key.py) -- now fixed, and
+        -- the old composite-key join would double-count rows since the fix
+        -- landed (two entity_ids sharing that tuple now correctly have two
+        -- separate normalized_entities rows).
         WHERE d.is_test = TRUE
           AND d.note_id IN ({})
     """.format(",".join("?" * len(note_ids))), note_ids).fetchall()

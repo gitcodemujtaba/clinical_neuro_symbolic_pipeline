@@ -996,7 +996,22 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
         match_tier VARCHAR,
         similarity_score FLOAT,
         is_test BOOLEAN DEFAULT FALSE,
-        UNIQUE(note_id, original_text, expanded_text, gliner_label)
+        entity_id VARCHAR,
+        -- 2026-09-01 fix: was UNIQUE(note_id, original_text, expanded_text,
+        -- gliner_label) -- two different entity_ids (two separate mentions
+        -- of the same term, e.g. "HTN" twice in one note) can share that
+        -- exact tuple, and the old ON CONFLICT DO UPDATE SET entity_id =
+        -- EXCLUDED.entity_id silently collapsed them into one row, losing
+        -- the earlier mention's normalization link entirely -- verified
+        -- live to explain 100% of a real 8,653-row corpus-wide gap (see
+        -- scripts/fix_normalized_entities_dedup_key.py's docstring for the
+        -- full diagnosis and the one-time migration/backfill this required).
+        -- (entity_id, expanded_text), not entity_id alone: a legitimate
+        -- one-to-many case exists too (a multi-drug regimen abbreviation
+        -- like "R-CHOP" normalizes to several different expanded_text/
+        -- concept pairs for the SAME entity_id/span) -- verified zero
+        -- collisions on this pair across all existing production data.
+        UNIQUE(entity_id, expanded_text)
     );
     """)
     for ddl in [
@@ -1507,7 +1522,7 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
          sapbert_pooling_method, tier12_rank_basis, {provenance_column_sql()})
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                 {provenance_placeholders()})
-        ON CONFLICT (note_id, original_text, expanded_text, gliner_label) DO UPDATE SET
+        ON CONFLICT (entity_id, expanded_text) DO UPDATE SET
             gliner_confidence = EXCLUDED.gliner_confidence,
             omop_concept_id = EXCLUDED.omop_concept_id,
             omop_concept_name = EXCLUDED.omop_concept_name,
@@ -1516,7 +1531,9 @@ def process_and_normalize_entities(extracted_entities: list, conn, is_test: bool
             match_tier = EXCLUDED.match_tier,
             similarity_score = EXCLUDED.similarity_score,
             is_test = EXCLUDED.is_test,
-            entity_id = EXCLUDED.entity_id,
+            -- entity_id is now the (part of the) conflict target itself, not
+            -- a column to overwrite on conflict -- see the CREATE TABLE
+            -- comment above for why this changed from the old 4-column key.
             candidates = EXCLUDED.candidates,
             is_ambiguous = EXCLUDED.is_ambiguous,
             ambiguity_reason = EXCLUDED.ambiguity_reason,
