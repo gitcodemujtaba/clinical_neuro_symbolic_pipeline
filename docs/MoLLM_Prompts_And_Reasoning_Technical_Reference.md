@@ -597,7 +597,7 @@ the live pipeline today — the only code that ever queries it is
 `scripts/profile_databases.py`, a standalone diagnostic script, not part
 of any production path. (This is separate from, and should not be
 confused with, the Memgraph instances documented in
-`docs/KG3_Implementation_And_Feedback_Loop_Technical_Reference.md` — this
+`docs/Knowledge_Graphs_Technical_Reference.md` — this
 is a *third*, distinct graph database on the same box, holding the
 *static reference* SNOMED hierarchy, not the dynamic patient graph.)
 

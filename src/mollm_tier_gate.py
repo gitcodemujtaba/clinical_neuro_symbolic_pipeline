@@ -1379,7 +1379,7 @@ def route_tier(entity: dict, model_results: list = None, clients: dict = None,
     (the feature reads back 0, same "no evidence" default as
     prior_confirmation_count with no conn supplied). See
     src/mollm_tier_calibrator.py's FEATURE_NAMES/FEATURE_SET_VERSION=2 and
-    docs/KG3_Implementation_And_Feedback_Loop_Technical_Reference.md for why
+    docs/Knowledge_Graphs_Technical_Reference.md for why
     this is a new, separate feature rather than a replacement for the
     DuckDB-sourced one.
     """

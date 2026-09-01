@@ -200,7 +200,7 @@ signal within a multi-hit tie (§8). Returns the top `CANDIDATE_LIMIT`
 (§6) concepts by cosine similarity to the mention's own SapBERT vector,
 filtered by vocabulary and domain (§7) and by the SCTID
 regional-extension exclusion (`_UK_EXTENSION_EXCLUSION` — see
-`docs/KG_Embedding_Technical_Reference.md` for the full story of
+`docs/Knowledge_Graphs_Technical_Reference.md` for the full story of
 that fix, which lives in this same query).
 
 ### 5.1 `TIER3_SIMILARITY_FLOOR = 0.72` — calibrated, with a real, measured, still-open trade-off

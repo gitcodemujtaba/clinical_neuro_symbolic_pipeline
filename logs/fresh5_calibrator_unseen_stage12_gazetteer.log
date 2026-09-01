@@ -1,0 +1,9 @@
+Loading GLiNER-BioMed model... (this may take a moment on the first run)
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 2435.72it/s]
+Loading GLiNER-relex model... (this may take a moment on the first run)
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 2530.04it/s]
+Loading SapBERT model for vector normalization... (this may take a moment)
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+[181.9s] 14050425-DS-5: 7529 chars, 92 entities extracted (Stage 2a)
+ℹ️ 1/4 relations in 14702741-DS-7 had at least one unlinked endpoint.

@@ -234,8 +234,8 @@ mechanism, see below.
   production tiebreak for this pattern. Full technical detail — both
   models' architecture, training procedure, both evaluations, the
   gold-validated threshold sweeps, and the specific falsified claim — in
-  `docs/KG_Embedding_Technical_Reference.md` and
-  `docs/KG_Embedding_Technical_Reference.md`.
+  `docs/Knowledge_Graphs_Technical_Reference.md` and
+  `docs/Knowledge_Graphs_Technical_Reference.md`.
 
 ### Stage 3 — MoLLM Tier Gate (`src/mollm_tier_gate.py`)
 Three local Ollama models — **qwen2.5:3b, llama3.2:3b, phi4-mini** — each
@@ -375,7 +375,7 @@ paths, the review-queue lifecycle, and exactly how a reviewer's
 APPROVED/CORRECTED verdict repurposes into these two feedback
 mechanisms — including current real throughput numbers (0 reviewed
 cases as of this writing) — in
-`docs/KG3_Implementation_And_Feedback_Loop_Technical_Reference.md`.
+`docs/Knowledge_Graphs_Technical_Reference.md`.
 
 ## Concurrency & Operational Infrastructure
 

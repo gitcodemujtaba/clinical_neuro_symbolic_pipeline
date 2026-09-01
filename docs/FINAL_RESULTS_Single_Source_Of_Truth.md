@@ -207,7 +207,7 @@ Full technical detail and code: `docs/Code_Reference_Stages_And_Metrics.md`
 **Update**: RotatE was subsequently built too, as a real 4-configuration
 ablation (`guideline`/`gold`/`combined`/`snomed_is_a` training data) —
 full results, method, and honest limitations in
-`docs/KG_Embedding_Technical_Reference.md` (merged 2026-09-01 from what
+`docs/Knowledge_Graphs_Technical_Reference.md` (merged 2026-09-01 from what
 were previously two separate TransE/RotatE docs). **Neither method beats
 the hardcoded rule; RotatE is worse than TransE at this task.** This
 section covers TransE specifically; see that doc's Part B for RotatE.
@@ -228,7 +228,7 @@ Verified directly against `logs/kg_embedding_results.json`
 **Extrinsic evaluation** (task-specific), **current, post-locked-test-
 split-leakage-fix numbers** (2026-08-31; the leakage fix removed 39 of
 149 source notes that belonged to the official locked test split — see
-`docs/KG_Embedding_Technical_Reference.md` §6.2/§10 for the full
+`docs/Knowledge_Graphs_Technical_Reference.md` §6.2/§10 for the full
 before/after): on 343 real gold-confirmed TP records (1,209 comparisons),
 the embedding placed a wrong-but-competing candidate closer to the
 correct concept than a random unrelated concept **63.7%** of the time
@@ -268,7 +268,7 @@ picked the identical wrong concept, 0.0018 embedding-distance margin
 safer specialist mechanism, and is now more decisively ahead than
 originally measured. KGE remains built, tested, checkpointed
 (`models/kg_transe_v1.pt`, committed to git), and evaluated. RotatE
-(§ above, full ablation in `docs/KG_Embedding_Technical_Reference.md`)
+(§ above, full ablation in `docs/Knowledge_Graphs_Technical_Reference.md`)
 was built as the natural follow-on question ("does a different KGE
 architecture do better") and found to underperform TransE at this same
 task across all four training-data configurations tried — neither
@@ -693,7 +693,7 @@ Every column below is a real, gold-graded measurement (not a projection) — see
   RotatE (Objective 4's second named KGE method) was built and evaluated as
   a genuine 4-config ablation (curated guideline graph / gold-derived
   competition triples / their combination / the full SNOMED IS_A hierarchy)
-  — see `docs/KG_Embedding_Technical_Reference.md`. Real finding:
+  — see `docs/Knowledge_Graphs_Technical_Reference.md`. Real finding:
   RotatE shows a stronger AGGREGATE embedding-separation signal than TransE
   on two of the four configs (72–84% vs. TransE's 69%), but is WORSE as an
   actual per-entity tiebreak (loses 8–9x more than it wins, vs. TransE's
