@@ -403,7 +403,7 @@ the two repurposing mechanisms above, which live in `src/`, not here).
 Its own docstring states plainly why it exists *before* the feedback
 loop it will eventually support: the real feedback mechanisms
 (GLiNER prompt/search-space feedback, a CompGCN/TransE/RotatE
-re-ranking layer — see `docs/TransE_KG_Embedding_Technical_Reference.md`
+re-ranking layer — see `docs/KG_Embedding_Technical_Reference.md`
 for what was actually built of that) need a meaningful volume of
 accumulated `HUMAN_VERIFIED` corrections to mean anything, which does
 not exist yet. Building the read interface now, against whatever the

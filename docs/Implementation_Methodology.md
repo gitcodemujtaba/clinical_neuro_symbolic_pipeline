@@ -234,8 +234,8 @@ mechanism, see below.
   production tiebreak for this pattern. Full technical detail — both
   models' architecture, training procedure, both evaluations, the
   gold-validated threshold sweeps, and the specific falsified claim — in
-  `docs/TransE_KG_Embedding_Technical_Reference.md` and
-  `docs/RotatE_KG_Embedding_Technical_Reference.md`.
+  `docs/KG_Embedding_Technical_Reference.md` and
+  `docs/KG_Embedding_Technical_Reference.md`.
 
 ### Stage 3 — MoLLM Tier Gate (`src/mollm_tier_gate.py`)
 Three local Ollama models — **qwen2.5:3b, llama3.2:3b, phi4-mini** — each

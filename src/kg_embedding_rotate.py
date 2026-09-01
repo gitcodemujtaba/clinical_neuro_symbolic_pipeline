@@ -1,7 +1,7 @@
 """src/kg_embedding_rotate.py -- 2026-08-31: RotatE (Sun et al. 2019), the
 second of the proposal's two named-but-unbuilt KGE methods (TransE is
 built and evaluated in src.kg_embedding; CompGCN remains deliberately
-deferred, see docs/RotatE_KG_Embedding_Technical_Reference.md S5).
+deferred, see docs/KG_Embedding_Technical_Reference.md S5).
 
 WHY NOT THE SNOMED VOCABULARY GRAPH AGAIN. TransE already trained on the
 Athena/OMOP relationship graph restricted to this pipeline's own touched

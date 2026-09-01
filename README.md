@@ -205,7 +205,7 @@ Start here, depending on what you need:
 | `docs/MoLLM_Prompts_And_Reasoning_Technical_Reference.md` | Every MoLLM prompt verbatim, how provenance selects prompt rules, the rules-KG bridge. |
 | `docs/ConsensusCalibrator_Technical_Reference.md` | The 16-feature calibrator: exact features, training, thresholds, safety traps. |
 | `docs/Provenance_Fields_Technical_Reference.md` | Every provenance field the pipeline writes, where computed, every downstream consumer. |
-| `docs/TransE_KG_Embedding_Technical_Reference.md` | The TransE KG-embedding model: training, both evaluations, the gold-validated tiebreak test, and why it stays unwired from production. |
+| `docs/KG_Embedding_Technical_Reference.md` | The TransE KG-embedding model: training, both evaluations, the gold-validated tiebreak test, and why it stays unwired from production. |
 | `docs/GLiNER_Models_Technical_Reference.md` | Both GLiNER models: GLiNER-BioMed span extraction (calibration, chunking, false-positive filters) and GLiNER-relex relation extraction (endpoint linking, Channel E guideline bridge). |
 | `docs/SapBERT_Technical_Reference.md` | SapBERT dense retrieval: the Athena embedding column, DuckDB-native vector search, the similarity floor's measured trade-off, and two rejected alternatives (hybrid RRF, GLiNER-Linker rerankers). |
 | `docs/KG3_Implementation_And_Feedback_Loop_Technical_Reference.md` | KG3 write-back: both gated write paths, the HITL review-queue lifecycle, and the two mechanisms that repurpose reviewed labels back into the pipeline. |

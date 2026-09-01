@@ -1,6 +1,6 @@
 # Knowledge-Graph Grounding for the LLM Ensemble — Complete Technical Reference
 
-**Sources**: `src/normalization/tier_retrieval.py`, `src/normalization/orchestrator.py`, `src/mollm_tier_gate.py`, `src/guideline_evidence.py`, `src/retrieval.py`'s `GuidelineIndex`, `src/tier4_kg_escalation.py`, `src/kg_embedding.py`, `src/kg3_query.py`, `src/kg3_ingestion.py` — every code snippet below is read from the live source, not reconstructed from memory. Cross-referenced against `docs/TransE_KG_Embedding_Technical_Reference.md`, `docs/KG3_Implementation_And_Feedback_Loop_Technical_Reference.md`, and `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §14 for measured results rather than re-deriving them.
+**Sources**: `src/normalization/tier_retrieval.py`, `src/normalization/orchestrator.py`, `src/mollm_tier_gate.py`, `src/guideline_evidence.py`, `src/retrieval.py`'s `GuidelineIndex`, `src/tier4_kg_escalation.py`, `src/kg_embedding.py`, `src/kg3_query.py`, `src/kg3_ingestion.py` — every code snippet below is read from the live source, not reconstructed from memory. Cross-referenced against `docs/KG_Embedding_Technical_Reference.md`, `docs/KG3_Implementation_And_Feedback_Loop_Technical_Reference.md`, and `docs/FINAL_RESULTS_Single_Source_Of_Truth.md` §14 for measured results rather than re-deriving them.
 
 **Independently re-verified 2026-08-31** (this session): every module named below was directly read and every measured result cross-checked against the docs that reported it.
 
@@ -99,7 +99,7 @@ decide the answer for you): ...
 
 ## 5. TransE — the vocabulary graph, embedded
 
-`src/kg_embedding.py` trains a real TransE model (Bordes et al. 2013, plain PyTorch) directly on the vocabulary graph's own edges — 7,269 concepts, ~24,900 relationship edges, 104 relation types, scoped to what this pipeline's own candidate pools actually touch. Full detail in `docs/TransE_KG_Embedding_Technical_Reference.md`; the grounding-relevant summary:
+`src/kg_embedding.py` trains a real TransE model (Bordes et al. 2013, plain PyTorch) directly on the vocabulary graph's own edges — 7,269 concepts, ~24,900 relationship edges, 104 relation types, scoped to what this pipeline's own candidate pools actually touch. Full detail in `docs/KG_Embedding_Technical_Reference.md`; the grounding-relevant summary:
 
 - **What it grounds**: a candidate-tiebreak signal — `h + r ≈ t` embedding distance between two competing candidates, tested as a topological tiebreak alongside the hardcoded `_prefer_lab_procedure_over_observable()` rule.
 - **Measured**: intrinsic MRR 0.776 / Hits@10 0.909 (standard KGE protocol); extrinsic, real-candidate-pool win/loss sweep found the hardcoded rule has **zero losses at every threshold tested**, TransE has 63 — including a specific, checked falsification of a proposed narrative that KGE would "naturally" resolve a known near-duplicate case (it picked the identical wrong concept, 0.0018 margin, noise not signal).

@@ -666,7 +666,7 @@ Every column below is a real, gold-graded measurement (not a projection) — see
   RotatE (Objective 4's second named KGE method) was built and evaluated as
   a genuine 4-config ablation (curated guideline graph / gold-derived
   competition triples / their combination / the full SNOMED IS_A hierarchy)
-  — see `docs/RotatE_KG_Embedding_Technical_Reference.md`. Real finding:
+  — see `docs/KG_Embedding_Technical_Reference.md`. Real finding:
   RotatE shows a stronger AGGREGATE embedding-separation signal than TransE
   on two of the four configs (72–84% vs. TransE's 69%), but is WORSE as an
   actual per-entity tiebreak (loses 8–9x more than it wins, vs. TransE's
